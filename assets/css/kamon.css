@@ -174,14 +174,28 @@ img[alt=statsD] { width: 100%; }
   background-color: #9bd07a;
 }
 
+html, body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+}
+
+code, kbd, pre, samp {
+  font-family: Monaco,Consolas,"Courier New",monospace;
+  font-weight: 500;
+  font-size: 12px;
+}
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: 500;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 300;
   line-height: 1.1;
   color: #666666;
 }
 
 h1, h2, .h1, .h2 {
   color: #464646;
+}
+
+p {
+  text-align: justify;
 }
