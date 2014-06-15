@@ -30,8 +30,8 @@ under specific conditions and once the `TraceContext` is finished, all the gathe
 then it is cleared out to avoid propagating it to unrelated events.
 
 
-Starting a `TraceContext`
--------------------------
+Starting a TraceContext
+-----------------------
 
 The `TraceRecorder` companion object provides a simple API to create, propagate and finish a `TraceContext`. To start a
 new context use the `TraceRecorder.withNewTraceContext(..)` method. Let's dig into this with a simple example:
@@ -39,7 +39,25 @@ new context use the `TraceRecorder.withNewTraceContext(..)` method. Let's dig in
 Suppose you want to trace a process that involves a couple actors, and you want to make sure all related events become
 part of the same `TraceContext`. Our actors might look like this:
 
-{% include_code kamon/docs/trace/SimpleContextPropagation.scala start:47 end:63 linenos:false %}
+{% highlight scala %}
+class UpperCaser extends Actor with ActorLogging {
+  val lengthCalculator = context.actorOf(Props[LengthCalculator], "length-calculator")
+
+  def receive = {
+    case anyString: String =>
+      log.info("Upper casing [{}]", anyString)
+      lengthCalculator.forward(anyString.toUpperCase)
+  }
+}
+
+class LengthCalculator extends Actor with ActorLogging {
+  def receive = {
+    case anyString: String =>
+      log.info("Calculating the length of: [{}]", anyString)
+      sender ! anyString.length
+  }
+}
+{% endhighlight %}
 
 You should feel familiar with this code, there is nothing new there. Let's spawn an `UpperCaser` actor and send it five
 string messages and see the output on the log file:
@@ -61,7 +79,11 @@ Can you tell which log statement from `LengthCalculator` corresponds to each log
 easy to figure it out manually in this case, but as the number of events happening concurrently in your app grows it
 becomes harder to answer that question without some extra help. Let's see how Kamon can help us in this situation:
 
-{% include_code kamon/docs/trace/SimpleContextPropagation.scala start:38 end:40 linenos:false %}
+{% highlight scala %}
+TraceRecorder.withNewTraceContext("simple-test") {
+  upperCaser ! "Hello World with TraceContext"
+}
+{% endhighlight %}
 
 When using the `TraceRecorder.withNewTraceContext(..)` method, Kamon will create a new `TraceContext` and make it
 available during the execution of the piece of code passed as argument. This time, we are sending a message to an actor
@@ -92,8 +114,8 @@ Just by logging the trace token you can get a lot of visibility and coherence in
 please  refer to the [logging](../logging/) section to learn how to include the trace token in your logs.
 
 
-Rules for `TraceContext` Propagation
-------------------------------------
+Rules for TraceContext Propagation
+----------------------------------
 
 * Actor creation.
 * Sending messages to a Actor.
