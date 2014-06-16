@@ -7,16 +7,16 @@ Reporting Metrics to StatsD
 ===========================
 <hr>
 
-[StatsD](https://github.com/etsy/statsd/) is a simple network daemon that continuously receives metrics over UDP and
-periodically sends aggregate metrics to upstream services like (but not limited to) Graphite. Because it uses UDP,
-sending metrics data to StatsD is very fast with little to no overhead.
+[StatsD] is a simple network daemon that continuously receives metrics over UDP and periodically sends aggregate metrics
+to upstream services like (but not limited to) Graphite. Because it uses UDP, sending metrics data to StatsD is very
+fast with little to no overhead.
 
 
 Installation
 ------------
 
 To use the StatsD module just add the `kamon-statsd` dependency to your project and start your application using the
-Aspectj Weaver agent. Please refer to our [get started](/get-started) page for more info on how to add dependencies to
+Aspectj Weaver agent. Please refer to our [get started] page for more info on how to add dependencies to
 your project and starting your application with the AspectJ Weaver.
 
 
@@ -86,9 +86,16 @@ Visualization and Fun
 
 StatsD is widely used and there are many integrations available, even alternative implementations that can receive UDP
 messages with the StatsD protocol, you just have to pick the option that best suits you. For our internal testing we
-choose to use [Graphite](http://graphite.wikidot.com/) as the StatsD backend and [Grafana](http://grafana.org) to create
-beautiful dashboards with very useful metrics. Have an idea of how your metrics data might look like in Grafana with the
-screenshot bellow or use our [docker image](https://github.com/kamon-io/docker-grafana-graphite) to get up and running
-in a few minutes and see it with your own metrics!
+choose to use [Graphite] as the StatsD backend and [Grafana] to create beautiful dashboards with very useful metrics.
+Have an idea of how your metrics data might look like in Grafana with the screenshot bellow or use our [docker image] to
+get up and running in a few minutes and see it with your own metrics!
 
 ![statsD](/assets/img/kamon-statsd-grafana.png "Grafana Screenshot")
+
+
+
+[StatsD]: https://github.com/etsy/statsd/
+[get started]: /introduction/get-started/
+[Graphite]: http://graphite.wikidot.com/
+[Grafana]: http://grafana.org
+[docker image]: https://github.com/kamon-io/docker-grafana-graphite

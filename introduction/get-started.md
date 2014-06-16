@@ -53,13 +53,13 @@ at the [sbt-aspectj] plugin.
 Third: Enjoy!
 -------------
 
-Refer to module's documentation to find out more about core concepts like [tracing], [metrics] and [logging], and learn
-how to report your metrics data to external services like [StatsD], [Datadog] and [New Relic].
+Refer to module's documentation to find out more about the core concepts of [tracing] and [metrics], and learn how to
+report your metrics data to external services like [StatsD], [Datadog] and [New Relic].
 
 
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
-[tracing]: /core/tracing/basics/
-[metrics]: /core/metrics/basics/
+[tracing]: /core/tracing/core-concepts/
+[metrics]: /core/metrics/core-concepts/
 [logging]: /core/tracing/logging/
 [StatsD]: /backends/statsd/
 [Datadog]: /backends/datadog/

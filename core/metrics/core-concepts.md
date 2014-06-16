@@ -6,27 +6,20 @@ layout: documentation
 Metrics
 =======
 
-Some intro about metrics
-
-Philosophy
-----------
-
 Back in the day, the most common approach to get metrics out of an Akka/Spray application for production monitoring was
-doing manual instrumentation: select your favorite metrics collection library, wrap you messages with some useful
-metadata, wrap your actor's receive function with some metrics measuring code and, finally, push that metrics data out
-to somewhere you can keep it, graph it and analyse it whenever you want.
+doing manual instrumentation: select your favorite metrics collection library, wrap you messages with useful metadata,
+wrap your actor's receive function with metrics measuring code and, finally, push that metrics data out to somewhere you
+can keep it, graph it and analyse it whenever you want.
 
 Each metrics collection library has it's own strengths and weaknesses, and each developer has to choose wisely according
 to the requirements they have in hand, leading them in different paths as they progress with their applications. Each
 path has different implications with regards to introduced overhead and latency, metrics data accuracy and memory
-consumption. Kamon takes this responsibility out of the developer and tries to make the best choice to provide high
-performance metrics collection instruments while keeping the inherent overhead as low as possible.
-
-Kamon tries to select the best possible approach, so you don't have to.
+consumption. Kamon takes this responsibility away from you and tries to make the best choice to provide high performance
+metrics collection instruments while keeping the inherent overhead as low as possible.
 
 
-Metrics Collection and Flushing
--------------------------------
+Collection and Flushing
+-----------------------
 
 All the metrics infrastructure in Kamon was designed around two concepts: collection and flushing. Metrics collection
 happens in real time, as soon as the information is available for being recorded. Let's see a simple example: as soon as
@@ -42,10 +35,12 @@ a little bit more on how this two concepts are modeled inside Kamon.
 
 A metric group contains various individual metrics that are related to the same entity, for example, if the entity we
 are talking about is an actor, the metrics related to processing time, mailbox size and time in mailbox for that
-specific actor are grouped inside a single metric group, and each actor gets its own metric group. As you might disguise
-from the diagram above, on the left we have the mutable side of the process that is constantly recoding measurements as
-the events flow through your application and on the right we have the immutable side, containing snapshots representing
-all the measurements taken during a specific period on time for a metric group.
+specific actor are grouped inside a single metric group, and each monitored actor gets its own metric group. As you
+might disguise from the diagram above, on the left we have the mutable side of the process that is constantly recoding
+measurements as the events flow through your application and on the right we have the immutable side, containing
+snapshots representing all the measurements taken during a specific period on time for a metric group.
+
+Head over the [instruments] section to learn more about what instruments are used for recording metrics in Kamon.
 
 
 Filtering Entities
@@ -81,13 +76,4 @@ kamon {
 }
 ```
 
-Instruments
------------
-
-Talk about how HDR Histogram works and how we use it.
-
-
-Subscription protocol
----------------------
-
-Explain how to subscribe for metrics data and provide a simple example.
+[instruments]: /core/metrics/instruments/
