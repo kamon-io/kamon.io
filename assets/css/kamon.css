@@ -176,7 +176,8 @@ img[alt=statsD] { width: 100%; }
 
 html, body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 15px;
+  font-weight: 300;
+  font-size: 16px;
 }
 
 code, kbd, pre, samp {
