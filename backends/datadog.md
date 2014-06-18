@@ -70,7 +70,7 @@ Integration Notes
 
 * Contrary to other Datadog client implementations, we don't flush the metrics data as soon as the measurements are ç
   taken but instead, all metrics data is buffered by the `Kamon(Datadog)` extension and flushed periodically using the
-  configured `kamon.statsd.flush-interval` and `kamon.statsd.max-packet-size` settings.
+  configured `kamon.datadog.flush-interval` and `kamon.datadog.max-packet-size` settings.
 * Metrics for all entities of the same kind are reported with the same name and a tag is defined with the entity kind
   and entity name. For example, all mailbox size measurements are reported under the `application.actor.mailbox_size`
   metric and additional tags similar to `actor:/user/example-actor` or `actor:/user/other-actor` are provided to allow
