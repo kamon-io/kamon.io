@@ -25,7 +25,7 @@ First, include the Kamon(Datadog) extension under the `akka.extensions` key of y
 
 ```
 akka {
-  extensions = ["kamon.statsd.Datadog"]
+  extensions = ["kamon.datadog.Datadog"]
 }
 ```
 
@@ -35,7 +35,7 @@ which includes a brief explanation of each setting:
 ```
 kamon {
   datadog {
-    # Hostname and port in which your StatsD is running. Remember that Datadog packets are sent using UDP and
+    # Hostname and port in which your Datadog is running. Remember that Datadog packets are sent using UDP and
     # setting unreachable hosts and/or not open ports wont be warned by the Kamon, your data wont go anywhere.
     hostname = "127.0.0.1"
     port = 8125
@@ -50,39 +50,47 @@ kamon {
     # Subscription patterns used to select which metrics will be pushed to Datadog. Note that first, metrics
     # collection for your desired entities must be activated under the kamon.metrics.filters settings.
     includes {
-      actor = [ "*" ]
-      trace = [ "*" ]
+      actor      =  [ "*" ]
+      trace      =  [ "*" ]
+      dispatcher =  [ "*" ]
     }
 
-    simple-metric-key-generator {
-      # Application prefix for all metrics pushed to Datadog. The default namespacing scheme for metrics follows
-      # this pattern:
-      #    application.host.entity.entity-name.metric-name
-      application = "kamon"
-    }
+    # Application prefix for all metrics pushed to Datadog. The default namespacing scheme for metrics follows
+    # this pattern:
+    #    application.entity-name.metric-name
+    application-name = "kamon"
   }
 }
+
 ```
 
 
 Integration Notes
 -----------------
 
-* Contrary to many Datadog client implementations, we don't flush the metrics data as soon as the measurements are taken
-  but instead, all metrics data is buffered by the `Kamon(Datadog)` extension and flushed periodically using the
+* Contrary to other Datadog client implementations, we don't flush the metrics data as soon as the measurements are ç
+  taken but instead, all metrics data is buffered by the `Kamon(Datadog)` extension and flushed periodically using the
   configured `kamon.statsd.flush-interval` and `kamon.statsd.max-packet-size` settings.
-* Currently only Actor and Trace metrics are being sent to Datadog.
-* All timing measurements are sent in nanoseconds, make sure you correctly set the scale when plotting or using the
-  metrics data.
-* It is advisable to experiment with the `kamon.statsd.flush-interval` and `kamon.statsd.max-packet-size` settings to
-  find the right balance between network bandwidth utilization and granularity on your metrics data.
+* Metrics for all entities of the same kind are reported with the same name and a tag is defined with the entity kind
+  and entity name. For example, all mailbox size measurements are reported under the `application.actor.mailbox_size`
+  metric and additional tags similar to `actor:/user/example-actor` or `actor:/user/other-actor` are provided to allow
+  breaking down in charts easily.
+* Currently only Actor, Trace and Dispatcher metrics are being sent to Datadog.
+* It is advisable to experiment with the `kamon.datadog.flush-interval` and `kamon.datadog.max-packet-size` settings to
+  find the right balance between network bandwidth utilisation and granularity on your metrics data.
+* All timing measurements are sent in nanoseconds, if you want to scale them to milliseconds or to any other unit you
+  need to manually edit the graph JSON definition to include a "/ 1000000" as show here:
 
+<img class="img-responsive" src="/assets/img/datadog-scaling-metrics.png">
 
-
-Visualization and Fun
+Visualisation and Fun
 ---------------------
 
+Creating a dashboard in the Datadog user interface is really simple, just start typing the application name ("kamon" by
+default) in the metric selector and all metric names will start to show up. You can also break it down based on the entity
+names. Here is a very simple example of a dashboard created with metrics reported by Kamon:
 
+<img class="img-responsive" src="/assets/img/datadog-dashboard.png">
 
 [Datadog]: http://www.datadoghq.com/
 [get started]: /introduction/get-started/
