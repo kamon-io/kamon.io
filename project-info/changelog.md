@@ -17,10 +17,10 @@ Version 0.3.1/0.2.1 <small>(2014-06-18)</small>
 * kamon-core
     * Dispatchers metrics.
     * Actor Errors Counter.
-    * Initial support for TraceLocal Storage.
-    * Allow dispatcher configuration to `Kamon Core` components.
+    * Support for TraceLocal Storage.
+    * Allow custom dispatcher configuration for Kamon core components.
     * Introducing `MinMaxCounter` for measurement of mailbox size.
-    * New `Counter Instrument`.
+    * New `Counter` Instrument.
     * Fix NPE when dispatcher shutdown [#37](https://github.com/kamon-io/Kamon/issues/37)
     * Fix NPE when application start with multiples Actor Systems [#38](https://github.com/kamon-io/Kamon/issues/38)
 
@@ -28,13 +28,14 @@ Version 0.3.1/0.2.1 <small>(2014-06-18)</small>
     * Now you can send Actor, Trace and Dispatchers metrics to Datadog! Check out our [Datadog documentation](/backends/datadog/) for more details.
 
 * kamon-statsd
-    * Force the decimal format to use dot `(.)` as decimal point. 
+    * Force the decimal format to use dot `(.)` as decimal point.
 
-* kamon-play 
+* kamon-play
+    * Our Play! module is no longer considered experimental!
     * Avoid unnecessary libraries in runtime [#40](https://github.com/kamon-io/Kamon/issues/40)
 
 * kamon-newrelic
-   * Fix ClassCastException in NewRelicErrorLogger [#29](https://github.com/kamon-io/Kamon/issues/29) 
+   * Fix ClassCastException in NewRelicErrorLogger [#29](https://github.com/kamon-io/Kamon/issues/29)
 
 <hr>
 Version 0.3.0/0.2.0 <small>(2014-04-24)</small>
