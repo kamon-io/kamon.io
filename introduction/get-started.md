@@ -8,7 +8,7 @@ Get Started with Kamon
 
 Kamon is distributed as a core and a set of modules that you include in your application classpath. This modules contain
 all the required pointcuts and advices (yeap, Kamon uses Aspectj!) for instrumenting Akka actors message passing,
-dispatchers, futures, Spray components and much more.
+dispatchers, futures, Spray and Play components and much more.
 
 To get started just follow this steps:
 
@@ -20,20 +20,22 @@ All Kamon components are available through Sonatype and Maven Central and no spe
 If you are using SBT, you will need to add something like this to your build definition:
 
 ```scala
-libraryDependencies += "io.kamon" % "kamon-core" % "0.3.0"
+libraryDependencies += "io.kamon" %% "kamon-core" % "0.3.1"
 ```
 
 Then, add any additional module you need:
 
 * kamon-core
 * kamon-spray
+* kamon-play
 * kamon-statsd
 * kamon-newrelic
+* kamon-datadog
+* kamon-system-metrics <span class="label label-info">soon</span></li>
 
 ### Compatibility Notes: ###
-
-* 0.3.x releases are compatible with Akka 2.3, Spray 1.3 and Play 2.3-M1.
-* 0.2.x releases are compatible with Akka 2.2, Spray 1.2 and Play 2.2.
+* 0.3.x releases are compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.11.x/2.10.x
+* 0.2.x releases are compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
 
 
 Second: Start your app with the AspectJ Weaver

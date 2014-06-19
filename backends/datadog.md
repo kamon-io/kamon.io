@@ -83,7 +83,8 @@ Integration Notes
 
 <img class="img-responsive" src="/assets/img/datadog-scaling-metrics.png">
 
-Visualisation and Fun
+
+Visualization and Fun
 ---------------------
 
 Creating a dashboard in the Datadog user interface is really simple, just start typing the application name ("kamon" by
