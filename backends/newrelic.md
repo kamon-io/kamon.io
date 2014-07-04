@@ -1,36 +1,36 @@
 ---
-title: kamon | NewRelic Module | Documentation
+title: Kamon | Documentation | Reporting Data to New Relic
 layout: documentation
 ---
 
-NewRelic Module
-===============
+Reporting Data to New Relic
+===========================
 
-If you are a Newrelic user and tried to start start your app using the Newrelic agent you probably noticed a crude reality:
-nothing is shown in your dashboard, no web transactions are recognized and errors are not reported for your Spray applications.
-Don't even think about detailed traces for the slowest transactions.
+If you are a [New Relic] user and tried to start your Spray/Akka application using the New Relic's agent you probably
+noticed a crude reality: nothing is shown in your dashboard, no web transactions are recognised and errors are not
+reported for your Spray/Akka applications. Don't even think about detailed traces for the slowest transactions.
 
-We love Spray, and we love Newrelic, we couldn't leave this happening anymore!
+We love Spray and Akka, and we love New Relic, we couldn't leave this happening anymore!
 
-Currently the Newrelic Module works together with the Spray Module to get information about your Web Transactions and send
-that information to Newrelic servers as a aggregate to the data already colected by Newrelic's Agent. Currently the data
-being reported is:
+<p class="alert alert-warning">This is not an official New Relic product, and is not endorsed by New Relic.</p>
+
+You can use our New Relic integration module to report Trace metrics to New Relic, the data being currently reported is:
 
 - Time spent for Web Transactions: Also known as `HttpDispatcher` time, represents the total time taken to process a web
-transaction, from the moment the `HttpRequest` is received by spray-can, to the moment the answer is sent to the IO layer.
+  transaction, from the moment the `HttpRequest` is received by spray-can, to the moment the answer is sent to the IO
+  layer.
 - Apdex
 - Errors
 
 Differentiation between JVM and External Services is coming soon, as well as actor metrics and detailed traces.
 
 
-
 Installation
 -------------
 
-To use the Newrelic module just make sure you put the `kamon-newrelic` and `kamon-spray` libraries in your classpath and
-start your application with both, the Aspectj Weaver and Newrelic agents. Please refer to our [get started](/get-started) page
-for more info on how to add the AspectJ Weaver and the [Newrelic Agent Installations Instructions](https://docs.newrelic.com/docs/java/new-relic-for-java#h2-installation).
+To report data to New Relic just make sure you put the `kamon-newrelic` library in your classpath and start your
+application with both, the Aspectj Weaver and New Relic agents. Please refer to our [get started] page for more info on
+how to add the AspectJ Weaver and the [New Relic Agent Installations Instructions].
 
 
 Configuration
@@ -40,9 +40,10 @@ Currently you will need to add a few settings to your `application.conf` file fo
 
 ```scala
 akka {
-  // Custom logger for NewRelic that takes all the `Error` events from the event stream and publish them to NewRelic
+  // Custom logger for New Relic that takes all the `Error` events from the event stream and publish them to New Relic
   loggers = ["akka.event.slf4j.Slf4jLogger", "kamon.newrelic.NewRelicErrorLogger"]
-  // Make sure the NewRelic extension is loaded with the ActorSystem
+
+  // Make sure the New Relic extension is loaded with the ActorSystem
   extensions = ["kamon.newrelic.NewRelic"]
 }
 
@@ -60,7 +61,7 @@ Let's see it in Action!
 -----------------------
 
 Let's create a very simple Spray application to show what you should expect from this module. The entire application code
-is at [Github](https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-newrelic-example).
+is in our [kamon-newrelic-example] at Github.
 
 ```scala
 import akka.actor.ActorSystem
@@ -81,7 +82,7 @@ object NewRelicExample extends App with SimpleRoutingApp {
    path("helloNewRelic") {
      get {
        complete {
-         <h1>Say hello to NewRelic</h1>
+         <h1>Say hello to New Relic</h1>
        }
      }
    }
@@ -99,7 +100,7 @@ ab -k -n 200000 http://localhost:8080/helloNewRelic
 
 After a couple minutes running you should start seeing something similar to this in your dashboard:
 
-![newrelic](/assets/img/newrelic.png "NewRelic Screenshot")
+<img class="img-responsive" src="/assets/img/newrelic.png">
 
 <div class="alert alert-info">
 Note: Don't think that those numbers are wrong, Spray is that fast!
@@ -108,10 +109,17 @@ Note: Don't think that those numbers are wrong, Spray is that fast!
 
 Limitations
 -----------
-* The first implementation only supports a subset of NewRelic metrics
+* The first implementation only supports a subset of New Relic metrics.
 
 
 Licensing
 ---------
-NewRelic has [its own, separate licensing](http://newrelic.com/terms).
+New Relic has [its own, separate licensing].
 
+
+
+[New Relic]: http://newrelic.com
+[get started]: /get-started
+[New Relic Agent Installations Instructions]: https://docs.newrelic.com/docs/java/new-relic-for-java#h2-installation
+[kamon-newrelic-example]: https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-newrelic-example
+[its own, separate licensing]: http://newrelic.com/terms
