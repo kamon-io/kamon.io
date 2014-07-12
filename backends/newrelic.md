@@ -12,7 +12,7 @@ reported for your Spray/Akka applications. Don't even think about detailed trace
 
 We love Spray and Akka, and we love New Relic, we couldn't leave this happening anymore!
 
-<p class="alert alert-warning">This is not an official New Relic product, and is not endorsed by New Relic.</p>
+<p class="alert alert-info">This is not an official New Relic product, and is not endorsed by New Relic.</p>
 
 You can use our New Relic integration module to report Trace metrics to New Relic, the data being currently reported is:
 
@@ -31,6 +31,12 @@ Installation
 To report data to New Relic just make sure you put the `kamon-newrelic` library in your classpath and start your
 application with both, the Aspectj Weaver and New Relic agents. Please refer to our [get started] page for more info on
 how to add the AspectJ Weaver and the [New Relic Agent Installations Instructions].
+
+<p class="alert alert-warning">
+The order in which the `-javaagent:` options are added to your launch command might cause deadlocks during your
+application initialisation, please make sure that the `-javaagent:` option corresponding to the AspectJ Weaver is added
+before the one corresponding to the New Relic agent to avoid problems during startup.
+</p>
 
 
 Configuration
