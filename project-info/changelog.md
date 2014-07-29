@@ -7,6 +7,38 @@ Changelog
 =========
 
 <hr>
+Version 0.3.2/0.2.2 <small>(2014-07-29)</small>
+--------------------------------
+
+* kamon
+   * 0.3.2 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x
+   * 0.2.2 is compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
+
+* kamon-core
+    * Introduce a inline variant of `TraceRecorder.withTraceContext` via macros.
+    * Refactor the internal implementation metrics collection, more details on this will be blogged soon.
+    * Introduce support for User Metrics, now you can ask Kamon for a Histogram, Counter or Gauge and record your own
+      measurements.
+    * Created `KamonStandalone`, a simple helper that embeds a ActorSystem for people who want metrics but is not using
+      the reactive stack.
+    * Log a warning message when the Metrics extension is loaded and the AspectJ weaver is missing.
+
+* kamon-play
+    * Record HTTP Server Metrics.
+    * Introduce a logger instrumentation that allows taking values from `TraceLocalStorate` to `MDC`.
+
+* kamon-spray
+    * Record HTTP Server Metrics.
+
+* kamon-log-reporter
+    * This new module simply outputs trace, actor and user metrics to the log in a simple ascii table format, useful for
+      local testing and debugging.
+
+* kamon-system-metrics (Experimental)
+    * We have a new System Metrics module that collects CPU, Memory, Heap, Garbage Collection and Network Traffic metrics.
+
+
+<hr>
 Version 0.3.1/0.2.1 <small>(2014-06-18)</small>
 --------------------------------
 
