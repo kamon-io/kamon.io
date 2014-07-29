@@ -52,6 +52,21 @@ In case you want to keep the AspectJ related settings in your build and enjoy us
 at the [sbt-aspectj] plugin.
 
 
+### Optional: Register the Metrics Extension ###
+
+If you correctly configured your application to start using the AspectJ Weaver agent then the Metrics extension will be
+loaded when the first instrumentation point that stores metrics gets executed. If you don't configure the agent properly
+then the Metrics extension will log a warning when it is loaded, but if the agent is not present and you are not
+recording any metrics manually then the Metrics wont load and you wont see the warning. By adding the Metrics extension
+to your application configuration as shown bellow, you ensure that it is loaded when your actor system is started and
+the warning will be displayed is necessary:
+
+```
+akka {
+  extensions = ["kamon.metric.Metrics"]
+}
+```
+
 Third: Enjoy!
 -------------
 
