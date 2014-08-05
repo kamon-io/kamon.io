@@ -7,6 +7,27 @@ Changelog
 =========
 
 <hr>
+Version 0.3.3/0.2.3 <small>(2014-08-05)</small>
+--------------------------------
+
+* kamon
+   * 0.3.3 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x
+   * 0.2.3 is compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
+
+* kamon-core
+   * A NullPointerException was thrown when a actor is stopped (see [issue 69]).
+
+* kamon-statsd
+   * Report user metrics (Histograms, Counters, MinMaxCounters and Gauges).
+
+* kamon-datadog
+   * Report user metrics (Histograms, Counters, MinMaxCounters and Gauges).
+
+* kamon-system-metrics (Experimental)
+   * The `kamon-system-metrics` module artifacts didn't include all the Sigar related files.
+
+
+<hr>
 Version 0.3.2/0.2.2 <small>(2014-07-29)</small>
 --------------------------------
 
