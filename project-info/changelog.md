@@ -6,16 +6,43 @@ layout: default
 Changelog
 =========
 
+
 <hr>
-Version 0.3.3/0.2.3 <small>(2014-08-05)</small>
---------------------------------
+Version 0.3.4/0.2.4 <small>(2014-08-13)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon
+   * 0.3.4 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x
+   * 0.2.4 is compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
+
+* kamon-core
+   * Fix OutOfBoundsException being thrown when recording values from a MinMaxCounter (see [issue 71](https://github.com/kamon-io/Kamon/issues/71)).
+   * Use the inline variant of TraceRecorder.withTraceContext.
+   * Avoid having any other copies of the AspectJ weaver around in runtime by marking the weaver dependency as "provided".
+
+* kamon-spray
+   * Use the inline variant of TraceRecorder.withTraceContext.
+
+* kamon-play
+   * Use the inline variant of TraceRecorder.withTraceContext.
+
+* kamon-log-reporter
+   * Provide the ability to report system metrics.
+
+* kamon-system-metrics (Experimental)
+   * Minor changes in the banner displayed when starting the system metrics module.
+
+
+<hr>
+Version 0.3.3/0.2.3 <small>(2014-08-05) <span class="label label-danger">unstable</span></small>
+------------------------------------------------------------------------------------------------
 
 * kamon
    * 0.3.3 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x
    * 0.2.3 is compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
 
 * kamon-core
-   * A NullPointerException was thrown when a actor is stopped (see [issue 69]).
+   * A NullPointerException was thrown when a actor is stopped (see [issue 69](https://github.com/kamon-io/Kamon/issues/69)).
 
 * kamon-statsd
    * Report user metrics (Histograms, Counters, MinMaxCounters and Gauges).
@@ -28,8 +55,8 @@ Version 0.3.3/0.2.3 <small>(2014-08-05)</small>
 
 
 <hr>
-Version 0.3.2/0.2.2 <small>(2014-07-29)</small>
---------------------------------
+Version 0.3.2/0.2.2 <small>(2014-07-29) <span class="label label-danger">unstable</span></small>
+-----------------------------------------------------------------------------------------------
 
 * kamon
    * 0.3.2 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x
