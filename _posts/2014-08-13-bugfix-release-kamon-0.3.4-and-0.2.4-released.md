@@ -12,7 +12,7 @@ MinMaxCounter. We finally solved the issue and pushed a new release to make sure
 of changes for this release is:
 
 * kamon-core
-   * Fix IndexOutOfBoundsException being thrown when recording values from a MinMaxCounter (see [issue 71](https://github.com/kamon-io/Kamon/issues/71)).
+   * Fix IndexOutOfBoundsException being thrown when recording values from a MinMaxCounter (see [issue 71]).
    * Use the inline variant of TraceRecorder.withTraceContext.
    * Avoid having any other copies of the AspectJ weaver around in runtime by marking the weaver dependency as "provided".
 
