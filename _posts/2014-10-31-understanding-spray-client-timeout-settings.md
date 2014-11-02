@@ -269,7 +269,7 @@ independently from the retries.
 
 - The time that might be spent waiting in the HttpHostConnector queue for a connection to be available. This time can
 not be limited by any configuration setting and the only thing preventing this queue to produce an out of memory error
-is the back-presure implementation in your application code.
+is the back-presure implementation in your application code. Been there, suffered that.
 
 - Only for new connections, the time taken to create all the relevant actors and establish the TCP connection. Usually
 creating the actors wont be a problem, but establishing the TCP connection might take awhile depending on network
@@ -277,7 +277,7 @@ conditions.
 
 As a final advice, always do this sum with your settings and make sure that they make sense to your app. If your app can
 tolerate a maximum of 5 seconds delay for a HTTP response, then adjust all the relevant settings to make sure that Spray
-wont keep working on requests after ~seconds. Also, we encourage you to simulate the various conditions mentioned here
+wont keep working on requests after ~5 seconds. Also, we encourage you to simulate the various conditions mentioned here
 (more requests than connections, slow connection times, slow server, etc.) in a development environment and tune
 accodingly to the results your see, many CPU cycles and potential crashes might be saved by doing so!
 
