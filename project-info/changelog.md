@@ -6,6 +6,40 @@ layout: default
 Changelog
 =========
 
+<hr>
+Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon
+  * 0.3.5 is compatible with Akka 2.3.x, Spray 1.3.x, Play 2.3.x and Scala 2.10.x/2.11.x
+  * 0.2.5 is compatible with Akka 2.2.x, Spray 1.2.x, Play 2.2.x and Scala 2.10.x
+
+* kamon-core
+  * Provide min, max, percentiles and average functions for Histogram snapshots (see [issue 85](https://github.com/kamon-io/Kamon/issues/85)).
+  * Apparently random NPE (see [issue 88](https://github.com/kamon-io/Kamon/issues/88))
+
+* kamon-spray
+   
+
+* kamon-play
+  * Review the trace name in play applications (see [issue 82](https://github.com/kamon-io/Kamon/issues/82)).
+  * TraceContext is not propagated when call WS outside an Action (see [issue 33](https://github.com/kamon-io/Kamon/issues/33)).
+
+* kamon-log-reporter
+  * Provide the ability to report system metrics.
+
+* kamon-newrelic
+  * Implement error handling with NewRelic Agent (see [issue 7](https://github.com/kamon-io/Kamon/issues/7)).
+  * Avoid reporting data to Newrelic if no metrics have been collected (see [issue 17](https://github.com/kamon-io/Kamon/issues/17)).
+  * Report NewRelic error with correct URI (see [issue 103](https://github.com/kamon-io/Kamon/issues/103)).
+  * Report HTTP client call times to New Relic (see [issue 63](https://github.com/kamon-io/Kamon/issues/63)).
+  * External naming for HTTP traces and segments (see [issue 65](https://github.com/kamon-io/Kamon/issues/65))
+
+* kamon-system-metrics
+  * include System Metrics in log-reporter (see [issue 72](https://github.com/kamon-io/Kamon/issues/72)).
+
+* kamon-akka-remote <span class="label label-warning">experimental</span></li>
+  * create a new module for remoting instrumentation
 
 <hr>
 Version 0.3.4/0.2.4 <small>(2014-08-13)</small>

@@ -20,7 +20,7 @@ All Kamon components are available through Sonatype and Maven Central and no spe
 If you are using SBT, you will need to add something like this to your build definition:
 
 ```scala
-libraryDependencies += "io.kamon" %% "kamon-core" % "0.3.2"
+libraryDependencies += "io.kamon" %% "kamon-core" % "0.3.5"
 ```
 
 Then, add any additional module you need:
@@ -32,7 +32,8 @@ Then, add any additional module you need:
 * kamon-newrelic
 * kamon-datadog
 * kamon-log-reporter
-* kamon-system-metrics <span class="label label-warning">experimental</span></li>
+* kamon-system-metrics
+* kamon-akka-remote <span class="label label-warning">experimental</span></li>
 
 ### Compatibility Notes: ###
 * 0.3.x releases are compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.11.x/2.10.x
