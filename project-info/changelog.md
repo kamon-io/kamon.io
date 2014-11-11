@@ -16,8 +16,12 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
 
 * kamon-core
   * Provide min, max, percentiles and average functions for Histogram snapshots (see [issue 85](https://github.com/kamon-io/Kamon/issues/85)).
-  * Apparently random NPE (see [issue 88](https://github.com/kamon-io/Kamon/issues/88))
-
+  * Apparently random `NPE` (see [issue 88](https://github.com/kamon-io/Kamon/issues/88)).
+  * Provide metrics for routers (see [issue 62](https://github.com/kamon-io/Kamon/issues/62)).
+  * `CallingThreadDispatcher` cannot be cast to `DispatcherMetricCollectionInfo` (see [issue 95](https://github.com/kamon-io/Kamon/issues/95)).
+  * Remove KamonWeaverMessageHandler to avoid dependencies issues (see [issue 97](https://github.com/kamon-io/Kamon/issues/97)).
+  * `Aspectj` dependency scope (see [issue 106](https://github.com/kamon-io/Kamon/issues/106)).
+  
 * kamon-spray
    
 
@@ -26,7 +30,7 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
   * TraceContext is not propagated when call WS outside an Action (see [issue 33](https://github.com/kamon-io/Kamon/issues/33)).
 
 * kamon-log-reporter
-  * Provide the ability to report system metrics.
+  * Provide the ability to report system metrics (see [issue 72](https://github.com/kamon-io/Kamon/issues/72)).
 
 * kamon-newrelic
   * Implement error handling with NewRelic Agent (see [issue 7](https://github.com/kamon-io/Kamon/issues/7)).
@@ -36,10 +40,17 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
   * External naming for HTTP traces and segments (see [issue 65](https://github.com/kamon-io/Kamon/issues/65))
 
 * kamon-system-metrics
-  * include System Metrics in log-reporter (see [issue 72](https://github.com/kamon-io/Kamon/issues/72)).
+  * Introduce Context Swtitches in System Metrics (see [issue 66](https://github.com/kamon-io/Kamon/issues/66)).
 
 * kamon-akka-remote <span class="label label-warning">experimental</span></li>
-  * create a new module for remoting instrumentation
+  * Provide basic support for akka cluster and remoting (see [issue 61](https://github.com/kamon-io/Kamon/issues/61)).
+  * Create a new module for remoting instrumentation (see [issue 99](https://github.com/kamon-
+  io/Kamon/issues/99)).
+
+* site
+  * Include instruments documentation on our site (see [issue 90](https://github.com/kamon-
+  io/Kamon/issues/90)).
+
 
 <hr>
 Version 0.3.4/0.2.4 <small>(2014-08-13)</small>
