@@ -23,11 +23,12 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
   * `Aspectj` dependency scope (see [issue 106](https://github.com/kamon-io/Kamon/issues/106)).
   
 * kamon-spray
-   
+  * External naming for HTTP traces and segments (see [issue 65](https://github.com/kamon-io/Kamon/issues/65))
 
 * kamon-play
   * Review the trace name in play applications (see [issue 82](https://github.com/kamon-io/Kamon/issues/82)).
   * TraceContext is not propagated when call WS outside an Action (see [issue 33](https://github.com/kamon-io/Kamon/issues/33)).
+  * External naming for HTTP traces and segments (see [issue 65](https://github.com/kamon-io/Kamon/issues/65))
 
 * kamon-log-reporter
   * Provide the ability to report system metrics (see [issue 72](https://github.com/kamon-io/Kamon/issues/72)).
@@ -35,16 +36,15 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
 * kamon-newrelic
   * Implement error handling with NewRelic Agent (see [issue 7](https://github.com/kamon-io/Kamon/issues/7)).
   * Avoid reporting data to Newrelic if no metrics have been collected (see [issue 17](https://github.com/kamon-io/Kamon/issues/17)).
-  * Report NewRelic error with correct URI (see [issue 103](https://github.com/kamon-io/Kamon/issues/103)).
+  * Report New Relic errors with correct URI (see [issue 103](https://github.com/kamon-io/Kamon/issues/103)).
   * Report HTTP client call times to New Relic (see [issue 63](https://github.com/kamon-io/Kamon/issues/63)).
-  * External naming for HTTP traces and segments (see [issue 65](https://github.com/kamon-io/Kamon/issues/65))
 
 * kamon-system-metrics
   * Introduce Context Swtitches in System Metrics (see [issue 66](https://github.com/kamon-io/Kamon/issues/66)).
 
 * kamon-akka-remote <span class="label label-warning">experimental</span></li>
   * Provide basic support for akka cluster and remoting (see [issue 61](https://github.com/kamon-io/Kamon/issues/61)).
-  * Create a new module for remoting instrumentation (see [issue 99](https://github.com/kamon-
+  * Separate remoting instrumentation from kamon-core (see [issue 99](https://github.com/kamon-
   io/Kamon/issues/99)).
 
 * site
