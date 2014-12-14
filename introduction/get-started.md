@@ -51,7 +51,7 @@ the weaver's file location and you are done:
 ```
 
 In case you want to keep the AspectJ related settings in your build and enjoy using `run` from the console, take a look
-at the [sbt-aspectj] plugin.
+at the [sbt-aspectj] plugin - in particular the [load-time weaving example].
 
 
 ### Optional: Register the Metrics Extension ###
@@ -77,6 +77,7 @@ report your metrics data to external services like [StatsD], [Datadog] and [New 
 
 
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
+[load-time weaving example]: https://github.com/sbt/sbt-aspectj/tree/master/src/sbt-test/weave/load-time/
 [tracing]: /core/tracing/core-concepts/
 [metrics]: /core/metrics/core-concepts/
 [logging]: /core/tracing/logging/
