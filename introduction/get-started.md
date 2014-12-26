@@ -19,11 +19,14 @@ First: Include the modules you want in your project.
 All Kamon components are available through Sonatype and Maven Central and no special repositories need to be configured.
 If you are using SBT, you will need to add something like this to your build definition:
 
-```scala
-libraryDependencies += "io.kamon" %% "kamon-core" % "0.3.5"
-```
 
-Then, add any additional module you need:
+{% code_example %}
+{%   language scala kamon-core-examples/build.sbt start:3 end:12 label:"SBT" %}
+{% endcode_example %}
+
+<br>  
+
+The modules currently available are:
 
 * kamon-core
 * kamon-spray
@@ -33,7 +36,7 @@ Then, add any additional module you need:
 * kamon-datadog
 * kamon-log-reporter
 * kamon-system-metrics
-* kamon-akka-remote <span class="label label-warning">experimental</span></li>
+* kamon-akka-remote <span class="label label-warning">experimental</span>
 
 ### Compatibility Notes: ###
 * 0.3.x releases are compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.11.x/2.10.x
@@ -43,15 +46,17 @@ Then, add any additional module you need:
 Second: Start your app with the AspectJ Weaver
 ----------------------------------------------
 
-Starting your app with the AspectJ weaver is dead simple, just add the `-javaagent` JVM startup parameter pointing to
-the weaver's file location and you are done:
+Starting your application with the AspectJ weaver is dead simple, just add the `-javaagent` JVM startup parameter
+pointing to the weaver's file location and you are done. The details on how to do this vary depending on your preferred
+way of deployment, here are some quick details for the most common deployment scenarios:
 
-```
--javaagent:/path-to-aspectj-weaver.jar
-```
+{% code_example %}
+{%   language text manually-adding-aspectj-weaver-agent/readme.md start:4 end:7 label:"Manually" %}
+{%   language scala using-sbt-aspectj-plugin/build.sbt start:7 label:"sbt-aspectj" %}
+{% endcode_example %}
 
-In case you want to keep the AspectJ related settings in your build and enjoy using `run` from the console, take a look
-at the [sbt-aspectj] plugin - in particular the [load-time weaving example].
+If your deployment method is not listed here and you can't figure out how to proceed, please ask for help in our
+[mailing list].
 
 
 ### Optional: Register the Metrics Extension ###
@@ -63,11 +68,9 @@ recording any metrics manually then the Metrics wont load and you wont see the w
 to your application configuration as shown bellow, you ensure that it is loaded when your actor system is started and
 the warning will be displayed is necessary:
 
-```
-akka {
-  extensions = ["kamon.metric.Metrics"]
-}
-```
+{% code_example %}
+{%   language typesafeconfig using-sbt-aspectj-plugin/src/main/resources/application.conf start:1 end:3 label:"application.conf" %}
+{% endcode_example %}
 
 Third: Enjoy!
 -------------
@@ -84,3 +87,4 @@ report your metrics data to external services like [StatsD], [Datadog] and [New 
 [StatsD]: /backends/statsd/
 [Datadog]: /backends/datadog/
 [New Relic]: /backends/newrelic/
+[mailing list]: https://groups.google.com/forum/#!forum/kamon-user

@@ -55,25 +55,8 @@ corresponding GLOB patterns for each group, and the logic behind is simple: incl
 the `user/job-manager` actor and all the worker actors, but leaves out all system actors and the `user/worker-helper`
 actor.
 
-```
-kamon {
-  metrics {
-    filters = [
-      {
-        actor {
-          includes = [ "user/job-manager", "user/worker-*" ]
-          excludes = [ "system/*", "user/worker-helper" ]
-        }
-      },
-      {
-        trace {
-          includes = [ "*" ]
-          excludes = []
-        }
-      }
-    ]
-  }
-}
-```
+{% code_example %}
+{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf label:"application.conf" %}
+{% endcode_example %}
 
 [instruments]: /core/metrics/instruments/
