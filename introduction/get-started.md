@@ -6,15 +6,16 @@ layout: documentation
 Get Started with Kamon
 ======================
 
-Kamon is distributed as a core and a set of modules that you include in your application classpath. This modules contain
-all the required pointcuts and advices (yeap, Kamon uses Aspectj!) for instrumenting Akka actors message passing,
-dispatchers, futures, Spray and Play components and much more.
+Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
+that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
+your  application as simple library dependencies and additionally, if you are using instrumentation modules then the
+AspectJ Weaver agent needs to be included as a JVM startup parameter when running your application.
 
-To get started just follow this steps:
+Let's dig into these steps with more detail:
 
 
-First: Include the modules you want in your project.
-----------------------------------------------------
+Include the modules you want in your project.
+---------------------------------------------
 
 All Kamon components are available through Sonatype and Maven Central and no special repositories need to be configured.
 If you are using SBT, you will need to add something like this to your build definition:
@@ -29,26 +30,29 @@ If you are using SBT, you will need to add something like this to your build def
 The modules currently available are:
 
 * kamon-core
-* kamon-spray
-* kamon-play
+* kamon-spray <span class="label label-info">requires aspectj</span>
+* kamon-play <span class="label label-info">requires aspectj</span>
 * kamon-statsd
 * kamon-newrelic
 * kamon-datadog
 * kamon-log-reporter
 * kamon-system-metrics
-* kamon-akka-remote <span class="label label-warning">experimental</span>
+* kamon-akka-remote <span class="label label-info">requires aspectj</span> <span class="label label-warning">experimental</span>
 
-### Compatibility Notes: ###
+#### Compatibility Notes: ####
 * 0.3.x releases are compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.11.x/2.10.x
 * 0.2.x releases are compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
 
+<br>  
 
-Second: Start your app with the AspectJ Weaver
-----------------------------------------------
+### Optional: Start your application with the AspectJ Weaver ###
+
+This step is only required if any of the modules that you included in your application requires AspectJ, if that is not
+your case you can jump directly to the enjoy section!
 
 Starting your application with the AspectJ weaver is dead simple, just add the `-javaagent` JVM startup parameter
 pointing to the weaver's file location and you are done. The details on how to do this vary depending on your preferred
-way of deployment, here are some quick details for the most common deployment scenarios:
+way of deployment, here are some quick notes for the most common deployment scenarios:
 
 {% code_example %}
 {%   language text manually-adding-aspectj-weaver-agent/readme.md start:4 end:7 label:"Manually" %}
@@ -58,6 +62,7 @@ way of deployment, here are some quick details for the most common deployment sc
 If your deployment method is not listed here and you can't figure out how to proceed, please ask for help in our
 [mailing list].
 
+<br>  
 
 ### Optional: Register the Metrics Extension ###
 
@@ -72,8 +77,8 @@ the warning will be displayed is necessary:
 {%   language typesafeconfig using-sbt-aspectj-plugin/src/main/resources/application.conf start:1 end:3 label:"application.conf" %}
 {% endcode_example %}
 
-Third: Enjoy!
--------------
+Enjoy!
+------
 
 Refer to module's documentation to find out more about the core concepts of [tracing] and [metrics], and learn how to
 report your metrics data to external services like [StatsD], [Datadog] and [New Relic].

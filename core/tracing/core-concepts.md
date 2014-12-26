@@ -3,8 +3,8 @@ title: Kamon | Core | Documentation
 layout: documentation
 ---
 
-What is a Trace?
-================
+What is a Trace? {#what-is-a-trace}
+===================================
 
 A trace is a story, told by some events in your application that explain how the execution of a particular portion of
 functionality went during a single invocation. For example, if in order to fulfil a `GET` request to the `/users/kamon`
@@ -106,7 +106,7 @@ additional trace information that allows you to generate a gantt-like graph of t
 servicing a request.
 * __FullTrace (not yet implemented)__: Besides gathering metrics for the entire trace and segments, this level collects
 additional trace information that allows you to generate a gantt-like graph of all individual events executed for
-servicing a request. 
+servicing a request.
 
 
 
