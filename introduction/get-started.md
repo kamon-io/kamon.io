@@ -14,38 +14,42 @@ AspectJ Weaver agent needs to be included as a JVM startup parameter when runnin
 Let's dig into these steps with more detail:
 
 
-Include the modules you want in your project.
----------------------------------------------
 
-All Kamon components are available through Sonatype and Maven Central and no special repositories need to be configured.
-If you are using SBT, you will need to add something like this to your build definition:
+Include the modules you want in your project
+--------------------------------------------
 
+All Kamon modules are available through Maven Central and you just need to add them as a compile dependency to your
+project. The details on how to do this will differ depending on your dependency management tool of choice, but usually
+just by knowing that our group id is `io.kamon` and our artifacts are named after the module name you are good to go.
+Still, here are some examples with common build tools:
 
 {% code_example %}
 {%   language scala kamon-core-examples/build.sbt start:3 end:12 label:"SBT" %}
+{%   language markup maven-basic-example/pom.xml start:11 end:17 label:"Maven" %}
 {% endcode_example %}
 
-<br>  
+You can find a complete list of Kamon modules in the [overview] section.
 
-The modules currently available are:
 
-* kamon-core
-* kamon-spray <span class="label label-info">requires aspectj</span>
-* kamon-play <span class="label label-info">requires aspectj</span>
-* kamon-statsd
-* kamon-newrelic
-* kamon-datadog
-* kamon-log-reporter
-* kamon-system-metrics
-* kamon-akka-remote <span class="label label-info">requires aspectj</span> <span class="label label-warning">experimental</span>
 
-#### Compatibility Notes: ####
-* 0.3.x releases are compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.11.x/2.10.x
-* 0.2.x releases are compatible with Akka 2.2, Spray 1.2, Play 2.2 and Scala 2.10.x
+Create a Kamon Instance
+-----------------------
 
-<br>  
+To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to create a Kamon
+instance. Kamon uses [Akka] internally for several purposes and thus, requires an `ActorSystem` to work. If you don't
+have an `ActorSystem` already on your application or you don't even know what it is, don't worry, Kamon can create one
+for you, but if you have one we advise you to share the same ActorSystem instance with Kamon. To create a Kamon instance
+just call the most convenient factory method four you in the `kamon.Kamon` companion object:
 
-### Optional: Start your application with the AspectJ Weaver ###
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala start:6 end:12 %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java start:9 end:15 %}
+{% endcode_example %}
+
+
+
+### Optional: Prepare your application to start with the AspectJ Weaver ###
 
 This step is only required if any of the modules that you included in your application requires AspectJ, if that is not
 your case you can jump directly to the enjoy section!
@@ -59,37 +63,29 @@ way of deployment, here are some quick notes for the most common deployment scen
 {%   language scala using-sbt-aspectj-plugin/build.sbt start:7 label:"sbt-aspectj" %}
 {% endcode_example %}
 
-If your deployment method is not listed here and you can't figure out how to proceed, please ask for help in our
+In case you need to use the AspectJ Weaver but you didn't set it up correctly, Kamon will log a big and noticeable error
+message in your log so that it wont pass unnoticed, but Kamon will not kill the application for this error. If your
+deployment method is not listed here and you can't figure out how to add the weaver, please ask for help in our
 [mailing list].
 
-<br>  
 
-### Optional: Register the Metrics Extension ###
-
-If you correctly configured your application to start using the AspectJ Weaver agent then the Metrics extension will be
-loaded when the first instrumentation point that stores metrics gets executed. If you don't configure the agent properly
-then the Metrics extension will log a warning when it is loaded, but if the agent is not present and you are not
-recording any metrics manually then the Metrics wont load and you wont see the warning. By adding the Metrics extension
-to your application configuration as shown bellow, you ensure that it is loaded when your actor system is started and
-the warning will be displayed is necessary:
-
-{% code_example %}
-{%   language typesafeconfig using-sbt-aspectj-plugin/src/main/resources/application.conf start:1 end:3 label:"application.conf" %}
-{% endcode_example %}
 
 Enjoy!
 ------
 
-Refer to module's documentation to find out more about the core concepts of [tracing] and [metrics], and learn how to
-report your metrics data to external services like [StatsD], [Datadog] and [New Relic].
+At this point you already have what is necessary to start using Kamon. After the Kamon initialization, all available
+modules will be automatically started, you don't need to explicitly activate them.
+
+But, Kamon is not just about having a couple histograms and counters hanging around in your code to measure stuff, we
+can do much more than that! Please, refer to the [metrics] and [tracing] module's documentation to learn how to use and
+configure the core features and to each additional module's documentation for usage details and recommendations.
 
 
+[Akka]: http://akka.io/
+[overview]: /introduction/overview/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
 [load-time weaving example]: https://github.com/sbt/sbt-aspectj/tree/master/src/sbt-test/weave/load-time/
 [tracing]: /core/tracing/core-concepts/
 [metrics]: /core/metrics/core-concepts/
 [logging]: /core/tracing/logging/
-[StatsD]: /backends/statsd/
-[Datadog]: /backends/datadog/
-[New Relic]: /backends/newrelic/
 [mailing list]: https://groups.google.com/forum/#!forum/kamon-user

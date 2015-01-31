@@ -6,15 +6,53 @@ import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import kamon.trace.TraceRecorder;
+import kamon.metric.UserMetrics;
+import kamon.metric.UserMetrics$;
 import scala.Option;
 import scala.runtime.AbstractFunction0;
 
+/*
 
 public class TraceTokenLogging {
+  public static class Entity {
+    private final String name;
+    private final String category;
+
+    public Entity(String name, String category) {
+      this.name = name;
+      this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Entity entity = (Entity) o;
+
+      if (!category.equals(entity.category)) return false;
+      if (!name.equals(entity.name)) return false;
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      int result = name.hashCode();
+      result = 31 * result + category.hashCode();
+      return result;
+    }
+  }
+
   public static void main(String[] args) throws InterruptedException {
     final ActorSystem system = ActorSystem.create("trace-token-logging");
     final ActorRef upperCaser = system.actorOf(Props.create(UpperCaser.class), "upper-caser");
+
+
+
+
+
+
 
 
     // Send five messages without a TraceContext
@@ -68,6 +106,7 @@ public class TraceTokenLogging {
     }
   }
 }
+*/
 
 
 /*

@@ -1,12 +1,12 @@
-scalaVersion := "2.11.4"
+scalaVersion := "2.10.4"
 
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.3.5",
+  "io.kamon" %% "kamon-core" % "0.3.6-SNAPSHOT",
 
   // [Optional]
-  "io.kamon" %% "kamon-statsd" % "0.3.5",
+  "io.kamon" %% "kamon-statsd" % "0.3.6-SNAPSHOT",
   // [Optional]
-  "io.kamon" %% "kamon-datadog" % "0.3.5"
+  "io.kamon" %% "kamon-datadog" % "0.3.6-SNAPSHOT"
 
   // ... and so on with all the modules you need.
 )
@@ -14,7 +14,8 @@ libraryDependencies ++= Seq(
 // Additional dependencies.
 libraryDependencies ++= Seq(
   "ch.qos.logback"    %  "logback-classic" % "1.1.2",
-  "com.typesafe.akka" %% "akka-slf4j"      % "2.3.6"
+  "com.typesafe.akka" %% "akka-actor"      % "2.3.8",
+  "com.typesafe.akka" %% "akka-slf4j"      % "2.3.8"
 )
 
 aspectjSettings

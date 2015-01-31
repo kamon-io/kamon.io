@@ -1,7 +1,8 @@
 package kamon.examples.scala
 
 import akka.actor.{ActorSystem, Props, Actor, ActorLogging}
-import kamon.trace.TraceRecorder
+import kamon.trace.TraceContext
+/*
 
 object TraceTokenLogging extends App {
   implicit val system = ActorSystem("trace-token-logging")
@@ -20,19 +21,19 @@ object TraceTokenLogging extends App {
 
   // Send five messages with a TraceContext
   for(_ <- 1 to 5) {
-    TraceRecorder.withNewTraceContext("simple-test") {
+    TraceContext.withNewTraceContext("simple-test") {
       upperCaser ! "Hello World with TraceContext"
     }
   }
 
 
   // Wait a bit for everything to be logged and shutdown.
-  Thread.sleep(2000)
+  Thread.sleep(200000)
   system.shutdown()
 }
 
 class UpperCaser extends Actor with ActorLogging {
-  val lengthCalculator = context.actorOf(Props[LengthCalculator], "length-calculator")
+  val lengthCalculator = context.actorOf(Props[LengthCalculator].withDispatcher("my-dispatcher"), "length-calculator")
 
   def receive = {
     case anyString: String =>
@@ -47,6 +48,7 @@ class LengthCalculator extends Actor with ActorLogging {
       log.info("Calculating the length of: [{}]", anyString)
   }
 }
+*/
 
 /*
 
