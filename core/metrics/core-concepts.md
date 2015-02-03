@@ -6,6 +6,32 @@ layout: documentation
 Metrics
 =======
 
+The Kamon Metrics module is responsible of controlling the registration of entities being tracked either by user code or
+by instrumentation provided with other Kamon modules, as well as providing some infrastructure necessary around this
+core functionality like filtering, instrument factories and dispatching metrics subscriptions to all interested parties.
+
+From a very general perspective, you can think of the Metrics module as a big map full of entities and instruments
+associated with them, that collects all the information and sends it to subscribers on a fixed interval, know as a tick
+interval.
+
+
+Entities
+--------
+
+In the early stages of our Metrics extension, we realized that the most common case when measuring the performance of a
+given application is to have sets of metrics related to a single entity, and, many occurrences of the same set of
+metrics as similar entities exist in the application. For example, if you are monitoring a thread pool you will want to
+get the total number of threads, the active thread counts and the queue size (among other metrics, of course), and if
+you have five thread pools in your app you will want to get the exact same metric set for each thread pool. In Kamon,
+that will translate to having five entities with different names but with the same category of `thread-pool`.
+
+
+
+
+
+
+
+
 Back in the day, the most common approach to get metrics out of an Akka/Spray application for production monitoring was
 doing manual instrumentation: select your favorite metrics collection library, wrap you messages with useful metadata,
 wrap your actor's receive function with metrics measuring code and, finally, push that metrics data out to somewhere you
