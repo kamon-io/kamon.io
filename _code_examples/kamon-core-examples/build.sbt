@@ -1,12 +1,12 @@
 scalaVersion := "2.10.4"
 
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.3.6-SNAPSHOT",
+  "io.kamon" %% "kamon-core" % "0.3.6-e542aecea307579acf1e95ab6c55ce29ccb01ac5",
 
   // [Optional]
-  "io.kamon" %% "kamon-statsd" % "0.3.6-SNAPSHOT",
+  "io.kamon" %% "kamon-statsd" % "0.3.6-e542aecea307579acf1e95ab6c55ce29ccb01ac5",
   // [Optional]
-  "io.kamon" %% "kamon-datadog" % "0.3.6-SNAPSHOT"
+  "io.kamon" %% "kamon-datadog" % "0.3.6-e542aecea307579acf1e95ab6c55ce29ccb01ac5"
 
   // ... and so on with all the modules you need.
 )
