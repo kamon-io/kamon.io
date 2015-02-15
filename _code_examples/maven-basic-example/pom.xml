@@ -8,6 +8,7 @@
   <artifactId>maven-basic-example</artifactId>
   <version>0.3.6-SNAPSHOT</version>
 
+  <!-- tag:base-kamon-dependencies:start -->
   <dependencies>
     <dependency>
       <groupId>io.kamon</groupId>
@@ -15,5 +16,6 @@
       <version>0.3.6-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  <!-- tag:base-kamon-dependencies:end -->
 
 </project>

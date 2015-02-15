@@ -18,8 +18,8 @@ interested subscribers over the subscriptions protocol, just like any other enti
 To use the User Metrics module, just access it through your Kamon instance and follow the rather intuitive API:
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/UserMetrics.scala start:6 end:14 %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/UserMetrics.java start:9 end:18 %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/SimpleMetrics.scala tag:simple-metrics %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/SimpleMetrics.java tag:simple-metrics %}
 {% endcode_example %}
 
 

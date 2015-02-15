@@ -49,11 +49,17 @@ module Jekyll
       @language = parts[0]
       @file = parts[1]
 
-      @start = text.match(/\bstart:([0-9]*)/)
-      @start = @start.nil? ? 1 : @start.captures[0].to_i
+      @tag = text.match(/\btag:([0-9A-Za-z\-\_]*)/)
+      if @tag.nil?
+        return "Not tag attribute specified"
+      end
 
-      @end = text.match(/\bend:([0-9]*)/)
-      @end = @end.nil? ? 0 : @end.captures[0].to_i
+
+      # @start = text.match(/\bstart:([0-9]*)/)
+      # @start = @start.nil? ? 1 : @start.captures[0].to_i
+      #
+      # @end = text.match(/\bend:([0-9]*)/)
+      # @end = @end.nil? ? 0 : @end.captures[0].to_i
 
       @label = text.match(/\blabel:"(.*)"/)
       @label = @label.nil? ? @language.capitalize : @label.captures[0]
@@ -77,22 +83,22 @@ module Jekyll
 
       config = {}
       config[:language] = @language
-      config[:code] = get_range(file_path.read, @start, @end)
+      config[:code] = get_range(file_path.read, @tag, @end)
       config[:label] = @label
 
       YAML::dump(config)
     end
 
 
-    def get_range (code, start, endline)
-      length = code.lines.count
-      endline = (endline == 0 ? length : endline)
+    def get_range (code, tag, endline)
+      line_count = code.lines.length
+      start_line = code.lines.find_index { |l| l.include? "#{tag}:start" }
+      end_line = code.lines.find_index { |l| l.include? "#{tag}:end" }
 
-      if start > 1 or endline < length
-        raise "#{@file} is #{length} lines long, cannot begin at line #{start}" if start > length
-        raise "#{@file} is #{length} lines long, cannot read beyond line #{endline}" if endline > length
-        code = code.split(/\n/).slice(start - 1, endline + 1 - start).join("\n")
-      end
+      raise "#{@file} does not contain the #{tag}:start element." if start_line.nil?
+      raise "#{@file} does not contain the #{tag}:end element." if end_line.nil?
+
+      code = code.split(/\n/).slice(start_line + 1, end_line - start_line - 1).join("\n")
 
       CGI::escapeHTML(code)
     end

@@ -14,46 +14,10 @@ import scala.runtime.AbstractFunction0;
 /*
 
 public class TraceTokenLogging {
-  public static class Entity {
-    private final String name;
-    private final String category;
-
-    public Entity(String name, String category) {
-      this.name = name;
-      this.category = category;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-
-      Entity entity = (Entity) o;
-
-      if (!category.equals(entity.category)) return false;
-      if (!name.equals(entity.name)) return false;
-
-      return true;
-    }
-
-    @Override
-    public int hashCode() {
-      int result = name.hashCode();
-      result = 31 * result + category.hashCode();
-      return result;
-    }
-  }
-
+  // tag:sending-async-events:start
   public static void main(String[] args) throws InterruptedException {
     final ActorSystem system = ActorSystem.create("trace-token-logging");
     final ActorRef upperCaser = system.actorOf(Props.create(UpperCaser.class), "upper-caser");
-
-
-
-
-
-
-
 
     // Send five messages without a TraceContext
     for(int i = 0; i < 5; i++) {
@@ -80,8 +44,9 @@ public class TraceTokenLogging {
     Thread.sleep(2000);
     system.shutdown();
   }
+  // tag:sending-async-events:end
 
-
+// tag:trace-token-logging:start
   public static class UpperCaser extends UntypedActor {
     private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
     private final ActorRef lengthCalculator = context().actorOf(Props.create(LengthCalculator.class), "length-calculator");
@@ -105,11 +70,13 @@ public class TraceTokenLogging {
       }
     }
   }
+// tag:trace-token-logging:end
 }
 */
 
 
 /*
+// tag:trace-token-logging-output-without-token:start
 
 Example output without logging the trace token:
 
@@ -124,7 +91,8 @@ Example output without logging the trace token:
 06:59:42.546 INFO  [undefined][akka://trace-token-logging/user/upper-caser/length-calculator] kamon.examples.java.TraceTokenLogging$LengthCalculator - Calculating the length of: [HELLO WITHOUT CONTEXT]
 06:59:42.546 INFO  [undefined][akka://trace-token-logging/user/upper-caser/length-calculator] kamon.examples.java.TraceTokenLogging$LengthCalculator - Calculating the length of: [HELLO WITHOUT CONTEXT]
 
-
+// tag:trace-token-logging-output-without-token:end
+// tag:trace-token-logging-output-with-token:start
 
 Example output logging the trace token:
 
@@ -139,6 +107,4 @@ Example output logging the trace token:
 06:59:43.535 INFO  [ivantopo-desktop-5][akka://trace-token-logging/user/upper-caser] kamon.examples.java.TraceTokenLogging$UpperCaser - Upper casing [Hello without context]
 06:59:43.535 INFO  [ivantopo-desktop-5][akka://trace-token-logging/user/upper-caser/length-calculator] kamon.examples.java.TraceTokenLogging$LengthCalculator - Calculating the length of: [HELLO WITHOUT CONTEXT]
 
-
-
- */
+// tag:trace-token-logging-output-with-token:end */

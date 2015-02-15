@@ -13,8 +13,8 @@ you are interest in and the Akka actor that will receive the metrics information
 subscriptions look like this:
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/MetricsSubscriptions.scala start:9 end:18 %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/MetricsSubscriptions.java start:13 end:22 %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/MetricsSubscriptions.scala tag:metrics-subscriptions %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/MetricsSubscriptions.java tag:metrics-subscriptions %}
 {% endcode_example %}
 
 Regardless of how many subscriptions you do or if an entity matches several of the provided subscription patterns (as

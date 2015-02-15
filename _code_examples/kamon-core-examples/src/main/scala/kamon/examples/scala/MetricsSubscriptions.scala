@@ -5,8 +5,9 @@ import kamon.Kamon
 import kamon.metric.SubscriptionsDispatcher.TickMetricSnapshot
 import kamon.metric.TraceMetrics
 
+// tag:metrics-subscriptions:start
 object MetricsSubscriptions {
-  val kamon = Kamon()
+  Kamon.start()
   val subscriber = kamon.actorSystem.actorOf(Props[SimplePrinter], "subscriber")
 
   val traceRecorder = kamon.metrics.register(TraceMetrics, "test-trace").get.recorder
@@ -19,6 +20,7 @@ object MetricsSubscriptions {
 
   kamon.shutdown()
 }
+// tag:metrics-subscriptions:end
 
 class SimplePrinter extends Actor {
   def receive = {

@@ -9,6 +9,7 @@ import kamon.metric.SubscriptionsDispatcher.TickMetricSnapshot;
 import kamon.metric.TraceMetrics;
 
 public class MetricsSubscriptions {
+  // tag:metrics-subscriptions:start
   public static void main(String[] args) {
     final Kamon kamon = Kamon.create();
     final ActorRef subscriber = kamon.actorSystem().actorOf(Props.create(SimplePrinter.class), "subscriber");
@@ -23,6 +24,7 @@ public class MetricsSubscriptions {
 
     kamon.shutdown();
   }
+  // tag:metrics-subscriptions:end
 
   public static class SimplePrinter extends UntypedActor {
 

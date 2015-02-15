@@ -4,7 +4,8 @@ import kamon.Kamon;
 import kamon.metric.instrument.Counter;
 import kamon.metric.instrument.Histogram;
 
-public class UserMetrics {
+public class SimpleMetrics {
+  // tag:simple-metrics:start
   public static void main(String[] args) {
     final Kamon kamon = Kamon.create();
 
@@ -19,4 +20,5 @@ public class UserMetrics {
 
     kamon.shutdown();
   }
+  // tag:simple-metrics:end
 }

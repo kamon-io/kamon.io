@@ -24,8 +24,8 @@ just by knowing that our group id is `io.kamon` and our artifacts are named afte
 Still, here are some examples with common build tools:
 
 {% code_example %}
-{%   language scala kamon-core-examples/build.sbt start:3 end:12 label:"SBT" %}
-{%   language markup maven-basic-example/pom.xml start:11 end:17 label:"Maven" %}
+{%   language scala kamon-core-examples/build.sbt tag:base-kamon-dependencies label:"SBT" %}
+{%   language markup maven-basic-example/pom.xml tag:base-kamon-dependencies label:"Maven" %}
 {% endcode_example %}
 
 You can find a complete list of Kamon modules in the [overview] section.
@@ -43,8 +43,8 @@ just call the most convenient factory method four you in the `kamon.Kamon` compa
 
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala start:6 end:12 %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java start:9 end:15 %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java tag:get-started %}
 {% endcode_example %}
 
 
@@ -59,8 +59,8 @@ pointing to the weaver's file location and you are done. The details on how to d
 way of deployment, here are some quick notes for the most common deployment scenarios:
 
 {% code_example %}
-{%   language text manually-adding-aspectj-weaver-agent/readme.md start:4 end:7 label:"Manually" %}
-{%   language scala using-sbt-aspectj-plugin/build.sbt start:7 label:"sbt-aspectj" %}
+{%   language text manually-adding-aspectj-weaver-agent/readme.md tag:manually-add-aspectj-weaver label:"Manually" %}
+{%   language scala using-sbt-aspectj-plugin/build.sbt tag:using-sbt-aspectj label:"sbt-aspectj" %}
 {% endcode_example %}
 
 In case you need to use the AspectJ Weaver but you didn't set it up correctly, Kamon will log a big and noticeable error

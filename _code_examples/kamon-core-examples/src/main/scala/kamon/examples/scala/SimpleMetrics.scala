@@ -2,7 +2,8 @@ package kamon.examples.scala
 
 import kamon.Kamon
 
-object UserMetrics extends App {
+// tag:simple-metrics:start
+object SimpleMetrics extends App {
   val kamon = Kamon()
 
   val myHistogram = kamon.userMetrics.histogram("my-histogram")
@@ -16,3 +17,4 @@ object UserMetrics extends App {
 
   kamon.shutdown()
 }
+// tag:simple-metrics:end

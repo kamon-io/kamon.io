@@ -50,8 +50,8 @@ is a brief example of creating a actor-like entity using the provided facilities
 as the actor entity recorder provided with the kamon-akka module):
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/CreatingEntityRecorders.scala start:32 end:42 %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/CreatingEntityRecorders.java start:44 end:92 %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/CreatingEntityRecorders.scala tag:creating-entity-recorders %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/CreatingEntityRecorders.java tag:creating-entity-recorders %}
 {% endcode_example %}
 
 The name provided when creating your histograms will be the same name included in the entity snapshots sent to the
@@ -61,6 +61,7 @@ instrument being created, like in this case where we are specifying that the num
 configuration then a set of default values will be used. Please read the Instrument Factory section for details on how
 the instruments are configured. The `EntityRecoderFactory` definitions will only be required if you are doing managed
 entity registration, as described in the next section.
+
 
 
 
@@ -83,8 +84,8 @@ just need to provide a category name and a factory function that Kamon will call
 factory for the given category. The code would look like:
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/CreatingEntityRecorders.scala start:10 end:27 %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/CreatingEntityRecorders.java start:17 end:38 %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/CreatingEntityRecorders.scala tag:entity-registration %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/CreatingEntityRecorders.java tag:entity-registration %}
 {% endcode_example %}
 
 In the development of other Kamon modules we favor the managed registration option since it allows users to provide
@@ -102,7 +103,7 @@ entities that do not match any includes or excludes.
 
 
 {% code_example %}
-{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf start:7 end:17 label:"application.conf" %}
+{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf tag:filters-configuration:end label:"application.conf" %}
 {% endcode_example %}
 
 with the example filters provided above, all the entities with category `trace` will be included, but no entities with
@@ -142,13 +143,12 @@ For example, changing the refresh interval of the `mailbox-size` min-max-counter
 above we would need to provide the following configuration:
 
 {% code_example %}
-{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf start:19 end:23 label:"application.conf" %}
+{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf tag:custom-instrument-settings label:"application.conf" %}
 {% endcode_example %}
 
 Since no additional settings were provided by code or configuration for this category/metric combination, the dynamic
 range settings will be the default values defined in the `kamon.metric.default-instrument-settings.min-max-counter`
 configuration key.
-
 
 
 

@@ -2,6 +2,7 @@ package kamon.examples.scala
 
 import kamon.Kamon
 
+// tag:get-started:start
 object GetStarted extends App {
   val kamon = Kamon()
   val someHistogram = kamon.userMetrics.histogram("some-histogram")
@@ -14,3 +15,4 @@ object GetStarted extends App {
   // This application wont terminate unless you shutdown Kamon.
   kamon.shutdown()
 }
+// tag:get-started:end

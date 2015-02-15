@@ -4,6 +4,7 @@ import kamon.Kamon;
 import kamon.metric.instrument.Counter;
 import kamon.metric.instrument.Histogram;
 
+// tag:get-started:start
 public class GetStarted {
   public static void main(String[] args) {
     final Kamon kamon = Kamon.create();
@@ -18,3 +19,4 @@ public class GetStarted {
     kamon.shutdown();
   }
 }
+// tag:get-started:end

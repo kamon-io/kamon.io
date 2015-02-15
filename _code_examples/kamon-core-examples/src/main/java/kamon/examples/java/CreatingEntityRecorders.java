@@ -14,6 +14,7 @@ public class CreatingEntityRecorders {
   public static void main(String[] args) {
     final Kamon kamon = Kamon.create();
 
+    // tag:entity-registration:start
     //
     // Managed registration.
     //
@@ -36,11 +37,14 @@ public class CreatingEntityRecorders {
         new ActorMetrics(instrumentFactory)).recorder();
 
     manualRecorder.processingTime().record(42);
+    // tag:entity-registration:end
+
 
     kamon.shutdown();
   }
 
 
+  // tag:creating-entity-recorders:start
   /**
    *  Besides the inherent verbosity of Java, this code does exactly the same
    *  as it's Scala counter part.
@@ -90,4 +94,5 @@ public class CreatingEntityRecorders {
       }
     };
   }
+  // tag:creating-entity-recorders:end
 }

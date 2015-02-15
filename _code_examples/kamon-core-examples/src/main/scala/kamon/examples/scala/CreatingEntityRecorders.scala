@@ -7,6 +7,7 @@ import kamon.metric.instrument.{Time, InstrumentFactory}
 object CreatingEntityRecorders extends App {
   val kamon = Kamon()
 
+  // tag:entity-registration:start
   //
   // Managed registration.
   //
@@ -25,10 +26,12 @@ object CreatingEntityRecorders extends App {
     new ActorMetrics(instrumentFactory)).recorder
 
   manualRecorder.processingTime.record(42)
+  //tag:entity-registration:end
 
   kamon.shutdown()
 }
 
+// tag:creating-entity-recorders:start
 class ActorMetrics(instrumentFactory: InstrumentFactory) extends GenericEntityRecorder(instrumentFactory) {
   val timeInMailbox = histogram("time-in-mailbox", Time.Nanoseconds)
   val processingTime = histogram("processing-time", Time.Nanoseconds)
@@ -40,3 +43,4 @@ object ActorMetrics extends EntityRecorderFactory[ActorMetrics] {
   def category: String = "actor"
   def createRecorder(instrumentFactory: InstrumentFactory): ActorMetrics = new ActorMetrics(instrumentFactory)
 }
+// tag:creating-entity-recorders:end
