@@ -8,7 +8,7 @@ Get Started with Kamon
 
 Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
 that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
-your  application as simple library dependencies and additionally, if you are using instrumentation modules then the
+your application as simple library dependencies and additionally, if you are using instrumentation modules then the
 AspectJ Weaver agent needs to be included as a JVM startup parameter when running your application.
 
 Let's dig into these steps with more detail:
@@ -32,20 +32,21 @@ You can find a complete list of Kamon modules in the [overview] section.
 
 
 
-Create a Kamon Instance
------------------------
+Start Kamon
+-----------
 
-To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to create a Kamon
-instance. Kamon uses [Akka] internally for several purposes and thus, requires an `ActorSystem` to work. If you don't
-have an `ActorSystem` already on your application or you don't even know what it is, don't worry, Kamon can create one
-for you, but if you have one we advise you to share the same ActorSystem instance with Kamon. To create a Kamon instance
-just call the most convenient factory method four you in the `kamon.Kamon` companion object:
+To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon
+by using the `Kamon.start(..)` method. To make sure that all modules and instrumentation work properly, please start
+Kamon as soon as possible in your application code. Having it as the first line in your application wont hurt:
 
 
 {% code_example %}
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started %}
 {%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java tag:get-started %}
 {% endcode_example %}
+
+Optionally, you can provide a custom configuration object when starting Kamon. See the [configuration] section for a
+quick overview of how to configure Kamon.
 
 
 
@@ -64,8 +65,9 @@ way of deployment, here are some quick notes for the most common deployment scen
 {% endcode_example %}
 
 In case you need to use the AspectJ Weaver but you didn't set it up correctly, Kamon will log a big and noticeable error
-message in your log so that it wont pass unnoticed, but Kamon will not kill the application for this error. If your
-deployment method is not listed here and you can't figure out how to add the weaver, please ask for help in our
+message in your log so that it wont pass unnoticed, but Kamon will not kill the application for this error.
+
+If your deployment method is not listed here and you can't figure out how to add the weaver, please ask for help in our
 [mailing list].
 
 
@@ -77,12 +79,13 @@ At this point you already have what is necessary to start using Kamon. After the
 modules will be automatically started, you don't need to explicitly activate them.
 
 But, Kamon is not just about having a couple histograms and counters hanging around in your code to measure stuff, we
-can do much more than that! Please, refer to the [metrics] and [tracing] module's documentation to learn how to use and
-configure the core features and to each additional module's documentation for usage details and recommendations.
+can do much more than that! Please, refer to the [metrics] and [tracing] module's documentation to learn how to use
+these core features and to each additional module's documentation for usage details and recommendations.
 
 
 [Akka]: http://akka.io/
 [overview]: /introduction/overview/
+[configuration]: /introduction/configuration/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
 [load-time weaving example]: https://github.com/sbt/sbt-aspectj/tree/master/src/sbt-test/weave/load-time/
 [tracing]: /core/tracing/core-concepts/

@@ -29,7 +29,7 @@ sharing the same set of metrics.
 
 The regular operation of the Metrics module consists of basically two stages, as described in this simple graph:
 
-<img class="img-responsive" src="/assets/img/diagrams/metric-collection-concepts.png">
+<img class="img-responsive" src="/assets/img/diagrams/metrics-module-overview.png">
 
 On the left, we have the real time recording side of the process where Entities work as the keys in that "big map" that
 we mentioned before, pointing to a entity recorder that contains all the metric instruments associated  with that given
@@ -103,7 +103,7 @@ entities that do not match any includes or excludes.
 
 
 {% code_example %}
-{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf tag:filters-configuration:end label:"application.conf" %}
+{%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf tag:filters-configuration label:"application.conf" %}
 {% endcode_example %}
 
 with the example filters provided above, all the entities with category `trace` will be included, but no entities with

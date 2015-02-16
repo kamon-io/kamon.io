@@ -7,16 +7,17 @@ import kamon.metric.instrument.Histogram;
 // tag:get-started:start
 public class GetStarted {
   public static void main(String[] args) {
-    final Kamon kamon = Kamon.create();
-    final Histogram someHistogram = kamon.userMetrics().histogram("some-histogram");
-    final Counter someCounter = kamon.userMetrics().counter("some-counter");
+    Kamon.start();
+
+    final Histogram someHistogram = Kamon.simpleMetrics().histogram("some-histogram");
+    final Counter someCounter = Kamon.simpleMetrics().counter("some-counter");
 
     someHistogram.record(42);
     someHistogram.record(50);
     someCounter.increment();
 
     // This application wont terminate unless you shutdown Kamon.
-    kamon.shutdown();
+    Kamon.shutdown();
   }
 }
 // tag:get-started:end
