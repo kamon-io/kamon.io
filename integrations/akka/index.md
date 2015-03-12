@@ -80,9 +80,9 @@ TODO: (to be published) The example will start a spray server with akka and logb
 
 Follow the steps in order to clone the repository
 
-1. git clone git://github.com/kamon/kamon.git
+1. git clone git://github.com/kamon-io/Kamon.git
 
-2. cd kamon
+2. cd Kamon
 
 For the first example run
 
