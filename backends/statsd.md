@@ -93,6 +93,7 @@ get up and running in a few minutes and see it with your own metrics!
 
 <img class="img-responsive" src="/assets/img/kamon-statsd-grafana.png">
 
+<img class="img-responsive" src="/assets/img/kamon-system-metrics.png">
 
 
 [StatsD]: https://github.com/etsy/statsd/
