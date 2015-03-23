@@ -79,6 +79,11 @@ body {
   padding-left: 6px;
 }
 
+#doc-tree a, #doc-tree li {
+  font-size: 12px;
+  line-height: 1.2em;
+}
+
 .divider {
   *width: 100%;
   height: 1px;
@@ -174,7 +179,7 @@ body {
 html, body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 code, kbd, pre, samp {
@@ -187,6 +192,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 300;
   line-height: 1.1;
+  margin-top: 25px;
   color: #666666;
 }
 
@@ -196,4 +202,19 @@ h1, h2, .h1, .h2 {
 
 p {
   text-align: justify;
+}
+
+
+
+.language-tab li {
+  float: right;
+}
+
+.language-tab li a {
+  padding: 5px 10px;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  word-wrap: normal;
 }
