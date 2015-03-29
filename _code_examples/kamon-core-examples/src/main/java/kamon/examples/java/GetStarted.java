@@ -9,8 +9,8 @@ public class GetStarted {
   public static void main(String[] args) {
     Kamon.start();
 
-    final Histogram someHistogram = Kamon.simpleMetrics().histogram("some-histogram");
-    final Counter someCounter = Kamon.simpleMetrics().counter("some-counter");
+    final Histogram someHistogram = Kamon.metrics().histogram("some-histogram");
+    final Counter someCounter = Kamon.metrics().counter("some-counter");
 
     someHistogram.record(42);
     someHistogram.record(50);

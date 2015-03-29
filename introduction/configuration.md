@@ -1,5 +1,5 @@
 ---
-title: Kamon | Get Started
+title: Kamon | Configuration
 layout: documentation
 ---
 
@@ -44,7 +44,7 @@ Providing a Custom Config Object
 --------------------------------
 
 If you need to prevent Kamon from using the standard behavior of calling `ConfigFactory.load()`, there is an additional
-form of the `Kamon.start(..)` method that accepts a configuration object to be used instead. This is how you would
+overload of the `Kamon.start(..)` method that accepts a configuration object to be used instead. This is how you would
 provide such a custom configuration object:
 
 {% code_example %}

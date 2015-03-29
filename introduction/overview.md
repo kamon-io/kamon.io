@@ -7,7 +7,7 @@ What is Kamon?
 ==============
 
 Kamon is a reactive-friendly toolkit for monitoring applications that run on top of the Java Virtual Machine. We are
-specially enthusiastic to applications built with the Typesafe Reactive Stack (using Scala, Akka, Spray and/or Play!)
+specially enthusiastic to applications built with the Typesafe Reactive Platform (using Scala, Akka, Spray and/or Play!)
 but as long as you are on the JVM, Kamon can help get the monitoring information you need from your application.
 
 You can integrate Kamon into your application by either:

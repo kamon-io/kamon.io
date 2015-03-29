@@ -11,7 +11,7 @@ that provide bytecode instrumentation and/or reporting capabilities to your appl
 your application as simple library dependencies and additionally, if you are using instrumentation modules then the
 AspectJ Weaver agent needs to be included as a JVM startup parameter when running your application.
 
-Let's dig into these steps with more detail:
+Make sure you follow this steps:
 
 
 
@@ -28,16 +28,20 @@ Still, here are some examples with common build tools:
 {%   language markup maven-basic-example/pom.xml tag:base-kamon-dependencies label:"Maven" %}
 {% endcode_example %}
 
-You can find a complete list of Kamon modules in the [overview] section.
+Our latest version is published for both Scala 2.10 and Scala 2.11 using SBT's cross version feature, meaning that our
+artifacts are suffixed by either `_2.10` or `_2.11` to denote the target Scala version. If you are not in the Scala
+world and you are not familiar with this conventions just pick the greatest Scala version available, currently 2.11, as
+shown in the Maven example above. You can find a complete list of Kamon modules in the [overview] section.
 
 
 
 Start Kamon
 -----------
 
-To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon
-by using the `Kamon.start(..)` method. To make sure that all modules and instrumentation work properly, please start
-Kamon as soon as possible in your application code. Having it as the first line in your application wont hurt:
+To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon by
+using the `Kamon.start(..)` method. This is a one time operation that you should perform as early as possible in your
+application code to ensure that all instrumentation and uses of the Kamon APIs will work properly. Having it as the
+first line in your application's main wont hurt:
 
 
 {% code_example %}
@@ -46,7 +50,8 @@ Kamon as soon as possible in your application code. Having it as the first line 
 {% endcode_example %}
 
 Optionally, you can provide a custom configuration object when starting Kamon. See the [configuration] section for a
-quick overview of how to configure Kamon.
+quick overview of how to configure Kamon. When you are done with Kamon, remember to shut it down using the
+`Kamon.shutdown()` method.
 
 
 
@@ -65,7 +70,7 @@ way of deployment, here are some quick notes for the most common deployment scen
 {% endcode_example %}
 
 In case you need to use the AspectJ Weaver but you didn't set it up correctly, Kamon will log a big and noticeable error
-message in your log so that it wont pass unnoticed, but Kamon will not kill the application for this error.
+message in your log that will hardly pass unnoticed, but Kamon will not kill the application for this error.
 
 If your deployment method is not listed here and you can't figure out how to add the weaver, please ask for help in our
 [mailing list].
@@ -75,8 +80,8 @@ If your deployment method is not listed here and you can't figure out how to add
 Enjoy!
 ------
 
-At this point you already have what is necessary to start using Kamon. After the Kamon initialization, all available
-modules will be automatically started, you don't need to explicitly activate them.
+At this point you already have what is necessary to use Kamon. After the Kamon initialization, all available modules
+will be automatically started, you don't need to explicitly activate/start them.
 
 But, Kamon is not just about having a couple histograms and counters hanging around in your code to measure stuff, we
 can do much more than that! Please, refer to the [metrics] and [tracing] module's documentation to learn how to use

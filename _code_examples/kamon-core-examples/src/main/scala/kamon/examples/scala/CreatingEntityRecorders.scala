@@ -5,30 +5,17 @@ import kamon.metric.{Entity, EntityRecorderFactory, GenericEntityRecorder}
 import kamon.metric.instrument.{Time, InstrumentFactory}
 
 object CreatingEntityRecorders extends App {
-  val kamon = Kamon()
+  Kamon.start()
 
   // tag:entity-registration:start
-  //
-  // Managed registration.
-  //
+  val myManagedActorMetrics = Kamon.metrics.entity(ActorMetrics, "my-managed-actor")
 
-  kamon.metrics.register(ActorMetrics, "my-managed-actor").map { registration =>
-    val managedRecorder = registration.recorder
-    managedRecorder.processingTime.record(42)
-  }
-
-  //
-  // Manual registration.
-  //
-  val myManualActor = Entity("my-manual-actor", ActorMetrics.category)
-  val instrumentFactory = kamon.metrics.instrumentFactory(ActorMetrics.category)
-  val manualRecorder = kamon.metrics.register(myManualActor,
-    new ActorMetrics(instrumentFactory)).recorder
-
-  manualRecorder.processingTime.record(42)
+  myManagedActorMetrics.mailboxSize.increment()
+  myManagedActorMetrics.processingTime.record(42)
+  myManagedActorMetrics.mailboxSize.decrement()
   //tag:entity-registration:end
 
-  kamon.shutdown()
+  Kamon.shutdown()
 }
 
 // tag:creating-entity-recorders:start

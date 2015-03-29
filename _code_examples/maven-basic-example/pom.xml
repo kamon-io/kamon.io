@@ -12,8 +12,8 @@
   <dependencies>
     <dependency>
       <groupId>io.kamon</groupId>
-      <artifactId>kamon-core</artifactId>
-      <version>0.3.6-SNAPSHOT</version>
+      <artifactId>kamon-core_2.11</artifactId>
+      <version>0.3.6-ef43abf9b54ba70783eb645f020b87c18bb58cb4</version>
     </dependency>
   </dependencies>
   <!-- tag:base-kamon-dependencies:end -->

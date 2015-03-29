@@ -6,8 +6,8 @@ import kamon.Kamon
 object GetStarted extends App {
   Kamon.start()
 
-  val someHistogram = Kamon.simpleMetrics.histogram("some-histogram")
-  val someCounter = Kamon.simpleMetrics.counter("some-counter")
+  val someHistogram = Kamon.metrics.histogram("some-histogram")
+  val someCounter = Kamon.metrics.counter("some-counter")
 
   someHistogram.record(42)
   someHistogram.record(50)

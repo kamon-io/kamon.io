@@ -12,35 +12,17 @@ import scala.Option;
 public class CreatingEntityRecorders {
 
   public static void main(String[] args) {
-    final Kamon kamon = Kamon.create();
+    Kamon.start();
 
     // tag:entity-registration:start
-    //
-    // Managed registration.
-    //
+    final ActorMetrics myManagedActorMetrics = Kamon.metrics().entity(ActorMetrics.Factory, "my-managed-actor");
 
-    final Option<EntityRegistration<ActorMetrics>> managedRegistration = kamon.metrics().register(ActorMetrics.Factory, "my-managed-actor");
-
-    if(managedRegistration.nonEmpty()) {
-      // The entity was successfully registered.
-      final ActorMetrics managedRecorder = managedRegistration.get().recorder();
-      managedRecorder.processingTime().record(42);
-    }
-
-    //
-    // Manual registration.
-    //
-
-    final Entity myManualActor = Entity.create("my-manual-actor", ActorMetrics.Category);
-    final InstrumentFactory instrumentFactory = kamon.metrics().instrumentFactory(ActorMetrics.Category);
-    final ActorMetrics manualRecorder = kamon.metrics().register(myManualActor,
-        new ActorMetrics(instrumentFactory)).recorder();
-
-    manualRecorder.processingTime().record(42);
+    myManagedActorMetrics.mailboxSize().increment();
+    myManagedActorMetrics.processingTime().record(42);
+    myManagedActorMetrics.mailboxSize().decrement();
     // tag:entity-registration:end
 
-
-    kamon.shutdown();
+    Kamon.shutdown();
   }
 
 
