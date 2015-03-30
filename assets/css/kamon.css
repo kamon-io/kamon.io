@@ -454,7 +454,11 @@ pre {
 }
 
 :not(pre) > code[class*="language-"],
-pre[class*="language-"] { background: #f4f9fa; }
+pre[class*="language-"] {
+  word-wrap: normal;
+  background: #f4f9fa;
+}
+
 
 .btn-git {
   background-color: #8c9eb0;
