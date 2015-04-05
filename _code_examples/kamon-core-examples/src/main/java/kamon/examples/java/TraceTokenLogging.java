@@ -6,8 +6,6 @@ import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import kamon.metric.UserMetrics;
-import kamon.metric.UserMetrics$;
 import scala.Option;
 import scala.runtime.AbstractFunction0;
 

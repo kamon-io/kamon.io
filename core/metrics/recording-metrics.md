@@ -55,12 +55,11 @@ Removing Recorders
 ------------------
 
 Typically the entities that you want to monitor will be around during the entire lifetime of your application and you
-rarely will want to manually remove a recorder from Kamon, but, in case you need to do so the metrics module provides
+rarely will want to manually remove a recorder from Kamon but, in case you need to do so the metrics module provides
 several remove methods for both simple recorders and entities. Remember that all entities are identified by three main
-attributes: a name, a category and tags; if you asked Kamon for histogram without tags then you can remove it by just
-providing the name but, if you provided tags when creating it then you will need to provide the same tags when removing
-it to ensure that the correct entity is found. See bellow a quick example of removing the recorders created in the
-previous examples of this page:
+attributes: a name, a category and tags; remember to provide the same tags that you used when registered the desired
+entity to ensure that the correct one is found and removed. Here is a quick example of removing the recorders created in
+the previous examples of this page:
 
 {% code_example %}
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/RecordingMetrics.scala tag:cleanup %}
