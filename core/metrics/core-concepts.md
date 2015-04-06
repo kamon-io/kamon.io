@@ -114,12 +114,12 @@ understand how that works and also the [recording metrics] section to learn how 
 Filtering Entities
 ------------------
 
-We provide instrumentation for several libraries that will automatically measure and record metrics for you, that's nice
-but we know that there is no win on blindly monitoring entity that shows up in your application, that's why we provide
-entity filters. The concept of filtering is very simple: for a given category a set of includes and excludes patterns
-are read from the configuration file and all entities that match at least one include pattern and do not match any
-exclude patterns will be accepted. Additionally, the `kamon.metric.track-unmatched-entities` setting decides whether to
-track or not the entities that do not match any includes or excludes.
+We provide instrumentation for several libraries that will automatically measure and record metrics for you, that's
+nice, but we know that there is no win on blindly monitoring every entity that shows up in your application, that's why
+we provide entity filters. The concept of filtering is very simple: for a given category a set of includes and excludes
+patterns are read from the configuration file and all entities that match at least one include pattern and do not match
+any exclude patterns will be accepted. Additionally, the `kamon.metric.track-unmatched-entities` setting decides whether
+to track or not the entities that do not match any includes or excludes.
 
 {% code_example %}
 {%   language typesafeconfig kamon-core-examples/src/main/resources/application.conf tag:filters-configuration label:"application.conf" %}

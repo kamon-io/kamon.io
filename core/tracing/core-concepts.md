@@ -3,15 +3,60 @@ title: Kamon | Core | Documentation
 layout: documentation
 ---
 
-What is a Trace? {#what-is-a-trace}
-===================================
+Tracing Module
+==============
 
-A trace is a story, told by some events in your application that explain how the execution of a particular portion of
-functionality went during a single invocation. For example, if in order to fulfil a `GET` request to the `/users/kamon`
-resource, a application sends a message to an actor, which reads the user data from a database and sends a message back
-with the user information to finish the request, all those interactions would be considered as part of the same trace.
+Let's get the basics done first, what is a trace? Well, you can think of a trace like a story told by the flow of events
+in your application that explain how the execution of a particular functionality went during a given invocation. For
+example, if in order to fulfill a `GET` request to the `/users/kamon` resource your application sends a message to an
+actor which reads the user data from a database and sends a message back with the user details to finish the request,
+all of those events would be considered as part of the same trace.
 
-If the application described above were to handle a hundred clients requesting for user's details, there might be a
+If the application described above were to handle hundreds of clients requesting for user details, then each invocation
+should be considered and measured separately as each individual invocation can generate it's own diagnostic and
+performance data, each will be a separate trace.
+
+The purpose of each individual trace is very simple: gather information about the execution of some functionality
+provided by your application and expose that information via subscription protocols to be consumed by reporting
+backends. The most basic information that can be stored for a trace is it's execution time, as measured from the moment
+the trace was started until the moment it was finished, but that can be augmented with segments information and trace
+local storage as you will see soon.
+
+
+
+The TraceContext
+----------------
+
+We said that each functionality invocation can generate it's own diagnostic and performance data, in other words, each
+invocation is a unique trace and each trace has a context surrounding it, a context that we model into what we call a
+`TraceContext`. The `TraceContext` is a fundamental piece in the tracing infrastructure provided by Kamon and it is very
+important that you understand how it works and how it is propagated in order to make the most effective use of it. A
+TraceContext has the following attributes:
+
+* __name__: A user-friendly name that describes the functionality being used in a traced request. Examples might be
+"GetUserDetails", "PublishStatus" or "GenerateSalesReport". A trace can be renamed at any point during the execution of
+a request. As you might guess, many traces in your application can and should share the same name.
+* __trace-token__: A automatically generated id for the TraceContext. Once a TraceContext is created, it's trace token
+will remain the same until the end of the trace. Contrary to the trace name, the trace token is unique and will never be
+repeated during the lifetime of the application.
+* __metadata__: Simple key-value pairs containing additional information about the execution of a trace.
+
+To get a hold on a new TraceContext you need ask the Kamon tracer for one as shown in the example bellow:
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:creating-a-trace-context %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:creating-a-trace-context %}
+{% endcode_example %}
+
+* __segments__: Represent a group of events related to the execution of a sub-functionality required to complete a
+request. For example, making a JDBC call to a database to get the user details might be a sub-functionality that you
+use from the "GetProfile" and "Login" functionalities in your app.
+
+Stop by the [trace manipulation] section to learn how to start, manipulate and finish a TraceContext, as well as how and
+when Kamon will propagate a TraceContext for your.
+
+
+there might be a
 handful of database access actors handling those requests. When the dispatcher gives an actor some time to execute, it
 will process as many messages as possible (as per dispatcher configuration) before the Thread is taken away from it, but
 during that time it is incorrect to say that either the actor or the Thread are tied to a trace, because each message
@@ -111,3 +156,4 @@ servicing a request.
 
 
 [trace manipulation]: /core/tracing/trace-context-manipulation/
+[trace metrics]: /core/tracing/trace-metrics/
