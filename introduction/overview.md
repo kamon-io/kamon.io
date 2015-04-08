@@ -86,6 +86,9 @@ Provides bytecode instrumentation to achieve automatic TraceContext management f
 Reports CPU, memory, file system, network, load average and context switch system-wide metrics and JVM specific metrics
 such as garbage collection, threads, heap memory, non-heap memory and class loading metrics.
 
+### kamon-annotaion {% requires_aspectj %} ###
+Provides a simple way to create [instruments], start traces and segments through annotation demarcation.
+
 
 [instruments]: /core/metrics/instruments/
 [getting started]: /introduction/get-started/
