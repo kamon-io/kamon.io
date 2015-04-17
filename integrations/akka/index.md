@@ -3,95 +3,95 @@ title: kamon | Akka Toolkit | Documentation
 layout: documentation
 ---
 
-Akka Module
-===
+Propagation through Actor Messages
+----------------------------------
 
----
-Dependencies
----
+### Tell, ! and Forward ###
 
-Apart from scala library kamon depends on:
-
-- aspectj 
-- spray-io 
-- akka-actor 
-
-
-Installation
----
-Kamon works with SBT, so you need to add Kamon.io repository to your resolvers.
-
-Configuration
----
-Just like other products in the scala ecosystem, it relies on the typesafe configuration library. 
-    
-Since kamon uses the same configuration technique as [Spray](http://spray.io/documentation "Spray") / [Akka](http://akka.io/docs "Akka") you might want to check out the [Akka-Documentation-configuration](http://doc.akka.io/docs/akka/2.1.4/general/configuration.html "Akka Documentation on configuration")
-.
-
-In order to see Kamon in action you need first to set up your sbt project.
-
-1) Add Kamon repository to resolvers
+If a TraceContext is available when sending a message to an actor, Kamon will capture that TraceContext and make it
+available when processing the message in receiving actor. This remains true regardless of whether your are doing a
+regular tell, using the `!` operator or forwarding a message to a ActorRef.
 
 ```scala
-"Kamon Repository" at "http://repo.kamon.io"
+TraceRecorder.withNewTraceContext("sample-trace") {
+  actor ! "Some Message"
+  actor.tell("Some message", sender)
+  actor.forward("Forwarded Message")
+}
 ```
 
-2) Add libraryDepenency
+In this particular case, the three messages will propagate the same TraceContext, since they were originated from the
+same block of code.
 
-```scala 
-    "kamon" %%  "kamon-spray" % "0.0.11",
-```
+### Ask, ? ###
 
-In addition we suggest to create aspectj.sbt file and add this content
+When you send a message using the ask pattern the TraceContext is also propagated, but additionally the TraceContext is
+also available when executing the returned future's body and any registered callbacks:
 
 ```scala
-    import com.typesafe.sbt.SbtAspectj._
+val responseFuture = TraceRecorder.withNewTraceContext("sample-trace") {
+  actor ? "Ask Message"
+}.mapTo[String]
 
-    aspectjSettings
+responseFuture.map { response =>
+  /* The same TraceContext available when asking the actor is available when executing this callback. */
 
-    javaOptions <++= AspectjKeys.weaverOptions in Aspectj
+}
 ```
 
-3) Add to your plugins.sbt in project folder (if you don't have one yet, create the file) and add the Kamon release to the resolver and the aspecj.
+### Pipe Pattern ###
+
+When using the pipe pattern, the TraceContext available when the pipe call was made (not when completing the future) is
+also made available when processing the message in the target actor.
+
+### Supervision Messages ###
+
+When one of your actor fails it is the responsibility of its parent to determine what action to take based on the
+provided supervision strategy. The failure notification as well as the delivery of the supervision directive being to
+apply happens through system messages that are not directly visible to users and do not use to the same mailbox as the
+regular messages we send to actors. It is really important to keep the same TraceContext when this happens, since all
+possible error messages being logged or any other action taken will be correctly related to the failing request.
+
+### Actor Creation ###
+
+You might be thinking that actor creation happens in the same thread where the call to `ActorRefFactory.actorOf(..)` is
+being made, but that is not necessarily true. In fact, a `Create` system message is sent to the newly created actor cell
+and it might be execute later depending on whether you are creating a top-level actor or not. Kamon also instrument this
+system message to make sure that if an
+
+
+
+Propagation through Futures
+===========================
+
+### Future's Body ###
+
+In the following piece of code, the body of the future will happen asynchronously on some other thread provided by the
+ExecutionContext available in implicit scope, but Kamon will capture the TraceContext available when the future was
+created and make it available when executing the future's body.
 
 ```scala
-    resolvers += Resolver.url("Kamon Releases", url("http://repo.kamon.io"))(Resolver.ivyStylePatterns)
+val future = TraceRecorder.withNewTraceContext("sample-trace") {
+  Future {
+    /* Do some sort of calculation */
+    "Hello Kamon"
+  }
+}
+```
 
-    addSbtPlugin("com.typesafe.sbt" % "sbt-aspectj" % "0.9.2")
-``` 
-**application.conf**
+### Future Callbacks ###
+
+When you transform a future by using map/flatMap/filter and friends or you directly register a
+onComplete/onSuccess/onFailure callback on a future, Kamon will capture the TraceContext available transforming the
+future and make it available when executing the given callback.
 
 ```scala
-    akka {
-      loggers = ["akka.event.slf4j.Slf4jLogger"]
-  
-        actor {
-           debug {
-                    unhandled = on
-            }
-        }
-    }
+future
+  .map(_.length)
+  .flatMap(len ⇒ Future(len.toString))
+  .map(s ⇒ TraceRecorder.currentContext)
+
 ```
 
-Examples
----
-
-TODO: (to be published) The example will start a spray server with akka and logback configuration. Adjust it to your needs. 
-
-Follow the steps in order to clone the repository
-
-1. git clone git://github.com/kamon-io/Kamon.git
-
-2. cd Kamon
-
-For the first example run
-
-```bash
-    sbt "project kamon-uow-example"
-```
-
-In order to see how it works, you need to send a message to the rest service
-
-```bash
-    curl -v --header 'X-UOW:YOUR_TRACER_ID' -X GET 'http://0.0.0.0:6666/fibonacci'
-```
+The code snippet above would yield the same TraceContext that was available when creating the future, as well as making
+it available during the execution of the maps and flatMap operations.

@@ -9,10 +9,10 @@ Threading Model Considerations
 As described in the [trace context manipulation] section, we will always use the `Tracer` companion object to store and
 retrieve the `TraceContext` being used in the current trace. The `Tracer`, in turn, will end up storing the
 `TraceContext` in a thread-local variable. This is, by far, the most simple and predictable way to share the
-`TraceContext` across the entire code base, as well as providing third party libraries to interact with it as well. For
-this approach to succeed in your application you need to be completely aware of how the threading model of your
-application works, sometimes the models are quite simple and single threaded, but it can get a lot more complex and if
-you start to walk into event-based lands.
+`TraceContext` across the entire code base, as well as providing third party libraries the ability to interact with it
+as well. For this approach to succeed in your application you need to be completely aware of how the threading model of
+your application works, sometimes the models are quite simple and single threaded, but it can get a lot more complex and
+if you start to walk into event-based lands.
 
 Here we will describe the three general threading models that we have identified and provide a bit of guidance with
 regards to how the `TraceContext` should be manipulated and propagated across threads.

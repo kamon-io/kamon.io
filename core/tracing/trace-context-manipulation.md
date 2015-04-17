@@ -6,129 +6,105 @@ layout: documentation
 TraceContext Manipulation
 =========================
 
+Collecting trace information is all about interacting with the tracing API and the current `TraceContext` to store
+information as it is being generated throughout your application. This section will teach all the basic operations that
+allow you to create, enhance and finish a `TraceContext` and segments related to it.
 
-Starting a Trace
-----------------
-
-The `TraceRecorder` companion object provides a simple API to create, manipulate and finish a `TraceContext`. To start a
-new trace use the `TraceRecorder.withNewTraceContext(..)` method providing a name and optionally a trace token as show
-here:
-
-```scala
-TraceRecorder.withNewTraceContext("sample-trace") {
-  // All code in this block has the same TraceContext.
-
-}
-```
-
-It is really important to understand that the TraceContext will **only** be available during the execution of the
-specified code block. Any event generated from outside that block will either belong to higher level trace in case of
-nesting or to no trace at all. Ideally, the code that initiates a request in your application should be wrapped in one
-of these blocks, then Kamon will take care of propagating the TraceContext to all related events and finally, a call to
-`TraceRecoerder.finish(..)` closes the trace.
-
-Even while it is important to understand how to start and finish a trace, in the common use case you are building your
-application using one of the supported toolkits, Spray or Play!, that means that you don't need to manage the trace
-yourself, Kamon already knows when a request starts and finishes within these tools.
-
-
-Propagation through Actor Messages
-----------------------------------
-
-### Tell, ! and Forward ###
-
-If a TraceContext is available when sending a message to an actor, Kamon will capture that TraceContext and make it
-available when processing the message in receiving actor. This remains true regardless of whether your are doing a
-regular tell, using the `!` operator or forwarding a message to a ActorRef.
-
-```scala
-TraceRecorder.withNewTraceContext("sample-trace") {
-  actor ! "Some Message"
-  actor.tell("Some message", sender)
-  actor.forward("Forwarded Message")
-}
-```
-
-In this particular case, the three messages will propagate the same TraceContext, since they were originated from the
-same block of code.
-
-### Ask, ? ###
-
-When you send a message using the ask pattern the TraceContext is also propagated, but additionally the TraceContext is
-also available when executing the returned future's body and any registered callbacks:
-
-```scala
-val responseFuture = TraceRecorder.withNewTraceContext("sample-trace") {
-  actor ? "Ask Message"
-}.mapTo[String]
-
-responseFuture.map { response =>
-  /* The same TraceContext available when asking the actor is available when executing this callback. */
-
-}
-```
-
-### Pipe Pattern ###
-
-When using the pipe pattern, the TraceContext available when the pipe call was made (not when completing the future) is
-also made available when processing the message in the target actor.
-
-### Supervision Messages ###
-
-When one of your actor fails it is the responsibility of its parent to determine what action to take based on the
-provided supervision strategy. The failure notification as well as the delivery of the supervision directive being to
-apply happens through system messages that are not directly visible to users and do not use to the same mailbox as the
-regular messages we send to actors. It is really important to keep the same TraceContext when this happens, since all
-possible error messages being logged or any other action taken will be correctly related to the failing request.
-
-### Actor Creation ###
-
-You might be thinking that actor creation happens in the same thread where the call to `ActorRefFactory.actorOf(..)` is
-being made, but that is not necessarily true. In fact, a `Create` system message is sent to the newly created actor cell
-and it might be execute later depending on whether you are creating a top-level actor or not. Kamon also instrument this
-system message to make sure that if an
+Please note that even while understanding how to manipulate a `TraceContext` is very important, some Kamon modules such
+as our Akka, Scala, Spray and Play! modules already provide bytecode instrumentation that automatically creates,
+propagates and finishes traces and segments in specific conditions, so, you might not need to ever manipulate a
+`TraceContext` yourself.
 
 
 
-Propagation through Futures
-===========================
+Creating and Finishing a TraceContext
+-------------------------------------
 
-### Future's Body ###
+You can create a new `TraceContext` by using the `.newContext(..)` methods available in the `Kamon.tracer` member. As
+described in the getting started section, make sure you start Kamon before using this API. When you create a new context
+you need to at least provide a name for it, which you can change at any point of time before finishing the trace.
+Additionally, you can provide a trace token to identify the trace, if you don't, Kamon will generate one for you.
 
-In the following piece of code, the body of the future will happen asynchronously on some other thread provided by the
-ExecutionContext available in implicit scope, but Kamon will capture the TraceContext available when the future was
-created and make it available when executing the future's body.
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:new-context %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:new-context %}
+{% endcode_example %}
 
-```scala
-val future = TraceRecorder.withNewTraceContext("sample-trace") {
-  Future {
-    /* Do some sort of calculation */
-    "Hello Kamon"
-  }
-}
-```
+Finishing a `TraceContext`, as shown in the example is just about calling the `.finish()` method on a context. Once a
+trace is finished it can no longer be renamed again.
 
-### Future Callbacks ###
+Additionally, the `Tracer` companion object provides alternative `.withNewTraceContext(..)` methods that will not only
+create a new `TraceContext` for you, but also make it the the current trace context and optionally finishing it after
+the supplied piece of code finishes it's execution as shown in the example bellow:
 
-When you transform a future by using map/flatMap/filter and friends or you directly register a
-onComplete/onSuccess/onFailure callback on a future, Kamon will capture the TraceContext available transforming the
-future and make it available when executing the given callback.
 
-```scala
-future
-  .map(_.length)
-  .flatMap(len ⇒ Future(len.toString))
-  .map(s ⇒ TraceRecorder.currentContext)
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:new-context-block %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:new-context-block %}
+{% endcode_example %}
 
-```
-
-The code snippet above would yield the same TraceContext that was available when creating the future, as well as making
-it available during the execution of the maps and flatMap operations.
+It is really important to understand that the new `TraceContext` will **only** be available during the execution of the
+specified code block and removed from the trace context storage once the method returns.
 
 
 
-Finishing a TraceContext
-========================
+TraceContext Storage
+--------------------
 
-Finishing a TraceContext is pretty easy, just call `TraceRecorder.finish(..)` and the currently available TraceContext
-will be closed and stopped from being propagated during the processing of the current event.
+You might have noticed that we mentioned "the current trace context" in the section above. When we say this, we refer to
+the `TraceContext` associated with the trace being executed in the current thread, which is effectively stored in a
+internal trace-local variable. Please read the [threading model considerations] section for advice related to propagating
+a `TraceContext` depending on your application's threading model.
+
+The `Tracer` companion object provides the required APIs to get, set and clear the context that is available to the
+current thread. It is very important to ensure that you always clean up the threads once you don't need a `TraceContext`
+as current anymore, thus, it will be better for you if instead of using the `Tracer.setCurrentContext(...)` and
+`Tracer.clearCurrentContext()` functions directly you work with the `Tracer.withContext(...)` variants which will ensure
+that the trace context storage is set to whatever was there before once the specified piece of code finishes execution.
+
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:storing-the-trace-context %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:storing-the-trace-context %}
+{% endcode_example %}
+
+Note that the `Tracer.withContext(...)` variants will note ever try to finish a trace once they're done.
+
+
+
+Creating and Finishing Segments
+-------------------------------
+
+The API for creating segments is not directly available through the `Tracer` companion object, but rather through the
+`TraceContext` instance that you are dealing with. Once you have access to a `TraceContext` you can call the
+`.startSegment(...)` method to get a segment that is tied to that `TraceContext`.
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:creating-segments %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:creating-segments %}
+{% endcode_example %}
+
+Remember that a segment can be finished after the correspondent trace has finished, so don't feel forced into finishing
+them while still in the `.withContext(...)` block, the segment will know for sure what `TraceContext` it belongs to.
+
+The method mentioned above is the most flexible one, as you can do whatever you want with the segment instance, but the
+`TraceContext` also provides the `.withNewSegment(...)` methods which create a segment and finish it automatically when
+the supplied code finishes execution.
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:managed-segments %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:managed-segments %}
+{% endcode_example %}
+
+Obviously you don't need to get the context using `Tracer.currentContext` but you can start a segment in any
+`TraceContext` that you have at hand.
+
+Finally, an additional goody for Scala developers is the `.withNewAsyncSegment` that can create a new segment from a
+piece of code that returns a `Future[T]` and automatically finish the segment when the future is completed. Here is how
+the usage looks like:
+
+{% code_example %}
+{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:async-segment %}
+{% endcode_example %}
+
+[threading model considerations]: /core/tracing/threading-model-considerations/
