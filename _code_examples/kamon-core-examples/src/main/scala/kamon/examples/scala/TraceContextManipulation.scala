@@ -7,7 +7,9 @@ object TraceContextManipulation extends App {
 
   // tag:creating-a-trace-context:start
   val newContext = Kamon.tracer.newContext("test-trace")
-  val contextWithCustomToken = Kamon.tracer.newContext("test-trace", "token-1234")
+
+  Thread.sleep(3000)
+  newContext.finish()
   // tag:creating-a-trace-context:end
 
 }

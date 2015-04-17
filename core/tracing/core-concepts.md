@@ -6,154 +6,131 @@ layout: documentation
 Tracing Module
 ==============
 
-Let's get the basics done first, what is a trace? Well, you can think of a trace like a story told by the flow of events
-in your application that explain how the execution of a particular functionality went during a given invocation. For
-example, if in order to fulfill a `GET` request to the `/users/kamon` resource your application sends a message to an
-actor which reads the user data from a database and sends a message back with the user details to finish the request,
-all of those events would be considered as part of the same trace.
+The tracing module is responsible of providing the base APIs that allow you to record information about meaningful
+peaces of functionality executed in your application, allowing you to get deeper and more specialized data on how your
+application and its internal components are behaving.
 
-If the application described above were to handle hundreds of clients requesting for user details, then each invocation
-should be considered and measured separately as each individual invocation can generate it's own diagnostic and
-performance data, each will be a separate trace.
+While our metrics module guides you towards independently measuring specific components in your application, our tracing
+module seeks to work at a higher level where the interaction between components to provide concrete user-facing
+functionality is the main subject of interest. Here, the main goal is to know how functionalities "X" and "Y" are
+behaving and, if possible, know how the components that make up these functionalities are behaving.
 
-The purpose of each individual trace is very simple: gather information about the execution of some functionality
-provided by your application and expose that information via subscription protocols to be consumed by reporting
-backends. The most basic information that can be stored for a trace is it's execution time, as measured from the moment
-the trace was started until the moment it was finished, but that can be augmented with segments information and trace
-local storage as you will see soon.
+Imagine there is this Twitter-like application that you want to measure and monitor. It provides two basic
+functionalities: "post new status" and "fetch user time line". In this very simple example all data is available in a
+database. When you measure the "post new status" functionality, you obviously want to know how long it took to process
+each new status, but additionally you might want to know how the section of code that does the database query is
+behaving as usually that tends to become a bottleneck. Maybe there is a internally shared functionality called "get user
+details" that is being used from both "post new status" and "fetch user time line" and when that happens, it is not
+enough to measure the "get user details" section alone, but rather keep enough context to know how it behaves when
+being called from the "post new status" or the "fetch user time line" functionality.
+
+Translating the example above into Kamon terms, we refer to the invocation of a functionality as a `Trace` and to each
+of the components being used to make up the trace as `Segments`. Each request to "post new status" is generating a new
+trace, and, each usage of the "get user details" section is a segment that belongs to the aforementioned trace. All the
+information related to a trace is stored in a single `TraceContext` instance, as you will discover bellow.
 
 
 
 The TraceContext
 ----------------
 
-We said that each functionality invocation can generate it's own diagnostic and performance data, in other words, each
-invocation is a unique trace and each trace has a context surrounding it, a context that we model into what we call a
-`TraceContext`. The `TraceContext` is a fundamental piece in the tracing infrastructure provided by Kamon and it is very
-important that you understand how it works and how it is propagated in order to make the most effective use of it. A
-TraceContext has the following attributes:
+The `TraceContext` is a fundamental piece in the tracing infrastructure provided by Kamon and it is very important that
+you understand how it works and how it should be propagated in order to make the most effective use of it.
+
+Each time a traced functionality is used in your application, a new `TraceContext` should be generated to store all the
+performance and diagnostic information related to the correspondent trace. As a starter, a `TraceContext` has the
+following attributes:
 
 * __name__: A user-friendly name that describes the functionality being used in a traced request. Examples might be
 "GetUserDetails", "PublishStatus" or "GenerateSalesReport". A trace can be renamed at any point during the execution of
 a request. As you might guess, many traces in your application can and should share the same name.
-* __trace-token__: A automatically generated id for the TraceContext. Once a TraceContext is created, it's trace token
-will remain the same until the end of the trace. Contrary to the trace name, the trace token is unique and will never be
+* __trace-token__: A automatically generated id for the `TraceContext`. Once a `TraceContext` is created, it's trace token
+will remain the same until the end of the trace. Contrary to the trace name, the trace token is unique and must never be
 repeated during the lifetime of the application.
 * __metadata__: Simple key-value pairs containing additional information about the execution of a trace.
 
-To get a hold on a new TraceContext you need ask the Kamon tracer for one as shown in the example bellow:
+New `TraceContext` instances are obtained by requesting them to the Kamon tracer and you shouldn't try to instantiate
+them directly as their dependencies are carefully controlled and supplied by Kamon accordingly to the provided
+configuration. Creating a `TraceContext` and finishing it after waiting a few seconds looks like this:
 
 {% code_example %}
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:creating-a-trace-context %}
 {%   language java kamon-core-examples/src/main/java/kamon/examples/java/TraceContextManipulation.java tag:creating-a-trace-context %}
 {% endcode_example %}
 
-* __segments__: Represent a group of events related to the execution of a sub-functionality required to complete a
-request. For example, making a JDBC call to a database to get the user details might be a sub-functionality that you
-use from the "GetProfile" and "Login" functionalities in your app.
+In the example above we achieved the most basic operation possible on a trace: measure it's elapsed time. When we
+created the new TraceContext, Kamon automatically recorded it's start timestamp and by calling `.finish()` we tell Kamon
+that the trace is over and the elapsed time metric for that trace is recorded. There are more details related to how
+trace metrics work, you can read more about it in the [trace metrics section].
 
-Stop by the [trace manipulation] section to learn how to start, manipulate and finish a TraceContext, as well as how and
-when Kamon will propagate a TraceContext for your.
+That was an extremely simple example that will rarely be reproduced in real world applications. In reality, you will
+have several components in your application and the life cycle of a trace will be governed by the interaction of those
+components, but still, each component must have access to the same `TraceContext` in order to add or enhance the
+diagnostic and performance data contained in it, thus the need to have unique and predictable place to lookup and store
+the contexts.
 
-
-there might be a
-handful of database access actors handling those requests. When the dispatcher gives an actor some time to execute, it
-will process as many messages as possible (as per dispatcher configuration) before the Thread is taken away from it, but
-during that time it is incorrect to say that either the actor or the Thread are tied to a trace, because each message
-might come from a different source which is probably waiting for a different response.
-
-
-Storing Trace Data
-==================
-
-If you ever had the chance to work with a traditional tracing and/or monitoring system you will notice one common
-denominator when it comes to storing trace data: a `ThreadLocal`. Why is it so common? let's take a look at how a
-"traditional model" application perform tasks and try to deduce it from there:
-
-The Traditional Model
----------------------
-
-<img class="img-responsive" src="/assets/img/diagrams/traditional-thread-model.png">
-
-The traditional way of doing things (like when using Servlets) is to tie the execution of all code related to a request
-to a single thread, effectively meaning that if you do a JDBC call to a database your request thread gets blocked until
-the response comes back from the database; if you send a HTTP request to a external service using a blocking client,
-again, your thread will be blocked while waiting for the response back from the external service. When everything
-happens in the same thread then answering the question above is a no-brainer: ThreadLocals are the simplest way to
-share/store trace information because all the executed code for servicing a request is tied to a thread.
-
-The Enhanced Traditional Model
-------------------------------
-
-Sometimes, waiting for everything to happen sequentially is not an option or it is even a requirement to do things
-concurrently in order to minimize the experienced latency by the user. When doing so, the common approach is to add
-a couple of fork points in the execution of a traditional flow, allowing some parts of the application code to execute
-concurrently and then joining the results at some later point on the request thread. You are still blocking threads, in
-fact, you are blocking more threads than with the traditional model, but you do it in such a way that the application
-can work "faster". We tend to call this the "enhanced traditional model" and, to compare with the traditional model you
-can picture it like this:
-
-<img class="img-responsive" src="/assets/img/diagrams/enhanced-traditional-thread-model.png">
-
-You might need to add a couple of utilities to make sure that the work being done in the worker threads is properly
-related to the trace happening in the request thread, but even if you can't do that the request thread still knows the
-forks and joins and knows for sure when the request starts and ends.
-
-The Reactive Model
-------------------
-
-That was a nice history lesson but we are here because we are developing reactive applications and reactive applications
-rely on asynchronous message passing and non-blocking operations which effectively mean that the senders and recipients
-of these messages are not necessarily tied to a thread. Here is how it looks like, compared to the previous diagrams:
-
-<img class="img-responsive" src="/assets/img/diagrams/reactive-model.png">
-
-As you can see from the diagram, everything happens asynchronously as a reaction to a previous event and all the event
-chain starts with a request, flows through a arbitrary number of stages and finishes ar some point in the future when
-the desired response is available. Some parts of the flow might still need to block a thread, like when using JDBC to
-connect to a database, but still the majority of the the code is executed asynchronously on different threads. Can we
-use ThreadLocals to store trace information when using the reactive model?, in short: No.
+You could simply pass the `TraceContext` instance around to all the related components from start to finish in your
+application, that will certainly give you full control of the trace life cycle and will clearly describe the stages
+covered by it, but would also be incredibly verbose and tedious, besides the fact that doing so would couple a decent
+portion of your application code with Kamon's tracing infrastructure, that doesn't seem good. Instead, we defined a
+single place to look for and store the `TraceContext` of the functionality being executed in the current thread and we
+make sure that the information hosted there is consistent and predictable, regardless of the threading model being used.
+See the [trace context storage] section for more details.
 
 
-The TraceContext
-================
+### Trace Segments ###
 
-With reactive applications we can no longer tie trace information to a thread because there is no single thread tied to
-a request, instead, we need to start thinking of trace data related to *events*. Kamon introduces the notion of a
-`TraceContext` which is attached to all events generated by a request, providing a safe place to store trace information
-in reactive applications. A TraceContext has the following attributes:
+As mentioned above, segments are focused on how the sections that make up the trace are behaving, thus, segments can
+never be found alone and by themselves in Kamon but you rather need to have a trace first and then create a segment that
+belongs to that trace. Once a segment is created for a trace, it will always belong to that trace. Similarly to the
+`TraceContext`, segments also have a few attributes for themselves:
 
-* __name__: A user-friendly name that describes the name of the functionality being used by a traced request. Examples
-might be "GetUserDetails", "PublishStatus" or "GenerateSalesReport". A trace might be renamed at any point during the
-execution of a request.
-* __trace-token__: A automatically generated id for the TraceContext. Once a TraceContext is created, it's trace token
-will remain the same until the end of the trace.
-* __segments__: Represent a group of events related to the execution of a sub-functionality required to complete a
-request. For example, making a JDBC call to a database to get the user details might be a sub-functionality that you
-use from the "GetProfile" and "Login" functionalities in your app.
+* __category__: Specifies, in a general sense, what the segment is about. Some of our modules create segments for the
+`http-client` and `database` categories but you are not limited to that, this is just for informative purposes.
+* __name__: The segment name should tell you specifically what the segment is trying to achieve. Think of "StoreUserCredentials"
+or "UpdateAccountsCache" as names might see for segments.
+* __library__: The library attribute is primarily used by the instrumentation modules to inform for which library a
+segment was created.
+* __metadata__: Simple key-value pairs containing additional information about the execution of a segment.
 
-Stop by the [trace manipulation] section to learn how to start, manipulate and finish a TraceContext, as well as how and
-when Kamon will propagate a TraceContext for your.
+The life cycle of a segment is not tied to the life cycle of it's correspondent trace. That a segment can be created and
+finished at any time if you have a trace available, regardless of whether the trace is still open or not.
 
 
 
-Trace Levels
-------------
+Tracing Levels
+--------------
 
-Kamon has three different trace levels that can be used to gather monitoring information about your application, these
-levels are:
+Our tracing module aims to provide two different trace levels that can be used to gather monitoring information about
+your application which can be configured via the `kamon.trace.level-of-detail` configuration key, these levels are:
 
-* __OnlyMetrics (default)__: A TraceContext is propagated to all related events that belong to a given request but this
-information is only used to gather metrics on the execution of each request. Metrics about the entire trace duration and
-all segments duration is recorded.
-* __SimpleTrace (not yet implemented)__: Besides gathering metrics for the entire trace and segments, this level collects
-additional trace information that allows you to generate a gantt-like graph of the trace and segments executed for
-servicing a request.
-* __FullTrace (not yet implemented)__: Besides gathering metrics for the entire trace and segments, this level collects
-additional trace information that allows you to generate a gantt-like graph of all individual events executed for
-servicing a request.
+
+### Metrics Only ###
+
+This is what you get by default. The traces and segments are only used to gather the elapsed time information for each
+of them and you will only get the metrics information described in the [trace metrics section].
+
+### Simple Tracing ###
+
+Additionally to gathering trace metrics, the simple tracing level stores information about when each segment was
+executed relative to the trace, which can enable you to display a simple Gantt-like chart of the trace and all it's
+segments. Doing so incurs in a bit of overhead compared to the metrics only level, that's why you can configure the
+sampling mechanism to be used when deciding whether a trace should collect additional info or stay with just metrics.
+The available sampling mechanisms are:
+
+* __all__: Every single trace is selected and reported.
+* __random__: Uses a random number generator to generate numbers between 1 and 100, if the generated number is less or
+equal to the `chance` setting, the trace will selected and reported.
+* __ordered__: Pick one trace every `sample-interval` traces and reports it.
+* __threshold__: This one might be the most interesting around. This sampling method will select all traces for collecting
+information, but will only report those whose elapsed time is beyond certain threshold.
+
+Use the `kamon.trace.sampling` configuration key to select your sampling mechanism. By default, Kamon will use random
+sampling with a 10% chance of selecting traces.
+
 
 
 
 [trace manipulation]: /core/tracing/trace-context-manipulation/
-[trace metrics]: /core/tracing/trace-metrics/
+[trace metrics section]: /core/tracing/trace-metrics/
+[trace context storage]: /core/tracing/trace-context-storage/

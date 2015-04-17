@@ -91,7 +91,7 @@ module Jekyll
 
 
     def get_range (code, tag, endline)
-      line_count = code.lines.length
+      line_count = code.lines.to_a.size
       start_line = code.lines.find_index { |l| l.include? "#{tag}:start" }
       end_line = code.lines.find_index { |l| l.include? "#{tag}:end" }
 

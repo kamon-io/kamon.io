@@ -5,12 +5,14 @@ import kamon.Kamon;
 import kamon.trace.TraceContext;
 
 public class TraceContextManipulation {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     Kamon.start();
 
     // tag:creating-a-trace-context:start
     final TraceContext newContext = Kamon.tracer().newContext("test-trace");
-    final TraceContext contextWithCustomToken = Kamon.tracer().newContext("test-trace", "token-1234");
+
+    Thread.sleep(3000);
+    newContext.finish();
     // tag:creating-a-trace-context:end
   }
 }
