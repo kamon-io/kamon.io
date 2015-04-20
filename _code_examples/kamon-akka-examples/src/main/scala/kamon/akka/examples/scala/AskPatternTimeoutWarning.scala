@@ -6,7 +6,6 @@ import akka.util.Timeout
 import kamon.Kamon
 import kamon.trace.Tracer
 import scala.concurrent.duration._
-import scala.util.control.NoStackTrace
 
 object AskPatternTimeoutWarning extends App {
   Kamon.start()
