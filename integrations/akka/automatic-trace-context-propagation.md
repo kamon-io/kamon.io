@@ -47,6 +47,12 @@ When using the pipe pattern, the `TraceContext` available when the pipe call was
 is also made available when processing the message in the target actor.
 
 
+### Log Events ###
+
+When you are using the logging facilities provided by Akka, Kamon will attach the current `TraceContext` available when
+the log statement is executed and make the same `TraceContext` available when that log event is actually processed by
+your logger.
+
 ### Supervision Messages ###
 
 When one of your actor fails it is the responsibility of its parent to determine what action to take based on the
