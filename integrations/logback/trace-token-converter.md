@@ -3,8 +3,8 @@ title: Kamon | Core | Documentation
 layout: documentation
 ---
 
-Logback Integration
-===================
+Logback Trace Token Converter
+=============================
 
 Our Logback integration is extremely simple as it just provides a single converter that allows you to include the
 current trace token in your log patterns. The entire implementation looks like this:
