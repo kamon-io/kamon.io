@@ -6,14 +6,13 @@ import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import scala.Option;
-import scala.runtime.AbstractFunction0;
-
-/*
+import kamon.Kamon;
+import kamon.trace.Tracer;
 
 public class TraceTokenLogging {
-  // tag:sending-async-events:start
   public static void main(String[] args) throws InterruptedException {
+    Kamon.start();
+
     final ActorSystem system = ActorSystem.create("trace-token-logging");
     final ActorRef upperCaser = system.actorOf(Props.create(UpperCaser.class), "upper-caser");
 
@@ -26,23 +25,22 @@ public class TraceTokenLogging {
     Thread.sleep(1000);
 
 
+    // tag:sending-async-events:start
     // Send five messages with a TraceContext
     for(int i = 0; i < 5; i++) {
-      TraceRecorder.withNewTraceContext("simple-test", Option.<String>empty(), new AbstractFunction0<Object>() {
-        @Override
-        public Object apply() {
+      Tracer.withNewContext("simple-test", () -> {
           upperCaser.tell("Hello without context", ActorRef.noSender());
           return null;
-        }
-      }, system);
+      });
     }
+    // tag:sending-async-events:end
 
 
     // Wait a bit for everything to be logged and shutdown.
     Thread.sleep(2000);
     system.shutdown();
   }
-  // tag:sending-async-events:end
+
 
 // tag:trace-token-logging:start
   public static class UpperCaser extends UntypedActor {
@@ -70,7 +68,7 @@ public class TraceTokenLogging {
   }
 // tag:trace-token-logging:end
 }
-*/
+
 
 
 /*

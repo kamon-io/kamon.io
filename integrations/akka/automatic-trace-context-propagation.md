@@ -53,6 +53,7 @@ When you are using the logging facilities provided by Akka, Kamon will attach th
 the log statement is executed and make the same `TraceContext` available when that log event is actually processed by
 your logger.
 
+
 ### Supervision Messages ###
 
 When one of your actor fails it is the responsibility of its parent to determine what action to take based on the

@@ -3,7 +3,7 @@ title: Kamon | Documentation
 layout: documentation
 ---
 
-Actor, Dispatcher and Router Metrics
+Actor, Router and Dispatcher Metrics
 ====================================
 
 Kamon is able to gather metrics from the actors, dispatchers and routers that you create in your application by joining

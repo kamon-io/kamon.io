@@ -1,11 +1,12 @@
 package kamon.examples.scala
 
 import akka.actor.{ActorSystem, Props, Actor, ActorLogging}
-import kamon.trace.TraceContext
-/*
+import ch.qos.logback.classic.pattern.ClassicConverter
+import ch.qos.logback.classic.spi.ILoggingEvent
+import kamon.trace.Tracer
+
 
 object TraceTokenLogging extends App {
-  // tag:sending-async-events:start
   implicit val system = ActorSystem("trace-token-logging")
   val upperCaser = system.actorOf(Props[UpperCaser], "upper-caser")
 
@@ -19,20 +20,28 @@ object TraceTokenLogging extends App {
   // Wait a bit to avoid spaghetti logs.
   Thread.sleep(1000)
 
-
+  // tag:sending-async-events:start
   // Send five messages with a TraceContext
   for(_ <- 1 to 5) {
-    TraceContext.withNewTraceContext("simple-test") {
+    Tracer.withNewContext("simple-test") {
       upperCaser ! "Hello World with TraceContext"
     }
   }
+  // tag:sending-async-events:end
 
 
   // Wait a bit for everything to be logged and shutdown.
   Thread.sleep(200000)
   system.shutdown()
 }
-// tag:sending-async-events:end
+
+// tag:converter-definition:start
+class LogbackTraceTokenConverter extends ClassicConverter {
+
+  def convert(event: ILoggingEvent): String =
+    Tracer.currentContext.collect(_.token).getOrElse("undefined")
+}
+// tag:converter-definition:end
 
 // tag:trace-token-logging:start
 class UpperCaser extends Actor with ActorLogging {
@@ -52,7 +61,7 @@ class LengthCalculator extends Actor with ActorLogging {
   }
 }
 // tag:trace-token-logging:end
-*/
+
 
 /*
 // tag:trace-token-logging-output-without-token:start
