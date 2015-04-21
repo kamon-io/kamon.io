@@ -2,12 +2,12 @@ scalaVersion := "2.11.6"
 
 // tag:base-kamon-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.3.6-e3e0055955ba82a3ba0f2242510397b8cc016c90",
+  "io.kamon" %% "kamon-core" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b",
 
   // [Optional]
-  "io.kamon" %% "kamon-statsd" % "0.3.6-e3e0055955ba82a3ba0f2242510397b8cc016c90",
+  "io.kamon" %% "kamon-statsd" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b",
   // [Optional]
-  "io.kamon" %% "kamon-datadog" % "0.3.6-e3e0055955ba82a3ba0f2242510397b8cc016c90"
+  "io.kamon" %% "kamon-datadog" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b"
 
   // ... and so on with all the modules you need.
 )

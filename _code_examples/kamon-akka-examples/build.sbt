@@ -2,10 +2,9 @@ scalaVersion := "2.11.6"
 
 // tag:base-kamon-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.3.6-d8e7dbea9409ed30a141a21622c7718967f4424b",
-  "io.kamon" %% "kamon-akka" % "0.3.6-d8e7dbea9409ed30a141a21622c7718967f4424b",
-  "io.kamon" %% "kamon-scala" % "0.3.6-d8e7dbea9409ed30a141a21622c7718967f4424b",
-  "io.kamon" %% "kamon-akka-remote" % "0.3.6-d8e7dbea9409ed30a141a21622c7718967f4424b"
+  "io.kamon" %% "kamon-core" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b",
+  "io.kamon" %% "kamon-akka" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b",
+  "io.kamon" %% "kamon-akka-remote" % "0.3.6-5cb9de39cdd6ef258732a82e6f0d519712d1c37b"
 )
 // tag:base-kamon-dependencies:end
 
