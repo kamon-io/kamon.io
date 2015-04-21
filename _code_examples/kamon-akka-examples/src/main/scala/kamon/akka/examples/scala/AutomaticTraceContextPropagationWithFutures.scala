@@ -20,8 +20,8 @@ object AutomaticTraceContextPropagationWithFutures extends App {
       "Hello Kamon"
 
     }.map(_.length)
-      .flatMap(len ⇒ Future(len.toString))
-      .map(s ⇒ Tracer.currentContext)
+      .flatMap(len => Future(len.toString))
+      .map(s => Tracer.currentContext)
       .map(println)
       // And through all async callbacks, even while
       // they are executed at different threads!
