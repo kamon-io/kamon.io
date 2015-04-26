@@ -31,7 +31,7 @@ public class Annotated {
 
 	private final Long id;
 
-	public Annotated(id: Long) {
+	public Annotated(Long id) {
 		this.id = id;
 	}
 
