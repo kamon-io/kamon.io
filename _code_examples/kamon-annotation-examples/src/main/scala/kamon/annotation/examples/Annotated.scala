@@ -10,6 +10,8 @@ class Annotated {
 }	
 // tag:activation:end
 
+
+package object el {
 // tag:el-support:start
 import kamon.annotation.EnableKamon
 import kamon.annotation.Count
@@ -19,9 +21,12 @@ class Annotated {
 
 	@Count(name="counter", tags = "#{'counter':'my-awesome-counter', 'environment':'prod'}")
 	def countedMethod:Unit = {}	
-}	
-// tag:el-support:end
+}
+// tag:el-support:end	
+}
 
+
+package object elName {
 // tag:el-support-instrument-name:start
 import kamon.annotation.EnableKamon
 import kamon.annotation.Count
@@ -32,10 +37,12 @@ case class Annotated(id: Long) {
  	@Count(name = "${'count:' += this.id}", tags = "#{'my-awesome-counter':'1', 'env':'prod'}")
   	def countedMethod(): Unit = {}
 	
-}	
-// tag:el-support-instrument-name:end
+}
+// tag:el-support-instrument-name:end	
+}
 
 
+package object static {
 // tag:static-methods:start
 import kamon.annotation.EnableKamon
 import kamon.annotation.Count
@@ -48,3 +55,4 @@ object AnnotatedObject {
 	
 }	
 // tag:static-methods:end
+}

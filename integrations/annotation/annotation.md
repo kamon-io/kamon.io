@@ -37,8 +37,8 @@ Kamon provides the following set of annotations:
 In order to point to kamon about a particular class, it must be annotated with __@EnableKamon__ annotation:
 
 {% code_example %}
-{%   language scala kamon-annotation-examples/scala/src/main/scala/kamon/annotation/Annotated.scala tag:activation %}
-{%   language java kamon-annotation-examples/java/src/main/java/kamon/annotation/Annotated.java tag:activation %}
+{%   language scala kamon-annotation-examples/src/main/scala/kamon/annotation/examples/Annotated.scala tag:activation %}
+{%   language java kamon-annotation-examples/src/main/java/kamon/annotation/examples/Annotated.java tag:activation %}
 {% endcode_example %}
 
 When the weaver finds the __@EnableKamon__  this inject `Java bytecode` into the target class in order to provide the necessary structure to register and manage the corresponding [instruments] that will be created based on the annotations of the declared methods.
@@ -48,15 +48,15 @@ When the weaver finds the __@EnableKamon__  this inject `Java bytecode` into the
 Currently the `tags` property of the [instruments] is evaluated as [EL] expression for convenience and also we need take in account that the expression will be evaluated __only once__ at the creation of the instrument. 
 
 {% code_example %}
-{%   language scala kamon-annotation-examples/scala/src/main/scala/kamon/annotation/Annotated.scala tag:el-support %}
-{%   language java kamon-annotation-examples/java/src/main/java/kamon/annotation/Annotated.java tag:el-support %}
+{%   language scala kamon-annotation-examples/src/main/scala/kamon/annotation/examples/Annotated.scala tag:el-support %}
+{%   language java kamon-annotation-examples/src/main/java/kamon/annotation/examples/el/Annotated.java tag:el-support %}
 {% endcode_example %}
 
 Optionally, the instrument name can be resolved with an [EL] expression that evaluates to a `String`.
 
 {% code_example %}
-{%   language scala kamon-annotation-examples/scala/src/main/scala/kamon/annotation/Annotated.scala tag:el-support-instrument-name %}
-{%   language java kamon-annotation-examples/java/src/main/java/kamon/annotation/Annotated.java tag:el-support-instrument-name %}
+{%   language scala kamon-annotation-examples/src/main/scala/kamon/annotation/examples/Annotated.scala tag:el-support-instrument-name %}
+{%   language java kamon-annotation-examples/src/main/java/kamon/annotation/examples/el/name/Annotated.java tag:el-support-instrument-name %}
 {% endcode_example %}
 
 In the above example, Kamon will create a `kamon.metric.instrument.Counter` instance with the name obtained from the evaluation of the expresion `${'count:' += this.id}` in the moment of  instantiation of the `Annotated` class. If the value of __Id__ attribute changes over time, the the [EL] expresion won't be __re-evaluated__.
@@ -66,8 +66,8 @@ In the above example, Kamon will create a `kamon.metric.instrument.Counter` inst
 The execution of static methods also can be monitored using __Kamon annotations__.
 
 {% code_example %}
-{%   language scala kamon-annotation-examples/scala/src/main/scala/kamon/annotation/Annotated.scala tag:static-methods %}
-{%   language java kamon-annotation-examples/java/src/main/java/kamon/annotation/Annotated.java tag:static-methods %}
+{%   language scala kamon-annotation-examples/src/main/scala/kamon/annotation/examples/Annotated.scala tag:static-methods %}
+{%   language java kamon-annotation-examples/src/main/java/kamon/annotation/examples/statics/AnnotatedStatic.java tag:static-methods %}
 {% endcode_example %}
 
 In this example,  `Kamon` will instrument the `AnnotatedObject/AnnotatedStatic` class so that, when it's loaded, it can introduce the machinery for manage the kamon [instruments] and then, the first time it's invoked the method annotated with __@Count__  will be proceed to create and register a `kamon.metric.instrument.Counter` with the given name and then increment it. In the following method invocation, will get the counter already registered and will be incremented. 	
