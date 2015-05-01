@@ -43,7 +43,7 @@ In order to point to kamon about a particular class, it must be annotated with _
 
 When the weaver finds the __@EnableKamon__  this inject `Java bytecode` into the target class in order to provide the necessary structure to register and manage the corresponding [instruments] that will be created based on the annotations of the declared methods.
 
-###EL Expression Support###
+### EL Expression Support ###
 
 Currently the `tags` property of the [instruments] is evaluated as [EL] expression for convenience and also we need take in account that the expression will be evaluated __only once__ at the creation of the instrument. 
 
@@ -61,7 +61,7 @@ Optionally, the instrument name can be resolved with an [EL] expression that eva
 
 In the above example, Kamon will create a `kamon.metric.instrument.Counter` instance with the name obtained from the evaluation of the expresion `${'count:' += this.id}` in the moment of  instantiation of the `Annotated` class. If the value of __Id__ attribute changes over time, the the [EL] expresion won't be __re-evaluated__.
 
-### Static Methods###
+### Static Methods ###
 
 The execution of static methods also can be monitored using __Kamon annotations__.
 
