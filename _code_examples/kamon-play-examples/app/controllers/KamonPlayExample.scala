@@ -77,7 +77,7 @@ object KamonPlayExample extends Controller {
 
   def namedTrace = TraceName("my-trace-name") {
     Action {
-      Ok("This trace is named `my-trace-name`.")
+      Ok("This trace is named my-trace-name.")
     }
   }
   // tag:trace-name-action:end
