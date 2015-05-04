@@ -1,0 +1,10 @@
+# Routes
+GET     /helloKamon                      controllers.KamonPlayExample.sayHello
+GET     /helloKamonWithTraceName         controllers.KamonPlayExample.sayHelloWithTraceName
+GET     /incrementCounter                controllers.KamonPlayExample.incrementCounter
+GET     /updateTraceLocal                controllers.KamonPlayExample.updateTraceLocal
+
+# tag:trace-name-routes:start
+GET     /automatically-named-trace       controllers.KamonPlayExample.automaticallyNamedTrace
+GET     /named-trace                     controllers.KamonPlayExample.namedTrace
+# tag:trace-name-routes:end
