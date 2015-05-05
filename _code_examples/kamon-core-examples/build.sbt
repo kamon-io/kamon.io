@@ -7,7 +7,7 @@ libraryDependencies ++= Seq(
   // [Optional]
   "io.kamon" %% "kamon-statsd" % "0.3.6-c6ba11c2238b85746ac525505b5dbc7e517eb9f9"
   // [Optional]
-  //"io.kamon" %% "kamon-datadog" % "0.3.6-c6ba11c2238b85746ac525505b5dbc7e517eb9f9"
+  "io.kamon" %% "kamon-datadog" % "0.3.6-c6ba11c2238b85746ac525505b5dbc7e517eb9f9"
 
   // ... and so on with all the modules you need.
 )

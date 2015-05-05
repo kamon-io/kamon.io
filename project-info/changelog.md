@@ -7,6 +7,82 @@ Changelog
 =========
 
 <hr>
+Version 0.4.0 <small>(2015-05-xx)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core
+  * Traces subscriptions V1 (see [issue 123](https://github.com/kamon-io/Kamon/issues/123)).
+  * Lift the MDC tools of LoggerLikeInstrumentation into something generic (see [issue 100](https://github.com/kamon-io/Kamon/issues/100)).
+  * Store in TraceLocal useful data to diagnose errors (see [issue 6](https://github.com/kamon-io/Kamon/issues/6)).
+  * Introduced support for metric tags (see [pull 164](https://github.com/kamon-io/Kamon/pull/164)).
+  * Single kamon instance per JVM (see [pull 156](https://github.com/kamon-io/Kamon/pull/156)).
+  * Use ModuleSupervisor to init all auto-start modules (see [pull 152](https://github.com/kamon-io/Kamon/pull/152)).
+  * Improve the metric recorders infrastructure (see [pull 151](https://github.com/kamon-io/Kamon/pull/151)).
+  * Fix ThresholdSampler to use minimum-elapsed-time setting (see [pull 129](https://github.com/kamon-io/Kamon/pull/129)).
+  * Improve the scheduling of measurement-taking future callbacks (see [issue 143](https://github.com/kamon-io/Kamon/issues/143)).
+  * Provide a way to subscribe to metrics with plain string patterns (see [issue 141](https://github.com/kamon-io/Kamon/issues/141)).
+  * Make the metric filters `merge friendly` (see [issue 138](https://github.com/kamon-io/Kamon/issues/138)).
+  * Create some sort of `KamonLoader` extension (see [issue 137](https://github.com/kamon-io/Kamon/issues/137)).
+  * Separate `akka`, `scala` and `scalaz` instrumentation from `kamon-core` (see [issue 136](https://github.com/kamon-io/Kamon/issues/136)).
+
+ 
+* kamon-akka
+  * Measure the routees metrics when doing router metrics (see [issue 139](https://github.com/kamon-io/Kamon/issues/139)).
+  * Separate all akka-related stuff into it's own module (see [pull 145](https://github.com/kamon-io/Kamon/pull/145)).
+  * Akka instrumentation name space (see [pull 108](https://github.com/kamon-io/Kamon/pull/108)).
+  * Exact actor metric filter (see [issue 116](https://github.com/kamon-io/Kamon/issues/116)).
+  * A more lightweight way for tracing the `Akka.ask` timeouts (see [issue 113](https://github.com/kamon-io/Kamon/issues/113)).
+  * NPE in ActorCellInstrumention.beforeInvokeFailure (see [issue 184](https://github.com/kamon-io/Kamon/issues/184)).
+  * Root guardian actor should not be picked up by ActorMetrics (see [issue 157](https://github.com/kamon-io/Kamon/issues/157)).
+
+* kamon-system-metrics
+  * Include more metrics (see [issue 131](https://github.com/kamon-io/Kamon/issues/131))
+  * Reported GC time is way too high (see [issue 135](https://github.com/kamon-io/Kamon/issues/135))
+
+* kamon-play
+  * Overriding `Global.doFilter` breaks RequestInstrumentation (see [issue 122](https://github.com/kamon-io/Kamon/issues/122))
+  * Store in TraceLocal useful data to diagnose errors (see [issue 6](https://github.com/kamon-io/Kamon/issues/6)).
+  * Update `kamon-play-example` to latest version (see [pull 164](https://github.com/kamon-io/Kamon/pull/164)).
+  * Compile pattern for path normalization only once (see [pull 159](https://github.com/kamon-io/Kamon/pull/159)).
+  * Improve the scheduling of measurement-taking future callbacks  (see [issue 143](https://github.com/kamon-io/Kamon/issues/143)).
+
+* kamon-spray
+  * Store in TraceLocal useful data to diagnose errors (see [issue 6](https://github.com/kamon-io/Kamon/issues/6)).
+  * Improve the scheduling of measurement-taking future callbacks  (see [issue 143](https://github.com/kamon-io/Kamon/issues/143)).
+
+* kamon-log-reporter
+  * Provide the ability to report system metrics (see [issue 72](https://github.com/kamon-io/Kamon/issues/72)).
+  * Include dispatcher metrics in LogReporter (see [issue 163](https://github.com/kamon-io/Kamon/issues/163)).
+
+* kamon-newrelic
+  * Missing NewRelic Web Application Metrics (see [issue 112](https://github.com/kamon-io/Kamon/issues/112)).
+
+* kamon-system-metrics
+  * Introduce Context Swtitches in System Metrics (see [issue 66](https://github.com/kamon-io/Kamon/issues/66)).
+  * Decouple kamon-system-metrics from sigar through to kamon-sigar-loader (see [issue 110](https://github.com/kamon-io/Kamon/issues/110)).
+  * Context switches metric causes file descriptor leak (see [issue 148](https://github.com/kamon-io/Kamon/issues/148)).
+  * Two-phase sigar loading (see [pull 124](https://github.com/kamon-io/Kamon/pull/124))
+
+* kamon-annotation 
+  * This new module provide a simple way to integrate the kamon instruments using annotations (see [issue 158](https://github.com/kamon-io/Kamon/issues/158)).
+
+* kamon-jdbc <span class="label label-warning">experimental</span></li>
+  * This new module collects metrics related to JDBC (see [issue 107](https://github.com/kamon-io/Kamon/issues/107)) for more detail.
+
+* kamon-statsd 
+  * StatsD extension now defers the creation of the InetSocketAddress instance until needed (see [pull 174](https://github.com/kamon-io/Kamon/pull/174))
+  * Trace segments no longer reported to statsd (see [issue 166](https://github.com/kamon-io/Kamon/issues/166))
+  * Report HttpServerMetrics (see [issue 132](https://github.com/kamon-io/Kamon/issues/132))
+  
+* kamon-datadog 
+  * Report HttpServerMetrics (see [issue 132](https://github.com/kamon-io/Kamon/issues/132))
+
+
+* site
+  * Introduce new design
+  * Full documentation
+
+<hr>
 Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
 ------------------------------------------------------------------------------------------------
 
@@ -41,6 +117,7 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
 
 * kamon-system-metrics
   * Introduce Context Swtitches in System Metrics (see [issue 66](https://github.com/kamon-io/Kamon/issues/66)).
+
 
 * kamon-akka-remote <span class="label label-warning">experimental</span></li>
   * Provide basic support for akka cluster and remoting (see [issue 61](https://github.com/kamon-io/Kamon/issues/61)).

@@ -54,7 +54,7 @@ import scala.concurrent._
 
 /*
 // tag:launch-play-dev-mode:start
-activator -J-javaagent:/home/ivantopo/.ivy2/cache/org.aspectj/aspectjweaver/jars/aspectjweaver-1.8.5.jar
+activator -J-javaagent:aspectjweaver-1.8.5.jar
 // tag:launch-play-dev-mode:end
 
 
