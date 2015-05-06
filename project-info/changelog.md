@@ -62,6 +62,8 @@ Version 0.4.0 <small>(2015-05-xx)</small>
   * Decouple kamon-system-metrics from sigar through to kamon-sigar-loader (see [issue 110](https://github.com/kamon-io/Kamon/issues/110)).
   * Context switches metric causes file descriptor leak (see [issue 148](https://github.com/kamon-io/Kamon/issues/148)).
   * Two-phase sigar loading (see [pull 124](https://github.com/kamon-io/Kamon/pull/124))
+  * Divide by Zero exception with sigar (see [issue 194](https://github.com/kamon-io/Kamon/issues/194)).
+
 
 * kamon-annotation 
   * This new module provide a simple way to integrate the kamon instruments using annotations! Check out our [Annotation documentation](/integrations/annotation/annotation/) for more details.
