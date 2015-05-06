@@ -6,7 +6,7 @@ categories: teamblog
 ---
 
 We have been working on Kamon for almost two years now and during that time we have seen it evolve from "the thing for
-Ak__KA MON__itoring" that was only able to produce a couple actor metrics into a robust set of tools being used by
+AkKA MONitoring" that was only able to produce a couple actor metrics into a robust set of tools being used by
 hundreds of engineers around the globe; from guys doing a simple POC with Akka and Spray to big companies with several
 production servers being monitored with Kamon.
 

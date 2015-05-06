@@ -30,9 +30,9 @@ need as a prerequisite is having Docker installed on your machine. The container
 
 To start a container with this image you just need to run the following command:
 
-```bash
+{% code_block bash %}
 docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126 --name kamon-grafana-dashboard kamon/grafana_graphite
-```
+{% endcode_block bash %}
 
 If you already have services running on your host that are using any of these ports, you may wish to map the container
 ports to whatever you want by changing left side number in the `-p` parameters. Find more details about mapping ports

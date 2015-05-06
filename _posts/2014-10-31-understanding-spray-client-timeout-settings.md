@@ -9,7 +9,7 @@ If you have ever used spray-client in a real world application you certainly mus
 reasonable timeouts for HTTP requests and you might already be familiar with these guys (extracted from Spray's
 reference.conf file):
 
-```
+{% code_block typesafeconfig %}
 spray.can {
   client {
     # The max time period that a client connection will be waiting for a response
@@ -50,7 +50,7 @@ spray.can {
 
   }
 }
-```
+{% endcode_block %}
 
 Their meanings are very clearly described in the comments, but do people really understand what they mean? quite often
 the answer is no, so we decided to throw a bit of light over these configuration settings and uncover what is going on
@@ -67,7 +67,7 @@ affect the behaviour of your application. Hopefully that will be enough for you 
 
 Let's start with a simple code example:
 
-```scala
+{% code_block scala %}
 import akka.actor.ActorSystem
 import akka.util.Timeout
 import spray.client.pipelining.sendReceive
@@ -87,21 +87,21 @@ object SprayClientExample extends App with RequestBuilding {
   }
   response.onComplete(_ => println(s"Request completed in ${System.currentTimeMillis() - startTimestamp} millis."))
 }
-```
+{% endcode_block %}
 
 We have a simple service running on `localhost:9090` that will respond to these requests with a 15 seconds delay.
 Running the above example code, after the short wait, yields the following output:
 
-```
+{% code_block %}
 Request completed in 16020 millis.
-```
+{% endcode_block %}
 
 Nothing special, it does exactly what we think it should do. Note that we are setting a high (60 seconds) timeout for
 the Request Level API, primarily to avoid it getting in our way for this test and we will later revisit it. Now let's
 start with the surprises, what happens if we send six requests at once with the default configration?, this modified
 version of the code:
 
-```scala
+{% code_block scala %}
   for(r <- 1 to 6) {
     val startTimestamp = System.currentTimeMillis()
     val response = clientPipeline {
@@ -109,18 +109,18 @@ version of the code:
     }
     response.onComplete(_ => println(s"Request [$r] completed in ${System.currentTimeMillis() - startTimestamp} millis."))
   }
-```
+{% endcode_block %}
 
 Yields the following output (ordering might be different when you try it, but the important bits will remain):
 
-```
+{% code_block scala %}
 Request [3] completed in 15887 millis.
 Request [4] completed in 15887 millis.
 Request [1] completed in 16033 millis.
 Request [2] completed in 15887 millis.
 Request [6] completed in 30891 millis.
 Request [5] completed in 30891 millis.
-```
+{% endcode_block %}
 
 At this point you might have two questions in mind: first, why the first four requests complete in ~15 seconds but the
 last two requests take ~30 seconds to complete? That's the easy one, Spray Client creates a `HttpHostConnector` for each
@@ -156,14 +156,14 @@ HttpHostConnector to work.
 such, it has to find or create a suitable HttpHostConnectionSlot for dispatching the incoming HTTP request and if it
 can't find one then it will queue the request until a suitable one becomes available. Depending on whether HTTP
 pipelining is on or off the logic for dispatching the requests will vary, we will assume the default setting of
-`spray.can.host-connector.pipelining = off` and you can read more about how pipelining works in the [Spray documentation][spray-host-connector-documentation]. 
+`spray.can.host-connector.pipelining = off` and you can read more about how pipelining works in the [Spray documentation][spray-host-connector-documentation].
 When the host connector creates a new HttpHostConnectionSlot, the new child is provided with the HttpClientSettingsGroup
-that was passed by the HttpManager when creating the HttpHostConnector. Here is where the last two request from our 
+that was passed by the HttpManager when creating the HttpHostConnector. Here is where the last two request from our
 earlier example got queued waiting for a connection to be available.
 
 4. The HttpHostConnectionSlot will ask the HttpClientSettingsGroup to create a new HttpClientConnection and once it is
 connected it will dispatch the request to it. The process of setting up the HttpClientConnection only happens when the
-first request arrives and then the same connection will be reused as for long as possible. 
+first request arrives and then the same connection will be reused as for long as possible.
 
 5. The HttpClientConnection talks to the Akka-IO layer to establish the TCP connection and sends the HTTP request data
 to it. This is a very simplyfied version of what happens here, but in order to keep it short we should just be aware
@@ -185,7 +185,7 @@ potentially blocked by some naively uncompartmentalized expensive operations.
 The Host Level API is just about talking directly to the HttpHostConnector instead of going through the HttpManager to
 get to it. After that, everything is the same as what we described above. The gist of it is that you send a
 `Http.HostConnectorSetup` message to the HttpManager and it will reply with a `Http.HostConnectorInfo` containing the
-ActorRef of the HttpHostConnector, then you can send the requests directly to it. 
+ActorRef of the HttpHostConnector, then you can send the requests directly to it.
 
 If you decide to setup and use a HttpHostConnector directly, keep in mind that it has an idle timout after which it will
 be stopped and the ActorRef that you have for the HttpHostConnector will no longer be valid and you either set the idle
@@ -200,14 +200,14 @@ be done down the road. Of course, each case has it's needs and only testing your
 
 Take a look at the signatures of `sendReceive`:
 
-```scala
+{% code_block scala %}
   type SendReceive = HttpRequest ⇒ Future[HttpResponse]
 
-  def sendReceive(implicit refFactory: ActorRefFactory, executionContext: ExecutionContext, 
+  def sendReceive(implicit refFactory: ActorRefFactory, executionContext: ExecutionContext,
     futureTimeout: Timeout = 60.seconds): SendReceive
 
   def sendReceive(transport: ActorRef)(implicit ec: ExecutionContext, futureTimeout: Timeout): SendReceive
-```
+{% endcode_block %}
 
 The implicit timeout provided in our example as `requestTimeout` satisfies the `futureTimeout` implicit parameter of the
 `sendReceive` function, but this timeout doesn't have anything to do with all the timeouts we have seen before, it is
@@ -227,27 +227,27 @@ seconds, all response futures will be completed with a AskTimeoutException after
 will send all requests to our service anyway, even the last two requests that have to wait ~15 seconds until a
 connection becomes available. The output generated by that modified version looks like this:
 
-```
+{% code_block %}
 Request [1] completed in 10161 milliseconds.
 Request [2] completed in 10020 milliseconds.
 Request [3] completed in 10020 milliseconds.
 Request [4] completed in 10020 milliseconds.
 Request [5] completed in 10020 milliseconds.
 Request [6] completed in 10020 milliseconds.
-```
+{% endcode_block %}
 
 but ~5 seconds after that, the first four responses arrive and go to dead letters because nobody is waiting for them and
 after ~15 seconds more the last two responses arrive, also going to dead letters. The log output looks like this
 (shortened to keep it readable):
 
-```
+{% code_block %}
 [06:00:12.153] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
 [06:00:12.153] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
 [06:00:12.154] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
 [06:00:12.154] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
 [06:00:27.161] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
 [06:00:27.161] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
-```
+{% endcode_block %}
 
 
 ### One More Thing: Retries ###
