@@ -55,13 +55,6 @@ module Jekyll
         return "Not tag attribute specified"
       end
 
-
-      # @start = text.match(/\bstart:([0-9]*)/)
-      # @start = @start.nil? ? 1 : @start.captures[0].to_i
-      #
-      # @end = text.match(/\bend:([0-9]*)/)
-      # @end = @end.nil? ? 0 : @end.captures[0].to_i
-
       @label = text.match(/\blabel:"(.*)"/)
       @label = @label.nil? ? @language.capitalize : @label.captures[0]
 
@@ -84,22 +77,23 @@ module Jekyll
 
       config = {}
       config[:language] = @language
-      config[:code] = get_range(file_path.read, @tag, @end)
+      config[:code] = get_range(file_path.read, @tag)
       config[:label] = @label
 
       YAML::dump(config)
     end
 
 
-    def get_range (code, tag, endline)
-      line_count = code.lines.to_a.size
+    def get_range (code, tag)
+      lines = code.lines.to_a
+      line_count = lines.size
       start_line = code.lines.find_index { |l| l.include? "#{tag}:start" }
       end_line = code.lines.find_index { |l| l.include? "#{tag}:end" }
 
       raise "#{@file} does not contain the #{tag}:start element." if start_line.nil?
       raise "#{@file} does not contain the #{tag}:end element." if end_line.nil?
 
-      code = code.split(/\n/).slice(start_line + 1, end_line - start_line - 1).join("\n")
+      code = lines.slice(start_line + 1, end_line - start_line - 1).join("").strip
 
       CGI::escapeHTML(code)
     end
