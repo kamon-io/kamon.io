@@ -11,7 +11,7 @@ Version 0.4.0 <small>(2015-05-xx)</small>
 ------------------------------------------------------------------------------------------------
 
 * kamon-core
-  * Traces subscriptions V1 (see [issue 123](https://github.com/kamon-io/Kamon/issues/123)).
+  * Traces subscriptions V1. Check out our [Metrics subscriptions protocol documentation](/core/metrics/subscription-protocol/) for more details..
   * Lift the MDC tools of LoggerLikeInstrumentation into something generic (see [issue 100](https://github.com/kamon-io/Kamon/issues/100)).
   * Store in TraceLocal useful data to diagnose errors (see [issue 6](https://github.com/kamon-io/Kamon/issues/6)).
   * Introduced support for metric tags (see [pull 164](https://github.com/kamon-io/Kamon/pull/164)).
@@ -21,9 +21,9 @@ Version 0.4.0 <small>(2015-05-xx)</small>
   * Fix ThresholdSampler to use minimum-elapsed-time setting (see [pull 129](https://github.com/kamon-io/Kamon/pull/129)).
   * Improve the scheduling of measurement-taking future callbacks (see [issue 143](https://github.com/kamon-io/Kamon/issues/143)).
   * Provide a way to subscribe to metrics with plain string patterns (see [issue 141](https://github.com/kamon-io/Kamon/issues/141)).
-  * Make the metric filters `merge friendly` (see [issue 138](https://github.com/kamon-io/Kamon/issues/138)).
+  * Make the metric filters merge friendly (see [issue 138](https://github.com/kamon-io/Kamon/issues/138)).
   * Create some sort of `KamonLoader` extension (see [issue 137](https://github.com/kamon-io/Kamon/issues/137)).
-  * Separate `akka`, `scala` and `scalaz` instrumentation from `kamon-core` (see [issue 136](https://github.com/kamon-io/Kamon/issues/136)).
+  * Separate akka, scala and scalaz instrumentation from `kamon-core` (see [issue 136](https://github.com/kamon-io/Kamon/issues/136)).
 
  
 * kamon-akka
@@ -64,9 +64,9 @@ Version 0.4.0 <small>(2015-05-xx)</small>
   * Two-phase sigar loading (see [pull 124](https://github.com/kamon-io/Kamon/pull/124))
 
 * kamon-annotation 
-  * This new module provide a simple way to integrate the kamon instruments using annotations (see [issue 158](https://github.com/kamon-io/Kamon/issues/158)).
+  * This new module provide a simple way to integrate the kamon instruments using annotations! Check out our [Annotation documentation](/integrations/annotation/annotation/) for more details.
 
-* kamon-jdbc <span class="label label-warning">experimental</span></li>
+* kamon-jdbc <span class="label label-warning">experimental</span>
   * This new module collects metrics related to JDBC (see [issue 107](https://github.com/kamon-io/Kamon/issues/107)) for more detail.
 
 * kamon-statsd 
@@ -76,7 +76,6 @@ Version 0.4.0 <small>(2015-05-xx)</small>
   
 * kamon-datadog 
   * Report HttpServerMetrics (see [issue 132](https://github.com/kamon-io/Kamon/issues/132))
-
 
 * site
   * Introduce new design
@@ -119,7 +118,7 @@ Version 0.3.5/0.2.5 <small>(2014-11-11)</small>
   * Introduce Context Swtitches in System Metrics (see [issue 66](https://github.com/kamon-io/Kamon/issues/66)).
 
 
-* kamon-akka-remote <span class="label label-warning">experimental</span></li>
+* kamon-akka-remote <span class="label label-warning">experimental</span>
   * Provide basic support for akka cluster and remoting (see [issue 61](https://github.com/kamon-io/Kamon/issues/61)).
   * Separate remoting instrumentation from kamon-core (see [issue 99](https://github.com/kamon-
   io/Kamon/issues/99)).
