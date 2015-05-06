@@ -1,6 +1,6 @@
 ---
 title: Kamon | Acknowledgments
-layout: default
+layout: documentation
 ---
 
 Acknowledgments

@@ -1,6 +1,6 @@
 ---
 title: Kamon | License
-layout: default
+layout: documentation
 ---
 
 License
