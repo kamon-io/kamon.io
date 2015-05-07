@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  ~ =========================================================================================
+  ~ Copyright © 2013 the kamon project <http://kamon.io/>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License. You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the
+  ~ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+  ~ either express or implied. See the License for the specific language governing permissions
+  ~ and limitations under the License.
+  ~ =========================================================================================
+  -->
+
+<html lang="en">
+  <head>
+    <link href="https://plus.google.com/107736741680270898032?rel=author">
+    <title>{{ page.title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/syntax-highlight.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/kamon.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    {% include blog-header.html %}
+
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            {% include blog-sidebar.html %}
+          </div>
+          <div class="col-sm-9">
+            {% for post in site.posts %}
+              <div class="row">
+                <div class="feat-box">
+                  <h4><a href="{{post.url}}">{{post.title}}</a></h4>
+                  <p class="date"><i class="fa fa-calendar-o"></i> {{post.date | date_to_string }}</p>
+                  <p>
+                    {{post.excerpt}}
+                  </p>
+                  <p>
+                    <a href="#" class="btn btn-primary upper">Read More</a>
+                  </p>
+                </div>
+              </div>
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/kamon.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    {% include google-analytics.html %}
+
+  </body>
+</html>
