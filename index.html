@@ -1,76 +1,155 @@
 ---
-layout: default
 title: Kamon - Tools for Monitoring Reactive Applications built on top of Akka, Spray and Play!
 ---
 
-<div class="container">
-  <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-          <img class="img-responsive" src="/assets/img/kamon-logo-full.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://plus.google.com/107736741680270898032?rel=author">
+  <title>{{page.title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/syntax-highlight.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/css/kamon.css">
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="header homepage-header">
+  <a href="#" class="git-fork"></a>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="logo-wrap"><a class="logo hide" href="#"><img src="assets/img/kamon-logo.png" alt="logo" /></a></div>
       </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-      <p class="text-center">
-      Kamon is a Open Source set of tools that help you to get metrics out of your reactive applications built
-      on top of Akka, Spray and Play! Kamon uses bytecode instrumentation to introduce metrics and tracing
-      logic into your application, without you having to modify a single line of code. All the collected
-      information is available through a simple, actor-based messaging protocol with integrations already
-      available out of the box. See our <a href="/introduction/get-started">getting started</a> section and
-      learn how to monitor your apps right away!</p>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <p class="alert alert-info"><strong>We need your help!</strong> Our site is under construction, if you came here looking
-    for info and couldn't find what you are looking for please drop us a line on the <a href="https://groups.google.com/forum/#!forum/kamon-user">mailing list</a>,
-    raise a issue on <a href="https://github.com/kamon-io/Kamon">github</a> or just let us know at <a href="https://twitter.com/kamonteam">twitter</a>,
-    we are here to help! Hopefully next time you come there will be more info here :D. </p>
-  </div>
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-sm-4">
-      <h3><i class="fa fa-users"></i> Akka <small>actors metrics and tracing</small></h3>
-
-      <p>Be prepared to get metrics of:
-          <ul>
-            <li>Message processing times</li>
-            <li>Time waiting in mailbox</li>
-            <li>Mailbox sizes</li>
-            <li><a href="/core/tracing/core-concepts/">Message flow tracing</a></li>
-            <li>Dispatchers health</li>
-          </ul>
-      </p>
-
-      <p><a class="btn btn-default btn-sm" href="/integrations/akka" role="button">Tell me more &raquo;</a></p>
-    </div>
-
-    <div class="col-sm-4">
-      <h3><i class="fa fa-cogs"></i> Spray <small>server/client tracing</small></h3>
-	      <p>Kamon already understands when a request starts and ends in a Spray application, you will get:
-	    <ul>
-	        <li>Processing time for incoming requests</li>
-            <li>spray-client request metrics</li>
-            <li>Automatic trace token propagation</li>
+      <div class="col-sm-8">
+        <ul class="navigation">
+          <li>
+            <a class="btn btn-nav btn-primary" href="/introduction/overview/">Docs</a>
+          </li>
+          <li>
+            <a class="btn btn-nav btn-inverse" href="/teamblog/">Blog</a>
+          </li>
         </ul>
-      </p>
-
-      <p><a class="btn btn-default btn-sm" href="/integrations/spray/server-side/" role="button">Tell me more &raquo;</a></p>
-    </div>
-
-    <div class="col-sm-4">
-      <h3><i class="fa fa-bar-chart-o"></i> StatsD <small>Reporting</small></h3>
-
-      <p>StatsD is everywhere, let your metrics data be everywhere too:
-        <ul>
-            <li>Actor Metrics</li>
-            <li>Trace Metrics</li>
-            <li>User Metrics</li>
-        </ul>
-      </p>
-
-      <p><a class="btn btn-default btn-sm" href="/backends/statsd/" role="button">Tell me more &raquo;</a></p>
+      </div>
     </div>
   </div>
-</div>
+</div><!-- /.header -->
+
+<div class="homepage-main">
+  <div class="head-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p class="text-center">
+            <img src="assets/img/head-kamon-logo.png" alt="logo" />
+          </p>
+          <h2 class="text-center homepage-title">
+            The <strong>Open Source</strong> tool for monitoring applications running on the JVM.
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="text-center">
+            <a href="#" class="homepage-circle"><i class="fa fa-users"></i></a>
+          </p>
+          <p class="text-center">
+            Help you to get metrics out of your reactive applications built on top of Akka Spray and Play!
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p class="text-center">
+            <a href="#" class="homepage-circle"><i class="fa fa-cogs"></i></a>
+          </p>
+          <p class="text-center">
+             Uses bytecode instrumentation to introduce metrics and tracing logic into your application, without you having to modify a single line of code.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p class="text-center">
+            <a href="#" class="homepage-circle"><i class="fa fa-bar-chart"></i></a>
+          </p>
+          <p class="text-center">
+            All the collected information is available through a simple, actor-based messaging protocol with integrations already available out of the box.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p class="text-center">
+            <a href="/introduction/get-started/" class="btn btn-cta">Get Started</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.homepage-main -->
+
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2 class="feat-title text-center">Latest from Our Blog</h2>
+      </div>
+    </div>
+    <div class="row">
+      {% for post_index in (0..2) %}
+        {% assign current_post = site.posts[post_index] %}
+        <div class="col-md-4">
+          <div class="feat-box">
+            <h3><a href="{{current_post.url}}">{{current_post.title}}</a></h3>
+            <p class="date"><i class="fa fa-calendar-o"></i> {{ current_post.date | date_to_string }}</p>
+            <p>
+              {{current_post.excerpt}}
+            </p>
+            <p>
+              <a href="{{current_post.url}}" class="btn btn-primary upper">Read More</a>
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div><!-- /.main -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fa fa-2x fa-git"></i></a>
+          <a href="#" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="#" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 
 	$(function(){
-	  $('a').each(function() {
+	  $('div#doc-tree a').each(function() {
 	    if ($(this).prop('href') == window.location.href) {
 	      $(this).addClass('active');
 				//$(this).parent().closest('li').children('label').addClass('active');
