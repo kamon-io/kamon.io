@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'kamon-annotation-example'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "http://snapshots.kamon.io/"
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile("io.kamon:kamon-core_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
+    compile("io.kamon:kamon-log-reporter_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
+    compile("io.kamon:kamon-scala_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
+    compile("io.kamon:kamon-annotation_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
+
+    compile 'org.scala-lang:scala-library:2.11.6'
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
