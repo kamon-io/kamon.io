@@ -3,119 +3,55 @@ title: Kamon | Documentation | Reporting Data to New Relic
 layout: documentation
 ---
 
-Reporting Data to New Relic
-===========================
+Reporting Metrics to New Relic
+==============================
 
-If you are a [New Relic] user and tried to start your Spray/Akka application using the New Relic's agent you probably
-noticed a crude reality: nothing is shown in your dashboard, no web transactions are recognised and errors are not
-reported for your Spray/Akka applications. Don't even think about detailed traces for the slowest transactions.
-
-We love Spray and Akka, and we love New Relic, we couldn't leave this happening anymore!
+[New Relic] is a well know and widely spread Application Performance Management provider that, among other platforms,
+supports monitoring applications running on the JVM. Although New Relic has it's own instrumentation agent that
+introduces their proprietary tracing and metrics code, we found many of our users wanting to send their metrics data to
+New Relic, so we delivered :).
 
 <p class="alert alert-info">This is not an official New Relic product, and is not endorsed by New Relic.</p>
-
-You can use our New Relic integration module to report Trace metrics to New Relic, the data being currently reported is:
-
-- Time spent for Web Transactions: Also known as `HttpDispatcher` time, represents the total time taken to process a web
-  transaction, from the moment the `HttpRequest` is received by spray-can, to the moment the answer is sent to the IO
-  layer.
-- Apdex
-- Errors
-
-Differentiation between JVM and External Services is coming soon, as well as actor metrics and detailed traces.
 
 
 Installation
 -------------
 
-To report data to New Relic just make sure you put the `kamon-newrelic` library in your classpath and start your
-application with both, the Aspectj Weaver and New Relic agents. Please refer to our [get started] page for more info on
-how to add the AspectJ Weaver and the [New Relic Agent Installations Instructions].
-
-<p class="alert alert-warning">
-The order in which the `-javaagent:` options are added to your launch command might cause deadlocks during your
-application initialisation, please make sure that the `-javaagent:` option corresponding to the AspectJ Weaver is added
-before the one corresponding to the New Relic agent to avoid problems during startup.
-</p>
+Add the `kamon-newrelic` dependency to your project and ensure that it is in your classpath at runtime, that's it.
+Kamon's module loader will detect that the StatsD module is in the classpath and automatically start it.
 
 
 Configuration
 -------------
 
-Currently you will need to add a few settings to your `application.conf` file for the module to work:
-
-```scala
-akka {
-  // Custom logger for New Relic that takes all the `Error` events from the event stream and publish them to New Relic
-  loggers = ["akka.event.slf4j.Slf4jLogger", "kamon.newrelic.NewRelicErrorLogger"]
-
-  // Make sure the New Relic extension is loaded with the ActorSystem
-  extensions = ["kamon.newrelic.NewRelic"]
-}
-
-kamon {
-  newrelic {
-    // These values must match the values present in your newrelic.yml file.
-    app-name = "KamonNewRelicExample[Development]"
-    license-key = 0123456789012345678901234567890123456789
-  }
-}
-```
+There are two main items that you need to configure to get up and running: Your application name, set via the
+`kamon.newrelic.app-name` configuration setting and your New Relic license via the `kamon.newrelic.license-key`
+configuration setting.
 
 
-Let's see it in Action!
------------------------
+Integration Notes
+-----------------
 
-Let's create a very simple Spray application to show what you should expect from this module. The entire application code
-is in our [kamon-newrelic-example] at Github.
+This module will only report a small subset of the of the available metrics, namely:
 
-```scala
-import akka.actor.ActorSystem
-import spray.routing.SimpleRoutingApp
-
-object NewRelicExample extends App with SimpleRoutingApp {
-
- implicit val system = ActorSystem("kamon-system")
-
- startServer(interface = "localhost", port = 8080) {
-   path("helloKamon") {
-     get {
-       complete {
-         <h1>Say hello to Kamon</h1>
-       }
-     }
-   } ~
-   path("helloNewRelic") {
-     get {
-       complete {
-         <h1>Say hello to New Relic</h1>
-       }
-     }
-   }
- }
-}
-```
-
-As you can see, this is a dead simple application: two paths, different responses for each of them. Now let's hit it hard
-with Apache Bench:
-
-```bash
-ab -k -n 200000 http://localhost:8080/helloKamon
-ab -k -n 200000 http://localhost:8080/helloNewRelic
-```
-
-After a couple minutes running you should start seeing something similar to this in your dashboard:
-
-<img class="img-responsive" src="/assets/img/newrelic.png">
-
-<div class="alert alert-info">
-Note: Don't think that those numbers are wrong, Spray is that fast!
-</div>
+* __Web Transaction Metrics__: That are generated by using all the traces that are measured from your application.
+* __External Services__:  Generated by using all segments that have the `http-client` category.
+* __Apdex__: Currently a single Apdex value is being reported as an aggregate of traces in your application. You can use
+the `kamon.newrelic.apdexT` configuration setting to change the Apdex-T value, which defaults to one second.
+* __Custom Metrics__: All single-intrument entities are reported as custome metrics to New Relic. Please keep in mind that
+you will need a New Relic paid subscription to see custom metrics for your application.
 
 
-Limitations
------------
-* The first implementation only supports a subset of New Relic metrics.
+Visualization and Fun
+---------------------
+
+New Relic has a set of predefined dashboards with fixed metric categories on them that will allow you to see the metrics
+reported by the `kamon-newrelic` module without you having to do anything on the New Relic side. Here are a few screenshots
+of how your traces and segments will look like in the New Relic dashboards:
+
+<img class="img-responsive" src="/assets/img/newrelic-module-newrelic-dashboard.png">
+<img class="img-responsive" src="/assets/img/newrelic-module-transactions-tab.png">
+<img class="img-responsive" src="/assets/img/newrelic-module-external-services.png">
 
 
 Licensing
