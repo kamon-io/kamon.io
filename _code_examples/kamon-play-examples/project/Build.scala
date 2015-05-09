@@ -35,7 +35,7 @@ object ApplicationBuild extends Build {
         "-Xlog-reflective-calls"
       ))
 
-  val kamonVersion = "0.3.6-c6ba11c2238b85746ac525505b5dbc7e517eb9f9"
+  val kamonVersion = "0.4.0"
 
   val dependencies = Seq(
     "io.kamon"    %% "kamon-core"           % kamonVersion,

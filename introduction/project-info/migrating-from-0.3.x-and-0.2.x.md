@@ -17,7 +17,7 @@ All the Scala and Akka instrumentation that was initially provided with the `kam
 `kamon-scala` and `kamon-akka` modules respectively, make sure that you add those modules if you are expecting to use
 the features available there.
 
-If you are still using Akka 2.2.x please make sure that you use the artifacts that have the `-akka-2.2` suffix.
+If you are still using Akka 2.2.x please make sure that you use the artifacts that have the `_akka-2.2` suffix.
 
 
 ### Start Kamon ###

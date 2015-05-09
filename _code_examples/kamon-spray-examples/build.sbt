@@ -5,8 +5,8 @@ libraryDependencies ++= Seq(
   "io.spray" %% "spray-can" % "1.3.1",
   "io.spray" %% "spray-client" % "1.3.1",
   "io.spray" %% "spray-routing" % "1.3.1",
-  "io.kamon" %% "kamon-core" % "0.3.6-3792237be91790056f733d10e3255d4cff7f8eaf",
-  "io.kamon" %% "kamon-spray" % "0.3.6-3792237be91790056f733d10e3255d4cff7f8eaf"
+  "io.kamon" %% "kamon-core" % "0.4.0",
+  "io.kamon" %% "kamon-spray" % "0.4.0"
 )
 // tag:base-kamon-dependencies:end
 
