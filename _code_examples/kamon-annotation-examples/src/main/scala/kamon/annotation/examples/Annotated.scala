@@ -37,7 +37,7 @@ import kamon.annotation.Count
 @EnableKamon
 case class Annotated(id: Long) {
 
- 	@Count(name = "${'count:' += this.id}", tags = "#{'my-awesome-counter':'1', 'env':'prod'}")
+  @Count(name = "${'count:' += this.id}", tags = "#{'my-awesome-counter':'1', 'env':'prod'}")
   def countedMethod(): Unit = {}
 
 }

@@ -9,8 +9,9 @@ Using the LogReporter
 The `kamon-log-reporter` module is a very simple metrics reporter that subscribes to certain supported categories and
 dumps the available data in table-like format on every tick.
 
-This module is not meant to be used in production environments, but it certainly is a convenient way to test Kamon
-without having to install a full-fledged metrics backend for development purposes.
+<p class="alert alert-info">
+This module is not meant to be used in <b>production environments</b>, but it certainly is a convenient way to test Kamon without having to install a full-fledged metrics backend for development purposes.
+</p>
 
 
 Installation
