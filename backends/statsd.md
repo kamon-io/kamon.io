@@ -17,6 +17,9 @@ Installation
 Add the `kamon-statsd` dependency to your project and ensure that it is in your classpath at runtime, that's it.
 Kamon's module loader will detect that the StatsD module is in the classpath and automatically start it.
 
+Please note that even while the Datadog Agent uses a StatsD-like protocol, the protocol features used by this module are
+not compatible with Datadog's implementation. If you need to send data to Datadog then use our [Datadog Module].
+
 
 Configuration
 -------------
@@ -29,17 +32,17 @@ following subscriptions are included:
 {% code_block typesafeconfig %}
 kamon.statsd {
   subscriptions {
-    histogram       = [ "\*\*" ]
-    min-max-counter = [ "\*\*" ]
-    gauge           = [ "\*\*" ]
-    counter         = [ "\*\*" ]
-    trace           = [ "\*\*" ]
-    trace-segment   = [ "\*\*" ]
-    akka-actor      = [ "\*\*" ]
-    akka-dispatcher = [ "\*\*" ]
-    akka-router     = [ "\*\*" ]
-    system-metric   = [ "\*\*" ]
-    http-server     = [ "\*\*" ]
+    histogram       = [ "**" ]
+    min-max-counter = [ "**" ]
+    gauge           = [ "**" ]
+    counter         = [ "**" ]
+    trace           = [ "**" ]
+    trace-segment   = [ "**" ]
+    akka-actor      = [ "**" ]
+    akka-dispatcher = [ "**" ]
+    akka-router     = [ "**" ]
+    system-metric   = [ "**" ]
+    http-server     = [ "**" ]
   }
 }
 {% endcode_block %}
@@ -99,3 +102,4 @@ get up and running in a few minutes and see it with your own metrics!
 [Graphite]: http://graphite.wikidot.com/
 [Grafana]: http://grafana.org
 [docker image]: https://github.com/kamon-io/docker-grafana-graphite
+[Datadog Module]: /backends/datadog/
