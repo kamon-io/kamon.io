@@ -64,7 +64,7 @@ Version 0.4.0 <small>(2015-05-09)</small>
   * Divide by Zero exception with sigar (see [issue 194](https://github.com/kamon-io/Kamon/issues/194)).
 
 * kamon-annotation
-  * This new module provide a simple way to integrate the kamon instruments using annotations! Check out our [Annotation documentation](/integrations/annotation/annotation/) for more details.
+  * This new module provide a simple way to integrate the kamon instruments using annotations! Check out our [Annotation documentation](/integrations/annotation/using-annotations/) for more details.
 
 * kamon-jdbc <span class="label label-warning">experimental</span>
   * This new module collects metrics related to JDBC (see [issue 107](https://github.com/kamon-io/Kamon/issues/107)) for more detail.
