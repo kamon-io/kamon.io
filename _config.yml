@@ -1,4 +1,5 @@
 name: Kamon - Tools for Reactive Applications Monitoring
+description: Kamon Team Blog
 markdown: kramdown
 highlighter: pygments
 permalink: pretty
