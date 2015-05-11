@@ -75,7 +75,7 @@ kamon.metrics {
 Should now look like this:
 
 {% code_block typesafeconfig %}
-kamon.metrics {
+kamon.metric {
   filters {
     akka-actor {
       includes = [ "system-name/user/simple-service-actor" ]
