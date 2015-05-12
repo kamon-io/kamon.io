@@ -98,3 +98,15 @@ kamon.metric {
 
 Now all Akka-specific entities will have the `akka-` prefix in their category name. Also, now all Akka entities will have
 their name prefixed with the name of the actor system to which they belong.
+
+
+### Changes to Spray's Trace Names ###
+
+The default name generator included in the `kamon-spray` module was generating traces name concatenating the HTTP method
+and the full path of incoming requests, which can be a recipe for OutOfMemoryErrors since the number of unique paths can
+be huge, specially if ids are included in the path, which every single REST application will do anyway. From now on the
+default name generator will assign `UnnamedTrace` as the default trace name and you should customize the trace name by
+either using the `traceName` directive or providing your own name generator. Both options are explained in the [Spray]
+section.
+
+[Spray]: /integrations/web-and-http-toolkits/spray/
