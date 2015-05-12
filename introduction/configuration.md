@@ -52,6 +52,11 @@ provide such a custom configuration object:
 {%   language java kamon-core-examples/src/main/java/kamon/examples/java/CustomConfiguration.java tag:custom-configuration %}
 {% endcode_example %}
 
+Please note that when you provide your own `Config` object, Kamon will use that and only that object as a configuration
+settings source. You must ensure that the `Config` object you are supplying contains both your custom settings and all
+the reference settings available in the classpath. Most APIs in the typesafe-config's `ConfigFactory` class already take
+care of that but if that isn't the case for you then simply adding a `.withFallback(ConfigFactory.defaultReference())`
+to your configuration object you can ensure that everything Kamon needs is in place.
 
 
 Special Considerations for Akka and Spray
