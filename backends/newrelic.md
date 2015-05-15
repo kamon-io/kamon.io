@@ -18,7 +18,7 @@ Installation
 -------------
 
 Add the `kamon-newrelic` dependency to your project and ensure that it is in your classpath at runtime, that's it.
-Kamon's module loader will detect that the StatsD module is in the classpath and automatically start it.
+Kamon's module loader will detect that the New Relic module is in the classpath and automatically start it.
 
 
 Configuration
