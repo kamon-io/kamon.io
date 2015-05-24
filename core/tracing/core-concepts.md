@@ -7,7 +7,7 @@ Tracing Module
 ==============
 
 The tracing module is responsible of providing the base APIs that allow you to record information about meaningful
-peaces of functionality executed in your application, allowing you to get deeper and more specialized data on how your
+pieces of functionality executed in your application, allowing you to get deeper and more specialized data on how your
 application and its internal components are behaving.
 
 While our metrics module guides you towards independently measuring specific components in your application, our tracing
