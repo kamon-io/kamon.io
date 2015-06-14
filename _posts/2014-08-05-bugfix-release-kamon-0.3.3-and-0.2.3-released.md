@@ -12,6 +12,8 @@ Dear users, the Kamon 0.3.2/0.2.2 release that went out last week turned out to 
   * User metrics were not being reported to StatsD and Datadog.
   * The `kamon-system-metrics` module artifacts didn't include all the Sigar related files.
 
+
+
 As usual, the compatibility information for this release:
 
    * 0.3.3 is compatible with Akka 2.3, Spray 1.3, Play 2.3 and Scala 2.10.x/2.11.x

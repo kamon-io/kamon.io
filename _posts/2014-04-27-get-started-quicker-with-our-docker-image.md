@@ -14,6 +14,7 @@ infrastructure and plumping, and let the users just focus on what cares to them,
 why today we are publishing a Docker image with all that you need to get started in a few minutes!
 
 
+
 The image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with a example
 dashboard that gives you the basic metrics currently collected by Kamon for both Actors and Traces. There are two ways
 for using this image:

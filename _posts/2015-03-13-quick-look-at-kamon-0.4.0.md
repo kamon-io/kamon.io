@@ -10,6 +10,8 @@ AkKA MONitoring" that was only able to produce a couple actor metrics into a rob
 hundreds of engineers around the globe; from guys doing a simple POC with Akka and Spray to big companies with several
 production servers being monitored with Kamon.
 
+
+
 At the very beginning we tried to use [Dropwizard Metrics] (formerly Codahale Metrics) under the hood; that would allow
 us to reuse many reporters already available and present people with something familiar, something they probably already
 used and was now being enhanced by Kamon to play nicely with reactive applications. But, as we went through this path we

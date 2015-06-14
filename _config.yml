@@ -6,3 +6,4 @@ permalink: pretty
 encoding: utf-8
 code_examples_folder: _code_examples
 host: 0.0.0.0
+excerpt_separator: "\n\n\n\n"

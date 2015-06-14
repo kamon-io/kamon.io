@@ -11,6 +11,8 @@ of you, the most important one being a IndexOutOfBoundsException being thrown in
 MinMaxCounter. We finally solved the issue and pushed a new release to make sure a stable version is available. The list
 of changes for this release is:
 
+
+
 * kamon-core
    * Fix IndexOutOfBoundsException being thrown when recording values from a MinMaxCounter (see [issue 71]).
    * Use the inline variant of TraceRecorder.withTraceContext.

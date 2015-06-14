@@ -9,6 +9,8 @@ If you have ever used spray-client in a real world application you certainly mus
 reasonable timeouts for HTTP requests and you might already be familiar with these guys (extracted from Spray's
 reference.conf file):
 
+
+
 {% code_block typesafeconfig %}
 spray.can {
   client {

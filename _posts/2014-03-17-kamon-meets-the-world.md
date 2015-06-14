@@ -12,6 +12,8 @@ Some time ago we started working with Akka and Spray, and it has been awesome! T
 to use these toolkits, and it didn't take long until our coworkers started experimenting as well, I guess that's what
 happens when you find something that brings more joy than usual to everyday coding.
 
+
+
 As the prototypes turned into applications a concern started to rise: how are we going to monitor this applications on
 production? Throwing our default monitoring tool at the apps gave us an empty dashboard with no metrics at all and
 acquiring another monitoring tool wasn't an option. What did we do?, we started building something that could fill all

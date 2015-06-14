@@ -11,6 +11,8 @@ Dear community,
 We are happy to announce that Kamon 0.3.0, our latest release, is out and compatible with Akka 2.3! From now on, all of
 our releases will come in pairs and aligned with the following Akka versions:
 
+
+
 * 0.3.x releases are compatible with Akka 2.3, Spray 1.3 and Play 2.3-M1.
 * 0.2.x releases are compatible with Akka 2.2, Spray 1.2 and Play 2.2.
 
