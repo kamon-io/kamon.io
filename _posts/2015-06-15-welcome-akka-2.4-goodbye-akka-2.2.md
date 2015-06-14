@@ -30,7 +30,7 @@ artifacts will target Akka 2.4 and there will be a secondary set of artifacts wi
 
 Thanks to some [experiments] done by [Kailuo Wang], we now know that the current code base is compatible with Akka
 2.4-SNAPSHOT so we decided to publish a Kamon snapshot as well targeting that version, you can now find Kamon
-`0.4.1-4a37210cd808bc27916c5babfef82f16825fdefe` in our [snapshots repository]. Just remember to change the module names
+`0.4.1-35bb09838d1b0a2a1e36cd68c2db158b728a2981` in our [snapshots repository]. Just remember to change the module names
 to include the `_akka-2.4` suffix, like in `kamon-core_akka-2.4` and so on.
 
 We hope you have fun with this snapshot and of course, that you report back if there is any inconvenient while using it!
