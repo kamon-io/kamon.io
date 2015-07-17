@@ -31,17 +31,15 @@
           </div>
           <div class="col-sm-9">
             {% for post in site.posts %}
-              <div class="row">
-                <div class="feat-box">
-                  <h4><a href="{{post.url}}">{{post.title}}</a></h4>
-                  <p class="date"><i class="fa fa-calendar-o"></i> {{post.date | date_to_string }}</p>
-                  <p>
-                    {{post.excerpt}}
-                  </p>
-                  <p>
-                    <a href="{{post.url}}" class="btn btn-primary upper">Read More</a>
-                  </p>
-                </div>
+              <div class="feat-box">
+                <h4><a href="{{post.url}}">{{post.title}}</a></h4>
+                <p class="date"><i class="fa fa-calendar-o"></i> {{post.date | date_to_string }}</p>
+                <p>
+                  {{post.excerpt}}
+                </p>
+                <p>
+                  <a href="{{post.url}}" class="btn btn-primary upper">Read More</a>
+                </p>
               </div>
 
             {% endfor %}
