@@ -1,20 +1,16 @@
 ---
 layout: post
-title: Scalatra Kamon Integragion
-date: 2015-07-30
+title: Scalatra Kamon Integration
+date: 2015-08-03
 categories: teamblog
 ---
+In this post we’ll show how set up a basic **Scalatra** project and instrumented it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that.
 
-Build Setup
-----------------------------------------------
+### Build Setup ###
 
-you need include in your `Build.scala` some dependencies. It should look like this.
+We need include in our [Build.scala] some dependencies. It should look like this.
 
-```scala
-val resolutionRepos = Seq(
-      "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases",
-      "Kamon Repository Snapshots" at "http://snapshots.kamon.io"
-  )
+{% code_block scala %}
 
 val dependencies = Seq(
     "io.kamon"    	          %% "kamon-core"           	  % "0.4.0",
@@ -27,39 +23,32 @@ val dependencies = Seq(
 
 val main = Project(appName, file(".")).settings(libraryDependencies ++= dependencies)
                                       .settings(defaultSettings: _*)
+                                      .settings(aspectjSettings ++ AspectJ.aspectjSettings) //(1)
+{% endcode_block %}
 
-```
+1. We need register the [AspectJ] weaver with the purpose of automatically propagates the `TraceContext` across the asynchronous operations that might be scheduled for a given Future.
 
-### Configuring Scalatra ###
-in order to `Scalatra` listen web requests, it necessary register a listener in `web.xml` inside of  `../WEB-INF` folder.
-
-```xml
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
-    <listener>
-        <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
-    </listener>
-</web-app>
-```
 ### Create a Simple Servlet ###
 
-Let's start creating a convenient trait in order to use the Kamon instruments:
+Let's start creating a convenient trait in order to use the Kamon [instruments]
 
-```scala
+{% code_block scala %}
 trait KamonSupport {
   def counter(name: String) = Kamon.metrics.counter(name)
   def minMaxCounter(name: String) = Kamon.metrics.minMaxCounter(name)
   def time[A](name: String)(thunk: => A) = Latency.measure(Kamon.metrics.histogram(name))(thunk)
+  def traceFuture[A](name:String)(future: => Future[A]):Future[A] =
+    Tracer.withContext(Kamon.tracer.newContext(name)) {
+     future.andThen { case completed ⇒ Tracer.currentContext.finish() }(SameThreadExecutionContext)
+   }
 }
-```
+{% endcode_block %}
 
-Now let’s create a simple servlet that will record some metrics. Create a file called `KamonServlet.scala` and introduce following code
+Then we create a **Servlet** that will record some metrics and for achieve this we need mix our `KamonSupport` and call the provided methods.
 
-```scala
-class KamonServlet extends ScalatraServlet with KamonSupport {
-
+{% code_block scala %}
+class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
+  ...  
   get("/time") {
     time("time") {
       Thread.sleep(Random.nextInt(100))
@@ -73,43 +62,64 @@ class KamonServlet extends ScalatraServlet with KamonSupport {
   get("/counter") {
     counter("counter").increment()
   }
-}
-```
-also we will need `bootstrap` Scalatra, creating `ScalatraBootstrap.scala` in `src/main/scala` folder and adding the following code.
 
-```scala
+  get("/async") {
+    traceFuture("retrievePage") {
+      Future {
+        HttpClient.retrievePage()
+      }
+    }
+  }
+  ...
+}
+{% endcode_block %}
+
+now we have 5 **URL** that we can hit:
+
+* **GET** */kamon/time*
+* **GET** */kamon/counter*
+* **GET** */kamon/minMaxCounter*
+* **GET** */kamon/async*
+
+### Bootstrapping Scalatra and Kamon ###
+
+We will need bootstrap `Scalatra` and hook `Kamon` to their lifecycle and the best place for this is  `ScalatraBootstrap`.
+
+{% code_block scala %}
 
 class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext):Unit = {
-    Kamon.start()
+    Kamon.start() //(1)
     context.mount(new KamonServlet(), "/kamon")
   }
 
-  override def destroy(context: ServletContext): Unit = {
-    Kamon.shutdown()
+  override def destroy(context: ServletContext):Unit = {
+    Kamon.shutdown() //(2)
   }
 }
-```
-at this point we have 4 URL we can hit:
-  * **GET** /kamon/time
-  * **GET** /kamon/counter
-  * **GET** /kamon/minMaxCounter
+{% endcode_block %}
 
-### Configure Kamon modules ###
+1. To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon by using the `Kamon.start(..)` method.
+2. When you are done with Kamon, remember to shut it down using the `Kamon.shutdown()` method.
 
-```json
+### Select a Kamon Backend ###
+
+This time will we use the [kamon-log-reporter]. This module is not meant to be used in production environments, but it certainly is a convenient way to test Kamon and know in a quick manner what going on with our application in development, moreover like all Kamon modules it will be picked up from the classpath and started in runtime
+
+{% code_block typesafeconfig %}
 kamon {
   modules {
     kamon-log-reporter.auto-start = yes
   }
 }
+{% endcode_block %}
 
-```
+Additionally we can found more info about how to configure [modules] and the supported backends([StatsD], [Datadog], [New Relic], [Your Own]) in the docs.
 
 ### Start the Server ###
-Scalatra uses `Jetty` internally, and is itself is a simple java servlet. So what we can do is just run an embedded `Jetty` instance that points to the servlet and configure it.
+**Scalatra** uses `Jetty` internally, and is itself is a simple java servlet. So what we can do is just run an embedded `Jetty` instance that points to the servlet and configure it.
 
-```scala
+{% code_block scala %}
 object EmbeddedServer extends App {
   val server = new Server(8080)
   val context: WebAppContext = new WebAppContext()
@@ -128,140 +138,70 @@ object EmbeddedServer extends App {
       System.exit(1)
   }
 }
-```
-Before run the our server, we need create a `logback.xml` file to control the logging and only shows messages at `info` level or greater.
+{% endcode_block %}
 
-```xml
-<configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%date{HH:mm:ss.SSS} %-5level [%thread] %logger{55} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <root level="info">
-        <appender-ref ref="STDOUT" />
-    </root>
-</configuration>
-```
 We can run this application directly doing in the console ```sbt run```. The output that we will see will be something like this if we hit some of the endpoints we've set up.
 
-* curl http://localhost:8080/kamon/counter
-* curl http://localhost:8080/kamon/time
-* curl http://localhost:8080/kamon/minMaxCounter
+* **curl** *http://localhost:8080/kamon/time*
+* **curl** *http://localhost:8080/kamon/counter*
+* **curl** *http://localhost:8080/kamon/minMaxCounter*
 
-```
-[info] +--------------------------------------------------------------------------------------------------+
-[info] |                                                                                                  |
-[info] |                                         Counters                                                 |
-[info] |                                       -------------                                              |
-[info] |                                    counter  =>  1                                                |
-[info] |                                                                                                  |
-[info] |                                        Histograms                                                |
-[info] |                                      --------------                                              |
-[info] |  time                                                                                            |
-[info] |    Min: 57671680     50th Perc: 57671680       90th Perc: 57671680       95th Perc: 57671680     |
-[info] |                      99th Perc: 57671680     99.9th Perc: 57671680             Max: 57671680     |
-[info] |                                                                                                  |
-[info] |                                      MinMaxCounters                                              |
-[info] |                                    -----------------                                             |
-[info] |  minMaxCounter                                                                                   |
-[info] |          Min: 0                      Average: 0.0                         Max: 1                 |
-[info] |                                                                                                  |
-[info] +--------------------------------------------------------------------------------------------------+
-```
+{% code_block text %}
++------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|                                         Counters                                               |
+|                                       -------------                                            |
+|                                    counter  =>  1                                              |
+|                                                                                                |
+|                                        Histograms                                              |
+|                                      --------------                                            |
+|  time                                                                                          |
+|    Min: 57671680     50th Perc: 57671680       90th Perc: 57671680       95th Perc: 57671680   |
+|                      99th Perc: 57671680     99.9th Perc: 57671680             Max: 57671680   |
+|                                                                                                |
+|                                      MinMaxCounters                                            |
+|                                    -----------------                                           |
+|  minMaxCounter                                                                                 |
+|          Min: 0                      Average: 0.0                         Max: 1               |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+
+{% endcode_block %}
 
 ### Ok, but show me the money ###
-So far so good. But Kamon ...
+So far so good. **But what about if my route is running in a Future?**. The answer is **Nothing**, the body of the future will be executed asynchronously on some other thread in a provided `ExecutionContext`, but Kamon through bytecode instrumentation, will capture the `TraceContext` available when the future was created and make it available while executing the future’s body.
 
-```scala
-trait KamonSupport {
-  ...
-  def traceFuture[A](name:String)(future: => Future[A]):Future[A] = Tracer.withContext(Kamon.tracer.newContext(name)) {
-    future.onComplete(_ => Tracer.currentContext.finish())(SameThreadExecutionContext)
-    future
-  }
-}
-```
+Well, let's run the application with ```sbt run``` and we measure the **async** operation.
 
-```scala
-class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
+* **curl** *http://localhost:8080/kamon/async*
 
-  implicit val executor: ExecutionContext = ExecutionContext.Implicits.global
+{% code_block %}
++------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|    Trace: retrievePage                                                                         |
+|    Count: 1                                                                                    |
+|                                                                                                |
+|  Elapsed Time (nanoseconds):                                                                   |
+|    Min: 2164260864   50th Perc: 2164260864     90th Perc: 2164260864     95th Perc: 2164260864 |
+|                      99th Perc: 2164260864   99.9th Perc: 2164260864           Max: 2164260864 |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+
+{% endcode_block %}
 
-  get("/async") {
-    traceFuture("retrievePage") {
-      Future {
-        HttpClient.retrievePage()
-      }
-    }
-  }
-}
+For a more detailed explanation about the Kamon **Trace module** and **Automatic TraceContext Propagation with Futures** please start [here].
 
-object HttpClient {
-  def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
-    val prom = Promise[String]()
-    dispatch.Http(url("http://slashdot.org/") OK as.String) onComplete {
-      case Success(content) => prom.complete(Try(content))
-      case Failure(exception) => println(exception)
-    }
-    prom.future
-  }
-}
+### Enjoy! ###
+There it is, all your data metrics available to import into whatever tool you like. From here, you should be able to instrument your applications as-needed.
 
-```
+We also encourage you to review the full source code of [Scalatra Kamon Example] used in this tutorial.
 
-```scala
-object AspectJ {
-  lazy val aspectjSettings = Seq(
-    // fork the run so that javaagent option can be added
-    fork in run := true,
-    // add the aspectj weaver javaagent option
-    javaOptions in run <++= weaverOptions in Aspectj
-  )
-}
-```
-
-```scala
-we need modify your `Build.scala` and add the following.
-
-val main = Project(appName, file(".")).settings(libraryDependencies ++= dependencies)
-                                      .settings(defaultSettings: _*)
-                                      .settings(aspectjSettings ++ AspectJ.aspectjSettings) // we need register the AspectJ weaver
-```
-```scala
-trait KamonSupport {
-  ...
-  def traceFuture[A](name:String)(future: => Future[A]):Future[A] = Tracer.withContext(Kamon.tracer.newContext(name)) {
-    future.onComplete(_ => Tracer.currentContext.finish())(SameThreadExecutionContext)
-    future
-  }
-}
-```
-
-```scala
-trait KamonSupport {
-  ...
-  def traceFuture[A](name:String)(future: => Future[A]):Future[A] = Tracer.withContext(Kamon.tracer.newContext(name)) {
-    future.onComplete(_ => Tracer.currentContext.finish())(SameThreadExecutionContext)
-    future
-  }
-}
-```
-
-well, let run the application with ``sbt run``` and we measure the async operation.
-
-* curl http://localhost:8080/kamon/async
-
-```
-[info] +--------------------------------------------------------------------------------------------------+
-[info] |                                                                                                  |
-[info] |    Trace: retrievePage                                                                           |
-[info] |    Count: 1                                                                                      |
-[info] |                                                                                                  |
-[info] |  Elapsed Time (nanoseconds):                                                                     |
-[info] |    Min: 2164260864   50th Perc: 2164260864     90th Perc: 2164260864     95th Perc: 2164260864   |
-[info] |                      99th Perc: 2164260864   99.9th Perc: 2164260864           Max: 2164260864   |
-[info] |                                                                                                  |
-[info] +--------------------------------------------------------------------------------------------------+
-```
+[modules]: /core/modules/using-modules/
+[instruments]: /core/metrics/instruments/
+[kamon-log-reporter]: /backends/log-reporter/
+[AspectJ]: https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/AspectJ.scala
+[Build.scala]:https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/Build.scala
+[StatsD]: /backends/statsd/
+[Datadog]: /backends/datadog/
+[New Relic]: /backends/newrelic/
+[Your Own]: /core/metrics/subscription-protocol/
+[here]: /core/tracing/core-concepts/
+[Scalatra Kamon Example]: https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-scalatra-example
