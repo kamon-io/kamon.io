@@ -4,7 +4,7 @@ title: Scalatra Kamon Integration
 date: 2015-08-03
 categories: teamblog
 ---
-In this post we’ll show how set up a basic **Scalatra** project and instrumented it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that.
+In this post we’ll show how set up a basic **Scalatra** project and instrumented it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that, having said that, let's start.
 
 ### Build Setup ###
 
