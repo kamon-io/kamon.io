@@ -117,7 +117,7 @@ kamon {
 Additionally we can find more info about how to configure [modules] and supported backends([StatsD], [Datadog], [New Relic], [Your Own]) in the docs.
 
 ### Start the Server ###
-**Scalatra** uses `Jetty` internally, and is in itself a simple java servlet. So what we can do is just run an embedded `Jetty` instance that mount the servlet and configure it.
+**Scalatra** uses `Jetty` internally, and is in itself a simple java servlet. So what we can do is just run an embedded `Jetty` instance that mounts the servlet and configures it.
 
 {% code_block scala %}
 object EmbeddedServer extends App {
@@ -140,7 +140,7 @@ object EmbeddedServer extends App {
 }
 {% endcode_block %}
 
-We can run this application directly running froms the console ```sbt run```. The output we will see will be something like this if we hit some of the endpoints we've set up.
+We can run this application directly running from the console ```sbt run```. The output we will see will be something like this if we hit some of the endpoints we've set up.
 
 * **curl** *http://localhost:8080/kamon/time*
 * **curl** *http://localhost:8080/kamon/counter*
