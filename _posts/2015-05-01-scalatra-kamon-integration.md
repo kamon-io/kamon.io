@@ -4,11 +4,11 @@ title: Scalatra Kamon Integration
 date: 2015-08-03
 categories: teamblog
 ---
-In this post we’ll show how set up a basic **Scalatra** project and instrumented it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that, having said that, let's start.
+In this post we’ll show how set up a basic **Scalatra** project and instrument it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that, having said that, let's start.
 
 ### Build Setup ###
 
-We need include in our [Build.scala] some dependencies. It should look like this.
+We need to include in our [Build.scala] some dependencies. It should look like this.
 
 {% code_block scala %}
 
@@ -26,11 +26,11 @@ val main = Project(appName, file(".")).settings(libraryDependencies ++= dependen
                                       .settings(aspectjSettings ++ AspectJ.aspectjSettings) //(1)
 {% endcode_block %}
 
-1. We need register the [AspectJ] weaver with the purpose of automatically propagates the `TraceContext` across the asynchronous operations that might be scheduled for a given Future.
+1. We need to register the [AspectJ] weaver with the purpose of automatically propagating the `TraceContext` across the asynchronous operations that might be scheduled for a given Future.
 
 ### Create a Simple Servlet ###
 
-Let's start creating a convenient trait in order to use the Kamon [instruments]
+Let's start by creating a convenient trait in order to use the Kamon [instruments]
 
 {% code_block scala %}
 trait KamonSupport {
@@ -44,7 +44,7 @@ trait KamonSupport {
 }
 {% endcode_block %}
 
-Then we create a **Servlet** that will record some metrics and for achieve this we need mix our `KamonSupport` and call the provided methods.
+Then we create a **Servlet** that will record some metrics. in order to achieve this we mix our `KamonSupport` to call the provided methods.
 
 {% code_block scala %}
 class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
@@ -81,9 +81,9 @@ now we have 5 **URL** that we can hit:
 * **GET** */kamon/minMaxCounter*
 * **GET** */kamon/async*
 
-### Bootstrapping Scalatra and Kamon ###
+### Bootstrap Scalatra and Kamon ###
 
-We will need bootstrap `Scalatra` and hook `Kamon` to their lifecycle and the best place for this is  `ScalatraBootstrap`.
+We will need to bootstrap `Scalatra` and hook `Kamon` into it's lifecycle and the best place for this is  `ScalatraBootstrap`.
 
 {% code_block scala %}
 
@@ -104,7 +104,7 @@ class ScalatraBootstrap extends LifeCycle {
 
 ### Select a Kamon Backend ###
 
-This time will we use the [kamon-log-reporter]. This module is not meant to be used in production environments, but it certainly is a convenient way to test Kamon and know in a quick manner what going on with our application in development, moreover like all Kamon modules it will be picked up from the classpath and started in runtime
+This time will we use the [kamon-log-reporter]. This module is not meant to be used in production environments, but it certainly is a convenient way to test Kamon and know in a quick manner what's going on with our application in development, moreover like all Kamon modules it will be picked up from the classpath and started at runtime.
 
 {% code_block typesafeconfig %}
 kamon {
@@ -114,10 +114,10 @@ kamon {
 }
 {% endcode_block %}
 
-Additionally we can found more info about how to configure [modules] and the supported backends([StatsD], [Datadog], [New Relic], [Your Own]) in the docs.
+Additionally we can find more info about how to configure [modules] and supported backends([StatsD], [Datadog], [New Relic], [Your Own]) in the docs.
 
 ### Start the Server ###
-**Scalatra** uses `Jetty` internally, and is itself is a simple java servlet. So what we can do is just run an embedded `Jetty` instance that points to the servlet and configure it.
+**Scalatra** uses `Jetty` internally, and is in itself a simple java servlet. So what we can do is just run an embedded `Jetty` instance that mount the servlet and configure it.
 
 {% code_block scala %}
 object EmbeddedServer extends App {
@@ -140,7 +140,7 @@ object EmbeddedServer extends App {
 }
 {% endcode_block %}
 
-We can run this application directly doing in the console ```sbt run```. The output that we will see will be something like this if we hit some of the endpoints we've set up.
+We can run this application directly running froms the console ```sbt run```. The output we will see will be something like this if we hit some of the endpoints we've set up.
 
 * **curl** *http://localhost:8080/kamon/time*
 * **curl** *http://localhost:8080/kamon/counter*
@@ -190,10 +190,13 @@ Well, let's run the application with ```sbt run``` and we measure the **async** 
 For a more detailed explanation about the Kamon **Trace module** and **Automatic TraceContext Propagation with Futures** please start [here].
 
 ### Enjoy! ###
-There it is, all your data metrics available to import into whatever tool you like. From here, you should be able to instrument your applications as-needed.
+There it is, all your data metrics available to import into whatever tool you like. From here, you should be able to instrument your applications as needed.
 
 We also encourage you to review the full source code of [Scalatra Kamon Example] used in this tutorial.
 
+Thanks to [Carlos Ferreyra] for the review.
+
+[Carlos Ferreyra]:https://twitter.com/cryptic_marlbo
 [modules]: /core/modules/using-modules/
 [instruments]: /core/metrics/instruments/
 [kamon-log-reporter]: /backends/log-reporter/
