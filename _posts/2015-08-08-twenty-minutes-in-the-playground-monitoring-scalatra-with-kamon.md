@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
-date: 2015-08-03
+date: 2015-08-08
 categories: teamblog
 ---
 
