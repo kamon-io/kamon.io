@@ -1,14 +1,17 @@
 ---
 layout: post
-title: Scalatra Kamon Integration
+title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
 date: 2015-08-03
 categories: teamblog
 ---
-In this post we’ll show how set up a basic **Scalatra** project and instrument it to test the **Kamon** integration. This is a really simplified example and also we will avoid some issues related to the installation, because there are awesome tutorials about that, having said that, let's start.
+
+In this post we’ll show how to take a simple Scalatra project and setup up basic monitoring with Kamon. This is a really
+simplified example and also we will skip some issues related to the installation, because there are awesome tutorials
+about that. Having said that, let's get to it!
 
 ### Build Setup ###
 
-We need to include in our [Build.scala] some dependencies. It should look like this.
+We need to include in our [Build.scala] some dependencies. It should look like this:
 
 {% code_block scala %}
 
@@ -22,15 +25,21 @@ val dependencies = Seq(
     )
 
 val main = Project(appName, file(".")).settings(libraryDependencies ++= dependencies)
-                                      .settings(defaultSettings: _*)
-                                      .settings(aspectjSettings ++ AspectJ.aspectjSettings) //(1)
+              .settings(defaultSettings: _*)
+              .settings(aspectjSettings ++ AspectJ.aspectjSettings) //(1)
 {% endcode_block %}
 
-1. We need to register the [AspectJ] weaver with the purpose of automatically propagating the `TraceContext` across the asynchronous operations that might be scheduled for a given Future.
+The only reason why We need to register the [AspectJ] weaver is to automatically propagating the `TraceContext` across the
+asynchronous operations that might be scheduled for a given Future.
+
+Also note that there is no `kamon-scalatra` module, everything we are showing in this post is just using the APIs provided by
+`kamon-core` to monitor your application. This might also serve as insperation for other people to get other web frameworks
+working with Kamon as well.
+
 
 ### Create a Simple Servlet ###
 
-Let's start by creating a convenient trait in order to use the Kamon [instruments]
+Let's start by creating a convenient trait that will make it easier to add Kamon [instruments] to our servlets:
 
 {% code_block scala %}
 trait KamonSupport {
@@ -44,7 +53,8 @@ trait KamonSupport {
 }
 {% endcode_block %}
 
-Then we create a **Servlet** that will record some metrics. in order to achieve this we mix our `KamonSupport` to call the provided methods.
+Then we create a Servlet that will record some metrics. In order to achieve this we mix our `KamonSupport` to use the
+provided methods.
 
 {% code_block scala %}
 class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
@@ -74,16 +84,18 @@ class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport 
 }
 {% endcode_block %}
 
-now we have 5 **URL** that we can hit:
+now we have 5 URLs that we can hit:
 
 * **GET** */kamon/time*
 * **GET** */kamon/counter*
 * **GET** */kamon/minMaxCounter*
 * **GET** */kamon/async*
 
-### Bootstrap Scalatra and Kamon ###
 
-We will need to bootstrap `Scalatra` and hook `Kamon` into it's lifecycle and the best place for this is  `ScalatraBootstrap`.
+### Bootstraping Scalatra with Kamon ###
+
+We will need to bootstrap `Scalatra` and hook `Kamon` into it's lifecycle and the best place for this is using `ScalatraBootstrap`'s
+`init` and `destroy` hooks as shown bellow:
 
 {% code_block scala %}
 
@@ -99,25 +111,26 @@ class ScalatraBootstrap extends LifeCycle {
 }
 {% endcode_block %}
 
-1. To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon by using the `Kamon.start(..)` method.
-2. When you are done with Kamon, remember to shut it down using the `Kamon.shutdown()` method.
+1. To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon
+by using the `Kamon.start(..)` method.
+2. When you are done with Kamon, remember to shut it down using the
+`Kamon.shutdown()` method.
 
 ### Select a Kamon Backend ###
 
-This time will we use the [kamon-log-reporter]. This module is not meant to be used in production environments, but it certainly is a convenient way to test Kamon and know in a quick manner what's going on with our application in development, moreover like all Kamon modules it will be picked up from the classpath and started at runtime.
+This time will we use the [kamon-log-reporter]. This module is not meant to be used in production environments, but it
+certainly is a convenient way to test Kamon and know in a quick manner what's going on with our application in
+development, moreover like all Kamon modules it will be picked up from the classpath and started at runtime, just by adding the
+dependency to our classpath we are good to go.
 
-{% code_block typesafeconfig %}
-kamon {
-  modules {
-    kamon-log-reporter.auto-start = yes
-  }
-}
-{% endcode_block %}
+Additionally we can find more info about how to configure [modules] and supported backends([StatsD], [Datadog], [New
+Relic] and [Your Own]) in the docs.
 
-Additionally we can find more info about how to configure [modules] and supported backends([StatsD], [Datadog], [New Relic], [Your Own]) in the docs.
 
 ### Start the Server ###
-**Scalatra** uses `Jetty` internally, and is in itself a simple java servlet. So what we can do is just run an embedded `Jetty` instance that mounts the servlet and configures it.
+
+Scalatra uses `Jetty` internally, and it is in itself a simple java servlet. So what we can do is just run an embedded
+`Jetty` instance that mounts the servlet and configures it.
 
 {% code_block scala %}
 object EmbeddedServer extends App {
@@ -140,7 +153,8 @@ object EmbeddedServer extends App {
 }
 {% endcode_block %}
 
-We can run this application directly running from the console ```sbt run```. The output we will see will be something like this if we hit some of the endpoints we've set up.
+We can run this application directly by typing `sbt run` from the console. The output we will see will be something like
+this if we hit some of the endpoints we've set up.
 
 * **curl** *http://localhost:8080/kamon/time*
 * **curl** *http://localhost:8080/kamon/counter*
@@ -167,10 +181,14 @@ We can run this application directly running from the console ```sbt run```. The
 +------------------------------------------------------------------------------------------------+
 {% endcode_block %}
 
-### Ok, but show me the money ###
-So far so good. **But what about if my route is running in a Future?**. The answer is **Nothing**, the body of the future will be executed asynchronously on some other thread in a provided `ExecutionContext`, but Kamon through bytecode instrumentation, will capture the `TraceContext` available when the future was created and make it available while executing the future’s body.
+### Ok, but show me the money! ###
 
-Well, let's run the application with ```sbt run``` and we measure the **async** operation.
+So far so good. **But what if my route returns a Future?**. The answer is simple: **Kamon has your back**, the
+body of the future will be executed asynchronously on some other thread in a provided `ExecutionContext`, but Kamon,
+through bytecode instrumentation, will capture the `TraceContext` available when the Future was created and make it
+available while executing the future’s body.
+
+Let's run the application with sbt run` and we measure the async operation.
 
 * **curl** *http://localhost:8080/kamon/async*
 
@@ -187,10 +205,13 @@ Well, let's run the application with ```sbt run``` and we measure the **async** 
 +------------------------------------------------------------------------------------------------+
 {% endcode_block %}
 
-For a more detailed explanation about the Kamon **Trace module** and **Automatic TraceContext Propagation with Futures** please start [here].
+For a more detailed explanation about the Kamon tracing module and Automatic TraceContext Propagation with Futures
+please start [here].
 
 ### Enjoy! ###
-There it is, all your data metrics available to import into whatever tool you like. From here, you should be able to instrument your applications as needed.
+
+There it is, all your metrics data available to be sent into whatever tool you like. From here, you should be able to
+instrument your applications as needed.
 
 We also encourage you to review the full source code of [Scalatra Kamon Example] used in this tutorial.
 
