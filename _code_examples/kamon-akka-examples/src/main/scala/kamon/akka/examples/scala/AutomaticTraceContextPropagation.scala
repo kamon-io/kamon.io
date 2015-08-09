@@ -25,13 +25,13 @@ object AutomaticTraceContextPropagation extends App {
 
   // tag:ask:start
   val responseFuture = Tracer.withNewContext("sample-trace") {
-    actor ? "Ask Message"
-  }.mapTo[String]
-
-  responseFuture.map { response =>
-    // The same TraceContext available when asking
-    // the actor is available when executing this callback.
-
+    (actor ? "Ask Message")
+      .mapTo[String]
+      .map { response =>
+        // The same TraceContext available when asking
+        // the actor is available when executing this callback.
+        println("Context in MAP: " + Tracer.currentContext)
+      }
   }
   // tag:ask:end
 
@@ -40,6 +40,8 @@ object AutomaticTraceContextPropagation extends App {
 
 class TraceTokenPrinter extends Actor {
   def receive = {
-    case anything => println("Current Token: " + Tracer.currentContext.token)
+    case anything =>
+      println("Current Token: " + Tracer.currentContext.token)
+      sender ! anything
   }
 }
