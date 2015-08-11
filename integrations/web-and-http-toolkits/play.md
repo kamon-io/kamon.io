@@ -44,7 +44,9 @@ gave to the `TraceName` action.
 Finally, you can use the `kamon.play.automatic-trace-token-propagation` configuration key to decide whether to include
 the current trace's token in the HTTP response messages.
 
-
+<p class="alert alert-warning">
+By default the <b>kamon-play</b> module utilizes the tags of the request in order to create the trace name, but in the case that the requests doesn't contains tags, we need name the trace as <b>UntaggedTrace</b> in order to avoid the creation of undesired traces
+</p>
 
 Client Side
 -----------
