@@ -7,6 +7,45 @@ Changelog
 =========
 
 <hr>
+Version 0.4.1 <small>(2015-08-1x)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core
+  * Ensure that the TraceLocalStorage can be used from Java (see [issue 196](https://github.com/kamon-io/Kamon/issues/196)).
+  * Memory leak when removing entities with MinMaxCounter (see [issue 227](https://github.com/kamon-io/Kamon/issues/227)).
+  * Introduce new Sampler `clock-sampler` (see [pull 208](https://github.com/kamon-io/Kamon/pull/208)).
+  * Fix `ordered-sampler` (see [pull 201](https://github.com/kamon-io/Kamon/pull/201)).
+  * Fix usage of `GaugeKey` for gauges in MetricsModule (see [pull 198](https://github.com/kamon-io/Kamon/pull/198)).
+  * Allow creation of counters with units (see [pull 236](https://github.com/kamon-io/Kamon/pull/236)).
+  * Allow custom `kamon.trace.token-generator` (see [pull 223](https://github.com/kamon-io/Kamon/pull/223)).
+  * The `withNewAsyncSegment` method actually evaluates the supplied code twice (see [issue 204](https://github.com/kamon-io/Kamon/issues/204)).
+
+* kamon-akka
+  * NPE when initializing a balancing-pool router from configuration (see [issue 199](https://github.com/kamon-io/Kamon/issues/199)).
+  * Avoid runtime exceptions logged on ActorCell shutdown (see [pull 220](https://github.com/kamon-io/Kamon/pull/220)).
+  * Change map to foreach for side-effecting behaviour on Option (see [pull 212](https://github.com/kamon-io/Kamon/pull/212)).
+
+* kamon-play
+  * Play trace name for emulated HEAD requests  (see [issue 237](https://github.com/kamon-io/Kamon/issues/237)).
+  * Create a Play(2.4) module for manage the lifecycle of kamon  (see [issue 169](https://github.com/kamon-io/Kamon/issues/169)).
+
+* kamon-spray
+  * Memory leak with Spray (see [issue 213](https://github.com/kamon-io/Kamon/issues/213)).
+  * Fix segment finishing on errors (see [pull 205](https://github.com/kamon-io/Kamon/pull/205)).
+
+* kamon-newrelic
+  * Newrelic is not subscribing to single-instrument entities (see [issue 197](https://github.com/kamon-io/Kamon/issues/197)).
+  * Remove compile dependency from kamon-newrelic to kamon-testkit (see [pull 231](https://github.com/kamon-io/Kamon/pull/231)).
+  * Add possibility to send akka metrics to the Newrelic (see [pull 228](https://github.com/kamon-io/Kamon/pull/228)).
+
+* kamon-system-metrics
+  * Split/Allow disabling of system sigar and JVM JMX metrics in system-metrics module (see [issue 234](https://github.com/kamon-io/Kamon/issues/234)).
+  * SigarNotImplementedException exceptions on windows 7 (see [issue 235](https://github.com/kamon-io/Kamon/issues/235)).
+
+* kamon-spm
+  * This new module send Kamon Akka metrics to [SPM](http://sematext.com/spm/index.html) (see [pull 240](https://github.com/kamon-io/Kamon/pull/240)).
+
+<hr>
 Version 0.4.0 <small>(2015-05-09)</small>
 ------------------------------------------------------------------------------------------------
 
