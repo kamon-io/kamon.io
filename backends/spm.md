@@ -11,25 +11,25 @@ Reporting Metrics to SPM
 Installation
 ------------
 
-[Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project.    
+[Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project.
 
 Configuration
 -------------
 
-SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher` and `system-metrics` categories. By default all entities for given categories are included.   
+SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher` and `system-metrics` categories. By default all entities for given categories are included.
 
 {% code_block typesafeconfig %}
   kamon.spm {
     subscriptions {
-      akka-actor = [ "**" ]
+      akka-actor      = [ "**" ]
       akka-dispatcher = [ "**" ]
-      akka-router = [ "**" ]
-      system-metric = [ "**" ]
+      akka-router     = [ "**" ]
+      system-metric   = [ "**" ]
     }
   }
 {% endcode_block %}
 
-By default this extension uses hostname resolved using `InetAddress.getLocalHost.getHostName`. However, hostname can be redefined using `kamon.spm.hostname-alias` property. 
+By default this extension uses hostname resolved using `InetAddress.getLocalHost.getHostName`. However, hostname can be redefined using `kamon.spm.hostname-alias` property.
 
 Visualisation
 -------------
@@ -55,6 +55,6 @@ CPU:
 <img class="img-responsive" src="/assets/img/spm-module-cpu.png">
 
 
-[SPM]: http://sematext.com/spm/index.html 
+[SPM]: http://sematext.com/spm/index.html
 [Sign up]: https://apps.sematext.com/users-web/register.do
-[Create 'Akka' app]: https://apps.sematext.com/spm-reports/registerApplication.do 
+[Create 'Akka' app]: https://apps.sematext.com/spm-reports/registerApplication.do
