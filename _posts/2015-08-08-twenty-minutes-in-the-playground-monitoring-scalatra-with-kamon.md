@@ -9,6 +9,8 @@ In this post we’ll show how to take a simple Scalatra project and setup up bas
 simplified example and also we will skip some issues related to the installation, because there are awesome tutorials
 about that. Having said that, let's get to it!
 
+
+
 ### Build Setup ###
 
 We need to include in our [Build.scala] some dependencies. It should look like this:
