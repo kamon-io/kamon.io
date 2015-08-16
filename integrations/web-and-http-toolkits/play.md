@@ -17,6 +17,12 @@ The <b>kamon-play</b> module requires you to start your application using the As
 at startup if you failed to do so.
 </p>
 
+<p class="alert alert-warning">
+Since Kamon 0.5.0 we support both Play Framework 2.3 and 2.4, but bringing support for Play! 2.4 required us
+to ship different modules for each Play! version. Please make sure you add either <b>kamon-play-23</b> or
+<b>kamon-play-24</b> to your project's classpath.
+</p>
+
 
 
 Server Side Tools

@@ -74,8 +74,8 @@ Simple metrics logger for quick feedback when you want to avoid setting up a ext
 Reports trace metrics data to [New Relic].
 
 
-### kamon-play {% requires_aspectj %} ###
-Provides bytecode instrumentation to achieve automatic TraceContext management for Play! applications.
+### kamon-play-23 and kamon-play-24 {% requires_aspectj %} ###
+Provide bytecode instrumentation to achieve automatic TraceContext management for Play! applications.
 
 
 ### kamon-spray {% requires_aspectj %} ###
