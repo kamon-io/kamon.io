@@ -7,6 +7,27 @@ Changelog
 =========
 
 <hr>
+Version 0.5.1 <small>(2015-08-31)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon:
+  * Revert the need to run on Java 8.
+
+* kamon-core:
+  * Make Kamon test-friendly. (see issue [#202](https://github.com/kamon-io/Kamon/issues/202)).
+  * Pull the basics of dispatcher metrics for Akka into a more general ThreadPoolExecutor metrics.
+
+* kamon-akka-remote:
+  * Avoid breaking Kryo serialization on remote messages. (see issue [#160](https://github.com/kamon-io/Kamon/issues/160)).
+
+* kamon-play-24:
+  * Use the URI's authority instead of the full URL when naming WS Client request segments.
+
+* kamon-system-metrics:
+  * Report metrics for all JVM memory pools. (see [pull #244](https://github.com/kamon-io/Kamon/pull/244)).
+
+
+<hr>
 Version 0.5.0 <small>(2015-08-17)</small>
 ------------------------------------------------------------------------------------------------
 
