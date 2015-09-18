@@ -1,13 +1,20 @@
 scalaVersion := "2.11.6"
 
+resolvers ++= Seq(
+  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
+  "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+  "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases",
+  "Kamon Repository Snapshots" at "http://snapshots.kamon.io"
+)
+
 // tag:base-kamon-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.4.0",
+  "io.kamon" %% "kamon-core" % "0.4.1-SNAPSHOT",
 
   // [Optional]
-  "io.kamon" %% "kamon-statsd" % "0.4.0",
+  "io.kamon" %% "kamon-statsd" % "0.4.1-SNAPSHOT",
   // [Optional]
-  "io.kamon" %% "kamon-datadog" % "0.4.0"
+  "io.kamon" %% "kamon-datadog" % "0.4.1-SNAPSHOT"
 
   // ... and so on with all the modules you need.
 )

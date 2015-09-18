@@ -10,7 +10,7 @@ MDC in an Asynchronous Environment
 
 __Mapped Diagnostic Context__ is essentially a map maintained by the logging framework where the application code provides key-value pairs which can then be inserted by the logging framework in log messages. [MDC] data can also be highly helpful in filtering messages, store useful data to diagnose errors or triggering certain actions.
 
-This context can be used to store values that can be displayed in every Logging statement. For example:	
+This context can be used to store values that can be displayed in every Logging statement. For example:
 
 
 {% code_example %}
@@ -43,16 +43,15 @@ This strategy works when one thread is used for one request, like in servlet con
 Depending of the utilized framework there is some known workaround:
 
 * a custom [Akka Dispatcher]. This solution needs minimal change to a current application.
-* a custom [ExecutionContext] that propagates the [MDC] from the caller’s thread to the callee’s one. 
+* a custom [ExecutionContext] that propagates the [MDC] from the caller’s thread to the callee’s one.
 * a custom [ExecutorService] in order to propagate the [MDC] from the caller’s thread to the callee’s one.
 
 
 ### The Kamon Way ###
 
-bla bla bla
-
 {% code_example %}
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/MDCSupport.scala tag:kamon-way-mdc %}
+{%   language java kamon-core-examples/src/main/java/kamon/examples/java/MDCSupport.java tag:kamon-way-mdc %}
 {% endcode_example %}
 
 
