@@ -3,6 +3,7 @@ layout: post
 title: 'Reactive Docker Monitoring'
 date: 2015-09-28
 categories: teamblog
+published: false
 ---
 
 In this post we’ll show how to collect some metrics from Docker containers, in order to achieve this we will make a  simple application using [Akka Streams/HTTP] and all the benefits of Kamon machinery. For a start we want to collect for each container the following metrics:

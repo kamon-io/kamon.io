@@ -7,6 +7,21 @@ Changelog
 =========
 
 <hr>
+Version 0.5.2 <small>(2015-10-06)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core:
+  * Avoid NPE thrown if you shutdown Kamon and it wasn't started yet. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
+
+* kamon-newrelic:
+  * Fix a match error when non-http client segments are recorded. (see issue [#253](https://github.com/kamon-io/Kamon/issues/253)).
+  * Support for multiple application names. (see issue [#255](https://github.com/kamon-io/Kamon/issues/255)).
+
+* kamon-system-metrics:
+  * Ensure that heap metrics collect new instances of `MemoryUsage` rather than keeping the first seen instance. (see [pull #260](https://github.com/kamon-io/Kamon/pull/260)).
+
+
+<hr>
 Version 0.5.1 <small>(2015-08-31)</small>
 ------------------------------------------------------------------------------------------------
 
