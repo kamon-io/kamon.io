@@ -1,56 +1,53 @@
 ---
 layout: post
 title: 'Reactive Docker Monitoring'
-date: 2015-09-28
+date: 2015-10-11
 categories: teamblog
-published: false
 ---
 
-In this post we’ll show how to collect some metrics from Docker containers, in order to achieve this we will make a  simple application using [Akka Streams/HTTP] and all the benefits of Kamon machinery. For a start we want to collect for each container the following metrics:
+In this post we’ll show how to collect system metrics from Docker containers, making use of a very simple application
+application that relies on [Akka Streams/HTTP] and all the benefits of Kamon's machinery.
 
 
-* *CPU Usage %*
-* *Memory limit*
-* *Network in*
-* *Memory usage*
-* *Network out*
 
-### How we get these Metrics? ###
+Unless you were living under a rock and that rock is under the Titanic, then you must have heard about Docker. Nowadays
+Docker is everywhere and [all sorts of things] can run in a container. You might already be using Docker for CI purposes
+or even in production and when you do so, well, monitoring needs to be there too! We did a bit of exploration on monitoring
+the very basic metrics we would like to get out of a container:
 
-Docker Containers and Linux-based containers rely on [control groups]. Control groups (cgroups) are are exposed through a pseudo-filesystem and isolate the resource usage (**CPU**, **Memory**, **Disk I/O**, and **Network**) for a collection of processes.
+* **CPU usage**
+* **Memory usage**
+* **IO usage**
+* **Network usage**
 
-If we want to fetch the memory metrics for a running container, We should first fetch the container ID (`docker ps --no-trunc`), then look for its metrics under `/sys/fs/cgroup/memory/docker/(id)`.
+### How do we get these Metrics? ###
 
-We can also fetch **Memory**, **CPU**, and **Disk IO** metrics from `/sys/fs/cgroup`, but what about network activity?  Well, network metrics are not exposed directly by control groups. There is a good explanation for that: network interfaces exist within the context of network `namespaces`.
+If you feel like complicating your life with this, you can use the container ID to fetch CPU, Memory and IO metrics from
+`/sys/fs/cgroup/...` but then there is one missing thing: Network usage metrics. As it turns out, the Docker network
+interfaces only exist under a network `namespace`, which we didn't want to investigate further as recent versions of
+Docker provide a much better and cool alternative for this: the [Docker Remote API].
 
-Rather than fetching these metrics through tangled means, lets jump to the [Docker Remote API]. It provides an easier way.
+The [Docker Remote API]  is very easy to use, you just send a `GET` request to `/container/${container-id}/stats` and
+you will get back a live stream of events with all the desired metrics for such container. A live __Stream__, by now you
+should clearly see where this is going :).
 
-### API Endpoint ###
 
-Using the [Docker Remote API] directly via `GET /container/(id)/stats` returns a live stream of a container’s resource usage statistics like **CPU**, **Memory**, **Disk I/O**, and **Network**.  
+### Preparing your Docker Host ###
 
-Some important points about the metrics are:
-
-* **Streaming** : When you connect to the Docker API stats endpoint, it will start streaming stats every second.
-* **Counters, not rates** : most of the metrics that can we fetch via the Docker API are incrementing counters.
-
-### Docker Configuration ###
-
-If you have Docker running on an Linux machine you will need to edit `/etc/default/docker` (or [wherever]) and update the `DOCKER_OPTS` variable to the following:
+You will need to do a little change to your `/etc/default/docker` [file], setting the `DOCKER_OPTS` variable to the
+following:
 
 {% code_block text %}
   DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
 {% endcode_block %}
 
-This will have Docker bind to port 4243 which will be used by the Docker Remote API. One you have saved your changes, you will need to restart the Docker process by running the following command:
+That configuration change will make Docker bind to port 4243 and there is where the Remote API will be available. Save
+your changes, restart the docker service via `service docker restart` and then we are good to go. When you hit the
+Remote API endpoint for a given container you will get one event per second containing the container stats.
 
-{% code_block text %}
-  service docker restart
-{% endcode_block %}
 
-## A Docker Monitoring Tool ##
+### Setting up the Project ###
 
-### Build Setup ###
 We need to include in our [Build.scala] some dependencies. It should look like this:
 
 {% code_block scala %}
@@ -108,10 +105,13 @@ def flowWriter(...) = {
 ...
 {% endcode_block %}
 
-* (1) We want to record the stats in differents Kamon recorders, for that reason we have to split the source stream into 3 streams which will handle the record to these different recorders. The `Broadcast` simply emits elements from its input port to all of its output ports.
-* (2) A `Sink` is something with exactly one input.
+* (1) We want to record the stats in differents Kamon recorders, for that reason we have to split the source stream into
+* 3 streams which will handle the record to these different recorders. The `Broadcast` simply emits elements from its
+* input port to all of its output ports. (2) A `Sink` is something with exactly one input.
 
-The most important part are the last couple of lines in the above code. Here we draw a graph that defines how a message is handled when it is processed. In this case we first broadcast the docker api response to three parallel streams. In each stream we next record the metrics with Kamon.
+The most important part are the last couple of lines in the above code. Here we draw a graph that defines how a message
+is handled when it is processed. In this case we first broadcast the docker api response to three parallel streams. In
+each stream we next record the metrics with Kamon.
 
 ### Stats Sinks ###
 
@@ -129,7 +129,8 @@ def chunkConsumer(...) = Sink.foreach[HttpResponse] { response => //(1)
 
 * (1) Define a `Sink` that will process the chunked response.
 
-The data flows into the input channel and collects in the `Sink`, in our case we have a `Sink` for each metric type [NetworkMetrics], [MemoryMetrics] and [CpuMetrics]
+The data flows into the input channel and collects in the `Sink`, in our case we have a `Sink` for each metric type
+[NetworkMetrics], [MemoryMetrics] and [CpuMetrics]
 
 ### Select the Containers ###
 
@@ -159,6 +160,7 @@ java -Dconfig.file=prod.conf -jar docker-monitor-assembly.jar
 {% endcode_block %}
 
 ### Visualization and Fun!! ###
+
 By default the application is configured for use with [StatsD] through `Kamon`. For this reason, the only thing what we need is our [Docker-Grafana-Graphite] image that have a built-in Docker dashboard.
 
 
@@ -185,6 +187,8 @@ Possible future work for this library includes:
 Streams can be applied in a variety of contexts. It’s also not hard to find out what’s been done with [scalaz-streams] or other tooling already available in other languages.
 
 We also encourage you to review the full source code of our [Docker-Monitor].
+
+[all sorts of things]: https://www.youtube.com/watch?v=GsLZz8cZCzc
 
 [Build.scala]:https://github.com/kamon-io/docker-monitor/blob/master/project/Build.scala
 [control groups]: https://en.wikipedia.org/wiki/Cgroups
