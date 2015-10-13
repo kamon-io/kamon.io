@@ -34,7 +34,7 @@ should clearly see where this is going :).
 
 ### Preparing your Docker Host ###
 
-You will need to do a little change to your `/etc/default/docker` [file], setting the `DOCKER_OPTS` variable to the
+You will need to do a little change to your `/etc/default/docker` file, setting the `DOCKER_OPTS` variable to the
 following:
 
 {% code_block text %}
