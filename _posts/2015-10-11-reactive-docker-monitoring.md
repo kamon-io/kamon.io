@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Reactive Docker Monitoring'
-date: 2015-10-11
+date: 2015-10-13
 categories: teamblog
 ---
 
@@ -55,9 +55,9 @@ We need to include in our [Build.scala] some dependencies. It should look like t
 val dependencies = Seq(
     "io.kamon"    	      %% "kamon-core"           	        % "0.5.1",
     "io.kamon"            %% "kamon-statsd"                     % "0.5.1",
-    "com.typesafe.akka"   %% "akka-stream-experimental"         % "0.1.0",
-    "com.typesafe.akka"   %% "akka-http-core-experimental"      % "0.1.0",
-    "com.typesafe.akka"   %% "akka-http-experimental"           % "0.1.0"
+    "com.typesafe.akka"   %% "akka-stream-experimental"         % "1.0.0",
+    "com.typesafe.akka"   %% "akka-http-core-experimental"      % "1.0.0",
+    "com.typesafe.akka"   %% "akka-http-experimental"           % "1.0.0"
      // ... and so on with all the others dependencies you need.
     )
 {% endcode_block %}
@@ -178,9 +178,9 @@ docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126 --name kamon-grafana-dashbo
 
 Possible future work for this library includes:
 
-* Include `Disk Utilization` metric
-* Monitoring of `Docker Events`
-* Docker package
+* Include `Disk Utilization` metrics.
+* Monitoring of `Docker Events`.
+* Docker package.
 
 ### Enjoy! ###
 
