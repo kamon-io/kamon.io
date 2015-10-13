@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Reactive Docker Monitoring with Domino'
+title: 'Playing with Streams and Monitoring Docker'
 date: 2015-10-13
 categories: teamblog
 ---
@@ -156,7 +156,7 @@ docker {
 ### Visualization and Fun! ###
 
 By default the application is configured to use with [StatsD] through `Kamon`. The only thing we need to start visualizing
-this stats is our [Docker-Grafana-Graphite] image that comes bundled with StatsD, Graphite and Grafana. After starting up this application
+this stats is our [Docker Image] that comes bundled with StatsD, Graphite and Grafana. After starting up this application
 and playing a bit with a Grafana dashboard you can start getting something like this:
 
 ![Docker Dashboard](/assets/img/docker-dashboard.png)
