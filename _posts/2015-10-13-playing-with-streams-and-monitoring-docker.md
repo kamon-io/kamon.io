@@ -6,7 +6,7 @@ categories: teamblog
 ---
 
 In this post we’ll show how to collect system metrics from Docker containers, making use of a very simple application
-application that relies on [Akka Streams/HTTP] and all the benefits of Kamon's machinery.
+that relies on [Akka Streams/HTTP] and all the benefits of Kamon's machinery.
 
 
 
@@ -156,7 +156,7 @@ docker {
 ### Visualization and Fun! ###
 
 By default the application is configured to use with [StatsD] through `Kamon`. The only thing we need to start visualizing
-this stats is our [Docker Image] that comes bundled with StatsD, Graphite and Grafana. After starting up this application
+this stats is our [Docker-Grafana-Graphite] image that comes bundled with StatsD, Graphite and Grafana. After starting up this application
 and playing a bit with a Grafana dashboard you can start getting something like this:
 
 ![Docker Dashboard](/assets/img/docker-dashboard.png)
