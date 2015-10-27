@@ -17,9 +17,9 @@ you at startup if you failed to do so.
 Enabling Annotation Support
 ---------------------------
 
-Besides starting your application with the AspectJ Weaver Agent, you must add the `@EnableKamon` annotation to the
-classes you would like to be scanned for any of the provided annotations, otherwise the rest of the annotations
-described bellow wont be able to work at all.
+Besides starting your application with the AspectJ Weaver Agent, there are two additional steps required to use
+annotations. First you must add the `@EnableKamon` annotation to the classes you would like to be scanned for any of the
+provided annotations, otherwise the rest of the annotations described bellow wont be able to work at all.
 
 All the provided annotations are in the `kamon.annotation` package. Enabling annotation support for a class looks as
 simple as this:
@@ -31,6 +31,17 @@ simple as this:
 
 In the example above, the controller classes are annotated with `@EnableKamon` to ensure that any method using Kamon
 annotations, such as the `listOrders` method will work properly.
+
+The second thing you need to do would be to add a minimal `aop.xml` file that will tell the AspectJ Weaver to actually scan your
+project classes to apply annotations to it. Your file might look like this:
+
+{% code_example %}
+{%   language markup kamon-annotation-examples/boot-example/src/main/resources/META-INF/aop.xml tag:enable-kamon label:"aop.xml" %}
+{% endcode_example %}
+
+Try to keep the filters as specific as possible because all classes matching the provided include filters will be fully
+scanned to detect if instrumentation should be applied. Having very broad filters (such as `**`) will significantly
+increase the startup time as the AspectJ Weaver will have much more work to do on startup.
 
 You might have recognized the other annotations available in the example as being part of the [Spring Framework], and
 they certainly are. As you might know, we love Scala, but we are aware that using annotations in the Scala world is not
