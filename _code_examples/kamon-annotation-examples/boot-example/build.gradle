@@ -29,9 +29,9 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
-    compile("io.kamon:kamon-core_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
-    compile("io.kamon:kamon-annotation_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
-    compile("io.kamon:kamon-log-reporter_2.11:0.3.6-bda62b69b530f48cba8d4a2d0eeb1b0e85953b5e")
+    compile("io.kamon:kamon-core_2.11:0.5.2")
+    compile("io.kamon:kamon-annotation_2.11:0.5.2")
+    compile("io.kamon:kamon-log-reporter_2.11:0.5.2")
 }
 
 task wrapper(type: Wrapper) {
