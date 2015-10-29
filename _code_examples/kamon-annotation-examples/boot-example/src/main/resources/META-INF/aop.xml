@@ -1,3 +1,5 @@
+
+<!-- tag:enable-kamon:start -->
 <!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
 
 <aspectj>
@@ -6,3 +8,4 @@
         <exclude within="org.aspectj.*"/>
     </weaver>
 </aspectj>
+<!-- tag:enable-kamon:end -->
