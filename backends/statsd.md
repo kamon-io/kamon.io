@@ -67,20 +67,22 @@ from the key pattern by changing the `kamon.statsd.simple-metric-key-generator.i
 
 This metric key generation mechanism seems very useful and flexible, but in case it falls short for your needs then you
 can create your own implementation of `kamon.statsd.MetricKeyGenerator` and let Kamon know about it by setting the
-`kamon.statsd.metric-key-generator` configuration key to the FGCN of your implementation.
+`kamon.statsd.metric-key-generator` configuration key to the FQCN of your implementation.
 
+### Metric Senders ###
+`kamon-statsd` module allows you to control the way data is flushed to StatsD server. By default Kamon is shipped with two diferent senders:
+
+  -  `kamon.statsd.BatchStatsDMetricsSender` which batches data and sends a UDP packet every `kamon.statsd.flush-interval` or as soon as `kamon.statsd.batch-metric-sender.max-packet-size` is reached. It is advisable to experiment with both of these settings to
+  find the right balance between network bandwidth utilization and granularity on your metrics data. This sender is used by default.
+  -  `kamon.statsd.SimpleStatsDMetricsSender` which sends a UDP packet for each piece of data it receives.
+
+One can choose one over another changing `kamon.statsd.metric-sender-factory` configuration key to `kamon.statsd.BatchStatsDMetricsSender` or `kamon.statsd.SimpleStatsDMetricsSender` respectively. Also custom senders can be pluged-in this way. The value for `kamon.statsd.metric-sender-factory` should represent a FQCN for a Scala object that implements `kamon.statsd.StatsDMetricsSenderFactory` interface.
 
 Integration Notes
 -----------------
 
-* Contrary to many StatsD client implementations, we don't flush the metrics data as soon as the measurements are taken
-  but instead, all metrics data is buffered by the StatsD module and flushed periodically using the
-  configured `kamon.statsd.flush-interval` and `kamon.statsd.max-packet-size` settings.
 * All timing measurements are sent in nanoseconds, make sure you correctly set the scale when plotting or using the
   metrics data.
-* It is advisable to experiment with the `kamon.statsd.flush-interval` and `kamon.statsd.max-packet-size` settings to
-  find the right balance between network bandwidth utilization and granularity on your metrics data.
-
 
 
 Visualization and Fun
