@@ -78,12 +78,25 @@ can create your own implementation of `kamon.statsd.MetricKeyGenerator` and let 
 
 One can choose one over another changing `kamon.statsd.metric-sender-factory` configuration key to `kamon.statsd.BatchStatsDMetricsSender` or `kamon.statsd.SimpleStatsDMetricsSender` respectively. Also custom senders can be pluged-in this way. The value for `kamon.statsd.metric-sender-factory` should represent a FQCN for a Scala object that implements `kamon.statsd.StatsDMetricsSenderFactory` interface.
 
-Integration Notes
------------------
+### Metric Units ###
 
-* All timing measurements are sent in nanoseconds, make sure you correctly set the scale when plotting or using the
-  metrics data.
+Kamon keeps all timing measurements in nanoseconds and memory measurements in bytes. In order to scale those to other units before sending to StatsD, set `time-units` and `memory-units` config keys to desired units. Supported units are:
+```
+n  - nanoseconds
+µs - microseconds
+ms - milliseconds
+s  - seconds
 
+b  - bytes
+kb - kilobytes
+mb - megabytes
+gb - gigabytes
+```
+For example,
+```
+kamon.statsd.time-units = "ms" 
+```
+will scale all timing measurements to milliseconds right before sending to StatsD.
 
 Visualization and Fun
 ---------------------
