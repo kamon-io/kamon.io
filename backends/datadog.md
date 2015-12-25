@@ -61,6 +61,25 @@ reported under the `application.akka-actor.mailbox-size` metric and a identifica
 
 Finally, the application name can be changed by setting the `kamon.datadog.application-name` configuration key.
 
+### Metric Units ###
+
+Kamon keeps all timing measurements in nanoseconds and memory measurements in bytes. In order to scale those to other units before sending to datadog, set `time-units` and `memory-units` config keys to desired units. Supported units are:
+```
+n  - nanoseconds
+µs - microseconds
+ms - milliseconds
+s  - seconds
+
+b  - bytes
+kb - kilobytes
+mb - megabytes
+gb - gigabytes
+```
+For example,
+```
+kamon.datadog.time-units = "ms" 
+```
+will scale all timing measurements to milliseconds right before sending to datadog.
 
 Integration Notes
 -----------------
@@ -70,8 +89,6 @@ Integration Notes
   configured `kamon.datadog.flush-interval` and `kamon.datadog.max-packet-size` settings.
 * It is advisable to experiment with the `kamon.datadog.flush-interval` and `kamon.datadog.max-packet-size` settings to
   find the right balance between network bandwidth utilisation and granularity on your metrics data.
-* All timing measurements are sent in nanoseconds, if you want to scale them to milliseconds or to any other unit you
-  need to manually edit the graph JSON definition to include a "/ 1000000" as show here:
 
 <img class="img-responsive" src="/assets/img/datadog-scaling-metrics.png">
 
