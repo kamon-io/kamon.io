@@ -64,6 +64,10 @@ Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
 * kamon-spm:
   * Fix sending metrics failure message. (see [pull #280](https://github.com/kamon-io/Kamon/pull/280)). 
 
+* kamon-spray:
+  * Check for trace-token header in case-insensitive manner. (see [pull #299](https://github.com/kamon-io/Kamon/pull/299)). 
+ 
+
 
 
 <hr>
