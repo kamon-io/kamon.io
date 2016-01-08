@@ -22,6 +22,7 @@ Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
   * Fix typo in kamon auto-start error. (see [pull #262](https://github.com/kamon-io/Kamon/pull/262)).
   * Don't throw an NPE during shutdown if Kamon hasn't been started.. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
   * Provide generic way to scale time and memory metrics. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
+  * Don't throw MatchError when auto-start is disabled for a module. see [pull #302](https://github.com/kamon-io/Kamon/pull/302)). 
 
 * kamon-akka:
   * Error thrown in dispatcher instrumentation when using custom dispatchers. (see issue [#290](https://github.com/kamon-io/Kamon/issues/290)).
