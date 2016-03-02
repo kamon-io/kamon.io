@@ -13,7 +13,7 @@
     <dependency>
       <groupId>io.kamon</groupId>
       <artifactId>kamon-core_2.11</artifactId>
-      <version>0.4.0</version>
+      <version>0.5.2</version>
     </dependency>
   </dependencies>
   <!-- tag:base-kamon-dependencies:end -->

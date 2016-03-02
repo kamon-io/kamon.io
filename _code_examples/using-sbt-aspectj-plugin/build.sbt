@@ -1,7 +1,7 @@
 scalaVersion := "2.11.4"
 
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.4.0"
+  "io.kamon" %% "kamon-core" % "0.5.2"
 )
 
 // tag:using-sbt-aspectj:start
