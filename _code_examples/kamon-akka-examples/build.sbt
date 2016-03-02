@@ -2,9 +2,9 @@ scalaVersion := "2.11.6"
 
 // tag:base-kamon-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.4.0",
-  "io.kamon" %% "kamon-akka" % "0.4.0",
-  "io.kamon" %% "kamon-akka-remote" % "0.4.0"
+  "io.kamon" %% "kamon-core" % "0.5.2",
+  "io.kamon" %% "kamon-akka" % "0.5.2",
+  "io.kamon" %% "kamon-akka-remote" % "0.5.2"
 )
 // tag:base-kamon-dependencies:end
 
