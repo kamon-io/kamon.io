@@ -89,6 +89,9 @@ such as garbage collection, threads, heap memory, non-heap memory and class load
 ### kamon-annotation {% requires_aspectj %} ###
 Provides a simple way to create [instruments], start traces and segments through annotation demarcation.
 
+### kamon-autoweave ###
+This module allow attach the AspectJ loadtime weaving agent to a JVM after it has started (you don't need to use -javaagent). This offers extra flexibility but obviously any classes loaded before attachment will not be woven.
+
 
 [instruments]: /core/metrics/instruments/
 [getting started]: /introduction/get-started/
