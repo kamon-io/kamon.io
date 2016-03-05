@@ -8,7 +8,7 @@ Changelog
 
 
 <hr>
-Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
+Version 0.6.0 <small>(2016-01-xx)</small>
 ------------------------------------------------------------------------------------------------
 
 * kamon-all
@@ -20,13 +20,15 @@ Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
   * Unsupported major.minor version in GlobPathFilter. (see issue [#250](https://github.com/kamon-io/Kamon/issues/250)).
   * Generalize ThreadPoolExecutors metrics. (see issue [#247](https://github.com/kamon-io/Kamon/issues/247)).
   * Fix typo in kamon auto-start error. (see [pull #262](https://github.com/kamon-io/Kamon/pull/262)).
-  * Don't throw an NPE during shutdown if Kamon hasn't been started.. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
+  * Don't throw an NPE during shutdown if Kamon hasn't been started. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
   * Provide generic way to scale time and memory metrics. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
-  * Don't throw MatchError when auto-start is disabled for a module. see [pull #302](https://github.com/kamon-io/Kamon/pull/302)). 
+  * Don't throw MatchError when auto-start is disabled for a module. see [pull #302](https://github.com/kamon-io/Kamon/pull/302)).
 
 * kamon-akka:
   * Error thrown in dispatcher instrumentation when using custom dispatchers. (see issue [#290](https://github.com/kamon-io/Kamon/issues/290)).
   * Akka 2.4 support. (see issue [#224](https://github.com/kamon-io/Kamon/issues/224)).
+  * Balancing pool router shows incorrect time-in-mailbox and mailbox-size metrics. (see issue [#271](https://github.com/kamon-io/Kamon/issues/271)).
+  * Provide `actor-group` metrics. (see issue [#101](https://github.com/kamon-io/Kamon/issues/101)).
 
 * kamon-akka-remote
   * Akka 2.4 support. (see issue [#224](https://github.com/kamon-io/Kamon/issues/224)).
@@ -36,13 +38,15 @@ Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
   * Avoid updating the totalCount on our histograms. (see issue [#293](https://github.com/kamon-io/Kamon/issues/293)).
   * Histogram recorded value cannot be negative in ProcessCpuMetrics. (see issue [#291](https://github.com/kamon-io/Kamon/issues/291)).
   * Fix heap metrics update. (see [pull #260](https://github.com/kamon-io/Kamon/pull/260)).
+  * Expose memory buffer pool metrics from JMX. (see [pull #317](https://github.com/kamon-io/Kamon/pull/317)).
+
 
 * kamon-newrelic:
   * Prevent NPE when errors are logged without New Relic Agent. (see [pull #279](https://github.com/kamon-io/Kamon/pull/279)).
   * Support the use of multiple names for a New Relic app. (see issue [#255](https://github.com/kamon-io/Kamon/issues/255)).
   * Match error when segments are not http-client. (see issue [#253](https://github.com/kamon-io/Kamon/issues/253)).
-  * Add ssl support to agent. (see [pull #268](https://github.com/kamon-io/Kamon/pull/268)). 
-  * Associate logged errors with correct transaction. (see [pull #269](https://github.com/kamon-io/Kamon/pull/269)). 
+  * Add ssl support to agent. (see [pull #268](https://github.com/kamon-io/Kamon/pull/268)).
+  * Associate logged errors with correct transaction. (see [pull #269](https://github.com/kamon-io/Kamon/pull/269)).
 
 * kamon-statsd:
   * Allow custom statsd senders + add simple statsd sender which doesn't batch stats. (see [pull #270](https://github.com/kamon-io/Kamon/pull/270)).
@@ -55,19 +59,20 @@ Version 0.6.0 <small>(2016-01-xx(cuando topo quiera))</small>
 
 * kamon-autoweave:
   * This new module allow attach the AspectJ loadtime weaving agent to a JVM after it has started. (see [pull #292](https://github.com/kamon-io/Kamon/pull/292)).
+  * Doesn't attach Mac JVM properly. (see [pull #308](https://github.com/kamon-io/Kamon/pull/308)).
 
 * kamon-jmx:
   * Reporting Metrics to JMX MBeans. (see [pull #258](https://github.com/kamon-io/Kamon/pull/258)).
 
 * kamon-fluentd:
-  * This kamon-fluentd module provides capabilities to send kamon metrics to fluentd server. (see [pull #264](https://github.com/kamon-io/Kamon/pull/264)). 
+  * This kamon-fluentd module provides capabilities to send kamon metrics to fluentd server. (see [pull #264](https://github.com/kamon-io/Kamon/pull/264)).
 
 * kamon-spm:
-  * Fix sending metrics failure message. (see [pull #280](https://github.com/kamon-io/Kamon/pull/280)). 
+  * Fix sending metrics failure message. (see [pull #280](https://github.com/kamon-io/Kamon/pull/280)).
 
 * kamon-spray:
-  * Check for trace-token header in case-insensitive manner. (see [pull #299](https://github.com/kamon-io/Kamon/pull/299)). 
- 
+  * Check for trace-token header in case-insensitive manner. (see [pull #299](https://github.com/kamon-io/Kamon/pull/299)).
+
 
 
 
