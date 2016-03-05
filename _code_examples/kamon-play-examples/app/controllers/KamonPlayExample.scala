@@ -60,7 +60,7 @@ activator -J-javaagent:aspectjweaver-1.8.5.jar
 // tag:launch-play-dev-mode-plugin:start
 
 //Add the aspectj-play-runner plugin to project/plugins.sbt
-addSbtPlugin("io.kamon" % "aspectj-play-runner" % "0.1.2")
+addSbtPlugin("io.kamon" % "aspectj-play-runner" % "0.1.3")
 
 // Run!
 aspectj-play-runner:run
@@ -68,7 +68,12 @@ aspectj-play-runner:run
 
 
 // tag:launch-play-prod-mode:start
-java -cp ".:lib/*" -javaagent:lib/org.aspectj.aspectjweaver-1.8.5.jar play.core.server.NettyServer
+//play 2.3.x
+java -cp ".:lib/*" -javaagent:lib/aspectjweaver-1.8.7.jar play.core.server.NettyServer
+
+//play 2.4.x
+java -cp ".:lib/*" -javaagent:lib/aspectjweaver-1.8.7.jar play.core.server.ProdServerStart
+
 // tag:launch-play-prod-mode:end
 
 */*/

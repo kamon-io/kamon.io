@@ -31,7 +31,6 @@ In the Console, the [MDC] value for __X-ApplicationId__ is now printed out:
 {%   language text kamon-core-examples/src/main/scala/kamon/examples/scala/MDCSupport.scala tag:what-is-mdc-output label:"Log Output" %}
 {% endcode_example %}
 
-
 ### Limitation of the default implementation of the MDC ###
 
 To record the values in the [MDC], Logback uses a `ThreadLocal` variable in order to manages contextual information on a per thread basis. A child thread automatically inherits a copy of the mapped diagnostic context of its parent.
@@ -49,6 +48,8 @@ Depending of the utilized framework there is some known workaround:
 
 ### The Kamon Way ###
 
+Using the [TraceLocalStorage] with a special type called `AvailableToMdc` or simply calling to `TraceLocal.storeForMdc` method, `Kamon` can propagate the key and value through the current `TraceContext`.
+
 {% code_example %}
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/MDCSupport.scala tag:kamon-way-mdc %}
 {%   language java kamon-core-examples/src/main/java/kamon/examples/java/MDCSupport.java tag:kamon-way-mdc %}
@@ -59,9 +60,14 @@ Depending of the utilized framework there is some known workaround:
 {%   language text kamon-core-examples/src/main/scala/kamon/examples/scala/MDCSupport.scala tag:kamon-way-mdc-output label:"Log Output" %}
 {% endcode_example %}
 
+Please note that some Kamon modules such as our `Akka` and `Play` modules already provide bytecode instrumentation that automatically propagates the `AvailableToMdc` type and make it availalable when using [Akka ActorLogging] or [Play Logger] functionality.
+
 
 [MDC]: http://logback.qos.ch/manual/mdc.html
 [3.0]: https://www.jcp.org/en/jsr/detail?id=315
 [Akka Dispatcher]: http://doc.akka.io/docs/akka/snapshot/scala/dispatchers.html
 [ExecutionContext]: http://www.scala-lang.org/files/archive/nightly/docs/library/index.html#scala.concurrent.ExecutionContext
 [ExecutorService]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html
+[TraceLocalStorage]:https://github.com/kamon-io/Kamon/blob/master/kamon-core/src/test/scala/kamon/trace/TraceLocalSpec.scala
+[Play Logger]:https://www.playframework.com/documentation/2.4.x/api/scala/index.html#play.api.Logger
+[Akka ActorLogging]:http://doc.akka.io/docs/akka/2.4.1/scala/logging.html
