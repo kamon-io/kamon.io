@@ -7,7 +7,7 @@ Executor Service Metrics
 ========================
 
 ### Thread Pools ###
-A __Thread Pool__ is represented by a instance of the class [ExecutorService]. Using a [ExecutorService], you can submit a series of tasks that will be completed in the future.
+A __Thread Pool__ is represented by a instance of the class [ExecutorService]. Using an [ExecutorService], you can submit a series of tasks that will be completed in the future.
 
 [Executors] class provides some factory methods in order to create types of thread pools as following:
 
