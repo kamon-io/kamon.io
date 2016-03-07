@@ -3,6 +3,7 @@ package kamon.examples.scala
 import java.util.concurrent.Executors
 
 import kamon.Kamon
+import kamon.metric.Entity
 import kamon.util.executors.ExecutorServiceMetrics
 
 
@@ -19,16 +20,16 @@ object ExecutorMetrics extends App {
 val forkJoinPool = Executors.newWorkStealingPool()
 val fixedThreadPool = Executors.newFixedThreadPool(10)
 
-ExecutorServiceMetrics.register("java-fork-join-pool", forkJoinPool)
-ExecutorServiceMetrics.register("fixed-thread-pool", fixedThreadPool)
+val forkJoinEntity = ExecutorServiceMetrics.register("java-fork-join-pool", forkJoinPool)
+val threadPoolEntity = ExecutorServiceMetrics.register("fixed-thread-pool", fixedThreadPool)
 
 for (_ <- 0 to 100) {
   forkJoinPool.submit(HeavyWeightTask())
   fixedThreadPool.submit(HeavyWeightTask())
 }
 
-ExecutorServiceMetrics.remove(forkJoinPool)
-ExecutorServiceMetrics.remove(fixedThreadPool)
+ExecutorServiceMetrics.remove(forkJoinEntity)
+ExecutorServiceMetrics.remove(threadPoolEntity)
 
 forkJoinPool.shutdown()
 fixedThreadPool.shutdown()
