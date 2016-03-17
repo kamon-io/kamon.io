@@ -32,8 +32,7 @@ Pattern timesout.
 
 * __Remote TraceContext Propagation__: This bit of instrumentation allows basic `TraceContext` information to be
 propagated across the remoting channel provided by Akka. This hooks in the low level remoting implementation that ships
-with Akka, meaning that it will propagate the `TraceContext` when using plaing remoting or when using the Akka Cluster
-as well.
+with Akka, which means it will propagate the `TraceContext` when using plain remoting as well as when using the Akka Cluster.
 
 
 [event based threading model section]: /core/tracing/threading-model-considerations/
