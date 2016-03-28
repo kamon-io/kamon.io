@@ -35,7 +35,6 @@ changelog:
   * Error thrown in dispatcher instrumentation when using custom dispatchers. (see issue [#290](https://github.com/kamon-io/Kamon/issues/290)).
   * Akka `2.4` support. (see issue [#224](https://github.com/kamon-io/Kamon/issues/224)).
   * Balancing pool router shows incorrect `time-in-mailbox` and `mailbox-size metrics`. (see issue [#271](https://github.com/kamon-io/Kamon/issues/271)).
-  * Provide `actor-group` metrics. (see issue [#101](https://github.com/kamon-io/Kamon/issues/101)).
   * Introduce selective instrumentation for Akka actors. (see [pull #323](https://github.com/kamon-io/Kamon/pull/323)).
 
 * kamon-akka-remote
