@@ -66,6 +66,11 @@ Provides bytecode instrumentation to the JDBC API, providing some basic metrics 
 creating Database access segments if there is a TraceContext available.
 
 
+### kamon-elasticsearch (experimental) {% requires_aspectj %} ###
+Provides bytecode instrumentation to the elasticsearch client, providing some basic metrics about performance as well as
+creating elasticsearch requests segments if there is a TraceContext available.
+
+
 ### kamon-log-reporter ###
 Simple metrics logger for quick feedback when you want to avoid setting up a external metrics backend.
 
