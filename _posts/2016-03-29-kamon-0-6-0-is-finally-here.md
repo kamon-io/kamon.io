@@ -8,6 +8,9 @@ categories: teamblog
 Dear community, we are really happy to announce that after a long long wait,
 lots of fixes and even new modules being added, Kamon 0.6.0 is finally here!
 
+
+
+
 For now, we will keep it short and just give a huge thanks to all of our
 collaborators and users, we are constantly surprised by the number of amazing
 people around the world using Kamon and providing great feedback and fixes. To
