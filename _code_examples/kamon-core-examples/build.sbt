@@ -9,12 +9,12 @@ resolvers ++= Seq(
 
 // tag:base-kamon-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-core" % "0.5.2",
+  "io.kamon" %% "kamon-core" % "0.6.0",
 
   // [Optional]
-  "io.kamon" %% "kamon-statsd" % "0.5.2",
+  "io.kamon" %% "kamon-statsd" % "0.6.0",
   // [Optional]
-  "io.kamon" %% "kamon-datadog" % "0.5.2"
+  "io.kamon" %% "kamon-datadog" % "0.6.0"
 
   // ... and so on with all the modules you need.
 )

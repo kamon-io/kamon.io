@@ -11,7 +11,7 @@ java -javaagent:~/.aspectj/aspectj-weaver.jar your-app.jar
 
 <!-- tag:using-aspectj-runner:start -->
 //Add the aspectj-runner plugin to project/plugins.sbt
-addSbtPlugin("io.kamon" % "aspectj-runner" % "0.1.2")
+addSbtPlugin("io.kamon" % "aspectj-runner" % "0.1.3")
 
 // Run!
 aspectj-runner:run
