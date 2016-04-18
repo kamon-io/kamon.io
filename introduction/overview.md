@@ -54,6 +54,8 @@ Provides additional bytecode instrumentation to propagate TraceContext across th
 ### kamon-statsd ###
 Reports selected metrics information to StatsD.
 
+### kamon-riemann ###
+Reports selected metrics information to Riemann.
 
 ### kamon-datadog ###
 Reports selected metrics information to Datadog. Please note that even while the Datadog agent uses a protocol based on
@@ -101,3 +103,4 @@ This module allow attach the AspectJ loadtime weaving agent to a JVM after it ha
 [instruments]: /core/metrics/instruments/
 [getting started]: /introduction/get-started/
 [New Relic]: http://www.newrelic.com/
+
