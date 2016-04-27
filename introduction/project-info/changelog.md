@@ -6,6 +6,31 @@ layout: documentation
 Changelog
 =========
 
+<hr>
+Version 0.6.1 <small>(2016-04-26)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core:
+  * Add tags for Traces. (see issue [#327](https://github.com/kamon-io/Kamon/issues/327)).
+  * Catch any exception being thrown when recording values on histograms. see [pull #335](https://github.com/kamon-io/Kamon/pull/335)).
+
+* kamon-akka-remote
+  * Correctly published `kamon-akka-remote_akka-2.4` for people using Akka 2.4.
+
+* kamon-newrelic:
+  * Update newrelic-agent dependency. (see [pull #330](https://github.com/kamon-io/Kamon/pull/330)).
+
+* kamon-statsd:
+  * in "normalize" strategy - add replace(":", "-") after replace(": ", "-") to cover the remotely deployed actors case. (see [pull #325](https://github.com/kamon-io/Kamon/pull/325)).
+
+* kamon-elasticsearch:
+  * We have a new Elasticsearch integration! (see [pull #309](https://github.com/kamon-io/Kamon/pull/309)).
+
+* kamon-autoweave:
+  * Remove usage of `breakable`. (see [pull #338](https://github.com/kamon-io/Kamon/pull/338)).
+
+* kamon-spray:
+  * Add tags in spray spray directives for tracing. (see [issue #345](https://github.com/kamon-io/Kamon/issues/345)).
 
 <hr>
 Version 0.6.0 <small>(2016-03-29)</small>
