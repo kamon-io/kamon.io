@@ -74,7 +74,8 @@ measurements are sent with the following tags:
 * __category__: The entity's category.
 * __entity__: The entity's name.
 * __metric__: The metric name assigned in the entity recorder.
-* __hostname__: Uses the local host name.
+* __hostname__: Uses the local host name or `kamon.influxdb.hostname-override`,
+  if given.
 
 The counter metrics store their current value to the `value` field. For
 histograms, the following fields are stored:
