@@ -34,6 +34,12 @@ Pattern timesout.
 propagated across the remoting channel provided by Akka. This hooks in the low level remoting implementation that ships
 with Akka, which means it will propagate the `TraceContext` when using plain remoting as well as when using the Akka Cluster.
 
+<p class="alert alert-warning">
+If you are using Akka Remote 2.4 or Akka Cluster 2.4, please make sure that you are using the <b>kamon-akka-remote_akka-2.4</b>
+artifact instead of the regular <b>kamon-akka-remote</b>.
+</p>
+
+
 
 [event based threading model section]: /core/tracing/threading-model-considerations/
 [Ask Pattern Timeout Warning]: /integrations/akka/ask-pattern-timeout-warning/
