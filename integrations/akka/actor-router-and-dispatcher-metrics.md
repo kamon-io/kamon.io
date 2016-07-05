@@ -51,7 +51,7 @@ For each tracked router you will get:
 
 * __routing-time__: a histogram that tracks how long did it take to the router itself to decide which of it's routees
 will process the message.
-* __time-in_mailbox__: a histogram that tracks the combined time measured from the moment a message was enqueued into a
+* __time-in-mailbox__: a histogram that tracks the combined time measured from the moment a message was enqueued into a
 routee's mailbox until the moment it was dequeued for processing. The measurements from all routees are combined here.
 * __processing-time__: a histogram that tracks how long did it take for each of the routees to process incoming messages.
 * __errors__: a simple counter with the number of failures of the routees in the router.

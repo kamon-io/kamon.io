@@ -66,6 +66,7 @@ way of deployment, here are some quick notes for the most common deployment scen
 
 {% code_example %}
 {%   language text manually-adding-aspectj-weaver-agent/readme.md tag:manually-add-aspectj-weaver label:"Manually" %}
+{%   language text manually-adding-aspectj-weaver-agent/readme.md tag:using-aspectj-runner label:"sbt-aspectj-runner" %}
 {%   language scala using-sbt-aspectj-plugin/build.sbt tag:using-sbt-aspectj label:"sbt-aspectj" %}
 {% endcode_example %}
 

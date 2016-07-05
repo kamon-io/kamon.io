@@ -1,5 +1,5 @@
 ---
-title: kamon | Spray | Documentation
+title: kamon | Web & HTTP Toolkits | Documentation
 layout: documentation
 ---
 

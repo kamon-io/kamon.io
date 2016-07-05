@@ -17,6 +17,12 @@ The <b>kamon-play</b> module requires you to start your application using the As
 at startup if you failed to do so.
 </p>
 
+<p class="alert alert-warning">
+Since Kamon 0.5.0 we support both Play Framework 2.3 and 2.4, but bringing support for Play! 2.4 required us
+to ship different modules for each Play! version. Please make sure you add either <b>kamon-play-23</b> or
+<b>kamon-play-24</b> to your project's classpath.
+</p>
+
 
 
 Server Side Tools
@@ -44,7 +50,9 @@ gave to the `TraceName` action.
 Finally, you can use the `kamon.play.automatic-trace-token-propagation` configuration key to decide whether to include
 the current trace's token in the HTTP response messages.
 
-
+<p class="alert alert-warning">
+By default the <b>kamon-play</b> module utilizes the tags of the request in order to create the trace name, but in the case that the requests doesn't contains tags, we need name the trace as <b>UntaggedTrace</b> in order to avoid the creation of undesired traces
+</p>
 
 Client Side
 -----------
@@ -71,11 +79,11 @@ launching Play! in development mode or in production mode. The requirement stays
 
 When running on development mode, Play! will not allow forking the JVM where your application runs, thus rendering
 useless the most common approaches such as using the `sbt-aspectj` plugin to include the `-javaagent:...` option. In
-this case what you really need to do is launch the activator command with an additional `-J` option specifying the
-agent location as shown bellow:
+this case what you really need to do is use our [sbt-aspectj-runner] plugin or launch the activator command with an additional `-J` option specifying the agent location. These options shown below::
 
 {% code_example %}
-{%   language text kamon-play-examples/app/controllers/KamonPlayExample.scala tag:launch-play-dev-mode label:"Launching in Dev Mode" %}
+{% language text kamon-play-examples/app/controllers/KamonPlayExample.scala tag:launch-play-dev-mode-plugin label:"Launching in Dev Mode with aspectj-play-runner" %}
+{% language text kamon-play-examples/app/controllers/KamonPlayExample.scala tag:launch-play-dev-mode label:"Launching in Dev Mode with Activator" %}
 {% endcode_example %}
 
 
@@ -90,3 +98,4 @@ add the weaver option as described bellow:
 
 
 [base functionality]: /integrations/web-and-http-toolkits/base-functionality/
+[sbt-aspectj-runner]: https://github.com/kamon-io/sbt-aspectj-runner

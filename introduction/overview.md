@@ -54,6 +54,8 @@ Provides additional bytecode instrumentation to propagate TraceContext across th
 ### kamon-statsd ###
 Reports selected metrics information to StatsD.
 
+### kamon-riemann ###
+Reports selected metrics information to Riemann.
 
 ### kamon-datadog ###
 Reports selected metrics information to Datadog. Please note that even while the Datadog agent uses a protocol based on
@@ -66,6 +68,11 @@ Provides bytecode instrumentation to the JDBC API, providing some basic metrics 
 creating Database access segments if there is a TraceContext available.
 
 
+### kamon-elasticsearch (experimental) {% requires_aspectj %} ###
+Provides bytecode instrumentation to the elasticsearch client, providing some basic metrics about performance as well as
+creating elasticsearch requests segments if there is a TraceContext available.
+
+
 ### kamon-log-reporter ###
 Simple metrics logger for quick feedback when you want to avoid setting up a external metrics backend.
 
@@ -74,8 +81,8 @@ Simple metrics logger for quick feedback when you want to avoid setting up a ext
 Reports trace metrics data to [New Relic].
 
 
-### kamon-play {% requires_aspectj %} ###
-Provides bytecode instrumentation to achieve automatic TraceContext management for Play! applications.
+### kamon-play-23 and kamon-play-24 {% requires_aspectj %} ###
+Provide bytecode instrumentation to achieve automatic TraceContext management for Play! applications.
 
 
 ### kamon-spray {% requires_aspectj %} ###
@@ -89,7 +96,11 @@ such as garbage collection, threads, heap memory, non-heap memory and class load
 ### kamon-annotation {% requires_aspectj %} ###
 Provides a simple way to create [instruments], start traces and segments through annotation demarcation.
 
+### kamon-autoweave ###
+This module allow attach the AspectJ loadtime weaving agent to a JVM after it has started (you don't need to use -javaagent). This offers extra flexibility but obviously any classes loaded before attachment will not be woven.
+
 
 [instruments]: /core/metrics/instruments/
 [getting started]: /introduction/get-started/
 [New Relic]: http://www.newrelic.com/
+

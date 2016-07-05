@@ -17,7 +17,19 @@ the appropriate [Sigar] native library is correctly loaded. To do so, the `kamon
 As you might expect, you and any other module can subscribe to all the metrics that are reported by this module using
 the `system-metric` category and the entity recorder names described bellow.
 
+By default the `kamon-system-metrics` module starts with Host and JVM metrics enabled, in the case that you want **enable/disable** one of them, you can configure it this way:
 
+{% code_block typesafeconfig %}
+kamon {
+  system-metrics {
+   #sigar is enabled by default
+   sigar-enabled = true
+
+   #jmx related metrics are enabled by default
+   jmx-enabled = true
+  }
+}
+{% endcode_block %}
 
 Host System Metrics
 -------------------
@@ -27,6 +39,10 @@ considerations given that [Sigar] instances are not thread-safe and some metrics
 correctly when updated in intervals of less than a second. In the sections bellow, you will see histograms tracking
 metrics that typically should be recorded with a gauge, but that we couldn't allow because of the need to have a tight
 control on timings and thread-safety.
+
+<p class="alert alert-warning">
+In the case that <b>Sigar</b> can't obtain some metric in the host, we will log a warning indicating the error and the metric name.
+</p>
 
 ### cpu ###
 * __user__: a histogram tracking total percentage of system cpu user time.

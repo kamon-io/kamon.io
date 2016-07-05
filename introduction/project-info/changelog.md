@@ -7,6 +7,172 @@ Changelog
 =========
 
 <hr>
+Version 0.6.1 <small>(2016-04-27)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core:
+  * Add tags for Traces. (see issue [#327](https://github.com/kamon-io/Kamon/issues/327)).
+  * Catch any exception being thrown when recording values on histograms. see [pull #335](https://github.com/kamon-io/Kamon/pull/335)).
+
+* kamon-akka-remote
+  * Correctly published `kamon-akka-remote_akka-2.4` for people using Akka 2.4.
+
+* kamon-newrelic:
+  * Update newrelic-agent dependency. (see [pull #330](https://github.com/kamon-io/Kamon/pull/330)).
+
+* kamon-statsd:
+  * in "normalize" strategy - add replace(":", "-") after replace(": ", "-") to cover the remotely deployed actors case. (see [pull #325](https://github.com/kamon-io/Kamon/pull/325)).
+
+* kamon-elasticsearch:
+  * We have a new Elasticsearch integration! (see [pull #309](https://github.com/kamon-io/Kamon/pull/309)).
+
+* kamon-autoweave:
+  * Remove usage of `breakable`. (see [pull #338](https://github.com/kamon-io/Kamon/pull/338)).
+
+* kamon-spray:
+  * Add tags in spray spray directives for tracing. (see [issue #345](https://github.com/kamon-io/Kamon/issues/345)).
+
+<hr>
+Version 0.6.0 <small>(2016-03-29)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-all
+  * Ensure that Kamon becomes test friendly. (see issue [#202](https://github.com/kamon-io/Kamon/issues/202)).
+  * Improve Kamon tooling for tests. (see issue [#248](https://github.com/kamon-io/Kamon/issues/248)).
+
+* kamon-core:
+  * Avoid `StackOverflowError` shutting down JVM. (see issue [#295](https://github.com/kamon-io/Kamon/issues/295)).
+  * Unsupported major.minor version in GlobPathFilter. (see issue [#250](https://github.com/kamon-io/Kamon/issues/250)).
+  * Generalize `ThreadPoolExecutors` metrics. (see issue [#247](https://github.com/kamon-io/Kamon/issues/247)).
+  * Fix typo in kamon `auto-start error`. (see [pull #262](https://github.com/kamon-io/Kamon/pull/262)).
+  * Don't throw an `NPE` during shutdown if Kamon hasn't been started. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
+  * Provide generic way to scale time and memory metrics. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
+  * Don't throw MatchError when auto-start is disabled for a module. see [pull #302](https://github.com/kamon-io/Kamon/pull/302)).
+
+* kamon-akka:
+  * Error thrown in dispatcher instrumentation when using custom dispatchers. (see issue [#290](https://github.com/kamon-io/Kamon/issues/290)).
+  * Akka `2.4` support. (see issue [#224](https://github.com/kamon-io/Kamon/issues/224)).
+  * Balancing pool router shows incorrect `time-in-mailbox` and `mailbox-size metrics`. (see issue [#271](https://github.com/kamon-io/Kamon/issues/271)).
+  * Introduce selective instrumentation for Akka actors. (see [pull #323](https://github.com/kamon-io/Kamon/pull/323)).
+
+* kamon-akka-remote
+  * Akka `2.4` support. (see issue [#224](https://github.com/kamon-io/Kamon/issues/224)).
+
+* kamon-system-metrics:
+  * Class loading metrics should have no unit in kamon-system-metrics. (see issue [#297](https://github.com/kamon-io/Kamon/issues/297)).
+  * Avoid updating the `totalCount` on our histograms. (see issue [#293](https://github.com/kamon-io/Kamon/issues/293)).
+  * Histogram recorded value cannot be negative in `ProcessCpuMetrics`. (see issue [#291](https://github.com/kamon-io/Kamon/issues/291)).
+  * Fix heap metrics update. (see [pull #260](https://github.com/kamon-io/Kamon/pull/260)).
+  * Expose memory buffer pool metrics from `JMX`. (see [pull #317](https://github.com/kamon-io/Kamon/pull/317)).
+
+* kamon-newrelic:
+  * Prevent `NPE` when errors are logged without New Relic Agent. (see [pull #279](https://github.com/kamon-io/Kamon/pull/279)).
+  * Support the use of multiple names for a `New Relic` app. (see issue [#255](https://github.com/kamon-io/Kamon/issues/255)).
+  * Match error when segments are not `http-client`. (see issue [#253](https://github.com/kamon-io/Kamon/issues/253)).
+  * Add `ssl` support to agent. (see [pull #268](https://github.com/kamon-io/Kamon/pull/268)).
+  * Associate logged errors with correct transaction. (see [pull #269](https://github.com/kamon-io/Kamon/pull/269)).
+
+* kamon-statsd:
+  * Allow custom `statsd senders` + add simple statsd sender which doesn't batch stats. (see [pull #270](https://github.com/kamon-io/Kamon/pull/270)).
+  * Allow `time` and `memory` metrics be scaled before sending to statsd. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
+  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).  
+
+* kamon-datadog:
+  * Allow `time` and `memory` metrics be scaled before sending to datadog. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).
+  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).  
+
+* kamon-autoweave:
+  * This new module allow attach the `AspectJ loadtime weaving agent to a JVM after it has started`. (see [pull #292](https://github.com/kamon-io/Kamon/pull/292)).
+  * Doesn't attach Mac JVM properly. (see [pull #308](https://github.com/kamon-io/Kamon/pull/308)).
+
+* kamon-jmx:
+  * Reporting Metrics to `JMX MBeans`. (see [pull #258](https://github.com/kamon-io/Kamon/pull/258)).
+
+* kamon-fluentd:
+  * This `kamon-fluentd` module provides capabilities to send kamon metrics to fluentd server. (see [pull #264](https://github.com/kamon-io/Kamon/pull/264)).
+
+* kamon-spm:
+  * Fix sending metrics failure message. (see [pull #280](https://github.com/kamon-io/Kamon/pull/280)).
+
+* kamon-spray:
+  * Check for trace-token header in case-insensitive manner. (see [pull #299](https://github.com/kamon-io/Kamon/pull/299)).
+
+<hr>
+Version 0.5.2 <small>(2015-10-06)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core:
+  * Avoid NPE thrown if you shutdown Kamon and it wasn't started yet. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
+
+* kamon-newrelic:
+  * Fix a match error when non-http client segments are recorded. (see issue [#253](https://github.com/kamon-io/Kamon/issues/253)).
+  * Support for multiple application names. (see issue [#255](https://github.com/kamon-io/Kamon/issues/255)).
+
+* kamon-system-metrics:
+  * Ensure that heap metrics collect new instances of `MemoryUsage` rather than keeping the first seen instance. (see [pull #260](https://github.com/kamon-io/Kamon/pull/260)).
+
+
+<hr>
+Version 0.5.1 <small>(2015-08-31)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon:
+  * Revert the need to run on Java 8.
+
+* kamon-core:
+  * Make Kamon test-friendly. (see issue [#202](https://github.com/kamon-io/Kamon/issues/202)).
+  * Pull the basics of dispatcher metrics for Akka into a more general ThreadPoolExecutor metrics.
+
+* kamon-akka-remote:
+  * Avoid breaking Kryo serialization on remote messages. (see issue [#160](https://github.com/kamon-io/Kamon/issues/160)).
+
+* kamon-play-24:
+  * Use the URI's authority instead of the full URL when naming WS Client request segments.
+
+* kamon-system-metrics:
+  * Report metrics for all JVM memory pools. (see [pull #244](https://github.com/kamon-io/Kamon/pull/244)).
+
+
+<hr>
+Version 0.5.0 <small>(2015-08-17)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core
+  * Ensure that the TraceLocalStorage can be used from Java (see [issue 196](https://github.com/kamon-io/Kamon/issues/196)).
+  * Memory leak when removing entities with MinMaxCounter (see [issue 227](https://github.com/kamon-io/Kamon/issues/227)).
+  * Introduce new Sampler `clock-sampler` (see [pull 208](https://github.com/kamon-io/Kamon/pull/208)).
+  * Fix `ordered-sampler` (see [pull 201](https://github.com/kamon-io/Kamon/pull/201)).
+  * Fix usage of `GaugeKey` for gauges in MetricsModule (see [pull 198](https://github.com/kamon-io/Kamon/pull/198)).
+  * Allow creation of counters with units (see [pull 236](https://github.com/kamon-io/Kamon/pull/236)).
+  * Allow custom `kamon.trace.token-generator` (see [pull 223](https://github.com/kamon-io/Kamon/pull/223)).
+  * The `withNewAsyncSegment` method actually evaluates the supplied code twice (see [issue 204](https://github.com/kamon-io/Kamon/issues/204)).
+
+* kamon-akka
+  * NPE when initializing a balancing-pool router from configuration (see [issue 199](https://github.com/kamon-io/Kamon/issues/199)).
+  * Avoid runtime exceptions logged on ActorCell shutdown (see [pull 220](https://github.com/kamon-io/Kamon/pull/220)).
+  * Change map to foreach for side-effecting behaviour on Option (see [pull 212](https://github.com/kamon-io/Kamon/pull/212)).
+
+* kamon-play
+  * Play trace name for emulated HEAD requests  (see [issue 237](https://github.com/kamon-io/Kamon/issues/237)).
+  * Create a Play(2.4) module for manage the lifecycle of kamon  (see [issue 169](https://github.com/kamon-io/Kamon/issues/169)).
+
+* kamon-spray
+  * Memory leak with Spray (see [issue 213](https://github.com/kamon-io/Kamon/issues/213)).
+  * Fix segment finishing on errors (see [pull 205](https://github.com/kamon-io/Kamon/pull/205)).
+
+* kamon-newrelic
+  * Newrelic is not subscribing to single-instrument entities (see [issue 197](https://github.com/kamon-io/Kamon/issues/197)).
+  * Remove compile dependency from kamon-newrelic to kamon-testkit (see [pull 231](https://github.com/kamon-io/Kamon/pull/231)).
+  * Add possibility to send akka metrics to the Newrelic (see [pull 228](https://github.com/kamon-io/Kamon/pull/228)).
+
+* kamon-system-metrics
+  * Split/Allow disabling of system sigar and JVM JMX metrics in system-metrics module (see [issue 234](https://github.com/kamon-io/Kamon/issues/234)).
+  * SigarNotImplementedException exceptions on windows 7 (see [issue 235](https://github.com/kamon-io/Kamon/issues/235)).
+
+* kamon-spm
+  * This new module send Kamon Akka metrics to [SPM](http://sematext.com/spm/index.html) (see [pull 240](https://github.com/kamon-io/Kamon/pull/240)).
+
+<hr>
 Version 0.4.0 <small>(2015-05-09)</small>
 ------------------------------------------------------------------------------------------------
 
