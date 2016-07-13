@@ -20,6 +20,7 @@ SPM backend extension requires the property `kamon.spm.token` to be defined. SPM
 
 {% code_block typesafeconfig %}
   kamon.spm {
+    token = "[place-token-here]"
     subscriptions {
       akka-actor      = [ "**" ]
       akka-dispatcher = [ "**" ]
@@ -29,7 +30,9 @@ SPM backend extension requires the property `kamon.spm.token` to be defined. SPM
   }
 {% endcode_block %}
 
-By default this extension uses hostname resolved using `InetAddress.getLocalHost.getHostName`. However, hostname can be redefined using `kamon.spm.hostname-alias` property.
+To see a full example of Kamon SPM Backend configuration look at [application.conf] in [sample Akka/Play app] with Kamon and SPM.
+
+**Note:** By default this extension uses hostname resolved using `InetAddress.getLocalHost.getHostName`. However, hostname can be redefined using `kamon.spm.hostname-alias` property. 
 
 Visualisation
 -------------
@@ -58,3 +61,5 @@ CPU:
 [SPM]: http://sematext.com/spm/index.html
 [Sign up]: https://apps.sematext.com/users-web/register.do
 [Create 'Akka' app]: https://apps.sematext.com/spm-reports/registerApplication.do
+[sample Akka/Play app]: https://github.com/sematext/kamon-spm-example
+[application.conf]: https://github.com/sematext/kamon-spm-example/blob/master/src/main/resources/application.conf
