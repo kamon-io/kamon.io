@@ -9,15 +9,15 @@ System Metrics
 Our `kamon-system-metrics` module registers a number of entities with the metrics module that track the performance
 indicators of both the host machine and the JVM where your application is running.
 
-This module doesn't have any bytecode instrumentation requirement, and it's only requirement to work properly is that
+This module doesn't have any bytecode instrumentation requirement, and its only requirement to work properly is that
 the appropriate [Sigar] native library is correctly loaded. To do so, the `kamon-system-metrics` module makes use of the
-[sigar-loader] library. If your application is uses Sigar for other purposes, it is advisable that you take a look at
+[sigar-loader] library. If your application uses Sigar for other purposes, it is advisable that you take a look at
 [sigar-loader] to simplify the sigar native library provisioning process.
 
 As you might expect, you and any other module can subscribe to all the metrics that are reported by this module using
 the `system-metric` category and the entity recorder names described bellow.
 
-By default the `kamon-system-metrics` module starts with Host and JVM metrics enabled, in the case that you want **enable/disable** one of them, you can configure it this way:
+By default the `kamon-system-metrics` module starts with Host and JVM metrics enabled, in the case that you want to **enable/disable** one of them, you can configure it this way:
 
 {% code_block typesafeconfig %}
 kamon {
@@ -98,7 +98,7 @@ the information available in the `/proc/$pid/status` file for Linux systems.
 * __context-switches-process-voluntary__: Total number of voluntary context switches related to the current process (one
 thread explicitly yield the CPU to another).
 * __context-switches-process-non-voluntary__: Total number of involuntary context switches related to the current process
-(the system scheduler suspends and active thread, and switches control to a different thread).
+(the system scheduler suspends an active thread, and switches control to a different thread).
 * __context-switches-global__:  Total number of context switches across all CPUs.
 
 JVM Metrics
