@@ -7,29 +7,65 @@ Changelog
 =========
 
 <hr>
+Version 0.6.2 <small>(2016-07-25)</small>
+------------------------------------------------------------------------------------------------
+
+* kamon-core
+  * Introduce `finishWithError(Throwable)` for Traces and Segments and include a counter to track errors. (see pull [#356](https://github.com/kamon-io/Kamon/pull/356)).
+  * Add context name and token to `MDC`. (see [pull #363](https://github.com/kamon-io/Kamon/pull/363)).
+  * Fix `Histogram::tryRecord` fix value is not passed to the logger. (see pull  [#335](https://github.com/kamon-io/Kamon/pull/335)).
+
+
+* kamon-riemann
+  * We have a new [Riemann] integration! (see [pull #346](https://github.com/kamon-io/Kamon/pull/346)).
+
+* kamon-influxdb
+  * We have a new [InfluxDB] integration! (see [pull #347](https://github.com/kamon-io/Kamon/pull/347)).
+
+* kamon-influxdb
+  * We have a new [Khronus] integration! (see [pull #365](https://github.com/kamon-io/Kamon/pull/365)).
+  * Allow hostname override for influxdb statistics (see [pull #349](https://github.com/kamon-io/Kamon/pull/349)).
+
+* kamon-scala
+  * Add support for `twitter-util Futures`. (see [pull #370](https://github.com/kamon-io/Kamon/pull/370)).
+
+* kamon-spm
+  * Added spm tracing support. (see [pull #369](https://github.com/kamon-io/Kamon/pull/369)).
+
+* kamon-autoweave
+  * Add support for `IBM JRE`. (see [issue #369](https://github.com/kamon-io/Kamon/issues/354)).
+
+* kamon-play
+  * Add `play 2.5.x` support. (see [pull #362](https://github.com/kamon-io/Kamon/pull/362)).
+
+[Riemann]:http://riemann.io/
+[InfluxDB]:https://influxdata.com/
+[Khronus]:https://github.com/Searchlight/khronus
+
+<hr>
 Version 0.6.1 <small>(2016-04-27)</small>
 ------------------------------------------------------------------------------------------------
 
-* kamon-core:
+* kamon-core
   * Add tags for Traces. (see issue [#327](https://github.com/kamon-io/Kamon/issues/327)).
   * Catch any exception being thrown when recording values on histograms. see [pull #335](https://github.com/kamon-io/Kamon/pull/335)).
 
 * kamon-akka-remote
   * Correctly published `kamon-akka-remote_akka-2.4` for people using Akka 2.4.
 
-* kamon-newrelic:
+* kamon-newrelic
   * Update newrelic-agent dependency. (see [pull #330](https://github.com/kamon-io/Kamon/pull/330)).
 
-* kamon-statsd:
+* kamon-statsd
   * in "normalize" strategy - add replace(":", "-") after replace(": ", "-") to cover the remotely deployed actors case. (see [pull #325](https://github.com/kamon-io/Kamon/pull/325)).
 
-* kamon-elasticsearch:
+* kamon-elasticsearch
   * We have a new Elasticsearch integration! (see [pull #309](https://github.com/kamon-io/Kamon/pull/309)).
 
-* kamon-autoweave:
+* kamon-autoweave
   * Remove usage of `breakable`. (see [pull #338](https://github.com/kamon-io/Kamon/pull/338)).
 
-* kamon-spray:
+* kamon-spray
   * Add tags in spray spray directives for tracing. (see [issue #345](https://github.com/kamon-io/Kamon/issues/345)).
 
 <hr>

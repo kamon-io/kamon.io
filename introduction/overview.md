@@ -50,12 +50,14 @@ TraceContext propagation across actor messages (both system and user messages).
 ### kamon-akka-remote {% requires_aspectj %} ###
 Provides additional bytecode instrumentation to propagate TraceContext across the remoting/cluster boundaries.
 
-
 ### kamon-statsd ###
 Reports selected metrics information to StatsD.
 
 ### kamon-riemann ###
 Reports selected metrics information to Riemann.
+
+### kamon-influxdb ###
+Reports selected metrics information to InfluxDB.
 
 ### kamon-datadog ###
 Reports selected metrics information to Datadog. Please note that even while the Datadog agent uses a protocol based on
@@ -81,7 +83,7 @@ Simple metrics logger for quick feedback when you want to avoid setting up a ext
 Reports trace metrics data to [New Relic].
 
 
-### kamon-play-23 and kamon-play-24 {% requires_aspectj %} ###
+### kamon-play-23, kamon-play-24 and kamon-play-25 {% requires_aspectj %} ###
 Provide bytecode instrumentation to achieve automatic TraceContext management for Play! applications.
 
 
@@ -103,4 +105,3 @@ This module allow attach the AspectJ loadtime weaving agent to a JVM after it ha
 [instruments]: /core/metrics/instruments/
 [getting started]: /introduction/get-started/
 [New Relic]: http://www.newrelic.com/
-
