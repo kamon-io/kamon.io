@@ -15,7 +15,6 @@ Version 0.6.2 <small>(2016-07-25)</small>
   * Add context name and token to `MDC`. (see [pull #363](https://github.com/kamon-io/Kamon/pull/363)).
   * Fix `Histogram::tryRecord` fix value is not passed to the logger. (see pull  [#335](https://github.com/kamon-io/Kamon/pull/335)).
 
-
 * kamon-riemann
   * We have a new [Riemann] integration! (see [pull #346](https://github.com/kamon-io/Kamon/pull/346)).
 
