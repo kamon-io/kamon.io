@@ -7,8 +7,11 @@ Changelog
 =========
 
 <hr>
-Version 0.6.5 <small>(2016-12-2x)</small>
+Version 0.6.5 <small>(2016-12-25)</small>
 ------------------------------------------------------------------------------------------------
+
+<small>The observant reader might notice that we skipped `0.6.4`. We experimented an error when releasing the artifacts.</small>
+
 * kamon-all
   * Scala 2.12 compatible release. (see [issue #410](https://github.com/kamon-io/Kamon/issues/410)).
 
@@ -30,9 +33,6 @@ Version 0.6.5 <small>(2016-12-2x)</small>
 
 * kamon-influxdb
   * Don't send zeroes when histogram is empty. (see [pull #414](https://github.com/kamon-io/Kamon/pull/414)). 
-
-<hr>
-Version 0.6.4 <small>The observant reader might notice that we skipped 0.6.4. We experimented an error when releasing the artifacts.</small>
 
 <hr>
 Version 0.6.3 <small>(2016-10-10)</small>
