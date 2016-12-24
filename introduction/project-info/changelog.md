@@ -7,6 +7,34 @@ Changelog
 =========
 
 <hr>
+Version 0.6.5 <small>(2016-12-2x)</small>
+------------------------------------------------------------------------------------------------
+* kamon-all
+  * Scala 2.12 compatible release. (see [issue #410](https://github.com/kamon-io/Kamon/issues/410)).
+
+* kamon-core
+  * Aspectj update. (see [issue #419](https://github.com/kamon-io/Kamon/issues/419)).
+  * Support for regex path filters. (see [pull #388](https://github.com/kamon-io/Kamon/pull/388)).
+  * Adding back a method to allow passing of a configuration into Kamon. (see [pull #403](https://github.com/kamon-io/Kamon/pull/403)).
+  * Update initial config code ignore unresolved configs. (see [pull #409](https://github.com/kamon-io/Kamon/pull/409)). 
+
+* kamon-play
+  * AspectJ weaving for Play's Java logging API. (see [pull #406](https://github.com/kamon-io/Kamon/pull/406)). 
+  * AspectJ weaving for Play's Java logging API backport. (see [issue #407](https://github.com/kamon-io/Kamon/issues/407)).
+
+* kamon-jmx
+  * Generic jmx importing. (see [pull #401](https://github.com/kamon-io/Kamon/pull/401)).
+
+* kamon-khronus
+  * Introduce system metrics and segments. (see [pull #404](https://github.com/kamon-io/Kamon/pull/404)).
+
+* kamon-influxdb
+  * Don't send zeroes when histogram is empty. (see [pull #414](https://github.com/kamon-io/Kamon/pull/414)). 
+
+<hr>
+Version 0.6.4 <small>The observant reader might notice that we skipped 0.6.4. We experimented an error when releasing the artifacts.</small>
+
+<hr>
 Version 0.6.3 <small>(2016-10-10)</small>
 ------------------------------------------------------------------------------------------------
 
