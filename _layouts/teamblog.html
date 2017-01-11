@@ -30,6 +30,16 @@
             {% include blog-sidebar.html %}
           </div>
           <div class="col-sm-9">
+            <a href="#" class="kamino-add-inner">
+              <span class="add-left">
+                <span class="add-subtitle">Try out</span><br>
+                <span class="add-title">Kamino</span><br>
+              </span>
+              <span class="add-right">
+                <span>See the shocking metrics<br> that nobody knows about!</span>
+              </span>
+              <span class="btn btn-primary upper">Try It Now</span>
+            </a><!-- /.kamino-add-inner -->
             {% for post in site.posts %}
               <div class="feat-box">
                 <h4><a href="{{post.url}}">{{post.title}}</a></h4>
