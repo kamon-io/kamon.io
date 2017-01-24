@@ -12,9 +12,11 @@
 </div> -->
 <div class="blog-sidebar">
   <h3 class="sidebar-title">Recent Posts</h3>
-  <ul class="list-unstyled">
+  <div class="recent-post">
     {% for post in site.posts %}
-      <li><a href="{{ post.url }}" class="sidebar-post">{{ post.title }}</a></li>
+      <h4><a href="{{ post.url }}" class="sidebar-post">{{ post.title }}</a></h4>
+      <p class="date"><i class="fa fa-calendar"></i> {{post.date | date_to_string }}</p>
+      <hr>
     {% endfor %}
   </ul>
 </div>

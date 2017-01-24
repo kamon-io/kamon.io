@@ -20,18 +20,25 @@
     {% include head.html %}
   </head>
   <body>
-
-    {% include blog-header.html %}
+    {% include navbar.html %}
+    <div class="hero jumbotron-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="jumbo-title">{{ page.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="main">
       <div class="container">
         <div class="row">
-          <div class="col-sm-3">
-            {% include blog-sidebar.html %}
-          </div>
-          <div class="col-sm-9">
-            <h2>{{ page.title }}</h2>
-            <small>{{ page.date | date_to_string }}</small>
+          <div class="col-sm-9 post-content">
+            <div class="post-heading">
+              <span class="heading-item"><i class="fa fa-calendar icon"></i>  {{ page.date | date_to_string }}</span>
+              <!--<span class="heading-item"><i class="fa fa-user icon"></i>  by {{ page.author }}</span>-->
+            </div>
             <hr>
 
             {{ content }}
@@ -41,6 +48,9 @@
               {% include disqus.html %}
             </div>
 
+          </div>
+          <div class="col-sm-3">
+            {% include blog-sidebar.html %}
           </div>
         </div>
       </div>

@@ -10,9 +10,7 @@ $(document).ready(function () {
 	  $('div#doc-tree a').each(function() {
 	    if ($(this).prop('href') == window.location.href) {
 	      $(this).addClass('active');
-				//$(this).parent().closest('li').children('label').addClass('active');
 				$(this).parent().parent().parent().find('label').addClass('active');
-				//$(this).parent().parent().parent().parent().parent().find('label').addClass('active');
 	    }
 	  });
 	});
