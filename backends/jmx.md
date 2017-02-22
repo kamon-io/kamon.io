@@ -48,14 +48,14 @@ For all single instrument entities (those tracking counters, histograms, gaugues
 * __Connection__:  For connect to your application you need [add some JVM parameters] for start JMX agent and install a JMX client (for example [VisualVM])
 * __Histogram percentile__:  You may calculate any percentile on hystogram values.
 
-<img class="img-responsive" src="/assets/img/jmx-module-percentile.png">
+<img class="img-fluid" src="/assets/img/jmx-module-percentile.png">
 
 Visualization and Fun
 ---------------------
 
 Here is a very simple example of a JMX values in VisualVM MBeans plugin with metrics reported by Kamon:
 
-<img class="img-responsive" src="/assets/img/jmx-module-overiew.png">
+<img class="img-fluid" src="/assets/img/jmx-module-overiew.png">
 
 
 [JMX]: https://en.wikipedia.org/wiki/Java_Management_Extensions

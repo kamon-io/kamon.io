@@ -4,6 +4,15 @@ markdown: kramdown
 highlighter: pygments
 permalink: pretty
 encoding: utf-8
-code_examples_folder: _code_examples
+code_examples_folder: '../_code_examples'
 host: 0.0.0.0
 excerpt_separator: "\n\n\n\n"
+
+
+source: 'website'
+plugins_dir: 'website/jekyll/plugins'
+includes_dir: 'jekyll/includes'
+layouts_dir: 'jekyll/layouts'
+
+
+destination: 'build'

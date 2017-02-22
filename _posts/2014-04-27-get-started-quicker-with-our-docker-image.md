@@ -54,7 +54,7 @@ play with the dashboard at your wish. We hope that you have a lot of fun with th
 purpose of making your life easier. This should give you an idea of how the dashboard looks like when receiving data
 from one of our toy applications:
 
-<img class="img-responsive" src="/assets/img/kamon-statsd-grafana.png">
+<img class="img-fluid" src="/assets/img/kamon-statsd-grafana.png">
 
 
 [StatsD module]: /backends/statsd/

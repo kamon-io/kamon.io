@@ -21,7 +21,7 @@ regards to how the `TraceContext` should be manipulated and propagated across th
 The Traditional Model
 ---------------------
 
-<img class="img-responsive" src="/assets/img/diagrams/traditional-thread-model.png">
+<img class="img-fluid" src="/assets/img/diagrams/traditional-thread-model.png">
 
 The traditional way of doing things, specially when using Servlets, is to tie the execution of all code related to a
 request to a single thread. In the picture above, the thick arrow in the background represents a thread while the blocks
@@ -44,7 +44,7 @@ fact, you are blocking more threads than with the traditional model, but you do 
 can serve a particular request "faster". We tend to call this the "enhanced traditional model" and, to compare with the
 traditional model you can picture it like this:
 
-<img class="img-responsive" src="/assets/img/diagrams/enhanced-traditional-thread-model.png">
+<img class="img-fluid" src="/assets/img/diagrams/enhanced-traditional-thread-model.png">
 
 When your application works under this model you might have the need to propagate the `TraceContext` to the additional
 supporting threads, it is up to you. If you need to do so, then rely on the tracing API to retrieve the current
@@ -62,7 +62,7 @@ it is very likely that the processing of a single request will trigger several a
 processed by different threads at different points in time, until the request is fulfilled. Visually, the event based
 model looks like this:
 
-<img class="img-responsive" src="/assets/img/diagrams/reactive-model.png">
+<img class="img-fluid" src="/assets/img/diagrams/reactive-model.png">
 
 As you can see from the diagram, the processing of a request flows through a arbitrary number of stages and finishes at
 some point in the future when the desired response is available. Some parts of the flow might still need to block a

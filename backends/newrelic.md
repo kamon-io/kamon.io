@@ -49,9 +49,9 @@ New Relic has a set of predefined dashboards with fixed metric categories on the
 reported by the `kamon-newrelic` module without you having to do anything on the New Relic side. Here are a few screenshots
 of how your traces and segments will look like in the New Relic dashboards:
 
-<img class="img-responsive" src="/assets/img/newrelic-module-newrelic-dashboard.png">
-<img class="img-responsive" src="/assets/img/newrelic-module-transactions-tab.png">
-<img class="img-responsive" src="/assets/img/newrelic-module-external-services.png">
+<img class="img-fluid" src="/assets/img/newrelic-module-newrelic-dashboard.png">
+<img class="img-fluid" src="/assets/img/newrelic-module-transactions-tab.png">
+<img class="img-fluid" src="/assets/img/newrelic-module-external-services.png">
 
 
 Licensing

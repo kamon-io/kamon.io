@@ -139,7 +139,7 @@ received from the application!"_, but, how big can that _"quite some time"_ be? 
 related to how Spray Client works under the hood, this little diagram becomes handy to understand what is going on
 there.
 
-<img class="img-responsive" src="/assets/img/diagrams/spray-client-actors.png">
+<img class="img-fluid" src="/assets/img/diagrams/spray-client-actors.png">
 
 Following the flow in the diagram:
 

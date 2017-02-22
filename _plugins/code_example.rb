@@ -23,7 +23,7 @@ module Jekyll
           content_active = 'active'
         end
 
-        navegation_tabs = navegation_tabs + '<li role="presentation"' + active + '><a href="#' + id_prefix + '-' + snippet[:language] + '-' + index.to_s + '" role="tab" data-toggle="tab">' + snippet[:label] + '</a></li>'
+        navegation_tabs = navegation_tabs + '<li class="nav-item" role="presentation"' + active + '><a class="nav-link" href="#' + id_prefix + '-' + snippet[:language] + '-' + index.to_s + '" role="tab" data-toggle="tab">' + snippet[:label] + '</a></li>'
         tab_contents = tab_contents + '<div role="tabpanel" class="tab-pane '+content_active+'" id="' + id_prefix + '-' + snippet[:language] + '-' + index.to_s + '"><pre class="line-numbers language-'+ snippet[:language] +'"><code class="language-'+ snippet[:language] +'">'+ snippet[:code] +'</code></pre></div>'
       }
 

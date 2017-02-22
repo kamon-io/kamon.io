@@ -107,9 +107,9 @@ choose to use [Graphite] as the StatsD backend and [Grafana] to create beautiful
 Have an idea of how your metrics data might look like in Grafana with the screenshot bellow or use our [docker image] to
 get up and running in a few minutes and see it with your own metrics!
 
-<img class="img-responsive" src="/assets/img/kamon-statsd-grafana.png">
+<img class="img-fluid" src="/assets/img/kamon-statsd-grafana.png">
 
-<img class="img-responsive" src="/assets/img/kamon-system-metrics.png">
+<img class="img-fluid" src="/assets/img/kamon-system-metrics.png">
 
 
 [StatsD]: https://github.com/etsy/statsd/

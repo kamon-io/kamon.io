@@ -1,0 +1,84 @@
+{% assign module_tree = site.pages | extract_module_tree: page.url %}
+
+<section>
+  <ul class="tree">
+    <li><a class="docs-level-three" href="/introduction/overview/">Overview</a></li>
+    <li><a class="docs-level-three" href="/introduction/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three" href="/introduction/configuration/"></i>Configuration</a></li>
+  </ul>
+</section>
+
+<section>
+  <div class="tree tree-toggler docs-level-one row justify-content-between align-items-center">
+    <span>
+      {{ module_tree.name }}
+    </span>
+
+    <div class="dropdown version-dropdown">
+      <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ module_tree.current_version }}
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        {% for version in module_tree.versions %}
+          <a class="dropdown-item" href="#">{{ version }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    {% for module_page in module_tree.pages %}
+      <li><a class="docs-level-three" href="{{ module_page.url }}">{{ module_page.title }}</a></li>
+    {% endfor %}
+
+    {% for module_section in module_tree.sections %}
+      <li>
+      <label class="tree-toggler tree docs-level-two">{{ module_section.name | capitalize }}</label>
+      <ul class="tree tree-toggler">
+        {% for section_page in module_section.pages %}
+          <li><a class="docs-level-three" href="{{ section_page.url }}">{{ section_page.tree_title }}</a></li>
+        {% endfor %}
+      </ul>
+      </li>
+    {% endfor %}
+</section>
+
+<section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Core</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Akka</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Spray</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Kamino</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">JMX</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">InfluxDB</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Graphite</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/core/metrics/core-concepts/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>

@@ -28,7 +28,7 @@ sharing the same set of metrics.
 
 The regular operation of the Metrics module consists of basically two stages, as described in this simple diagram:
 
-<img class="img-responsive" src="/assets/img/diagrams/metrics-module-overview.png">
+<img class="img-fluid" src="/assets/img/diagrams/metrics-module-overview.png">
 
 On the left, we have the real time recording side of the process where Entities work as the keys in that "big map" that
 we mentioned before, pointing to a entity recorder that contains all the metric instruments associated  with that given

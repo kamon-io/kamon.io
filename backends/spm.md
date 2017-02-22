@@ -39,23 +39,23 @@ Visualisation
 
 Overview:
 
-<img class="img-responsive" src="/assets/img/spm-module-overview.png">
+<img class="img-fluid" src="/assets/img/spm-module-overview.png">
 
 Actors:
 
-<img class="img-responsive" src="/assets/img/spm-module-actors.png">
+<img class="img-fluid" src="/assets/img/spm-module-actors.png">
 
 Dispatchers:
 
-<img class="img-responsive" src="/assets/img/spm-module-dispatchers.png">
+<img class="img-fluid" src="/assets/img/spm-module-dispatchers.png">
 
 Routers:
 
-<img class="img-responsive" src="/assets/img/spm-module-routers.png">
+<img class="img-fluid" src="/assets/img/spm-module-routers.png">
 
 CPU:
 
-<img class="img-responsive" src="/assets/img/spm-module-cpu.png">
+<img class="img-fluid" src="/assets/img/spm-module-cpu.png">
 
 
 [SPM]: http://sematext.com/spm/index.html
