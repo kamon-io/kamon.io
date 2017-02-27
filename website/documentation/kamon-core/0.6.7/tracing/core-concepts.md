@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Core Concepts
-layout: documentation
+layout: module-documentation
 ---
 
 Tracing Module

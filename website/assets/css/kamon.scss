@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .kamon-logo-image {
   height: 52px;
   max-width: 100%;
+  margin: 12px 0px;
 }
 
 .navbar-links {
@@ -52,14 +53,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
   a {
     color: rgba(57, 71, 61, 0.89);
-  }
-  .nav-icon {
-    //margin: 0px 5px;
-  }
-
-  .nav-link {
-    display: inline;
-    //margin: 5px 10px;
   }
 }
 
@@ -134,11 +127,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .docs-level-one {
   color: white;
   background-color:#12aa40;
-  padding: 5px 20px;
+  padding: 5px 10px;
   list-style: none;
   font-size: 1.4rem;
   font-weight: bold;
-  margin: 0px;
+  margin: 0px 0px 5px 0px;
 
   .show>.btn-secondary.dropdown-toggle {
     background-color: transparent;

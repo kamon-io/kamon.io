@@ -106,7 +106,7 @@ module Jekyll
       raise "#{@file} does not contain the #{tag}:start element." if start_line.nil?
       raise "#{@file} does not contain the #{tag}:end element." if end_line.nil?
 
-      code = lines.slice(start_line + 1, end_line - start_line - 1).join("").strip
+      code = lines.slice(start_line + 1, end_line - start_line - 1).join("")
 
       CGI::escapeHTML(code)
     end

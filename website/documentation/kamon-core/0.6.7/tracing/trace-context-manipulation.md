@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Trace Context Manipulation
-layout: documentation
+layout: module-documentation
 ---
 
 TraceContext Manipulation

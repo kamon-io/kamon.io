@@ -7,10 +7,6 @@ module Jekyll
     def extract_module_versions(pages, module_name)
       pages
         .select { |page| page.url.include? module_name }
-        .map    { |page| 
-          puts page.url + " >>>> " + page.path + "\n"
-          page 
-        }
         .map    { |page| page.url.split('/')[3] }
         .select { |version| version.length > 0 }
         .uniq
@@ -23,8 +19,10 @@ module Jekyll
         .select { |page| page.url.include? module_name }
 
       module_versions = module_pages
-        .map    { |page| page.url.split('/')[3] }
-        .select { |version| version.length > 0 }
+        .map    { |page| 
+          puts page.url + " >>>> " + page.path + "\n"
+          page.url.split('/')[3] }
+        .select { |version| version != NIL && version.length > 0 }
         .uniq        
 
       module_tree = ModuleTree.new(module_name, module_versions, current_version)
@@ -35,7 +33,9 @@ module Jekyll
         .each { |page| module_tree.add(page) }
       
       module_tree
-    end     
+    end
+
+         
 
   end
 end
@@ -57,7 +57,6 @@ class ModuleTree < Liquid::Drop
 
   def add(page)
     tree_path = page.url.split('/').drop(4)
-    puts "Evaluating section " + tree_path[0] + "\n"
 
     if tree_path.length() == 2 then
       section_name = tree_path[0]

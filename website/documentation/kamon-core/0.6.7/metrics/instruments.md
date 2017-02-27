@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Instruments
-layout: documentation
+layout: module-documentation
 ---
 
 Metric Recording Instruments

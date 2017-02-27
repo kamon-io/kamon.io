@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Recording Metrics
-layout: documentation
+layout: module-documentation
 ---
 
 Recording Metrics

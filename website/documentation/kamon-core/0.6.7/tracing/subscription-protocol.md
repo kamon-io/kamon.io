@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Subscription Protocol
-layout: documentation
+layout: module-documentation
 ---
 
 Traces Subscription Protocol

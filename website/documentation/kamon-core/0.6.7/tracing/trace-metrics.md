@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Trace Metrics
-layout: documentation
+layout: module-documentation
 ---
 
 Trace Metrics

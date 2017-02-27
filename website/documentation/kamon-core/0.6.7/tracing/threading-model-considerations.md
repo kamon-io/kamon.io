@@ -1,7 +1,7 @@
 ---
 title: Kamon | Core | Documentation
 tree_title: Threading Model Considerations
-layout: documentation
+layout: module-documentation
 ---
 
 Threading Model Considerations
