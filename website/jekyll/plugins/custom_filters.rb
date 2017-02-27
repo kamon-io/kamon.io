@@ -19,9 +19,7 @@ module Jekyll
         .select { |page| page.url.include? module_name }
 
       module_versions = module_pages
-        .map    { |page| 
-          puts page.url + " >>>> " + page.path + "\n"
-          page.url.split('/')[3] }
+        .map    { |page| page.url.split('/')[3] }
         .select { |version| version != NIL && version.length > 0 }
         .uniq        
 

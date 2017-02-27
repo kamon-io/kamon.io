@@ -17,16 +17,16 @@
 
 <html lang="en">
   <head>
-    {% include head.html %}
+    {% include all-head.html %}
   </head>
   <body>
-    {% include navbar.html %}
-    {% include blog-header.html %}
+    {% include all-navbar.html %}
+    {% include all-header.html %}
 
     <div class="main">
       <div class="container">
         <div class="row">
-          <div class="col-xs-8">
+          <div class="col-8">
             {% for post in site.posts %}
               <div class="post-summary">
                 <h2><a href="{{post.url}}">{{post.title}}</a></h2>
@@ -40,7 +40,7 @@
 
             {% endfor %}
           </div>
-          <div class="col-xs-4">
+          <div class="col-4">
             {% include blog-sidebar.html %}
           </div>
 

@@ -159,7 +159,7 @@ By default the application is configured to use with [StatsD] through `Kamon`. T
 this stats is our [Docker-Grafana-Graphite] image that comes bundled with StatsD, Graphite and Grafana. After starting up this application
 and playing a bit with a Grafana dashboard you can start getting something like this:
 
-![Docker Dashboard](/assets/img/docker-dashboard.png)
+<img class="img-fluid" src="/assets/img/docker-dashboard.png"/>
 
 Cool, isn't it? just a few lines of code, mostly dealing with the streams and bum! Metrics for your Docker containers!
 Of course, the full code is available at the [Github Domino Repo], don't hesitate to clone, fork and start experimenting
