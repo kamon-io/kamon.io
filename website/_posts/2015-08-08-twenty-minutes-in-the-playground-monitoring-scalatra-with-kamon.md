@@ -2,7 +2,7 @@
 layout: post
 title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
 date: 2015-08-08
-categories: teamblog
+categories: teamblog, posts
 ---
 
 In this post we’ll show how to take a simple Scalatra project and setup up basic monitoring with Kamon. This is a really

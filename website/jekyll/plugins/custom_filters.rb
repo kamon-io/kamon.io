@@ -33,6 +33,11 @@ module Jekyll
       module_tree
     end
 
+    def bintray_latest_release(module_name)
+      '<a href="https://bintray.com/kamon-io/releases/'+ module_name +'/_latestVersion">' +
+        '<img src="https://api.bintray.com/packages/kamon-io/releases/'+ module_name +'/images/download.svg" alt="Download">' +
+      '</a>'
+    end
          
 
   end

@@ -2,7 +2,7 @@
 layout: post
 title: Understanding Spray Client Timeout Settings
 date: 2014-11-02
-categories: teamblog
+categories: teamblog, posts
 ---
 
 If you have ever used spray-client in a real world application you certainly must have come to the point of setting

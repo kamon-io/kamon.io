@@ -2,7 +2,7 @@ name: Kamon - Tools for Reactive Applications Monitoring
 description: Kamon Team Blog
 markdown: kramdown
 highlighter: pygments
-permalink: pretty
+permalink: /teamblog/:year/:month/:day/:title/
 encoding: utf-8
 code_examples_folder: '../_code_examples'
 host: 0.0.0.0

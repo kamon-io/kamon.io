@@ -47,12 +47,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .navigation-links {
   font-size: 1rem;
   font-weight: bold;
-  color: rgba(57, 71, 61, 0.89);
+  color: #8a8c8b;
   padding-left: 5px;
   padding-right: 15px;
 
   a {
-    color: rgba(57, 71, 61, 0.89);
+    color: #8a8c8b;
   }
 }
 
@@ -258,7 +258,7 @@ pre[class*="language-"] {
   border-bottom-color: rgba(169, 169, 169, 0.61);
 
   a, a:active, a:hover, a:focus {
-    color: #07652c;
+    color: #292b2c;
   }
 
   .read-more {
@@ -267,14 +267,18 @@ pre[class*="language-"] {
     font-weight: bold;
     color: #12aa40;
   }
+
+  .date {
+    font-size: 16px;
+  }
 }
 
 .blog-sidebar {
-  padding: 2rem 0rem;
+  padding: 0rem 0rem;
   text-align: left;
 
   a, a:active, a:hover, a:focus {
-    color: #129e3e;
+    color: rgba(17, 97, 50, 0.83);
   }
 
   h4 {
@@ -286,6 +290,20 @@ pre[class*="language-"] {
   }
   .recent-post {
     padding: 1rem;
+  }
+
+  .sponsored-by-kamino {
+    margin-bottom: 3rem;
+    //background-color: #efefef;
+  }
+
+  .sidebar-title {
+    color: white;
+    background-color: #12aa40;
+    padding: 5px 10px;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1rem;
   }
 }
 
@@ -303,6 +321,7 @@ pre[class*="language-"] {
   }
 
   .heading-item {
+    font-size: 19px;
     padding-right: 2rem;
   }
 }

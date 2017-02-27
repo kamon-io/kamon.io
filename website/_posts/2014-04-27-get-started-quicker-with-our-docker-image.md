@@ -2,7 +2,7 @@
 layout: post
 title: Get started quicker with our docker image
 date: 2014-04-27
-categories: teamblog
+categories: teamblog, posts
 tags: announcement
 ---
 

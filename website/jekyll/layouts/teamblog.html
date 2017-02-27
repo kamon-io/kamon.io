@@ -25,25 +25,25 @@
 
     <div class="main">
       <div class="container">
-        <div class="row">
-          <div class="col-8">
+        <div class="row">      
+          <div class="col-12 col-md-9">         
             {% for post in site.posts %}
-              <div class="post-summary">
-                <h2><a href="{{post.url}}">{{post.title}}</a></h2>
-                <small class="date"><i class="fa fa-calendar"></i> {{post.date | date_to_string }}</small>
-                <hr>
+              <div class="row post-summary">
+                <div class="col-12">
+                  <h2><a href="{{post.url}}">{{post.title}}</a></h2>
+                  <small class="date"><i class="fa fa-calendar-o"></i> {{post.date | date_to_string }}</small>
+                <!--<hr>-->
                 <p>
-                  {{post.excerpt}}
+                  {{post.excerpt}} <a class="read-more" href="{{post.url}}">Read More</a>
                 </p>
-                <a class="read-more" href="{{post.url}}">Read More</a>
+                </div>               
               </div>
 
             {% endfor %}
           </div>
-          <div class="col-4">
+          <div class="col-12 col-md-3">
             {% include blog-sidebar.html %}
-          </div>
-
+          </div> 
         </div>
       </div>
     </div>
@@ -55,7 +55,6 @@
     <script src="/assets/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/kamon.js"></script>
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/js/prism-typesafeconfig.js"></script>
     {% include google-analytics.html %}

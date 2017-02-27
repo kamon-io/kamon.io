@@ -15,11 +15,11 @@
    id="svg4183"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="sponsored-by-kamino.svg">
+   sodipodi:docname="sponsored-by-kamino-plain.svg">
   <defs
      id="defs4185">
     <linearGradient
-       gradientTransform="matrix(0.24755746,0,0,0.24755746,-3.7022497,949.15907)"
+       gradientTransform="matrix(0.20558013,0,0,0.20970825,25.777554,956.87343)"
        y2="201.2795"
        x2="428.68411"
        y1="201.2795"
@@ -44,16 +44,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="87.348659"
-     inkscape:cy="160.19698"
+     inkscape:cx="296.27906"
+     inkscape:cy="131.62555"
      inkscape:document-units="px"
-     inkscape:current-layer="text4769"
+     inkscape:current-layer="layer1"
      showgrid="false"
      units="cm"
      inkscape:window-width="1803"
      inkscape:window-height="1053"
-     inkscape:window-x="312"
-     inkscape:window-y="226"
+     inkscape:window-x="119"
+     inkscape:window-y="25"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata4188">
@@ -63,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -73,7 +73,7 @@
      id="layer1"
      transform="translate(0,-946.06299)">
     <g
-       transform="matrix(0.3668267,0,0,0.3668267,1.3819296,895.74272)"
+       transform="matrix(0.30462538,0,0,0.31074236,29.999629,911.62392)"
        id="XMLID_1186_"
        style="fill:#36424b;fill-opacity:1">
       <path
@@ -114,7 +114,7 @@
          id="XMLID_1187_" />
     </g>
     <g
-       transform="matrix(0.24755746,0,0,0.24755746,-3.7022497,949.15907)"
+       transform="matrix(0.20558013,0,0,0.20970825,25.777554,956.87343)"
        id="XMLID_30_"
        style="fill:#dadada;fill-opacity:1">
       <path
@@ -133,11 +133,11 @@
     <path
        inkscape:connector-curvature="0"
        style="fill:url(#XMLID_16_)"
-       d="m 67.39625,998.99239 33.42026,-45.67436 c 1.31205,-1.78241 -0.099,-4.15896 -2.475577,-4.15896 l -25.72122,0 c -4.505548,0 -8.714024,2.07948 -11.115328,5.52053 l -29.558363,35.22743 c -4.45603,5.22346 -4.45603,12.89777 0,18.14597 l 29.583115,35.2521 c 2.401311,3.4411 6.585028,5.5206 11.115328,5.5206 l 25.72122,0 c 2.376555,0 3.787635,-2.3765 2.500335,-4.1342 L 67.39625,998.99239 Z"
+       d="m 84.820177,999.0877 27.753313,-38.69118 c 1.08958,-1.5099 -0.0823,-3.52309 -2.0558,-3.52309 l -21.359776,0 c -3.741567,0 -7.23642,1.76154 -9.230548,4.67649 L 55.381083,991.3914 c -3.700432,4.4248 -3.700432,10.9258 0,15.3716 l 24.56684,29.8624 c 1.994128,2.915 5.468424,4.6766 9.230549,4.6766 l 21.359788,0 c 1.97356,0 3.14536,-2.0132 2.07635,-3.5022 L 84.820177,999.0877 Z"
        class="st2"
        id="XMLID_29_" />
     <g
-       transform="matrix(0.24755746,0,0,0.24755746,-3.7022497,949.15907)"
+       transform="matrix(0.20558013,0,0,0.20970825,25.777554,956.87343)"
        style="fill:#14c4b4;fill-opacity:1"
        id="XMLID_26_">
       <path
@@ -154,7 +154,7 @@
          id="XMLID_27_" />
     </g>
     <g
-       transform="scale(0.96460628,1.0366924)"
+       transform="matrix(0.80104187,0,0,0.87819189,28.852026,152.83184)"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:30.25948715px;line-height:125%;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#516372;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text4769">
       <path

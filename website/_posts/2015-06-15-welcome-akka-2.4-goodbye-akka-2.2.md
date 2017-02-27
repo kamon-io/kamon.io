@@ -2,7 +2,7 @@
 layout: post
 title: Welcome Akka 2.4, Goodbye Akka 2.2.
 date: 2015-06-14
-categories: teamblog
+categories: teamblog, posts
 ---
 
 In case you didn't notice yet, we are using Akka internally to handle certain aspects of Kamon's infrastructure, like

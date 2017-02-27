@@ -2,7 +2,7 @@
 layout: post
 title: 'Kamon 0.6.0 is finally here, download while still hot!'
 date: 2016-03-29
-categories: teamblog
+categories: teamblog, releases
 ---
 
 Dear community, we are really happy to announce that after a long long wait,

@@ -2,7 +2,7 @@
 layout: post
 title: Experimental support for Akka Remoting and Cluster is now available!
 date: 2014-08-31
-categories: teamblog
+categories: teamblog, posts
 tags: announcement
 ---
 
