@@ -38,6 +38,10 @@ module Jekyll
         '<img src="https://api.bintray.com/packages/kamon-io/releases/'+ module_name +'/images/download.svg" alt="Download">' +
       '</a>'
     end
+
+    def maven_latest_release(module_name)
+      '<img src="https://maven-badges.herokuapp.com/maven-central/io.kamon/'+ module_name +'_2.11/badge.svg" alt="Download">'
+    end    
          
 
   end
