@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--
+  ~ =========================================================================================
+  ~ Copyright © 2013 the kamon project <http://kamon.io/>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License. You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the
+  ~ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+  ~ either express or implied. See the License for the specific language governing permissions
+  ~ and limitations under the License.
+  ~ =========================================================================================
+  -->
+
+<html lang="en">
+  <head>
+    <title>Quick look at Kamon 0.4.0</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="hero jumbotron-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="jumbo-title">Quick look at Kamon 0.4.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 post-content">
+            <div class="post-heading">
+              <span class="heading-item"><i class="fa fa-calendar-o icon"></i>  13 Mar 2015</span>
+              <!--<span class="heading-item"><i class="fa fa-user icon"></i>  by </span>-->
+            </div>
+            <hr>
+
+            <p>We have been working on Kamon for almost two years now and during that time we have seen it evolve from “the thing for
+AkKA MONitoring” that was only able to produce a couple actor metrics into a robust set of tools being used by
+hundreds of engineers around the globe; from guys doing a simple POC with Akka and Spray to big companies with several
+production servers being monitored with Kamon.</p>
+
+<p>At the very beginning we tried to use <a href="https://github.com/dropwizard/metrics">Dropwizard Metrics</a> (formerly Codahale Metrics) under the hood; that would allow
+us to reuse many reporters already available and present people with something familiar, something they probably already
+used and was now being enhanced by Kamon to play nicely with reactive applications. But, as we went through this path we
+realized that we wanted something more, something that was tailor made to our goals, something that could match our
+ideals of what monitoring tools should look like, something that we could consider a better tool for the job at hand, so
+we armed ourselves with courage and decided to create yet another metrics library for our own usage, contained in
+kamon-core. That big leap was by far one of the most profitable decisions we made in Kamon’s early stages and we
+attribute a fair share of Kamon’s success to the consequences of that decision, most notably the fact that we adopted
+the <a href="http://hdrhistogram.org/">HdrHistogram</a> as our histogram implementation and that allowed us to offer something nobody else was offering:
+report millions of precise latency measurements with fixed time and memory requirements, not some statistical
+representation (or lie) of what is really going on.</p>
+
+<p>During this couple years we have seen people using Kamon outside the reactive world and achieving successful results,
+but typically with several caveats and shortcomings, most of them related to how closely tight our APIs were to some
+Akka APIs and to the fact that our Scala APIs were not necessarily friendly to folks in the Java world. Definitely this
+is the time to make the next big leap and turn Kamon into something better, something that targets more than just
+reactive applications. Don’t get me wrong here, we are still using Akka for several purposes in Kamon and definitely
+reactive applications are awesome, but we want the whole JVM and that requires some of the changes we are introducing
+now and some that will come in the near future.</p>
+
+<p>We are taking the leap this time with a very strong and clear goal in mind: We will make Kamon <strong>the</strong> monitoring tool
+for applications running on the JVM, or we will go crazy trying. It wont be easy, it wont be quick, but we will do our
+best to make it a reality.</p>
+
+<p>There has been quite some time since our 0.3.5/0.2.5 release, mostly because we knew that the upcoming release was going
+to break compatibility with previous versions and we didn’t want to take the leap without feeling comfortable with the
+changes to be introduced. The time has come and the release is almost here, so we wanted to share a few details of what
+is coming, please read through and share your thoughts and ideas, we are always happy to hear what you have to say :D.</p>
+
+<h3 id="no-more-parallel-tracks-releases">No More Parallel Tracks Releases</h3>
+
+<p>Up to our latest release we had version 0.3.5 for Akka 2.3.x and friends and version 0.2.5 for Akka 2.2.x and friends.
+This can be a bit confusing, both releases have the exact same features and just differ in dependency versions and some
+minor code changes but the 0.2.x series sound outdated and confuse people that are not familiar with the Akka releases
+and compatibility notes. Starting with Kamon 0.4.0 there will be a single version number on each release and several
+artifacts will be published for the various Akka/Spray/Play versions. The main artifacts will always depend on the
+latest versions of Akka, Spray and Play and the artifacts targeting previous dependency versions will include a
+<code>_akka-2.x</code> suffix on their names, but all artifacts will have the same version number.</p>
+
+<h3 id="independant-kamon-api">Independant Kamon API</h3>
+
+<p>Kamon’s core components have been developed as <a href="http://doc.akka.io/docs/akka/2.3.8/scala/extending-akka.html">Akka extensions</a> that we use throughout our instrumentation points and
+can easily be accessed by any Akka user. That’s nice, until you need to use Kamon outside an ActorSystem or you don’t
+even have one because you are, let’s say, developing a Scalatra application without any reactive libraries. Starting
+with Kamon 0.4.0 we have our own isolated ActorSystem that shares nothing with any user-created ActorSystem and all
+the APIs exposed by Kamon are now placed at the <code>kamon.Kamon</code> companion object. One side effect of this is that now
+Kamon needs to be started by calling <code>Kamon.start(..)</code>, but that shouldn’t be a major problem for everyone.</p>
+
+<p>You will still need know a bit about Akka if you are creating new Kamon reporting modules, but if you are just a Kamon
+user you wont need to know anything beyond the APIs provided by Kamon.</p>
+
+<h3 id="simplified-metrics-registration">Simplified Metrics Registration</h3>
+
+<p>In previous Kamon releases there were two kinds of metrics: metric groups for things like actors, routers, traces,
+dispatchers and so, and “user metrics” that allowed you could request a single instrument (histogram, counter, min max
+counter or gauge) and use it at your own will. Both APIs were separate and apparently dedicated for different purposes
+but the reality is that under the hood both were doing pretty much the same thing, so, now you simply use
+<code>Kamon.metrics.histogram(..)</code> or <code>Kamon.metrics.entity(..)</code> and will get back what you asked for.</p>
+
+<h3 id="java-friendly-api">Java Friendly API</h3>
+
+<p>We want all of our users to feel at home when using Kamon and while that might be easy to achieve for our Scala users it
+requires a bit more of effort to ensure everything is both Java and Scala friendly, we will do that effort. Starting
+with Kamon 0.4.0 we will make sure that all of our APIs can be easily and naturally used from both Scala and Java.</p>
+
+<h3 id="professional-documentation">Professional Documentation</h3>
+
+<p>Yes, we know you were waiting for this item. Today, the weakest area in Kamon is definitely our documentation and we are
+ready to fix that. It is in our plans to dedicate next few days to write complete documentation on all Kamon features,
+accompanied by examples written both in Scala and Java. Kamon 0.4.0 will be released as soon as this documentation is
+ready and from now on, no feature is complete if it is not properly documented.</p>
+
+<h3 id="a-new-annotations-module">A New Annotations Module</h3>
+
+<p>What can be easier than just annotating a method to automatically get call count metrics or a histogram of execution
+times for that method? Our new annotations module gives you that and more! Make sure you explore the docs and give it
+a try.</p>
+
+<p>Probably there is much more to say about this new release but we will leave some content for the actual announcement. We
+have just published the snapshot version <code>0.3.6-04677941e2253717510566cc288eab2166f7379e</code> of our master branch in our
+<a href="http://snapshots.kamon.io/">snapshots repository</a>, just in case you feel curious and want to give this Kamon version a try. Those artifacts were
+built with Scala 2.11, please let us know if you are interested in a build for Scala 2.10 and we will happily assist.
+Enjoy!</p>
+
+
+
+            <br><br>
+            <div>
+              <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kamonio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <div class="blog-sidebar">
+  <div class="row align-items-center justify-content-end kamino-docs-top sponsored-by-kamino">
+    <div>
+        <a href="https://kamino.io">
+          <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+        </a>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-12">
+    <h4 class="sidebar-title">Latest Releases</h4>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2016/10/10/kamon-0-6-3-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.3 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/07/25/kamon-0-6-2-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.2 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/04/27/kamon-0-6-1-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.1 is out!</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h3 class="sidebar-title">Latest Posts</h3>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/" class="sidebar-post">Playing with Streams and Monitoring Docker</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/" class="sidebar-post">20 minutes in the Playground: Monitoring Scalatra with Kamon</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/06/14/welcome-akka-2.4-goodbye-akka-2.2/" class="sidebar-post">Welcome Akka 2.4, Goodbye Akka 2.2.</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/03/13/quick-look-at-kamon-0.4.0/" class="sidebar-post">Quick look at Kamon 0.4.0</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/11/02/understanding-spray-client-timeout-settings/" class="sidebar-post">Understanding Spray Client Timeout Settings</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/08/31/experimental-support-for-akka-remoting-and-cluster-is-now-available/" class="sidebar-post">Experimental support for Akka Remoting and Cluster is now available!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/04/27/get-started-quicker-with-our-docker-image/" class="sidebar-post">Get started quicker with our docker image</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

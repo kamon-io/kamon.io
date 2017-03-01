@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--
+  ~ =========================================================================================
+  ~ Copyright © 2013 the kamon project <http://kamon.io/>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License. You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the
+  ~ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+  ~ either express or implied. See the License for the specific language governing permissions
+  ~ and limitations under the License.
+  ~ =========================================================================================
+  -->
+
+<html lang="en">
+  <head>
+    <title>Playing with Streams and Monitoring Docker</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="hero jumbotron-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="jumbo-title">Playing with Streams and Monitoring Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 post-content">
+            <div class="post-heading">
+              <span class="heading-item"><i class="fa fa-calendar-o icon"></i>  13 Oct 2015</span>
+              <!--<span class="heading-item"><i class="fa fa-user icon"></i>  by </span>-->
+            </div>
+            <hr>
+
+            <p>In this post we’ll show how to collect system metrics from Docker containers, making use of a very simple application
+that relies on <a href="http://doc.akka.io/docs/akka-stream-and-http-experimental/current/scala.html">Akka Streams/HTTP</a> and all the benefits of Kamon’s machinery.</p>
+
+<p>Unless you were living under a rock and that rock is under the Titanic, then you must have heard about Docker. Nowadays
+Docker is everywhere and <a href="https://www.youtube.com/watch?v=GsLZz8cZCzc">all sorts of things</a> can run in a container. You might already be using Docker for CI purposes
+or even in production and when you do so, well, monitoring needs to be there too! We did a bit of exploration on monitoring
+the very basic metrics we would like to get out of a container:</p>
+
+<ul>
+  <li><strong>CPU usage</strong></li>
+  <li><strong>Memory usage</strong></li>
+  <li><strong>IO usage</strong></li>
+  <li><strong>Network usage</strong></li>
+</ul>
+
+<h3 id="how-do-we-get-these-metrics">How do we get these Metrics?</h3>
+
+<p>If you feel like complicating your life with this, you can use the container ID to fetch CPU, Memory and IO metrics from
+<code>/sys/fs/cgroup/...</code> but then there is one missing thing: Network usage metrics. As it turns out, the Docker network
+interfaces only exist under a network <code>namespace</code>, which we didn’t want to investigate further as recent versions of
+Docker provide a much better and cool alternative for this: the <a href="https://docs.docker.com/reference/api/docker_remote_api_v1.18/#get-container-stats-based-on-resource-usage">Docker Remote API</a>.</p>
+
+<p>The <a href="https://docs.docker.com/reference/api/docker_remote_api_v1.18/#get-container-stats-based-on-resource-usage">Docker Remote API</a>  is very easy to use, you just send a <code>GET</code> request to <code>/container/${container-id}/stats</code> and
+you will get back a live stream of events with all the desired metrics for such container. A live <strong>Stream</strong>, by now you
+should clearly see where this is going :).</p>
+
+<h3 id="preparing-your-docker-host">Preparing your Docker Host</h3>
+
+<p>You will need to do a little change to your <code>/etc/default/docker</code> file, setting the <code>DOCKER_OPTS</code> variable to the
+following:</p>
+
+<pre class="line-numbers language-text"><code class="language-text">DOCKER_OPTS='-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'</code></pre>
+
+<p>That configuration change will make Docker bind to port 4243 and there is where the Remote API will be available. Save
+your changes, restart the docker service via <code>service docker restart</code> and then we are good to go. When you hit the
+Remote API endpoint for a given container you will get one event per second containing the container stats.</p>
+
+<h3 id="setting-up-the-project">Setting up the Project</h3>
+
+<p>This test application is being written in Scala, with SBT as the build tool, so we will start by adding the following
+dependencies:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">"io.kamon"    	      %% "kamon-core"             	        % "0.5.1",
+"io.kamon"            %% "kamon-statsd"                     % "0.5.1",
+"com.typesafe.akka"   %% "akka-stream-experimental"         % "1.0.0",
+"com.typesafe.akka"   %% "akka-http-core-experimental"      % "1.0.0",
+"com.typesafe.akka"   %% "akka-http-experimental"           % "1.0.0"</code></pre>
+
+<p>As we mentioned above, the <a href="https://docs.docker.com/reference/api/docker_remote_api_v1.18/#get-container-stats-based-on-resource-usage">Docker Remote API</a> gives you a live stream of events with the container stats and, of
+course, we will use Akka Streams to consume and transform such stream. Our intention here is not to make a formal
+introduction to Akka Streams but rather to show how it can help us consume these events in combination with Kamon, but,
+if you feel like reading then we would like to recommend reading <a href="http://blog.michaelhamrah.com/2015/01/a-gentle-introduction-to-akka-streams/">Mark Hamrah’s Introduction to Streams.</a></p>
+
+<p>Let’s skim through some of the code:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">implicit val system = ActorSystem() // (1)
+implicit val materializer = ActorMaterializer()
+
+...
+val network = Flow[ContainerStats].map(stats =&gt; (stats \ "network").extract[NetworkStats]) // (2)
+val memory = Flow[ContainerStats].map(stats =&gt; (stats \ "memory_stats").extract[MemoryStats])
+val cpu = Flow[ContainerStats].map(stats =&gt; (stats \ "cpu_stats").extract[CpuStats])
+...</code></pre>
+
+<ul>
+  <li>(1) The <code>ActorSystem</code> and <code>ActorMaterializer</code> are the basic infrastructure needed so that our streams can actually get
+materialized and executed.</li>
+  <li>(2) A Flow has exactly one input and one output. In our code above, the flows consume a <code>ContainerStats</code> message (with
+all stats) and produce an entity with <em>Network</em>, <em>Memory</em> or <em>Cpu</em> stats.</li>
+</ul>
+
+<h3 id="stats-flow">Stats Flow</h3>
+
+<pre class="line-numbers language-scala"><code class="language-scala">...
+def flowWriter(...) = {
+  Sink[ContainerStats]() { implicit builder =&gt;
+    import FlowGraph.Implicits._
+
+    val stats = builder.add(Broadcast[ContainerStats](3))
+
+    stats ~&gt; network ~&gt; networkSink
+    stats ~&gt; memory ~&gt; memorySink
+    stats ~&gt; cpu ~&gt; cpuSink
+    stats.in
+  }
+}
+...</code></pre>
+
+<p>We want to record the stats in different Kamon entity recorders for each metric type, that is why we are broadcasting
+the incoming “fat” <code>ContainerStats</code> message into several flows, so that each one can take whatever it finds interesting.
+The <code>Broadcast</code> element simply emits elements from its input port to all of its output ports.</p>
+
+<p>The most important part are the last couple lines of the above code. Here we draw a graph that defines how messages flow
+through the stream. The high level overview would be: get the stream, broadcast it to the network, memory and cpu
+smaller flows and let them record the stats into Kamon recorders independently.</p>
+
+<h3 id="stats-sinks">Stats Sinks</h3>
+
+<p>A <code>Sink</code> is the endpoint for the stream. The data from the stream will eventually find it’s way to a <code>Sink</code>.</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">def chunkConsumer(...) = Sink.foreach[HttpResponse] { response =&gt;
+    ...
+    val networkSink = Sink.foreach(NetworkMetrics(...))
+    val memorySink = Sink.foreach(MemoryMetrics(...))
+    val cpuSink = Sink.foreach(CpuMetrics(...))
+    ...
+}</code></pre>
+
+<p>The sinks we have here are very simple as they just grab the correspondent stats type and consume it by recording into
+the desired entity recorder. Take a look at how <a href="https://github.com/kamon-io/docker-monitor/blob/master/src/main/scala/kamon/domino/metrics/NetworkMetrics.scala">NetworkMetrics</a>, <a href="https://github.com/kamon-io/docker-monitor/blob/master/src/main/scala/kamon/domino/metrics/MemoryMetrics.scala">MemoryMetrics</a> and <a href="https://github.com/kamon-io/docker-monitor/blob/master/src/main/scala/kamon/domino/metrics/CpuMetrics.scala">CpuMetrics</a> are implemented.</p>
+
+<h3 id="selecting-the-containers">Selecting the Containers</h3>
+
+<p>For this application we went with a very simple and fixed approach, just set the container names you want in the
+configuration file and metrics for them will be fetched upon startup.</p>
+
+<pre class="line-numbers language-markup"><code class="language-markup">...
+docker {
+  # The Docker Host.
+  host = "127.0.0.1"
+
+  # The Docker TCP port.
+  port = 2375
+
+  # List of images they need to be monitored.
+  # For convenience must provide an alias in order to facilitate the visualization
+  # [{"container-id","container-alias"}]
+  containers = [{"container-1":"awesome-container-1"},{"container-2":"awesome-container-2"}]
+}
+...</code></pre>
+
+<h3 id="visualization-and-fun">Visualization and Fun!</h3>
+
+<p>By default the application is configured to use with <a href="/backends/statsd/">StatsD</a> through <code>Kamon</code>. The only thing we need to start visualizing
+this stats is our <a href="https://github.com/kamon-io/docker-grafana-graphite">Docker-Grafana-Graphite</a> image that comes bundled with StatsD, Graphite and Grafana. After starting up this application
+and playing a bit with a Grafana dashboard you can start getting something like this:</p>
+
+<p><img class="img-fluid" src="/assets/img/docker-dashboard.png" /></p>
+
+<p>Cool, isn’t it? just a few lines of code, mostly dealing with the streams and bum! Metrics for your Docker containers!
+Of course, the full code is available at the <a href="https://github.com/kamon-io/docker-monitor">Github Domino Repo</a>, don’t hesitate to clone, fork and start experimenting
+yourself!</p>
+
+<h3 id="future-work">Future Work</h3>
+
+<p>Here are a few things we would like to add in the future:</p>
+
+<ul>
+  <li>Include <code>Disk Utilization</code> metrics.</li>
+  <li>Pack this into a container that can be easily fired on any Docker host.</li>
+  <li>Be more flexible about which containers are monitored, probably following the same filters approach we have in Kamon
+for other modules such as the Akka module.</li>
+</ul>
+
+<p>And of course, your ideas can help improve this project too. Feel free to leave comments, suggestions and maybe even some
+pull request. That’s all for today, enjoy!</p>
+
+
+
+            <br><br>
+            <div>
+              <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kamonio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <div class="blog-sidebar">
+  <div class="row align-items-center justify-content-end kamino-docs-top sponsored-by-kamino">
+    <div>
+        <a href="https://kamino.io">
+          <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+        </a>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-12">
+    <h4 class="sidebar-title">Latest Releases</h4>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2016/10/10/kamon-0-6-3-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.3 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/07/25/kamon-0-6-2-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.2 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/04/27/kamon-0-6-1-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.1 is out!</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h3 class="sidebar-title">Latest Posts</h3>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/" class="sidebar-post">Playing with Streams and Monitoring Docker</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/" class="sidebar-post">20 minutes in the Playground: Monitoring Scalatra with Kamon</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/06/14/welcome-akka-2.4-goodbye-akka-2.2/" class="sidebar-post">Welcome Akka 2.4, Goodbye Akka 2.2.</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/03/13/quick-look-at-kamon-0.4.0/" class="sidebar-post">Quick look at Kamon 0.4.0</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/11/02/understanding-spray-client-timeout-settings/" class="sidebar-post">Understanding Spray Client Timeout Settings</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/08/31/experimental-support-for-akka-remoting-and-cluster-is-now-available/" class="sidebar-post">Experimental support for Akka Remoting and Cluster is now available!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/04/27/get-started-quicker-with-our-docker-image/" class="sidebar-post">Get started quicker with our docker image</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

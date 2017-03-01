@@ -16,4 +16,4 @@ layouts_dir: 'jekyll/layouts'
 data_dir: 'jekyll/data'
 
 
-destination: 'build'
+destination: 'docs'

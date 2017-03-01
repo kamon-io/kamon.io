@@ -1,0 +1,356 @@
+<html lang="en">
+  <head>
+    <title>Kamon | Get Started</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+      <div class="hero jumbotron-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <span class="jumbo-title">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 push-md-3">
+          <div class="row align-items-center justify-content-end kamino-docs-top">
+            <div>
+                <a href="https://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+            </div>
+          </div>
+          <div class="row docs-content">
+            <div class="col-12">
+              <h1 id="get-started-with-kamon">Get Started with Kamon</h1>
+
+<p>Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
+that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
+your application as simple library dependencies and additionally, if you are using instrumentation modules then the
+AspectJ Weaver agent needs to be included as a JVM startup parameter when running your application.</p>
+
+<p>Make sure you follow this steps:</p>
+
+<h2 id="include-the-modules-you-want-in-your-project">Include the modules you want in your project</h2>
+
+<p>All Kamon modules are available through Maven Central and you just need to add them as a compile dependency to your
+project. The details on how to do this will differ depending on your dependency management tool of choice, but usually
+just by knowing that our group id is <code>io.kamon</code> and our artifacts are named after the module name you are good to go.
+Still, here are some examples with common build tools:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_175538" role="tab">SBT</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#markup_1_175538" role="tab">Maven</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_175538" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">libraryDependencies ++= Seq(
+  &quot;io.kamon&quot; %% &quot;kamon-core&quot; % &quot;0.6.0&quot;,
+
+  // [Optional]
+  &quot;io.kamon&quot; %% &quot;kamon-statsd&quot; % &quot;0.6.0&quot;,
+  // [Optional]
+  &quot;io.kamon&quot; %% &quot;kamon-datadog&quot; % &quot;0.6.0&quot;
+
+  // ... and so on with all the modules you need.
+)
+</code></pre></div><div class="tab-pane" id="markup_1_175538" role="tabpanel"><pre class="line-numbers language-markup"><code class="language-markup">  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.kamon&lt;/groupId&gt;
+      &lt;artifactId&gt;kamon-core_2.11&lt;/artifactId&gt;
+      &lt;version&gt;0.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre></div></div></div>
+
+<p>Our latest version is published for both Scala 2.10 and Scala 2.11 using SBT’s cross version feature, meaning that our
+artifacts are suffixed by either <code>_2.10</code> or <code>_2.11</code> to denote the target Scala version. If you are not in the Scala
+world and you are not familiar with this conventions just pick the greatest Scala version available, currently 2.11, as
+shown in the Maven example above. You can find a complete list of Kamon modules in the <a href="/introduction/overview/">overview</a> section.</p>
+
+<h2 id="start-kamon">Start Kamon</h2>
+
+<p>To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon by
+using the <code>Kamon.start(..)</code> method. This is a one time operation that you should perform as early as possible in your
+application code to ensure that all instrumentation and uses of the Kamon APIs will work properly. Having it as the
+first line in your application’s main wont hurt:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_639768" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_639768" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_639768" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">object GetStarted extends App {
+  Kamon.start()
+
+  val someHistogram = Kamon.metrics.histogram(&quot;some-histogram&quot;)
+  val someCounter = Kamon.metrics.counter(&quot;some-counter&quot;)
+
+  someHistogram.record(42)
+  someHistogram.record(50)
+  someCounter.increment()
+
+  // This application wont terminate unless you shutdown Kamon.
+  Kamon.shutdown()
+}
+</code></pre></div><div class="tab-pane" id="java_1_639768" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">public class GetStarted {
+  public static void main(String[] args) {
+    Kamon.start();
+
+    final Histogram someHistogram = Kamon.metrics().histogram(&quot;some-histogram&quot;);
+    final Counter someCounter = Kamon.metrics().counter(&quot;some-counter&quot;);
+
+    someHistogram.record(42);
+    someHistogram.record(50);
+    someCounter.increment();
+
+    // This application wont terminate unless you shutdown Kamon.
+    Kamon.shutdown();
+  }
+}
+</code></pre></div></div></div>
+
+<p>Optionally, you can provide a custom configuration object when starting Kamon. See the <a href="/introduction/configuration/">configuration</a> section for a
+quick overview of how to configure Kamon. When you are done with Kamon, remember to shut it down using the
+<code>Kamon.shutdown()</code> method.</p>
+
+<h3 id="optional-prepare-your-application-to-start-with-the-aspectj-weaver">Optional: Prepare your application to start with the AspectJ Weaver</h3>
+
+<p>This step is only required if any of the modules that you included in your application requires AspectJ, if that is not
+your case you can jump directly to the enjoy section!</p>
+
+<p>Starting your application with the AspectJ weaver is dead simple, just add the <code>-javaagent</code> JVM startup parameter
+pointing to the weaver’s file location and you are done. The details on how to do this vary depending on your preferred
+way of deployment, here are some quick notes for the most common deployment scenarios:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#text_0_830922" role="tab">Manually</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#text_1_830922" role="tab">sbt-aspectj-runner</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scala_2_830922" role="tab">sbt-aspectj</a></li></ul><div class="tab-content"><div class="tab-pane active" id="text_0_830922" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">To manually add the agent on application startup you just need
+to add the -javaagent:/path/to/aspectj-weaver.jar as show here:
+
+java -javaagent:~/.aspectj/aspectj-weaver.jar your-app.jar
+</code></pre></div><div class="tab-pane" id="text_1_830922" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">//Add the aspectj-runner plugin to project/plugins.sbt
+addSbtPlugin(&quot;io.kamon&quot; % &quot;aspectj-runner&quot; % &quot;0.1.3&quot;)
+
+// Run!
+aspectj-runner:run
+</code></pre></div><div class="tab-pane" id="scala_2_830922" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">
+// Include the sbt-aspectj (https://github.com/sbt/sbt-aspectj)
+// plugin in your build by adding the following line to your
+// `project/plugins.sbt` file.
+//
+//  addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-aspectj&quot; % &quot;0.10.0&quot;)
+//
+
+// Bring the sbt-aspectj settings into this build
+aspectjSettings
+
+// Here we are effectively adding the `-javaagent` JVM startup
+// option with the location of the AspectJ Weaver provided by
+// the sbt-aspectj plugin.
+javaOptions in run &lt;++= AspectjKeys.weaverOptions in Aspectj
+
+// We need to ensure that the JVM is forked for the
+// AspectJ Weaver to kick in properly and do it&#39;s magic.
+fork in run := true
+</code></pre></div></div></div>
+
+<p>In case you need to use the AspectJ Weaver but you didn’t set it up correctly, Kamon will log a big and noticeable error
+message in your log that will hardly pass unnoticed, but Kamon will not kill the application for this error.</p>
+
+<p>If your deployment method is not listed here and you can’t figure out how to add the weaver, please ask for help in our
+<a href="https://groups.google.com/forum/#!forum/kamon-user">mailing list</a>.</p>
+
+<h2 id="enjoy">Enjoy!</h2>
+
+<p>At this point you already have what is necessary to use Kamon. After the Kamon initialization, all available modules
+will be automatically started, you don’t need to explicitly activate/start them.</p>
+
+<p>But, Kamon is not just about having a couple histograms and counters hanging around in your code to measure stuff, we
+can do much more than that! Please, refer to the <a href="/core/metrics/core-concepts/">metrics</a> and <a href="/core/tracing/core-concepts/">tracing</a> module’s documentation to learn how to use
+these core features and to each additional module’s documentation for usage details and recommendations.</p>
+
+
+            </div>
+          </div>
+          <!--<div class="row align-items-center kamino-docs-bottom">
+            <div class="col-xs-offset-1 col-xs-5">
+                <a href="http://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+                <a class="btn btn-sign-up btn-lg">Visit kamino.io</a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-12 col-md-3 pull-md-9 documentation-sidebar">
+          <section>
+  <ul class="tree">
+    <li><a class="docs-level-three side" href="/documentation/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three side" href="/documentation/events-and-workshops/"></i>Upcoming Events</a></li>
+  </ul>
+</section>
+          <section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Foundations</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Metrics and Tracing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-akka/0.6.6/overview/">Akka</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-scala/0.6.6/overview/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-spray/0.6.6/overview/">Spray</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jdbc/0.6.6/overview/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-annotation/0.6.6/overview/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-system-metrics/0.6.6/overview/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-kamino/0.6.6/overview/">Kamino</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-statsd/0.6.6/overview/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-datadog/0.6.6/overview/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-newrelic/0.6.6/overview/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-sematext-spm/0.6.6/overview/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jmx/0.6.6/overview/">JMX</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-fluentd/0.6.6/overview/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">InfluxDB</a></li>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-graphite/1.0.4/overview/">Graphite</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-riemann/0.6.6/overview/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-khronus/0.6.6/overview/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

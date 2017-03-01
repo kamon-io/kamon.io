@@ -1,0 +1,348 @@
+<html lang="en">
+  <head>
+    <title>Kamon | Play | Documentation</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+      <div class="hero jumbotron-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <span class="jumbo-title">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 push-md-3">
+          <div class="row align-items-center justify-content-end kamino-docs-top">
+            <div>
+                <a href="https://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+            </div>
+          </div>
+          <div class="row docs-content">
+            <div class="col-12">
+              <h1 id="play-framework-integration">Play Framework Integration</h1>
+
+<p>The <code>kamon-play</code> module ships with bytecode instrumentation that brings automatic traces and segments management and
+automatic trace token propagation to your Play! applications. The details on what those features are about can be found
+in the <a href="/integrations/web-and-http-toolkits/base-functionality/">base functionality</a> section. Here we will dig into the specific aspects of bringing support for them when using
+Play!.</p>
+
+<p class="alert alert-info">
+The <b>kamon-play</b> module requires you to start your application using the AspectJ Weaver Agent. Kamon will warn you
+at startup if you failed to do so.
+</p>
+
+<p class="alert alert-warning">
+Since Kamon 0.5.0 we support both Play Framework 2.3 and 2.4, but bringing support for Play! 2.4 required us
+to ship different modules for each Play! version. Please make sure you add either <b>kamon-play-23</b> or
+<b>kamon-play-24</b> to your project's classpath.
+</p>
+
+<h2 id="server-side-tools">Server Side Tools</h2>
+
+<p>As you might expect, our bytecode instrumentation will automatically start a trace when a request is received by your
+application and finish it when the response is sent back. Additionally, the <code>kamon-play</code> module will try to
+generate a readable trace name based on your routing information, by concatenating the full path pattern of your request
+with the HTTP verb being used in the request. Let’s see a quick example:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_365964" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#text_1_365964" role="tab">Routes</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_365964" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  def automaticallyNamedTrace = Action {
+    Ok(&quot;Automatically generated name.&quot;)
+  }
+
+  def namedTrace = TraceName(&quot;my-trace-name&quot;) {
+    Action {
+      Ok(&quot;This trace is named my-trace-name.&quot;)
+    }
+  }
+</code></pre></div><div class="tab-pane" id="text_1_365964" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">GET     /automatically-named-trace       controllers.KamonPlayExample.automaticallyNamedTrace
+GET     /named-trace                     controllers.KamonPlayExample.namedTrace
+</code></pre></div></div></div>
+
+<p>With the routes provided above, all request sent to <code>/automatically-named-trace</code> will receive a name based on the path
+and the HTTP verb. If you send a GET request to that path, then you will get a trace named
+<code>automatically-named-trace.get</code>.</p>
+
+<p>The second option we have is to use the <code>TraceName</code> action as demonstrated in the <code>namedTrace</code> case above, where we are
+using the <code>TraceName</code> action to change the automatically generated name to <code>my-trace-name</code>. When you use this action to
+rename a trace, the path or the HTTP verb are no longer important, as the trace will be renamed to whatever string you
+gave to the <code>TraceName</code> action.</p>
+
+<p>Finally, you can use the <code>kamon.play.automatic-trace-token-propagation</code> configuration key to decide whether to include
+the current trace’s token in the HTTP response messages.</p>
+
+<p class="alert alert-warning">
+By default the <b>kamon-play</b> module utilizes the tags of the request in order to create the trace name, but in the case that the requests doesn't contains tags, we need name the trace as <b>UntaggedTrace</b> in order to avoid the creation of undesired traces
+</p>
+
+<h2 id="client-side">Client Side</h2>
+
+<p>For the client side, the <code>kamon-play</code> module brings instrumentation that will automatically start a segment when you
+issue a HTTP request using the <code>WS</code> facilities and finish it once the response is back. By default, the name of the
+generated segment will have a <code>http-client</code> category, <code>WS-client</code> as the library name and the segment name will be
+generated after the request url. This approach can be problematic though, as sending request to many different urls can
+yield an undesirable number of generated segments. To avoid that issue, you can provide your own implementation of
+<code>kamon.play.NameGenerator</code> and use whatever criteria you useful from the HTTP request to generate a suitable segment
+name.</p>
+
+<h2 id="using-the-aspectj-weaver">Using the AspectJ Weaver</h2>
+
+<p>Adding the AspectJ Weaver agent to your Play! application can be a little tricky, as it depends on whether you are
+launching Play! in development mode or in production mode. The requirement stays simple, add the
+<code>-javaagent:/path/to/aspectj-weaver.jar</code> to your JVM startup options, but here are the specifics for each case:</p>
+
+<h3 id="running-in-development-mode">Running in Development Mode</h3>
+
+<p>When running on development mode, Play! will not allow forking the JVM where your application runs, thus rendering
+useless the most common approaches such as using the <code>sbt-aspectj</code> plugin to include the <code>-javaagent:...</code> option. In
+this case what you really need to do is use our <a href="https://github.com/kamon-io/sbt-aspectj-runner">sbt-aspectj-runner</a> plugin or launch the activator command with an additional <code>-J</code> option specifying the agent location. These options shown below::</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#text_0_276073" role="tab">Launching in Dev Mode with aspectj-play-runner</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#text_1_276073" role="tab">Launching in Dev Mode with Activator</a></li></ul><div class="tab-content"><div class="tab-pane active" id="text_0_276073" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">
+//Add the aspectj-play-runner plugin to project/plugins.sbt
+addSbtPlugin(&quot;io.kamon&quot; % &quot;aspectj-play-runner&quot; % &quot;0.1.3&quot;)
+
+// Run!
+aspectj-play-runner:run
+</code></pre></div><div class="tab-pane" id="text_1_276073" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">activator -J-javaagent:aspectjweaver-1.8.5.jar
+</code></pre></div></div></div>
+
+<h3 id="running-in-production-mode">Running in Production Mode</h3>
+
+<p>Running in production mode is a bit different, assuming that you already packaged your application then you will need to
+add the weaver option as described bellow:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#text_0_893666" role="tab">Launching in Production Mode</a></li></ul><div class="tab-content"><div class="tab-pane active" id="text_0_893666" role="tabpanel"><pre class="line-numbers language-text"><code class="language-text">//play 2.3.x
+java -cp &quot;.:lib/*&quot; -javaagent:lib/aspectjweaver-1.8.7.jar play.core.server.NettyServer
+
+//play 2.4.x
+java -cp &quot;.:lib/*&quot; -javaagent:lib/aspectjweaver-1.8.7.jar play.core.server.ProdServerStart
+
+</code></pre></div></div></div>
+
+
+            </div>
+          </div>
+          <!--<div class="row align-items-center kamino-docs-bottom">
+            <div class="col-xs-offset-1 col-xs-5">
+                <a href="http://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+                <a class="btn btn-sign-up btn-lg">Visit kamino.io</a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-12 col-md-3 pull-md-9 documentation-sidebar">
+          <section>
+  <ul class="tree">
+    <li><a class="docs-level-three side" href="/documentation/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three side" href="/documentation/events-and-workshops/"></i>Upcoming Events</a></li>
+  </ul>
+</section>
+          
+
+
+<section>
+  <div class="tree tree-toggler docs-level-one row justify-content-between align-items-center">
+    <span>
+      kamon-play
+    </span>
+
+    <div class="dropdown version-dropdown">
+      <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        0.6.6
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        
+          <a class="dropdown-item" href="/documentation/kamon-play/0.6.6/overview/">0.6.6</a>
+        
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Instrumenting Play Applications</a></li>
+    
+
+    
+</section>
+          <section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Foundations</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Metrics and Tracing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-akka/0.6.6/overview/">Akka</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-scala/0.6.6/overview/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-spray/0.6.6/overview/">Spray</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jdbc/0.6.6/overview/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-annotation/0.6.6/overview/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-system-metrics/0.6.6/overview/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-kamino/0.6.6/overview/">Kamino</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-statsd/0.6.6/overview/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-datadog/0.6.6/overview/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-newrelic/0.6.6/overview/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-sematext-spm/0.6.6/overview/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jmx/0.6.6/overview/">JMX</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-fluentd/0.6.6/overview/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">InfluxDB</a></li>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-graphite/1.0.4/overview/">Graphite</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-riemann/0.6.6/overview/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-khronus/0.6.6/overview/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

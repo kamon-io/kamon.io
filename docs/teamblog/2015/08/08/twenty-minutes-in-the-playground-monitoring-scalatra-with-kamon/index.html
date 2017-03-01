@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!--
+  ~ =========================================================================================
+  ~ Copyright © 2013 the kamon project <http://kamon.io/>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License. You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the
+  ~ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+  ~ either express or implied. See the License for the specific language governing permissions
+  ~ and limitations under the License.
+  ~ =========================================================================================
+  -->
+
+<html lang="en">
+  <head>
+    <title>20 minutes in the Playground: Monitoring Scalatra with Kamon</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="hero jumbotron-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="jumbo-title">20 minutes in the Playground: Monitoring Scalatra with Kamon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 post-content">
+            <div class="post-heading">
+              <span class="heading-item"><i class="fa fa-calendar-o icon"></i>  08 Aug 2015</span>
+              <!--<span class="heading-item"><i class="fa fa-user icon"></i>  by </span>-->
+            </div>
+            <hr>
+
+            <p>In this post we’ll show how to take a simple Scalatra project and setup up basic monitoring with Kamon. This is a really
+simplified example and also we will skip some issues related to the installation, because there are awesome tutorials
+about that. Having said that, let’s get to it!</p>
+
+<h3 id="build-setup">Build Setup</h3>
+
+<p>We need to include in our <a href="https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/Build.scala">Build.scala</a> some dependencies. It should look like this:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">val dependencies = Seq(
+    "io.kamon"    	          %% "kamon-core"           	  % "0.4.0",
+     // [Optional]
+    "io.kamon"    	          %% "kamon-scala"                % "0.4.0",
+     // [Optional]
+    "io.kamon"    	          %% "kamon-log-reporter"   	  % "0.4.0",
+     // ... and so on with all the others dependencies you need.
+    )
+
+val main = Project(appName, file(".")).settings(libraryDependencies ++= dependencies)
+              .settings(defaultSettings: _*)
+              .settings(aspectjSettings ++ AspectJ.aspectjSettings) //(1)</code></pre>
+
+<p>The only reason why We need to register the <a href="https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/AspectJ.scala">AspectJ</a> weaver is to automatically propagating the <code>TraceContext</code> across the
+asynchronous operations that might be scheduled for a given Future.</p>
+
+<p>Also note that there is no <code>kamon-scalatra</code> module, everything we are showing in this post is just using the APIs provided by
+<code>kamon-core</code> to monitor your application. This might also serve as insperation for other people to get other web frameworks
+working with Kamon as well.</p>
+
+<h3 id="create-a-simple-servlet">Create a Simple Servlet</h3>
+
+<p>Let’s start by creating a convenient trait that will make it easier to add Kamon <a href="/core/metrics/instruments/">instruments</a> to our servlets:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">trait KamonSupport {
+  def counter(name: String) = Kamon.metrics.counter(name)
+  def minMaxCounter(name: String) = Kamon.metrics.minMaxCounter(name)
+  def time[A](name: String)(thunk: =&gt; A) = Latency.measure(Kamon.metrics.histogram(name))(thunk)
+  def traceFuture[A](name:String)(future: =&gt; Future[A]):Future[A] =
+    Tracer.withContext(Kamon.tracer.newContext(name)) {
+     future.andThen { case completed ⇒ Tracer.currentContext.finish() }(SameThreadExecutionContext)
+   }
+}</code></pre>
+
+<p>Then we create a Servlet that will record some metrics. In order to achieve this we mix our <code>KamonSupport</code> to use the
+provided methods.</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
+  ...  
+  get("/time") {
+    time("time") {
+      Thread.sleep(Random.nextInt(100))
+    }
+  }
+
+  get("/minMaxCounter") {
+    minMaxCounter("minMaxCounter").increment()
+  }
+
+  get("/counter") {
+    counter("counter").increment()
+  }
+
+  get("/async") {
+    traceFuture("retrievePage") {
+      Future {
+        HttpClient.retrievePage()
+      }
+    }
+  }
+  ...
+}</code></pre>
+
+<p>now we have 5 URLs that we can hit:</p>
+
+<ul>
+  <li><strong>GET</strong> <em>/kamon/time</em></li>
+  <li><strong>GET</strong> <em>/kamon/counter</em></li>
+  <li><strong>GET</strong> <em>/kamon/minMaxCounter</em></li>
+  <li><strong>GET</strong> <em>/kamon/async</em></li>
+</ul>
+
+<h3 id="bootstraping-scalatra-with-kamon">Bootstraping Scalatra with Kamon</h3>
+
+<p>We will need to bootstrap <code>Scalatra</code> and hook <code>Kamon</code> into it’s lifecycle and the best place for this is using <code>ScalatraBootstrap</code>’s
+<code>init</code> and <code>destroy</code> hooks as shown bellow:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">class ScalatraBootstrap extends LifeCycle {
+  override def init(context: ServletContext):Unit = {
+    Kamon.start() //(1)
+    context.mount(new KamonServlet(), "/kamon")
+  }
+
+  override def destroy(context: ServletContext):Unit = {
+    Kamon.shutdown() //(2)
+  }
+}</code></pre>
+
+<ol>
+  <li>To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon
+by using the <code>Kamon.start(..)</code> method.</li>
+  <li>When you are done with Kamon, remember to shut it down using the
+<code>Kamon.shutdown()</code> method.</li>
+</ol>
+
+<h3 id="select-a-kamon-backend">Select a Kamon Backend</h3>
+
+<p>This time will we use the <a href="/backends/log-reporter/">kamon-log-reporter</a>. This module is not meant to be used in production environments, but it
+certainly is a convenient way to test Kamon and know in a quick manner what’s going on with our application in
+development, moreover like all Kamon modules it will be picked up from the classpath and started at runtime, just by adding the
+dependency to our classpath we are good to go.</p>
+
+<p>Additionally we can find more info about how to configure <a href="/core/modules/using-modules/">modules</a> and supported backends(<a href="/backends/statsd/">StatsD</a>, <a href="/backends/datadog/">Datadog</a>, <a href="/backends/newrelic/">New
+Relic</a> and <a href="/core/metrics/subscription-protocol/">Your Own</a>) in the docs.</p>
+
+<h3 id="start-the-server">Start the Server</h3>
+
+<p>Scalatra uses <code>Jetty</code> internally, and it is in itself a simple java servlet. So what we can do is just run an embedded
+<code>Jetty</code> instance that mounts the servlet and configures it.</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">object EmbeddedServer extends App {
+  val server = new Server(8080)
+  val context: WebAppContext = new WebAppContext()
+
+  context.setServer(server)
+  context.setContextPath("/")
+  context.setWar("src/webapp")
+  server.setHandler(context)
+
+  try {
+    server.start()
+    server.join()
+  } catch {
+    case e: Exception =&gt;
+      e.printStackTrace()
+      System.exit(1)
+  }
+}</code></pre>
+
+<p>We can run this application directly by typing <code>sbt run</code> from the console. The output we will see will be something like
+this if we hit some of the endpoints we’ve set up.</p>
+
+<ul>
+  <li><strong>curl</strong> <em>http://localhost:8080/kamon/time</em></li>
+  <li><strong>curl</strong> <em>http://localhost:8080/kamon/counter</em></li>
+  <li><strong>curl</strong> <em>http://localhost:8080/kamon/minMaxCounter</em></li>
+</ul>
+
+<pre class="line-numbers language-text"><code class="language-text">+------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|                                         Counters                                               |
+|                                       -------------                                            |
+|                                    counter  =&gt;  1                                              |
+|                                                                                                |
+|                                        Histograms                                              |
+|                                      --------------                                            |
+|  time                                                                                          |
+|    Min: 57671680     50th Perc: 57671680       90th Perc: 57671680       95th Perc: 57671680   |
+|                      99th Perc: 57671680     99.9th Perc: 57671680             Max: 57671680   |
+|                                                                                                |
+|                                      MinMaxCounters                                            |
+|                                    -----------------                                           |
+|  minMaxCounter                                                                                 |
+|          Min: 0                      Average: 0.0                         Max: 1               |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+</code></pre>
+
+<h3 id="ok-but-show-me-the-money">Ok, but show me the money!</h3>
+
+<p>So far so good. <strong>But what if my route returns a Future?</strong>. The answer is simple: <strong>Kamon has your back</strong>, the
+body of the future will be executed asynchronously on some other thread in a provided <code>ExecutionContext</code>, but Kamon,
+through bytecode instrumentation, will capture the <code>TraceContext</code> available when the Future was created and make it
+available while executing the future’s body.</p>
+
+<p>Let’s run the application with sbt run` and we measure the async operation.</p>
+
+<ul>
+  <li><strong>curl</strong> <em>http://localhost:8080/kamon/async</em></li>
+</ul>
+
+<pre class="line-numbers language-text"><code class="language-text">+------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|    Trace: retrievePage                                                                         |
+|    Count: 1                                                                                    |
+|                                                                                                |
+|  Elapsed Time (nanoseconds):                                                                   |
+|    Min: 2164260864   50th Perc: 2164260864     90th Perc: 2164260864     95th Perc: 2164260864 |
+|                      99th Perc: 2164260864   99.9th Perc: 2164260864           Max: 2164260864 |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+</code></pre>
+
+<p>For a more detailed explanation about the Kamon tracing module and Automatic TraceContext Propagation with Futures
+please start <a href="/core/tracing/core-concepts/">here</a>.</p>
+
+<h3 id="enjoy">Enjoy!</h3>
+
+<p>There it is, all your metrics data available to be sent into whatever tool you like. From here, you should be able to
+instrument your applications as needed.</p>
+
+<p>We also encourage you to review the full source code of <a href="https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-scalatra-example">Scalatra Kamon Example</a> used in this tutorial.</p>
+
+<p>Thanks to <a href="https://twitter.com/cryptic_marlbo">Carlos Ferreyra</a> for the review.</p>
+
+
+
+            <br><br>
+            <div>
+              <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kamonio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <div class="blog-sidebar">
+  <div class="row align-items-center justify-content-end kamino-docs-top sponsored-by-kamino">
+    <div>
+        <a href="https://kamino.io">
+          <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+        </a>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-12">
+    <h4 class="sidebar-title">Latest Releases</h4>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2016/10/10/kamon-0-6-3-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.3 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/07/25/kamon-0-6-2-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.2 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/04/27/kamon-0-6-1-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.1 is out!</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h3 class="sidebar-title">Latest Posts</h3>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/" class="sidebar-post">Playing with Streams and Monitoring Docker</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/" class="sidebar-post">20 minutes in the Playground: Monitoring Scalatra with Kamon</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/06/14/welcome-akka-2.4-goodbye-akka-2.2/" class="sidebar-post">Welcome Akka 2.4, Goodbye Akka 2.2.</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/03/13/quick-look-at-kamon-0.4.0/" class="sidebar-post">Quick look at Kamon 0.4.0</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/11/02/understanding-spray-client-timeout-settings/" class="sidebar-post">Understanding Spray Client Timeout Settings</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/08/31/experimental-support-for-akka-remoting-and-cluster-is-now-available/" class="sidebar-post">Experimental support for Akka Remoting and Cluster is now available!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/04/27/get-started-quicker-with-our-docker-image/" class="sidebar-post">Get started quicker with our docker image</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

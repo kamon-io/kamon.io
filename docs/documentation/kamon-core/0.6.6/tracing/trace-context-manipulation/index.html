@@ -1,0 +1,462 @@
+<html lang="en">
+  <head>
+    <title>Kamon | Core | Documentation</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+      <div class="hero jumbotron-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <span class="jumbo-title">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 push-md-3">
+          <div class="row align-items-center justify-content-end kamino-docs-top">
+            <div>
+                <a href="https://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+            </div>
+          </div>
+          <div class="row docs-content">
+            <div class="col-12">
+              <h1 id="tracecontext-manipulation">TraceContext Manipulation</h1>
+
+<p>Collecting trace information is all about interacting with the tracing API and the current <code>TraceContext</code> to store
+information as it is being generated throughout your application. This section will teach all the basic operations that
+allow you to create, enhance and finish a <code>TraceContext</code> and segments related to it.</p>
+
+<p>Please note that even while understanding how to manipulate a <code>TraceContext</code> is very important, some Kamon modules such
+as our Akka, Scala, Spray and Play! modules already provide bytecode instrumentation that automatically creates,
+propagates and finishes traces and segments in specific conditions, so, you might not need to ever manipulate a
+<code>TraceContext</code> yourself.</p>
+
+<h2 id="creating-and-finishing-a-tracecontext">Creating and Finishing a TraceContext</h2>
+
+<p>You can create a new <code>TraceContext</code> by using the <code>.newContext(..)</code> methods available in the <code>Kamon.tracer</code> member. As
+described in the getting started section, make sure you start Kamon before using this API. When you create a new context
+you need to at least provide a name for it, which you can change at any point of time before finishing the trace.
+Additionally, you can provide a trace token to identify the trace, if you don’t, Kamon will generate one for you.</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_104990" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_104990" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_104990" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  val testTrace = Kamon.tracer.newContext(&quot;test-trace&quot;)
+  val testTraceWithToken = Kamon.tracer.newContext(&quot;trace-with-token&quot;, Some(&quot;token-42&quot;))
+
+  // You can rename a trace before it is finished.
+  testTrace.rename(&quot;cool-functinality-X&quot;)
+  testTrace.finish()
+
+  // And you can also access it&#39;s token if you want to.
+  println(&quot;Test Trace Token: &quot; + testTrace.token)
+</code></pre></div><div class="tab-pane" id="java_1_104990" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">    final TraceContext testTrace = Kamon.tracer().newContext(&quot;test-trace&quot;);
+    final TraceContext testTraceWithToken = Kamon.tracer().newContext(&quot;trace-with-token&quot;, Some.apply(&quot;token-42&quot;));
+
+    // You can rename a trace before it is finished.
+    testTrace.rename(&quot;cool-functinality-X&quot;);
+    testTrace.finish();
+
+    // And you can also access it&#39;s token if you want to.
+    System.out.println(&quot;Test Trace Token: &quot; + testTrace.token());
+</code></pre></div></div></div>
+
+<p>Finishing a <code>TraceContext</code>, as shown in the example is just about calling the <code>.finish()</code> method on a context. Once a
+trace is finished it can no longer be renamed again.</p>
+
+<p>Additionally, the <code>Tracer</code> companion object provides alternative <code>.withNewTraceContext(..)</code> methods that will not only
+create a new <code>TraceContext</code> for you, but also make it the the current trace context and optionally finishing it after
+the supplied piece of code finishes it’s execution as shown in the example bellow:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_736651" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_736651" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_736651" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  Tracer.withNewContext(&quot;GetUserDetails&quot;, autoFinish = true) {
+    // While this block of codes executes a new TraceContext
+    // is set as the current context and finished after the
+    // block returns.
+    println(&quot;Current Trace Token: &quot; + Tracer.currentContext.token)
+
+    &quot;Some awesome result&quot;;
+  }
+
+  // No TraceContext is present when you reach this point.
+</code></pre></div><div class="tab-pane" id="java_1_736651" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">    Tracer.withNewContext(&quot;GetUserDetails&quot;, true, ()-&gt; {
+      // While this block of codes executes a new TraceContext
+      // is set as the current context and finished after the
+      // block returns.
+      System.out.println(&quot;Current Trace Token: &quot; + Tracer.currentContext().token());
+
+      return &quot;Some awesome result&quot;;
+    });
+
+    // No TraceContext is present when you reach this point.
+</code></pre></div></div></div>
+
+<p>It is really important to understand that the new <code>TraceContext</code> will <strong>only</strong> be available during the execution of the
+specified code block and removed from the trace context storage once the method returns.</p>
+
+<h2 id="tracecontext-storage">TraceContext Storage</h2>
+
+<p>You might have noticed that we mentioned “the current trace context” in the section above. When we say this, we refer to
+the <code>TraceContext</code> associated with the trace being executed in the current thread, which is effectively stored in a
+internal trace-local variable. Please read the <a href="/core/tracing/threading-model-considerations/">threading model considerations</a> section for advice related to propagating
+a <code>TraceContext</code> depending on your application’s threading model.</p>
+
+<p>The <code>Tracer</code> companion object provides the required APIs to get, set and clear the context that is available to the
+current thread. It is very important to ensure that you always clean up the threads once you don’t need a <code>TraceContext</code>
+as current anymore, thus, it will be better for you if instead of using the <code>Tracer.setCurrentContext(...)</code> and
+<code>Tracer.clearCurrentContext()</code> functions directly you work with the <code>Tracer.withContext(...)</code> variants which will ensure
+that the trace context storage is set to whatever was there before once the specified piece of code finishes execution.</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_829392" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_829392" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_829392" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  val context = Kamon.tracer.newContext(&quot;example-trace&quot;)
+
+  Tracer.withContext(context) {
+    // While this code executes, `context` is the current
+    // TraceContext.
+    println(&quot;Current Trace Token: &quot; + Tracer.currentContext.token)
+  }
+</code></pre></div><div class="tab-pane" id="java_1_829392" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">    final TraceContext context = Kamon.tracer().newContext(&quot;example-trace&quot;);
+
+    Tracer.withContext(context, () -&gt; {
+      // While this code executes, `context` is the current
+      // TraceContext.
+      System.out.println(&quot;Current Trace Token: &quot; + Tracer.currentContext().token());
+
+      return &quot;Some awesome result&quot;;
+    });
+</code></pre></div></div></div>
+
+<p>Note that the <code>Tracer.withContext(...)</code> variants will note ever try to finish a trace once they’re done.</p>
+
+<h2 id="creating-and-finishing-segments">Creating and Finishing Segments</h2>
+
+<p>The API for creating segments is not directly available through the <code>Tracer</code> companion object, but rather through the
+<code>TraceContext</code> instance that you are dealing with. Once you have access to a <code>TraceContext</code> you can call the
+<code>.startSegment(...)</code> method to get a segment that is tied to that <code>TraceContext</code>.</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_891377" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_891377" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_891377" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  Tracer.withNewContext(&quot;trace-with-segments&quot;, autoFinish = true) {
+    val segment = Tracer.currentContext.startSegment(&quot;some-cool-section&quot;, &quot;business-logic&quot;, &quot;kamon&quot;)
+    // Some application code here.
+    segment.finish()
+  }
+</code></pre></div><div class="tab-pane" id="java_1_891377" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">    Tracer.withNewContext(&quot;trace-with-segments&quot;, true, () -&gt; {
+      final Segment segment = Tracer.currentContext().startSegment(&quot;some-cool-section&quot;, &quot;business-logic&quot;, &quot;kamon&quot;);
+      // Some application code here.
+      segment.finish();
+
+      return &quot;done&quot;;
+    });
+</code></pre></div></div></div>
+
+<p>Remember that a segment can be finished after the correspondent trace has finished, so don’t feel forced into finishing
+them while still in the <code>.withContext(...)</code> block, the segment will know for sure what <code>TraceContext</code> it belongs to.</p>
+
+<p>The method mentioned above is the most flexible one, as you can do whatever you want with the segment instance, but the
+<code>TraceContext</code> also provides the <code>.withNewSegment(...)</code> methods which create a segment and finish it automatically when
+the supplied code finishes execution.</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_411285" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_411285" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_411285" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  Tracer.withNewContext(&quot;trace-with-segments&quot;, autoFinish = true) {
+
+    Tracer.currentContext.withNewSegment(&quot;some-cool-section&quot;, &quot;business-logic&quot;, &quot;kamon&quot;) {
+      // Here is where the segment does it&#39;s job.
+
+    }
+  }
+</code></pre></div><div class="tab-pane" id="java_1_411285" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">    Tracer.withNewContext(&quot;trace-with-segments&quot;, true, () -&gt; {
+
+      Tracer.currentContext().withNewSegment(&quot;some-cool-section&quot;, &quot;business-logic&quot;, &quot;kamon&quot;, () -&gt; {
+        // Here is where the segment does it&#39;s job.
+
+        return 0;
+      });
+
+      return &quot;done&quot;;
+    });
+</code></pre></div></div></div>
+
+<p>Obviously you don’t need to get the context using <code>Tracer.currentContext</code> but you can start a segment in any
+<code>TraceContext</code> that you have at hand.</p>
+
+<p>Finally, an additional goody for Scala developers is the <code>.withNewAsyncSegment</code> that can create a new segment from a
+piece of code that returns a <code>Future[T]</code> and automatically finish the segment when the future is completed. Here is how
+the usage looks like:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_136695" role="tab">Scala</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_136695" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">  Tracer.withNewContext(&quot;trace-with-segments&quot;, autoFinish = true) {
+
+    Tracer.currentContext.withNewAsyncSegment(&quot;some-cool-section&quot;, &quot;business-logic&quot;, &quot;kamon&quot;) {
+      Future {
+        // Some code that will be executed asynchronously.
+      }
+    }
+  }
+</code></pre></div></div></div>
+
+
+            </div>
+          </div>
+          <!--<div class="row align-items-center kamino-docs-bottom">
+            <div class="col-xs-offset-1 col-xs-5">
+                <a href="http://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+                <a class="btn btn-sign-up btn-lg">Visit kamino.io</a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-12 col-md-3 pull-md-9 documentation-sidebar">
+          <section>
+  <ul class="tree">
+    <li><a class="docs-level-three side" href="/documentation/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three side" href="/documentation/events-and-workshops/"></i>Upcoming Events</a></li>
+  </ul>
+</section>
+          
+
+
+<section>
+  <div class="tree tree-toggler docs-level-one row justify-content-between align-items-center">
+    <span>
+      kamon-core
+    </span>
+
+    <div class="dropdown version-dropdown">
+      <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        0.6.6
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        
+          <a class="dropdown-item" href="/documentation/kamon-core/0.6.6/overview/">0.6.6</a>
+        
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Get Started</a></li>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/configuration/">Configuring Kamon</a></li>
+    
+
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Tracing</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/core-concepts/">Core Concepts</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/subscription-protocol/">Subscription Protocol</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/threading-model-considerations/">Threading Model Considerations</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/trace-context-manipulation/">Trace Context Manipulation</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/trace-metrics/">Trace Metrics</a></li>
+        
+      </ul>
+      </li>
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Metrics</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/core-concepts/">Core Concepts</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/instruments/">Instruments</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/recording-metrics/">Recording Metrics</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/subscription-protocol/">Subscription Protocol</a></li>
+        
+      </ul>
+      </li>
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Modules</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/modules/using-modules/">Using Modules</a></li>
+        
+      </ul>
+      </li>
+    
+</section>
+          <section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Foundations</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Metrics and Tracing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-akka/0.6.6/overview/">Akka</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-scala/0.6.6/overview/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-spray/0.6.6/overview/">Spray</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jdbc/0.6.6/overview/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-annotation/0.6.6/overview/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-system-metrics/0.6.6/overview/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-kamino/0.6.6/overview/">Kamino</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-statsd/0.6.6/overview/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-datadog/0.6.6/overview/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-newrelic/0.6.6/overview/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-sematext-spm/0.6.6/overview/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jmx/0.6.6/overview/">JMX</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-fluentd/0.6.6/overview/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">InfluxDB</a></li>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-graphite/1.0.4/overview/">Graphite</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-riemann/0.6.6/overview/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-khronus/0.6.6/overview/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

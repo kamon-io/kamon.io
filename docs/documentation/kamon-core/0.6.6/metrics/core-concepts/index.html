@@ -1,0 +1,529 @@
+<html lang="en">
+  <head>
+    <title>Kamon | Core | Documentation</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+      <div class="hero jumbotron-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <span class="jumbo-title">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 push-md-3">
+          <div class="row align-items-center justify-content-end kamino-docs-top">
+            <div>
+                <a href="https://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+            </div>
+          </div>
+          <div class="row docs-content">
+            <div class="col-12">
+              <h1 id="metrics-module">Metrics Module</h1>
+
+<p>The Kamon Metrics module is responsible of controlling the registration of entities being tracked either by user code or
+by instrumentation provided with other Kamon modules, as well as providing some necessary infrastructure like filtering,
+configuring instrument factories and dispatching metrics subscriptions to all interested parties.</p>
+
+<p>From a very general perspective, you can think of the Metrics module as a big map full of entities and instruments
+associated with them that collects all the available information and sends it to subscribers on a fixed interval, know
+as a tick interval.</p>
+
+<h2 id="entities">Entities</h2>
+
+<p>In the early stages of our Metrics module, we realized that the most common case when measuring the performance of a
+given application is to have sets of metrics related to a single entity, and, many occurrences of the same set of
+metrics as similar entities exist in the application. For example, if you are monitoring a thread pool you will want to
+get the total number of threads, the active thread counts and the queue size (among other metrics, of course), and if
+you have five thread pools in your application you will want to get the exact same metrics set for each thread pool. In
+Kamon, that will translate to having five entities with different names but with the same category of <code>thread-pool</code>, all
+sharing the same set of metrics.</p>
+
+<p>The regular operation of the Metrics module consists of basically two stages, as described in this simple diagram:</p>
+
+<p><img class="img-fluid" src="/assets/img/diagrams/metrics-module-overview.png" /></p>
+
+<p>On the left, we have the real time recording side of the process where Entities work as the keys in that “big map” that
+we mentioned before, pointing to a entity recorder that contains all the metric instruments associated  with that given
+entity. This is the mutable side of our Metrics infrastructure, where everything gets updated as your application
+operates and its behavior is being measured. Upon every tick, the Metrics extension collects the metrics of all
+available entity recorders and generates entity snapshots that represent all the values recorded since the last tick.
+This side is completely immutable and safely shareable, in fact, all the parties (usually backend modules) interested in
+the same entity will receive the exact same instances of the given entity snapshots (immutability FTW :D).</p>
+
+<p>All entities have three identifying properties:</p>
+
+<ul>
+  <li>
+    <p>a <strong>name</strong>, that should be unique among entities in the same category. In the thread pools monitoring case mentioned
+above you might have a thread pool named “jdbc-pool” and another one named “netty-pool” and both will have their own,
+separate entity recorders.</p>
+  </li>
+  <li>
+    <p>a <strong>category</strong>, that should be shared among similar entities. Following the example, both “jdbc-pool” and “netty-pool”
+have the same set of metrics (pool size, number of active threads, etc.) and should share the same category of
+“thread-pool”.</p>
+  </li>
+  <li>
+    <p><strong>tags</strong>, which are optional. The tags are a simple map of String keys to String values, used to provide dimensions
+that encode additional information about the entity being tracked.</p>
+  </li>
+</ul>
+
+<p>If you have two entities with the same name and category but different tags then they are effectively two different
+entities in Kamon, each with its own, separate entity recorder. Typically, tags are used to provide additional
+information about the entity being measured; the most common example found when talking about tags is that of trying to
+measure how an application behaves when using algorithm “X” or algorithm “Y” to perform a certain task. You could simply
+choose one of the algorithms randomly in your application and measure both of them with histograms named “some-task” and
+have a tag named “algorithm” with value “X” or “Y” depending on which algorithm was selected. Within Kamon the tags wont
+have a big effect, but if this information can be pushed to your metrics backend of choice it will greatly increase your
+ability to slice and dice with the available metrics.</p>
+
+<h2 id="built-in-entity-recorders">Built-in Entity Recorders</h2>
+
+<p>If you are coming from using another metrics library it is very likely that you are not used to the idea of having these
+groups of metrics (entity recorders) but rather simple and direct instruments like histograms, counters, gauges and so
+on. More so, sometimes you just want to measure a very simple characteristic of your application and grouping it with
+some other metrics to create a new entity recorder just makes no sense; for these cases Kamon ships with entity
+recorders that contain a single instrument (histogram, gauge, counter or min max counter) and are automatically managed
+by the metrics module.</p>
+
+<p>Effectively, you don’t need to know that these entity recorders exists as they are a detail implementation within Kamon,
+but we mention it to make clear the point that our metrics module works just with entities and entities have groups of
+metrics which, as in this case, might have just a single metric inside. Please take a look at the <a href="/core/metrics/recording-metrics/">recording metrics</a>
+section to learn how you can get a hold any of this recorders using the metrics module.</p>
+
+<h2 id="defining-your-own-entity-recorder">Defining your own Entity Recorder</h2>
+
+<p>Basically, anything that implements <code>kamon.metric.EntityRecorder</code> can work as en entity recorder in Kamon and chances
+are that you will want to create your own entity recorders and personalize the way you use Kamon accordingly to your
+needs. For such purpose Kamon offers the <code>kamon.metric.GenericEntityRecorder</code> base class which facilitates the
+definition of entity recorders, it is not required for you to use this base class but it is definitely the simplest way
+to create a custom entity recorder class. Here is a brief example of creating a actor-like entity using the provided
+facilities (in fact, it’s pretty much the same as the actor entity recorder provided with the kamon-akka module):</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#scala_0_433005" role="tab">Scala</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#java_1_433005" role="tab">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scala_0_433005" role="tabpanel"><pre class="line-numbers language-scala"><code class="language-scala">class ActorMetrics(instrumentFactory: InstrumentFactory) extends GenericEntityRecorder(instrumentFactory) {
+  val timeInMailbox = histogram(&quot;time-in-mailbox&quot;, Time.Nanoseconds)
+  val processingTime = histogram(&quot;processing-time&quot;, Time.Nanoseconds)
+  val mailboxSize = minMaxCounter(&quot;mailbox-size&quot;)
+  val errors = counter(&quot;errors&quot;)
+}
+
+object ActorMetrics extends EntityRecorderFactory[ActorMetrics] {
+  def category: String = &quot;actor&quot;
+  def createRecorder(instrumentFactory: InstrumentFactory): ActorMetrics = new ActorMetrics(instrumentFactory)
+}
+</code></pre></div><div class="tab-pane" id="java_1_433005" role="tabpanel"><pre class="line-numbers language-java"><code class="language-java">  /**
+   *  Besides the inherent verbosity of Java, this code does exactly the same
+   *  as it&#39;s Scala counter part.
+   */
+  public static class ActorMetrics extends GenericEntityRecorder {
+    private final Histogram timeInMailbox;
+    private final Histogram processingTime;
+    private final MinMaxCounter mailboxSize;
+    private final Counter errors;
+
+    public ActorMetrics(InstrumentFactory instrumentFactory) {
+      super(instrumentFactory);
+
+      timeInMailbox = histogram(&quot;time-in-mailbox&quot;, Time.Nanoseconds());
+      processingTime = histogram(&quot;processing-time&quot;, Time.Nanoseconds());
+      mailboxSize = minMaxCounter(&quot;mailbox-size&quot;);
+      errors = counter(&quot;errors&quot;);
+    }
+
+    public Histogram timeInMailbox() {
+      return timeInMailbox;
+    }
+
+    public Histogram processingTime() {
+      return processingTime;
+    }
+
+    public MinMaxCounter mailboxSize() {
+      return mailboxSize;
+    }
+
+    public Counter errors() {
+      return errors;
+    }
+
+    static final String Category = &quot;actor&quot;;
+    static final EntityRecorderFactory&lt;ActorMetrics&gt; Factory = new EntityRecorderFactory&lt;ActorMetrics&gt;() {
+
+      @Override
+      public String category() {
+        return Category;
+      }
+
+      @Override
+      public ActorMetrics createRecorder(InstrumentFactory instrumentFactory) {
+        return new ActorMetrics(instrumentFactory);
+      }
+    };
+  }
+</code></pre></div></div></div>
+
+<p>The names provided when creating your histograms will be the same names included in the entity snapshots sent to the
+subscribers interested in your entity. Additionally to the metric names, you can provide further configuration to the
+instrument being created, like in this case where we are specifying that the numbers that we plan to store in the
+<code>timeInMailbox</code> and <code>processingTime</code> metrics represent time in nanoseconds. If you don’t provide any further
+configuration then a set of default values will be used. Please read the Instrument Factory section for details on how
+the instruments are configured.</p>
+
+<p>Now, you might be asking yourself, what is that <code>EntityRecoderFactory</code> for? Well, with Kamon you will never create an
+instance of the entity recorders yourself but rather ask Kamon to create for your and Kamon will do it only if it is
+necessary. If you ask Kamon five times for the same entity then a new entity recorder will be created during the first
+call and the same entity recorder will be returned in all subsequent calls. Additionally, Kamon will provide your custom
+entity recorder with an instrument factory specifically configured for your entity’s category, which allows you to later
+customize parameters of it’s instruments from the configuration file. See the instruments factory section bellow to
+understand how that works and also the <a href="/core/metrics/recording-metrics/">recording metrics</a> section to learn how to use your custom entity recorder.</p>
+
+<h2 id="filtering-entities">Filtering Entities</h2>
+
+<p>We provide instrumentation for several libraries that will automatically measure and record metrics for you, that’s
+nice, but we know that there is no win on blindly monitoring every entity that shows up in your application, that’s why
+we provide entity filters. The concept of filtering is very simple: for a given category a set of includes and excludes
+patterns are read from the configuration file and all entities that match at least one include pattern and do not match
+any exclude patterns will be accepted. Additionally, the <code>kamon.metric.track-unmatched-entities</code> setting decides whether
+to track or not the entities that do not match any includes or excludes.</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#typesafeconfig_0_958433" role="tab">application.conf</a></li></ul><div class="tab-content"><div class="tab-pane active" id="typesafeconfig_0_958433" role="tabpanel"><pre class="line-numbers language-typesafeconfig"><code class="language-typesafeconfig">kamon.metric.filters {
+  akka-dispatcher {
+    includes = [ &quot;**&quot; ]
+    excludes = [ ]
+  }
+
+  akka-actor {
+    includes = [ &quot;my-app/user/job-manager&quot;, &quot;my-app/user/worker-*&quot; ]
+    excludes = [ &quot;my-app/system/**&quot;, &quot;my-app/user/worker-helper&quot; ]
+  }
+}
+</code></pre></div></div></div>
+
+<p>As shown in the example configuration file above, all filters are defined under the
+<code>kamon.metric.filters.$category_name</code> configuration key. With the example filters provided, all the entities with
+category <code>akka-dispatcher</code> will be included, but no entities with category <code>akka-actor</code> and a name matching the
+<code>my-app/system/**</code> pattern will ever be tracked by Kamon. To achieve this filtering behavior all of the modules provided
+by Kamon that automatically register entities with the metric module will programatically call
+<code>Kamon.metrics.shouldTrack(..)</code> to determine if the entity should be registered or not, and you can do that as well if
+desired.</p>
+
+<p>The pattern matcher included in Kamon is a very simple implementation of GLOB pattern matcher that allows the
+following constructs:</p>
+
+<ul>
+  <li><code>*</code> match any number of characters up to the next ‘/’ character found in the entity name.</li>
+  <li><code>?</code> match exactly one character, other than ‘/’.</li>
+  <li><code>**</code> match any number of characters, regardless of any ‘/’ character found after this wildcard.</li>
+  <li>exact entity name match if not wildcards are provided.</li>
+</ul>
+
+<h2 id="instrument-factories">Instrument Factories</h2>
+
+<p>As you have noticed from the previous section, constructing a entity recorder based on the <code>GenericEntityRecorder</code>
+class provided by Kamon requires you to supply a <code>InstrumentFactory</code> which is responsible of creating the actual
+histograms, min-max-counters, gauges or counters that you will include in your entity recorder. When doing managed
+registration, Kamon will retrieve the correct instrument factory and supply it to your <code>.createRecorder(..)</code>
+implementation whereas if you are doing manual registration you will need to find or create an instrument factory
+yourself. When the Metrics module starts it will read the available configurations and generate a instrument factories
+that follow this order of priorities when configuring a instrument (top wins):</p>
+
+<ul>
+  <li>Any configuration provided under the <code>kamon.metric.instrument-settings.$category.$metric-name</code> configuration key.</li>
+  <li>Any configuration provided by code when creating the entity recorder.</li>
+  <li>Default configurations for each instrument type in the <code>kamon.metric.default-instrument-settings</code> configuration key.</li>
+</ul>
+
+<p>All three sources of settings will be merged to define the actual configuration to be used for any given instrument
+created by Kamon.</p>
+
+<p>For example, changing the refresh interval of the <code>mailbox-size</code> min-max-counter for actors, as defined in the example
+above we would need to provide the following configuration:</p>
+
+<div class="code-example"><ul class="nav nav-tabs language-tab justify-content-end" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#typesafeconfig_0_430603" role="tab">application.conf</a></li></ul><div class="tab-content"><div class="tab-pane active" id="typesafeconfig_0_430603" role="tabpanel"><pre class="line-numbers language-typesafeconfig"><code class="language-typesafeconfig">kamon.metric.instrument-settings {
+  actor.mailbox-size {
+    refresh-interval = 250 ms
+  }
+}
+</code></pre></div></div></div>
+
+<p>Since no additional settings were provided by code or configuration for this category/metric combination, the dynamic
+range settings will be the default values defined in the <code>kamon.metric.default-instrument-settings.min-max-counter</code>
+configuration key.</p>
+
+
+            </div>
+          </div>
+          <!--<div class="row align-items-center kamino-docs-bottom">
+            <div class="col-xs-offset-1 col-xs-5">
+                <a href="http://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+                <a class="btn btn-sign-up btn-lg">Visit kamino.io</a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-12 col-md-3 pull-md-9 documentation-sidebar">
+          <section>
+  <ul class="tree">
+    <li><a class="docs-level-three side" href="/documentation/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three side" href="/documentation/events-and-workshops/"></i>Upcoming Events</a></li>
+  </ul>
+</section>
+          
+
+
+<section>
+  <div class="tree tree-toggler docs-level-one row justify-content-between align-items-center">
+    <span>
+      kamon-core
+    </span>
+
+    <div class="dropdown version-dropdown">
+      <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        0.6.6
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        
+          <a class="dropdown-item" href="/documentation/kamon-core/0.6.6/overview/">0.6.6</a>
+        
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Get Started</a></li>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/configuration/">Configuring Kamon</a></li>
+    
+
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Tracing</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/core-concepts/">Core Concepts</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/subscription-protocol/">Subscription Protocol</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/threading-model-considerations/">Threading Model Considerations</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/trace-context-manipulation/">Trace Context Manipulation</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/tracing/trace-metrics/">Trace Metrics</a></li>
+        
+      </ul>
+      </li>
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Metrics</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/core-concepts/">Core Concepts</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/instruments/">Instruments</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/recording-metrics/">Recording Metrics</a></li>
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/metrics/subscription-protocol/">Subscription Protocol</a></li>
+        
+      </ul>
+      </li>
+    
+      <li>
+      <label class="tree-toggler tree docs-level-two">Modules</label>
+      <ul class="tree tree-toggler">
+        
+        
+          <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/modules/using-modules/">Using Modules</a></li>
+        
+      </ul>
+      </li>
+    
+</section>
+          <section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Foundations</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Metrics and Tracing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-akka/0.6.6/overview/">Akka</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-scala/0.6.6/overview/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-spray/0.6.6/overview/">Spray</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jdbc/0.6.6/overview/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-annotation/0.6.6/overview/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-system-metrics/0.6.6/overview/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-kamino/0.6.6/overview/">Kamino</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-statsd/0.6.6/overview/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-datadog/0.6.6/overview/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-newrelic/0.6.6/overview/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-sematext-spm/0.6.6/overview/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jmx/0.6.6/overview/">JMX</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-fluentd/0.6.6/overview/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">InfluxDB</a></li>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-graphite/1.0.4/overview/">Graphite</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-riemann/0.6.6/overview/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-khronus/0.6.6/overview/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,350 @@
+<html lang="en">
+  <head>
+    <title>Kamon | InfluxDB | Documentation</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+      <div class="hero jumbotron-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-7">
+          <span class="jumbo-title">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 push-md-3">
+          <div class="row align-items-center justify-content-end kamino-docs-top">
+            <div>
+                <a href="https://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+            </div>
+          </div>
+          <div class="row docs-content">
+            <div class="col-12">
+              <h1 id="reporting-metrics-to-influxdb">Reporting Metrics to InfluxDB</h1>
+
+<p><a href="https://influxdata.com/time-series-platform/influxdb/">InfluxDB</a> is a high performance open source database for handling time series
+data. It receives metrics over HTTP or UDP using its own line protocol. It’s
+a high availability and high performance database and provides an excellent
+backend for monitoring.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Add the <code>kamon-influxdb</code> dependency to your project and ensure that it is in
+your classpath at runtime. Kamon’s module loader will detect that
+the InfluxDB module is in the classpath and automatically starts it.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>At the very basic level, you will certainly want to use the
+<code>kamon.influxdb.hostname</code> and <code>kamon.influxdb.port</code> configuration keys to
+ensure your data is being sent to wherever your InfluxDB database is running.
+Additionally to that, you can configure the metric categories to which this
+module will subscribe using the <code>kamon.influxdb.subscriptions</code> key. By default,
+the following subscriptions are included:</p>
+
+<pre class="line-numbers language-typesafeconfig"><code class="language-typesafeconfig">kamon.influxdb {
+  subscriptions {
+    histogram       = [ "**" ]
+    min-max-counter = [ "**" ]
+    gauge           = [ "**" ]
+    counter         = [ "**" ]
+    trace           = [ "**" ]
+    trace-segment   = [ "**" ]
+    akka-actor      = [ "**" ]
+    akka-dispatcher = [ "**" ]
+    akka-router     = [ "**" ]
+    system-metric   = [ "**" ]
+    http-server     = [ "**" ]
+  }
+}</code></pre>
+
+<p>By default, the module sends data to InfluxDB through its HTTP interface. While
+the HTTP instance has a richer API compared to UDP, it is much slower to send
+data through it. It is possible to optimize the sends by setting a higher
+<code>kamon.influxdb.max-packet-size</code>, the default is 16 kB.</p>
+
+<p>Using the HTTP protocol it’s possible to define the database where the data is
+stored. You can change the value by modifying the <code>kamon.influxdb.database</code>
+configuration. With UDP this setting has to be done in the InfluxDB
+configuration. To switch the protocol, change the <code>kamon.influxdb.protocol</code> to
+<code>udp</code>.</p>
+
+<p>If the server requires authentication, define the write user and password by
+setting the values for <code>kamon.influxdb.authentication.user</code> and
+<code>kamon.influxdb.authentication.password</code>. The retention policy can be defined
+by changing the <code>kamon.influxdb.authentication.retention-policy</code>. When using
+UDP, change these values from InfluxDB configuration.</p>
+
+<h3 id="metric-key-generators">Metric Key Generators</h3>
+
+<p>The <code>kamon.influxdb.application-name</code> affects to the measurement names stored
+in InfluxDB. By default, the value is <code>kamon</code>. The data is stored into two
+measurements in the selected database: <code>kamon-counters</code> and
+<code>kamon-timers</code>, where <code>kamon</code> is replaced by the chosen <code>application-name</code>. The
+measurements are sent with the following tags:</p>
+
+<ul>
+  <li><strong>category</strong>: The entity’s category.</li>
+  <li><strong>entity</strong>: The entity’s name.</li>
+  <li><strong>metric</strong>: The metric name assigned in the entity recorder.</li>
+  <li><strong>hostname</strong>: Uses the local host name or <code>kamon.influxdb.hostname-override</code>,
+if given.</li>
+</ul>
+
+<p>The counter metrics store their current value to the <code>value</code> field. For
+histograms, the following fields are stored:</p>
+
+<ul>
+  <li><strong>lower</strong>: The lowest value.</li>
+  <li><strong>mean</strong>: The average value.</li>
+  <li><strong>upper</strong>: The highest value.</li>
+</ul>
+
+<p>Additionally, it’s possible to define the percentiles to be stored to InfluxDB
+for every tick. To change these, modify the <code>kamon.influxdb.percentiles</code>
+configuration. Default percentiles are <code>[50.0, 70.0, 90.0, 95.0, 99.0, 99.9]</code>.
+For example, the configuration could be <code>[50.0, 70.5, 90.0]</code>, so the following
+fields would be stored:</p>
+
+<ul>
+  <li><strong>p50</strong>: 50th percentile</li>
+  <li><strong>p70.5</strong>: 70.5th percentile</li>
+  <li><strong>p90</strong>: 90th percentile</li>
+</ul>
+
+<h2 id="using-the-influxdb-data">Using the InfluxDB data</h2>
+
+<p>InfluxDB is a fast, powerful and reliable database. The stored measurements can
+be queried using an SQL-like language. There are many good interfaces for
+visualizing the data, including <a href="http://grafana.org">Grafana</a> and <a href="https://influxdata.com/time-series-platform/chronograf/">Chronograf</a>. InfluxDB can handle
+huge amounts of data and scales easily with your project. It is very fast even
+with large datasets, resulting fast and beautiful dashboards for monitoring.</p>
+
+
+            </div>
+          </div>
+          <!--<div class="row align-items-center kamino-docs-bottom">
+            <div class="col-xs-offset-1 col-xs-5">
+                <a href="http://kamino.io">
+                  <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+                </a>
+                <a class="btn btn-sign-up btn-lg">Visit kamino.io</a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="col-12 col-md-3 pull-md-9 documentation-sidebar">
+          <section>
+  <ul class="tree">
+    <li><a class="docs-level-three side" href="/documentation/get-started/"></i>Get Started</a></li>
+    <li><a class="docs-level-three side" href="/documentation/events-and-workshops/"></i>Upcoming Events</a></li>
+  </ul>
+</section>
+          
+
+
+<section>
+  <div class="tree tree-toggler docs-level-one row justify-content-between align-items-center">
+    <span>
+      kamon-influxdb
+    </span>
+
+    <div class="dropdown version-dropdown">
+      <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        0.6.6
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        
+          <a class="dropdown-item" href="/documentation/kamon-influxdb/0.6.6/overview/">0.6.6</a>
+        
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    
+      <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">Reporting to InfluxDB</a></li>
+    
+
+    
+</section>
+          <section>
+  <div class="tree tree-toggler docs-level-one row align-items-center">
+    <span>All Modules</span>
+  </div>
+  <ul class="tree tree-toggler">
+    <li>
+      <label class="tree-toggler tree docs-level-two">Foundations</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-core/0.6.6/overview/">Metrics and Tracing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Metrics Collection</label>
+      <ul>
+        <li><a class="docs-level-three" href="/documentation/kamon-akka/0.6.6/overview/">Akka</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-scala/0.6.6/overview/">Scala Futures</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-play/0.6.6/overview/">Play Framework</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-spray/0.6.6/overview/">Spray</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jdbc/0.6.6/overview/">JDBC</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-annotation/0.6.6/overview/">Annotations</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-system-metrics/0.6.6/overview/">System Metrics</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <label class="tree-toggler tree docs-level-two">Reporter Backends</label>
+      <ul>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-kamino/0.6.6/overview/">Kamino</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-statsd/0.6.6/overview/">StatsD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-datadog/0.6.6/overview/">Datadog</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-newrelic/0.6.6/overview/">New Relic</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-sematext-spm/0.6.6/overview/">Sematext SPM</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-jmx/0.6.6/overview/">JMX</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-fluentd/0.6.6/overview/">FluentD</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-influxdb/0.6.6/overview/">InfluxDB</a></li>
+        <!--<li><a class="docs-level-three" href="/documentation/kamon-graphite/1.0.4/overview/">Graphite</a></li>-->
+        <li><a class="docs-level-three" href="/documentation/kamon-riemann/0.6.6/overview/">Riemann</a></li>
+        <li><a class="docs-level-three" href="/documentation/kamon-khronus/0.6.6/overview/">Khronus</a></li>
+
+      </ul>
+    </li>    
+  </ul>
+</section>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!--
+  ~ =========================================================================================
+  ~ Copyright © 2013 the kamon project <http://kamon.io/>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License. You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the
+  ~ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+  ~ either express or implied. See the License for the specific language governing permissions
+  ~ and limitations under the License.
+  ~ =========================================================================================
+  -->
+
+<html lang="en">
+  <head>
+    <title>Understanding Spray Client Timeout Settings</title>
+
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kamon is a set of tools that will help you monitor your reactive applications">
+
+<!--<link rel="stylesheet" href="/assets/css/syntax-highlight.css">-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/prism.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/kamon.css">
+
+
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link href="https://plus.google.com/107736741680270898032?rel=author">
+<link rel="alternate" type="application/rss+xml" title="Kamon Teamblog Feed" href="/teamblog/rss/">
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default kamon-navbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+          <a href="/documentation/get-started/">
+            <img class="kamon-logo-image" alt="Kamon" src="/assets/img/kamon-logo-latest.svg">
+          </a>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row justify-content-end align-items-center navigation-links">
+            <div class="wip-warning col-12 col-md-4">
+              WARNING: We are updating and fixing all docs around!
+            </div>
+            <a class="col-12 col-md-4 col-lg-3" href="/documentation/get-started/">
+              <span class="nav-link">DOCUMENTATION</span>
+            </a>
+            <a class="col-12 col-md-2" href="/teamblog/">
+              <span class="nav-link">BLOG</span>
+            </a>
+            
+            <div class="col-12 col-md-2 hidden-sm-down">
+              <div class="row justify-content-around align-items-center">
+                <a href="https://twitter.com/kamonteam">
+                  <i class="fa fa-twitter fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/kamon-io/Kamon">
+                  <i class="fa fa-github fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="http://kamon.io/teamblog/rss/">
+                  <i class="fa fa-rss fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+                <a href="https://groups.google.com/forum/#!forum/kamon-user">
+                  <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="hero jumbotron-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="jumbo-title">Understanding Spray Client Timeout Settings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 post-content">
+            <div class="post-heading">
+              <span class="heading-item"><i class="fa fa-calendar-o icon"></i>  02 Nov 2014</span>
+              <!--<span class="heading-item"><i class="fa fa-user icon"></i>  by </span>-->
+            </div>
+            <hr>
+
+            <p>If you have ever used spray-client in a real world application you certainly must have come to the point of setting
+reasonable timeouts for HTTP requests and you might already be familiar with these guys (extracted from Spray’s
+reference.conf file):</p>
+
+<pre class="line-numbers language-typesafeconfig"><code class="language-typesafeconfig">spray.can {
+  client {
+    # The max time period that a client connection will be waiting for a response
+    # before triggering a request timeout. The timer for this logic is not started
+    # until the connection is actually in a state to receive the response, which
+    # may be quite some time after the request has been received from the
+    # application!
+    # There are two main reasons to delay the start of the request timeout timer:
+    # 1. On the host-level API with pipelining disabled:
+    #    If the request cannot be sent immediately because all connections are
+    #    currently busy with earlier requests it has to be queued until a
+    #    connection becomes available.
+    # 2. With pipelining enabled:
+    #    The request timeout timer starts only once the response for the
+    #    preceding request on the connection has arrived.
+    # Set to `infinite` to completely disable request timeouts.
+    request-timeout = 20 s
+
+    # The time period within which the TCP connecting process must be completed.
+    # Set to `infinite` to disable.
+    connecting-timeout = 10s  
+  }
+
+  host-connector {
+    # The maximum number of parallel connections that an `HttpHostConnector`
+    # is allowed to establish to a host. Must be greater than zero.
+    max-connections = 4
+
+    # The maximum number of times an `HttpHostConnector` attempts to repeat
+    # failed requests (if the request can be safely retried) before
+    # giving up and returning an error.
+    max-retries = 5
+
+    # If this setting is enabled, the `HttpHostConnector` pipelines requests
+    # across connections, otherwise only one single request can be "open"
+    # on a particular HTTP connection.
+    pipelining = off  
+
+  }
+}</code></pre>
+
+<p>Their meanings are very clearly described in the comments, but do people really understand what they mean? quite often
+the answer is no, so we decided to throw a bit of light over these configuration settings and uncover what is going on
+under the hood, hoping to develop a decent understanding of what happens when you send a HTTP request with spray-client
+using the Request Level API as well as the Host Level API.</p>
+
+<p>Please note that this post is not intended to be a comprehensive guide on how to configure spray-client timeouts but
+rather a short explanation of the underpinnings of it that should allow you to understand the settings and how they
+affect the behaviour of your application. Hopefully that will be enough for you to find the right values!</p>
+
+<h3 id="using-the-request-level-api">Using the Request Level API</h3>
+
+<p>Let’s start with a simple code example:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">import akka.actor.ActorSystem
+import akka.util.Timeout
+import spray.client.pipelining.sendReceive
+import spray.httpx.RequestBuilding
+import scala.concurrent.duration._
+
+object SprayClientExample extends App with RequestBuilding {
+  implicit val requestTimeout = Timeout(60 seconds)
+  implicit val system = ActorSystem("spray-client-example")
+  implicit val executionContext = system.dispatcher
+
+  val clientPipeline = sendReceive
+
+  val startTimestamp = System.currentTimeMillis()
+  val response = clientPipeline {
+    Get("http://127.0.0.1:9090/users/kamonteam/timeline")
+  }
+  response.onComplete(_ =&gt; println(s"Request completed in ${System.currentTimeMillis() - startTimestamp} millis."))
+}</code></pre>
+
+<p>We have a simple service running on <code>localhost:9090</code> that will respond to these requests with a 15 seconds delay.
+Running the above example code, after the short wait, yields the following output:</p>
+
+<pre class="line-numbers language-text"><code class="language-text">Request completed in 16020 millis.</code></pre>
+
+<p>Nothing special, it does exactly what we think it should do. Note that we are setting a high (60 seconds) timeout for
+the Request Level API, primarily to avoid it getting in our way for this test and we will later revisit it. Now let’s
+start with the surprises, what happens if we send six requests at once with the default configration?, this modified
+version of the code:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">for(r &lt;- 1 to 6) {
+    val startTimestamp = System.currentTimeMillis()
+    val response = clientPipeline {
+      Get("http://127.0.0.1:9090/users/kamonteam/timeline")
+    }
+    response.onComplete(_ =&gt; println(s"Request [$r] completed in ${System.currentTimeMillis() - startTimestamp} millis."))
+  }</code></pre>
+
+<p>Yields the following output (ordering might be different when you try it, but the important bits will remain):</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">Request [3] completed in 15887 millis.
+Request [4] completed in 15887 millis.
+Request [1] completed in 16033 millis.
+Request [2] completed in 15887 millis.
+Request [6] completed in 30891 millis.
+Request [5] completed in 30891 millis.</code></pre>
+
+<p>At this point you might have two questions in mind: first, why the first four requests complete in ~15 seconds but the
+last two requests take ~30 seconds to complete? That’s the easy one, Spray Client creates a <code>HttpHostConnector</code> for each
+host to which you want to send requests to (roughly speaking, more details apply), you can think of the host connector
+as a connection pool that has <code>spray.can.host-connector.max-connections</code> connections to the given host and with the
+default value of four, the first four requests get dispatched immediatly and the other two have to wait until a
+connection is available to proceed. If you set <code>max-connections</code> to a higher value, there will be enough connections for
+all requests to be dispatched immediatly and all of them will finish in ~15 seconds, as expected.</p>
+
+<p>The second question is, why a request can take ~30 seconds to complete if <code>spray.can.client.request-timeout</code> is set to
+20 seconds by default?. The documentation is very clear stating that <em>“The timer for this logic is not started until the
+connection is actually in a state to receive the response, which may be quite some time after the request has been
+received from the application!”</em>, but, how big can that <em>“quite some time”</em> be? well, it depends on a few factors
+related to how Spray Client works under the hood, this little diagram becomes handy to understand what is going on
+there.</p>
+
+<p><img class="img-fluid" src="/assets/img/diagrams/spray-client-actors.png" /></p>
+
+<p>Following the flow in the diagram:</p>
+
+<ol>
+  <li>
+    <p>Your application code uses a <code>sendReceive</code> to send a HTTP request. By default, the <code>sendReceive</code> will use the
+HttpManager as the transport for the HTTP request (that’s what you get when you evaluate <code>IO(Http)</code> for a actor system).
+The HttpManager is the root of all the Spray-related actors, both on the server and client side, but for simplicity we
+only included the ones related to spray-client in the diagram.</p>
+  </li>
+  <li>
+    <p>The HttpManager will use the target host (among other details) in the HTTP request to determine the HttpHostConnector
+to which the request should be sent. If no HttpHostConnector is available for the given host, a new one is created and
+the request is dispatched to it. Additionaly, based on the client connection settings (user-agent header, idle timeout,
+request timeout and some others) the HttpManager will find or create a HttpClientSettingsGroup that is required by the
+HttpHostConnector to work.</p>
+  </li>
+  <li>
+    <p>The HttpHostConnector does it’s magic. As we said before, the HttpHostConnector acts as a connection pool and as
+such, it has to find or create a suitable HttpHostConnectionSlot for dispatching the incoming HTTP request and if it
+can’t find one then it will queue the request until a suitable one becomes available. Depending on whether HTTP
+pipelining is on or off the logic for dispatching the requests will vary, we will assume the default setting of
+<code>spray.can.host-connector.pipelining = off</code> and you can read more about how pipelining works in the <a href="http://spray.io/documentation/1.3.2/spray-can/http-client/host-level/#using-an-httphostconnector">Spray documentation</a>.
+When the host connector creates a new HttpHostConnectionSlot, the new child is provided with the HttpClientSettingsGroup
+that was passed by the HttpManager when creating the HttpHostConnector. Here is where the last two request from our
+earlier example got queued waiting for a connection to be available.</p>
+  </li>
+  <li>
+    <p>The HttpHostConnectionSlot will ask the HttpClientSettingsGroup to create a new HttpClientConnection and once it is
+connected it will dispatch the request to it. The process of setting up the HttpClientConnection only happens when the
+first request arrives and then the same connection will be reused as for long as possible.</p>
+  </li>
+  <li>
+    <p>The HttpClientConnection talks to the Akka-IO layer to establish the TCP connection and sends the HTTP request data
+to it. This is a very simplyfied version of what happens here, but in order to keep it short we should just be aware
+that it might take some time to establish the TCP connection and it has to happen within the timeout specified by
+<code>spray.can.client.connecting-timeout</code> and then, after the connection is established and the request is dispatched the
+<code>spray.can.client.request-timeout</code> starts counting.</p>
+  </li>
+</ol>
+
+<p>Looking back at the “how big can that <em>“quite some time”</em> be?”, much more comes to mind. If there are no available
+connections the request will be queued until one becomes available. If no connection is established then all the
+relevant actors need to be created. Finally, at least four actor messages are involved since the moment where the client
+application code sends the HTTP request until the point where the <code>request-timeout</code> starts counting, and all of these
+actors, by default, are scheduled in the Actor System’s default dispatcher which might be busy with some other work and
+potentially blocked by some naively uncompartmentalized expensive operations.</p>
+
+<h3 id="what-about-the-host-level-api">What about the Host Level API?</h3>
+
+<p>The Host Level API is just about talking directly to the HttpHostConnector instead of going through the HttpManager to
+get to it. After that, everything is the same as what we described above. The gist of it is that you send a
+<code>Http.HostConnectorSetup</code> message to the HttpManager and it will reply with a <code>Http.HostConnectorInfo</code> containing the
+ActorRef of the HttpHostConnector, then you can send the requests directly to it.</p>
+
+<p>If you decide to setup and use a HttpHostConnector directly, keep in mind that it has an idle timout after which it will
+be stopped and the ActorRef that you have for the HttpHostConnector will no longer be valid and you either set the idle
+timeout to infinte or watch the ActorRef and handle the situation gracefully. We tend to recommend people to avoid the
+Host Level API since using it correctly adds a bit of complexity that is already solved by the HttpManager and in most
+cases saving one actor message there is not going to be a significant improvement compared to all the work that has to
+be done down the road. Of course, each case has it’s needs and only testing your app yo will be able to know.</p>
+
+<h3 id="the-meaningless-of-the-sendreceive-timeout">The Meaning(less) of the sendReceive Timeout</h3>
+
+<p>Take a look at the signatures of <code>sendReceive</code>:</p>
+
+<pre class="line-numbers language-scala"><code class="language-scala">type SendReceive = HttpRequest ⇒ Future[HttpResponse]
+
+  def sendReceive(implicit refFactory: ActorRefFactory, executionContext: ExecutionContext,
+    futureTimeout: Timeout = 60.seconds): SendReceive
+
+  def sendReceive(transport: ActorRef)(implicit ec: ExecutionContext, futureTimeout: Timeout): SendReceive</code></pre>
+
+<p>The implicit timeout provided in our example as <code>requestTimeout</code> satisfies the <code>futureTimeout</code> implicit parameter of the
+<code>sendReceive</code> function, but this timeout doesn’t have anything to do with all the timeouts we have seen before, it is
+just used to satisfy the timeout required by the <a href="https://github.com/spray/spray/blob/release/1.3/spray-client/src/main/scala/spray/client/pipelining.scala#L38">ask</a> made to the transport actor (the HttpManager by default) and give
+you back a <code>Future[HttpResponse]</code> that will be fulfilled when the response arrives. If the future timeout is reached and
+no response was received, the future will be completed with a AskTimeoutException <strong>but the request processing will
+continue down the road, until a result (succesful or not) can be returned</strong>.</p>
+
+<h3 id="continues-processing-tell-me-more">Continues Processing? Tell Me More</h3>
+
+<p>Spray Client doesn’t have the notion of a deadline for processing a HttpRequest, it just knows that the request has to
+go through a series of steps to complete (succesfuly or not) and only after all the steps are completed it will cease
+processing the request and give you a response. If we modify the <code>requestTimeout</code> variable in our previous example to 10
+seconds, all response futures will be completed with a AskTimeoutException after 10 seconds, but still, Spray Client
+will send all requests to our service anyway, even the last two requests that have to wait ~15 seconds until a
+connection becomes available. The output generated by that modified version looks like this:</p>
+
+<pre class="line-numbers language-text"><code class="language-text">Request [1] completed in 10161 milliseconds.
+Request [2] completed in 10020 milliseconds.
+Request [3] completed in 10020 milliseconds.
+Request [4] completed in 10020 milliseconds.
+Request [5] completed in 10020 milliseconds.
+Request [6] completed in 10020 milliseconds.</code></pre>
+
+<p>but ~5 seconds after that, the first four responses arrive and go to dead letters because nobody is waiting for them and
+after ~15 seconds more the last two responses arrive, also going to dead letters. The log output looks like this
+(shortened to keep it readable):</p>
+
+<pre class="line-numbers language-text"><code class="language-text">[06:00:12.153] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
+[06:00:12.153] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
+[06:00:12.154] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
+[06:00:12.154] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
+[06:00:27.161] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...
+[06:00:27.161] [akka://spray-client-example/deadLetters] Message [spray.http.HttpResponse] from ...</code></pre>
+
+<h3 id="one-more-thing-retries">One More Thing: Retries</h3>
+
+<p>The last thing that you need to keep in mind is that Spray Client can (and will, by default) retry idempotent requests
+for the number of times specified in <code>spray.can.host-connector.max-retries</code> and retrying is part of the request
+processing steps mentioned before, meaning that it will retry 5 times by default before giving up, wheter you like it or
+not. If you have a server taking too long to respond on the other side it might take at least ~100 seconds (5 retries of
+20 seconds each, without counting connection setup time) for Spray Client to give up on a given request. Not setting the
+retries limit accordingly to what your application needs might cause your system to spend time processing requests that
+you no longer are interested in. You can think of a real spray-client timeout as the sum of:</p>
+
+<ul>
+  <li>
+    <p><code>spray.can.client.request-timeout</code> multiplied by <code>spray.can.host-connector.max-retries</code> for idempotent request or by
+one for non-idempotent requests.</p>
+  </li>
+  <li>
+    <p><code>spray.can.client.request-timeout</code> multiplied by <code>spray.can.host-connector.max-redirects</code>. The number of redirects to
+follow is zero by default, but if you set it to a higher value please remember that the redirects are counted
+independently from the retries.</p>
+  </li>
+  <li>
+    <p>The time that might be spent waiting in the HttpHostConnector queue for a connection to be available. This time can
+not be limited by any configuration setting and the only thing preventing this queue to produce an out of memory error
+is the back-presure implementation in your application code. Been there, suffered that.</p>
+  </li>
+  <li>
+    <p>Only for new connections, the time taken to create all the relevant actors and establish the TCP connection. Usually
+creating the actors wont be a problem, but establishing the TCP connection might take awhile depending on network
+conditions.</p>
+  </li>
+</ul>
+
+<p>As a final advice, always do this sum with your settings and make sure that they make sense to your app. If your app can
+tolerate a maximum of 5 seconds delay for a HTTP response, then adjust all the relevant settings to make sure that Spray
+wont keep working on requests after ~5 seconds. Also, we encourage you to simulate the various conditions mentioned here
+(more requests than connections, slow connection times, slow server, etc.) in a development environment and tune
+accodingly to the results your see, many CPU cycles and potential crashes might be saved by doing so!</p>
+
+
+
+            <br><br>
+            <div>
+              <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kamonio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <div class="blog-sidebar">
+  <div class="row align-items-center justify-content-end kamino-docs-top sponsored-by-kamino">
+    <div>
+        <a href="https://kamino.io">
+          <img class="img-fluid" alt="Sponsored by Kamino" src="/assets/img/sponsored-by-kamino.svg">
+        </a>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-12">
+    <h4 class="sidebar-title">Latest Releases</h4>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2016/10/10/kamon-0-6-3-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.3 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/07/25/kamon-0-6-2-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.2 Released!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2016/04/27/kamon-0-6-1-is-out/" class="sidebar-post">Minor Update - Kamon 0.6.1 is out!</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h3 class="sidebar-title">Latest Posts</h3>
+      <div class="recent-post">
+        
+          <h4><a href="/teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/" class="sidebar-post">Playing with Streams and Monitoring Docker</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/" class="sidebar-post">20 minutes in the Playground: Monitoring Scalatra with Kamon</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/06/14/welcome-akka-2.4-goodbye-akka-2.2/" class="sidebar-post">Welcome Akka 2.4, Goodbye Akka 2.2.</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2015/03/13/quick-look-at-kamon-0.4.0/" class="sidebar-post">Quick look at Kamon 0.4.0</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/11/02/understanding-spray-client-timeout-settings/" class="sidebar-post">Understanding Spray Client Timeout Settings</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/08/31/experimental-support-for-akka-remoting-and-cluster-is-now-available/" class="sidebar-post">Experimental support for Akka Remoting and Cluster is now available!</a></h4>
+          <hr>
+        
+          <h4><a href="/teamblog/2014/04/27/get-started-quicker-with-our-docker-image/" class="sidebar-post">Get started quicker with our docker image</a></h4>
+          <hr>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero jumbotron-bottom">
+  <div class="container">
+    <div class="row middle-xs">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="text-center upper">
+          Get in touch
+        </p>
+        <p class="text-center">
+          <a href="https://twitter.com/kamonteam" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="https://github.com/kamon-io/Kamon" class="social-icon"><i class="fa fa-2x fa-github"></i></a>
+          <a href="/teamblog/rss/" class="social-icon"><i class="fa fa-rss"></i></a>
+          <a href="https://groups.google.com/forum/#!forum/kamon-user" class="social-icon"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="text-center">
+          <a href="/introduction/project-info/support/" class="btn btn-support upper">Support <i class="fa fa-wrench"></i></a>
+        </p>
+        <p class="text-center">
+          <img src="/assets/img/kamon-footer-logo.png" alt="logo" />
+        </p>
+        <p class="copyright">
+          &copy; 2015 Kamon. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/prism.js"></script>
+    <script src="/assets/js/prism-typesafeconfig.js"></script>
+    <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45369085-1', 'kamon.io');
+    ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
