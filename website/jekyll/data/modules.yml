@@ -1,56 +1,56 @@
 core:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 akka:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 scala:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
   
 play:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 spray:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 jdbc:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 annotation:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 system-metrics:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 kamino:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 statsd:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 datadog:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 newrelic:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 sematext-spm:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 jmx:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 fluentd:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 influxdb:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 graphite:
-  latest_version: 0.6.7
+  latest_version: 1.0.4
 
 riemann:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
 
 khronus:
-  latest_version: 0.6.7
+  latest_version: 0.6.6
