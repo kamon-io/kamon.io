@@ -44,5 +44,5 @@ artifact instead of the regular <b>kamon-akka-remote</b>.
 
 
 [Ask Pattern Timeout Warning]: ../ask-pattern-timeout-warning/
-[Actor, Router and Dispatcher Metrics]: ..//actor-router-and-dispatcher-metrics/
-[Automatic TraceContext Propagation]: ..//automatic-trace-context-propagation/
+[Actor, Router and Dispatcher Metrics]: ../actor-router-and-dispatcher-metrics/
+[Automatic TraceContext Propagation]: ../automatic-trace-context-propagation/
