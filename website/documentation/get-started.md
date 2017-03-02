@@ -1,5 +1,7 @@
 ---
 title: Kamon | Get Started
+tree_title: Get Started
+tree_index: 0
 layout: generic-documentation
 ---
 
@@ -31,7 +33,7 @@ Still, here are some examples with common build tools:
 Our latest version is published for both Scala 2.10 and Scala 2.11 using SBT's cross version feature, meaning that our
 artifacts are suffixed by either `_2.10` or `_2.11` to denote the target Scala version. If you are not in the Scala
 world and you are not familiar with this conventions just pick the greatest Scala version available, currently 2.11, as
-shown in the Maven example above. You can find a complete list of Kamon modules in the [overview] section.
+shown in the Maven example above. You can find a complete list of Kamon modules in the left panel of this page.
 
 
 
@@ -90,11 +92,9 @@ these core features and to each additional module's documentation for usage deta
 
 
 [Akka]: http://akka.io/
-[overview]: /introduction/overview/
-[configuration]: /introduction/configuration/
+[configuration]: /documentation/kamon-core/0.6.6/configuration/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
 [load-time weaving example]: https://github.com/sbt/sbt-aspectj/tree/master/src/sbt-test/weave/load-time/
-[tracing]: /core/tracing/core-concepts/
-[metrics]: /core/metrics/core-concepts/
-[logging]: /core/tracing/logging/
+[tracing]: /documentation/kamon-core/0.6.6/tracing/core-concepts/
+[metrics]: /documentation/kamon-core/0.6.6/metrics/core-concepts/
 [mailing list]: https://groups.google.com/forum/#!forum/kamon-user

@@ -114,8 +114,8 @@ get up and running in a few minutes and see it with your own metrics!
 
 
 [StatsD]: https://github.com/etsy/statsd/
-[get started]: /introduction/get-started/
+[get started]: /documentation/get-started/
 [Graphite]: http://graphite.wikidot.com/
 [Grafana]: http://grafana.org
 [docker image]: https://github.com/kamon-io/docker-grafana-graphite
-[Datadog Module]: /backends/datadog/
+[Datadog Module]: /documentation/kamon-datadog/0.6.6/overview/

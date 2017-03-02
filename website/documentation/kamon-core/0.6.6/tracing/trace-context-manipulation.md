@@ -108,4 +108,4 @@ the usage looks like:
 {%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/TraceContextManipulation.scala tag:async-segment %}
 {% endcode_example %}
 
-[threading model considerations]: /core/tracing/threading-model-considerations/
+[threading model considerations]: ../threading-model-considerations/

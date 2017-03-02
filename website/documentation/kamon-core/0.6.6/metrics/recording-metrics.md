@@ -70,4 +70,4 @@ the previous examples of this page:
 
 
 
-[core concepts]: /core/metrics/core-concepts/
+[core concepts]: ../core-concepts/

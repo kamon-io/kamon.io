@@ -52,8 +52,7 @@ Creating a Simple Subscriber
 ----------------------------
 Before moving forward, please keep in mind that the process described bellow covers the case in which your application
 will make use of the metrics information collected by Kamon in order to provide some functionality, be it load
-balancing, throttling or the like. If your intention is to integrate Kamon with a metric backend then try out this
-example and then move on to the [creating reporting modules] section which is more appropriate for the task.
+balancing, throttling or the like.
 
 The best way to understand how the subscriptions and snapshots work is with a simple example; here we will create a very
 simple subscriber that displays all counters and a specific histogram in the console upon every tick.
@@ -86,5 +85,4 @@ will vary, but the basic steps will remain the same:
 3. Profit!
 
 
-[core concepts]: /core/metrics/core-concepts/
-[creating reporting modules]: /core/creating-modules/reporting-modules/
+[core concepts]: ../core-concepts/

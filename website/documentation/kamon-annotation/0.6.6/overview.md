@@ -136,12 +136,12 @@ The root causes of that limitation, according to the [JLS], are:
 * Annotations on interfaces are not inherited irrespective to having the __@Inherited__ meta-annotation.
 
 
-[instruments]: /core/metrics/instruments/
+[instruments]: /documentation/kamon-core/0.6.6/metrics/instruments/
 [JLS]: http://docs.oracle.com/javase/specs/jls/se7/html/jls-9.html#jls-9.6
-[Trace]: /core/tracing/core-concepts/#the-tracecontext
-[Segment]: /core/tracing/core-concepts/#trace-segments
-[Traces]: /core/tracing/trace-context-manipulation/#creating-and-finishing-a-tracecontext
-[Segments]: /core/tracing/trace-context-manipulation/#creating-and-finishing-segments
+[Trace]: /documentation/kamon-core/0.6.6/tracing/core-concepts/#the-tracecontext
+[Segment]:/documentation/kamon-core/0.6.6/tracing/core-concepts/#trace-segments
+[Traces]: /documentation/kamon-core/0.6.6/tracing/trace-context-manipulation/#creating-and-finishing-a-tracecontext
+[Segments]: /documentation/kamon-core/0.6.6/tracing/trace-context-manipulation/#creating-and-finishing-segments
 [Limitations]: #limitations
 [EL]: https://jcp.org/en/jsr/detail?id=341
 [Spring Framework]: http://projects.spring.io/spring-framework/

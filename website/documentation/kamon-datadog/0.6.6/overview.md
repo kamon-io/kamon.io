@@ -104,4 +104,4 @@ names. Here is a very simple example of a dashboard created with metrics reporte
 <img class="img-fluid" src="/assets/img/datadog-dashboard.png">
 
 [Datadog]: http://www.datadoghq.com/
-[get started]: /introduction/get-started/
+[get started]: /documentation/get-started/

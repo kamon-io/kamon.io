@@ -13,7 +13,7 @@ to work properly the ask pattern needs to take care of several details, but to k
 mention only two:
 
 - sending a message to an actor doesn't mean it will reply, it does not even mean that it will process it.
-- [Scala Futures] do not timeout, you need to fulfill your promises.
+- Scala Futures do not timeout, you need to fulfill your promises.
 
 In order to ensure that the `Future` you get when using the ask pattern is always fulfilled an action that completes the
 future with a `AskTimeoutException` is scheduled using the provided timeout, and that action is canceled if the target
@@ -85,4 +85,3 @@ When using the heavyweight mode, the logged warning message looks like this:
 
 
 [ask pattern]: http://doc.akka.io/docs/akka/snapshot/scala/actors.html
-[Scala Futures]: http://docs.scala-lang.org/overviews/core/futures.html

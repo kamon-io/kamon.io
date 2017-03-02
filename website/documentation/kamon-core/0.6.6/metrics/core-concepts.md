@@ -176,5 +176,5 @@ configuration key.
 
 
 
-[instruments]: /core/metrics/instruments/
-[recording metrics]: /core/metrics/recording-metrics/
+[instruments]:../instruments/
+[recording metrics]: ../recording-metrics/

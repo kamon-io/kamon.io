@@ -103,4 +103,4 @@ tracking the number of tasks as a differential from the last recorded value.
 
 
 
-[entity filters]: /core/metrics/core-concepts/
+[entity filters]: /documentation/kamon-core/0.6.6/metrics/core-concepts/

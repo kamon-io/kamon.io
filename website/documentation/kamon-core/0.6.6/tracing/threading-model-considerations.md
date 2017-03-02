@@ -81,6 +81,6 @@ facilities, but in case you have a new tool at hand, the tracing API is there to
 
 
 
-[trace context manipulation]: /core/tracing/trace-context-manipulation/
-[Akka]: /integrations/akka/overview/
-[Scala]: /integrations/scala/overview/
+[trace context manipulation]: ../trace-context-manipulation/
+[Akka]: /documentation/kamon-akka/0.6.6/overview/
+[Scala]: /documentation/kamon-scala/0.6.6/overview/

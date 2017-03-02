@@ -62,7 +62,7 @@ New Relic has [its own, separate licensing].
 
 
 [New Relic]: http://newrelic.com
-[get started]: /get-started
+[get started]: /documentation/get-started/
 [New Relic Agent Installations Instructions]: https://docs.newrelic.com/docs/java/new-relic-for-java#h2-installation
 [kamon-newrelic-example]: https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-newrelic-example
 [its own, separate licensing]: http://newrelic.com/terms

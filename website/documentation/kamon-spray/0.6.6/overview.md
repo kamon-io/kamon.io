@@ -122,4 +122,4 @@ client sides of our instrumentation.
 
 
 
-[tracing core concepts section]: /core/metrics/core-concepts/
+[tracing core concepts section]: /documentation/kamon-core/0.6.6/metrics/core-concepts/

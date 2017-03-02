@@ -132,6 +132,6 @@ sampling with a 10% chance of selecting traces.
 
 
 
-[trace manipulation]: /core/tracing/trace-context-manipulation/
-[trace metrics section]: /core/tracing/trace-metrics/
-[trace context storage]: /core/tracing/trace-context-storage/
+[trace manipulation]: ../trace-context-manipulation/
+[trace metrics section]: ../trace-metrics/
+[trace context storage]: ../trace-context-storage/
