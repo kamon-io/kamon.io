@@ -10,7 +10,7 @@ Metrics Subscription Protocol
 The Metrics subscriptions protocol provides you a simple way to tell the Kamon metrics module that you are interested in
 receiving entity snapshots for a selection of entities upon every tick. You can subscribe to metrics by calling any of
 the `subscribe` method variants in the metrics module, specifying the category and name pattern for the entities of
-you are interest in and the Akka actor that will receive the metrics information on every tick. On real code,
+your interest in and the Akka actor that will receive the metrics information on every tick. On real code,
 subscriptions look like this:
 
 {% code_example %}
@@ -55,10 +55,10 @@ will make use of the metrics information collected by Kamon in order to provide 
 balancing, throttling or the like.
 
 The best way to understand how the subscriptions and snapshots work is with a simple example; here we will create a very
-simple subscriber that displays all counters and a specific histogram in the console upon every tick.
+simple subscriber that displays all the counters and a specific histogram in the console upon every tick.
 
 First, we need to define our subscriber actor's behavior, it will simply wait for `TickMetricSnapshot` messages as
-described above and print all counters and histograms included in the message. Wait, wasn't it just for a single
+described above and print all the counters and histograms included in the message. Wait, wasn't it just for a single
 histogram?, yes, it is! but you can subscribe to one specific histogram entity while still keeping the subscriber code
 able to handle more than one histogram in case you decide to do so in the future. This is how the subscriber should look
 like:
@@ -69,7 +69,7 @@ like:
 {% endcode_example %}
 
 After you have defined your subscriber actor then you need to create the correspondent actor instance and use it to
-subscribe to the counters and the histogram data we are interested in. If we want to receive all counters but only the
+subscribe to the counters and the histogram data we are interested in. If we want to receive all the counters but only the
 histogram named `test-histogram` then the subscriptions should look like this:
 
 {% code_example %}

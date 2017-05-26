@@ -20,7 +20,7 @@ Imagine there is this Twitter-like application that you want to measure and moni
 functionalities: "post new status" and "fetch user time line". In this very simple example all data is available in a
 database. When you measure the "post new status" functionality, you obviously want to know how long it took to process
 each new status, but additionally you might want to know how the section of code that does the database query is
-behaving as usually that tends to become a bottleneck. Maybe there is a internally shared functionality called "get user
+behaving as usually that tends to become a bottleneck. Maybe there is an internally shared functionality called "get user
 details" that is being used from both "post new status" and "fetch user time line" and when that happens, it is not
 enough to measure the "get user details" section alone, but rather keep enough context to know how it behaves when
 being called from the "post new status" or the "fetch user time line" functionality.
@@ -45,7 +45,7 @@ following attributes:
 * __name__: A user-friendly name that describes the functionality being used in a traced request. Examples might be
 "GetUserDetails", "PublishStatus" or "GenerateSalesReport". A trace can be renamed at any point during the execution of
 a request. As you might guess, many traces in your application can and should share the same name.
-* __trace-token__: A automatically generated id for the `TraceContext`. Once a `TraceContext` is created, it's trace token
+* __trace-token__: An automatically generated id for the `TraceContext`. Once a `TraceContext` is created, it's trace token
 will remain the same until the end of the trace. Contrary to the trace name, the trace token is unique and must never be
 repeated during the lifetime of the application.
 * __metadata__: Simple key-value pairs containing additional information about the execution of a trace.
@@ -71,7 +71,7 @@ diagnostic and performance data contained in it, thus the need to have unique an
 the contexts.
 
 You could simply pass the `TraceContext` instance around to all the related components from start to finish in your
-application, that will certainly give you full control of the trace life cycle and will clearly describe the stages
+application, that will certainly give you the full control of the trace life cycle and will clearly describe the stages
 covered by it, but would also be incredibly verbose and tedious, besides the fact that doing so would couple a decent
 portion of your application code with Kamon's tracing infrastructure, that doesn't seem good. Instead, we defined a
 single place to look for and store the `TraceContext` of the functionality being executed in the current thread and we
@@ -94,7 +94,7 @@ or "UpdateAccountsCache" as names might see for segments.
 segment was created.
 * __metadata__: Simple key-value pairs containing additional information about the execution of a segment.
 
-The life cycle of a segment is not tied to the life cycle of it's correspondent trace. That a segment can be created and
+The life cycle of a segment is not tied to the life cycle of it's correspondent trace. That segment can be created and
 finished at any time if you have a trace available, regardless of whether the trace is still open or not.
 
 
@@ -106,12 +106,12 @@ Our tracing module aims to provide two different trace levels that can be used t
 your application which can be configured via the `kamon.trace.level-of-detail` configuration key, these levels are:
 
 
-### Metrics Only ###
+#### Metrics Only ####
 
 This is what you get by default. The traces and segments are only used to gather the elapsed time information for each
 of them and you will only get the metrics information described in the [trace metrics section].
 
-### Simple Tracing ###
+#### Simple Tracing ####
 
 Additionally to gathering trace metrics, the simple tracing level stores information about when each segment was
 executed relative to the trace, which can enable you to display a simple Gantt-like chart of the trace and all it's
@@ -121,10 +121,10 @@ The available sampling mechanisms are:
 
 * __all__: Every single trace is selected and reported.
 * __random__: Uses a random number generator to generate numbers between 1 and 100, if the generated number is less or
-equal to the `chance` setting, the trace will selected and reported.
-* __ordered__: Pick one trace every `sample-interval` traces and reports it.
-* __threshold__: This one might be the most interesting around. This sampling method will select all traces for collecting
-information, but will only report those whose elapsed time is beyond certain threshold.
+equal to the `chance` setting, the trace will be selected and reported.
+* __ordered__: Picks one trace every `sample-interval` traces and reports it.
+* __threshold__: This one might be the most interesting around. This sampling method will select all the traces for collecting
+the information, but will only report those whose elapsed time is beyond certain threshold.
 
 Use the `kamon.trace.sampling` configuration key to select your sampling mechanism. By default, Kamon will use random
 sampling with a 10% chance of selecting traces.
@@ -134,4 +134,4 @@ sampling with a 10% chance of selecting traces.
 
 [trace manipulation]: ../trace-context-manipulation/
 [trace metrics section]: ../trace-metrics/
-[trace context storage]: ../trace-context-storage/
+[trace context storage]: ../trace-context-manipulation/#tracecontext-storage

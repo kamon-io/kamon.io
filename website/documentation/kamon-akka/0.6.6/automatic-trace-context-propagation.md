@@ -69,8 +69,8 @@ action taken will be correctly related to the failing request.
 ### Actor Creation ###
 
 You might be thinking that actor creation happens in the same thread where the call to `ActorRefFactory.actorOf(..)` is
-being made, but that is not necessarily true. In fact, a `Create` system message is sent to the newly created actor cell
-and it might be execute later depending on whether you are creating a top-level actor or not. Kamon also instruments this
+being made, but that is not necessarily the case. In fact, a `Create` system message is sent to the newly created actor cell
+and it might be executed later depending on whether you are creating a top-level actor or not. Kamon also instruments this
 system message to make sure that if a `TraceContext` was available when requesting your `ActorRefFactory` to create an
 actor, the same `TraceContext` will be available when that actor is actually created.
 

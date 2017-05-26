@@ -12,7 +12,7 @@ retrieve the `TraceContext` being used in the current trace. The `Tracer`, in tu
 `TraceContext` in a thread-local variable. This is, by far, the most simple and predictable way to share the
 `TraceContext` across the entire code base, as well as providing third party libraries the ability to interact with it
 as well. For this approach to succeed in your application you need to be completely aware of how the threading model of
-your application works, sometimes the models are quite simple and single threaded, but it can get a lot more complex and
+your application works, sometimes the models are quite simple and single threaded, but it can get a lot more complex 
 if you start to walk into event-based lands.
 
 Here we will describe the three general threading models that we have identified and provide a bit of guidance with
@@ -26,9 +26,9 @@ The Traditional Model
 
 The traditional way of doing things, specially when using Servlets, is to tie the execution of all code related to a
 request to a single thread. In the picture above, the thick arrow in the background represents a thread while the blocks
-in the foreground represents a piece of functionality in your application; that effectively means that if you do a JDBC
-call to a database your request thread gets blocked until the response comes back from the database; if you send a HTTP
-request to a external service using a blocking client, again, your thread will be blocked while waiting for the response
+in the foreground represent a piece of functionality in your application; that effectively means that if you do a JDBC
+call to a database your request thread gets blocked until the response comes back from the database; if you send an HTTP
+request to an external service using a blocking client, again, your thread will be blocked while waiting for the response
 back from the external service. When everything happens in the same thread you don't need to take any special
 consideration, you simply use the tracing API and you are good to go.
 
@@ -58,14 +58,14 @@ as soon as you release it.
 The Event Based Model
 ---------------------
 
-When you walk into event based ground you need to be specially careful with regards to `TraceContext` propagation, since
+When you walk into event based ground you need to be especially careful with regards to `TraceContext` propagation, since
 it is very likely that the processing of a single request will trigger several asynchronous events that might be
 processed by different threads at different points in time, until the request is fulfilled. Visually, the event based
 model looks like this:
 
 <img class="img-fluid" src="/assets/img/diagrams/reactive-model.png">
 
-As you can see from the diagram, the processing of a request flows through a arbitrary number of stages and finishes at
+As you can see from the diagram, the processing of a request flows through an arbitrary number of stages and finishes at
 some point in the future when the desired response is available. Some parts of the flow might still need to block a
 thread, like when using JDBC to connect to a database, but still the majority of the the code is executed asynchronously
 on different threads.

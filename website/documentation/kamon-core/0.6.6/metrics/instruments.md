@@ -38,7 +38,7 @@ The HdrHistogram mixes linear and exponential bucket systems to produce a unique
 measurements with configurable precision and with fixed memory and cpu costs, regardless of the number of measurements
 recorded. Under the hood, the HdrHistogram stores all the data in a single array of longs (in our case, more options are
 available) as occurrences of a given value, adjusted with the precision configuration provided when creating the
-HdrHistogram. For example, if we were to store a recording of 10 units in a HdrHistogram with a underlying array similar
+HdrHistogram. For example, if we were to store a recording of 10 units in a HdrHistogram with an underlying array similar
 to the one shown in the diagram bellow, all that's needed is to add one to the value in the ninth bucket.
 
 <img class="img-fluid" src="/assets/img/diagrams/hdr-layout.png">
@@ -87,7 +87,7 @@ Gauges
 
 Our Gauge is a mix between the Histogram and the MinMaxCounter, taking measurements of a given value every 100
 milliseconds by default and storing the observed values in a Histogram. This can be seen as a traditional gauge that
-happens to report much more values upon every flush rather a single one (the latest). Since it uses a Histogram to store
+happens to report many values upon every flush rather than a single one (the latest). Since it uses a Histogram to store
 all recordings, if you flush every 10 seconds and configure the gauge to refresh every 100 milliseconds, you will get
 100 measurements for the gaugue on every flush.
 
