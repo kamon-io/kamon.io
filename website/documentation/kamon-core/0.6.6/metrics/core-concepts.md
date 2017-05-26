@@ -12,7 +12,7 @@ by instrumentation provided with other Kamon modules, as well as providing some 
 configuring instrument factories and dispatching metrics subscriptions to all interested parties.
 
 From a very general perspective, you can think of the Metrics module as a big map full of entities and instruments
-associated with them that collects all the available information and sends it to subscribers on a fixed interval, know
+associated with them that collects all the available information and sends it to subscribers on a fixed interval, known
 as a tick interval.
 
 
@@ -32,7 +32,7 @@ The regular operation of the Metrics module consists of basically two stages, as
 <img class="img-fluid" src="/assets/img/diagrams/metrics-module-overview.png">
 
 On the left, we have the real time recording side of the process where Entities work as the keys in that "big map" that
-we mentioned before, pointing to a entity recorder that contains all the metric instruments associated  with that given
+we mentioned before, pointing to an entity recorder that contains all the metric instruments associated  with that given
 entity. This is the mutable side of our Metrics infrastructure, where everything gets updated as your application
 operates and its behavior is being measured. Upon every tick, the Metrics extension collects the metrics of all
 available entity recorders and generates entity snapshots that represent all the values recorded since the last tick.
@@ -87,7 +87,7 @@ Basically, anything that implements `kamon.metric.EntityRecorder` can work as en
 are that you will want to create your own entity recorders and personalize the way you use Kamon accordingly to your
 needs. For such purpose Kamon offers the `kamon.metric.GenericEntityRecorder` base class which facilitates the
 definition of entity recorders, it is not required for you to use this base class but it is definitely the simplest way
-to create a custom entity recorder class. Here is a brief example of creating a actor-like entity using the provided
+to create a custom entity recorder class. Here is a brief example of creating an actor-like entity using the provided
 facilities (in fact, it's pretty much the same as the actor entity recorder provided with the kamon-akka module):
 
 {% code_example %}
@@ -140,7 +140,7 @@ following constructs:
   - `*` match any number of characters up to the next '/' character found in the entity name.
   - `?` match exactly one character, other than '/'.
   - `**` match any number of characters, regardless of any '/' character found after this wildcard.
-  - exact entity name match if not wildcards are provided.
+  - exact entity name match if no wildcards are provided.
 
 
 
@@ -152,8 +152,8 @@ class provided by Kamon requires you to supply a `InstrumentFactory` which is re
 histograms, min-max-counters, gauges or counters that you will include in your entity recorder. When doing managed
 registration, Kamon will retrieve the correct instrument factory and supply it to your `.createRecorder(..)`
 implementation whereas if you are doing manual registration you will need to find or create an instrument factory
-yourself. When the Metrics module starts it will read the available configurations and generate a instrument factories
-that follow this order of priorities when configuring a instrument (top wins):
+yourself. When the Metrics module starts it will read the available configurations and generate instrument factories
+that follow this order of priorities when configuring an instrument (top wins):
 
   - Any configuration provided under the `kamon.metric.instrument-settings.$category.$metric-name` configuration key.
   - Any configuration provided by code when creating the entity recorder.
