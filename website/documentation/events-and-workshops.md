@@ -6,6 +6,10 @@ layout: generic-documentation
 
 # Upcoming Events and Workshops
 
+- On March 29th we will be in Ljubljana visiting the Scala User Group Slovenia, come [at 6:00 PM at the Poligon Kreativni
+Center.](https://www.meetup.com/sugslo/events/237928641/)
+- On April 10th the destination in Milan! The Scala Group Milano will receive is 
+[at 7:00 PM at Yoroom](https://www.meetup.com/milano-scala-group/events/238647515/), see you there!
 - Join us at [Scala Swarm], in Porto from June 20th to 23rd. We will be having a talk about Kamon and a full-day 
 "Monitoring Microservices with Kamon" workshop. Go grab a seat, [registration is open](http://scala-swarm.org/#register)!
 
