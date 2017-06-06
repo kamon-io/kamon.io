@@ -2,12 +2,12 @@
 ---
 
 html {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 16px;
+  font-size: 1.3rem;
   text-align: justify;
 }
 
@@ -18,6 +18,20 @@ a, a:active, a:visited, a:hover {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
   text-align: left;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  a {
+    color: #545454;
+  }
+}
+
+p {
+  opacity: 0.9;
+  font-size: 1.25rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .vertical-center {
@@ -102,13 +116,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 0px;
 }
 
-.fill-height { 
+.fill-height {
     min-height: 100%;
     height: 100%;
 }
 
 .docs-content {
-  padding-top: 20px;
+  //padding-top: 20px;
 }
 
 .documentation-sidebar {
@@ -117,28 +131,36 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   ul {
     list-style-type: none;
     padding: 0px 0px 0px 8px;
-    
+
   }
 
   li {
     display: list-item;
   }
+
+  .current-page {
+    background-color: #d9ebf1;
+  }
 }
 
 .docs-level-one {
   color: white;
-  background-color:#12aa40;
+  background-color:#2ab253;
   padding: 5px 10px;
   list-style: none;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+
   margin: 0px 0px 5px 0px;
 
   .show>.btn-secondary.dropdown-toggle {
     background-color: transparent;
+    font-size: 1.3rem;
     color: white;
+    border: none;
   }
 }
+
+
 
 .docs-level-two {
   font-size: 1.3rem;
@@ -150,7 +172,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .docs-level-three {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #5b675f;
   padding: 4px 5px;
   display: block;
@@ -166,9 +188,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   display: inline;
 
   a, a:active, a:hover {
+    border: none;
+    font-size: 1.3rem;
     background-color: transparent;
   }
 }
+
+.version-dropdown .show {
+  a, a:active, a:hover {
+    font-size: 1.3rem;
+  }
+}
+
 
 .version-selector {
   height: 60px;
@@ -214,10 +245,17 @@ code {
 
 code[class*="language-"], pre[class*="language-"] {
   font-family: 'Roboto Mono', monospace;
+  font-size: 1.05rem;
+}
+
+.language-tab {
+  margin-bottom: -1rem;
+  border-bottom: none;
 }
 
 pre[class*="language-"] {
-  margin: 0px;
+  margin: 1rem 0rem;
+  border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -289,6 +327,7 @@ pre[class*="language-"] {
   .date {
     font-size: 0.9rem;
   }
+
   .recent-post {
     padding: 1rem;
   }
@@ -330,5 +369,5 @@ pre[class*="language-"] {
 .wip-warning {
   color:#ff6e00;
   text-align: center;
-  
+
 }

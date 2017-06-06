@@ -1,7 +1,7 @@
 ---
 title: Kamon | Get Started
 tree_title: Latest Versions
-layout: generic-documentation
+layout: documentation-0.6.x
 ---
 
 
