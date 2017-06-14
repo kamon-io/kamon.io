@@ -30,3 +30,4 @@ layout: generic-documentation
 | kamon-spray           | {{ "kamon-spray"          | bintray_latest_release }} | {{ "kamon-spray"          | maven_latest_release }} |
 | kamon-statsd          | {{ "kamon-statsd"         | bintray_latest_release }} | {{ "kamon-statsd"         | maven_latest_release }} |
 | kamon-system-metrics  | {{ "kamon-system-metrics" | bintray_latest_release }} | {{ "kamon-system-metrics" | maven_latest_release }} |
+| kamon-opentsdb        | {{ "kamon-opentsdb"       | bintray_latest_release }} | {{ "kamon-opentsdb"       | maven_latest_release }} |
