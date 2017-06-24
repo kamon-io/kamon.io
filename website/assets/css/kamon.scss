@@ -127,18 +127,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .docs-level-one {
   color: white;
-  background-color:#12aa40;
+  background-color:#2ab253;
   padding: 5px 10px;
   list-style: none;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.2rem;
   margin: 0px 0px 5px 0px;
 
   .show>.btn-secondary.dropdown-toggle {
     background-color: transparent;
     color: white;
+    border: none;
   }
 }
+
+
 
 .docs-level-two {
   font-size: 1.3rem;
@@ -166,6 +168,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   display: inline;
 
   a, a:active, a:hover {
+    border: none;
+    font-size: 1.2rem;
     background-color: transparent;
   }
 }
