@@ -16,29 +16,29 @@ object MDCSupport extends App with MdcKeysSupport {
   val logger = LoggerFactory.getLogger("Logger")
 
   // tag:what-is-mdc:start
-  def requestProcessor(request:Request):Unit = {
-    MDC.put("X-ApplicationId", request.client)
-    try {
+def requestProcessor(request:Request):Unit = {
+  MDC.put("X-ApplicationId", request.client)
+  try {
 
-      logger.info("processing Request...")
+    logger.info("processing Request...")
 
-    } finally {
-      MDC.remove("X-ApplicationId") //clean up the mdc
-    }
+  } finally {
+    MDC.remove("X-ApplicationId") //clean up the mdc
   }
+}
   // tag:what-is-mdc:end
   requestProcessor(new Request("AwesomeClient"))
 
   // tag:kamon-way-mdc:start
   val ApplicationIdKey = AvailableToMdc("X-ApplicationId")
 
-  def tracedRequestProcessor(request:Request):Unit = {
-    TraceLocal.store(ApplicationIdKey)(request.client)
+def tracedRequestProcessor(request:Request):Unit = {
+  TraceLocal.store(ApplicationIdKey)(request.client)
 
-    withMdc { // exposes all AvailableToMdc keys in the MDC.
-      logger.info("processing Traced Request...")
-    }
+  withMdc { // exposes all AvailableToMdc keys in the MDC.
+    logger.info("processing Traced Request...")
   }
+}
   // tag:kamon-way-mdc:end
 
   Tracer.withNewContext("MDC", autoFinish = true) {
