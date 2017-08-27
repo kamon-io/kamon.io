@@ -1,6 +1,6 @@
 ---
 title: Kamon | Get Started
-layout: module-documentation
+layout: documentation-0.6.x
 ---
 
 Get Started with Kamon
