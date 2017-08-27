@@ -8,11 +8,6 @@ layout: documentation-0.6.x
 Get Started with Kamon
 ======================
 
-Kamon is a monitoring toolkit for applications running on the JVM. At its core, Kamon gives you a simple and uniform API
-for recording metrics, a OpenTracing-compliant tracer implementation and the tools needed to write reporters that send
-all this data to your backend of choice. Bet it StatsD, Prometheus, Kamino, Datadog, Zipkin, Jaeger or any other supported
-backend, with Kamon you instrument your application once and report to everywhere you want.
-
 Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
 that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
 your application as simple library dependencies and additionally, if you are using instrumentation modules then the
