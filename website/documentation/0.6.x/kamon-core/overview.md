@@ -1,8 +1,6 @@
 ---
 title: Kamon | Get Started
-tree_title: Get Started
-tree_index: 0
-layout: documentation-0.6.x
+layout: module-documentation
 ---
 
 Get Started with Kamon
@@ -92,9 +90,9 @@ these core features and to each additional module's documentation for usage deta
 
 
 [Akka]: http://akka.io/
-[configuration]: /documentation/kamon-core/0.6.6/configuration/
+[configuration]: ../configuration/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
 [load-time weaving example]: https://github.com/sbt/sbt-aspectj/tree/master/src/sbt-test/weave/load-time/
-[tracing]: /documentation/kamon-core/0.6.6/tracing/core-concepts/
-[metrics]: /documentation/kamon-core/0.6.6/metrics/core-concepts/
+[tracing]: ../tracing/core-concepts/
+[metrics]: ../metrics/core-concepts/
 [mailing list]: https://groups.google.com/forum/#!forum/kamon-user

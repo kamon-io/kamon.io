@@ -1,12 +1,15 @@
 ---
 title: Kamon | Get Started
-tree_title: Get Started
-tree_index: 0
-layout: documentation-0.6.x
+layout: documentation-1.0.0-RC1
 ---
 
 Get Started with Kamon
 ======================
+
+Kamon is a monitoring toolkit for applications running on the JVM. At its core, Kamon gives you a simple and uniform API
+for recording metrics, a OpenTracing-compliant tracer implementation and the tools needed to write reporters that send
+all this data to your backend of choice. Bet it StatsD, Prometheus, Kamino, Datadog, Zipkin, Jaeger or any other supported
+backend, with Kamon you instrument your application once and report to everywhere you want.
 
 Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
 that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
@@ -26,8 +29,8 @@ just by knowing that our group id is `io.kamon` and our artifacts are named afte
 Still, here are some examples with common build tools:
 
 {% code_example %}
-{%   language scala kamon-core-examples/build.sbt tag:base-kamon-dependencies label:"SBT" %}
-{%   language markup maven-basic-example/pom.xml tag:base-kamon-dependencies label:"Maven" %}
+{%   language scala kamon-1.0.x/kamon-core-examples/build.sbt tag:base-kamon-dependencies label:"SBT" %}
+{%   language markup kamon-1.0.x/maven-basic-example/pom.xml tag:base-kamon-dependencies label:"Maven" %}
 {% endcode_example %}
 
 Our latest version is published for both Scala 2.10 and Scala 2.11 using SBT's cross version feature, meaning that our
@@ -47,8 +50,8 @@ first line in your application's main wont hurt:
 
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java tag:get-started %}
+{%   language scala kamon-1.0.x/kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started %}
+{%   language java kamon-1.0.x/kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java tag:get-started %}
 {% endcode_example %}
 
 Optionally, you can provide a custom configuration object when starting Kamon. See the [configuration] section for a

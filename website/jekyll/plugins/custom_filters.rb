@@ -1,36 +1,12 @@
 module Jekyll
   module CustomFilters
-    def extract_module_name(input)
-      input.split('/')[2]
-    end
 
-    def extract_module_versions(pages, module_name)
-      pages
-        .select { |page| page.url.include? module_name }
-        .map    { |page| page.url.split('/')[3] }
-        .select { |version| version.length > 0 }
-        .uniq
-    end    
-
-    def extract_module_tree(pages, current_page_url)
-      current_version = current_page_url.split('/')[3]
-      module_name = current_page_url.split('/')[2]
-      module_pages = pages
-        .select { |page| page.url.include? module_name }
-
-      module_versions = module_pages
-        .map    { |page| page.url.split('/')[3] }
-        .select { |version| version != NIL && version.length > 0 }
-        .uniq        
-
-      module_tree = ModuleTree.new(module_name, module_versions, current_version)
-      module_url_prefix = "/documentation/" + module_name + "/" +current_version + "/"
-
-      module_pages
-        .select { |page| page.url.start_with? module_url_prefix }
-        .each { |page| module_tree.add(page) }
-      
-      module_tree
+    def sidebar_link(current_page, classes, expected_page)
+      if current_page.eql? expected_page
+        'class="' + classes + ' current-page" href="' + expected_page + '"'
+      else
+        'class="' + classes + '" href="' + expected_page + '"'
+      end
     end
 
     def bintray_latest_release(module_name)
@@ -41,8 +17,8 @@ module Jekyll
 
     def maven_latest_release(module_name)
       '<img src="https://maven-badges.herokuapp.com/maven-central/io.kamon/'+ module_name +'_2.11/badge.svg" alt="Download">'
-    end    
-         
+    end
+
 
   end
 end
