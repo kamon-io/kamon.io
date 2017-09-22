@@ -17,7 +17,7 @@ Installation
 Configuration
 -------------
 
-SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher`, `system-metrics`, `trace`, `http-server` and other categories . By default all entities for given categories are included.
+SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher`, `system-metrics`, `trace`, `http-server` and other categories. By default all entities for given categories are included.
 
 {% code_block typesafeconfig %}
   kamon.spm {
