@@ -17,7 +17,7 @@ Installation
 Configuration
 -------------
 
-SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher` and `system-metrics` categories. By default all entities for given categories are included.
+SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher`, `system-metrics`, `trace`, `http-server` and other categories . By default all entities for given categories are included.
 
 {% code_block typesafeconfig %}
   kamon.spm {
@@ -27,6 +27,13 @@ SPM backend extension requires the property `kamon.spm.token` to be defined. SPM
       akka-dispatcher = [ "**" ]
       akka-router     = [ "**" ]
       system-metric   = [ "**" ]
+      trace           = [ "**" ]
+      trace-segment   = [ "**" ]
+      histogram       = [ "**" ]
+      min-max-counter = [ "**" ]
+      gauge           = [ "**" ]
+      counter         = [ "**" ]
+      http-server     = [ "**" ]
     }
   }
 {% endcode_block %}
@@ -54,9 +61,17 @@ Routers:
 
 <img class="img-fluid" src="/assets/img/spm-module-routers.png">
 
-CPU:
+System:
 
-<img class="img-fluid" src="/assets/img/spm-module-cpu.png">
+<img class="img-fluid" src="/assets/img/spm-module-system.png">
+
+Custom:
+
+<img class="img-fluid" src="/assets/img/spm-module-custom.png">
+
+Traces:
+
+<img class="img-fluid" src="/assets/img/spm-module-traces.png">
 
 
 [SPM]: http://sematext.com/spm/index.html
