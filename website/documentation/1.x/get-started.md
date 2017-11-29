@@ -36,6 +36,10 @@ Starting with Kamon 1.0.0 we only support Java 8+. All modules are published for
 not familiar with the Scala version suffix then just pick the greatest Scala version available, currently 2.12, as shown
 in the Maven/Gradle examples above.
 
+Also, we publish snapshots to our [Bintray Snapshots Repository][1] when trying out new concepts or releasing test versions
+of our modules, keep that in mind if you want to be on the bleeding edge. There you can find instructions for Maven and
+Gradle; for SBT add `resolvers += Resolver.bintrayRepo("kamon-io", "snapshots")` to your `build.sbt` file and your done.
+
 
 
 #### Record Metrics
@@ -83,6 +87,8 @@ That's a basic setup that can get you reporting metrics and trace data, but ther
 Kamon. Follow the Recipes and have fun!
 
 
+
+[1]: https://bintray.com/kamon-io/snapshots
 [Akka]: http://akka.io/
 [configuration]: /documentation/kamon-core/0.6.6/configuration/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
