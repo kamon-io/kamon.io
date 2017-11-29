@@ -2,6 +2,7 @@ _site
 .DS_Store
 target
 .idea
+.vscode
 
 # sbt specific
 dist/*
