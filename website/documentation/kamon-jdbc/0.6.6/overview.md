@@ -30,7 +30,7 @@ The following metrics will be recorded:
 
 ### Naming Segments ###
 
-By default, the name generator bundled with the `kamon-jdbc` module will use the statement name as tge name to the automatically generated segment (i.e SELECT, INSERT, etc). Currently, the only way to override that name would be to provide your own implementation of `kamon.jdbc.JdbcNameGenerator` which is used to assign the segment name
+By default, the name generator bundled with the `kamon-jdbc` module will use the statement name as the name to the automatically generated segment (i.e SELECT, INSERT, etc). Currently, the only way to override that name would be to provide your own implementation of `kamon.jdbc.JdbcNameGenerator` which is used to assign the segment name
 
 ### Slow Requests ###
 
