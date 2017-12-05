@@ -130,7 +130,7 @@ p {
   text-align: left;
   ul {
     list-style-type: none;
-    padding: 0px 0px 0px 8px;
+    padding: 0px;
 
   }
 
@@ -139,7 +139,7 @@ p {
   }
 
   .current-page {
-    background-color: #d9ebf1;
+    background-color: #ecf8f0;
   }
 }
 
@@ -165,7 +165,7 @@ p {
 .docs-level-two {
   font-size: 1.3rem;
   color: #4e775c;
-  padding: 6px 5px;
+  padding: 6px 0px 6px 15px;
   display: block;
   margin: 0px;
   list-style: none;
@@ -174,7 +174,7 @@ p {
 .docs-level-three {
   font-size: 1.1rem;
   color: #5b675f;
-  padding: 4px 5px;
+  padding: 4px 0px 4px 20px;
   display: block;
   margin: 0px;
   list-style: none;
