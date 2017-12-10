@@ -95,15 +95,18 @@
             </div>
 
             <ul class="tree tree-toggler">
-              <!-- <li>
-                <a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-akka/overview/' }}>Akka</a>
+              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/instrumentation/executor-service/' }}>Executor Services</a></li>
+              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/instrumentation/futures/' }}>Futures</a></li>
+              <li>
+                <a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/instrumentation/akka/' }}>Akka</a>
                 <ul>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-akka/actor-router-and-dispatcher-metrics/' }}>Actor System Metrics</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-akka/ask-pattern-timeout-warning/' }}>Ask Pattern Timeout Warning</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-akka/automatic-trace-context-propagation/' }}>Automatic Trace Context Propagation</a></li>
+                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/instrumentation/akka/actor-system-metrics/' }}>Metrics Collection</a></li>
+                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/instrumentation/akka/message-tracing/' }}>Message Tracing</a></li>
+                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/instrumentation/akka/context-propagation/' }}>Context Propagation</a></li>
+                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/instrumentation/akka/ask-pattern-timeout-warning/' }}>Ask Pattern Timeout Warning</a></li>
                 </ul>
               </li>
-
+<!--
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-scala/overview/' }}>Scala</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-play/overview/' }}>Play Framework</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-spray/overview/' }}>Spray</a></li>

@@ -11,8 +11,9 @@ body {
   text-align: justify;
 }
 
-a, a:active, a:visited, a:hover {
+a, a:active, a:hover {
   text-decoration: none;
+  color: #128640;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -24,6 +25,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   a {
+    color: #545454;
+  }
+  a:active, a:visited, a:hover {
     color: #545454;
   }
 }
@@ -140,6 +144,7 @@ p {
 
   .current-page {
     background-color: #ecf8f0;
+    color: #128640;
   }
 }
 
