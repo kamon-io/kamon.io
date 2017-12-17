@@ -28,7 +28,7 @@ ExecutionContext available in implicit scope, but Kamon will capture the current
 was created and make it available while executing the future's body.
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagationWithFutures.scala tag:future-body %}
+{%   language scala kamon-1.x/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagationWithFutures.scala tag:future-body %}
 {% endcode_example %}
 
 Also, when you transform a future by using map/flatMap/filter and friends or you directly register a callback on a

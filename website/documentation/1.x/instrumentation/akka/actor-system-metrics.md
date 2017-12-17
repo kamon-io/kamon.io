@@ -48,7 +48,7 @@ simply catch them all but rather rely on filters to decide which components to t
 Here is how this would look like in your configuration file:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/recipes/basic-akka-monitoring/src/main/resources/application.conf tag:akka-filters label:"application.conf" %}
+{%   language typesafeconfig kamon-1.x/basic-akka-monitoring/src/main/resources/application.conf tag:akka-filters label:"application.conf" %}
 {% endcode_example %}
 
 In the example filters above, for an actor system named `my-app`, all system actors and the `user/worker-helper` actor
@@ -146,7 +146,7 @@ name of the filter is up to you, just make sure the name doesn't clash with any 
 Here is a example of how to configure a actor group:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/recipes/basic-akka-monitoring/src/main/resources/application.conf tag:akka-actor-groups label:"application.conf" %}
+{%   language typesafeconfig kamon-1.x/basic-akka-monitoring/src/main/resources/application.conf tag:akka-actor-groups label:"application.conf" %}
 {% endcode_example %}
 
 All actor groups will get the following metrics:

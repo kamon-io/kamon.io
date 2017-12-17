@@ -11,7 +11,7 @@ a executor service you must register it with the executors module by calling `ka
 as shown bellow:
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/basic-futures-and-executors/src/main/scala/kamon/recipe/futuresandexecutors/FuturesAndExecutors.scala tag:registering-a-executor label:"Registering a Executor Service" %}
+{%   language scala kamon-1.x/basic-futures-and-executors/src/main/scala/kamon/recipe/futuresandexecutors/FuturesAndExecutors.scala tag:registering-a-executor label:"Registering a Executor Service" %}
 {% endcode_example %}
 
 You will get back a `Registration` that you can cancel at any moment if you want to stop tracking the executor service.

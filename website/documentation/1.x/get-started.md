@@ -27,9 +27,9 @@ that our group id is `io.kamon` and our artifacts are named after the module nam
 in your project, try one of these:
 
 {% code_example %}
-{%   language scala kamon-1.x/kamon-core-sbt/build.sbt tag:base-kamon-dependencies label:"SBT" %}
-{%   language markup kamon-1.x/kamon-core-maven/pom.xml tag:base-kamon-dependencies label:"Maven" %}
-{%   language markup kamon-1.x/kamon-core-gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
+{%   language scala kamon-1.x/get-started-sbt/build.sbt tag:base-kamon-dependencies label:"SBT" %}
+{%   language markup kamon-1.x/get-started-maven/pom.xml tag:base-kamon-dependencies label:"Maven" %}
+{%   language markup kamon-1.x/get-started-gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
 {% endcode_example %}
 
 Starting with Kamon 1.0.0 we only support Java 8+. All modules are published for Scala 2.10, 2.11 and 2.12. If you are
@@ -48,8 +48,8 @@ The `kamon.Kamon` companion object gives you everything you need to create metri
 application's behavior:
 
 {% code_example %}
-{%   language scala kamon-1.x/kamon-core-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-metrics %}
-{%   language java kamon-1.x/kamon-core-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-metrics %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-metrics %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-metrics %}
 {% endcode_example %}
 
 You can simply use the instruments returned by Kamon or you can `.refine(...)` them to get specialized instruments with
@@ -62,8 +62,8 @@ Again, all you need is in the `kamon.Kamon` companion object, although, you are 
 by yourself but rather use the provided instrumention for toolkits and frameworks.
 
 {% code_example %}
-{%   language scala kamon-1.x/kamon-core-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-spans %}
-{%   language java kamon-1.x/kamon-core-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-spans %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-spans %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-spans %}
 {% endcode_example %}
 
 Spans can be tagged with Strings, Longs and Booleans. Also, Kamon will automatically track metrics for all your Spans and
@@ -76,8 +76,8 @@ Reporters take care of sending the Metrics and Tracing data to your backend of c
 all available reporters.
 
 {% code_example %}
-{%   language scala kamon-1.x/kamon-core-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-reporters %}
-{%   language java kamon-1.x/kamon-core-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-reporters %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-reporters %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-reporters %}
 {% endcode_example %}
 
 

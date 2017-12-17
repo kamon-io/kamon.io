@@ -13,7 +13,7 @@ applications, wohoo!
 Tracing must be enabled on a per-actor basis using the `akka.traced-actor` filter as shown bellow:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/recipes/basic-akka-monitoring/src/main/resources/application.conf tag:akka-message-tracing label:"application.conf" %}
+{%   language typesafeconfig kamon-1.x/basic-akka-monitoring/src/main/resources/application.conf tag:akka-message-tracing label:"application.conf" %}
 {% endcode_example %}
 
 All Spans generated for actor messages will start when a message is sent to an actor and finish when the message processing
@@ -33,5 +33,5 @@ In case you would like to modify the Span automatically created by instrumentati
 shortcut and do anything you want with it! This example bellow adds a custom tag to the Span:
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:customizing-a-span label:"Customizing the Spans" %}
+{%   language scala kamon-1.x/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:customizing-a-span label:"Customizing the Spans" %}
 {% endcode_example %}

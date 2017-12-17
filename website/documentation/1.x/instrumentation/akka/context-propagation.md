@@ -24,7 +24,7 @@ available when processing that message in receiving actor, and __only__ when pro
 regardless of whether your are doing a regular tell, using the `!` operator or forwarding a message to another actor.
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:tell %}
+{%   language scala kamon-1.x/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:tell %}
 {% endcode_example %}
 
 In this particular case, the two messages will propagate the same `Context`, since they were originated from a block of
@@ -37,7 +37,7 @@ When you send a message using the ask pattern the `Context` is also propagated, 
 is also available when executing any callbacks registered in the returned `Future`.
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:ask %}
+{%   language scala kamon-1.x/basic-akka-monitoring/src/main/scala/kamon/akka/examples/scala/ContextPropagation.scala tag:ask %}
 {% endcode_example %}
 
 
