@@ -24,7 +24,7 @@ Add the `kamino-reporter` dependency to your build:
 Adding the dependency to SBT would look like this:
 
 {% code_block scala %}
-libraryDependencies += "io.kamon" %% "kamino-reporter" % "1.0.0-RC7"
+libraryDependencies += "io.kamon" %% "kamino-reporter" % "1.0.0-RC8"
 {% endcode_block scala %}
 
 Once the reporter is on your classpath you can add it like any other Kamon reporter. Take into account that there are
