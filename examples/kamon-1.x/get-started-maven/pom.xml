@@ -13,19 +13,19 @@
     <dependency>
       <groupId>io.kamon</groupId>
       <artifactId>kamon-core_2.12</artifactId>
-      <version>1.0.0-RC7</version>
+      <version>1.0.0</version>
     </dependency>
 
     <!-- Optional Dependencies -->
     <dependency>
       <groupId>io.kamon</groupId>
       <artifactId>kamon-prometheus_2.12</artifactId>
-      <version>1.0.0-RC7</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>io.kamon</groupId>
       <artifactId>kamon-zipkin_2.12</artifactId>
-      <version>1.0.0-RC7</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
   <!-- tag:base-kamon-dependencies:end -->

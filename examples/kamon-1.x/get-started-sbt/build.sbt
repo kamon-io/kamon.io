@@ -2,11 +2,11 @@ scalaVersion := "2.12.2"
 resolvers += Resolver.bintrayRepo("kamon-io", "snapshots")
 
 // tag:base-kamon-dependencies:start
-libraryDependencies += "io.kamon" %% "kamon-core" % "1.0.0-RC7"
+libraryDependencies += "io.kamon" %% "kamon-core" % "1.0.0"
 
 // Optional Dependencies
-libraryDependencies += "io.kamon" %% "kamon-prometheus" % "1.0.0-RC7"
-libraryDependencies += "io.kamon" %% "kamon-zipkin" % "1.0.0-RC7"
+libraryDependencies += "io.kamon" %% "kamon-prometheus" % "1.0.0"
+libraryDependencies += "io.kamon" %% "kamon-zipkin" % "1.0.0"
 // tag:base-kamon-dependencies:end
 
 
