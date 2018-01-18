@@ -1,17 +1,18 @@
 ---
-title: Kamon > Documentation > Recipes > Migrating from Kamon 0.6.x
+title: Kamon > Documentation > Recipes > Migrating from Kamon 0.6
 layout: documentation-1.x
 ---
 
-Migrating from Kamon 0.6.x
-==========================
+Migrating from Kamon 0.6
+========================
 
-A lot has changed for Kamon 1.0 to become a reality and migrating from 0.6.x will require you to do a few changes to your
-configuration and initialization code. The amount of work can vary based on whether you were just using plain Kamon to
+A lot has changed since `0.6` and you will be required to do a few changes to your configuration and initialization code
+in order to jump on Kamon `1.0`. The amount of work can vary based on whether you were just using plain Kamon to
 gather standard metrics or you were actively using the APIs to manage context and record metrics.
 
-If you came here trying to figure out how to migrate X aspect of Kamon `0.6.x` and you can't find how, please drop a
-line on [Gitter][1] and we'll give you a hand and update this guide accordingly.
+There is no step by step guide to migrate. Our suggestion would be to read every item and apply the changes if needed.
+If there is something preventing you from upgrade and not mentioned here, please drop a line on [Gitter][1] and we'll
+give you a hand and update this guide accordingly.
 
 
 ### No more Kamon.start(...)
@@ -125,6 +126,45 @@ this makes it better suited for tracking variables that move slowly or not at al
 
 
 ### Propagation of Context instead of TraceContext
+
+Everything you saw in the past related to TraceContext propagation has a twist now: there is no TraceContext anymore and
+instead we now have a more general `Context` abstraction that is propagated. The `Context` is like a immutable map of
+keys and values, sort of `Map[Key[T], T]`. You must have a `Key` instance in order to create new contexts with a given
+entry and to retrieve entries from a existent `Context` instance. The `currentTraceContext` is now the `currentContext`
+and from they you can get what you need.
+
+One additional feature on the new `Context` is the keys can be defined to be either:
+  - **local**: the context entry is only propagated within the same JVM, or
+  - **broadcast**: the context entry should be propagated across JVM boundaries, typically via HTTP headers or binary
+    encoding of the data.
+
+You can think of the `Context` as a lower level solution that replaces when we had before as `TraceLocalStorage`. The
+very first user of these facilities is our own tracer, which uses the `Context` to propagate the current Span, but there
+are no limitations on usage of the context, you can put whatever you want in there.
+
+This should give you a gross idea of how it works:
+
+{% code_block scala %}
+
+// Define a Key with a default value.
+val UserID = Key.broadcast[Option[String]]("user-id", None)
+val context = Context.create(UserID, Some("1111"))
+
+// There is no current context and it were, it wouldn't have this key
+// and the default value is returned.
+Kamon.currentContext().get(UserID) == None
+
+Kamon.withContext(context) {
+  // The current context has the UserID key and returns its value,
+  // only while this piece of code is executing.
+  Kamon.currentContext().get(UserID) == Some("1111)
+}
+
+// The context's scope is gone, we are back to the same context
+// that was here before.
+Kamon.currentContext().get(UserID) == None
+
+{% endcode_block bash %}
 
 
 

@@ -32,7 +32,7 @@ in your project, try one of these:
 {%   language markup kamon-1.x/get-started-gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
 {% endcode_example %}
 
-Starting with Kamon 1.0.0 we only support Java 8+. All modules are published for Scala 2.10, 2.11 and 2.12. If you are
+Starting with Kamon 1.0 we only support Java 8+. All modules are published for Scala 2.10, 2.11 and 2.12. If you are
 not familiar with the Scala version suffix then just pick the greatest Scala version available, currently 2.12, as shown
 in the Maven/Gradle examples above.
 
