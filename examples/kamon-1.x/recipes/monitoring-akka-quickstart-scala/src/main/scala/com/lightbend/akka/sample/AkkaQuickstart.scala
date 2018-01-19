@@ -2,6 +2,7 @@ package com.lightbend.akka.sample
 
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import kamon.Kamon
+import kamon.jaeger.Jaeger
 import kamon.prometheus.PrometheusReporter
 import kamon.zipkin.ZipkinReporter
 
@@ -47,6 +48,7 @@ object AkkaQuickstart extends App {
   // tag:start-reporting:start
   Kamon.addReporter(new PrometheusReporter())
   Kamon.addReporter(new ZipkinReporter())
+  Kamon.addReporter(new Jaeger())
   // tag:start-reporting:end
 
   // Create the 'helloAkka' actor system
