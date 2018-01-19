@@ -1,96 +1,94 @@
 ---
 title: Kamon | Get Started
-tree_title: Get Started
-tree_index: 0
-layout: documentation-0.6.x
+layout: documentation-1.x
 ---
 
-Get Started with Kamon
-======================
+What is Kamon?
+==============
 
-Kamon is distributed as a core module with all the metric recording and trace manipulation APIs and optional modules
-that provide bytecode instrumentation and/or reporting capabilities to your application. All the modules are added to
-your application as simple library dependencies and additionally, if you are using instrumentation modules then the
-AspectJ Weaver agent needs to be included as a JVM startup parameter when running your application.
-
-Make sure you follow this steps:
+Kamon is a monitoring toolkit for applications running on the JVM. It gives you Metrics, Tracing and Context Propagation
+APIs without locking you to any specific vendor. All Kamon APIs are completely decoupled from the services that can
+receive the data, be it StatsD, Prometheus, Kamino, Datadog, Zipkin, Jaeger or any other supported reporter, with Kamon
+you instrument your application once and report anywhere you want.
 
 
 
-Include the modules you want in your project
---------------------------------------------
+Start using Kamon
+-----------------
 
-All Kamon modules are available through Maven Central and you just need to add them as a compile dependency to your
-project. The details on how to do this will differ depending on your dependency management tool of choice, but usually
-just by knowing that our group id is `io.kamon` and our artifacts are named after the module name you are good to go.
-Still, here are some examples with common build tools:
+There are a number of Recipes that can help you get the exact results you are looking for but, if you just want a quick
+start then follow these steps:
 
-{% code_example %}
-{%   language scala kamon-core-examples/build.sbt tag:base-kamon-dependencies label:"SBT" %}
-{%   language markup maven-basic-example/pom.xml tag:base-kamon-dependencies label:"Maven" %}
-{% endcode_example %}
+#### Add the Library
 
-Our latest version is published for both Scala 2.10 and Scala 2.11 using SBT's cross version feature, meaning that our
-artifacts are suffixed by either `_2.10` or `_2.11` to denote the target Scala version. If you are not in the Scala
-world and you are not familiar with this conventions just pick the greatest Scala version available, currently 2.11, as
-shown in the Maven example above. You can find a complete list of Kamon modules in the left panel of this page.
-
-
-
-Start Kamon
------------
-
-To access the metrics and tracing APIs, and to ensure that all Kamon modules are loaded you will need to start Kamon by
-using the `Kamon.start(..)` method. This is a one time operation that you should perform as early as possible in your
-application code to ensure that all instrumentation and uses of the Kamon APIs will work properly. Having it as the
-first line in your application's main wont hurt:
-
+All Kamon modules are available through Maven Central and you just need to add them as a dependency to your project. The
+details on how to do this will differ depending on your dependency management tool of choice, but usually just by knowing
+that our group id is `io.kamon` and our artifacts are named after the module name you are good to go. To get `kamon-core`
+in your project, try one of these:
 
 {% code_example %}
-{%   language scala kamon-core-examples/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started %}
-{%   language java kamon-core-examples/src/main/java/kamon/examples/java/GetStarted.java tag:get-started %}
+{%   language scala kamon-1.x/get-started-sbt/build.sbt tag:base-kamon-dependencies label:"SBT" %}
+{%   language markup kamon-1.x/get-started-maven/pom.xml tag:base-kamon-dependencies label:"Maven" %}
+{%   language markup kamon-1.x/get-started-gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
 {% endcode_example %}
 
-Optionally, you can provide a custom configuration object when starting Kamon. See the [configuration] section for a
-quick overview of how to configure Kamon. When you are done with Kamon, remember to shut it down using the
-`Kamon.shutdown()` method.
+Starting with Kamon 1.0 we only support Java 8+. All modules are published for Scala 2.10, 2.11 and 2.12. If you are
+not familiar with the Scala version suffix then just pick the greatest Scala version available, currently 2.12, as shown
+in the Maven/Gradle examples above.
+
+Also, we publish snapshots to our [Bintray Snapshots Repository][1] when trying out new concepts or releasing test versions
+of our modules, keep that in mind if you want to be on the bleeding edge. There you can find instructions for Maven and
+Gradle; for SBT add `resolvers += Resolver.bintrayRepo("kamon-io", "snapshots")` to your `build.sbt` file and your done.
 
 
 
-### Optional: Prepare your application to start with the AspectJ Weaver ###
+#### Record Metrics
 
-This step is only required if any of the modules that you included in your application requires AspectJ, if that is not
-your case you can jump directly to the enjoy section!
-
-Starting your application with the AspectJ weaver is dead simple, just add the `-javaagent` JVM startup parameter
-pointing to the weaver's file location and you are done. The details on how to do this vary depending on your preferred
-way of deployment, here are some quick notes for the most common deployment scenarios:
+The `kamon.Kamon` companion object gives you everything you need to create metrics Instruments and start measuring your
+application's behavior:
 
 {% code_example %}
-{%   language text manually-adding-aspectj-weaver-agent/readme.md tag:manually-add-aspectj-weaver label:"Manually" %}
-{%   language text manually-adding-aspectj-weaver-agent/readme.md tag:using-aspectj-runner label:"sbt-aspectj-runner" %}
-{%   language scala using-sbt-aspectj-plugin/build.sbt tag:using-sbt-aspectj label:"sbt-aspectj" %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-metrics %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-metrics %}
 {% endcode_example %}
 
-In case you need to use the AspectJ Weaver but you didn't set it up correctly, Kamon will log a big and noticeable error
-message in your log that will hardly pass unnoticed, but Kamon will not kill the application for this error.
-
-If your deployment method is not listed here and you can't figure out how to add the weaver, please ask for help in our
-[mailing list].
+You can simply use the instruments returned by Kamon or you can `.refine(...)` them to get specialized instruments with
+the specified tags.
 
 
+#### Record Spans
 
-Enjoy!
-------
+Again, all you need is in the `kamon.Kamon` companion object, although, you are most likely never going to start a Span
+by yourself but rather use the provided instrumention for toolkits and frameworks.
 
-At this point you already have what is necessary to use Kamon. After the Kamon initialization, all available modules
-will be automatically started, you don't need to explicitly activate/start them.
+{% code_example %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-spans %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-spans %}
+{% endcode_example %}
 
-But, Kamon is not just about having a couple histograms and counters hanging around in your code to measure stuff, we
-can do much more than that! Please, refer to the [metrics] and [tracing] module's documentation to learn how to use
-these core features and to each additional module's documentation for usage details and recommendations.
+Spans can be tagged with Strings, Longs and Booleans. Also, Kamon will automatically track metrics for all your Spans and
+you can customize that behavior by using `span.tagMetric(...)` on any Span.
 
 
+#### Start Reporting your Data
+
+Reporters take care of sending the Metrics and Tracing data to your backend of choice. Check the Reporters section for
+all available reporters.
+
+{% code_example %}
+{%   language scala kamon-1.x/get-started-sbt/src/main/scala/kamon/examples/scala/GetStarted.scala tag:get-started-reporters %}
+{%   language java kamon-1.x/get-started-sbt/src/main/java/kamon/examples/java/GetStarted.java tag:get-started-reporters %}
+{% endcode_example %}
+
+
+#### What's Next?
+
+That's a basic setup that can get you reporting metrics and trace data, but there is so much more that you can do with
+Kamon. Follow the Recipes and have fun!
+
+
+
+[1]: https://bintray.com/kamon-io/snapshots
 [Akka]: http://akka.io/
 [configuration]: /documentation/kamon-core/0.6.6/configuration/
 [sbt-aspectj]: https://github.com/sbt/sbt-aspectj/
