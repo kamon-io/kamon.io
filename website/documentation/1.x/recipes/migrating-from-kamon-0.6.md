@@ -157,7 +157,7 @@ Kamon.currentContext().get(UserID) == None
 Kamon.withContext(context) {
   // The current context has the UserID key and returns its value,
   // only while this piece of code is executing.
-  Kamon.currentContext().get(UserID) == Some("1111)
+  Kamon.currentContext().get(UserID) == Some("1111")
 }
 
 // The context's scope is gone, we are back to the same context
