@@ -97,6 +97,10 @@ For example,
 kamon.statsd.time-units = "ms"
 ```
 will scale all timing measurements to milliseconds right before sending to StatsD.
+Note that if timing measurements are below 1 millisecond when you set `time-units="ms"`,
+the measurements are reported to StatsD as zero values by dropping everything below the decimal point,
+because Kamon holds all timing measurements in `Long` internally.
+
 
 Visualization and Fun
 ---------------------
