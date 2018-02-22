@@ -32,7 +32,7 @@ working add these lines to your `project/plugins.sbt` file:
 
 {% code_block scala %}
 resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-runner" % "1.0.3")
+addSbtPlugin("io.kamon" % "sbt-aspectj-runner" % "1.1.0")
 {% endcode_block scala %}
 
 That's it! You can visit the GitHub repo for additional details on how the plugin works.
@@ -45,18 +45,19 @@ Once again, the [sbt-aspectj-runner][3] is the way to go. The plugin has special
 will have special treatment of Play's infrastructure for running on Development mode, to include it you must add the
 right plugin depending on your Play version:
 
-#### For Play 2.4 and 2.5:
-
-{% code_block scala %}
-resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.0.3")
-{% endcode_block scala %}
-
 #### For Play 2.6:
 
 {% code_block scala %}
 resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner-26" % "1.0.3")
+addSbtPlugin("io.kamon" % "sbt-aspectj-runner-play-2.6" % "1.1.0")
+{% endcode_block scala %}
+
+
+#### For Play 2.4 and 2.5:
+
+{% code_block scala %}
+resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
+addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.0.4")
 {% endcode_block scala %}
 
 
