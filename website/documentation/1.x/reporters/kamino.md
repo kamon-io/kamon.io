@@ -68,4 +68,4 @@ application:
 <img class="img-fluid my-4" src="/assets/img/kamino-jvm-metrics.png">
 <img class="img-fluid my-4" src="/assets/img/kamino-traces.png">
 
-[1]: https://kamino.io/
+[1]: https://kamino.io/?utm_source=kamon&utm_medium=docs&utm_campaign=kamon
