@@ -80,6 +80,9 @@ For example,
 kamon.datadog.time-units = "ms"
 ```
 will scale all timing measurements to milliseconds right before sending to datadog.
+Note that if timing measurements are below 1 millisecond when you set `time-units="ms"`,
+the measurements are reported to Datadog as zero values by dropping everything below the decimal point,
+because Kamon holds all timing measurements in `Long` internally.
 
 Integration Notes
 -----------------
