@@ -2,12 +2,11 @@
 ---
 
 html {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 1.3rem;
   text-align: justify;
 }
 
@@ -33,8 +32,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 p {
-  opacity: 0.9;
-  font-size: 1.25rem;
   font-family: 'Lato', sans-serif;
 }
 
@@ -249,6 +246,7 @@ code {
   color: #12aa40;
   letter-spacing: -0.5px;
   font-weight: normal;
+  font-size: 0.95rem;
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
@@ -257,7 +255,6 @@ code {
 
 code[class*="language-"], pre[class*="language-"] {
   font-family: 'Roboto Mono', monospace;
-  font-size: 1.05rem;
 }
 
 .language-tab {
