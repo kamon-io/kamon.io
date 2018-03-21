@@ -6,7 +6,7 @@ layout: documentation-1.x
 Overview
 ========
 
-Kamon is a instrumentation toolkit for applications running on the JVM. With Kamon you can record metrics, trace requests
+Kamon is an instrumentation toolkit for applications running on the JVM. With Kamon you can record metrics, trace requests
 and propagate context across distributed systems without locking your service to a specific metrics or tracing vendor.
 
 From a bird's eye view, Kamon can be decomposed in three main components: the core APIs for metrics, tracing and context
@@ -37,7 +37,7 @@ Some examples are:
   - The `kamon-akka` and `kamon-akka-remote` modules provides actor, routers, dispatcher and actor groups metrics,
     distributed message tracing and context propagation both locally and across a cluster.
   - The `kamon-akka-http` and `kamon-play` modules provide automatic context propagation and distributed tracing on both
-    on the server and client sides of Akka HTTP and Play Framework, respectively.
+    the server and client sides of Akka HTTP and Play Framework, respectively.
   - The `kamon-jdbc` module hooks into all JDBC calls, creating Spans for each operation and tracking Hikari CP metrics
     when possible.
 
