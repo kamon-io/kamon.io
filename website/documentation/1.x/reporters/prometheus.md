@@ -10,7 +10,7 @@ Exposing Metrics for Prometheus
 flexible query language and one very important difference in comparison with all other Kamon reporters: data has to be
 pulled our of your application instead of pushed to external servers.
 
-This module exposes a scrapping endpoint with all Kamon metrics in the Prometheus text format, all you will have to do
+This module exposes a scraping endpoint with all Kamon metrics in the Prometheus text format, all you will have to do
 after starting this module is add the target to your Prometheus server and start enjoying the awesomeness.
 
 
