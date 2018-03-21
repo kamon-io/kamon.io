@@ -21,7 +21,7 @@ with Kamon's APIs and abstract you away from how and where the collected data wi
 The `kamon-core` project contains the basic building blocks upon which every other module is built and the only API
 surface that you need to understand and interact with if using Kamon directly (see automatic instrumentation). The core
 module can be divided into three main sections:
-  - The **Metrics API** provides several instrument types (counters, gauges, histrograms, timers and range samplers) with
+  - The **Metrics API** provides several instrument types (counters, gauges, histograms, timers and range samplers) with
     a dimensional data model for metrics recording.
   - The **Tracing API** allows to create, correlate and tag Spans that represent operations executed across distributed
     systems.
@@ -31,17 +31,17 @@ module can be divided into three main sections:
 
 ### Automatic Instrumentation
 
-There are a growing number of automatic instrumentation modules that hook into the internals of several widely used
-frameworks and libraries to bring metrics, traces and context propagation without needed to use the Core APIs directly.
+There exists a growing number of automatic instrumentation modules that hook into the internals of several widely used
+frameworks and libraries to bring metrics, traces and context propagation without the need to use the Core APIs directly.
 Some examples are:
-  - The `kamon-akka` and `kamon-akka-remote` modules provides actor, routers, dispatcher and actor groups metrics,
+  - The `kamon-akka` and `kamon-akka-remote` modules provides actor, router, dispatcher and actor group metrics,
     distributed message tracing and context propagation both locally and across a cluster.
   - The `kamon-akka-http` and `kamon-play` modules provide automatic context propagation and distributed tracing on both
     the server and client sides of Akka HTTP and Play Framework, respectively.
   - The `kamon-jdbc` module hooks into all JDBC calls, creating Spans for each operation and tracking Hikari CP metrics
     when possible.
 
-When using these modules it is necessary for applications to run with the bytecode instrumentation agent.
+When using these modules it is necessary for applications to run with the [bytecode instrumentation agent][1].
 
 
 ### Reporters
@@ -50,7 +50,10 @@ Finally, the reporter modules send and/or expose all the collected data to sever
 types of reporting modules:
   - **Metric Reporters** get all the measurements recorded during each "tick" and expose/send this data to systems like
     Prometheus, JMX, Kamino, Datadog, etc.
-  - **Span Reporters** get batches of Spans to be sent to distributed tracing system like Zipkin, Jaeger and so on.
+  - **Span Reporters** get batches of Spans to be sent to distributed tracing systems like Zipkin, Jaeger and so on.
 
 Creating new reporters is just about implementing the appropriate interfaces and calling `Kamon.addReporter(...)` when
 starting your services.
+
+
+[1]: ../../recipes/adding-the-aspectj-weaver/
