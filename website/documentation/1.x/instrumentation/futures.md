@@ -17,7 +17,7 @@ The <b>kamon-futures</b> module requires you to start your application using the
 The following artifacts are published, pick the right one for your Akka version:
 
   * `kamon-scala-future` for Scala 2.10, 2.11 and 2.12.
-  * `kamon-twitter-future` for `util-core` 6.34 in Scala 2.10 and `util-core` 6.40 for Scaka 2.11 and 2.12.
+  * `kamon-twitter-future` for `util-core` 6.34 in Scala 2.10 and `util-core` 6.40 for Scala 2.11 and 2.12.
   * `kamon-scalaz-future` for `scalaz-concurrent` 7.2.8 with Scala 2.10, 2.11 and 2.12.
 
 
