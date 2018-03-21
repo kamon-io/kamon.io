@@ -34,5 +34,5 @@ was created and make it available while executing the future's body.
 Also, when you transform a future by using map/flatMap/filter and friends or you directly register a callback on a
 future (onComplete/onSuccess/onFailure), Kamon will capture the current `Context` available when transforming
 the future and make it available when executing the given callback. The code snippet above would print the same
-`userID` that was available when creating the future, during it's body execution and during the execution of all
+`userID` that was available when creating the future, during its body execution and during the execution of all
 the asynchronous operations scheduled on it.
