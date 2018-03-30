@@ -2,22 +2,37 @@
 ---
 
 html {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 16px;
   text-align: justify;
 }
 
-a, a:active, a:visited, a:hover {
+a, a:active, a:hover {
   text-decoration: none;
+  color: #128640;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
   text-align: left;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  a {
+    color: #545454;
+  }
+  a:active, a:visited, a:hover {
+    color: #545454;
+  }
+}
+
+p {
+  font-family: 'Lato', sans-serif;
 }
 
 .vertical-center {
@@ -102,13 +117,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 0px;
 }
 
-.fill-height { 
+.fill-height {
     min-height: 100%;
     height: 100%;
 }
 
 .docs-content {
-  padding-top: 20px;
+  //padding-top: 20px;
 }
 
 .documentation-sidebar {
@@ -116,34 +131,43 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   text-align: left;
   ul {
     list-style-type: none;
-    padding: 0px 0px 0px 8px;
-    
+    padding: 0px;
+
   }
 
   li {
     display: list-item;
   }
+
+  .current-page {
+    background-color: #ecf8f0;
+    color: #128640;
+  }
 }
 
 .docs-level-one {
   color: white;
-  background-color:#12aa40;
+  background-color:#2ab253;
   padding: 5px 10px;
   list-style: none;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+
   margin: 0px 0px 5px 0px;
 
   .show>.btn-secondary.dropdown-toggle {
     background-color: transparent;
+    font-size: 1.3rem;
     color: white;
+    border: none;
   }
 }
 
+
+
 .docs-level-two {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #4e775c;
-  padding: 6px 5px;
+  padding: 6px 0px 6px 15px;
   display: block;
   margin: 0px;
   list-style: none;
@@ -152,7 +176,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .docs-level-three {
   font-size: 1rem;
   color: #5b675f;
-  padding: 4px 5px;
+  padding: 4px 0px 4px 20px;
   display: block;
   margin: 0px;
   list-style: none;
@@ -166,9 +190,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   display: inline;
 
   a, a:active, a:hover {
+    border: none;
+    font-size: 1.3rem;
     background-color: transparent;
   }
 }
+
+.version-dropdown .show {
+  a, a:active, a:hover {
+    font-size: 1.3rem;
+  }
+}
+
 
 .version-selector {
   height: 60px;
@@ -185,11 +218,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .kamino-docs-top {
-  //background: url('/assets/img/sponsored-by-kamino-top-background.svg') center top no-repeat;
-  //background-size: cover;
+  height: 5rem;
+
+  .kamino-description {
+    background-color: #f5f5f5;
+    padding: 8px 15px;
+    font-weight: bold;
+    color: #657582;
+    font-size: 1.2rem;
+  }
 
   img {
-    margin: 0px 15px;
     height: 5rem;
   }
 }
@@ -205,7 +244,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 code {
   color: #12aa40;
+  letter-spacing: -0.5px;
   font-weight: normal;
+  font-size: 0.95rem;
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
@@ -216,8 +257,14 @@ code[class*="language-"], pre[class*="language-"] {
   font-family: 'Roboto Mono', monospace;
 }
 
+.language-tab {
+  margin-bottom: -1rem;
+  border-bottom: none;
+}
+
 pre[class*="language-"] {
-  margin: 0px;
+  margin: 1rem 0rem;
+  border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -275,6 +322,7 @@ pre[class*="language-"] {
 }
 
 .blog-sidebar {
+  margin-top: 2rem;
   padding: 0rem 0rem;
   text-align: left;
 
@@ -289,6 +337,7 @@ pre[class*="language-"] {
   .date {
     font-size: 0.9rem;
   }
+
   .recent-post {
     padding: 1rem;
   }
@@ -322,7 +371,7 @@ pre[class*="language-"] {
   }
 
   .heading-item {
-    font-size: 19px;
+    font-size: 15px;
     padding-right: 2rem;
   }
 }
@@ -330,5 +379,5 @@ pre[class*="language-"] {
 .wip-warning {
   color:#ff6e00;
   text-align: center;
-  
+
 }

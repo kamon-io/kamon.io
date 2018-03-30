@@ -1,6 +1,6 @@
 ---
 title: Kamon | Documentation
-layout: generic-documentation
+layout: documentation-0.6.x
 ---
 
 Sorry, we moved things all over the place!
