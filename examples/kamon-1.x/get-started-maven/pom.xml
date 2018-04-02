@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.kamon</groupId>
+  <artifactId>kamon-core-maven</artifactId>
+  <version>1.0.0</version>
+
+  <!-- tag:base-kamon-dependencies:start -->
+  <dependencies>
+    <dependency>
+      <groupId>io.kamon</groupId>
+      <artifactId>kamon-core_2.12</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+
+    <!-- Optional Dependencies -->
+    <dependency>
+      <groupId>io.kamon</groupId>
+      <artifactId>kamon-prometheus_2.12</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.kamon</groupId>
+      <artifactId>kamon-zipkin_2.12</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+  <!-- tag:base-kamon-dependencies:end -->
+
+</project>
