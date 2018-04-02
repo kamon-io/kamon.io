@@ -8,7 +8,7 @@ Tracing
 
 Tracing is all about describing operations executed by your services and the causal relationship between them. In
 tracing, the main building block are Spans. A `Span` represents a single operation and contains enough information to
-determine the trace to which it belongs, how long it took to complete and which Span is it's parent. Spans can
+determine the trace to which it belongs, how long it took to complete and which Span is its parent. Spans can
 additionally have tags and marks that better describe the operations' semantics and effects on the system.
 
 Once you put all related Spans together it is possible to reconstruct the entire trace of a request. You can think of a
@@ -28,7 +28,7 @@ There are several conclusions that can be drawn from the graph above, without ev
 
 ### Spans
 
-Spans are created by calling the `buildSpan(operationName)` method on Kamon's companion object as shown bellow:
+Spans are created by calling the `buildSpan(operationName)` method on Kamon's companion object as shown below:
 
 
 {% code_example %}
@@ -53,7 +53,7 @@ certain degree and only after calling the `.start()` method on it the actual `Sp
 Tags are key-value pairs that provide additional information about the operation represented by a Span. All spans created
 by Kamon will typically have the following tags:
   - `component` specifies what library/framework instrumentation generated the Span. E.g: `akka.http.server` or `jdbc`.
-  - `span.kind` spefidies the role of the Span in a RPC communication. In the case of HTTP communication you will be
+  - `span.kind` specifies the role of the Span in a RPC communication. In the case of HTTP communication you will be
     seeing `client` and `server` values for this tag.
   - `error` specifies whether an error has been added to the Span via `span.addError(...)`.
   - `http.method` specifies the request's HTTP method.
@@ -91,7 +91,7 @@ By default Kamon will track metrics out of all Spans, unless explicitly disabled
 sampling, every single Span is going to be measured and recorded, regarless of whether the Span is sampled or not. The
 metric tracking Spans' latency is called `span.processing-time` and at a minimum will have these tags:
   - `operation` with the Span operation name.
-  - `error` specifying whether a erros was added to the Span via `span.addError(...)`.
+  - `error` specifying whether an error was added to the Span via `span.addError(...)`.
   - `parentOperation` with the name of the operation of the parent Span, if any.
   - Any additional metric tags added via `span.tagMetric(...)`.
 
@@ -99,7 +99,7 @@ metric tracking Spans' latency is called `span.processing-time` and at a minimum
 <span class="d-block font-weight-bold" >Important:</span>
 It is of extreme importance that a Span's operation name and any metric-related tags are not populated with high cardinality
 values; things like user or session identifiers, SQL queries or full URLs should not be used for operation names and
-metric tags because a individual time serie will be created for each unique combination of these attributes.
+metric tags because an individual time series will be created for each unique combination of these attributes.
 </p>
 
 If necessary, metrics collection can be toggled by calling `enableMetrics()` and `disableMetrics()` on a `SpanBuilder`
@@ -137,7 +137,7 @@ what is actually exchanged is the current Context, which in turn dictates the cu
 section to get a better understanding of how this mechanism works.
 
 Keep in mind that setting a Span as current has no effect on the Span's lifecycle. A Span can be made current several
-times in several threads at the same time regardless of it being finished or not. There is a overload of the
+times in several threads at the same time regardless of it being finished or not. There is an overload of the
 `Kamon.withSpan(...)` method that allows finishing the Span after closing the scope in which it was used as shown above,
 this is provided as a shorthand syntax for cases where a quick, one-off Span is needed, but it must remain clear that
 finish a Span's time as current has nothing to do with actually `.finish()`ing the Span.
