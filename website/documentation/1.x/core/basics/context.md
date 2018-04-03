@@ -40,7 +40,7 @@ There are three keys defined in the example above:
   - `UserID` as a local key, with type `String` and a default value of `"undefined"`. This key will always be propagated
     with the context within the same process.
   - `SessionID` as a broadcast key, with type `Option[Int]` and a default value of `None`. This key will always be
-    propagatd within the same process and across processes.
+    propagated within the same process and across processes.
   - `RequestID` uses a shorter syntax for the very common case of having a broadcast key with type `Option[String]`.
 
 It is recommended (although not necessary) to create Context keys as static members and reuse the key instance wherever
@@ -73,7 +73,7 @@ closed, the previous contexts will become current again until eventually the cur
 <img class="img-fluid my-3" src="/assets/img/diagrams/context-storage.png">
 
 Effectively, the current Context is stored in a `ThreadLocal` but depending on the threading model of the frameworks and
-librearies used to build your service a Context might need to be made current on several threads and for brief periods
+libraries used to build your service a Context might need to be made current on several threads and for brief periods
 of time. It is very important to close all created scopes timely, otherwise you risk leaving "dirty threads" that
 might cause subsequent requests to see a previous and completely unrelated Context as the current Context.
 
@@ -99,11 +99,11 @@ mediums for the codecs:
   - **HTTP Headers**: Each entry codec is able to write any number of HTTP headers to encode its state and read any number
     of HTTP headers to decode it. This medium is used in all HTTP frameworks instrumentation like Akka HTTP, Play
     Framework, Http4s, etc.
-  - **Binary**: Each entry is codec must be able to encode and decode a value from and to a `ByteBuffer`. This medium
+  - **Binary**: Each entry codec must be able to encode and decode a value from and to a `ByteBuffer`. This medium
     is used when a binary representation is more appropriate, like when sending messages to remote actor systems via
     Akka remoting or storing the Context in a message broker.
 
-The codecs are configurable under the `kamon.context.codecs` section. Here is a extract from the default configuration
+The codecs are configurable under the `kamon.context.codecs` section. Here is an extract from the default configuration
 which sets the codecs for propagating the tracer's Span:
 
 {% code_example %}
@@ -135,7 +135,7 @@ A few important details to know when creating custom codecs:
   - The implementation class must have a no-parameters constructor.
   - A codec is responsible of encoding/decoding only one Context entry.
   - There are only two allowed types for `T`: `TextMap` and `ByteBuffer`.
-  - The `encode` function might return a empty `TextMap` or `ByteBuffer` if the provided Context doesn't contain the
+  - The `encode` function might return an empty `TextMap` or `ByteBuffer` if the provided Context doesn't contain the
     key that a codec is responsible for.
   - The `decode` function is expected to use the provided Context instance as a base for its return value. Typically a
     codec will try to read a value from the medium and either return the result of `context.withKey(key, readValue)` with
