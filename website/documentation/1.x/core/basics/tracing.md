@@ -43,7 +43,7 @@ certain degree and only after calling the `.start()` method on it the actual `Sp
     Span from the current context as parent. This can be changed by calling either `asChildOf(span)` or `ignoreParentFromContext()`
     on the SpanBuilder.
   - The start instant for a Span can only be set with the SpanBuilder.
-  - Unlike Spans, a `SpanBuilder` instance is not thread-safe and should be passed around threads.
+  - Unlike Spans, a `SpanBuilder` instance is not thread-safe and should not be passed around threads.
 
 
 
