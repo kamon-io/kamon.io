@@ -1,6 +1,6 @@
 ---
-title: Kamon | SPM | Documentation
-layout: documentation-0.6.x
+title: Kamon > Documentation > Reporters > Sematext
+layout: documentation-1.x
 ---
 
 Reporting Metrics to SPM
@@ -11,29 +11,22 @@ Reporting Metrics to SPM
 Installation
 ------------
 
-[Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project.
+[Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project according to application creation instructions.
 
 Configuration
 -------------
 
-SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher`, `system-metrics`, `trace`, `http-server` and other categories. By default all entities for given categories are included.
+SPM backend extension requires the property `kamon.spm.token` to be defined. SPM provides reports for `akka-actor`, `akka-router`, `akka-dispatcher`, `system-metrics`, `trace` and other categories. You should define all required categories under `kamon.util.filters`.
 
 {% code_block typesafeconfig %}
-  kamon.spm {
-    token = "[place-token-here]"
-    subscriptions {
-      akka-actor      = [ "**" ]
-      akka-dispatcher = [ "**" ]
-      akka-router     = [ "**" ]
-      system-metric   = [ "**" ]
-      trace           = [ "**" ]
-      trace-segment   = [ "**" ]
-      histogram       = [ "**" ]
-      min-max-counter = [ "**" ]
-      gauge           = [ "**" ]
-      counter         = [ "**" ]
-      http-server     = [ "**" ]
+  kamon {
+    util.filters{
+      ...
     }
+    spm {
+      token = "[place-token-here]"
+    }
+    reporters = ["kamon.spm.SPMReporter"]
   }
 {% endcode_block %}
 
