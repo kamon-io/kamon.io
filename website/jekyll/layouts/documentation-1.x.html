@@ -61,31 +61,8 @@
                 <label class="tree-toggler tree docs-level-two">Advanced Topics</label>
                 <ul>
                   <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/core/advanced/metric-instruments/' }}>Metric Instruments</a></li>
-                  <!-- <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/core/advanced/instrumentation-guidelines/' }}>Instrumentation Guidelines</a></li> -->
-                  <!-- <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/core/advanced/creating-reporters/' }}>Creating Reporters</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/core/advanced/writing-instrumentation/' }}>Writing Instrumentation</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/core/advanced/context-and-threads/' }}>Context and Threads</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/kamon-core/tracing/core-concepts/' }}>Overview</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/tracing/threading-model-considerations/' }}>Threading Model Considerations</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/tracing/trace-metrics/' }}>Trace Metrics</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/tracing/trace-context-manipulation/' }}>TraceContext Manipulation</a></li>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/tracing/subscription-protocol/' }}>Subscriptions Protocol</a></li> -->
                 </ul>
               </li>
-
-              <!-- <li>
-                <label class="tree-toggler tree docs-level-two">Modules</label>
-                <ul>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/modules/using-modules/' }}>Using Modules</a></li>
-                </ul>
-              </li>
-
-              <li>
-                <label class="tree-toggler tree docs-level-two">Configuration</label>
-                <ul>
-                  <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.0.0-RC1/kamon-core/configuration/' }}>Configuring Kamon</a></li>
-                </ul>
-              </li>-->
             </ul>
 
             <div class="tree tree-toggler docs-level-one row align-items-center">
@@ -104,13 +81,6 @@
                   <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-three', '/documentation/1.x/instrumentation/akka/ask-pattern-timeout-warning/' }}>Ask Pattern Timeout Warning</a></li>
                 </ul>
               </li>
-<!--
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-scala/overview/' }}>Scala</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-play/overview/' }}>Play Framework</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-spray/overview/' }}>Spray</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-jdbc/overview/' }}>JDBC</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-annotation/overview/' }}>Annotations</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-system-metrics/overview/' }}>System Metrics</a></li> -->
             </ul>
 
             <div class="tree tree-toggler docs-level-one row align-items-center">
@@ -123,18 +93,7 @@
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/reporters/jaeger/' }}>Jaeger</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/reporters/kamino/' }}>Kamino</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/reporters/sematext/' }}>Sematext SPM</a></li>
-
-              <!--
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-statsd/overview/' }}>StatsD</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-datadog/overview/' }}>Datadog</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-newrelic/overview/' }}>New Relic</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-sematext-spm/overview/' }}>Sematext SPM</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-jmx/overview/' }}>JMX</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-fluentd/overview/' }}>FluendD</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-influxdb/overview/' }}>InfluxDB</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-riemann/overview/' }}>Riemann</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-khronus/overview/' }}>Khronus</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-opentsdb/overview/' }}>OpenTSDB</a></li> -->
+              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/reporters/datadog/' }}>Datadog</a></li>
             </ul>
 
 
@@ -145,17 +104,6 @@
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/recipes/migrating-from-kamon-0.6/' }}>Migrating from Kamon 0.6</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/recipes/adding-the-aspectj-weaver/' }}>Adding the AspectJ Weaver</a></li>
               <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.x/recipes/monitoring-akka-quickstart/' }}>Monitoring Akka Quickstart</a></li>
-
-              <!-- <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-statsd/overview/' }}>StatsD</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-datadog/overview/' }}>Datadog</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-newrelic/overview/' }}>New Relic</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-sematext-spm/overview/' }}>Sematext SPM</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-jmx/overview/' }}>JMX</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-fluentd/overview/' }}>FluendD</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-influxdb/overview/' }}>InfluxDB</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-riemann/overview/' }}>Riemann</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-khronus/overview/' }}>Khronus</a></li>
-              <li><a {{ page.url | sidebar_link: 'tree-toggler tree docs-level-two', '/documentation/1.0.0-RC1/kamon-opentsdb/overview/' }}>OpenTSDB</a></li> -->
             </ul>
           </section>
         </div>
