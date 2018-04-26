@@ -13,6 +13,12 @@ Installation
 
 [Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project according to application creation instructions.
 
+To add the `kamon-spm` dependency to your build take into account:
+  - Group ID: `io.kamon`
+  - Package ID: `kamon-spm`
+  - Scala Versions: 2.10 / 2.11 / 2.12
+  - Latest Version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-spm_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-spm_2.11).
+
 Configuration
 -------------
 
