@@ -3,12 +3,6 @@ title: Kamon > Documentation > Reporters > Datadog
 layout: documentation-1.x
 ---
 
-Datadog Integration
-===================
-
-![Build Status](https://travis-ci.org/kamon-io/kamon-datadog.svg?branch=master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-datadog_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-datadog_2.11)
-
 Reporting Metrics to Datadog
 ===========================
 
