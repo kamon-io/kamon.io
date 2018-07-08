@@ -84,6 +84,9 @@ into a routee's mailbox until the moment it was dequeued for processing. The mea
 here.
 * __akka.router.processing-time__ (Histogram): Tracks how long did it take for the routees to process incoming messages.
 This histogram includes measurements from all routees.
+* __akka.router.pending-messages__ (Range Sampler): Tracks how many messages are waiting to be processed across all
+routees on the router.
+* __akka.router.members__ (Range Sampler): Tracks the number of routees in a router.
 * __akka.router.errors__ (Counter): Number of failures of the routees in the router.
 
 All router metrics will have the following tags:
@@ -154,7 +157,8 @@ All actor groups will get the following metrics:
 * __akka.group.time-in-mailbox__ (Histogram): Tracks the time measured from the moment a message was enqueued into an
 actor's mailbox until the moment it was dequeued for processing.
 * __akka.group.processing-time__ (Histogram): Tracks how long did it take for the actor to process every message.
-* __akka.group.mailbox-size__ (Range Sampler): Tracks the combined mailbox size of all member actors.
+* __akka.group.pending-messages__ (Range Sampler): Tracks how many messages are waiting to be processed across of all
+member actors. Previously was called `akka.group.mailbox-size`.
 * __akka.group.members__ (Range Sampler): Tracks the number of group members.
 * __akka.group.errors__ (Counter): Number of failures experienced by group members.
 
