@@ -56,4 +56,4 @@ Creating new reporters is just about implementing the appropriate interfaces and
 starting your services.
 
 
-[1]: ../../recipes/adding-the-aspectj-weaver/
+[1]: ../../../recipes/adding-the-aspectj-weaver/
