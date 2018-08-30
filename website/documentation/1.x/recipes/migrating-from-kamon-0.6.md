@@ -30,7 +30,7 @@ When loading reporters from configuration you will need to set the FQCN of all d
 configuration key.
 
 If you were using `Kamon.start(...)` with a custom configuration object you will now have to call `Kamon.reconfigure(config)`
-instead, this will propagate the new configuration to all internal components and . Ideally you should do this as the
+instead, this will propagate the new configuration to all internal components. Ideally you should do this as the
 first thing during application startup.
 
 ### Access to the Metrics and Tracing API
