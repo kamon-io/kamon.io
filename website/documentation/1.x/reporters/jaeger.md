@@ -41,9 +41,10 @@ That's it. Go to the Jaeger UI and start browsing your traces.
 It couldn't be simpler. All you need to provide is the host and port where Zipkin is listening.
 
 {% code_block typesafeconfig %}
-kamon.zipkin {
+kamon.jaeger {
   host = "localhost"
-  port = 9411
+  port = 14268
+  tls = false
 }
 {% endcode_block scala %}
 
