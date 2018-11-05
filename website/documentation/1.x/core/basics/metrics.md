@@ -9,7 +9,7 @@ Metrics
 Kamon provides five instrument types that can be used for recording metrics:
   - **Counters**: Track the number of times certain event happened. It can only be increased. Useful for counting errors,
     cache misses, etc.
-  - **Gagues**: Track a single value that can be increased, decreased or explicitly set. The common use case for gauges
+  - **Gauges**: Track a single value that can be increased, decreased or explicitly set. The common use case for gauges
     are slowly moving values like disk usage, number of loaded classes or configuration settings.
   - **Histograms**: Record the distribution of values within a configurable range and precision. Typically used for
     recording latency, message sizes and so on.
