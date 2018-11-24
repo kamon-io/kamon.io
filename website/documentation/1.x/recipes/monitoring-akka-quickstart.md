@@ -50,7 +50,7 @@ imagine that your monitoring requirements include:
   - Message tracing for all actor messages.
 
 All that can be achieved by simply providing the right filters under `kamon.util.filters` in your `application.conf` file
-as shown bellow:
+as shown below:
 
 {% code_example %}
 {%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/src/main/resources/application.conf tag:filters label:"application.conf" %}
