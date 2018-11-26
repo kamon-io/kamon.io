@@ -35,6 +35,8 @@ import kamon.zipkin.ZipkinReporter
 Kamon.addReporter(new ZipkinReporter())
 {% endcode_block scala %}
 
+Start the Zipkin instance following the instructions available [here](https://zipkin.io/pages/quickstart.html).
+
 That's it. Go to the Zipkin UI and start browsing your traces.
 
 ### Configuration
