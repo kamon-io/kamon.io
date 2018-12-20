@@ -1,9 +1,0 @@
-apply plugin: 'java'
-
-// tag:base-kamon-dependencies:start
-dependencies {
-  compile 'io.kamon:kamon-core_2.12:1.1.0'
-  compile 'io.kamon:kamon-prometheus_2.12:1.0.0'
-  compile 'io.kamon:kamon-zipkin_2.12:1.0.0'
-}
-// tag:base-kamon-dependencies:end
