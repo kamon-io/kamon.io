@@ -1,0 +1,146 @@
+.docs-header-bar {
+  background-color: #f6f6f6;
+
+  .docs-header-bar-tabs {
+    ul {
+      padding: 0rem;
+      margin: 0rem;
+      list-style: none;
+    }
+
+    li {
+      display: inline-block;
+      white-space:nowrap;
+
+      a {
+        color: #b1b1b1;
+        display: inline-block;
+        font-weight: 600;
+        line-height: 2.5rem;
+        padding: 0rem 1.5rem;
+        border-bottom: 0.3rem solid transparent;
+
+        &.active, &.active:hover {
+          color: inherit;
+          border-bottom-color: #5ad57f;
+        }
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+.docs-sidebar-nav {
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+  border-right: 1px solid #7b7b7b26;
+
+  $item-height: 2rem;
+
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  .section-title {
+    height: $item-height;
+    line-height: $item-height;
+    width: 100%;
+    color: #717171;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    line-height: $item-height;
+
+    &.active {
+      background-color: #f6f6f6;
+      //background: -webkit-linear-gradient(left, #5ad57f 2px, #f6f6f6 0%);
+    }
+
+    &:hover {
+      //background: -webkit-linear-gradient(left, #5ad57f 2px, #f6f6f6 0%);
+      background-color: #f6f6f6;
+    }
+  }
+
+  .level-one {
+    padding-left: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .level-two {
+    padding-left: 1rem;
+    font-weight: 600;
+  }
+
+  .level-three {
+    padding-left: 1.5rem;
+  }
+
+  .level-two-margin {
+    margin-left: 1rem;
+  }
+
+  .level-three-margin {
+    margin-left: 1.5rem;
+  }
+
+  .page-toc {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0rem;
+    background: -webkit-linear-gradient(left, #5ad57f 2px, white 0%);
+
+    a {
+      padding-left: 1rem;
+
+      &:hover {
+        background: -webkit-linear-gradient(left, #5ad57f 2px, #f6f6f6 0%);
+      }
+    }
+  }
+}
+
+.docs-content {
+  font-size: 1.1rem;
+  color: #909090;
+  padding-bottom: 5rem;
+
+  h2, h3 {
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.45rem;
+    letter-spacing: -0.07rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    border-bottom: dotted 1px gray;
+
+    &:hover {
+      color: #5e5e5e;
+    }
+  }
+
+  .alert {
+    color: #73736f;
+    border: none;
+    border-radius: 0rem;
+  }
+
+  .alert-info {
+    background: -webkit-linear-gradient(left, #23a5bb 4px, #e1f3f5 0%);
+  }
+
+  .alert-warning {
+    background: -webkit-linear-gradient(left, #ffe28d 4px, #fffbda 0%);
+  }
+}

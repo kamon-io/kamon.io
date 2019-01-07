@@ -1,0 +1,22 @@
+
+<html lang="en">
+  <head>
+    <title>{{ page.title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description }}">
+
+    {% include includes-head.html %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+    {% include includes-tail.html %}
+  </body>
+</html>

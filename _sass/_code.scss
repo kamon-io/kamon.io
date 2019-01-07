@@ -1,0 +1,14 @@
+body {
+  .code-example, :not(pre) > code[class*="language-"], pre[class*="language-"] {
+    border-radius: 0.25rem;
+  }
+
+  code[class*="language-"], pre[class*="language-"] {
+    font-family: monospace, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono';
+    font-weight: 700;
+  }
+
+  pre code {
+    font-size: 0.9rem;
+  }
+}

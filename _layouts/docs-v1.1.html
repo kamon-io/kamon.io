@@ -1,0 +1,108 @@
+{% assign product = page.path | split: '/' | first %}
+{% assign version_prefix = page.path | split: '/' | slice: 0, 2 | join: '/' %}
+
+<html lang="en">
+  <head>
+    {% include common-head.html %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="docs-header elevation-1">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3 class="color-white">Documentation</h3>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col docs-header-tabs">
+            <ul>
+              <li>
+                <a href="">OVERVIEW</a>
+              </li>
+              <li>
+                <a href="" class="docs-header-tab {{ page.tags | contains: 'core' | match: 'active', '' }}">CORE</a>
+              </li>
+              <li>
+                <a href="">APM</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div id="docs-sidebar" class="col-12 col-md-3 col-xl-2 left-sidebar-nav">
+          <ul>
+            <li>
+              <div class="level-one section-title">TUTORIALS</div>
+              <ul>
+                <li>
+                  <div class="level-two">Getting Started</div>
+                  <ul>
+                    <li><a class="level-three" href="/{{version_prefix}}/tutorials/start/installation/">Installation</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/tutorials/start/agent/">Agent Setup</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="level-two">Frameworks</div>
+                  <ul>
+                    <li><a class="level-three" href="/{{version_prefix}}/tutorials/framework/akka/">Akka</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <div class="level-one section-title mt-3">REFERENCE</div>
+              <ul>
+                <li>
+                  <div><a class="level-two" href="/{{version_prefix}}/reference/core/">Core</a></div>
+                  <ul>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/core/metrics/">Metrics</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/core/context/">Context</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/core/tracing/">Tracing</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="level-two">Instrumentation</div>
+                  <ul>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/instrumentation/executors/">Executors</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/instrumentation/futures/">Futures</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/instrumentation/akka/">Akka</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="level-two">Reporters</div>
+                  <ul>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/prometheus/">Prometheus</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/influxdb/">InfluxDB</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/statsd/">StatsD</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/graphite/">Graphite</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/zipkin/">Zipkin</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/jaeger/">Jaeger</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/kamino/">Kamino</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/sematext-spm/">Sematext SPM</a></li>
+                    <li><a class="level-three" href="/{{version_prefix}}/reference/reporters/datadog/">Datadog</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+        <div class="col-12 col-md-9 col-xl-8 py-md-1 px-md-5 content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+
+
+    {% include common-tail.html %}
+  </body>
+</html>

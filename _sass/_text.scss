@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800');
+
+body {
+  color: $text-color-body;
+  font-size: $base-font-size;
+  font-family: 'Open Sans';
+  letter-spacing: -0.03rem;
+}
+
+h1, h2 {
+  color: $text-color-heading;
+  font-weight: $light;
+}
+
+h3, h4, h5, h6 {
+  color: $text-color-subtitle;
+  font-weight: $medium;
+}
+
+h1 {
+  letter-spacing: -0.1rem;
+}
+
+h2 {
+  letter-spacing: -0.05rem;
+}
+
+h3, h4, h5 {
+  letter-spacing: -0.03rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+.underline-green {
+  text-decoration: underline;
+  text-decoration-color: $color-kamon-green;
+  text-decoration-skip-ink: none;
+}
+
+.underline-blue {
+  text-decoration: underline;
+  text-decoration-color: $color-kamon-apm-blue;
+  text-decoration-skip-ink: none;
+}
+
+.underline-light-blue {
+  text-decoration: underline;
+  text-decoration-color: $color-kamon-apm-light-blue;
+  text-decoration-skip-ink: none;
+}
+
+.text-color-body {
+  color: $text-color-body;
+}
+
+.text-color-subtitle {
+  color: $text-color-subtitle;
+}
+
+.text-color-alternate-heading {
+  color: $text-color-alternate-heading;
+  text-shadow: 0px 1px 6px #0000001a;
+}
+
+.text-color-alternate-subtitle {
+  color: $text-color-alternate-subtitle;
+  text-shadow: 0px 1px 6px #0000001a;
+}
+
+.text-color-alternate-body {
+  color: $text-color-alternate-body;
+}
+
+.text-color-alternate-caption {
+  color: $text-color-alternate-caption;
+}

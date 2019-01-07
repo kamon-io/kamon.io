@@ -1,0 +1,47 @@
+.button {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: $bold;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0px 3px 6px 0px #42424275;
+  letter-spacing: 0rem;
+}
+
+@mixin ripple-button($color) {
+  background-color: $color;
+  background-position: center;
+  transition: background 0.8s;
+
+  &:hover {
+    background: lighten($color, 2%) radial-gradient(circle, transparent 1%, lighten($color, 2%) 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: lighten($color, 6%);
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.button-ripple-orange {
+  @include ripple-button(#ff8e49);
+}
+
+.button-ripple-green {
+  @include ripple-button($color-kamon-green);
+}
+
+.button-ripple-blue {
+  @include ripple-button($color-kamon-apm-blue);
+}
+
+.button-ripple-light-blue {
+  @include ripple-button($color-kamon-apm-light-blue);
+}
+
+.button-ripple-dark-gray {
+  @include ripple-button(#575757);
+}

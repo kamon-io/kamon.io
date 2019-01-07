@@ -1,0 +1,28 @@
+.header-bar {
+  height: 5rem;
+  background-color: white;
+
+  .logo {
+    max-height: 50px;
+  }
+
+  .header-bar-item {
+    line-height: 5rem;
+    display: inline-block;
+    padding: 0rem 1rem;
+
+    @media (max-width: 992px) {
+      font-size: $base-font-size - 1px;
+      padding: 0rem 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: $base-font-size - 3px;
+      padding: 0rem 0.4rem;
+    }
+
+    &:hover {
+      background: -webkit-linear-gradient(bottom, #e6e6e6 4px, white 0%);
+    }
+  }
+}

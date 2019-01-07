@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="80"
+   height="78"
+   viewBox="0 0 21.166666 20.637501"
+   version="1.1"
+   id="svg6639"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="kamon-symbol.svg">
+  <defs
+     id="defs6633" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-45.788006"
+     inkscape:cy="33.960421"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g7208"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2560"
+     inkscape:window-height="470"
+     inkscape:window-x="0"
+     inkscape:window-y="944"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata6636">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-276.36247)">
+    <g
+       id="g7208"
+       transform="translate(2.5731508,1.29467)">
+      <path
+         inkscape:connector-curvature="0"
+         id="XMLID_902_-7"
+         class="st1"
+         d="m 8.532606,292.74766 2.634115,2.74236 c 0.0866,0.0866 0.223718,0.14433 0.360836,0.14433 h 6.458987 c 0.375268,0 0.59899,-0.33918 0.375268,-0.58455 l -5.989896,-7.39716 c -0.129902,-0.14434 -0.375272,-0.13713 -0.497956,0.007 l -3.3630051,4.6548 c -0.1154663,0.1299 -0.1010308,0.3031 0.021668,0.433 z"
+         style="display:inline;fill:#dadada;fill-opacity:1;stroke-width:0.07216745" />
+      <path
+         inkscape:connector-curvature="0"
+         id="XMLID_901_-8"
+         class="st2"
+         d="M 2.9973641,276.06254 C 2.477757,275.47799 1.784951,275.1388 1.0560593,275.1388 c -1.24849671,0 -2.3526589,0.98148 -2.6990625,2.41039 -0.4907388,2.06399 -0.7866252,4.17128 -0.880443,6.29301 v 0 l 0.707241,0.96703 c 1.26293015,1.73924 3.4568207,1.81862 4.8135693,0.32476 0.2020675,-0.16599 0.3897021,-0.35362 0.5629063,-0.56291 l 3.0743308,-3.71662 c -0.00722,0 -3.4568204,-4.63315 -3.6372371,-4.79192 z"
+         style="display:inline;fill:#199053;fill-opacity:1;stroke-width:0.07216745" />
+      <path
+         style="display:inline;fill:#34cc5b;fill-opacity:1;stroke-width:0.07216745"
+         inkscape:connector-curvature="0"
+         id="XMLID_900_-8"
+         class="st3"
+         d="m 17.979325,275.1388 h -5.289874 c -0.930961,0 -1.789753,0.42578 -2.287707,1.13303 l -3.7815753,4.58263 -3.0743314,3.71662 c -0.1732042,0.20929 -0.3608413,0.38971 -0.5629062,0.56291 -1.3567513,1.49386 -3.55063943,1.41448 -4.8135699,-0.32476 l -0.7072407,-0.96703 v 0 0 0 c -0.1010349,2.22275 0.014433,4.45272 0.3536203,6.65383 0,0.007 0,0.007 0,0.0144 0.028867,0.16599 0.050517,0.33919 0.079384,0.50518 0.00722,0.0289 0.00722,0.0578 0.014433,0.0866 0.021648,0.14434 0.050517,0.29588 0.079384,0.44022 0.00722,0.0361 0.014433,0.0722 0.021648,0.10825 0.028867,0.14434 0.057734,0.28145 0.086601,0.42579 0.00722,0.036 0.014433,0.065 0.021648,0.10103 0.036084,0.15877 0.064951,0.31754 0.1010343,0.47631 0,0.0144 0.00722,0.0289 0.00722,0.0361 0.3536206,1.60933 1.50829976,2.77123 2.8794813,2.92278 0.014433,0 0.021651,0.007 0.036084,0.007 0.093818,0.007 0.1804186,0.0144 0.2742352,0.0144 0,0 0.00722,0 0.00722,0 v 0 c 2.3310105,0 3.6588908,-1.31344 4.3228304,-2.22276 l 12.744772,-17.42101 c 0.267019,-0.36805 -0.02167,-0.85157 -0.512388,-0.85157 z" />
+    </g>
+  </g>
+</svg>

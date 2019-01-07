@@ -1,0 +1,39 @@
+
+
+$base-font-size: 16px;
+
+$light: 100;
+$regular: 400;
+$medium: 500;
+$bold: 600;
+
+$text-color-heading: #666666;
+$text-color-subtitle: #7b7b7b;
+$text-color-body: #747474;
+$text-color-caption: #c1c1c1;
+
+$text-color-alternate-heading: white;
+$text-color-alternate-subtitle: #f9fdfb;
+$text-color-alternate-body: #f9fdfb;
+$text-color-alternate-caption: #f9fdfb;
+
+$color-kamon-green: #5ad57f;
+$color-kamon-apm-blue: #14c4b4;
+$color-kamon-apm-light-blue: #6ed6cc;
+$color-kamon-gray: #cccccc;
+$color-kamon-dark-green: #147242;
+
+
+@import "grid";
+@import "text";
+@import "button";
+@import "code";
+@import "docs";
+@import "hyperlinks";
+@import "elevation";
+@import "header";
+@import "footer";
+@import "backgrounds";
+@import "sections";
+@import "spacing";
+@import "pricing";

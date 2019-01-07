@@ -1,0 +1,69 @@
+.pricing {
+  .pricing-plan-heading {
+    position: relative;
+
+    &:after {
+      z-index: -1;
+      position: absolute;
+      background-color: inherit;
+      height: 40px;
+      width: 100%;
+      content: '';
+      transform: skewY(-5deg) translateY(-30px);
+    }
+  }
+
+  .pricing-plan {
+    height: 8rem;
+  }
+
+  .pricing-plan-price {
+    font-size: 5rem;
+    letter-spacing: -0.2rem;
+
+    sup {
+      font-size: 3rem;
+      top: -1.3rem;
+      left: 1rem;
+    }
+  }
+
+  .pricing-plan-unit {
+    font-size: 1.2rem;
+  }
+
+  .pricing-plan-term {
+    font-size: 1.2rem;
+    color: #9c9c9c;
+  }
+
+  .pricing-description-qty {
+    float: left;
+    width: 40%;
+    text-align: right;
+  }
+
+  .pricing-description-text {
+    padding-left: 0.35rem;
+    float: left;
+    width: 60%;
+    text-align: left;
+    color: #9c9c9c;
+  }
+
+  .enterprise-plan {
+    .pricing-plan-unit, .pricing-plan-term {
+      font-size: 1.5rem;
+    }
+
+    .pricing-description-qty, .pricing-description-text {
+      font-size: 1.2rem;
+      width: 50%;
+    }
+  }
+
+  .pricing-details {
+    height: 20rem;
+  }
+
+}

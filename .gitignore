@@ -3,6 +3,7 @@ _site
 target
 .idea
 .vscode
+.sass-cache
 
 # sbt specific
 dist/*
@@ -15,6 +16,7 @@ project/plugins/project/
 # Gradle
 .gradle
 build
+out
 
 # Scala-IDE specific
 .scala_dependencies

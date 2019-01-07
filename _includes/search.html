@@ -1,0 +1,23 @@
+
+<div class="search">
+  <input type="text" id="search-box" placeholder="Search..." autocomplete="off">
+  <ul id="search-results"></ul>
+
+</div>
+<script>
+  window.store = {
+    {% for post in site.pages %}
+      {% assign urlParts = post.url | split: "/" %}
+      "{{ post.url | slugify }}": {
+        "title": "{{ post.title | xml_escape }}",
+        "description": "{{ post.description | xml_escape }}",
+        "category": "{{ post.category | xml_escape }}",
+        "content": {{ post.content | markdownify | strip_html | strip_newlines | jsonify }},
+        "url": "{{ post.url | xml_escape  }}",
+        "product": "{{ urlParts[1]  }}" ,
+        "version": "{{ urlParts[2]  }}" 
+      }
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };//assign b = a[1] | split: '</h1>'
+</script>
