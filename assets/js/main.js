@@ -27,10 +27,11 @@ function findCurrentAnchor(hTags) {
   }
 
   var currentHtag = hTags[0]
+  var scrollTop = $(window).scrollTop()
   for(var i=0; i< hTags.length; i++){
     currentHtag = hTags[i]
     if(hTags.length > (i + 1)) {
-      if(getTopOffet($('#'+hTags[i + 1].id)) > $(window).scrollTop()) {
+      if(getTopOffet($('#'+hTags[i + 1].id)) > scrollTop) {
         break
       }
     }
@@ -46,10 +47,13 @@ function stickyMenuClass() {
 function toggleActiveAnchor() {
   var hTags = []
   $(":header[id]").each(function(i, tag){
-    hTags.push({
-      id: $(tag).attr('id'),
-      top: $(tag).offset().top - parseInt($(tag).css('marginTop'))
-    })
+    var id = $(tag).attr('id')
+    if($("#markdown-toc a[href$='#"+id+"']").length > 0) {
+      hTags.push({
+        id: id,
+        top: $(tag).offset().top - parseInt($(tag).css('marginTop'))
+      })
+    }
   })
 
   setActiveAnchor(findCurrentAnchor(hTags))
