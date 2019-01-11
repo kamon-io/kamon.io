@@ -45,7 +45,7 @@ layout: default
 <div class="container mt-5">
   <div class="row">
     {% if sidebar_data %}
-      <div id="docs-sidebar" class="col-3 p-0 docs-sidebar-nav">
+      <div id="docs-sidebar" class="docs-sidebar-nav">
         <ul>
           {% for topic in sidebar_data %}
             <li class="mb-4">
@@ -85,7 +85,7 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="{% if sidebar_data %}col-9 pl-5{% else %}col-12{% endif %} docs-content">
+    <div class="{% if sidebar_data %}pl-5 has-sidebar{% else %}col-12{% endif %} docs-content">
       {{ content }}
     </div>
   </div>

@@ -1,10 +1,17 @@
+function getTopOffet(element) {
+  return parseInt($(element).offset().top) - 200
+}
 function smoothScrollToAnchor(){
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault()
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+        var href = $.attr(this, 'href')
+        $('html, body').animate({
+          scrollTop: getTopOffet(href)
+        }, 500, function () {
+          window.location.hash = href;
         })
+        stickyMenuClass()
     })
   })
 }
@@ -15,14 +22,26 @@ function setActiveAnchor(tag) {
   }
 }
 function findCurrentAnchor(hTags) {
+  if ((window.innerHeight + window.scrollY + 10) >= document.body.offsetHeight) {
+    return hTags[hTags.length - 1]
+  }
+
   var currentHtag = hTags[0]
   for(var i=0; i< hTags.length; i++){
     currentHtag = hTags[i]
-    if(hTags.length > (i + 1) && hTags[i + 1].top > $(window).scrollTop()) {
-      break
+    if(hTags.length > (i + 1)) {
+      if(getTopOffet($('#'+hTags[i + 1].id)) > $(window).scrollTop()) {
+        break
+      }
     }
   }
   return currentHtag
+}
+function stickyMenuClass() {
+  $('body').removeClass('fixed-submenu')
+  if($('.docs-header-bar-tabs').position().top <= ($('.header-bar').outerHeight() + $(window).scrollTop()) ) {
+    $('body').addClass('fixed-submenu')
+  }
 }
 function toggleActiveAnchor() {
   var hTags = []
@@ -34,8 +53,10 @@ function toggleActiveAnchor() {
   })
 
   setActiveAnchor(findCurrentAnchor(hTags))
-  $(window).scroll(function(){
+  stickyMenuClass()
+  $(window).scroll(function(e){
     setActiveAnchor(findCurrentAnchor(hTags))
+    stickyMenuClass()
   })
 
   const normalizePath = function(path) {
