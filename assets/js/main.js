@@ -40,7 +40,8 @@ function findCurrentAnchor(hTags) {
 }
 function stickyMenuClass() {
   $('body').removeClass('fixed-submenu')
-  if($('.docs-header-bar-tabs').position().top <= ($('.header-bar').outerHeight() + $(window).scrollTop()) ) {
+  var position = $('.docs-header-bar-tabs').position()
+  if(position && position.top <= ($('.header-bar').outerHeight() + $(window).scrollTop()) ) {
     $('body').addClass('fixed-submenu')
   }
 }
@@ -228,3 +229,15 @@ $(document).ready(function() {
   searchInit()
   scrollElevation()
 })
+
+function toggleMenu() {
+  $('body').toggleClass('responsive-menu')
+}
+
+$('#menu-button').click(toggleMenu)
+
+function toggleSidebar() {
+  $('#docs-sidebar').toggleClass('active')
+}
+
+$('#sidebar-menu-button, #sidebar-close-button').click(toggleSidebar)

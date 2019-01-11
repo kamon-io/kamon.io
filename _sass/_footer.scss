@@ -9,3 +9,10 @@
     color: #fbfbfbd6;
   }
 }
+@media (max-width: 585px) {
+  .footer {
+    .container {
+      text-align: center;
+    }
+  }
+}
