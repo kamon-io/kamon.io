@@ -26,12 +26,20 @@
   }
 }
 
+.button-small {
+  padding: 0.5rem 1rem;
+}
+
 .button-ripple-orange {
   @include ripple-button(#ff8e49);
 }
 
 .button-ripple-green {
   @include ripple-button($color-kamon-green);
+}
+
+.button-ripple-light-green {
+  @include ripple-button($color-kamon-light-green);
 }
 
 .button-ripple-blue {
