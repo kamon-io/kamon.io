@@ -11,4 +11,35 @@ body {
   pre code {
     font-size: 0.9rem;
   }
+
+  .code-window-container {
+    .learn-more-button {
+      position: absolute;
+      bottom: 1.4rem;
+      right: 0.7rem;
+    }
+  }
+
+  .code-window {
+    $window-circle-size: 1rem;
+
+    .code-window-heading {
+      height: 2rem;
+      background-color: #3a3a3a;
+    }
+
+    .code-window-circle {
+      background-color: #808080;
+      height: $window-circle-size;
+      width: $window-circle-size;
+      border-radius: $window-circle-size / 2;
+    }
+
+    pre[class*="language-"] {
+      min-height: 25rem;
+      padding: 2rem;
+      margin: 0rem;
+      border-radius: 0rem;
+    }
+  }
 }
