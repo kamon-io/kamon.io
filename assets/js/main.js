@@ -38,13 +38,7 @@ function findCurrentAnchor(hTags) {
   }
   return currentHtag
 }
-function stickyMenuClass() {
-  $('body').removeClass('fixed-submenu')
-  var position = $('.docs-header-bar-tabs').position()
-  if(position && position.top <= ($('.header-bar').outerHeight() + $(window).scrollTop()) ) {
-    $('body').addClass('fixed-submenu')
-  }
-}
+
 function toggleActiveAnchor() {
   var hTags = []
   $(":header[id]").each(function(i, tag){
@@ -58,10 +52,8 @@ function toggleActiveAnchor() {
   })
 
   setActiveAnchor(findCurrentAnchor(hTags))
-  stickyMenuClass()
   $(window).scroll(function(e){
     setActiveAnchor(findCurrentAnchor(hTags))
-    stickyMenuClass()
   })
 
   const normalizePath = function(path) {
@@ -202,8 +194,12 @@ function scrollElevation() {
 
     if (scroll >= 50) {
         $(".header-bar").addClass("elevation-header");
-    } else {
+        $("body").addClass("has-scroll");
+        $("#docs-title").hide()
+      } else {
         $(".header-bar").removeClass("elevation-header");
+        $("body").removeClass("has-scroll");
+        $("#docs-title").show()
     }
   });
 }

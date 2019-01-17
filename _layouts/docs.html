@@ -10,9 +10,9 @@ layout: default
 
 <div class="docs-header-bar">
   <div class="container">
-    <div class="row">
+    <div id="docs-title" class="row">
       <div class="col mt-4">
-        <h3>Documentation</h3>
+        <h4>Documentation</h4>
       </div>
     </div>
     <div class="row mt-2">
@@ -45,30 +45,7 @@ layout: default
 <div class="container mt-5 docs-container">
   <div class="row">
     {% if sidebar_data %}
-      <div id="docs-sidebar" class="docs-sidebar-nav">
-        <!-- <ul class="docs-tabs">
-          <li>
-            <div id="sidebar-close-button"></div>
-          </li>
-          <li>
-            <a class="{% if current_section == 'overview' %}active{% endif %}" href="/docs/{{current_version}}/overview/">OVERVIEW</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'guides' %}active{% endif %}" href="/docs/{{current_version}}/guides/">GUIDES</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'core' %}active{% endif %}" href="/docs/{{current_version}}/core/">CORE</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'instrumentation' %}active{% endif %}" href="/docs/{{current_version}}/instrumentation/">INSTRUMENTATION</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'reporters' %}active{% endif %}" href="/docs/{{current_version}}/reporters/">REPORTERS</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'apm' %}active{% endif %}" href="/docs/{{current_version}}/apm/">APM</a>
-          </li>
-        </ul> -->
+      <div id="docs-sidebar" class="col docs-sidebar-nav d-none d-md-block">
         <ul class="docs-sections">
           {% for topic in sidebar_data %}
             <li class="mb-4">
@@ -108,8 +85,7 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="{% if sidebar_data %}pl-5 has-sidebar{% else %}col-12{% endif %} docs-content">
-      <div id="sidebar-menu-button"><span></span></div>
+    <div class="{% if sidebar_data %}col pl-0 pl-md-5 {% else %}col-12{% endif %} docs-content">
       {{ content }}
     </div>
   </div>
