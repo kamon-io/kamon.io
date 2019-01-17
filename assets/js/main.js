@@ -222,12 +222,44 @@ function moveDocumentationTocToSidebar() {
   }
 }
 
+function scrollOnDocsSidebar() {
+  const adjustSidebarMaxHeight = function() {
+    const viewportHeight = window.innerHeight
+    const contentHeight = $(document).height()
+    const footerHeight = $("#layout-footer").height()
+    const currentScroll = $(window).scrollTop()
+    var visibleFooterArea = (currentScroll + viewportHeight) - (contentHeight - footerHeight)
+    if(visibleFooterArea < 0)
+      visibleFooterArea = 0
+
+    const topMargin = currentScroll > 50 ? 200 : 265
+    const availableSidebarHeight = viewportHeight - visibleFooterArea - topMargin
+    const sidebarHeight = $("#docs-sidebar").children().height()
+
+
+    if(availableSidebarHeight < sidebarHeight) {
+      $("#docs-sidebar").css({ maxHeight: availableSidebarHeight })
+    } else {
+      $("#docs-sidebar").css({ maxHeight: "" })
+    }
+  }
+
+  if($("#docs-sidebar").length && $("#layout-footer").length) {
+    adjustSidebarMaxHeight()
+
+    $(window).scroll(function() {
+      adjustSidebarMaxHeight()
+    })
+  }
+}
+
 $(document).ready(function() {
   moveDocumentationTocToSidebar()
   smoothScrollToAnchor()
   toggleActiveAnchor()
   searchInit()
   scrollElevation()
+  scrollOnDocsSidebar()
 })
 
 function toggleMenu() {

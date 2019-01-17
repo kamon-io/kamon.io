@@ -46,7 +46,7 @@ layout: default
   <div class="row">
     {% if sidebar_data %}
       <div id="docs-sidebar" class="docs-sidebar-nav">
-        <ul class="docs-tabs">
+        <!-- <ul class="docs-tabs">
           <li>
             <div id="sidebar-close-button"></div>
           </li>
@@ -68,7 +68,7 @@ layout: default
           <li>
             <a class="{% if current_section == 'apm' %}active{% endif %}" href="/docs/{{current_version}}/apm/">APM</a>
           </li>
-        </ul>
+        </ul> -->
         <ul class="docs-sections">
           {% for topic in sidebar_data %}
             <li class="mb-4">

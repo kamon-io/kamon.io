@@ -1,7 +1,10 @@
 .footer {
   color: #9E9E9E;
   z-index: 1;
-  position: relative;
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  right: 0rem;
 
   .footer-heading {
     font-weight: $bold;
