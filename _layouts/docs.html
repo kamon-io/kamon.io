@@ -16,7 +16,7 @@ layout: default
       </div>
     </div>
     <div class="row mt-2">
-      <div class="col docs-header-bar-tabs">
+      <div id="docs-navigation-links" class="col docs-header-bar-tabs">
         <ul>
           <li>
             <a class="{% if current_section == 'overview' %}active{% endif %}" href="/docs/{{current_version}}/overview/">OVERVIEW</a>
@@ -45,7 +45,7 @@ layout: default
 <div class="container mt-5 docs-container">
   <div class="row">
     {% if sidebar_data %}
-      <div id="docs-sidebar" class="col docs-sidebar-nav d-none d-md-block">
+      <div id="docs-sidebar" class="col docs-sidebar-nav d-none d-lg-block">
         <ul class="docs-sections">
           {% for topic in sidebar_data %}
             <li class="mb-4">
@@ -85,7 +85,7 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="{% if sidebar_data %}col pl-0 pl-md-5 {% else %}col-12{% endif %} docs-content">
+    <div class="{% if sidebar_data %}col pl-lg-5 {% else %}col-12{% endif %} docs-content">
       {{ content }}
     </div>
   </div>

@@ -45,7 +45,7 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 code_examples_folder: examples
-
+host: 0.0.0.0
 
 # source: 'website'
 # plugins_dir: 'website/jekyll/plugins'

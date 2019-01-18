@@ -2,39 +2,40 @@
   <div class="container">
     <div class="row h-100 align-items-center justify-content-between no-gutters">
       <div class="col">
+        <div id="mobile-sidebar-button" class="float-left mr-5 pt-3 d-inline-block d-lg-none">
+          <span></span>
+        </div>
+
         <a href="/">
           <img class="logo h-100 float-left" alt="Kamino" src="/assets/img/kamon-logo.svg">
         </a>
       </div>
       <div class="col-auto menu-items">
-        <a href="/instrumentation/">
+        <a href="/instrumentation/" class="d-none d-lg-inline">
           <div class="header-bar-item">
             INSTRUMENT
           </div>
         </a>
-        <a href="/apm/">
+        <a href="/apm/" class="d-none d-lg-inline">
           <div class="header-bar-item">
             MONITOR & DEBUG
           </div>
         </a>
-        <a href="/docs/latest/overview/">
+        <a href="/docs/latest/overview/" class="d-none d-lg-inline">
           <div class="header-bar-item">
             LEARN
           </div>
         </a>
-        <a href="/apm/pricing/">
+        <a href="/apm/pricing/" class="d-none d-lg-inline">
           <div class="header-bar-item">
             APM PRICING
           </div>
         </a>
         <a href="/docs/latest/overview/">
-          <span class="ml-4 button button-ripple-green">
+          <span class="ml-1 ml-lg-4 button button-ripple-green d-none d-sm-inline-block">
             START INSTRUMENTING
           </span>
         </a>
-      </div>
-      <div id="menu-button">
-        <span></span>
       </div>
     </div>
   </div>

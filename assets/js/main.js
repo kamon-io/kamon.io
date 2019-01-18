@@ -228,6 +228,7 @@ function scrollOnDocsSidebar() {
     if(visibleFooterArea < 0)
       visibleFooterArea = 0
 
+    const docsSidebarSelector = "#docs-sidebar:not(.mobile-docs-sidebar)"
     const topMargin = currentScroll > 50 ? 200 : 265
     const availableSidebarHeight = viewportHeight - visibleFooterArea - topMargin
     const sidebarHeight = $("#docs-sidebar").children().height()
@@ -249,6 +250,57 @@ function scrollOnDocsSidebar() {
   }
 }
 
+function toggleMobileSidebar() {
+  $('#mobile-sidebar-button').click(function(event) {
+    $('#mobile-sidebar').toggleClass('open')
+    event.preventDefault()
+  })
+
+  $(window).click(function(event) {
+    if($("#mobile-sidebar.open").length) {
+      const clickTarget = $(event.target)
+
+      if(event.target.id != "mobile-sidebar-button"&& !clickTarget.parents("#mobile-sidebar-button").length) {
+        if(event.target.id != "mobile-sidebar" && !clickTarget.parents("#mobile-sidebar").length) {
+          console.log("I should close: ", event.target.id)
+          $('#mobile-sidebar').removeClass('open')
+        }
+      }
+
+    } else {
+      console.log("The sidebar was not open, nothing matters")
+    }
+  })
+}
+
+function copySidebarContentForMobile() {
+  const docsNavigationLinks = $("#docs-navigation-links > ul")
+  const mobileDocsNavigationContainer = $("#docs-navigation-container")
+  const mobileDocsSidebarContainer = $("#docs-sidebar-container")
+
+  if(docsNavigationLinks.length && mobileDocsNavigationContainer.length) {
+    const copyOfLinks = docsNavigationLinks.clone()
+    mobileDocsNavigationContainer.append("<div class=\"section-title\">Documentation</div>")
+    mobileDocsNavigationContainer.append(copyOfLinks)
+
+    const docsSidebar = $("#docs-sidebar")
+    if(docsSidebar.length && mobileDocsSidebarContainer.length) {
+      const copyOfDocsSidebar = docsSidebar.clone()
+      copyOfDocsSidebar.attr("id", "mobile-docs-sidebar")
+      copyOfDocsSidebar.addClass("mobile-docs-sidebar")
+      copyOfDocsSidebar.removeClass("col")
+      copyOfDocsSidebar.removeClass("d-none")
+      copyOfDocsSidebar.removeClass("d-lg-block")
+      mobileDocsSidebarContainer.append(copyOfDocsSidebar)
+    } else {
+      mobileDocsSidebarContainer.remove()
+    }
+  } else {
+    mobileDocsNavigationContainer.remove()
+    mobileDocsSidebarContainer.remove()
+  }
+}
+
 $(document).ready(function() {
   moveDocumentationTocToSidebar()
   smoothScrollToAnchor()
@@ -256,16 +308,6 @@ $(document).ready(function() {
   searchInit()
   scrollElevation()
   scrollOnDocsSidebar()
+  toggleMobileSidebar()
+  copySidebarContentForMobile()
 })
-
-function toggleMenu() {
-  $('body').toggleClass('responsive-menu')
-}
-
-$('#menu-button').click(toggleMenu)
-
-function toggleSidebar() {
-  $('#docs-sidebar').toggleClass('active')
-}
-
-$('#sidebar-menu-button, #sidebar-close-button').click(toggleSidebar)
