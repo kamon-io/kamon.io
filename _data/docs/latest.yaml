@@ -17,6 +17,10 @@ guides:
         path: /guides/getting-started/
       - name: Setting up the Agent
         path: /guides/setting-up-the-agent/
+  - topic: Frameworks
+    pages:
+      - name: Elementary Akka Setup
+        path: /guides/frameworks/elementary-akka-setup/
 
 instrumentation:
   - topic: Automatic Instrumentation
