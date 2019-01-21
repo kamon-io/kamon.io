@@ -5,8 +5,8 @@ layout: docs
 
 {% include toc.html %}
 
-Akka Instrumentation
-====================
+Akka Instrumentation Overview
+=============================
 
 <p class="alert alert-info">
 You must start your application with the AspectJ Weaver agent when using any Akka module.

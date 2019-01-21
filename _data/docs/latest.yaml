@@ -23,7 +23,7 @@ guides:
         path: /guides/frameworks/elementary-akka-setup/
 
 instrumentation:
-  - topic: Automatic Instrumentation
+  - topic: Available Instrumentation
     pages:
       - name: Akka
         pages:

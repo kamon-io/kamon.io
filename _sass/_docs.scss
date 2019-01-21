@@ -15,10 +15,9 @@
       a {
         color: #b1b1b1;
         display: inline-block;
-        font-weight: 600;
-        line-height: 2.5rem;
+        line-height: 2rem;
         padding: 0rem 1rem;
-        border-bottom: 0.3rem solid transparent;
+        border-bottom: 0.2rem solid transparent;
 
         &.active, &.active:hover {
           color: inherit;
