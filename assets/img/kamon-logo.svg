@@ -17,7 +17,7 @@
    viewBox="0 0 960 283.9"
    style="enable-background:new 0 0 960 283.9;"
    xml:space="preserve"
-   sodipodi:docname="kamon-logo-latest.svg"
+   sodipodi:docname="kamon-logo.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
    id="metadata923"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
@@ -31,15 +31,15 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="2560"
-   inkscape:window-height="565"
+   inkscape:window-width="959"
+   inkscape:window-height="1055"
    id="namedview919"
    showgrid="false"
    inkscape:zoom="0.98958333"
-   inkscape:cx="358.63596"
+   inkscape:cx="108.02543"
    inkscape:cy="121.38869"
-   inkscape:window-x="0"
-   inkscape:window-y="849"
+   inkscape:window-x="960"
+   inkscape:window-y="0"
    inkscape:window-maximized="0"
    inkscape:current-layer="XMLID_899_-9" />
 <style
@@ -110,4 +110,4 @@
      class="st3"
      id="XMLID_900_-8"
      inkscape:connector-curvature="0"
-     style="fill:#14c441;fill-opacity:0.8627451" /></g></svg>
+     style="fill:#34cc5b;fill-opacity:1" /></g></svg>
