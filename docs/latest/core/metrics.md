@@ -29,7 +29,7 @@ on Java), optionally *refine* it with tags and then you are ready to record metr
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:creating-metrics label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:creating-metrics label:"Scala" %}
 {% endcode_example %}
 
   1. Simple metrics that do not require tags can be looked up and used in one-liners. `(1)`
@@ -62,7 +62,7 @@ Counters can only do one thing: increment. You can either `increment()` by one o
 times at once.
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-counters label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-counters label:"Scala" %}
 {% endcode_example %}
 
 
@@ -72,7 +72,7 @@ A gauge can be `set(value)` to as specific value, `increment()`, `increment(time
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-gauges label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-gauges label:"Scala" %}
 {% endcode_example %}
 
 
@@ -83,7 +83,7 @@ and `record(times)`.
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-histograms label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-histograms label:"Scala" %}
 {% endcode_example %}
 
 
@@ -94,7 +94,7 @@ back a `StartedTimer` instance that can be `stop()`ed whenever the operation you
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-timers label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-timers label:"Scala" %}
 {% endcode_example %}
 
 
@@ -106,7 +106,7 @@ similar to those offered by gauges, namely `increment()`, `increment(times)`, `d
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-range-samplers label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-range-samplers label:"Scala" %}
 {% endcode_example %}
 
 [1]: ../../advanced/metric-instruments/

@@ -22,14 +22,14 @@ something replies, fails or is unavailable, your future will always be completed
 a piece of code like the following making use of the ask pattern:
 
 {% code_example %}
-{%   language scala kamon-akka-examples/src/main/scala/kamon/akka/examples/scala/AskPatternTimeoutWarning.scala tag:simple-ask %}
+{%   language scala instrumentation/akka/src/main/scala/kamon/examples/akka/scala/AskPatternTimeoutWarning.scala tag:simple-ask %}
 {% endcode_example %}
 
 What happens when the timeout is reached and there is no reply from the actor? well, your future is completed with an exception that looks
 like this one:
 
 {% code_example %}
-{%   language text kamon-akka-examples/src/main/scala/kamon/akka/examples/scala/AskPatternTimeoutWarning.scala tag:typical-ask-timeout-exception label:"Typical Exception Stacktrace" %}
+{%   language text instrumentation/akka/src/main/scala/kamon/examples/akka/scala/AskPatternTimeoutWarning.scala tag:typical-ask-timeout-exception label:"Typical Exception Stacktrace" %}
 {% endcode_example %}
 
 If your application code is making use of the ask pattern then you should be familiar (and probably not friends) with
@@ -54,7 +54,7 @@ When the warning setting is set to `lightweight`, Kamon will log a simple warnin
 (if available) from which the ask that timed out was called. The message for the example above looks like this:
 
 {% code_example %}
-{%   language text kamon-akka-examples/src/main/scala/kamon/akka/examples/scala/AskPatternTimeoutWarning.scala tag:lightweight-warning label:"Lightweight Warning" %}
+{%   language text instrumentation/akka/src/main/scala/kamon/examples/akka/scala/AskPatternTimeoutWarning.scala tag:lightweight-warning label:"Lightweight Warning" %}
 {% endcode_example %}
 
 This approach works nicely when you are using the ask pattern directly in your codebase and thanks to some AspectJ features
@@ -80,7 +80,7 @@ additional CPU and memory.
 When using the heavyweight mode, the logged warning message looks like this:
 
 {% code_example %}
-{%   language text kamon-akka-examples/src/main/scala/kamon/akka/examples/scala/AskPatternTimeoutWarning.scala tag:heavyweight-warning label:"Heavyweight Warning" %}
+{%   language text instrumentation/akka/src/main/scala/kamon/examples/akka/scala/AskPatternTimeoutWarning.scala tag:heavyweight-warning label:"Heavyweight Warning" %}
 {% endcode_example %}
 
 

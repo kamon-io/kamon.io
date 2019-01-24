@@ -34,7 +34,7 @@ Spans are created by calling the `buildSpan(operationName)` method on Kamon's co
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:creating-spans label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:creating-spans label:"Scala" %}
 {% endcode_example %}
 
 The `buildSpan(operationName)` method will return a `SpanBuilder` instance that can be used to customize the Span to a
@@ -66,7 +66,7 @@ Kamon-generated Spans. Tags can be added on a `SpanBuilder` or `Span` instance. 
 no longer be added.
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:adding-tags label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:adding-tags label:"Scala" %}
 {% endcode_example %}
 
 
@@ -82,7 +82,7 @@ short and concise names for marks but you are free to add anything you would lik
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:adding-marks label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:adding-marks label:"Scala" %}
 {% endcode_example %}
 
 
@@ -108,7 +108,7 @@ If necessary, metrics collection can be toggled by calling `enableMetrics()` and
 or `Span` instance. Calling these functions will only have effect until the Span is finished.
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:span-metrics label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:span-metrics label:"Scala" %}
 {% endcode_example %}
 
 
@@ -121,7 +121,7 @@ the current Span can be accessed eiher by retrieving it from the current Context
 function, the later is just a shorthand syntax for the former.
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:current-span label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:current-span label:"Scala" %}
 {% endcode_example %}
 
 Most of the time Spans will be automatically managed by Kamon; Kamon will determine when to start and finish a Span and
@@ -130,7 +130,7 @@ manually set a Span as the current Span, the `Kamon.withSpan(...)` helper functi
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:with-span-block label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:with-span-block label:"Scala" %}
 {% endcode_example %}
 
 In the code snippet above the Spans are set as the current Span only while the blocks of code provided to

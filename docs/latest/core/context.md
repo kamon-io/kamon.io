@@ -34,7 +34,7 @@ pieces of information required for Context propagation to work:
 Keys are created by calling the appropriate methods on the `Key` companion object:
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:context-keys label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:context-keys label:"Scala" %}
 {% endcode_example %}
 
 There are three keys defined in the example above:
@@ -55,7 +55,7 @@ As mentioned above, Context instances are immutable. Adding a key-value pair to 
 a new Context that includes or overrides a given key. Values can be retrived by calling `.get(key)` on any Context instance:
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:creating-a-context label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:creating-a-context label:"Scala" %}
 {% endcode_example %}
 
 
@@ -86,7 +86,7 @@ A `Context` instance can become the current context by using any of the followin
   - `Kamon.withSpan(span) { ... }` is similar to the above but explicitly works with the Span context Key.
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:storing-a-context label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:storing-a-context label:"Scala" %}
 {% endcode_example %}
 
 It is recommended to use the `Kamon.withXxx()` variants as they will ensure that Scopes will be closed appropriately.
@@ -108,7 +108,7 @@ The codecs are configurable under the `kamon.context.codecs` section. Here is an
 which sets the codecs for propagating the tracer's Span:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/core-basics/src/main/resources/application.conf tag:context-codecs label:"Scala" %}
+{%   language typesafeconfig reference/core/src/main/resources/application.conf tag:context-codecs label:"Scala" %}
 {% endcode_example %}
 
 
@@ -119,7 +119,7 @@ of binary mediums, but one additional piece of configuration is required for HTT
 be used:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/core-basics/src/main/resources/application.conf tag:string-keys label:"Scala" %}
+{%   language typesafeconfig reference/core/src/main/resources/application.conf tag:string-keys label:"Scala" %}
 {% endcode_example %}
 
 
@@ -129,7 +129,7 @@ When in need to create a custom codec the `Codecs.ForEntry[T]` trait must be imp
 name for the implementation must be provided via configuration. The trait looks like the following:
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:creating-a-codec label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:creating-a-codec label:"Scala" %}
 {% endcode_example %}
 
 A few important details to know when creating custom codecs:

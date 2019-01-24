@@ -23,9 +23,9 @@ Add the `kamon-core` dependency using your build system of choice. This dependen
 metrics and distributed tracing APIs required to instrument any application running on the JVM.
 
 {% code_example %}
-{%   language scala start/install/sbt/build.sbt tag:base-kamon-dependencies label:"SBT" %}
-{%   language groovy start/install/gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
-{%   language markup start/install/maven/pom.xml tag:base-kamon-dependencies label:"Maven" %}
+{%   language scala guides/install/sbt/build.sbt tag:base-kamon-dependencies label:"SBT" %}
+{%   language groovy guides/install/gradle/build.gradle tag:base-kamon-dependencies label:"Gradle" %}
+{%   language markup guides/install/maven/pom.xml tag:base-kamon-dependencies label:"Maven" %}
 {% endcode_example %}
 
 Kamon is available for Java 8+. All modules are published for Scala 2.10, 2.11 and 2.12 (when possible). If you are not
@@ -47,9 +47,9 @@ During your application startup procedure you must call `Kamon.loadModules()`. T
 available in the classpath and start them appropriately.
 
 {% code_example %}
-{%   language scala start/install/sbt/src/main/scala/kamon/example/Start.scala tag:load-modules %}
-{%   language kotlin start/install/gradle/src/main/kotlin/kamon/example/Start.kt tag:load-modules %}
-{%   language java start/install/maven/src/main/java/kamon/example/Start.java tag:load-modules %}
+{%   language scala guides/install/sbt/src/main/scala/kamon/example/Start.scala tag:load-modules %}
+{%   language kotlin guides/install/gradle/src/main/kotlin/kamon/example/Start.kt tag:load-modules %}
+{%   language java guides/install/maven/src/main/java/kamon/example/Start.java tag:load-modules %}
 {% endcode_example %}
 
 Take a look at the [configuration section][configuration] if you need finer control overwhat modules are loaded during

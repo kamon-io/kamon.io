@@ -16,7 +16,7 @@ randomly selects a greeter and sends a message to it, it looks like this:
 
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:message-loop label:"Message Loop" %}
+{%   language scala guides/frameworks/elementary-akka-setup/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:message-loop label:"Message Loop" %}
 {% endcode_example %}
 
 Other than that, the application is roughly the same. We will take this application, add Kamon to it, publish metrics to
@@ -27,7 +27,7 @@ that can be scraped with Prometheus and send trace data to Zipkin. Let's get sta
 This examples is using Akka 2.5, we will need to add `kamon-akka-2.5` to our build as shown here:
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/build.sbt tag:base-dependencies label:"Adding the Dependencies" %}
+{%   language scala guides/frameworks/elementary-akka-setup/build.sbt tag:base-dependencies label:"Adding the Dependencies" %}
 {% endcode_example %}
 
 ## Setting up the Agent
@@ -38,7 +38,7 @@ working.
 
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/project/plugins.sbt tag:add-aspectj label:"Setting up the AspectJ Weaver" %}
+{%   language scala guides/frameworks/elementary-akka-setup/project/plugins.sbt tag:add-aspectj label:"Setting up the AspectJ Weaver" %}
 {% endcode_example %}
 
 ## Configure the Akka Filters
@@ -55,7 +55,7 @@ All that can be achieved by simply providing the right filters under `kamon.util
 as shown below:
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/src/main/resources/application.conf tag:filters label:"application.conf" %}
+{%   language scala guides/frameworks/elementary-akka-setup/src/main/resources/application.conf tag:filters label:"application.conf" %}
 {% endcode_example %}
 
 ## Start Reporting your Data
@@ -64,7 +64,7 @@ The last step in the process: start reporting your data! You can register as man
 `Kamon.addReporter(...)` function:
 
 {% code_example %}
-{%   language scala kamon-1.x/recipes/monitoring-akka-quickstart-scala/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:start-reporting label:"Start Reporting" %}
+{%   language scala guides/frameworks/elementary-akka-setup/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:start-reporting label:"Start Reporting" %}
 {% endcode_example %}
 
 That's it! Now you can simply `sbt run` the application and after a few seconds you will get the Prometheus metrics

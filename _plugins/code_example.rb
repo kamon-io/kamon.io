@@ -78,11 +78,10 @@ module Jekyll
       version_dir = context.registers[:page]['path'].split(/\//)[1]
       examples_dir = code_dir + "/docs/" + version_dir + "/examples"
 
-      puts "Searching for #{@file} at #{examples_dir} and version is #{version_dir} for the path: #{context.registers[:page]['path']}"
       file_path = Pathname.new(examples_dir + "/" + @file).expand_path()
 
       unless file_path.file?
-        puts "File #{file_path} could not be found".yellow
+        puts "File #{file_path} could not be found. Requested from #{context.registers[:page]['path']}".yellow
         return "File #{file_path} could not be found".yellow
       end
 
