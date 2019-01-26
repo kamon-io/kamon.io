@@ -31,6 +31,10 @@
   }
 }
 
+.feature-description {
+  font-size: 1.1rem;
+}
+
 .api-section-toggle {
   font-size: 1rem;
   margin-top: 0.7rem;
@@ -144,4 +148,21 @@
     content: '';
     transform: skewY(0.5deg) translateY(-10px);
   }
+}
+
+#apm-hdr-image {
+  max-height: 350px;
+}
+
+#apm-link-up {
+  position: absolute;
+  bottom: 175px;
+  left: -110px;
+}
+
+#apm-link-down {
+  position: absolute;
+  top: 40px;
+  left: calc(100% + 20px);
+  transform: rotate(180deg)
 }
