@@ -6,7 +6,7 @@ layout: default
 {% assign current_section = path_sections[3] | remove_first: '.html' %}
 {% assign sidebar_data = site.data.docs[current_version][current_section] %}
 {% assign version_prefix = page.path | split: '/' | slice: 0, 2 | join: '/' %}
-{% assign current_pretty_path = page.url | remove_first: '.html' | append: '/' %}
+{% assign current_pretty_path = page.url | remove_first: '.html' %}
 
 <div class="docs-header-bar">
   <div class="container">

@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Instrumentation > Akka > Context Propagation
 layout: docs
+redirect_from:
+  - /documentation/0.6.x/kamon-akka/automatic-trace-context-propagation/
+  - /documentation/1.x/instrumentation/akka/context-propagation/
 ---
 
 {% include toc.html %}

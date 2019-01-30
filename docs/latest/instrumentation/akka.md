@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Instrumentation > Akka
 layout: docs
+redirect_from:
+  - /documentation/1.x/instrumentation/akka/
+  - /documentation/0.6.x/kamon-akka/overview/
 ---
 
 {% include toc.html %}

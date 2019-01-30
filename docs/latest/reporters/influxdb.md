@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Reporters > InfluxDB
 layout: docs
+redirect_from:
+  - /documentation/1.x/reporters/influxdb/
+  - /documentation/0.6.x/kamon-influxdb/overview/
 ---
 
 {% include toc.html %}

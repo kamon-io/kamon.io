@@ -4,6 +4,8 @@ title: Get started quicker with our docker image
 date: 2014-04-27
 categories: teamblog, posts
 tags: announcement
+redirect_from:
+  - /teamblog/2014/04/27/get-started-quicker-with-our-docker-image/
 ---
 
 We are very excited to see people adopting Kamon as their monitoring tool for reactive applications and, of course, we

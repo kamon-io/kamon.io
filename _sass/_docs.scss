@@ -77,6 +77,7 @@ $sidebarWidth: 250px;
     line-height: $item-height;
 
     &.active {
+      color: #757575;
       font-weight: 600;
     }
 
@@ -104,11 +105,12 @@ $sidebarWidth: 250px;
 
   .level-two {
     padding-left: 1rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .level-three {
     padding-left: 1.5rem;
+    color: #9c9c9c;
   }
 
   .level-two-margin {

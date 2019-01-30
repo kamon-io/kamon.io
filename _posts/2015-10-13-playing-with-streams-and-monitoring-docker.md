@@ -3,6 +3,8 @@ layout: post
 title: 'Playing with Streams and Monitoring Docker'
 date: 2015-10-13
 categories: teamblog, posts
+redirect_from:
+  - /teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/
 ---
 
 In this post we’ll show how to collect system metrics from Docker containers, making use of a very simple application

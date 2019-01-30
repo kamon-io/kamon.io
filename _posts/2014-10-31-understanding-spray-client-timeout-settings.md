@@ -3,6 +3,8 @@ layout: post
 title: Understanding Spray Client Timeout Settings
 date: 2014-11-02
 categories: teamblog, posts
+redirect_from:
+  - /teamblog/2014/11/02/understanding-spray-client-timeout-settings/
 ---
 
 If you have ever used spray-client in a real world application you certainly must have come to the point of setting
@@ -32,7 +34,7 @@ spray.can {
 
     # The time period within which the TCP connecting process must be completed.
     # Set to `infinite` to disable.
-    connecting-timeout = 10s  
+    connecting-timeout = 10s
   }
 
   host-connector {
@@ -48,7 +50,7 @@ spray.can {
     # If this setting is enabled, the `HttpHostConnector` pipelines requests
     # across connections, otherwise only one single request can be "open"
     # on a particular HTTP connection.
-    pipelining = off  
+    pipelining = off
 
   }
 }

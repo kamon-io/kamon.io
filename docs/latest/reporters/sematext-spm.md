@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Reporters > Sematext
 layout: docs
+redirect_from:
+  - /documentation/0.6.x/kamon-sematext-spm/overview/
+  - /documentation/1.x/reporters/sematext/
 ---
 
 {% include toc.html %}

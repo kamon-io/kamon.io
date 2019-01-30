@@ -1,6 +1,8 @@
 ---
 title: Install Kamon
 layout: docs
+redirect_from:
+  - /documentation/1.x/recipes/monitoring-akka-quickstart/
 ---
 
 {% include toc.html %}

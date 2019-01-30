@@ -1,6 +1,9 @@
 ---
 title: Install Kamon
 layout: docs
+redirect_from:
+  - /documentation/1.x/core/basics/context/
+  - /documentation/0.6.x/kamon-core/tracing/trace-context-manipulation/
 ---
 
 {% include toc.html %}

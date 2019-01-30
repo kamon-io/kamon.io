@@ -3,6 +3,8 @@ layout: post
 title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
 date: 2015-08-08
 categories: teamblog, posts
+redirect_from:
+  - /teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/
 ---
 
 In this post we’ll show how to take a simple Scalatra project and setup up basic monitoring with Kamon. This is a really
@@ -60,7 +62,7 @@ provided methods.
 
 {% code_block scala %}
 class KamonServlet extends ScalatraServlet with KamonSupport with FutureSupport {
-  ...  
+  ...
   get("/time") {
     time("time") {
       Thread.sleep(Random.nextInt(100))

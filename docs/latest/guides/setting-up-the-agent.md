@@ -2,6 +2,8 @@
 title: Setting up the Instrumentation Agent
 layout: docs
 tags: core, docs
+redirect_from:
+  - /documentation/1.x/recipes/adding-the-aspectj-weaver/
 ---
 
 {% include toc.html %}

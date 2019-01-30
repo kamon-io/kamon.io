@@ -1,6 +1,8 @@
 ---
 title: Kamon > Documentation > Reporters > Prometheus
 layout: docs
+redirect_from:
+  - /documentation/1.x/reporters/prometheus/
 ---
 
 Exposing Metrics for Prometheus

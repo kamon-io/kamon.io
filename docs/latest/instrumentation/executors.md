@@ -1,6 +1,8 @@
 ---
 title: Kamon > Documentation > Instrumentation > Executor Service Metrics
 layout: docs
+redirect_from:
+  - /documentation/1.x/instrumentation/executor-service/
 ---
 
 {% include toc.html %}

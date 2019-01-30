@@ -1,6 +1,8 @@
 ---
 title: Kamon > Documentation > Instrumentation > Akka > Message Tracing
 layout: docs
+redirect_from:
+  - /documentation/1.x/instrumentation/akka/message-tracing/
 ---
 
 {% include toc.html %}

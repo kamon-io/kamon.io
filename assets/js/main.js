@@ -208,7 +208,9 @@ function moveDocumentationTocToSidebar() {
   var tocContainer = $("#docs-sidebar #toc-container")
   var markdownToc = $("#markdown-toc")
 
+  console.log("evaluating")
   if(tocContainer.length) {
+    console.log("Trying to move the thing")
     if(markdownToc.length) {
       markdownToc.removeClass("d-none")
       markdownToc.appendTo(tocContainer)

@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Reporters > StatsD
 layout: docs
+redirect_from:
+  - /documentation/0.6.x/kamon-statsd/overview/
+  - /documentation/1.x/reporters/statsd/
 ---
 
 {% include toc.html %}

@@ -3,6 +3,8 @@ layout: post
 title: Quick look at Kamon 0.4.0
 date: 2015-03-13
 categories: teamblog, posts
+redirect_from:
+  - /teamblog/2015/03/13/quick-look-at-kamon-0.4.0/
 ---
 
 We have been working on Kamon for almost two years now and during that time we have seen it evolve from "the thing for

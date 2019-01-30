@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Reporters > Datadog
 layout: docs
+redirect_from:
+  - /documentation/1.x/reporters/datadog/
+  - /documentation/0.6.x/kamon-datadog/overview/
 ---
 
 {% include toc.html %}

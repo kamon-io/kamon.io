@@ -1,6 +1,10 @@
 ---
 title: Install Kamon
 layout: docs
+redirect_from:
+  - /documentation/0.6.x/kamon-core/tracing/core-concepts/
+  - /documentation/0.6.x/kamon-core/tracing/trace-metrics/
+  - /documentation/1.x/core/basics/tracing/
 ---
 
 {% include toc.html %}

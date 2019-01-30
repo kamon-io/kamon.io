@@ -9,6 +9,15 @@ core:
       path: /core/tracing/
     - name: Context
       path: /core/context/
+    - name: Configuration
+      path: /core/configuration/
+    - name: Utilities
+      path: /core/utilities/
+  - topic: Advanced
+    pages:
+    - name: Metric Instruments
+      path: /core/advanced/metric-instruments/
+
 
 guides:
   - topic: First Steps
@@ -21,6 +30,10 @@ guides:
     pages:
       - name: Elementary Akka Setup
         path: /guides/frameworks/elementary-akka-setup/
+  - topic: Migrations
+    pages:
+      - name: Migrating from 0.6 to 1.0
+        path: /guides/migration/from-0.6-to-1.0/
 
 instrumentation:
   - topic: Available Instrumentation
@@ -41,6 +54,10 @@ instrumentation:
         path: /instrumentation/executors/
       - name: Futures
         path: /instrumentation/futures/
+      - name: JDBC
+        path: /instrumentation/jdbc/
+      - name: System Metrics
+        path: /instrumentation/system-metrics/
 
 reporters:
   - topic: Combined Reporters

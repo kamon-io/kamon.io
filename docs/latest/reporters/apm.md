@@ -1,6 +1,8 @@
 ---
 title: Kamon > Documentation > Reporters > Kamino
 layout: docs
+redirect_from:
+  - /documentation/1.x/reporters/kamino/
 ---
 
 {% include toc.html %}

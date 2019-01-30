@@ -4,6 +4,8 @@ title: Kamon meets the World!
 date: 2014-03-17
 categories: teamblog
 tags: announcement
+redirect_from:
+  - /teamblog/2014/03/17/kamon-meets-the-world/
 ---
 
 Dear community, some time ago we started working with Akka and Spray, and it has been awesome! The more we learned, the more we wanted

@@ -1,6 +1,9 @@
 ---
 title: Kamon > Documentation > Instrumentation > Futures
 layout: docs
+redirect_from:
+  - /documentation/1.x/instrumentation/futures/
+  - /documentation/0.6.x/kamon-scala/overview/
 ---
 
 {% include toc.html %}

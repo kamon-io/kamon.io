@@ -3,6 +3,8 @@ layout: post
 title: 'Kamon 0.6.0 is finally here, download while still hot!'
 date: 2016-03-29
 categories: teamblog, releases
+redirect_from:
+  - /teamblog/2016/03/29/kamon-0-6-0-is-finally-here/
 ---
 
 Dear community, we are really happy to announce that after a long long wait,
@@ -31,7 +33,7 @@ changelog:
   * Generalize `ThreadPoolExecutors` metrics. (see issue [#247](https://github.com/kamon-io/Kamon/issues/247)).
   * Fix typo in kamon `auto-start error`. (see [pull #262](https://github.com/kamon-io/Kamon/pull/262)).
   * Don't throw an `NPE` during shutdown if Kamon hasn't been started. (see [pull #263](https://github.com/kamon-io/Kamon/pull/263)).
-  * Provide generic way to scale time and memory metrics. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
+  * Provide generic way to scale time and memory metrics. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).
   * Don't throw MatchError when auto-start is disabled for a module. see [pull #302](https://github.com/kamon-io/Kamon/pull/302)).
 
 * kamon-akka:
@@ -59,12 +61,12 @@ changelog:
 
 * kamon-statsd:
   * Allow custom `statsd senders` + add simple statsd sender which doesn't batch stats. (see [pull #270](https://github.com/kamon-io/Kamon/pull/270)).
-  * Allow `time` and `memory` metrics be scaled before sending to statsd. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).  
-  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).  
+  * Allow `time` and `memory` metrics be scaled before sending to statsd. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).
+  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).
 
 * kamon-datadog:
   * Allow `time` and `memory` metrics be scaled before sending to datadog. see [pull #294](https://github.com/kamon-io/Kamon/pull/294)).
-  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).  
+  * Fix time unit naming in `reference.conf`. see [pull #298](https://github.com/kamon-io/Kamon/pull/298)).
 
 * kamon-autoweave:
   * This new module allow attach the `AspectJ loadtime weaving agent to a JVM after it has started`. (see [pull #292](https://github.com/kamon-io/Kamon/pull/292)).
