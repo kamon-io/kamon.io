@@ -280,7 +280,8 @@ function copySidebarContentForMobile() {
 
   if(docsNavigationLinks.length && mobileDocsNavigationContainer.length) {
     const copyOfLinks = docsNavigationLinks.clone()
-    mobileDocsNavigationContainer.append("<div class=\"section-title\">Documentation</div>")
+    const sectionName = window.location.pathname.startsWith("/blog") ? "Blog" : "Documentation"
+    mobileDocsNavigationContainer.append("<div class=\"section-title\">" + sectionName + "</div>")
     mobileDocsNavigationContainer.append(copyOfLinks)
 
     const docsSidebar = $("#docs-sidebar")

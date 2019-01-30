@@ -32,6 +32,7 @@ kramdown:
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -44,8 +45,17 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+excerpt_separator: "\n\n\n"
 code_examples_folder: examples
 host: 0.0.0.0
+permalink: /blog/:title/
+
+pagination:
+  enabled: true
+  per_page: 6
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
 
 # source: 'website'
 # plugins_dir: 'website/jekyll/plugins'
