@@ -377,8 +377,12 @@ pre[class*="language-"] {
   }
 }
 
-.wip-warning {
-  color:#ff6e00;
-  text-align: center;
+.archive-message {
+  color: white;
+  font-size: 20px;
+  background-color: #FF9800;
 
+  a {
+    color: gray;
+  }
 }
