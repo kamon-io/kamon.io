@@ -35,17 +35,17 @@ layout: default
             </h5>
           </div>
           <div class="col-12">
-            <div class="api-section-toggle elevation-feature active">
+            <div id="metrics-code-example-toggle" class="api-section-toggle elevation-feature active ">
               <h5>Metrics</h5>
               Track latency, errors and any business metric with
               a dimensional model and high-definition histograms.
             </div>
-            <div class="api-section-toggle elevation-feature">
+            <div id="tracing-code-example-toggle" class="api-section-toggle elevation-feature">
               <h5>Distributed Tracing</h5>
               Model operations that span several services and
               components - with automatically tracked metrics.
             </div>
-            <div class="api-section-toggle elevation-feature">
+            <div id="context-code-example-toggle" class="api-section-toggle elevation-feature">
               <h5>Context Propagation</h5>
               Propagate information like userID, transactionID
               and other correlation data between threads and processes.
@@ -55,32 +55,75 @@ layout: default
       </div>
 
       <div class="col-sm-12 col-lg-7 align-self-end">
-        <div class="row no-gutters code-window-container">
+        <div id="instrumentation-slideshow" class="row no-gutters code-window-container">
           <div class="col-12 align-self-end code-window">
             <div class="row no-gutters px-2 align-items-center justify-content-end code-window-heading">
               <div class="col-auto mx-1 code-window-circle"></div>
               <div class="col-auto mx-1 code-window-circle"></div>
               <div class="col-auto mx-1 code-window-circle"></div>
             </div>
-            <pre class="language-scala elevation-image">
-              <code>
-                  val c = Kamon.counter("active-users")
-                  c.increment(100)
 
-                  Kamon.histogram("test")
-                    .withTag("region", "east")
-                    .withTag("algorithm", "regression")
-                    .record(43245)
-              </code>
-            </pre>
-          </div>
-          <div class="learn-more-button">
-            <div class="text-right pr-3">
-              <span class="button button-ripple-green">
-                LEARN ABOUT METRICS
-              </span>
+            <div id="metrics-code-example" >
+              <pre class="language-scala elevation-image">
+                <code>
+                    val c = Kamon.counter("active-users")
+                    c.increment(100)
+
+                    Kamon.histogram("test")
+                      .withTag("region", "east")
+                      .withTag("algorithm", "regression")
+                      .record(43245)
+                </code>
+              </pre>
+              <div class="learn-more-button">
+                <div class="text-right">
+                  <span class="button button-ripple-green">
+                    LEARN ABOUT METRICS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div id="tracing-code-example" class="d-none">
+              <pre class="language-scala elevation-image">
+                <code>
+                    val span = Kamon.buildSpan("authenticate-user")
+                      .withTag("userID", "abce")
+
+
+                </code>
+              </pre>
+              <div class="learn-more-button">
+                <div class="text-right">
+                  <span class="button button-ripple-green">
+                    LEARN ABOUT TRACING
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div id="context-code-example" class="d-none">
+              <pre class="language-scala elevation-image">
+                <code>
+                    val c = Kamon.counter("active-users")
+                    c.increment(100)
+
+                    Kamon.histogram("test")
+                      .withTag("region", "east")
+                      .withTag("algorithm", "regression")
+                      .record(43245)
+                </code>
+              </pre>
+              <div class="learn-more-button">
+                <div class="text-right">
+                  <span class="button button-ripple-green">
+                    LEARN ABOUT CONTEXT
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

@@ -208,7 +208,6 @@ function moveDocumentationTocToSidebar() {
   var tocContainer = $("#docs-sidebar #toc-container")
   var markdownToc = $("#markdown-toc")
 
-  console.log("evaluating")
   if(tocContainer.length) {
     console.log("Trying to move the thing")
     if(markdownToc.length) {
@@ -264,13 +263,10 @@ function toggleMobileSidebar() {
 
       if(event.target.id != "mobile-sidebar-button"&& !clickTarget.parents("#mobile-sidebar-button").length) {
         if(event.target.id != "mobile-sidebar" && !clickTarget.parents("#mobile-sidebar").length) {
-          console.log("I should close: ", event.target.id)
           $('#mobile-sidebar').removeClass('open')
         }
       }
 
-    } else {
-      console.log("The sidebar was not open, nothing matters")
     }
   })
 }
@@ -304,6 +300,57 @@ function copySidebarContentForMobile() {
   }
 }
 
+function startInstrumentationSlideshow() {
+  const options = [
+    'metrics',
+    'tracing',
+    'context',
+  ]
+
+  var slideshowActive = true
+  var currentOption = 0
+
+  if($("#instrumentation-slideshow").length > 0) {
+    // hides all options and ensures only the provided option is shown
+    const showOption = function(optionName) {
+      currentOption = options.indexOf(optionName)
+      options.forEach(o => {
+        if(o !== optionName) {
+          $(`#${o}-code-example-toggle`).removeClass("active")
+          $(`#${o}-code-example`).removeClass("d-block")
+          $(`#${o}-code-example`).addClass("d-none")
+        }
+      })
+
+      $(`#${optionName}-code-example-toggle`).addClass("active")
+      $(`#${optionName}-code-example`).addClass("d-block")
+      $(`#${optionName}-code-example`).removeClass("d-none")
+    }
+
+    const timerID = setInterval(function() {
+      if(slideshowActive) {
+        const nextOption = currentOption == (options.length - 1) ? 0 : currentOption + 1
+        showOption(options[nextOption])
+      }
+    }, 4000)
+
+    // Disable automatic change of items when the user hovers the code examples
+    $("#instrumentation-slideshow").hover(
+      function onEnter() {
+        slideshowActive = false
+      },
+      function onExit() {
+        slideshowActive = true
+      }
+    )
+
+    // Register manual toggles
+    $("#metrics-code-example-toggle").click(function() { showOption('metrics'); slideshowActive = false })
+    $("#tracing-code-example-toggle").click(function() { showOption('tracing'); slideshowActive = false })
+    $("#context-code-example-toggle").click(function() { showOption('context'); slideshowActive = false })
+  }
+}
+
 $(document).ready(function() {
   moveDocumentationTocToSidebar()
   smoothScrollToAnchor()
@@ -313,4 +360,5 @@ $(document).ready(function() {
   scrollOnDocsSidebar()
   toggleMobileSidebar()
   copySidebarContentForMobile()
+  startInstrumentationSlideshow()
 })
