@@ -49,7 +49,7 @@ instrumentation:
           - name: Context Propagation
             path: /instrumentation/akka/context-propagation/
           - name: Ask Pattern
-            path: /instrumentation/akka/ask-pattern/
+            path: /instrumentation/akka/ask-pattern-timeout-warning/
       - name: Executors
         path: /instrumentation/executors/
       - name: Futures

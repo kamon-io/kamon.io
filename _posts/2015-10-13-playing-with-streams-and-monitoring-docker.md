@@ -189,5 +189,5 @@ pull request. That's all for today, enjoy!
 [CpuMetrics]:https://github.com/kamon-io/docker-monitor/blob/master/src/main/scala/kamon/domino/metrics/CpuMetrics.scala
 [Github Domino Repo]:https://github.com/kamon-io/docker-monitor
 [scalaz-streams]:https://github.com/scalaz/scalaz-stream
-[StatsD]: /backends/statsd/
+[StatsD]: /docs/latest/reporters/statsd/
 [Docker-Grafana-Graphite]:https://github.com/kamon-io/docker-grafana-graphite

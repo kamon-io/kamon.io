@@ -5,6 +5,7 @@ redirect_from:
   - /documentation/0.6.x/get-started/
   - /documentation/1.x/get-started/
   - /documentation/get-started/
+  - /introduction/get-started/
 ---
 
 {% include toc.html %}
@@ -41,7 +42,7 @@ the Maven/Gradle examples above.
 Besides the core library, you will need to bring two additional groups of dependencies: first, the instrumentation
 modules that help you gather metrics and trace data from your application like the Akka and Play instrumentation or the
 System Metrics module, and second, the reporting modules that let you export that data to external systems like
-Prometheus, Zipkin and so on. You can find a list of all modules in our [modules section][modules].
+Prometheus, Zipkin and so on. You can find a list of all modules in our [instrumentation section][instrumentation].
 
 
 Loading Modules
@@ -76,7 +77,7 @@ section for instructions specific to your environment.
 
 
 
-[modules]: ../../../reference/modules
+[instrumentation]: ../../instrumentation/
 [agent]: agent
 [aspectj]: https://www.eclipse.org/aspectj/
 [aspectjweaver]: https://www.eclipse.org/aspectj/downloads.php

@@ -38,7 +38,7 @@ to include the `_akka-2.4` suffix, like in `kamon-core_akka-2.4` and so on.
 We hope you have fun with this snapshot and of course, that you report back if there is any inconvenient while using it!
 
 
-[configuration settings]: /introduction/configuration/
+[configuration settings]: /docs/latest/core/configuration/
 [experiments]: https://github.com/kamon-io/Kamon/issues/215
 [Kailuo Wang]: https://github.com/kailuowang
 [snapshots repository]: http://snapshots.kamon.io/

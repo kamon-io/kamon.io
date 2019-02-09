@@ -34,6 +34,6 @@ Span reporters send Spans to external systems.
 [influxdb]: ./influxdb/
 [statsd]: ./statsd/
 [datadog]: ./datadog/
-[sematext]: ./sematext/
+[sematext]: ./sematext-spm/
 [zipkin]: ./zipkin/
 [jaeger]: ./jaeger/

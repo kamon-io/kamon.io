@@ -223,13 +223,13 @@ Thanks to [Carlos Ferreyra] for the review.
 
 [Carlos Ferreyra]:https://twitter.com/cryptic_marlbo
 [modules]: /core/modules/using-modules/
-[instruments]: /core/metrics/instruments/
-[kamon-log-reporter]: /backends/log-reporter/
+[instruments]: /docs/latest/core/metrics/
+[kamon-log-reporter]: https://archive.kamon.io/backends/log-reporter/
 [AspectJ]: https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/AspectJ.scala
 [Build.scala]:https://github.com/kamon-io/Kamon/blob/master/kamon-examples/kamon-scalatra-example/project/Build.scala
-[StatsD]: /backends/statsd/
-[Datadog]: /backends/datadog/
-[New Relic]: /backends/newrelic/
+[StatsD]: /docs/latest/reporters/statsd/
+[Datadog]: /docs/latest/reporters/datadog/
+[New Relic]: https://archive.kamon.io/documentation/0.6.x/kamon-newrelic/overview/
 [Your Own]: /core/metrics/subscription-protocol/
-[here]: /core/tracing/core-concepts/
+[here]: /docs/latest/core/tracing/
 [Scalatra Kamon Example]: https://github.com/kamon-io/Kamon/tree/master/kamon-examples/kamon-scalatra-example

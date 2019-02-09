@@ -34,7 +34,7 @@ This examples is using Akka 2.5, we will need to add `kamon-akka-2.5` to our bui
 
 ## Setting up the Agent
 
-There are several ways to setup the AspectJ Weaver, we even [wrote a recipe][3] specifically dedicated to it. Here we
+There are several ways to setup the AspectJ Weaver, we even [wrote a guide][3] specifically dedicated to it. Here we
 will be [running from SBT][4] and just adding the [`sbt-aspectj-runner`][5] plugin to the build is enough to get it
 working.
 
@@ -113,6 +113,6 @@ application, have fun and let us know if anything goes wrong!
 
 [1]: https://developer.lightbend.com/start/?group=akka&project=akka-quickstart-scala
 [2]: https://developer.lightbend.com/guides/akka-quickstart-scala/
-[3]: ../adding-the-aspectj-weaver/
-[4]: ../adding-the-aspectj-weaver/#running-from-sbt
+[3]: ../../setting-up-the-agent/
+[4]: ../../setting-up-the-agent/#running-from-sbt
 [5]: https://github.com/kamon-io/sbt-aspectj-runner

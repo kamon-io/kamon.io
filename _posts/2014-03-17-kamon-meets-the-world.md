@@ -31,5 +31,5 @@ on the oven.
 
 So, what are you waiting for? go and learn about [tracing in Kamon] and [get started] right now!
 
-[tracing in Kamon]: /core/tracing/basics/
-[get started]: /introduction/get-started/
+[tracing in Kamon]: /docs/latest/core/tracing/
+[get started]: /docs/latest/guides/

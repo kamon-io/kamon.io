@@ -113,4 +113,4 @@ similar to those offered by gauges, namely `increment()`, `increment(times)`, `d
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/MetricBasics.scala tag:working-with-range-samplers label:"Scala" %}
 {% endcode_example %}
 
-[1]: ../../advanced/metric-instruments/
+[1]: ../advanced/metric-instruments/

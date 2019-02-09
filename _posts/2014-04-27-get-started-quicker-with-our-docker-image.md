@@ -59,4 +59,4 @@ from one of our toy applications:
 <img class="img-fluid" src="/assets/img/kamon-statsd-grafana.png">
 
 
-[StatsD module]: /backends/statsd/
+[StatsD module]: /docs/latest/reporters/statsd/

@@ -118,25 +118,25 @@
 }
 
 .signup-cta {
-  &:after {
-    z-index: -1;
-    position: absolute;
-    background-color: inherit;
-    height: 40px;
-    width: 100%;
-    content: '';
-    transform: skewY(0.5deg) translateY(-20px);
-  }
+  // &:after {
+  //   z-index: -1;
+  //   position: absolute;
+  //   background-color: inherit;
+  //   height: 40px;
+  //   width: 100%;
+  //   content: '';
+  //   transform: skewY(0.5deg) translateY(-20px);
+  // }
 
-  &:before {
-    z-index: -1;
-    position: absolute;
-    background-color: inherit;
-    height: 40px;
-    width: 100%;
-    content: '';
-    transform: skewY(-0.5deg) translateY(-10px);
-  }
+  // &:before {
+  //   z-index: -1;
+  //   position: absolute;
+  //   background-color: inherit;
+  //   height: 40px;
+  //   width: 100%;
+  //   content: '';
+  //   transform: skewY(-0.5deg) translateY(-10px);
+  // }
 }
 
 .skew-top-left-footer {

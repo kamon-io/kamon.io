@@ -87,4 +87,4 @@ Here is a simple example showing some Actor and Span metrics using InfluxDB and 
 <img class="img-fluid my-4" src="/assets/img/influxdb-dashboard.png">
 
 [Datadog]: http://www.datadoghq.com/
-[get started]: /introduction/get-started/
+[get started]: /docs/latest/guides/getting-started/

@@ -151,4 +151,4 @@ finish a Span's time as current has nothing to do with actually `.finish()`ing t
 
 
 [1]: ../../advanced/instrumentation-guidelines/
-[2]: ../../basics/context/
+[2]: ../context/
