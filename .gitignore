@@ -3,6 +3,7 @@ _site
 target
 .idea
 .vscode
+.sass-cache
 
 # sbt specific
 dist/*
