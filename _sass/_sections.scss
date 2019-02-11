@@ -117,6 +117,17 @@
   }
 }
 
+.vertical-center {
+ display: table-cell;
+ float: none;
+ vertical-align: middle;
+}
+
+.about-us-section {
+  color: #929292;
+  font-size: 1.2rem;
+}
+
 .signup-cta {
   // &:after {
   //   z-index: -1;

@@ -7,11 +7,19 @@
   right: 0rem;
 
   .footer-heading {
+    color: #c7c7c7;
+    margin-top: 1.5rem;
+    margin-bottom: 0.2rem;
     font-weight: $bold;
   }
 
-  .footer-item-link:hover {
-    color: #fbfbfbd6;
+  .footer-item-link {
+    font-size: 1rem;
+    padding: 0.3rem 0rem;
+
+    &:hover {
+    color: #c7c7c7;
+    }
   }
 }
 @media (max-width: 585px) {

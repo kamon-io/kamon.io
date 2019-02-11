@@ -89,7 +89,14 @@ layout: default
                 <code>
                     val span = Kamon.buildSpan("authenticate-user")
                       .withTag("userID", "abce")
+                      .asChildOf(parent)
+                      .start()
 
+                    // Work, work, work...
+
+                    span.
+                      .tag("http.status_code", "200")
+                      .finish()
 
                 </code>
               </pre>
