@@ -9,18 +9,16 @@
   .header-bar-item {
     color: #8a8a8a;
     font-size: 1.2rem;
-    line-height: 5rem;
     display: inline-block;
-    padding: 0rem 1rem;
+    padding: 0.21rem 1rem 0rem 1rem;
 
     @media (max-width: 1200px) {
       font-size: 1.05rem;
-      padding: 0rem 0.5rem;
+      padding: 0.1rem 0.5rem 0rem 0.5rem;
     }
 
     &:hover {
       color: #484848;
-      //background: -webkit-linear-gradient(bottom, #e6e6e6 4px, white 0%);
     }
   }
 

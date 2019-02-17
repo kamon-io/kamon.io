@@ -1,9 +1,28 @@
 .blog-content-wrapper {
+  color: #949494;
+  font-size: 1.2rem;
   margin-top: 3rem;
-  //padding-bottom: 5rem;
 
   @media (min-width: 992px) {
     margin-top: 8rem;
+  }
+}
+
+.post-content {
+
+  h4 {
+    margin: 2.5rem 0rem 1rem 0rem;
+  }
+  p {
+    margin-bottom: 1.7rem;
+  }
+
+  a {
+    border-bottom: dotted 1px gray;
+
+    &:hover {
+      color: #5e5e5e;
+    }
   }
 }
 
