@@ -37,7 +37,7 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 ### 3. Service Fees and Payments
 
-**3.1 Fees**. We will calculate and invoice you the fees and charges for Service usage every month. The fees and charges amount is calculated in accordance to the specifications and prices described on the pricing page on our website (https://kamino.io/pricing/). We will notify you at least 30 days before the effective date of any price change that might affect the calculation of your fees and charges for use of the Service.
+**3.1 Fees**. We will calculate and invoice you the fees and charges for Service usage every month. The fees and charges amount is calculated in accordance to the specifications and prices described on the pricing page on our website (https://kamon.io/apm/pricing/). We will notify you at least 30 days before the effective date of any price change that might affect the calculation of your fees and charges for use of the Service.
 
 **3.2 Invoicing and Payments**. You agree to pay us the applicable fees and charges for Service usage by using a credit card or direct transfer to one of our bank accounts. All amounts payable by you under this agreement will be paid to us in full, without any deduction or withholding. In the case of choosing a credit card as payment method, you agree to provide us with valid and updated credit card information and you authorize us to charge such credit card for all fees and charges incurred on a monthly basis and until the termination of this Agreement. All invoiced fees and charges are due 15 days from the invoice date.
 
@@ -51,7 +51,7 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 ### 4. Service Availability and Support
 
-**4.1 Service Availability**. We shall use commercially reasonable efforts to make the Service available for access and use over the internet at least 99.5% of the time, measured monthly, excluding scheduled maintenance to the Service (“Base Availability”). You may request Service availability reports by contacting us through uptime@kamino.io. If the Service does not satisfy the Base Availability for two consecutive months you may terminate this Agreement in accordance to Section 5.2 of this Agreement.
+**4.1 Service Availability**. We shall use commercially reasonable efforts to make the Service available for access and use over the internet at least 99.5% of the time, measured monthly, excluding scheduled maintenance to the Service (“Base Availability”). You may request Service availability reports by contacting us through uptime@kamon.io. If the Service does not satisfy the Base Availability for two consecutive months you may terminate this Agreement in accordance to Section 5.2 of this Agreement.
 
 **4.2 Support**. We shall provide technical support with respect to your use of the Service. We are and will continue to be staffed with qualified support engineers who have experience with the Service and we will endeavor to provide timely and accurate answers to support requests that you might initiate. Although response time for support requests is not guaranteed, we shall do our best effort to reply to all support requests within 48 hours.
 
@@ -77,7 +77,7 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 ### 6. Privacy and Security
 
-**6.1 Use of Personal Data**. We require use of Authorized Users’ personal data to provide and support the service. You shall ensure that all Authorized Users’ personal data is accurate and correct at all times. We shall use the Authorized Users’ personal data only in accordance to our Privacy Policy available at https://kamino.io/legal/privacy/.
+**6.1 Use of Personal Data**. We require use of Authorized Users’ personal data to provide and support the service. You shall ensure that all Authorized Users’ personal data is accurate and correct at all times. We shall use the Authorized Users’ personal data only in accordance to our Privacy Policy available at https://kamon.io/legal/privacy/.
 
 **6.2 Security**. We make commercially reasonable technical, organizational, and physical measures designed to protect the confidentiality, security and integrity of your Data and secure it from accidental loss, unauthorized access, use, alteration and disclosure. When your Data is transmitted to and via the Service, we encrypt this data in transmission using SSL or other technologies. Please be aware, however, that no method of transmitting information over the Internet or storing information is completely secure. Accordingly, we cannot guarantee the absolute security of your Data.
 
@@ -149,6 +149,6 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 **14.5 Language**. All communications and notices made or given pursuant to this Agreement must be in the English language.
 
-**14.6 Delivery of Notices**. All notices to us must be in writing and addressed to support@kamino.io. All notices to you, including those regarding changes to this Agreement will be made by email, addressed to the email address associated with your User Account on the Service.
+**14.6 Delivery of Notices**. All notices to us must be in writing and addressed to support@kamon.io. All notices to you, including those regarding changes to this Agreement will be made by email, addressed to the email address associated with your User Account on the Service.
 
 </div>

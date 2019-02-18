@@ -54,7 +54,7 @@ When using these modules it is necessary for applications to run with the [bytec
 Finally, the reporter modules send and/or expose all the collected data to several monitoring systems. There are two
 types of reporting modules:
   - **Metric Reporters** get all the measurements recorded during each "tick" and expose/send this data to systems like
-    Prometheus, JMX, Kamino, Datadog, etc.
+    Prometheus, JMX, Kamon APM, Datadog, etc.
   - **Span Reporters** get batches of Spans to be sent to distributed tracing systems like Zipkin, Jaeger and so on.
 
 Creating new reporters is just about implementing the appropriate interfaces and calling `Kamon.addReporter(...)` when

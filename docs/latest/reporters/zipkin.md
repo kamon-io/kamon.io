@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Reporters > Kamino
+title: Kamon > Documentation > Reporters > Jaeger
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/zipkin/

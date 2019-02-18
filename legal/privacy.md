@@ -18,7 +18,7 @@ Service and the choices you have associated with that data.
 
 We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of
 information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this
-Privacy Policy have the same meanings as in our Terms and Conditions, accessible from <https://kamino.io>
+Privacy Policy have the same meanings as in our Terms and Conditions, accessible from <https://kamon.io>
 
 ### Information Collection and Use
 
@@ -352,12 +352,12 @@ page.
 ### Contact Us
 
 If you have any questions about this Privacy Policy, please contact our Data Protection Officer by
-email: [dpo@kamino.io](mailto:dpo@kamino.io)
+email: [dpo@kamon.io](mailto:dpo@kamon.io)
 
 
 ### Definitions
 
--   **Service**: Service is the <https://kamino.io> website operated by Kamino Technologies
+-   **Service**: Service is the <https://kamon.io> website operated by Kamino Technologies
     d.o.o.
 -   **Personal Data**: Personal Data means data about a living individual who can be identified
     from those data (or from those and other information either in our
