@@ -1,5 +1,5 @@
 .docs-header-bar {
-  box-shadow: inset 0px 5px 20px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   background-color: #f6f6f6;
 
   .docs-header-bar-tabs {
@@ -31,6 +31,10 @@
       }
     }
   }
+}
+
+.has-scroll .docs-header-bar {
+  box-shadow: none;
 }
 
 $sidebarWidth: 250px;
@@ -160,6 +164,10 @@ $sidebarWidth: 250px;
     &:hover {
       color: #5e5e5e;
     }
+  }
+
+  li {
+    padding: 0.3rem 0rem;
   }
 
   .alert {
