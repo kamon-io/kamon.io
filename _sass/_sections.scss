@@ -1,5 +1,5 @@
 .hero {
-  margin: 7rem 1rem 6rem 1rem;
+  margin: 7rem 0rem 6rem 0rem;
 
   h1 {
     font-size: 2.7rem;
@@ -129,16 +129,6 @@
 }
 
 .signup-cta {
-  // &:after {
-  //   z-index: -1;
-  //   position: absolute;
-  //   background-color: inherit;
-  //   height: 40px;
-  //   width: 100%;
-  //   content: '';
-  //   transform: skewY(0.5deg) translateY(-20px);
-  // }
-
   // &:before {
   //   z-index: -1;
   //   position: absolute;
@@ -151,15 +141,15 @@
 }
 
 .skew-top-left-footer {
-  &:before {
-    z-index: -1;
-    position: absolute;
-    background-color: inherit;
-    height: 40px;
-    width: 100%;
-    content: '';
-    transform: skewY(0.5deg) translateY(-10px);
-  }
+  // &:before {
+  //   z-index: -1;
+  //   position: absolute;
+  //   background-color: inherit;
+  //   height: 40px;
+  //   width: 100%;
+  //   content: '';
+  //   transform: skewY(0.5deg) translateY(-10px);
+  // }
 }
 
 #apm-hdr-image {

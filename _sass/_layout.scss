@@ -1,6 +1,14 @@
 body {
   position: relative;
-  padding-bottom: 410px;
+  padding-bottom: 550px;
+
+  @media (min-width: 576px) {
+    padding-bottom: 380px;
+  }
+
+  @media (min-width: 768px) {
+    padding-bottom: 410px;
+  }
 }
 
 img {
