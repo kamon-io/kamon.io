@@ -14,16 +14,16 @@ Context Propagation with Futures
 The `kamon-futures` module provides bytecode instrumentation for Scala, Twitter and Scalaz Futures that automatically
 propagates the current `Context` across the asynchronous operations that might be scheduled for a given `Future`.
 
-<p class="alert alert-info">
-The <b>kamon-futures</b> module requires you to start your application using the AspectJ Weaver Agent.
-</p>
-
-The following artifacts are published, pick the right one for your Akka version:
+The following artifacts are published, pick the ones that match the libraries you are using in your services:
 
   * `kamon-scala-future` for Scala 2.10, 2.11 and 2.12.
   * `kamon-twitter-future` for `util-core` 6.34 in Scala 2.10 and `util-core` 6.40 for Scala 2.11 and 2.12.
   * `kamon-scalaz-future` for `scalaz-concurrent` 7.2.8 with Scala 2.10, 2.11 and 2.12.
 
+
+## Dependency Installation
+{% include dependency-info.html module="kamon-scala-future" version="1.0.0" %}
+{% include instrumentation-agent-notice.html %}
 
 ## Future's Body and Callbacks ###
 

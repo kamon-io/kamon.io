@@ -5,20 +5,20 @@ redirect_from:
   - /documentation/0.6.x/kamon-jdbc/overview/
 ---
 
+{% include toc.html %}
+
 JDBC
-=================
-
-
-The `kamon-jdbc` module brings bytecode instrumentation to trace jdbc-compatible database requests.
-
-<p class="alert alert-info">
-The <b>kamon-jdbc</b> module requires you to start your application using the AspectJ Weaver Agent. Kamon will warn you
-at startup if you failed to do so.
-</p>
+====
 
 The bytecode instrumentation provided by the `kamon-jdbc` module hooks into the JDBC API to automatically
 start and finish segments for requests that are issued within a trace. This translates into you having metrics about how
 the requests you are doing are behaving.
+
+## Dependency Installation
+{% include dependency-info.html module="kamon-jdbc" version="1.0.2" %}
+{% include instrumentation-agent-notice.html %}
+
+
 
 ### Metrics ###
 

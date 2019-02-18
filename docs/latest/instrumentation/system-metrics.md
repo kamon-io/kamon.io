@@ -5,6 +5,8 @@ redirect_from:
   - /documentation/0.6.x/kamon-system-metrics/overview/
 ---
 
+{% include toc.html %}
+
 System Metrics
 ==============
 
@@ -32,6 +34,10 @@ kamon {
   }
 }
 {% endcode_block %}
+
+## Dependency Installation
+{% include dependency-info.html module="kamon-system-metrics" version="1.0.1" %}
+{% include instrumentation-agent-notice.html %}
 
 Host System Metrics
 -------------------

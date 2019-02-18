@@ -18,20 +18,9 @@ Internet of Things sensor data, and real-time analytics.
 
 ## Installation and Startup
 
-Add the `kamon-influxdb` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-influxdb`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-influxdb_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-influxdb_2.11).
+{% include dependency-info.html module="kamon-influxdb" version="1.0.2" %}
 
-
-To get started with SBT, simply add the following to your `build.sbt` file:
-
-```scala
-libraryDependencies += "io.kamon" %% "kamon-influxdb" % "1.0.1"
-```
-
-And add the reporter to Kamon:
+Once you have the dependency on your classpath, start the reporter:
 
 ```scala
 Kamon.addReporter(new InfluxDBReporter())

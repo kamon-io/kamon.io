@@ -43,7 +43,7 @@ module Jekyll
       navegation_tabs = navegation_tabs + '</ul>'
       tab_contents = tab_contents + '</div>'
 
-      '<div class="code-example">' + navegation_tabs + tab_contents + '</div>'
+      '<div class="code-example my-3">' + navegation_tabs + tab_contents + '</div>'
     end
   end
 

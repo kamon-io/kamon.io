@@ -17,19 +17,9 @@ The `kamon-jaeger` module translates Kamon's representation of Spans and sends t
 
 ## Installation and Startup
 
-Add the `kamon-jaeger` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-jaeger`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![kamon-jaeger](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-jaeger_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-jaeger_2.12)
+{% include dependency-info.html module="kamon-jaeger" version="1.0.2" %}
 
-Adding the dependency to SBT would look like this:
-
-{% code_block scala %}
-libraryDependencies += "io.kamon" %% "kamon-jaeger" % "1.0.1"
-{% endcode_block scala %}
-
-And then start the reporter:
+Once you have the dependency on your classpath, start the reporter:
 
 {% code_block scala %}
 import kamon.jaeger.JaegerReporter

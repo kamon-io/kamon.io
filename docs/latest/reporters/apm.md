@@ -19,17 +19,7 @@ accurate and relevant alerts and insight on your application's behavior.
 
 ## Installation and Startup
 
-Add the `kamon-apm` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-apm`
-  - Scala Versions: 2.11 / 2.12
-  - Latest Version: [![Kamon APM Reporter](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-apm-reporter_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-apm-reporter_2.12)
-
-Adding the dependency to SBT would look like this:
-
-{% code_block scala %}
-libraryDependencies += "io.kamon" %% "kamon-apm" % "1.1.3"
-{% endcode_block scala %}
+{% include dependency-info.html module="kamon-apm-reporter" version="1.1.3" %}
 
 Once the reporter is on your classpath you can add it like any other Kamon reporter:
 

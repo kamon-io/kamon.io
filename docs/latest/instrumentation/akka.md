@@ -12,14 +12,10 @@ redirect_from:
 Akka Instrumentation Overview
 =============================
 
-<p class="alert alert-info">
-You must start your application with the AspectJ Weaver agent when using any Akka module.
-</p>
-
-Kamon ships four instrumentation modules for Akka, each addressing a different aspect of the toolkit:
+Kamon ships instrumentation modules for Akka, each addressing a different aspect of the toolkit:
 
 
-## kamon-akka
+## Local Actor Systems
 
 This module is the foundation of all Akka-related instrumentation, including:
 
@@ -34,16 +30,16 @@ This module is the foundation of all Akka-related instrumentation, including:
 
 The following artifacts are published, pick the right one for your Akka version:
 
-  * `kamon-akka-2.3` for Akka 2.3.15
-  * `kamon-akka-2.4` for Akka 2.4.20
-  * `kamon-akka-2.5` for Akka 2.5.8
+  * `kamon-akka-2.4` for Akka 2.4.20+
+  * `kamon-akka-2.5` for Akka 2.5.8+
 
-<p class="alert alert-warning">
-This is the only module with Akka 2.3 support. If you need remoting and HTTP metrics please consider upgrading to the
-latest supported Akka version.
-</p>
+## Dependency For Local Actor Systems
+{% include dependency-info.html module="kamon-akka-2.5" version="1.1.2" %}
+{% include instrumentation-agent-notice.html %}
 
-## kamon-akka-remote
+
+
+## Remoting and Cluster
 
 Provides instrumentation for remoting channels in Akka. Since Akka cluster builds on top of remoting, the metrics and
 context propagation features included with this module will also benefit cluster users.
@@ -55,8 +51,12 @@ context propagation features included with this module will also benefit cluster
 
 The following artifacts are published, pick the right one for your Akka version:
 
-  * `kamon-akka-remote-2.4` for Akka 2.4.20
-  * `kamon-akka-remote-2.5` for Akka 2.5.8
+  * `kamon-akka-remote-2.4` for Akka 2.4.20+
+  * `kamon-akka-remote-2.5` for Akka 2.5.8+
+
+## Dependency For Remoting and Cluster
+{% include dependency-info.html module="kamon-akka-remote-2.5" version="1.1.0" %}
+{% include instrumentation-agent-notice.html %}
 
 
 [metrics]: ./metrics/

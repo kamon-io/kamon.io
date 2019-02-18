@@ -16,20 +16,9 @@ want to turn the massive amounts of data produced by their apps, tools and servi
 
 ## Installation and Startup
 
-Add the `kamon-datadog` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-datadog`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-datadog_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-datadog_2.11).
+{% include dependency-info.html module="kamon-datadog" version="1.0.0" %}
 
-
-To get started with SBT, simply add the following to your `build.sbt` file:
-
-```scala
-libraryDependencies += "io.kamon" %% "kamon-datadog" % "1.0.0"
-```
-
-And add the Agent or API reporter to Kamon:
+Once you have the dependency on your classpath, add the Agent or API reporter to Kamon:
 
 ```scala
 Kamon.addReporter(new DatadogAgentReporter())

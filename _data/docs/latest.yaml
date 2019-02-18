@@ -56,6 +56,8 @@ instrumentation:
         path: /instrumentation/futures/
       - name: JDBC
         path: /instrumentation/jdbc/
+      - name: Logback
+        path: /instrumentation/logback/
       - name: System Metrics
         path: /instrumentation/system-metrics/
 

@@ -19,19 +19,9 @@ The `kamon-zipkin` module translates Kamon's representation of Spans and sends t
 
 ## Installation and Startup
 
-Add the `kamon-zipkin` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-zipkin`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![kamon-zipkin](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-zipkin_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-zipkin_2.12)
+{% include dependency-info.html module="kamon-zipkin" version="1.0.0" %}
 
-Adding the dependency to SBT would look like this:
-
-{% code_block scala %}
-libraryDependencies += "io.kamon" %% "kamon-zipkin" % "1.0.0"
-{% endcode_block scala %}
-
-And then start the reporter:
+Once you have the dependency on your classpath, start the reporter:
 
 {% code_block scala %}
 import kamon.zipkin.ZipkinReporter

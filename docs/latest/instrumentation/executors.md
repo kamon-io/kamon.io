@@ -21,6 +21,10 @@ as shown bellow:
 You will get back a `Registration` that you can cancel at any moment if you want to stop tracking the executor service.
 That is something you should definitely do before shutting down the executor service.
 
+## Dependency Installation
+{% include dependency-info.html module="kamon-executors" version="1.0.2" %}
+{% include instrumentation-agent-notice.html %}
+
 
 ## Exposed Metrics
 

@@ -18,19 +18,9 @@ after starting this module is add the target to your Prometheus server and start
 
 ## Installation and Startup
 
-Add the `kamon-prometheus` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-prometheus`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![kamon-prometheus](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-prometheus_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-prometheus_2.12)
+{% include dependency-info.html module="kamon-prometheus" version="1.1.1" %}
 
-Adding the dependency to SBT would look like this:
-
-{% code_block scala %}
-libraryDependencies += "io.kamon" %% "kamon-prometheus" % "1.0.0"
-{% endcode_block scala %}
-
-And then start the reporter:
+Once you have the dependency on your classpath, start the reporter:
 
 {% code_block scala %}
 import kamon.prometheus.PrometheusReporter

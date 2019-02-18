@@ -18,20 +18,9 @@ fast with little to no overhead.
 
 ## Installation and Startup
 
-Add the `kamon-statsd` dependency to your build:
-  - Group ID: `io.kamon`
-  - Package ID: `kamon-statsd`
-  - Scala Versions: 2.10 / 2.11 / 2.12
-  - Latest Version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-statsd_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.kamon/kamon-statsd_2.11).
+{% include dependency-info.html module="kamon-statsd" version="1.0.0" %}
 
-
-To get started with SBT, simply add the following to your `build.sbt` file:
-
-```scala
-libraryDependencies += "io.kamon" %% "kamon-statsd" % "1.0.0"
-```
-
-and add the StatsD reporter to Kamon:
+Once you have the dependency on your classpath, start the reporter:
 
 ```scala
 Kamon.addReporter(new StatsDReporter())
