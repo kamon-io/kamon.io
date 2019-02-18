@@ -68,13 +68,18 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <div id="metrics-code-example" >
               <pre class="language-scala elevation-image">
                 <code>
-                    val c = Kamon.counter("active-users")
-                    c.increment(100)
+                  // One-liner
+                  Kamon.counter("app.orders.sent").increment()
 
-                    Kamon.histogram("test")
-                      .withTag("region", "east")
-                      .withTag("algorithm", "regression")
-                      .record(43245)
+                  // Fully defined and refined (tagged) counter
+                  val sentBytes = Kamon.counter("network.traffic", information.bytes)
+                    .refine (
+                      "direction" -> "out",
+                      "interface" -> "eth0"
+                    )
+
+                  sentBytes.increment()
+                  sentBytes.increment(512)
                 </code>
               </pre>
               <a href="/docs/latest/core/metrics/">
@@ -91,16 +96,21 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <div id="tracing-code-example" class="d-none">
               <pre class="language-scala elevation-image">
                 <code>
-                    val span = Kamon.buildSpan("authenticate-user")
-                      .withTag("userID", "abce")
-                      .asChildOf(parent)
-                      .start()
+                  // Adding tags to the SpanBuilder
+                  val span = Kamon.buildSpan("find-users")
+                    .withTag("string-tag", "hello")
+                    .withTag("number-tag", 42)
+                    .withTag("boolean-tag", true)
+                    .start()
 
-                    // Work, work, work...
+                  // Adding tags to the Span.
+                  span
+                    .tag("other-string-tag", "bye")
+                    .tag("other-number-tag", 24)
+                    .tag("other-boolean-tag", false)
 
-                    span.
-                      .tag("http.status_code", "200")
-                      .finish()
+                  // After this point no tags can be added.
+                  span.finish()
 
                 </code>
               </pre>
@@ -118,13 +128,17 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <div id="context-code-example" class="d-none">
               <pre class="language-scala elevation-image">
                 <code>
-                    val c = Kamon.counter("active-users")
-                    c.increment(100)
+                  // Creating a Context with two keys
+                  val context = Context()
+                    .withKey(UserID, "1234")
+                    .withKey(SessionID, Some(42))
 
-                    Kamon.histogram("test")
-                      .withTag("region", "east")
-                      .withTag("algorithm", "regression")
-                      .record(43245)
+                  // Reading values from a Context
+                  val userID: String = context.get(UserID)
+                  val sessionID: Option[Int] = context.get(SessionID)
+
+                  // The default value is returned for non-existent keys
+                  val requestID: Option[String] = context.get(RequestID)
                 </code>
               </pre>
               <a href="/docs/latest/core/context/">
