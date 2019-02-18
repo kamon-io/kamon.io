@@ -1,5 +1,7 @@
 ---
 layout: docs
+title: 'Kamon Guides | Kamon Documentation'
+description: 'Learn how to install Kamon in your services and start getting telemetry data out of it'
 ---
 
 First Steps
@@ -8,7 +10,7 @@ First Steps
 These guides are aimed towards getting your feet wet and start getting telemetry data from your services as quick as
 possible.
 
-- [**Installing Kamon**][installing-kamon] is the beginning of it all. Here you will learn how to add the Kamon
+- [**Getting Started**][getting-started] is the beginning of it all. Here you will learn how to add the Kamon
   libraries and get a basic setup ready for any application you want to instrument with Kamon.
 - [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
   with your build tool and IDE.
@@ -26,6 +28,6 @@ setup, basic configuration and seeing example data in several metrics and tracin
 
 
 
-[installing-kamon]: ./getting-started/
+[getting-started]: ./getting-started/
 [setting-up-the-agent]: ./setting-up-the-agent/
 [elementary-akka]: ./frameworks/elementary-akka-setup/

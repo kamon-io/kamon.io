@@ -1,5 +1,6 @@
 ---
-title: Install Kamon
+title: 'Elementary Akka Setup Guide | Kamon Documentation'
+description: 'Learn how to setup Kamon to collect metrics and distributed traces from an Akka application'
 layout: docs
 redirect_from:
   - /documentation/1.x/recipes/monitoring-akka-quickstart/

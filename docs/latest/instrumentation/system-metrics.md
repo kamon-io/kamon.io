@@ -1,5 +1,5 @@
 ---
-title: Kamon | System Metrics | Documentation
+title: 'System Metrics | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/0.6.x/kamon-system-metrics/overview/

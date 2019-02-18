@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Reporters > Sematext
+title: 'Sending Metrics to Sematext SPM with Kamon | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/0.6.x/kamon-sematext-spm/overview/

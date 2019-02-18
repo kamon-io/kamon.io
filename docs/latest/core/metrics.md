@@ -1,5 +1,5 @@
 ---
-title: Install Kamon
+title: 'Using the Metrics API | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/0.6.x/kamon-core/metrics/core-concepts/

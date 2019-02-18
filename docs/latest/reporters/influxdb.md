@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Reporters > InfluxDB
+title: 'Sending Metrics to InfluxDB with Kamon | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/influxdb/

@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Instrumentation > Akka > Actor System Metrics
+title: 'Akka Metrics | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/0.6.x/kamon-akka/actor-router-and-dispatcher-metrics/

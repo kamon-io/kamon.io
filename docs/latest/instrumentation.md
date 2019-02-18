@@ -1,5 +1,6 @@
 ---
 layout: docs
+title: 'Instrumentation Modules | Kamon Documentation'
 ---
 
 Instrumentation Modules

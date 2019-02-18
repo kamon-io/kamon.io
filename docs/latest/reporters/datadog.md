@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Reporters > Datadog
+title: 'Sending Metrics to Datadog with Kamon | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/datadog/

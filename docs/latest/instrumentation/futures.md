@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Instrumentation > Futures
+title: 'Context Propagation with Futures | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/instrumentation/futures/

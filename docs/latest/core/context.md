@@ -1,5 +1,5 @@
 ---
-title: Install Kamon
+title: 'Context Propagation | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/core/basics/context/

@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Basics > Utilities
+title: 'Utilities | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/core/basics/utilities/
@@ -11,7 +11,7 @@ Filters are used by several Kamon modules to determine whether to include or exc
 metrics collection and tracing. All filters are configured under the `kamon.util.filters` configuration key:
 
 {% code_example %}
-{%   language typesafeconfig kamon-1.x/core-basics/src/main/resources/application.conf tag:filters label:"application.conf" %}
+{%   language typesafeconfig reference/core/src/main/resources/application.conf tag:filters label:"application.conf" %}
 {% endcode_example %}
 
 The rules for filter execution are simple: any string is accepted by the filter if it matches at least one of the
@@ -29,5 +29,5 @@ After filters have been defined they can be applied by using the `Kamon.filter(.
 
 
 {% code_example %}
-{%   language scala kamon-1.x/core-basics/src/main/scala/kamon/examples/scala/UtilitiesBasics.scala tag:applying-filters label:"Scala" %}
+{%   language scala reference/core/src/main/scala/kamon/examples/scala/UtilitiesBasics.scala tag:applying-filters label:"Scala" %}
 {% endcode_example %}

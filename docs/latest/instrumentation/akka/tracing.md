@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Instrumentation > Akka > Message Tracing
+title: 'Akka Distributed Message Tracing | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/instrumentation/akka/message-tracing/

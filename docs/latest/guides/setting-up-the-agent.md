@@ -1,5 +1,6 @@
 ---
-title: Setting up the Instrumentation Agent
+title: 'Setting up the Instrumentation Agent'
+description: 'Learn how to setup the instrumentation agent for Kamon'
 layout: docs
 tags: core, docs
 redirect_from:

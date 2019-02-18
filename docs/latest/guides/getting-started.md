@@ -1,5 +1,6 @@
 ---
-title: Install Kamon
+title: 'Getting Started with Kamon | Kamon Documentation'
+description: 'Learn how to setup Kamon from scratch'
 layout: docs
 redirect_from:
   - /documentation/0.6.x/get-started/
@@ -17,7 +18,7 @@ Welcome to the Kamon Community! This guide will help you install the Kamon libra
 your application. Long story short, you need to go through 3 steps:
 
   1. [Add the Kamon libraries](#adding-libraries).
-  2. [Start moodules you want](#starting-modules).
+  2. [Start modules you want](#starting-modules).
   2. [Enable the bytecode instrumentation](#enabling-instrumentation).
 
 

@@ -1,5 +1,5 @@
 ---
-title: Kamon > Documentation > Reporters > Jaeger
+title: 'Sending Spans to Jaeger with Kamon | Kamon Documentation'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/jaeger/
