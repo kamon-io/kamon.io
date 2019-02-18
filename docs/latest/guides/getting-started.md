@@ -79,6 +79,6 @@ section for instructions specific to your environment.
 
 
 [instrumentation]: ../../instrumentation/
-[agent]: agent
+[agent]: ../setting-up-the-agent/
 [aspectj]: https://www.eclipse.org/aspectj/
 [aspectjweaver]: https://www.eclipse.org/aspectj/downloads.php
