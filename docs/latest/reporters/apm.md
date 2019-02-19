@@ -36,7 +36,7 @@ At a minimum you should provide your Kamon APM API key to start reporting data u
 configuration setting in your `application.conf` file:
 
 {% code_block typesafeconfig %}
-kamon.api {
+kamon.apm {
   api-key = "abcdefghijklmnopqrstuvwxyz"
 }
 {% endcode_block scala %}
