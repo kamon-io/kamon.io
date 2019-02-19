@@ -37,7 +37,6 @@ kamon {
 
 ## Dependency Installation
 {% include dependency-info.html module="kamon-system-metrics" version="1.0.1" %}
-{% include instrumentation-agent-notice.html %}
 
 Host System Metrics
 -------------------
