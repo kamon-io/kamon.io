@@ -49,18 +49,25 @@ Once again, the [sbt-aspectj-runner][sbt-aspectj-runner] is the way to go. The p
 applications that will have special treatment of Play's infrastructure for running on Development mode, to include it
 you must add the right plugin depending on your Play version:
 
+### Play 2.7
+
+{% code_block scala %}
+resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
+addSbtPlugin("io.kamon" % "sbt-aspectj-runner-play-2.7" % "1.1.2")
+{% endcode_block scala %}
+
 ### Play 2.6
 
 {% code_block scala %}
 resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-runner-play-2.6" % "1.1.0")
+addSbtPlugin("io.kamon" % "sbt-aspectj-runner-play-2.6" % "1.1.2")
 {% endcode_block scala %}
 
 ### Play 2.4 and 2.5
 
 {% code_block scala %}
 resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.0.4")
+addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.1.2")
 {% endcode_block scala %}
 
 
