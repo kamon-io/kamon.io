@@ -35,7 +35,7 @@ or not. To get it working add these lines to your `project/plugins.sbt` file:
 
 {% code_block scala %}
 resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-runner" % "1.1.0")
+addSbtPlugin("io.kamon" % "sbt-aspectj-runner" % "1.1.2")
 {% endcode_block scala %}
 
 That's it! You can visit the GitHub repo for additional details on how the plugin works.
@@ -67,7 +67,7 @@ addSbtPlugin("io.kamon" % "sbt-aspectj-runner-play-2.6" % "1.1.2")
 
 {% code_block scala %}
 resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.1.2")
+addSbtPlugin("io.kamon" % "sbt-aspectj-play-runner" % "1.0.4")
 {% endcode_block scala %}
 
 
