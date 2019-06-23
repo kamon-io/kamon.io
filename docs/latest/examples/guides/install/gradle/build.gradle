@@ -21,12 +21,12 @@ mainClassName = 'kamon.example.Start'
 
 // tag:base-kamon-dependencies:start
 dependencies {
-  compile "io.kamon:kamon-core_2.12:1.2.0-M1"
+  compile "io.kamon:kamon-bundle_2.12:2.0.0"
 
   // Reporter Dependencies
-  compile "io.kamon:kamon-akka-2.5_2.12:1.1.2"
-  compile "io.kamon:kamon-prometheus_2.12:1.1.1"
-  compile "io.kamon:kamon-zipkin_2.12:1.0.0"
+  compile "io.kamon:kamon-apm-reporter_2.12:2.0.0"
+  compile "io.kamon:kamon-prometheus_2.12:2.0.0"
+  compile "io.kamon:kamon-zipkin_2.12:2.0.0"
 }
 // tag:base-kamon-dependencies:end
 

@@ -3,14 +3,14 @@ scalaVersion := "2.12.7"
 resolvers += Resolver.bintrayRepo("kamon-io", "releases")
 
 // tag:base-kamon-dependencies:start
-libraryDependencies += "io.kamon" %% "kamon-core" % "1.1.3"
-
-// Additional Dependencies
-libraryDependencies += "io.kamon" %% "kamon-akka-2.5" % "1.1.2"
-libraryDependencies += "io.kamon" %% "kamon-prometheus" % "1.1.1"
-libraryDependencies += "io.kamon" %% "kamon-zipkin" % "1.0.0"
+// In your build.sbt file:
+libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.0.0-RC2"
 // tag:base-kamon-dependencies:end
 
+// Additional Dependencies
+//libraryDependencies += "io.kamon" %% "kamon-apm-reporter" % "2.0.0-RC2"
+//libraryDependencies += "io.kamon" %% "kamon-prometheus" % "2.0.0-RC1"
+//libraryDependencies += "io.kamon" %% "kamon-zipkin" % "2.0.0-RC1"
 
 // Additional dependencies.
 libraryDependencies ++= Seq(

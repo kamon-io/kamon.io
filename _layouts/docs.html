@@ -38,6 +38,18 @@ layout: default
           </li> -->
         </ul>
       </div>
+      <div class="col-auto docs-version-dropdown">
+        <div class="dropdown show">
+          <a class="dropdown-toggle text-uppercase" href="" role="button" id="versionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ current_version }} DOCS
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionsDropdown">
+            <a class="dropdown-item text-color-subtitle" href="/docs/latest/overview/">Latest (2.0 Series)</a>
+            <a class="dropdown-item text-color-subtitle" href="/docs/v1/overview/">Previous (1.x Series)</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

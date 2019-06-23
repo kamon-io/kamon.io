@@ -1,0 +1,8 @@
+core: "2.0.0-RC1"
+bundle: "2.0.0-RC2"
+apm: "2.0.0-RC2"
+prometheus: "2.0.0-RC1"
+zipkin: "2.0.0-RC1"
+influxdb: "2.0.0-RC1"
+datadog: "2.0.0-RC1"
+kanela_runner: "2.0.0-RC1"

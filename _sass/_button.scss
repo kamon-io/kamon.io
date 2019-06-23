@@ -53,3 +53,7 @@
 .button-ripple-dark-gray {
   @include ripple-button(#575757);
 }
+
+.c-pointer {
+  cursor: pointer;
+}

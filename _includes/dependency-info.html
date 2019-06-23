@@ -1,22 +1,28 @@
 <div class="code-example my-3">
 <ul class="nav nav-tabs language-tab" role="tablist">
-<li class="nav-item active"><a class="nav-link active show" data-toggle="tab" href="#sbt_library" role="tab" aria-selected="false">SBT</a></li>
-<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#maven_library" role="tab" aria-selected="false">Maven</a></li>
-<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#gradle_library" role="tab" aria-selected="true">Gradle</a></li>
+<li class="nav-item c-pointer active"><a class="nav-link active show" data-toggle="tab" data-target="#{{ include.prefix }}_sbt_library" role="tab" aria-selected="false">SBT</a></li>
+<li class="nav-item c-pointer"><a class="nav-link" data-toggle="tab" data-target="#{{ include.prefix }}_maven_library" role="tab" aria-selected="false">Maven</a></li>
+<li class="nav-item c-pointer"><a class="nav-link" data-toggle="tab" data-target="#{{ include.prefix }}_gradle_library" role="tab" aria-selected="true">Gradle</a></li>
 </ul>
 <div class="tab-content">
 
-<div class="tab-pane show active" id="sbt_library" role="tabpanel" aria-labelledby="sbt">
+<div class="tab-pane show active" id="{{ include.prefix }}_sbt_library" role="tabpanel" aria-labelledby="sbt">
 <div>
 <pre class="line-numbers language-scala">
 <code class="language-scala">
 libraryDependencies += "io.kamon" %% "{{ include.module }}" % "{{ include.version }}"
+{% if include.showSbtPlugin %}
+// If you want to be able to run yor app with instrumentation
+// from SBT, add this to your project/plugins.sbt file:
+resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{ site.data.versions.latest.kanela_runner }}")
+{% endif %}
 </code>
 </pre>
 </div>
 </div>
 
-<div class="tab-pane" id="maven_library" role="tabpanel" aria-labelledby="sbt">
+<div class="tab-pane" id="{{ include.prefix }}_maven_library" role="tabpanel" aria-labelledby="sbt">
 <div>
 <pre class="line-numbers language-xml">
 <code class="language-xml">
@@ -30,7 +36,7 @@ libraryDependencies += "io.kamon" %% "{{ include.module }}" % "{{ include.versio
 </div>
 </div>
 
-<div class="tab-pane" id="gradle_library" role="tabpanel" aria-labelledby="sbt">
+<div class="tab-pane" id="{{ include.prefix }}_gradle_library" role="tabpanel" aria-labelledby="sbt">
 <div>
 <pre class="line-numbers language-groovy">
 <code class="language-groovy">

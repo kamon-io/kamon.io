@@ -1,0 +1,53 @@
+buildscript {
+  ext.kotlin_version = '1.3.0'
+
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
+}
+
+plugins {
+  id 'org.jetbrains.kotlin.jvm' version '1.2.71'
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'kamon.example.Start'
+
+// tag:base-kamon-dependencies:start
+dependencies {
+  compile "io.kamon:kamon-core_2.12:1.2.0-M1"
+
+  // Reporter Dependencies
+  compile "io.kamon:kamon-akka-2.5_2.12:1.1.2"
+  compile "io.kamon:kamon-prometheus_2.12:1.1.1"
+  compile "io.kamon:kamon-zipkin_2.12:1.0.0"
+}
+// tag:base-kamon-dependencies:end
+
+dependencies {
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    url  "https://dl.bintray.com/kamon-io/releases"
+  }
+}
+
+compileKotlin {
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+}
+compileTestKotlin {
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+}

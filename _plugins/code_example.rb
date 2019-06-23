@@ -25,7 +25,7 @@ module Jekyll
 
         navegation_tabs = navegation_tabs +
           '<li class="nav-item">' +
-            '<a class="nav-link' + active + '" data-toggle="tab" href="#' + snippet_id + '" role="tab">' +
+            '<a class="nav-link c-pointer' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
               snippet[:label] +
             '</a>' +
           '</li>'
@@ -68,6 +68,9 @@ module Jekyll
         return "Not tag attribute specified"
       end
 
+      @version = text.match(/\bversion:([0-9A-Za-z\-\_]*)/)
+      @version = @version.nil? ? @version : @version.captures[0]
+
       @label = text.match(/\blabel:"(.*)"/)
       @label = @label.nil? ? @language.capitalize : @label.captures[0]
 
@@ -75,9 +78,8 @@ module Jekyll
 
     def render(context)
       code_dir = context.registers[:site].source
-      version_dir = context.registers[:page]['path'].split(/\//)[1]
+      version_dir = @version.nil? ? context.registers[:page]['path'].split(/\//)[1] : @version
       examples_dir = code_dir + "/docs/" + version_dir + "/examples"
-
       file_path = Pathname.new(examples_dir + "/" + @file).expand_path()
 
       unless file_path.file?

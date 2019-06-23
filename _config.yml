@@ -58,6 +58,9 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
+autopages:
+  enabled: false
+
 # source: 'website'
 # plugins_dir: 'website/jekyll/plugins'
 # includes_dir: 'jekyll/includes'

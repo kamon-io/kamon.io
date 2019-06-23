@@ -129,27 +129,27 @@
 }
 
 .signup-cta {
-  // &:before {
-  //   z-index: -1;
-  //   position: absolute;
-  //   background-color: inherit;
-  //   height: 40px;
-  //   width: 100%;
-  //   content: '';
-  //   transform: skewY(-0.5deg) translateY(-10px);
-  // }
+  &:before {
+    z-index: -1;
+    position: absolute;
+    background-color: inherit;
+    height: 50px;
+    width: 100%;
+    content: '';
+    transform: skewY(-1deg) translateY(-10px);
+  }
 }
 
 .skew-top-left-footer {
-  // &:before {
-  //   z-index: -1;
-  //   position: absolute;
-  //   background-color: inherit;
-  //   height: 40px;
-  //   width: 100%;
-  //   content: '';
-  //   transform: skewY(0.5deg) translateY(-10px);
-  // }
+  &:before {
+    z-index: -1;
+    position: absolute;
+    background-color: inherit;
+    height: 40px;
+    width: 100%;
+    content: '';
+    transform: skewY(0.5deg) translateY(-10px);
+  }
 }
 
 #apm-hdr-image {

@@ -1,0 +1,5 @@
+<!-- https://www.playframework.com/documentation/latest/SettingsLogger -->
+<configuration>
+  <logger name="oshi.util.FileUtil" level="OFF" />
+  <root level="INFO"/>
+</configuration>

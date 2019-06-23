@@ -1,12 +1,11 @@
 package kamon.example
 
 import kamon.Kamon
-import kamon.prometheus.PrometheusReporter
-import kamon.zipkin.ZipkinReporter
 
 // tag:load-modules:start
 fun main(args: Array<String>) {
-  Kamon.addReporter(PrometheusReporter())
-  Kamon.addReporter(ZipkinReporter())
+  Kamon.init()
+
+  // Your application code goes here
 }
 // tag:load-modules:end

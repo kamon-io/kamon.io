@@ -351,6 +351,29 @@ function startInstrumentationSlideshow() {
   }
 }
 
+function installToggleOptions(rootElementID, suffix, options) {
+  if($(`#${rootElementID}`).length > 0) {
+
+    // hides all options and ensures only the provided option is shown
+    const showOption = function(optionName) {
+      options.forEach(o => {
+        if(o !== optionName) {
+          $(`#${o}-${suffix}-toggle`).removeClass("active")
+          $(`#${o}-${suffix}`).removeClass("d-block")
+          $(`#${o}-${suffix}`).addClass("d-none")
+        }
+      })
+
+      $(`#${optionName}-${suffix}-toggle`).addClass("active")
+      $(`#${optionName}-${suffix}`).addClass("d-block")
+      $(`#${optionName}-${suffix}`).removeClass("d-none")
+    }
+
+    // Register manual toggles
+    options.forEach(o => $(`#${o}-${suffix}-toggle`).click(function() { showOption(o) }))
+  }
+}
+
 $(document).ready(function() {
   moveDocumentationTocToSidebar()
   smoothScrollToAnchor()
@@ -361,4 +384,6 @@ $(document).ready(function() {
   toggleMobileSidebar()
   copySidebarContentForMobile()
   startInstrumentationSlideshow()
+  installToggleOptions("get-started-options", "setup-steps", ['plain', 'play', 'manual'])
+  installToggleOptions("reporter-options", "setup-steps", ['apm', 'prometheus', 'zipkin', 'influxdb', 'datadog'])
 })

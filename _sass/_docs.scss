@@ -31,6 +31,18 @@
       }
     }
   }
+
+  .docs-version-dropdown {
+    a {
+      display: inline-block;
+      line-height: 2rem;
+      padding: 0rem 1rem;
+    }
+  }
+
+  .dropdown-item.active, .dropdown-item:active {
+    background-color: #ababab;
+  }
 }
 
 .has-scroll .docs-header-bar {
