@@ -4,6 +4,7 @@
   border-radius: 2px;
   text-transform: uppercase;
   color: white;
+  font-size: 1.05rem;
   font-weight: $bold;
   padding: 0.8rem 1.2rem;
   box-shadow: 0px 3px 6px 0px #42424275;
@@ -13,7 +14,8 @@
 @mixin ripple-button($color) {
   background-color: $color;
   background-position: center;
-  transition: background 0.8s;
+  transition: background 0.4s;
+  border-radius: 4px;
 
   &:hover {
     background: lighten($color, 2%) radial-gradient(circle, transparent 1%, lighten($color, 2%) 1%) center/15000%;
@@ -31,7 +33,7 @@
 }
 
 .button-ripple-orange {
-  @include ripple-button(#ff8e49);
+  @include ripple-button(#ff7c59);
 }
 
 .button-ripple-green {

@@ -4,16 +4,30 @@ title: 'Kamon Guides | Kamon Documentation'
 description: 'Learn how to install Kamon in your services and start getting telemetry data out of it'
 ---
 
-First Steps
-===========
+Installation
+============
 
 These guides are aimed towards getting your feet wet and start getting telemetry data from your services as quick as
-possible.
+possible. There is one for each type of service:
 
-- [**Getting Started**][getting-started] is the beginning of it all. Here you will learn how to add the Kamon
-  libraries and get a basic setup ready for any application you want to instrument with Kamon.
+- The [**Plain Application Guide**][plain-app] is meant for any application where you are in control of the "main"
+  method, like with most Akka, Akka HTTP and Spring Boot services.
+- For [**Play Framework Applications**][play-app] follow these steps since there are a few differences in the process.
+- And if you want to get your hands dirty from the start and do [**Manual Instrumentation**][manual-instrumentation],
+  this is the guide for you.
 - [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
   with your build tool and IDE.
+
+
+Common Tweaks
+=============
+
+Here are some of the most common tweaks you might want to apply after your service is up and running with Kamon:
+
+- On the [**Logging with Context**][logging-with-context] guide you will learn how to include things like the current
+  trace ID and Context tags in your log events.
+- Configure Sampling
+
 
 
 Frameworks
@@ -27,6 +41,10 @@ setup, basic configuration and seeing example data in several metrics and tracin
 
 
 
+[plain-app]: ./installation/plain-application/
+[play-app]: ./installation/play-framework/
+[manual-instrumentation]: ./installation/manual-instrumentation/
+[logging-with-context]: ./common-tweaks/logging-with-context/
 
 [getting-started]: ./getting-started/
 [setting-up-the-agent]: ./setting-up-the-agent/

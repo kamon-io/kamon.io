@@ -7,23 +7,46 @@ redirect_from:
 
 {% include toc.html %}
 
+Logback Instrumentation
+=======================
+
+The Logback instrumentation provides a few useful features that help include Kamon's Context information in your
+logging practices: it makes it easy to include Context information in your log patterns and on the MDC, it preservers
+Context when using an `AsyncAppender` and finally, comes with an appender that can be used to count log entries by level.
+
+
 Logging with Context
-====================
+--------------------
 
-The `kamon-logback` module provides converters that can be used to put Context information in your log patterns and
-bytecode instrumentation that propagates the context as expected with using Logback's `AsyncAppender`.
+There are four converters included in the Logback instrumentation that can help you include Context information in your
+log patterns:
 
-## Dependency Installation
-{% include dependency-info.html module="kamon-logback" version="1.0.5" %}
-{% include instrumentation-agent-notice.html %}
+- **TraceIDConverter** outputs the current trace identifier, or `undefined` if none is present.
+- **SpanIDConverter** outputs the current span identifier, or `undefined` if none is present.
+- **ContextTagConverter** outputs the value of a specified Context tag, or a default value if the tag is not present. It
+  accepts one parameter that specifies the name of the Context tag to use.
+- **ContextEntryConverter** outputs the value of a specified Context entry, or a default value if the tag is not
+  present. It accepts one parameter that specifies the name of the Context entry to use.
 
+Converters need to be registered manually by adding these conversion rulers to your `logback.xml` file:
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" debug="false">
+  <conversionRule conversionWord="traceID" converterClass="kamon.instrumentation.logback.tools.TraceIDConverter" />
+  <conversionRule conversionWord="spanID" converterClass="kamon.instrumentation.logback.tools.SpanIDConverter" />
+  <conversionRule conversionWord="contextTag" converterClass="kamon.instrumentation.logback.tools.ContextTagConverter" />
+  <conversionRule conversionWord="contextEntry" converterClass="kamon.instrumentation.logback.tools.ContextEntryConverter" />
 
+  <!-- the rest of your config... -->
 
+</configuration>
+```
 
+Once your conversion rules are in place, all you need to do is decide where you include them in your log patter. For
+example, in the pattern bellow we are including the current Trace and Span identifiers, as well as the value of the
+`user.id` Context tag:
 
-Logging TraceID
----------------
 
 Inserting a `conversionRule` allows you to incorporate the trace ID for a request into your [Logback Layout][logback layout].
 Here is a simple example `logback.xml` configuration that does this:
@@ -31,11 +54,11 @@ Here is a simple example `logback.xml` configuration that does this:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" debug="false">
-  <conversionRule conversionWord="traceID" converterClass="kamon.logback.LogbackTraceIDConverter" />
+  <conversionRule conversionWord="traceID" converterClass="kamon.instrumentation.logback.tools.TraceIDConverter" />
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{yyyy-MM-dd HH:mm:ss} | %-5level | %traceID | %c{0} -> %m%n</pattern>
+      <pattern>%d | %level | %traceID %spanID | %contextTag{user.id} | %m%n</pattern>
     </encoder>
   </appender>
 
@@ -46,37 +69,82 @@ Here is a simple example `logback.xml` configuration that does this:
 ```
 
 
-Propagating TraceID to AsyncAppender
-------------------------------------
+Copying Context to the MDC
+--------------------------
 
-If you choose to use [`AsyncAppender`](https://logback.qos.ch/manual/appenders.html#AsyncAppender), your trace ID will
-automatically be propagated to the thread where the log is actually published. No configuration needed. The same applies
-for the span ID. You can use them in the logback pattern like this:
+Since many diagnostic tools might rely on the MDC to gather additional information, Kamon includes instrumentation that
+can automatically copy data from Kamon's Context into the current MDC while processing a log statement, so that this
+data can be transparently captured and processed by other tools. Here is an extract from the module configuration:
 
-{% code_block xml %}
- <pattern>%d{yyyy-MM-dd HH:mm:ss} | %-5level | %X{kamonTraceID} | %X{kamonSpanID} | %c{0} -> %m%n</pattern>
-{% endcode_block %}
+```text
+kamon.instrumentation.logback {
 
-You can also add custom values to MDC. To do this, simply add the key value in the library configuration:
+  # Controls if and how Context data should be copied into the MDC while events
+  # are being logged.
+  #
+  mdc {
 
-{% code_block typesafeconfig %}
-kamon.logback.mdc-traced-local-keys = [ userID ].
-kamon.logback.mdc-traced-broadcast-keys = [ requestID ]
-{% endcode_block %}
+    # MDC keys used to store the current trace and span identifiers. These keys
+    # will only be copied if there is a non-empty Span in the Context associated
+    # with the logged event.
+    trace-id-key = "kamonTraceId"
+    span-id-key = "kamonSpanId"
 
-Then, add the value to the kamon context:
+    # Enables copying of Context information into the MDC. Please note that if
+    # you only want to include certain Context information in your log patterns
+    # you are better off by simply using the conversion rules available under
+    # the "tools" package. Copying data into the MDC is required only in cases
+    # where third-party tooling expects data from the MDC to be extracted.
+    #
+    copy {
 
-{% code_block scala %}
-Context
-  .create(Span.ContextKey, span)
-  .withKey(Key.broadcastString("userID"), Some("user-1"))
-  .withKey(Key.local[Option[String]("requestID", None), Some("request-id") {
-  // loggers called in this context will have access to the userID, requestID
+      # Controls whether Context information should be copied into the MDC
+      # or not.
+      enabled = yes
+
+      # Controls whether Context tags should be copied into the MDC.
+      tags = yes
+
+      # Contains the names of all Context entries that should be copied into
+      # the MDC.
+      entries = [ ]
+    }
+  }
 }
-{% endcode_block %}
-
-Note: While in Kamon you can have one local key and one broadcast key with the same name, in MDC this is not possible.
-In this case only the broadcast key will be stored in MDC (will be present in the logs)
+```
 
 
-[logback layout]: https://logback.qos.ch/manual/layouts.html
+Counting Log Events
+-------------------
+
+Finally, there is a very simple appender that can be used to count how many log events where generated by your
+application by adding the `EntriesCounterAppender` to your configuration:
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" debug="false">
+
+  <!-- your conversion rulers, appenders and so on -->
+
+  <appender name="COUNTER" class="kamon.instrumentation.logback.tools.EntriesCounterAppender"/>
+
+  <root level="DEBUG">
+    <appender-ref ref="REAL_APPENDER" />
+    <appender-ref ref="COUNTER" />
+  </root>
+</configuration>
+```
+
+Once the appender is added, you will start to see the following metric:
+
+{%  include metric-detail.md name="log.events" %}
+
+
+Manual Installation
+-------------------
+
+In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+
+{% include dependency-info.html module="kamon-logback" version=site.data.versions.latest.logback %}
+{% include instrumentation-agent-notice.html %}

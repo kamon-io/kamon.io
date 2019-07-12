@@ -20,12 +20,20 @@ core:
 
 
 guides:
-  - topic: First Steps
+  - topic: Installation
     pages:
-      - name: Installing Kamon
-        path: /guides/getting-started/
+      - name: Plain Application
+        path: /guides/installation/plain-application/
+      - name: Play Framework
+        path: /guides/installation/play-framework/
+      - name: Manual Instrumentation
+        path: /guides/installation/manual-instrumentation/
       - name: Setting up the Agent
-        path: /guides/setting-up-the-agent/
+        path: /guides/installation/setting-up-the-agent/
+  - topic: Common Tweaks
+    pages:
+      - name: Logging with Context
+        path: /guides/common-tweaks/logging-with-context/
   - topic: Frameworks
     pages:
       - name: Elementary Akka Setup
@@ -36,7 +44,7 @@ guides:
         path: /guides/migration/from-0.6-to-1.0/
 
 instrumentation:
-  - topic: Available Instrumentation
+  - topic: In-Process Instrumentation
     pages:
       - name: Akka
         pages:
@@ -50,16 +58,30 @@ instrumentation:
             path: /instrumentation/akka/context-propagation/
           - name: Ask Pattern
             path: /instrumentation/akka/ask-pattern-timeout-warning/
+      - name: Akka HTTP
+        path: /instrumentation/akka-http/
       - name: Executors
         path: /instrumentation/executors/
       - name: Futures
         path: /instrumentation/futures/
       - name: JDBC
-        path: /instrumentation/jdbc/
+        pages:
+          - name: Statement Tracing
+            path: /instrumentation/jdbc/statement-tracing/
+          - name: HikariCP
+            path: /instrumentation/jdbc/hikari/
       - name: Logback
         path: /instrumentation/logback/
+      - name: Play Framework
+        path: /instrumentation/play-framework/
       - name: System Metrics
-        path: /instrumentation/system-metrics/
+        pages:
+          - name: JVM Metrics
+            path: /instrumentation/system/jvm-metrics/
+          - name: Process Metrics
+            path: /instrumentation/system/process-metrics/
+          - name: Host Metrics
+            path: /instrumentation/system/host-metrics/
 
 reporters:
   - topic: Combined Reporters
@@ -84,3 +106,685 @@ reporters:
         path: /reporters/zipkin/
       - name: Jaeger
         path: /reporters/jaeger/
+
+metrics:
+  akka.system.active-actors:
+    description: Tracks the number of active Actors in an Actor System.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+
+  akka.system.dead-letters:
+    description: Counts the number of dead letters in an Actor System.
+    instrument_type: counter
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+
+  akka.system.unhandled-messages:
+    description: Counts the number of unhandled messages in an Actor System.
+    instrument_type: counter
+    tags:
+      - name: system
+        description: The Actor System being tracked
+
+  akka.system.processed-messages:
+    description: Counts the number of processed messages in an Actor System.
+    instrument_type: counter
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: tracked
+        description: Whether the messages was processed by a tracked actor or not.
+
+  akka.actor.processing-time:
+    description: Tracks the time taken for the actor to process the receive function.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Actor's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the actor is running.
+      - name: class
+        description: The Actor's class name.
+
+  akka.actor.time-in-mailbox:
+    description: Tracks the time since the instant a message is enqueued in an Actor's mailbox until it is dequeued for processing.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Actor's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the actor is running.
+      - name: class
+        description: The Actor's class name.
+
+  akka.actor.mailbox-size:
+    description: Tracks the behavior of an Actor's mailbox size.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Actor's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the actor is running.
+      - name: class
+        description: The Actor's class name.
+
+  akka.actor.errors:
+    description: Counts the number of processing errors experienced by an Actor.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Actor's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the actor is running.
+      - name: class
+        description: The Actor's class name.
+
+  akka.group.time-in-mailbox:
+    description: Tracks the time since the instant a message is enqueued in a member's mailbox until it is dequeued for processing.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: group
+        description: The group's name.
+
+  akka.group.processing-time:
+    description: Tracks the time taken for a member actor to process the receive function.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: group
+        description: The group's name.
+
+  akka.group.pending-messages:
+    description: Tracks the number of messages waiting to be processed across all members.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: group
+        description: The group's name.
+
+  akka.group.members:
+    description: Tracks the number of routees belonging to a group.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: group
+        description: The group's name.
+
+  akka.group.errors:
+    description: Counts the number of processing errors experienced by the members of a group.
+    instrument_type: counter
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: group
+        description: The group's name.
+
+  akka.remote.messages.inbound.size:
+    description: Tracks the distribution of inbound message sizes.
+    instrument_type: histogram
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+
+  akka.remote.messages.outbound.size:
+    description: Tracks the distribution of outbound message sizes.
+    instrument_type: histogram
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+
+  akka.remote.serialization-time:
+    description: Tracks the distribution of outbound message sizes.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: Tracks the time taken to serialize outgoing messages.
+
+  akka.remote.deserialization-time:
+    description: Tracks the time taken to deserialize incoming messages.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: Tracks the time taken to serialize outgoing messages.
+
+  akka.router.routing-time:
+    description: Tracks the time taken by a router to process its routing logic.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  akka.router.time-in-mailbox:
+    description: Tracks the time since the instant a message is enqueued in a routee's mailbox until it is dequeued for processing.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  akka.router.processing-time:
+    description: Tracks the time taken for a routee to process the receive function.
+    instrument_type: timer
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  akka.router.pending-messages:
+    description: Tracks the number of messages waiting to be processed across all routees.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  akka.router.members:
+    description: Tracks the number of routees belonging to a router.
+    instrument_type: range sampler
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  akka.router.errors:
+    description: Counts the number of processing errors experienced by the routees of a router.
+    instrument_type: counter
+    tags:
+      - name: system
+        description: The Actor System being tracked.
+      - name: path
+        description: The Router's path in the System.
+      - name: dispatcher
+        description: The Dispatcher on which the Router is running.
+      - name: routerClass
+        description: The Router's class name.
+      - name: routeeClass
+        description: The Routee's class name.
+
+  executor.threads.min:
+    description: Tracks executor minimum number of Threads.
+    instrument_type: gauge
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.threads.max:
+    description: Tracks executor maximum number of Threads.
+    instrument_type: gauge
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.parallelism:
+    description: Tracks executor parallelism. This metrics is only available for ForkJoinPool executors.
+    instrument_type: gauge
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.threads.active:
+    description: Samples the number of active threads on the executor service.
+    instrument_type: histogram
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.threads.total:
+    description: Samples the total number of threads on the executor service.
+    instrument_type: histogram
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.tasks.completed:
+    description: Tracks the number of tasks that completed execution on the executor service.
+    instrument_type: counter
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.tasks.submitted:
+    description: Tracks the number of tasks submitted to the executor service.
+    instrument_type: counter
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.time-in-queue:
+    description: Tracks the time that tasks spend on the executor service's queue.
+    instrument_type: timer
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  executor.queue-size:
+    description: Samples the number of tasks queued for execution on the executor service.
+    instrument_type: histogram
+    tags:
+      - name: name
+        description: The name assigned to the Executor.
+      - name: type
+        description: Either "fjp" for ForkJoinPool executors or "tpe" for ThreadPoolExecutors.
+
+  host.cpu.usage:
+    description: Samples the CPU usage percentage on different modes.
+    instrument_type: histogram
+    tags:
+      - name: mode
+        description: Mode on which CPU usage is being tracked (e.g. user, system, wait, stolen, etc.)
+
+  host.memory.used:
+    description: Tracks the amount of used memory.
+    instrument_type: gauge
+
+  host.memory.free:
+    description: Tracks the amount of free memory.
+    instrument_type: gauge
+
+  host.memory.total:
+    description: Tracks the total memory available.
+    instrument_type: gauge
+
+  host.swap.used:
+    description: Tracks the used Swap space.
+    instrument_type: gauge
+
+  host.swap.free:
+    description: Tracks the free Swap space.
+    instrument_type: gauge
+
+  host.swap.total:
+    description: Tracks the total Swap space.
+    instrument_type: gauge
+
+  host.load.average:
+    description: Tracks the system load average.
+    instrument_type: gauge
+    tags:
+      - name: period
+        description: Whether the load average represents a 1m, 5m or 15m period.
+
+  host.storage.mount.space.used:
+    description: Tracks the used space on a file system mount/volume.
+    instrument_type: gauge
+    tags:
+      - name: mount
+        description: Name of the file system mount being measured.
+
+  host.storage.mount.space.free:
+    description: Tracks the free space on a file system mount/volume.
+    instrument_type: gauge
+    tags:
+      - name: mount
+        description: Name of the file system mount being measured.
+
+  host.storage.mount.space.total:
+    description: Tracks the total space on a file system mount/volume.
+    instrument_type: gauge
+    tags:
+      - name: mount
+        description: Name of the file system mount being measured.
+
+  host.storage.device.data.read:
+    description: Counts the amount of byes that have been read from a storage device.
+    instrument_type: counter
+    tags:
+      - name: device
+        description: Name of the storage device being measured.
+
+  host.storage.device.data.write:
+    description: Counts the amount of byes that have been written to a storage device.
+    instrument_type: counter
+    tags:
+      - name: device
+        description: Name of the storage device being measured.
+
+  host.storage.device.ops.read:
+    description: Counts the number of read operations executed on a storage device.
+    instrument_type: counter
+    tags:
+      - name: device
+        description: Name of the storage device being measured.
+
+  host.storage.device.ops.write:
+    description: Counts the number of write operations executed on a storage device.
+    instrument_type: counter
+    tags:
+      - name: device
+        description: Name of the storage device being measured.
+
+  host.network.packets.read.total:
+    description: Counts how many packets have been read from a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  host.network.packets.write.total:
+    description: Counts how many packets have been written to a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  host.network.packets.read.failed:
+    description: Counts how many packets failed to be read from a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  host.network.packets.write.failed:
+    description: Counts how many packets failed to be written to a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  host.network.data.read:
+    description: Counts how many bytes have been read from a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  host.network.data.write:
+    description: Counts how many bytes have been written to a network interface.
+    instrument_type: counter
+    tags:
+      - name: interface
+        description: Name of the network interface being measured.
+
+  http.server.requests:
+    description: Counts the number of completed requests per status code.
+    instrument_type: counter
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+      - name: http.status_code
+        description: Name of the network interface being measured.
+
+  http.server.request.active:
+    description: Number of requests being processed simultaneously at any point in time.
+    instrument_type: range sampler
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  http.server.request.size:
+    description: Request size distribution (including headers and body) for all requests received by the server.
+    instrument_type: histogram
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  http.server.response.size:
+    description: Response size distribution (including headers and body) for all responses served by the server.
+    instrument_type: histogram
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  http.server.connection.lifetime:
+    description: Tracks the time elapsed between connection creation and connection close.
+    instrument_type: timer
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  http.server.connection.usage:
+    description: Distribution of number of requests handled per connection during their entire lifetime.
+    instrument_type: histogram
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  http.server.connection.open:
+    description: Number of open connections.
+    instrument_type: range sampler
+    tags:
+      - name: component
+        description: Name of the HTTP Server Library.
+      - name: interface
+        description: Name of the interface on which the server is listening.
+      - name: port
+        description: Port number on which the HTTP server is listening.
+
+  jdbc.pool.connections.open:
+    description: Tracks the number of open connections in a pool.
+    instrument_type: range sampler
+    tags:
+      - name: jdbc.pool.vendor
+        description: Name of the connection pool vendor.
+      - name: jdbc.pool.name
+        description: Name of the connection pool for which the metric is being tracked.
+      - name: db.vendor
+        description: Name of the JDBC driver vendor.
+
+  jdbc.pool.connections.borrowed:
+    description: Tracks the number of borrowed connections in a pool.
+    instrument_type: range sampler
+    tags:
+      - name: jdbc.pool.vendor
+        description: Name of the connection pool vendor.
+      - name: jdbc.pool.name
+        description: Name of the connection pool for which the metric is being tracked.
+      - name: db.vendor
+        description: Name of the JDBC driver vendor.
+
+  jdbc.pool.borrow-time:
+    description: Tracks the time it takes for the connection pool to lease a connection.
+    instrument_type: timer
+    tags:
+      - name: jdbc.pool.vendor
+        description: Name of the connection pool vendor.
+      - name: jdbc.pool.name
+        description: Name of the connection pool for which the metric is being tracked.
+      - name: db.vendor
+        description: Name of the JDBC driver vendor.
+
+  jdbc.pool.borrow-timeouts:
+    description: Counts how many times the connection pool timed out while trying to lease a connection.
+    instrument_type: counter
+    tags:
+      - name: jdbc.pool.vendor
+        description: Name of the connection pool vendor.
+      - name: jdbc.pool.name
+        description: Name of the connection pool for which the metric is being tracked.
+      - name: db.vendor
+        description: Name of the JDBC driver vendor.
+
+  jvm.gc:
+    description: Tracks the distribution of GC events duration.
+    instrument_type: histogram
+    tags:
+      - name: collector
+        description: Name of the garbage collector.
+      - name: generation
+        description: Name of the generation (young or old) on which the GC event happened.
+      - name: db.vendor
+        description: Name of the JDBC driver vendor.
+
+  jvm.gc.promotion:
+    description: Tracks the distribution of promoted bytes to the old generation regions after a GC.
+    instrument_type: histogram
+
+  jvm.memory.used:
+    description: Samples the used space in a memory region.
+    instrument_type: histogram
+    tags:
+      - name: region
+        description: Name of the memory region being measured.
+
+  jvm.memory.free:
+    description: Samples the free space in a memory region.
+    instrument_type: histogram
+    tags:
+      - name: region
+        description: Name of the memory region being measured.
+
+  jvm.memory.committed:
+    description: Tracks the committed space in a memory region.
+    instrument_type: gauge
+    tags:
+      - name: region
+        description: Name of the memory region being measured.
+
+  jvm.memory.max:
+    description: Tracks the max space in a memory region.
+    instrument_type: gauge
+    tags:
+      - name: region
+        description: Name of the memory region being measured.
+
+  jvm.memory.pool.used:
+    description: Samples the used space in a memory pool.
+    instrument_type: histogram
+    tags:
+      - name: pool
+        description: Name of the memory pool being measured.
+
+  jvm.memory.pool.free:
+    description: Samples the free space in a memory pool.
+    instrument_type: histogram
+    tags:
+      - name: pool
+        description: Name of the memory pool being measured.
+
+  jvm.memory.pool.committed:
+    description: Tracks the committed space in a memory pool.
+    instrument_type: gauge
+    tags:
+      - name: pool
+        description: Name of the memory pool being measured.
+
+  jvm.memory.pool.max:
+    description: Tracks the max space in a memory pool.
+    instrument_type: gauge
+    tags:
+      - name: pool
+        description: Name of the memory pool being measured.
+
+  jvm.memory.allocation:
+    description: Tracks the estimated amount of bytes allocated by the JVM.
+    instrument_type: counter
+
+  log.events:
+    description: Counts the number of log events per level.
+    instrument_type: counter
+    tags:
+      - name: component
+        description: Name of the library generating the log events.
+      - name: level
+        description: Name of the level of the logging event.
+
+  process.cpu.usage:
+    description: Samples the Process CPU usage.
+    instrument_type: histogram
+    tags:
+      - name: mode
+        description: Whether the CPU usage is on user, system or combined mode.
+
+  process.ulimit.file-descriptors.max:
+    description: Tracks the max number of file descriptors that can be used by the process.
+    instrument_type: gauge
+
+  process.ulimit.file-descriptors.used:
+    description: Tracks the number of file descriptors used by the process.
+    instrument_type: gauge
+
+  process.hiccups:
+    description: Tracks the process hiccups generated by either garbage collection or OS noise.
+    instrument_type: timer

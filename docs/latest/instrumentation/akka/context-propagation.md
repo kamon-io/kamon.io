@@ -81,5 +81,5 @@ actor, the same `Context` will be available when that actor is actually created.
 Crossing the JVM Borders
 ------------------------
 
-If you are using Akka Remoting or the Akka Cluster, the same rules for `Context` propagation apply but you will
-need to ensure that the `kamon-akka-remote` module is in your classpath as well.
+If you are using Akka Remoting or the Akka Cluster, the same rules for `Context` propagation apply. Kamon will take care
+of transporting the Context along with the messages going to remote systems.

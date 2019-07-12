@@ -5,7 +5,7 @@ import akka.util.Timeout
 import kamon.Kamon
 import akka.pattern.ask
 import kamon.akka.examples.scala.ContextPropagation.userID
-import kamon.context.Key
+import kamon.context.Context
 
 import scala.concurrent.duration._
 
@@ -15,18 +15,18 @@ object ContextPropagation extends App {
   val system = ActorSystem("ask-pattern-timeout-warning")
   val someSender = Actor.noSender
   val actor = system.actorOf(Props[TraceTokenPrinter], "trace-token-printer")
-  val userID = Key.local[Option[String]]("user-id", None)
+  val userID = Context.key[Option[String]]("user-id", None)
   implicit val ec = system.dispatcher
 
   // tag:tell:start
-  Kamon.withContextKey(userID, Some("1234")) {
+  Kamon.storeContextKey(userID, Some("1234")) {
     actor ! "Some Message"
     actor.tell("Some message", someSender)
   }
   // tag:tell:end
 
   // tag:ask:start
-  val responseFuture = Kamon.withContextKey(userID, Some("1234")) {
+  val responseFuture = Kamon.storeContextKey(userID, Some("1234")) {
     (actor ? "Ask Message")
       .mapTo[String]
       .map { response =>

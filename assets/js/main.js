@@ -223,7 +223,7 @@ function scrollOnDocsSidebar() {
   const adjustSidebarMaxHeight = function() {
     const viewportHeight = window.innerHeight
     const contentHeight = $(document).height()
-    const footerHeight = $("#layout-footer").height()
+    const footerHeight = $("#layout-footer").height() + 280
     const currentScroll = $(window).scrollTop()
     var visibleFooterArea = (currentScroll + viewportHeight) - (contentHeight - footerHeight)
     if(visibleFooterArea < 0)
@@ -236,9 +236,18 @@ function scrollOnDocsSidebar() {
 
 
     if(availableSidebarHeight < sidebarHeight) {
-      $("#docs-sidebar").css({ maxHeight: availableSidebarHeight })
+      if(availableSidebarHeight > 0) {
+        $("#docs-sidebar").css({ maxHeight: availableSidebarHeight })
+        $("#docs-sidebar").addClass('d-lg-block')
+        $("#docs-sidebar").removeClass('d-lg-none')
+      } else {
+        $("#docs-sidebar").removeClass('d-lg-block')
+        $("#docs-sidebar").addClass('d-lg-none')
+      }
     } else {
       $("#docs-sidebar").css({ maxHeight: "" })
+      $("#docs-sidebar").addClass('d-lg-block')
+      $("#docs-sidebar").removeClass('d-lg-none')
     }
   }
 

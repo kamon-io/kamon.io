@@ -68,18 +68,21 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <div id="metrics-code-example" >
               <pre class="language-scala elevation-image">
                 <code>
-                  // One-liner
-                  Kamon.counter("app.orders.sent").increment()
+                  // One-Liner metric and increment
+                  Kamon.counter("app.orders").withoutTags().increment()
 
-                  // Fully defined and refined (tagged) counter
-                  val sentBytes = Kamon.counter("network.traffic", information.bytes)
-                    .refine (
-                      "direction" -> "out",
-                      "interface" -> "eth0"
-                    )
+                  // Fully define a metric
+                  val DataSent = Kamon.counter(
+                    name = "network.data.sent",
+                    description = "Counts data sent out",
+                    unit = bytes
+                  )
 
-                  sentBytes.increment()
-                  sentBytes.increment(512)
+                  // Tag and use an instrument
+                  val sentOnInterface = DataSent
+                    .withTag("interface", "eth0")
+
+                  sentOnInterface.increment(512)
                 </code>
               </pre>
               <a href="/docs/latest/core/metrics/">
@@ -97,10 +100,10 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
               <pre class="language-scala elevation-image">
                 <code>
                   // Adding tags to the SpanBuilder
-                  val span = Kamon.buildSpan("find-users")
-                    .withTag("string-tag", "hello")
-                    .withTag("number-tag", 42)
-                    .withTag("boolean-tag", true)
+                  val span = Kamon.spanBuilder("find-users")
+                    .tag("string-tag", "hello")
+                    .tag("number-tag", 42)
+                    .tag("boolean-tag", true)
                     .start()
 
                   // Adding tags to the Span.

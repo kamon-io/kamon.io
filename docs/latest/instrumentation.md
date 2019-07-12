@@ -6,15 +6,17 @@ title: 'Instrumentation Modules | Kamon Documentation'
 Instrumentation Modules
 =======================
 
-The available modules are:
+All the instrumentation modules are included in the Kamon Bundle so, out of the box, you get instrumentation for
+everything bellow! If you are not using the Kamon Bundle please refer to each module's Manual Installation section.
 
-- **[Akka](./akka/)** provides metrics and tracing information from Akka actors, routers, dispatchers, actor systems,
-  cluster sharding and remoting components.
-- **[Executors](./executors/)** provides metrics collection for executor services and wrappers that enable context
-  propagation to tasks scheduled on them.
-- **[Futures](./futures/)** provides automatic context propagation through Scala, Twitter and Scalaz futures.
-- **[JDBC](./jdbc/)** instruments JDBC drivers and the Hikari connection pool for tracing JDBC operations and extracting
-  metrics on the connection pool.
+- **[Akka](./akka/)** instrumentation provides context propagation, metrics and tracing for Akka actors, routers,
+  dispatchers, actor systems, cluster sharding and remoting components.
+- **[Executors](./executors/)** instrumentation provides metrics collection for executor services and wrappers that
+  enable context propagation to tasks scheduled on them.
+- **[Futures](./futures/)** instrumentation provide automatic context propagation through Scala, Twitter and Scalaz futures.
+- The JDBC instrumentation enables **[JDBC Statement Tracing](./jdbc/statement-tracing/)** and automatic metrics collection
+  for the **[HikariCP](./jdbc/hikari/)** connection pool.
 - **[Logback](./logback/)** provides converters that can be used to put Context information in your log patterns and
   bytecode instrumentation that propagates the context as expected with using Logback's AsyncAppender.
-- **[System Metrics](./system-metrics/)** provides host metrics like CPU, memory, network and file system usage.
+- The System Metrics module provides **[JVM](./system/jvm-metrics/)**, **[Process](./system/process-metrics/)** and
+  **[Host](./system/host-metrics/)** metrics like garbage collection time, CPU and memory usage and many more!

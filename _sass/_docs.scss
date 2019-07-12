@@ -3,6 +3,7 @@
   background-color: #f6f6f6;
 
   .docs-header-bar-tabs {
+    font-size: 1.1rem;
     ul {
       padding: 0rem;
       margin: 0rem;
@@ -51,7 +52,7 @@
 
 $sidebarWidth: 250px;
 .docs-sidebar-nav {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.7rem;
   border-right: 1px solid #7b7b7b26;
   overflow-x: hidden;
@@ -104,9 +105,10 @@ $sidebarWidth: 250px;
   }
 
   #markdown-toc {
-    font-size: 0.8rem;
+    font-size: 1rem;
     a.active {
       background: -webkit-linear-gradient(left, #5ad57f 2px, #f6f6f6 0%);
+      font-weight: 400;
     }
 
     a:hover {
@@ -156,9 +158,9 @@ $sidebarWidth: 250px;
 }
 
 .docs-content {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #909090;
-  padding-bottom: 12rem;
+  padding-bottom: 6rem;
 
   h2, h3 {
     margin-top: 2rem;
@@ -201,7 +203,7 @@ $sidebarWidth: 250px;
   body {
     .docs-header-bar {
       position: fixed;
-      top: 80px;
+      top: 70px;
       left: 0;
       width: 100%;
       z-index: 1;
@@ -245,7 +247,7 @@ $sidebarWidth: 250px;
   .docs-sidebar-nav {
     position: fixed;
     left: 0;
-    top: 80px;
+    top: 70px;
     padding-top: 10px;
     z-index: 100;
     background: #fff;
@@ -268,5 +270,26 @@ $sidebarWidth: 250px;
         padding-left: 1rem;
       }
     }
+  }
+}
+
+
+.metric-detail {
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  cursor: pointer;
+
+  a {
+    display: inline-block;
+    width: 100%;
+    border-bottom: none;
+  }
+
+  .tag-name {
+    font-weight: 600;
+  }
+
+  p, ul {
+    margin-bottom: 0;
   }
 }

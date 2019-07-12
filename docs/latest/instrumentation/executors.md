@@ -10,51 +10,55 @@ redirect_from:
 Executor Service Instrumentation
 ================================
 
-This module lets you collect metrics from executor service: Thread Pool Executors and Fork Join Pools. To start tracking
-a executor service you must register it with the executors module by calling `kamon.executors.Executors.register(...)`
-as shown bellow:
+This module lets you collect metrics from an Executor Service, be it a Thread Pool Executor or a Fork Join Pool. To
+start tracking an Executor Service you will need to register it with the executors module by calling
+`ExecutorsInstrumentation.instrument(...)` as shown bellow:
 
 {% code_example %}
 {%   language scala instrumentation/executors/src/main/scala/kamon/examples/executors/FuturesAndExecutors.scala tag:registering-a-executor label:"Registering a Executor Service" %}
 {% endcode_example %}
 
-You will get back a `Registration` that you can cancel at any moment if you want to stop tracking the executor service.
-That is something you should definitely do before shutting down the executor service.
+You will get back an instrumented Executor Service that will be recording metrics until it is shuw down. It is important
+to ensure that the instrumented executor is being used and not the original one, otherwise some metrics and Context
+propagation features will not work as expected.
 
-## Dependency Installation
-{% include dependency-info.html module="kamon-executors" version="1.0.2" %}
+
+Options
+-------
+
+When instrumenting an Executor Service you have the possibility to tweak two different options:
+- Tracking time in queue (default: yes) will track setup a timer that measures the time between submitting a task to the
+  executor and when it starts executing.
+- Propagate Context on submit (default: no) will capture the current Context at the moment a task is submitted the the
+  executor and restore that Context when the tasks executos. In most cases you will not need to enable this option
+  because the bytecode instrumentation shipping on this module will take care of performing Context propagation, but if
+  you are doing manual instrumentation this will definitely be useful for you.
+
+
+Collected Metrics
+-----------------
+
+The following metrics are collected for both `ThreadPoolExecutor` and `ForkJoinPool`:
+
+{%  include metric-detail.md name="executor.threads.min" %}
+{%  include metric-detail.md name="executor.threads.max" %}
+{%  include metric-detail.md name="executor.threads.active" %}
+{%  include metric-detail.md name="executor.threads.total" %}
+{%  include metric-detail.md name="executor.tasks.completed" %}
+{%  include metric-detail.md name="executor.tasks.submitted" %}
+{%  include metric-detail.md name="executor.time-in-queue" %}
+{%  include metric-detail.md name="executor.queue-size" %}
+
+Additionally, the parallelism setting is also reported for `ForkJoinPool` executors:
+
+{%  include metric-detail.md name="executor.parallelism" %}
+
+
+Manual Installation
+-------------------
+
+In case you are not using the Kamon Bundle, add the dependency bellow to your build to instrument Akka 2.4 and Akka 2.5
+applications.
+
+{% include dependency-info.html module="kamon-executors" version=site.data.versions.latest.executors %}
 {% include instrumentation-agent-notice.html %}
-
-
-## Exposed Metrics
-
-Regardless of the type, all executor services will get the following metrics:
-
-* __executor.threads__ (Histogram). Samples the number of threads in the executor service. Tags:
-  * __state__: Active (state=active) and total (state=total).
-
-* __executor.tasks__ (Counter). Tracks the number of tasks processed by the executor service. Tags:
-  * __state__: Submitted (state=submitted) and completed (state=completed).
-
-* __executor.queue__ (Histogram). Samples the queue size for the executor service.
-
-
-Additionally, all executor service metrics will also have the following tags:
-* __name__: With the name provided during registration.
-* __type__: Fork Join Pool (type=fjp) or Thread Pool Executor (type=tpe).
-
-
-### Additional Metrics for Thread Pool Executors
-
-* __executor.pool__ (Gauge). Tracks several configuration settings for the executor service . Tags:
-  * __setting=min__: Minimum pool size.
-  * __setting=max__: Maximum pool size.
-  * __setting=corePoolSize__: Core pool size.
-
-### Additional Metrics for Fork Join Pools
-
-* __executor.pool__ (Gauge). Tracks several configuration settings for the executor service . Tags:
-  * __setting=min__: Minimum pool size.
-  * __setting=max__: Maximum pool size.
-  * __setting=parallelism__: Parallelism.
-
