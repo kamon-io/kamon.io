@@ -8,29 +8,115 @@ redirect_from:
 
 {% include toc.html %}
 
-Reporting Metrics to Datadog
-===========================
+Datadog Reporter
+================
 
 [Datadog] is a monitoring service for IT, Operations and Development teams who write and run applications at scale, and
 want to turn the massive amounts of data produced by their apps, tools and services into actionable insight.
 
-## Installation and Startup
+## Installation
 
-{% include dependency-info.html module="kamon-datadog" version="1.0.0" %}
+{% include dependency-info.html module="kamon-datadog" version=site.data.versions.latest.datadog %}
 
-Once you have the dependency on your classpath, add the Agent or API reporter to Kamon:
+Once the reporter is on your classpath it will be automatically picked up by Kamon. This dependency ships with three
+modules:
+  - `datadog-agent` (enabled: true) Sends metrics data to the Datadog Agent via UDP.
+  - `datadog-trace-agent` (enabled: true) Sends spans data to the Datadog Trace Agent via HTTP.
+  - `datadog-api` (enabled: false) Sends metrics data directly to the Datadog public API.
 
-```scala
-Kamon.addReporter(new DatadogAgentReporter())
-// OR
-Kamon.addReporter(new DatadogAPIReporter())
-```
+If you want to control which modules are started by default just change the `enabled` setting for the appropriate module.
+
+{% code_block hcl %}
+kamon {
+  modules {
+    datadog-agent {
+      enabled = true
+    }
+
+    datadog-trace-agent {
+      enabled = true
+    }
+
+    datadog-api {
+      enabled = false
+    }
+  }
+}
+{% endcode_block %}
+
 
 ## Agent Reporter
 
-By default, the Agent reporter assumes that you have an instance of the Datadog Agent running in localhost and listening on
-port 8125. If that is not the case the you can use the `kamon.datadog.agent.hostname` and `kamon.datadog.agent.port` configuration
-keys to point the module at your Datadog Agent installation.
+By default, the Agent reporter assumes that you have an instance of the Datadog Agent running in localhost and listening
+on port 8125. You can configure specific details for the agent reporter with these configuration settings:
+
+{% code_block hcl %}
+kamon {
+  datadog {
+
+    #
+    # Settings relevant to the DatadogAgentReporter
+    #
+    agent {
+
+      # Hostname and port in which your dogstatsd is running (if not using
+      # the API). Remember that Datadog packets are sent using UDP and
+      # setting unreachable hosts and/or not open ports wont be warned
+      # by the Kamon, your data wont go anywhere.
+      hostname = "127.0.0.1"
+      port = 8125
+
+      # Max packet size for UDP metrics data sent to Datadog.
+      max-packet-size = 1024 bytes
+      measurement-formatter = "default"
+      packetbuffer = "default"
+    }
+  }
+}
+
+{% endcode_block %}
+
+
+## Trace Agent Reporter
+
+The Trace Agent reporter is also started by default and assumes that it can reach the agent locally. These are the
+settings relevant to the Trace Agent reporter:
+
+{% code_block hcl %}
+kamon {
+  datadog {
+
+    #
+    # Settings relevant to the DatadogSpanReporter
+    #
+    trace {
+
+      # Default to trace agent URL
+      # See: (https://docs.datadoghq.com/api/?lang=python#tracing)
+      api-url = "http://localhost:8126/v0.4/traces"
+
+      # FQCN of the "kamon.datadog.KamonDataDogTranslator" implementation
+      # that will convert Kamon Spans into Datadog Spans, or "defult" to
+      # use the built-in translator.
+      translator = "default"
+
+      # HTTP client timeout settings:
+      #   - connect-timeout: how long to wait for an HTTP connection
+      #     to establish before failing the request.
+      #   - read-timeout: how long to wait for a read IO operation
+      #     to complete before failing the request.
+      #   - write-timeout: how long to wait for a write IO operation
+      #     to complete before failing the request.
+      #
+      connect-timeout = 5 seconds
+      read-timeout = 5 seconds
+      write-timeout = 5 seconds
+    }
+  }
+}
+
+{% endcode_block %}
+
 
 ## API Reporter
 
@@ -46,11 +132,49 @@ follows:
   - metric.min
 
 You can refer to the [Datadog documentation](https://docs.datadoghq.com/developers/metrics/#histograms) for more details.
+Here are the settings relevant to the API reporter:
 
-## Metric Units ###
+{% code_block hcl %}
+kamon {
+  datadog {
 
-Kamon keeps all timing measurements in nanoseconds and memory measurements in bytes. In order to scale those to other
-units before sending to datadog set the `time-units` and `memory-units` config keys to desired units. Supported units are:
+    #
+    # Settings relevant to the DatadogAPIReporter
+    #
+    api {
+
+      # API endpoint to which metrics time series data will be posted.
+      api-url = "https://app.datadoghq.com/api/v1/series"
+
+      # Datadog API key to use to send metrics to Datadog directly
+      # over HTTPS. The API key will be combined with the API URL
+      # to get the complete endpoint use for posting time series
+      # to Datadog.
+      api-key = ""
+
+      # HTTP client timeout settings:
+      #   - connect-timeout: how long to wait for an HTTP connection
+      #     to establish before failing the request.
+      #   - read-timeout: how long to wait for a read IO operation
+      #     to complete before failing the request.
+      #   - write-timeout: how long to wait for a write IO operation
+      #     to complete before failing the request.
+      #
+      connect-timeout = 5 seconds
+      read-timeout = 5 seconds
+      write-timeout = 5 seconds
+    }
+  }
+}
+
+{% endcode_block %}
+
+
+## Metric Units
+
+Kamon keeps all timing measurements in nanoseconds and information measurements in bytes. In order to scale those to other
+units before sending to Datadog, set the `time-unit` and `information-unit` config keys to desired units. Supported units
+are:
 
 ```typesafeconfig
 n  - nanoseconds
@@ -66,11 +190,11 @@ gb - gigabytes
 
 For example,
 
-```typesafeconfig
+```hcl
 kamon.datadog.time-units = "ms"
 ```
 
-will scale all timing measurements to milliseconds right before sending to datadog.
+Will scale all timing measurements to milliseconds right before sending to Datadog.
 
 
 Integration Notes
@@ -78,13 +202,13 @@ Integration Notes
 
 * Contrary to other Datadog client implementations, we don't flush the metrics data as soon as the measurements are
   taken but instead, all metrics data is buffered by the `kamon-datadog` module and flushed periodically using the
-  configured `kamon.metric.tick-interval` and `kamon.datadog.max-packet-size` settings.
+  configured `kamon.metric.tick-interval`.
 * It is advisable to experiment with the `kamon.metric.tick-interval` and `kamon.datadog.agent.max-packet-size` settings to
   find the right balance between network bandwidth utilisation and granularity on your metrics data.
 
 
-Visualization and Fun
----------------------
+Teasers
+-------
 
 Creating a dashboard in the Datadog user interface is really simple, all metric names will match the Kamon metric names
 with the additional "qualifier" suffix. Here is a very simple example of a dashboard created with metrics reported by Kamon:

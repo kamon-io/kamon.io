@@ -5,6 +5,8 @@ redirect_from:
   - /documentation/1.x/reporters/prometheus/
 ---
 
+{% include toc.html %}
+
 Exposing Metrics for Prometheus
 ===============================
 
@@ -16,33 +18,27 @@ This module exposes a scraping endpoint with all Kamon metrics in the Prometheus
 after starting this module is add the target to your Prometheus server and start enjoying the awesomeness.
 
 
-## Installation and Startup
+## Installation
 
-{% include dependency-info.html module="kamon-prometheus" version="1.1.1" %}
+{% include dependency-info.html module="kamon-prometheus" version=site.data.versions.latest.prometheus %}
 
-Once you have the dependency on your classpath, start the reporter:
-
-{% code_block scala %}
-import kamon.prometheus.PrometheusReporter
-
-Kamon.addReporter(new PrometheusReporter())
-{% endcode_block scala %}
-
-That's it. Go to <http://localhost:9095/> to see your exposed metrics.
+Once the reporter is on your classpath it will be automatically picked up by Kamon. When your application starts, you
+can go to <http://localhost:9095/> to see your exposed metrics.
 
 
 ## Configuration
 
 The default configuration is enough to get you started exporting metrics, but you are very likely to need tweaking the
 default bucketing configuration. Long story short, this module has to take the high definition data captured by Kamon
-and aggregate it into a reasonable number of buckets before exposing it to Prometheus.
+and aggregate it into a reasonable number of buckets before exposing it to Prometheus, and the better you choose your
+buckets the more useful the data you can get out of Prometheus.
 
 It is very important that you iterate on your buckets configuration to find the right tradeoff between granularity and
 number a reasonable number of exposed time series per metric (each bucket ends up being a separate time serie in
 Prometheus). The quality of the percentiles you get is greatly influenced by your bucketing configuration, take some
 time to think it through!
 
-{% code_block typesafeconfig %}
+{% code_block hcl %}
 kamon.prometheus.buckets {
     default-buckets = [
       10,
@@ -92,10 +88,9 @@ The measurement unit on each metric will dictate which bucketing configuration a
   - `default-buckets` are used when there is no measurement unit information in a metric.
 
 
-## Visualization and Fun
+## Teasers
 
-These are extracted from our [Monitoring Akka Quickstart][2] recipe, but stay tunned for more as Grafana dashboards for
-Kamon are coming soon!
+These are extracted from our [Elementary Akka Setup][2] guide.
 
 Scraping endpoint exposed by Kamon:
 
@@ -106,4 +101,4 @@ A simple query with actor's processing time in Prometheus' UI:
 <img class="img-fluid my-4" src="/assets/img/recipes/quickstart-prometheus-query.png">
 
 [1]: https://prometheus.io/
-[2]: /documentation/1.x/recipes/monitoring-akka-quickstart/
+[2]: ../../guides/frameworks/elementary-akka-setup/

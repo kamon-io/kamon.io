@@ -31,7 +31,7 @@ First of all, add the `kamon-core` dependency using your build system of choice.
 Context Propagation, Metrics and Tracing APIs, but does not include any instrumentation. Here is how it would look like
 in your build:
 
-{% include dependency-info.html module="kamon-cre" version=site.data.versions.latest.core prefix="plain" %}
+{% include dependency-info.html module="kamon-core" version=site.data.versions.latest.core prefix="plain" %}
 
 The core dependency is available for Java 8+ and published for Scala 2.11, 2.12 and 2.13. If you are not familiar with
 the Scala version suffix then just pick the greatest Scala version available.

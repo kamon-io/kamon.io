@@ -2,9 +2,6 @@ package com.lightbend.akka.sample
 
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import kamon.Kamon
-import kamon.jaeger.Jaeger
-import kamon.prometheus.PrometheusReporter
-import kamon.zipkin.ZipkinReporter
 
 import scala.util.Random
 
@@ -42,16 +39,17 @@ class Printer extends Actor with ActorLogging {
   }
 }
 
+// tag:init-kamon:start
 object AkkaQuickstart extends App {
   import Greeter._
 
-  // tag:start-reporting:start
-  Kamon.addReporter(new PrometheusReporter())
-  Kamon.addReporter(new ZipkinReporter())
-  // tag:start-reporting:end
+  Kamon.init()
 
   // Create the 'helloAkka' actor system
   val system: ActorSystem = ActorSystem("helloAkka")
+  // The rest of the initialization code...
+
+// tag:init-kamon:end
 
   // Create the printer actor
   val printer: ActorRef = system.actorOf(Printer.props, "printerActor")

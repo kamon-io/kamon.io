@@ -14,7 +14,6 @@ libraryDependencies += "io.kamon" %% "{{ include.module }}" % "{{ include.versio
 {% if include.showSbtPlugin %}
 // If you want to be able to run yor app with instrumentation
 // from SBT, add this to your project/plugins.sbt file:
-resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
 addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endif %}
 </code>

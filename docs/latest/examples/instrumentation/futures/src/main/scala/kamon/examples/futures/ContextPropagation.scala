@@ -2,8 +2,6 @@ package kamon.akka.examples.scala
 
 import kamon.Kamon
 import kamon.context.Context
-import kamon.instrumentation.futures.scala.ScalaFutureInstrumentation.{trace, traceAsync}
-
 import scala.concurrent.{ExecutionContext, Future}
 
 object ContextPropagation extends App {
@@ -12,7 +10,7 @@ object ContextPropagation extends App {
 
 
   // tag:future-body:start
-  Kamon.storeContextKey(userID, Some("1234")) {
+  Kamon.runWithContextEntry(userID, Some("1234")) {
     // The userID Context key is available here,
 
     Future {
@@ -31,15 +29,18 @@ object ContextPropagation extends App {
 
 
   // tag:future-spans:start
-  Future(trace("future-body") {
+  import kamon.instrumentation.futures.scala.ScalaFutureInstrumentation.{traceBody, traceFunc}
+
+  Future(traceBody("future-body") {
 
     // Here goes the actual future work, same as usual.
     "Hello Kamon"
 
-  }).map(traceAsync("calculate-length")(_.length))
-    .flatMap(traceAsync("to-string")(len => Future(len.toString)))
+  }).map(traceFunc("calculate-length")(_.length))
+    .flatMap(traceFunc("to-string")(len => Future(len.toString)))
     .map(_ => Kamon.currentContext().get(userID))
     .map(println)
+
   // And through all async callbacks, even though
   // they are executed in different threads!
 

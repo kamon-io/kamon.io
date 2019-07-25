@@ -34,7 +34,7 @@ instrumentation is applied to your classes regardless of whether you are forking
 or not. To get it working add these lines to your `project/plugins.sbt` file:
 
 {% code_block scala %}
-resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
+resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
 addSbtPlugin("io.kamon" % "sbt-aspectj-runner" % "1.1.2")
 {% endcode_block scala %}
 

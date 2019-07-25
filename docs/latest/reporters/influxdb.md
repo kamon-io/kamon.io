@@ -8,23 +8,19 @@ redirect_from:
 
 {% include toc.html %}
 
-Reporting Metrics to InfluxDB
-===================
+InfluxDB Reporter
+=================
 
-[InfluxDB] is an open-source time series database developed by InfluxData. It is written in Go and optimized for fast,
+[InfluxDB] is an open source time series database developed by InfluxData. It is written in Go and optimized for fast,
 high-availability storage and retrieval of time series data in fields such as operations monitoring, application metrics,
 Internet of Things sensor data, and real-time analytics.
 
 
 ## Installation and Startup
 
-{% include dependency-info.html module="kamon-influxdb" version="1.0.2" %}
+{% include dependency-info.html module="kamon-influxdb" version=site.data.versions.latest.influxdb %}
 
-Once you have the dependency on your classpath, start the reporter:
-
-```scala
-Kamon.addReporter(new InfluxDBReporter())
-```
+Once the reporter is on your classpath it will be automatically picked up by Kamon.
 
 ## Integration Notes
 
@@ -38,38 +34,66 @@ all tags will be transmitted unchanged and depending on the metric type, the fol
 
 The following settings are available:
 
-```typesafeconfig
+```hcl
 kamon.influxdb {
 
-  # Hostname and port in which your InfluxDB is running
-  hostname = "127.0.0.1"
-  port = 8086
+    # Hostname and port in which your InfluxDB is running
+    hostname = "127.0.0.1"
+    port = 8086
 
-  # The database where to write in InfluxDB.
-  database = "mydb"
+    # The database where to write in InfluxDB.
+    database = "mydb"
 
-  # For histograms, which percentiles to count
-  percentiles = [50.0, 70.0, 90.0, 95.0, 99.0, 99.9]
+    # For histograms, which percentiles to count
+    percentiles = [50.0, 70.0, 90.0, 95.0, 99.0, 99.9]
 
-  # Allow including environment information as tags on all reported metrics.
-  additional-tags {
+    # The protocol to use when used to connect to your InfluxDB: HTTP/HTTPS
+    protocol = "http"
 
-    # Define whether specific environment settings will be included as tags in all exposed metrics. When enabled,
-    # the service, host and instance tags will be added using the values from Kamon.environment().
-    service = yes
-    host = yes
-    instance = yes
+    # Whether or not to submit distributions with count = 0 to influxdb
+    # (with 0 values)
+    post-empty-distributions = false
 
-    # Specifies which Kamon environment tags should be ignored. All unmatched tags will be always added to al metrics.
-    blacklisted-tags = []
-  }
+    # The precision to report the period timestamp in. Corresponds with
+    # what influx will accept, minus hours and minutes [ns,u,µ,ms,s]
+    precision = "s"
+
+    # Client authentication credentials for connection to the InfluxDB
+    # server. There is no authentication by default,
+    # if you wish to enable it, add an authentication section to your
+    # configuration file. E.g.:
+    #
+    #   authentication {
+    #     user = "user"
+    #     password = "password"
+    #   }
+
+    # Allow including environment information as tags on all reported metrics.
+    environment-tags {
+
+      # Define whether specific environment settings will be included as tags
+      # in all exposed metrics. When enabled, the service, host and instance
+      # tags will be added using the values from Kamon.environment().
+      include-service = yes
+      include-host = yes
+      include-instance = yes
+
+      # Specifies which Kamon environment tags should be ignored. All unmatched
+      # tags will be always added to al metrics.
+      exclude = []
+    }
+
+    tag-filter {
+      includes = ["**"]
+      excludes = []
+    }
 }
 
 ```
 
 
-Visualization and Fun
----------------------
+Teasers
+-------
 
 Here is a simple example showing some Actor and Span metrics using InfluxDB and Grafana together:
 

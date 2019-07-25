@@ -12,22 +12,21 @@ this data (or expose it) to external systems. Reporters are organized in three m
 
 ## Combined Reporters
 
-Combined reporters can handle both metrics and spans data collected by Kamon. At the moment, the **[Kamon APM][apm]**
-reporter is the only combined reporter.
+These reporters can handle both metrics and spans data collected by Kamon:
+  - **[Kamon APM][apm]**. Sends data to Kamon APM over the HTTP API.
+  - **[Datadog][datadog]**. Bundles three separate reporters that can send metrics and spans to the Datadog Agent or
+    the Datadog API.
 
-## Metrics Reporters
+## Metrics Only
 
-These reporters can send metrics data to external systems. The available reporters are:
+These reporters can send metrics data to external systems:
   - **[Prometheus][prometheus]**. Exposes a scrape endpoint with the Prometheus exposition format.
   - **[InfluxDB][influxdb]**. Sends data to InfluxDB using the line protocol.
-  - **[StatsD][statsd]**. Sends data to StatsD over UDP.
-  - **[Datadog][datadog]**. Sends data to the Datadog Agent or the Datadog API.
-  - **[Sematext SPM][sematext]**. Sends data to Sematext through their public API.
 
-## Span Reporters
-Span reporters send Spans to external systems.
-  - **[Zipkin][zipkin]**. Sends data to zipkin using the V2 API.
-  - **[Jaeger][jaeger]**. Sends data to Jaeger's HTTP API.
+## Spans Only
+Span reporters send Spans to external systems:
+  - **[Zipkin][zipkin]**. Sends spans to Zipkin using the V2 API.
+  - **[Jaeger][jaeger]**. Sends spans to Jaeger's Collector via HTTP or Agent via UDP.
 
 
 [apm]: ./apm/

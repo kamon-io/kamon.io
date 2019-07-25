@@ -48,8 +48,7 @@ is running right there and then. But, if you want Kanela (our instrumentation ag
 SBT then you should install the `sbt-kanela-runner` plugin by adding this to your `project/plugins.sbt` file:
 
 {% code_block scala %}
-resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "2.0.0-RC1")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endcode_block %}
 
 After this, whenever you hit `run` the instrumentation will be applied as expected!

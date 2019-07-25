@@ -43,8 +43,7 @@ instrumentation is applied to your classes regardless of whether you are forking
 or not. To get it working add these lines to your `project/plugins.sbt` file:
 
 {% code_block scala %}
-resolvers += Resolver.bintrayRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "2.0.0-RC1")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endcode_block %}
 
 That's it! Next time your application starts, instrumentation will be enabled.
@@ -61,15 +60,13 @@ you must add the right plugin depending on your Play version:
 ### Play 2.7
 
 {% code_block scala %}
-resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.7" % "2.0.0-RC1")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.7" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endcode_block scala %}
 
 ### Play 2.6
 
 {% code_block scala %}
-resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.6" % "2.0.0-RC1")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.6" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endcode_block scala %}
 
 The runner brings the [sbt-javaagent][sbt-javaagent] dependency with it, but it requires you to active it explicily by
@@ -96,7 +93,7 @@ And enable the plugin in your `build.sbt` file:
 lazy val root = (project in file("."))
   .enablePlugins(JavaAppPackaging, JavaAgent)
 
-javaAgents += "io.kamon" % "kanela-agent" % "1.0.0-RC2"
+javaAgents += "io.kamon" % "kanela-agent" % "{{ site.data.versions.latest.kanela }}"
 {% endcode_block scala %}
 
 You can find additional details on the [sbt-javaagent GitHub repo][sbt-javaagent].

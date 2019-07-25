@@ -7,44 +7,40 @@ redirect_from:
 
 {% include toc.html %}
 
-Reporting Metrics and Traces to Kamon APM
-=========================================
+Kamon APM Reporter
+==================
 
-[Kamon APM][1] is a hosted monitoring and debugging platform for microservices. Kamon APM was designed from the ground
-up with one goal in mind: create a monitoring platform that can accept all the metrics and tracing data exactly as Kamon
-records it: no averages, no summaries, no downsampling, no data quality loss. Having the entire data that Kamon captures
-means proper aggregation of data across instances and proper percentiles calculation, which translates in better,
-accurate and relevant alerts and insight on your application's behavior.
-
-
-## Installation and Startup
-
-{% include dependency-info.html module="kamon-apm-reporter" version="1.1.3" %}
-
-Once the reporter is on your classpath you can add it like any other Kamon reporter:
-
-{% code_block scala %}
-import kamon.apm.KamonApm
-
-Kamon.addReporter(new KamonApm())
-{% endcode_block scala %}
+[Kamon APM][apm] is a hosted monitoring and debugging platform for microservices, designed from the ground up with one
+goal in mind: accept all the metrics and tracing data exactly as Kamon records it, no averages, no summaries,
+no downsampling, no data quality loss. Having the entire data that Kamon captures means proper aggregation of data
+across instances and proper percentiles calculation, which translates in better, accurate and relevant alerts and insight
+on your application's behavior.
 
 
-## Configuration
+## Installation
 
-At a minimum you should provide your Kamon APM API key to start reporting data using the `kamon.apm.api-key`
-configuration setting in your `application.conf` file:
+{% include dependency-info.html module="kamon-apm-reporter" version=site.data.versions.latest.apm %}
 
-{% code_block typesafeconfig %}
-kamon.apm {
-  api-key = "abcdefghijklmnopqrstuvwxyz"
+Once the reporter is on your classpath it will be automatically picked up by Kamon, just make sure that you add the API
+key for your environment in the configuration:
+
+{% code_block hcl %}
+kamon {
+  environment {
+    service = "my-service-name"
+  }
+
+  apm {
+    api-key = "abcdefghijklmnopqrstuvwxyz"
+  }
 }
-{% endcode_block scala %}
+{% endcode_block %}
 
-You can find your API key in Kamon APM's administration section.
+Also, as seen above, you might want to change the default service name to reflect the name that you want to see
+displayed in Kamon APM.
 
 
-## Visualization and Fun
+## Teasers
 
 Kamon APM has a deep understanding on all metrics reported by Kamon and provides ready to use dashboards that make it
 super easy to start looking at service, JVM, Hosts, Akka-related metrics, Traces and more. Here are some examples from a
@@ -56,4 +52,4 @@ demo application:
 <img class="img-fluid my-4" src="/assets/img/apm-jvm-metrics.png">
 <img class="img-fluid my-4" src="/assets/img/apm-traces.png">
 
-[1]: /apm/
+[apm]: /apm/

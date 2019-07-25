@@ -27,26 +27,24 @@ that can be scraped with Prometheus and send trace data to Zipkin. Let's get sta
 
 ## Add the Kamon Libraries
 
-This examples is using Akka 2.5, we will need to add `kamon-akka-2.5` to our build as shown here:
+Following the steps from the [Get Started][get-started] guide, we will add the Bundle dependency, as well as the
+Prometheus and Zipkin reporters to this project:
 
 {% code_example %}
 {%   language scala guides/frameworks/elementary-akka-setup/build.sbt tag:base-dependencies label:"Adding the Dependencies" %}
 {% endcode_example %}
 
-## Setting up the Agent
+## Initializing Kamon
 
-There are several ways to setup the AspectJ Weaver, we even [wrote a guide][3] specifically dedicated to it. Here we
-will be [running from SBT][4] and just adding the [`sbt-aspectj-runner`][5] plugin to the build is enough to get it
-working.
-
+Next, we ensure that Kamon will be initialized as the very first thing during the application startup process:
 
 {% code_example %}
-{%   language scala guides/frameworks/elementary-akka-setup/project/plugins.sbt tag:add-aspectj label:"Setting up the AspectJ Weaver" %}
+{%   language scala guides/frameworks/elementary-akka-setup/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:init-kamon label:"Initializing Kamon" %}
 {% endcode_example %}
 
 ## Configure the Akka Filters
 
-You will need to explicitly tell Kamon which actors, routers, dispatchers and groups you would like to monitor and trace.
+You will need to explicitly tell Kamon which actors, routers, dispatchers and groups you would like to track and trace.
 This application will start 4 different actors: `helloGreeter`, `howdyGreeter`, `goodDayGreeter` and `printerActor`. Now
 imagine that your monitoring requirements include:
 
@@ -54,26 +52,21 @@ imagine that your monitoring requirements include:
   - Metrics on all dispatchers.
   - Message tracing for all actor messages.
 
-All that can be achieved by simply providing the right filters under `kamon.util.filters` in your `application.conf` file
-as shown below:
+All that can be achieved by simply providing the right filters under `kamon.instrumentation.akka.filters` in your
+`application.conf` file as shown below:
 
 {% code_example %}
-{%   language scala guides/frameworks/elementary-akka-setup/src/main/resources/application.conf tag:filters label:"application.conf" %}
+{%   language hcl guides/frameworks/elementary-akka-setup/src/main/resources/application.conf tag:filters label:"application.conf" %}
 {% endcode_example %}
 
-## Start Reporting your Data
 
-The last step in the process: start reporting your data! You can register as many reporters as you want by using the
-`Kamon.addReporter(...)` function:
-
-{% code_example %}
-{%   language scala guides/frameworks/elementary-akka-setup/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:start-reporting label:"Start Reporting" %}
-{% endcode_example %}
 
 That's it! Now you can simply `sbt run` the application and after a few seconds you will get the Prometheus metrics
-exposed on <http://localhost:9095/> and message traces sent to Zipkin! The default configuration publishes the Prometheus
-endpoint on port 9095 and assumes that you have a Zipkin instance running locally on port 9411 but you can change these
-values under the `kamon.prometheus` and `kamon.zipkin` configuration keys, respectively.
+exposed on <http://localhost:9095/> and message traces sent to Zipkin!
+
+The default configuration publishes the Prometheus endpoint on port 9095 and assumes that you have a Zipkin instance
+running locally on port 9411 but you can change these values under the `kamon.prometheus` and `kamon.zipkin`
+configuration paths, respectively.
 
 
 #### Metrics
@@ -117,3 +110,4 @@ application, have fun and let us know if anything goes wrong!
 [3]: ../../setting-up-the-agent/
 [4]: ../../setting-up-the-agent/#running-from-sbt
 [5]: https://github.com/kamon-io/sbt-aspectj-runner
+[get-started]: /get-started/

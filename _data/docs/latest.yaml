@@ -42,6 +42,8 @@ guides:
     pages:
       - name: Migrating from 0.6 to 1.0
         path: /guides/migration/from-0.6-to-1.0/
+      - name: Migrating from 1.x to 2.0
+        path: /guides/migration/from-1.x-to-2.0/
 
 instrumentation:
   - topic: In-Process Instrumentation
@@ -88,19 +90,19 @@ reporters:
     pages:
       - name: Kamon APM
         path: /reporters/apm/
-  - topic: Metric Reporters
+      - name: Datadog
+        path: /reporters/datadog/
+  - topic: Metrics Only
     pages:
       - name: Prometheus
         path: /reporters/prometheus/
       - name: InfluxDB
         path: /reporters/influxdb/
-      - name: StatsD
-        path: /reporters/statsd/
-      - name: Datadog
-        path: /reporters/datadog/
-      - name: Sematext SPM
-        path: /reporters/sematext-spm/
-  - topic: Span Reporters
+      # - name: StatsD
+      #   path: /reporters/statsd/
+      # - name: Sematext SPM
+      #   path: /reporters/sematext-spm/
+  - topic: Spans Only
     pages:
       - name: Zipkin
         path: /reporters/zipkin/

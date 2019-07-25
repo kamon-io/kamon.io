@@ -9,8 +9,8 @@ redirect_from:
 
 {% include toc.html %}
 
-Akka Instrumentation Overview
-=============================
+Akka Instrumentation
+====================
 
 Overview
 --------

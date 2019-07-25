@@ -13,8 +13,8 @@ possible. There is one for each type of service:
 - The [**Plain Application Guide**][plain-app] is meant for any application where you are in control of the "main"
   method, like with most Akka, Akka HTTP and Spring Boot services.
 - For [**Play Framework Applications**][play-app] follow these steps since there are a few differences in the process.
-- And if you want to get your hands dirty from the start and do [**Manual Instrumentation**][manual-instrumentation],
-  this is the guide for you.
+- You can head to the [**Manual Instrumentation**][manual-instrumentation] guide if you want to get your hands dirty
+  from the start.
 - [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
   with your build tool and IDE.
 
@@ -26,8 +26,6 @@ Here are some of the most common tweaks you might want to apply after your servi
 
 - On the [**Logging with Context**][logging-with-context] guide you will learn how to include things like the current
   trace ID and Context tags in your log events.
-- Configure Sampling
-
 
 
 Frameworks
@@ -36,7 +34,7 @@ Frameworks
 Guides in this section are aimed to getting you from zero to telemetry with a particular framework or toolkit, including
 setup, basic configuration and seeing example data in several metrics and tracing solutions.
 
-- The [**elementary Akka setup**][elementary-akka] guide takes one of the most common example Akka applications and
+- The [**Elementary Akka setup**][elementary-akka] guide takes one of the most common example Akka applications and
   enables metrics and distributed tracing on it using Kamon's automatic instrumentation.
 
 
@@ -47,5 +45,5 @@ setup, basic configuration and seeing example data in several metrics and tracin
 [logging-with-context]: ./common-tweaks/logging-with-context/
 
 [getting-started]: ./getting-started/
-[setting-up-the-agent]: ./setting-up-the-agent/
+[setting-up-the-agent]: ./installation/setting-up-the-agent/
 [elementary-akka]: ./frameworks/elementary-akka-setup/

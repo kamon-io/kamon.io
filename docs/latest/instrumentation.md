@@ -11,6 +11,8 @@ everything bellow! If you are not using the Kamon Bundle please refer to each mo
 
 - **[Akka](./akka/)** instrumentation provides context propagation, metrics and tracing for Akka actors, routers,
   dispatchers, actor systems, cluster sharding and remoting components.
+- **[Akka HTTP](./akka-http/)** instrumentation provides context propagation, metrics and tracing for both the Client
+  and Server sides of an Akka HTTP application.
 - **[Executors](./executors/)** instrumentation provides metrics collection for executor services and wrappers that
   enable context propagation to tasks scheduled on them.
 - **[Futures](./futures/)** instrumentation provide automatic context propagation through Scala, Twitter and Scalaz futures.

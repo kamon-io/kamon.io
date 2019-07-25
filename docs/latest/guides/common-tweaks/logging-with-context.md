@@ -9,87 +9,73 @@ layout: docs
 Logging with Context
 ====================
 
-This guide is an "extended" version of the offical [Get Started][get-started] steps for manual instrumentation, but here
-we dive a little bit more into what is being achieved in each step. The general idea stays the same as in the official
-guide, there are three simple steps to follow:
-  1. [Install Kamon](#install-kamon).
-  2. [Verify the Installation](#verify-the-installation).
-  2. [Install Reporters](#install-reporters).
+This guide helps you use the Logback instrumentation to include additional Context information in your log patterns. We
+assume that you already have a working Kamon setup before starting here.
 
 
-Install Kamon
--------------
+Installing the Converters
+-------------------------
 
-### Add the Core Dependency
+There are four built-in converters in the Logback module, which should be added to your `logback.xml` file:
 
-First of all, add the `kamon-core` dependency using your build system of choice. The core dependency contains all the
-Context Propagation, Metrics and Tracing APIs, but does not include any instrumentation. Here is how it would look like
-in your build:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" debug="false">
+  <conversionRule conversionWord="traceID" converterClass="kamon.instrumentation.logback.tools.TraceIDConverter" />
+  <conversionRule conversionWord="spanID" converterClass="kamon.instrumentation.logback.tools.SpanIDConverter" />
+  <conversionRule conversionWord="contextTag" converterClass="kamon.instrumentation.logback.tools.ContextTagConverter" />
+  <conversionRule conversionWord="contextEntry" converterClass="kamon.instrumentation.logback.tools.ContextEntryConverter" />
 
-{% include dependency-info.html module="kamon-cre" version=site.data.versions.latest.core prefix="plain" %}
+  <!-- the rest of your config... -->
 
-The core dependency is available for Java 8+ and published for Scala 2.11, 2.12 and 2.13. If you are not familiar with
-the Scala version suffix then just pick the greatest Scala version available.
+</configuration>
+```
 
-
-### Include the Status Page
-
-This is not really necessary, but it is really helpful to have the Status Page module installed so that the installation
-can be verified and in general, have an idea of how is Kamon doing. To add the module, just add the dependency to your
-build system:
-
-{% include dependency-info.html module="kamon-status-page" prefix="manual-sp" version=site.data.versions.latest.core %}
+Once they are there, use the conversion words to include pieces of the Context in your log patters as shown bellow.
 
 
-### Initializing Kamon
+### Trace and Span Identifiers
 
-The last step is to initialize Kamon, which is just about calling `Kamon.init()` as the very first thing when your main
-method is invoked:
-
-{% code_example %}
-{%   language scala guides/install/sbt/src/main/scala/kamon/example/Start.scala tag:load-modules %}
-{%   language kotlin guides/install/gradle/src/main/kotlin/kamon/example/Start.kt tag:load-modules %}
-{%   language java guides/install/maven/src/main/java/kamon/example/Start.java tag:load-modules %}
-{% endcode_example %}
-
-The initialization process find all modules available on the classpath and initialize them, but since the bundle is not
-available in the classpath it will not attach the instrumentation agent.
+The Trace and Span identifiers are the simplest ones to get around, the only requirement is to place the exact
+conversion word configured above in the desired position of the log pattern:
 
 
+```xml
+<configuration scan="false" debug="false">
+  <!-- all conversion rules from above -->
 
-Verify the Installation
------------------------
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d | %traceID %spanID | %m%n</pattern>
+    </encoder>
+  </appender>
 
-Next time you start your application, Kamon should start the Status Page module included in the previous step, which
-provides a very convenient way to figure out whether everything is in place or not: just got to
-<a href="http://localhost:5266/" target="_blank"><strong>localhost:5266</strong></a> on your browser and something like
-this should show up:
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
+```
 
-<img class="img-fluid" src="/assets/img/kamon-status-page.png" alt="Kamon Status Page">
+### Context Tags and Entries
 
-The important bit here is to ensure that modules are loaded and instrumentation is active. As you start adding more and
-more metrics modules and custom telemetry to Kamon, you will probably be coming back to this page to verify that all is
-working as expected.
+Including Context Tags and Entries is very similar to including the trace and span identifiers, but the conversion words
+must be provided with a parameter that specifies the name of the tag or entry that you want to include in the log. For
+example, the configuration bellow will write the value of the `user.id` tag and the `someKey` entry in the logs:
 
+```xml
+<configuration scan="false" debug="false">
+  <!-- all conversion rules from above -->
 
-Install Reporters
------------------
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d | %contextTag{user.id} %contextEntry{someKey} | %m%n</pattern>
+    </encoder>
+  </appender>
 
-At this point, the only thing you are missing is to install some reporters that will take the metrics and trace data
-collected by Kamon into an external system. Adding a reporter is just about adding the appropriate dependency to your
-build. For example, if you wanted to add the [Kamon APM reporter][apm-reporter] to your build, just add the appropriate dependency:
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
+```
 
-{% include dependency-info.html module="kamon-apm-reporter" version=site.data.versions.latest.apm prefix="reporter" %}
-
-And that is all, Kamon will automatically pick up the module from the classpath and initialize it during startup! Head
-over to the [Reporters Section][reporters] to see all available reporters, including the ones for [Prometheus][prometheus],
-[Zipkin][zipkin], [InfluxDB][influxdb], [Datadog][datadog] and several more!
-
-
-[get-started]: /get-started/
-[reporters]: ../../../reporters/
-[apm-reporter]: ../../../reporters/apm/
-[prometheus]: ../../../reporters/prometheus/
-[zipkin]: ../../../reporters/zipkin/
-[influxdb]: ../../../reporters/influxdb/
-[datadog]: ../../../reporters/datadog/
+That's all you need. Have fun with Kamon!

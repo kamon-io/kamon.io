@@ -12,16 +12,14 @@ Futures Instrumentation
 =======================
 
 The `kamon-futures` module provides bytecode instrumentation for performing automatic Context Propagation with Scala
-Futures, as well as utilities to create Spans from a Future's body and callbacks. In previous versions of the this
-module, there was a dedicated Context propagation instrumentation for the Twitter and Scalaz Futures, but those are no
-longer necessary thanks to the instrumentation distributed with the [executors instrumentation][executors] module.
+Futures, as well as utilities to create Spans from a Future's body and callbacks.
 
 
 Context Propagation
 -------------------
 
 In the following piece of code, the body of the future will be executed asynchronously on a thread provided by the
-ExecutionContext available in implicit scope, when the code runs, Kamon will capture the current `Context` available
+ExecutionContext available in implicit scope and when the code runs, Kamon will capture the current `Context` available
 when the future was created and make it available while executing the future's body.
 
 {% code_example %}
@@ -38,16 +36,20 @@ the asynchronous operations scheduled on it.
 Creating Spans
 --------------
 
-It is possible to create Spans that represent either the Future body itself or asynchronous transformations applied to
-them by using one of these two functions:
+It is possible to create Spans that represent an entire asynchronous computation, a Future's body or asynchronous
+transformations applied to them by using these functions:
 
-- `trace(operationName: String) { ... }` which accepts a call-by-name block that can be used to wrap the Future body.
-- `traceAsync(operationName: String) { ... }` which accepts a function that can be used for any of the transformations
-  than can be applied on a Future.
+- `trace(operationName: String) { ... }` which accepts a call-by-name block that produces a Future and creates a Span
+  that will be automatically finished when the Future finishes.
+- `traceBody(operationName: String) { ... }` which accepts a call-by-name block that can be used to wrap the Future body
+  and creates a Span that will be automatically finished when the Future's body finishes executing.
+- `traceFunc(operationName: String) { ... }` which accepts a function that can be used to wrap any of the transformations
+  than can be applied on a Future and creates a Span taht will be automatically finished when the transformation finishes
+  executing.
 
-These two functions work very similarly, the only reason for them not being the same is the mismatch between the types
-expected when creating a Future and the types expected when applying transformations to them. Let's see this in a small
-example:
+The `traceBody` and `traceFunc` functions work very similarly, the only reason for them not being the same is the
+mismatch between the types expected when creating a Future and the types expected when applying transformations to them.
+Let's see this in a small example:
 
 {% code_example %}
 {%   language scala instrumentation/futures/src/main/scala/kamon/examples/futures/ContextPropagation.scala tag:future-spans %}
