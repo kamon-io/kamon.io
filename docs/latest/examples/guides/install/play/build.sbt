@@ -10,7 +10,7 @@ scalaVersion := "2.12.8"
 
 libraryDependencies += guice
 // tag:play-dependency:start
-libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.0.0"
+libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.0.1"
 // tag:play-dependency:end
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.3" % Test
 
