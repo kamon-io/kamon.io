@@ -86,6 +86,18 @@ counter.withoutTags().increment()
 counter.withTag("zone", "east").increment()
 {% endcode_block %}
 
+#### Metrics changes
+
+Gauges changed as show bellow:
+
+{% code_block scala %}
+// Kamon 1.x
+gauge.set(value)
+
+// Kamon 2.0
+gauge.update(value)
+{% endcode_block %}
+
 
 ### Context Tags
 
