@@ -51,6 +51,17 @@ any application. The bundle:
 We are still releasing and publishing all modules as independent libraries in case you want to continue adding them as
 in the previous Kamon versions.
 
+The way to register kamon reporters has changed:
+
+{% code_block scala %}
+
+// Kamon 1.x
+Kamon.addReporter(reporter);
+
+// Kamon 2.0
+Kamon.registerModule("reporter name", reporter);
+{% endcode_block %}
+
 
 ### Metrics are now Tagged instead of Refined
 
