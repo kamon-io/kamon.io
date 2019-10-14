@@ -125,7 +125,13 @@ val context = Context.Empty
 Remember though, creating a Context has nothing to do with making it current or propagating it, make sure you use the
 appropriate functions for that (see more bellow).
 
+### Tags and metrics names
+You might notice that some metrics names have changed. A prime example is [kamon-system-metrics](kamon-system-metrics).
+The reason why was that our naming approach was flawed. In Kamon 1.x was the first time we started using tags in all our integrations and we just went sort of crazy with it, more than we should have. When moving to 2.x we tried to make sure that the definition of "what" is being measured is completely encoded in the metric name and the definition of "from where" is being measured is completely encoded in the tags.
 
+There are a few things that helped us test whether the metric/tag were right.. one of them was asking ourselves: if we aggregated all timeseries of the same metrics, would the resulting timeseries be completely useless? In cases like host.cpu where the same metric had different tags for free and used it was obviously a bad choice since even though the two measurements come from the same thing, their meanings are really different. Same goes with jvm.memory and pretty much anything where we had something and the opposite of that something encoded in tags of the same metric.
+
+Rest assured that we really don't want to make any more breaking changes like that.. it was just a necessary pain to have a consistent behavior.
 
 ### In-Process Context Propagation Changes
 
@@ -160,3 +166,4 @@ You can read more about the filters and their effects on the [Akka Instrumentati
 [kanela]: https://github.com/kamon-io/kanela
 [bytebuddy]: http://bytebuddy.net
 [akka]: ../../../instrumentation/akka/metrics/
+[kamon-system-metrics]: https://github.com/kamon-io/kamon-system-metrics
