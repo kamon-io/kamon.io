@@ -1,0 +1,23 @@
+name: Build the Docker Image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v1
+    - name: Login to Docker HUB
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Create the build directory
+      run: mkdir $GITHUB_WORKSPACE/_site && sudo chown 1000:1000 $GITHUB_WORKSPACE/_site
+    - name: Build the Jekyll Site
+      run: docker run --rm --volume="$GITHUB_WORKSPACE:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
+    - name: Package the Docker Image
+      run: docker build --tag="kamon/kamon.io:$GITHUB_SHA" $GITHUB_WORKSPACE
+    - name: Push the Image
+      run: docker push kamon/kamon.io:$GITHUB_SHA
