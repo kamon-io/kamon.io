@@ -73,27 +73,23 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             </div>
 
             <div id="play-setup-steps" class="d-none">
+
               <div class="feature-description">
-                Start by adding the Kamon Bundle dependency to your build. The bundle contains all
+                  In order to apply instrumentation when running from SBT, for start, we need the 
+                  play version of the <code>sbt-kanela-runner</code> plugin added to your plugins.sbt
+                </div>
+
+                {% include kamon-play-plugin.md version="latest" %}
+
+
+              <div class="feature-description">
+                Then add the Kamon Bundle dependency to your build and enable <code>JavaAgent</code> plugin. The bundle contains all
                 available instrumentation in one single jar, so just copy this into your build:
               </div>
 
               {% include kamon-play-dependency.md version="latest" %}
 
-              <div class="feature-description">
-                then, let's make sure that instrumentation will be working as expected when running on
-                development mode using the SBT Kanela Runner plugin:
-              </div>
-
-              {% include kamon-play-plugin.md version="latest" %}
-
-
-              <div class="feature-description">
-                and finally, enable the <code>JavaAgent</code> plugin in your project to ensure that
-                instrumentation will be working when running on production mode:
-              </div>
-
-              {% include kamon-play-enable-javaagent.md version="latest" %}
+            
 
               <div class="feature-description">
                 That's it. This will take care of starting all modules and enabling instrumentation.
