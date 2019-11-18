@@ -35,7 +35,7 @@ this to your `project/plugins.sbt` file:
 
 {% include kamon-play-plugin.md version="latest" %}
 
-The plugin is published for Play Framework 2.6 and 2.7, make sure you get the suffix right! 
+The plugin is published for Play Framework 2.6 and 2.7, make sure you get the suffix right!
 
 
 ### Add the Bundle Dependency
@@ -46,14 +46,15 @@ in your build:
 
 {% include kamon-play-dependency.md version="latest" %}
 
-Enabling `JavaAgent` plugin in your Play project will make sure all instrumentation is included and attached in your distribution or running in Production Mode. Depending on your build the details might be a bit
-different but it is just about calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt`
+Enabling `JavaAgent` plugin in your Play project will make sure all instrumentation is included and attached in your
+distribution or running in Production Mode. Depending on your build the details might be a bit different but it is just
+about calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt`
 
 After this, whenever you hit
 `run` the instrumentation will be applied as expected when running on development mode.
 
-The bundle is available for Java 8+ and published for Scala 2.11 and 2.12 (Scala 2.13 will be available shortly). If you
-are not familiar with the Scala version suffix then just pick the greatest Scala version available.
+The bundle is available for Java 8+ and published for Scala 2.11, 2.12 and 2.13. If you are not familiar with the Scala
+version suffix then just pick the greatest Scala version available.
 
 
 And that is it. The bundle comes with a Guice module that will automatically initialize Kamon when the Application
