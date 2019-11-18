@@ -4,7 +4,7 @@ resolvers += Resolver.bintrayRepo("kamon-io", "releases")
 
 // tag:base-kamon-dependencies:start
 // In your build.sbt file:
-libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.0.0-RC2"
+libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.0.4"
 // tag:base-kamon-dependencies:end
 
 // Additional Dependencies

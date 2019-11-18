@@ -27,18 +27,7 @@ guide, there are three simple steps to follow:
 Install Kamon
 -------------
 
-### Add the Bundle Dependency
-
-First of all, add the `kamon-bundle` dependency using your build system of choice. The bundle contains **all** the
-instrumentation available in Kamon, it even includes Kanela! (our instrumentation agent). Here is how it would look like
-in your build:
-
-{% include kamon-play-dependency.md version="latest" %}
-
-The bundle is available for Java 8+ and published for Scala 2.11 and 2.12 (Scala 2.13 will be available shortly). If you
-are not familiar with the Scala version suffix then just pick the greatest Scala version available.
-
-### Development Mode
+### Add SBT plugin
 
 We created a dedicated SBT plugin for users running Play Framework applications, so that you can simply hit `run` from
 your SBT console and the instrumentation will just work! To install the `sbt-kanela-runner` plugin for Play, just add
@@ -46,17 +35,27 @@ this to your `project/plugins.sbt` file:
 
 {% include kamon-play-plugin.md version="latest" %}
 
-The plugin is published for Play Framework 2.6 and 2.7, make sure you get the suffix right! After this, whenever you hit
+The plugin is published for Play Framework 2.6 and 2.7, make sure you get the suffix right!
+
+
+### Add the Bundle Dependency
+
+Add the `kamon-bundle` dependency using your build system of choice. The bundle contains **all** the
+instrumentation available in Kamon, it even includes Kanela! (our instrumentation agent). Here is how it would look like
+in your build:
+
+{% include kamon-play-dependency.md version="latest" %}
+
+Enabling `JavaAgent` plugin in your Play project will make sure all instrumentation is included and attached in your
+distribution or running in Production Mode. Depending on your build the details might be a bit different but it is just
+about calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt`
+
+After this, whenever you hit
 `run` the instrumentation will be applied as expected when running on development mode.
 
-### Production Mode
+The bundle is available for Java 8+ and published for Scala 2.11, 2.12 and 2.13. If you are not familiar with the Scala
+version suffix then just pick the greatest Scala version available.
 
-The execution environment in Production mode is quite simpler than running in Development mode, the only thing you will
-need to do is enable the `JavaAgent` plugin on your Play project. Depending on your build the details might be a bit
-different but it is just about calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt`
-file, it should look like this:
-
-{% include kamon-play-enable-javaagent.md version="latest" %}
 
 And that is it. The bundle comes with a Guice module that will automatically initialize Kamon when the Application
 Loader is gets called.

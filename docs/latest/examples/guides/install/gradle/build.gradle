@@ -21,7 +21,7 @@ mainClassName = 'kamon.example.Start'
 
 // tag:base-kamon-dependencies:start
 dependencies {
-  compile "io.kamon:kamon-bundle_2.12:2.0.0"
+  compile "io.kamon:kamon-bundle_2.12:2.0.4"
 
   // Reporter Dependencies
   compile "io.kamon:kamon-apm-reporter_2.12:2.0.0"
