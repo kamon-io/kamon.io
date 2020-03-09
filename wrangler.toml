@@ -1,0 +1,9 @@
+name = "kamon-website"
+type = "webpack"
+route = "kamon.io/*"
+account_id = "0f277985e268437b177d5e7c6968b13d"
+zone_id = "ddc918ff39cc06da5f4650da2dfd95e6"
+
+[site]
+bucket = "./_site"
+entry-point = "./.cf/workers-site"
