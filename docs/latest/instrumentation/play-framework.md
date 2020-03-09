@@ -47,7 +47,7 @@ want to change the propagation channel or completely disable Context propagation
 bellow:
 
 ```hcl
-kamon.instrumentation.play {
+kamon.instrumentation.play.http {
   server {
     propagation {
       enabled = yes
@@ -96,7 +96,7 @@ metrics can (and will) be recorded for the HTTP operations. You can control whet
 `tracking` section bellow, as well as controlling whether Span Metrics will be recorded when tracing is enabled:
 
 ```hcl
-kamon.instrumentation.play {
+kamon.instrumentation.play.http {
   server {
     tracing {
       enabled = yes
@@ -131,7 +131,7 @@ additionally, we are instructing Kamon to copy the `requestID` tag as a Span tag
 instrumentation.
 
 ```hcl
-kamon.instrumentation.play {
+kamon.instrumentation.play.http {
   server.tracing.tags {
     url = span
     method = metric
@@ -163,7 +163,7 @@ As a lower level part of the instrumentation, Kamon will track the performance o
 whether HTTP Server metrics will be recorded or not by using the `` setting:
 
 ```hcl
-kamon.instrumentation.play {
+kamon.instrumentation.play.http {
   server.metrics {
     enabled = yes
   }
