@@ -1,5 +1,5 @@
 // tag:play-sbt-plugin:start
-addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.7" % "2.0.3")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.8" % "2.0.6")
 // tag:play-sbt-plugin:end
 
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.3")
