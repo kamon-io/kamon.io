@@ -92,6 +92,8 @@ reporters:
         path: /reporters/apm/
       - name: Datadog
         path: /reporters/datadog/
+      - name: New Relic
+        path: /reporters/newrelic/
   - topic: Metrics Only
     pages:
       - name: Prometheus
