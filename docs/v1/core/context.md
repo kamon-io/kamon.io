@@ -52,7 +52,7 @@ it is needed.
 
 
 
-## Manupulating a Context
+## Manipulating a Context
 
 As mentioned above, Context instances are immutable. Adding a key-value pair to a Context is achieved by actually creating
 a new Context that includes or overrides a given key. Values can be retrived by calling `.get(key)` on any Context instance:
