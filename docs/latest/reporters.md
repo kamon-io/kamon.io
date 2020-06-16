@@ -14,8 +14,8 @@ this data (or expose it) to external systems. Reporters are organized in three m
 
 These reporters can handle both metrics and spans data collected by Kamon:
   - **[Kamon APM][apm]**. Sends data to Kamon APM over the HTTP API.
-  - **[Datadog][datadog]**. Bundles three separate reporters that can send metrics and spans to the Datadog Agent or
-    the Datadog API.
+  - **[Datadog][datadog]**. Bundles three separate reporters that can send metrics and spans to the Datadog Agent or the Datadog API.
+  - **[New Relic][newrelic]**. Sends metrics and spans to New Relic.
 
 ## Metrics Only
 
@@ -30,10 +30,11 @@ Span reporters send Spans to external systems:
 
 
 [apm]: ./apm/
-[prometheus]: ./prometheus/
-[influxdb]: ./influxdb/
-[statsd]: ./statsd/
 [datadog]: ./datadog/
-[sematext]: ./sematext-spm/
-[zipkin]: ./zipkin/
+[influxdb]: ./influxdb/
 [jaeger]: ./jaeger/
+[newrelic]: ./newrelic/
+[prometheus]: ./prometheus/
+[sematext]: ./sematext-spm/
+[statsd]: ./statsd/
+[zipkin]: ./zipkin/
