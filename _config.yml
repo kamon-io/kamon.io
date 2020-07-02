@@ -33,23 +33,17 @@ theme: minima
 highlighter: pygments
 plugins:
   - jekyll-feed
-  - jekyll-paginate-v2
   - jekyll-redirect-from
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .metals
+
 excerpt_separator: "\n\n\n"
 code_examples_folder: examples
 host: 0.0.0.0
-permalink: /blog/:title/
 
 pagination:
   enabled: true
