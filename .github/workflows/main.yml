@@ -11,8 +11,15 @@ jobs:
     steps:
     - name: Checkout the code
       uses: actions/checkout@v1
-    - name: Create the build directory
-      run: mkdir -p $GITHUB_WORKSPACE/_site && sudo chown 1000:1000 $GITHUB_WORKSPACE/_site
+    - name: Cache Gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-      
+    - name: Jekyll Build
+      uses: lemonarc/jekyll-action@1.0.0
     - name: Publish to Cloudflare Workers
       uses: cloudflare/wrangler-action@1.1.0
       with:

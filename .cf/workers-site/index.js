@@ -1,4 +1,4 @@
-import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
+import { getAssetFromKV } from '@cloudflare/kv-asset-handler'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -32,7 +32,7 @@ async function handleEvent(event) {
    * You can add custom logic to how we fetch your assets
    * by configuring the function `mapRequestToAsset`
    */
-  // options.mapRequestToAsset = handlePrefix(/^\/docs/)
+  options.mapRequestToAsset = handleJekyllOutput()
 
   try {
     if (DEBUG) {
@@ -58,23 +58,18 @@ async function handleEvent(event) {
   }
 }
 
-/**
- * Here's one example of how to modify a request to
- * remove a specific prefix, in this case `/docs` from
- * the url. This can be useful if you are deploying to a
- * route on a zone, or if you only want your static content
- * to exist at a specific path.
- */
-function handlePrefix(prefix) {
+function handleJekyllOutput() {
   return request => {
-    // compute the default (e.g. / -> index.html)
-    let defaultAssetKey = mapRequestToAsset(request)
-    let url = new URL(defaultAssetKey.url)
+    const parsedUrl = new URL(request.url)
+    let pathname = parsedUrl.pathname
 
-    // strip the prefix from the path for lookup
-    url.pathname = url.pathname.replace(prefix, '/')
-
-    // inherit all other props from the default request
-    return new Request(url.toString(), defaultAssetKey)
+    if(pathname.endsWith('/')) {
+      // Replaces paths like /instrumentation/ -> /instrumentation.html
+      const newPath = pathname.substring(0, pathname.length - 1) + '.html'
+      parsedUrl.pathname = newPath
+      return new Request(parsedUrl, request)
+    }
+      
+    return request
   }
 }
