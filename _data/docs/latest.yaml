@@ -62,6 +62,8 @@ instrumentation:
             path: /instrumentation/akka/ask-pattern-timeout-warning/
       - name: Akka HTTP
         path: /instrumentation/akka-http/
+      - name: Cassandra Driver
+        path: /instrumentation/cassandra/
       - name: Executors
         path: /instrumentation/executors/
       - name: Futures
@@ -356,6 +358,94 @@ metrics:
         description: The Router's class name.
       - name: routeeClass
         description: The Routee's class name.
+
+
+  cassandra.driver.node.pool.borrow-time:
+    description: Tracks the time spent acquiring a connection to the target node.
+    instrument_type: timer
+    tags:
+      - name: cassandra.node
+        description: The address of the target node of the connection pool.
+      - name: cassandra.rack
+        description: The rack of the connection pool's target node.
+      - name: cassandra.dc
+        description: The datacenter of the connection pool's target node.
+
+
+  cassandra.driver.node.pool.connections.open:
+    description: Tracks the number of open connections to a node.
+    instrument_type: range sampler
+
+  cassandra.driver.node.pool.connections.trashed:
+    description: Counts the number of trashed connections.
+    instrument_type: counter
+
+  cassandra.driver.node.pool.in-flight:
+    description: Tracks the number of in-flight requests sent to a node
+    instrument_type: range sampler
+
+  cassandra.driver.node.pool.retries:
+    description: Counts the number of retried executions.
+    instrument_type: counter    
+
+  cassandra.driver.node.pool.errors:
+    description: Counts the number of client and server errors during execution.
+    instrument_type: counter
+    tags:
+      - name: source
+        description: Contains wither "client" or "server", depending on the source of the error. 
+
+  cassandra.driver.node.pool.timeouts:
+    description: Counts the number of timed-out executions.
+    instrument_type: counter    
+
+  cassandra.driver.node.pool.cancelled:
+    description: Counts the number of cancelled executions.
+    instrument_type: counter        
+
+
+  cassandra.driver.session.borrow-time:
+    description: Tracks the time spent acquiring a connection to the target node.
+    instrument_type: timer
+
+  cassandra.driver.session.connections.open:
+    description: Tracks the number of open connections to all Cassandra nodes.
+    instrument_type: range sampler
+
+  cassandra.driver.session.connections.trashed:
+    description: Counts the number of trashed connections.
+    instrument_type: counter
+
+  cassandra.driver.session.in-flight:
+    description: Tracks the number of in-flight requests sent to Cassandra
+    instrument_type: range sampler
+
+  cassandra.driver.session.speculative-executions:
+    description: Counts the number of speculative executions performed.
+    instrument_type: counter
+
+  cassandra.driver.session.retries:
+    description: Counts the number of retried executions.
+    instrument_type: counter    
+
+  cassandra.driver.session.errors:
+    description: Counts the number of client and server errors during execution.
+    instrument_type: counter
+    tags:
+      - name: source
+        description: Contains wither "client" or "server", depending on the source of the error. 
+
+  cassandra.driver.session.timeouts:
+    description: Counts the number of timed-out executions.
+    instrument_type: counter    
+
+  cassandra.driver.session.cancelled:
+    description: Counts the number of cancelled executions.
+    instrument_type: counter        
+
+
+
+
 
   executor.threads.min:
     description: Tracks executor minimum number of Threads.
