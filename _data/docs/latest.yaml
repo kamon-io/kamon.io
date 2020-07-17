@@ -74,6 +74,10 @@ instrumentation:
             path: /instrumentation/jdbc/statement-tracing/
           - name: HikariCP
             path: /instrumentation/jdbc/hikari/
+      - name: Kafka
+        pages:
+          - name: Producer and Consumer
+            path: /instrumentation/kafka/producer-and-consumer/
       - name: Logback
         path: /instrumentation/logback/
       - name: Play Framework
