@@ -1,31 +1,26 @@
 package kamon.examples.scala
 
-import java.time.Instant
-
 import kamon.Kamon
-import kamon.context.{Context, Key}
-import kamon.trace.Span
+import kamon.context.Context
 
 object ContextBasics extends App {
 
   // tag:context-keys:start
   // Propagated in-process only
-  val UserID = Key.local[String]("userID", "undefined")
+  val UserID = Context.key[String]("userID", "undefined")
 
-  // Propagated in-process and across processes.
-  val SessionID = Key.broadcast[Option[Int]]("sessionID", None)
-  val RequestID = Key.broadcastString("requestID")
-  // tag:context-keys:end
+  //  Propagated in-process and across processes.
+  val SessionID = Context.key[Option[Int]]("sessionID", None)
+  val RequestID = Context.key("requestID", None)
+  //  tag:context-keys:end
 
   // tag:creating-a-context:start
   // Creating a Context with two keys
-  val context = Context()
-    .withKey(UserID, "1234")
-    .withKey(SessionID, Some(42))
+  val context = Context.of(UserID, "1234", SessionID, Some(42))
 
   // Reading values from a Context
-  val userID: String = context.get(UserID)
-  val sessionID: Option[Int] = context.get(SessionID)
+  val userID = context.get(UserID)
+  val sessionID = context.get(SessionID)
 
   // The default value is returned for non-existent keys
   val requestID: Option[String] = context.get(RequestID)
@@ -38,24 +33,27 @@ object ContextBasics extends App {
   // Closing the Scope returns the previously active context
   scope.close()
 
-
-  Kamon.withContext(context) {
+  Kamon.runWithContext(context) {
     // Our context instance is the current Context
 
-    Kamon.withContextKey(UserID, "5678") {
+    Kamon.runWithContextEntry(UserID, "5678") {
       // The current context has a overridden UserID key
     }
   }
+
   // tag:storing-a-context:end
 
 
   // tag:creating-a-codec:start
   object Codecs {
+
     trait ForEntry[T] {
       def encode(context: Context): T
+
       def decode(carrier: T, context: Context): Context
     }
-  }
-  // tag:creating-a-codec:end
 
+  }
+
+  // tag:creating-a-codec:end
 }

@@ -1,7 +1,7 @@
 package kamon.examples.scala
 
 import kamon.Kamon
-import kamon.context.{Context, Key}
+import kamon.util.Filter
 
 object UtilitiesBasics extends App {
 
@@ -11,7 +11,8 @@ object UtilitiesBasics extends App {
   filter.accept("test-string")
 
   // Applying the filter as a one-liner
-  val isIncluded = Kamon.filter("explicit.matcher.type", "test-string")
+  // TODO: remove comment, it's just for review-ers
+  // i have no idea if this is correct, it just compiles
+  val isIncluded = Kamon.filter("explicit.matcher.type").accept("test-string")
   // tag:applying-filters:end
-
 }
