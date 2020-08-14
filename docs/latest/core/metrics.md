@@ -29,7 +29,7 @@ You can find more details in the [Metric Instruments][1] section.
 ## Creating and Removing Metrics
 
 To record metrics you need to request the appropriate instrument from the `Kamon` companion object (or static members, if
-on Java), optionally *refine* it with tags and then you are ready to record metrics. Let's look at a example:
+on Java), optionally *tag* it and then you are ready to record metrics. Let's look at a example:
 
 
 {% code_example %}
@@ -38,7 +38,7 @@ on Java), optionally *refine* it with tags and then you are ready to record metr
 
   1. Simple metrics that do not require tags can be looked up and used in one-liners. `(1)`
   2. Defining a metric with a counter instrument `(2)`
-  3. Creating two "refined" (or tagged, if that helps to understand better) versions of the metric, one using the
+  3. Creating two "tagged" versions of the metric, one using the
      `class=InvalidUser` `(3)` tag and another using the `class=InvalidPassword` tag `(4)`.
   4. Incrementing one of the refined metrics `(5)`
   5. Removing a specific instance of the `app.error` metric with the `class=InvalidUser` tag from Kamon. `(6)`
@@ -72,7 +72,7 @@ times at once.
 
 ## Gauges
 
-A gauge can be `set(value)` to as specific value, `increment()`, `increment(times)`, `decrement()` and `decrement(times)`.
+A gauge can be `update(value)` to as specific value, `increment()`, `increment(times)`, `decrement()` and `decrement(times)`.
 
 
 {% code_example %}
@@ -83,7 +83,7 @@ A gauge can be `set(value)` to as specific value, `increment()`, `increment(time
 ## Histograms
 
 Histograms record the entire distribution of values for a given metric. The only available operations are `record(value)`
-and `record(times)`.
+and `record(value, times)`.
 
 
 {% code_example %}
@@ -94,7 +94,7 @@ and `record(times)`.
 ## Timers
 
 Timers assume that you are measuring latency so all you need to do is provide a name and `start()` a timer. You will get
-back a `StartedTimer` instance that can be `stop()`ed whenever the operation you are measuring finishes.
+back a `Timer.Started` instance that can be `stop()`ed whenever the operation you are measuring finishes.
 
 
 {% code_example %}
