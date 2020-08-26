@@ -43,6 +43,8 @@ Spans are created by calling the `spanBuilder(operationName)` method on Kamon's 
 
 The `spanBuilder(operationName)` method will return a `SpanBuilder` instance that can be used to customize the Span to a
 certain degree and only after calling the `.start()` method on it the actual `Span` instance is created.
+We recommend using more specific version of this method with `server|client|producer|consumer` prefix on them.
+That will ensure that Spans always have a proper kind and component tags.
 
 ###### Important facts about the SpanBuilder:
   - You can only change or decide the Span's parent with the SpanBuilder. By default a newly created Span will have the

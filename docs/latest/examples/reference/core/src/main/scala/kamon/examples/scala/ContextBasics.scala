@@ -2,14 +2,14 @@ package kamon.examples.scala
 
 import kamon.Kamon
 import kamon.context.Context
+import kamon.tag.Tag
 
 object ContextBasics extends App {
 
   // tag:context-keys:start
-  // Propagated in-process only
+  // Keys are propagated in-process only
   val UserID = Context.key[String]("userID", "undefined")
 
-  //  Propagated in-process and across processes.
   val SessionID = Context.key[Option[Int]]("sessionID", None)
   val RequestID = Context.key("requestID", None)
   //  tag:context-keys:end
@@ -23,14 +23,14 @@ object ContextBasics extends App {
   val sessionID = context.get(SessionID)
 
   // The default value is returned for non-existent keys
-  val requestID: Option[String] = context.get(RequestID)
+  val requestID = context.get(RequestID)
   // tag:creating-a-context:end
 
   // tag:storing-a-context:start
   // From this moment on there is a current context
   val scope = Kamon.storeContext(context)
 
-  // Closing the Scope returns the previously active context
+  // Closing the Scope activates the previously stored context
   scope.close()
 
   Kamon.runWithContext(context) {
@@ -38,6 +38,7 @@ object ContextBasics extends App {
 
     Kamon.runWithContextEntry(UserID, "5678") {
       // The current context has a overridden UserID key
+      // The entry is propagated across process boundaries
     }
   }
 
