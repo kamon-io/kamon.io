@@ -29,8 +29,6 @@ request.
 Context keys are used to create new Context instances and to retrieve items from the Context. All keys encode four
 pieces of information required for Context propagation to work:
   - The key name. Key names must be unique and they will be used on configuration settings.
-  - (there's no more local or broadcast, but I'm not sure what to do with this) The scope, be it `local` or `broadcast`. Local Context keys will only be propagated within the process running the
-    service while broadcast Context keys will be automatically propagated across process boundaries.
   - The value type. The return value of `.get(...)` calls is tied to the Key.
   - The default value. This is the value to be returned when retrieving a key that doesn't exist in the Context.
 
@@ -40,11 +38,9 @@ Keys are created by calling the appropriate methods on the `Context` companion o
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:context-keys label:"Scala" %}
 {% endcode_example %}
 
-(Please recheck these points) There are three keys defined in the example above.:
-  - `UserID` as a local key, with type `String` and a default value of `"undefined"`. This key will always be propagated
-    with the context within the same process.
-  - `SessionID` as a broadcast key, with type `Option[Int]` and a default value of `None`. This key will always be
-    propagated within the same process and across processes.
+There are three keys defined in the example above.:
+  - `UserID` as a key, with type `String` and a default value of `"undefined"`. 
+  - `SessionID` as a key, with type `Option[Int]` and a default value of `None`. 
   - `RequestID` uses a shorter syntax for the very common case of having a broadcast key with type `Option[String]`.
 
 It is recommended (although not necessary) to create Context keys as static members and reuse the key instance wherever
