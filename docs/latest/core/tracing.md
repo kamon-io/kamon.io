@@ -63,7 +63,7 @@ by Kamon will typically have the following tags:
   - `component` specifies what library/framework instrumentation generated the Span. E.g: `akka.http.server` or `jdbc`.
   - `span.kind` specifies the role of the Span in a RPC communication. In the case of HTTP communication you will be
     seeing `client` and `server` values for this tag.
-  - `error` specifies whether an error has been added to the Span via `span.addError(...)`. (I can't se a addError method on the Span object :/)
+  - `error` specifies whether an error has been added to the Span via `span.fail(...)`. 
   - `http.method` specifies the request's HTTP method.
   - `http.url` specifies the request's URL.
 

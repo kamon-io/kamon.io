@@ -138,5 +138,5 @@ A few important details to know when creating custom codecs:
   - The `encode` function might return an empty `TextMap` or `ByteBuffer` if the provided Context doesn't contain the
     key that a codec is responsible for.
   - The `decode` function is expected to use the provided Context instance as a base for its return value. Typically a
-    codec will try to read a value from the medium and either return the result of `context.withEntry(key, readValue)` (entry or tag?) with
+    codec will try to read a value from the medium and either return the result of `context.withEntry(key, readValue)` with
     the decoded value or simply return the provided Context if no value could be read.
