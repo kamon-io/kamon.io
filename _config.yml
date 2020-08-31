@@ -29,7 +29,6 @@ markdown: kramdown
 kramdown:
   toc_levels: 2..2
   parse_block_html: true
-theme: minima
 highlighter: pygments
 plugins:
   - jekyll-feed
