@@ -74,12 +74,12 @@ function handleJekyllOutput() {
         // Replaces paths like /instrumentation/ -> /instrumentation.html
         newPath = pathname.substring(0, pathname.length - 1) + '.html'
       }
-      
+
       parsedUrl.pathname = newPath
       return new Request(parsedUrl, request)
 
     }
-      
+
     return request
   }
 }

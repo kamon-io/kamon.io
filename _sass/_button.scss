@@ -1,13 +1,11 @@
 .button {
   text-align: center;
   cursor: pointer;
-  border-radius: 2px;
-  text-transform: uppercase;
   color: white;
-  font-size: 1.05rem;
-  font-weight: $bold;
-  padding: 0.8rem 1.2rem;
-  box-shadow: 0px 3px 6px 0px #42424275;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  box-shadow: 0px 2px 3px 0px #42424225;
   letter-spacing: 0rem;
 }
 
@@ -15,7 +13,7 @@
   background-color: $color;
   background-position: center;
   transition: background 0.4s;
-  border-radius: 4px;
+  border-radius: 8px;
 
   &:hover {
     background: lighten($color, 2%) radial-gradient(circle, transparent 1%, lighten($color, 2%) 1%) center/15000%;

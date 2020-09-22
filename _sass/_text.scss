@@ -35,18 +35,21 @@ ul {
 
 .underline-green {
   text-decoration: underline;
+  text-decoration-thickness: 4px;
   text-decoration-color: $color-kamon-green;
   text-decoration-skip-ink: none;
 }
 
 .underline-blue {
   text-decoration: underline;
+  text-decoration-thickness: 4px;
   text-decoration-color: $color-kamon-apm-blue;
   text-decoration-skip-ink: none;
 }
 
 .underline-light-blue {
   text-decoration: underline;
+  text-decoration-thickness: 4px;
   text-decoration-color: $color-kamon-apm-light-blue;
   text-decoration-skip-ink: none;
 }
