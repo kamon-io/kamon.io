@@ -64,6 +64,8 @@ instrumentation:
         path: /instrumentation/akka-http/
       - name: Cassandra Driver
         path: /instrumentation/cassandra/
+      - name: Elasticsearch
+        path: /instrumentation/elasticsearch/
       - name: Executors
         path: /instrumentation/executors/
       - name: Futures
