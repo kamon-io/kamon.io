@@ -60,7 +60,7 @@ redirect_from:
     <div class="col-auto align-self-end">
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | remove: 'index.html' }}">
-          <span class="page-jumper"><i class="fas fa-angle-double-left fa-fw mr-2"> </i>Newer Posts</i></span>
+          <span class="page-jumper"><i class="fas fa-angle-double-left fa-fw mr-2">Newer Posts</i></span>
         </a>
       {% endif %}
     </div>
@@ -68,7 +68,7 @@ redirect_from:
       <div class="col-auto align-self-end">
           {% if paginator.next_page %}
         <a href="{{ paginator.next_page_path | remove: 'index.html' }}">
-          <span class="page-jumper">Older Posts<i class="fas fa-angle-double-right fa-fw ml-2"></i></span>
+          <span class="page-jumper"><i class="fas fa-angle-double-right fa-fw ml-2">Older Posts</i></span>
         </a>
         {% endif %}
       </div>
