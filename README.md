@@ -1,9 +1,9 @@
 Kamon.io
 ========
-Sources for the Kamon website.
+Sources  for the Kamon website.
 
-Run local server
+Run on local server
 ----------------
-```
+```````
 $ jekyll serve --livereload
-```
+```````
