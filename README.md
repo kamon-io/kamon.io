@@ -1,4 +1,4 @@
-Kamon.io
+Kamon.io AnAmazing Project
 ========
 Sources for the Kamon website.
 
