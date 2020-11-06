@@ -53,7 +53,7 @@ this case the filter is called `actors.start-trace`:
 {% endcode_example %}
 
 Be careful with this filter since making too many actors start traces could end up in generating many irrelevant spans
-that burry any useful information behind spans for scheduled messages and other potentially irrelevant messages that get
+that bury any useful information behind spans for scheduled messages and other potentially irrelevant messages that get
 processed by actors.
 
 

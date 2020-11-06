@@ -122,7 +122,7 @@ by adding one of the following modes to each setting:
 
 - **off** will prevent Kamon from adding the tag to Spans.
 - **span** will add the tag as a Span tag.
-- **metric** will add the tag as a Span metric tag. Please not that you should not use high cardinality values as metric
+- **metric** will add the tag as a Span metric tag. Please note that you should not use high cardinality values as metric
   tags, that's one of the reasons the URL is only set as a span tag.
 
 Also, it is possible to make Kamon copy tags from the current Context into the HTTP operation Spans by using the

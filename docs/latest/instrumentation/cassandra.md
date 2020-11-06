@@ -27,7 +27,7 @@ Query Tracing
 -------------
 
 With the default configuration, the driver instrumentation will only trace calls to `Session.execute(...)`. For example,
-if you prepare an statement and execute seven different queries on a session, your trace will look similar to this:
+if you prepare a statement and execute seven different queries on a session, your trace will look similar to this:
 
 <img class="img-fluid rounded" src="/assets/img/cassandra-without-roundtrip-spans.png">
 
@@ -39,7 +39,7 @@ All query spans will contain these tags:
   * __db.statement__: With the CQL statement sent to Cassandra.
   * __cassandra.query.kind__: Message class. With either select, update, delete or insert.
 
-Additionally, for select queries there are three additional tags with information about the `ResultSet` retured for the
+Additionally, for select queries there are three additional tags with information about the `ResultSet` returned for the
 query:
   * __cassandra.driver.rs.fetch-size__: With the configured fetch size for the query.
   * __cassandra.driver.rs.fetched__: With the count of CQL rows that were fetched with the query.
@@ -49,8 +49,8 @@ query:
 
 ### Round Trip Tracing
 In addition to the query tracing, the instrumentation can produce Spans for every round trip between the Cassandra 
-driver and the server. Round trip tracing is disabled by default because it significally increases the number of Spans
-generated for every executed query. You can enabled by chaging this setting in your `application.conf` file:
+driver and the server. Round trip tracing is disabled by default because it significantly increases the number of Spans
+generated for every executed query. You can enable it by changing this setting in your `application.conf` file:
 
 {% code_block typesafeconfig %}
 kamon.instrumentation.cassandra {
@@ -89,7 +89,7 @@ kamon.instrumentation.cassandra {
 Session Metrics
 ---------------
 
-All the following metrics are automatically tracked for all Cassandra Driver sssions:
+All the following metrics are automatically tracked for all Cassandra Driver sessions:
 
 {%  include metric-detail.md name="cassandra.driver.session.borrow-time" %}
 {%  include metric-detail.md name="cassandra.driver.session.connections.open" %}

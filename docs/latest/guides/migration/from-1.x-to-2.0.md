@@ -69,7 +69,7 @@ The `refine` method has been renamed to `withTag`, which return a new instrument
 allows for chaining calls to `withTag` and the parent tags will be preserved.
 
 Also, it was possible to call instrument actions directly on a metric (see the example bellow) which would result in
-recording values on a instrument without any tags. In order to keep the separation between a metric and its instruments
+recording values on an instrument without any tags. In order to keep the separation between a metric and its instruments
 as clearly defined as possible, those APIs are no longer available and if you were doing this, you will need to
 explicitly call `withoutTags` to get the instrument without tags:
 

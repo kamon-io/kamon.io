@@ -70,7 +70,7 @@ Sometimes you are not using the ask pattern directly, but you use some library t
 the source call location of the ask isn't enough, but you rather need the full stack trace to know what piece of your
 code is triggering the ask. In these cases, you can set the warning setting to `heavyweight` and Kamon will capture the
 full stack trace when the ask is triggered and include it in the warning message if the ask times out. That's why we
-call it "heavyweight", it will __allways__ create an exception to capture the stack trace, but only log it if the ask
+call it "heavyweight", it will __always__ create an exception to capture the stack trace, but only log it if the ask
 times out, and, taking the exception consumes a bit of resources. Depending on how heavily your application uses the ask
 pattern, the extra overhead might be tolerable, but that is up to you to decide.
 

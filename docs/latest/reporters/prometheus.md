@@ -10,7 +10,7 @@ redirect_from:
 Exposing Metrics for Prometheus
 ===============================
 
-[Prometheus][1] is a open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
+[Prometheus][1] is an open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
 flexible query language and one very important difference in comparison with all other Kamon reporters: data has to be
 pulled our of your application instead of pushed to external servers.
 

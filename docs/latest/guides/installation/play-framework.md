@@ -15,7 +15,7 @@ redirect_from:
 Installation on the Play Framework
 ==================================
 
-This guide is an "extended" version of the offical [Get Started][get-started] steps for a Play Framework app, but here
+This guide is an "extended" version of the official [Get Started][get-started] steps for a Play Framework app, but here
 we dive a little bit more into what is being achieved in each step. The general idea stays the same as in the official
 guide, there are three simple steps to follow:
 

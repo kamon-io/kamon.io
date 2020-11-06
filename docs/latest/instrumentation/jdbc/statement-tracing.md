@@ -10,7 +10,7 @@ redirect_from:
 JDBC Statement Instrumentation
 ==============================
 
-The JDBC instrumentation will automatically create Spans for Statements, Prepared Statements and Callabale Statements
+The JDBC instrumentation will automatically create Spans for Statements, Prepared Statements and Callable Statements
 created with the official drivers for these databases (please, drop a line if your database driver is missing!):
   - H2
   - SQLite

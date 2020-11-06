@@ -14,7 +14,7 @@ redirect_from:
 Installation on a Plain Application
 ===================================
 
-This guide is an "extended" version of the offical [Get Started][get-started] steps for a plain application, but here we
+This guide is an "extended" version of the official [Get Started][get-started] steps for a plain application, but here we
 dive a little bit more into what is being achieved in each step. By "plain application" we mean any application that
 starts from a good old `main` method that you can control, like pretty much all Akka, Akka HTTP and Spring Boot
 applications out there.
