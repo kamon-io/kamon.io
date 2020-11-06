@@ -316,7 +316,6 @@ function startInstrumentationSlideshow() {
     'context',
   ]
 
-  var slideshowActive = true
   var currentOption = 0
 
   if($("#instrumentation-slideshow").length > 0) {
@@ -336,27 +335,10 @@ function startInstrumentationSlideshow() {
       $(`#${optionName}-code-example`).removeClass("d-none")
     }
 
-    const timerID = setInterval(function() {
-      if(slideshowActive) {
-        const nextOption = currentOption == (options.length - 1) ? 0 : currentOption + 1
-        showOption(options[nextOption])
-      }
-    }, 4000)
-
-    // Disable automatic change of items when the user hovers the code examples
-    $("#instrumentation-slideshow").hover(
-      function onEnter() {
-        slideshowActive = false
-      },
-      function onExit() {
-        slideshowActive = true
-      }
-    )
-
     // Register manual toggles
-    $("#metrics-code-example-toggle").click(function() { showOption('metrics'); slideshowActive = false })
-    $("#tracing-code-example-toggle").click(function() { showOption('tracing'); slideshowActive = false })
-    $("#context-code-example-toggle").click(function() { showOption('context'); slideshowActive = false })
+    $("#metrics-code-example-toggle").click(function() { showOption('metrics'); })
+    $("#tracing-code-example-toggle").click(function() { showOption('tracing'); })
+    $("#context-code-example-toggle").click(function() { showOption('context'); })
   }
 }
 
