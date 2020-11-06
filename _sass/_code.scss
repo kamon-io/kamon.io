@@ -13,6 +13,8 @@ body {
   }
 
   .code-window-container {
+    box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+
     .learn-more-button {
       position: absolute;
       bottom: 1.4rem;

@@ -4,73 +4,175 @@ title: 'Instrument your services and get telemetry data that can be sent anywher
 description: 'Battle-tested, free and open source tools for instrumenting distributed systems'
 ---
 
-<div class="container">
-  <div class="row hero no-gutters">
-    <div class="col-12">
-      <h1>
-        <span class="underline-green">Instrument</span> your services and get telemetry<br>
-        data that can be sent anywhere
-      </h1>
+<div>
 
-      <h4 class="my-3">
-        Battle-tested, free and open source tools for <br>instrumenting distributed systems
-      </h4>
-      <a href="/get-started/">
-        <span class="button button-ripple-green d-none d-sm-inline-block">
-          Start Monitoring Free
-        </span>
-      </a>
+  <!--  INTRO  -->
+  <div class="row my-5 pt-5">
+    <div class="col-6">
+      <h1 class="text-whitespace-pre-line">
+        From Installation to
+        Instrumentation in Minutes
+      </h1>
+      <p class="text-body-bigger text-dark-2 text-whitespace-pre-line">
+        Collecting data about what exactly is going on
+        in your services is now as easy as adding a few lines of code
+      </p>
+      <a class="btn btn-primary btn-lg" href="#">Start Monitoring Free</a>
+    </div>
+    <div class="col-6">
+      <img class="mt-5" src="/assets/img/pages/telemetry-product-illustration.svg" alt="Telemetry Illustration"/>
     </div>
   </div>
-</div>
 
-
-<div class="w-100 background-gray skew-bottom-left">
-  <div class="container">
-    <div class="row py-5">
-      <div class="col-12">
-        <h1 class="font-weight-normal mb-4">
-          Complete telemetry API
-        </h1>
+  <!--  USED BY + TEXT  -->
+  <div>
+    <div class="d-flex justify-content-center my-5">
+      <div class="d-flex justify-content-around w-50">
+        <div>LOGO 1</div>
+        <div>LOGO 2</div>
+        <div>LOGO 3</div>
+        <div>LOGO 4</div>
       </div>
-      <div class="col-sm-12 col-lg-5 align-self-end">
-        <div class="row no-gutters">
-          <div class="col-12">
-            <h5 class="mb-4">
-              Use a single, comprehensive API to gather all the telemetry
-              data you need from distributed systems
-            </h5>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <p class="text-body-bigger text-dark-2 text-center text-whitespace-pre-line">
+        Used by companies big and small, preferred by developers working with....but helps all
+        backend developers get visibility on what’s going on under the hood
+      </p>
+    </div>
+  </div>
+
+  <!--  NO SWEAT, MIN EFFORT  -->
+  <div class="row my-5">
+    <div class="col-6 d-flex align-items-center">
+      <div>
+        <img src="/assets/img/icons/application/plug-green-icon.svg" alt="Electrical Plug Icon"/>
+        <h2 class="text-dark-1">No sweat, minimal effort</h2>
+        <p class="text-body-bigger text-dark-2 text-whitespace-pre-line">
+          Add a few lines of code and configuration and Kamon will do the rest for you!
+
+          Automatic instrumentation collects metrics, enables distributed tracing and performs context propagation out of the box.
+        </p>
+        <a class="link-azure-radiance" href="#">
+          Learn More <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+        </a>
+      </div>
+    </div>
+    <div class="col-6">
+      <img class="mt-5" src="/assets/img/pages/telemetry-product-illustration-2.svg" alt="Telemetry Illustration"/>
+    </div>
+  </div>
+
+  <!--  INSTRUMENT ONCE, REPORT ANYWHERE  -->
+  <div class="row my-5">
+    <div class="col-6">
+      <img class="mt-5" src="/assets/img/pages/telemetry-product-illustration-3.svg" alt="Telemetry Illustration"/>
+    </div>
+    <div class="col-6 d-flex align-items-center">
+      <div class="pl-3">
+        <img src="/assets/img/icons/application/chart-blue-icon.svg" alt="Chart Icon"/>
+        <h2 class="text-dark-1 text-whitespace-pre-line">
+          Instrument once,
+          report anywhere
+        </h2>
+        <p class="text-body-bigger text-dark-2 text-whitespace-pre-line">
+          Send all the metrics and trace data
+          wherever you want, without having to
+          change the instrumentation at all.
+
+          Switch reporters at any time, no need to change instrumentation.
+          Works best when paired with <b>Kamon APM</b>.
+        </p>
+        <a class="link-azure-radiance" href="#">
+          Learn More <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!--  COMPLETE TELEMETRY API, CODE EXAMPLES  -->
+  <div class="row my-5">
+    <div class="col-6 d-flex align-items-center">
+      <div>
+        <img src="/assets/img/icons/application/code-green-icon.svg" alt="Code Icon"/>
+        <h2 class="text-dark-1">Complete Telemetry API</h2>
+        <p class="text-body-bigger text-dark-2 text-whitespace-pre-line">
+          Use a single, comprehensive API to gather all the telemetry data you need from distributed systems
+        </p>
+        <a class="link-azure-radiance" href="#">
+          Learn More <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+        </a>
+        <div>
+          <div id="metrics-code-example-toggle" class="mt-3 api-section-toggle elevated-container active">
+            <div class="row no-gutters p-3">
+              <div class="col-1">
+                <img class="api-section-toggle-drawing-non-active" src="/assets/img/icons/application/box-plot-blue.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-drawing-active" src="/assets/img/icons/application/box-plot-green.svg" alt="Box Plot Icon"/>
+              </div>
+              <div class="col-10">
+                <h5 class="text-dark-1">Metrics</h5>
+                <p class="text-dark-2 api-section-toggle-text">
+                  Track latency, errors and any business metric with
+                  a dimensional model and high-definition histograms.
+                </p>
+              </div>
+              <div class="col-1">
+                <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Box Plot Icon"/>
+              </div>
+            </div>
           </div>
-          <div class="col-12">
-            <div id="metrics-code-example-toggle" class="api-section-toggle elevation-feature active ">
-              <h5>Metrics</h5>
-              Track latency, errors and any business metric with
-              a dimensional model and high-definition histograms.
+          <div id="tracing-code-example-toggle" class="mt-3 api-section-toggle elevated-container">
+            <div class="row no-gutters p-3">
+              <div class="col-1">
+                <img class="api-section-toggle-drawing-non-active" src="/assets/img/icons/application/box-plot-blue.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-drawing-active" src="/assets/img/icons/application/box-plot-green.svg" alt="Box Plot Icon"/>
+              </div>
+              <div class="col-10">
+                <h5 class="text-dark-1">Distributed Tracing</h5>
+                <p class="text-dark-2 api-section-toggle-text">
+                  Model operations that span several services and
+                  components - with automatically tracked metrics.
+                </p>
+              </div>
+              <div class="col-1">
+                <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Box Plot Icon"/>
+              </div>
             </div>
-            <div id="tracing-code-example-toggle" class="api-section-toggle elevation-feature">
-              <h5>Distributed Tracing</h5>
-              Model operations that span several services and
-              components - with automatically tracked metrics.
-            </div>
-            <div id="context-code-example-toggle" class="api-section-toggle elevation-feature">
-              <h5>Context Propagation</h5>
-              Propagate information like userID, transactionID
-              and other correlation data between threads and processes.
+          </div>
+          <div id="context-code-example-toggle" class="mt-3 api-section-toggle elevated-container">
+            <div class="row no-gutters p-3">
+              <div class="col-1">
+                <img class="api-section-toggle-drawing-non-active" src="/assets/img/icons/application/box-plot-blue.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-drawing-active" src="/assets/img/icons/application/box-plot-green.svg" alt="Box Plot Icon"/>
+              </div>
+              <div class="col-10">
+                <h5 class="text-dark-1">Context Propagation</h5>
+                <p class="text-dark-2 api-section-toggle-text">
+                  Propagate information like userID, transactionID
+                  and other correlation data between threads and processes.
+                </p>
+              </div>
+              <div class="col-1">
+                <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Box Plot Icon"/>
+                <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Box Plot Icon"/>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-6  d-flex align-items-center">
+      <div id="instrumentation-slideshow" class="ml-3 row no-gutters code-window-container w-100">
+        <div class="col-12 align-self-end code-window">
+          <div class="row no-gutters px-2 align-items-center justify-content-end code-window-heading">
+            <div class="col-auto mx-1 code-window-circle"></div>
+            <div class="col-auto mx-1 code-window-circle"></div>
+            <div class="col-auto mx-1 code-window-circle"></div>
+          </div>
 
-      <div class="col-sm-12 col-lg-7 align-self-end">
-        <div id="instrumentation-slideshow" class="row no-gutters code-window-container">
-          <div class="col-12 align-self-end code-window">
-            <div class="row no-gutters px-2 align-items-center justify-content-end code-window-heading">
-              <div class="col-auto mx-1 code-window-circle"></div>
-              <div class="col-auto mx-1 code-window-circle"></div>
-              <div class="col-auto mx-1 code-window-circle"></div>
-            </div>
-
-            <div id="metrics-code-example" >
+          <div id="metrics-code-example" >
               <pre class="language-scala elevation-image">
                 <code>
                   // One-Liner metric and increment
@@ -90,18 +192,18 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
                   sentOnInterface.increment(512)
                 </code>
               </pre>
-              <a href="/docs/latest/core/metrics/">
-                <div class="learn-more-button">
-                  <div class="text-right">
+            <a href="/docs/latest/core/metrics/">
+              <div class="learn-more-button">
+                <div class="text-right">
                     <span class="button button-ripple-green">
                       Learn About Metrics
                     </span>
-                  </div>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
+          </div>
 
-            <div id="tracing-code-example" class="d-none">
+          <div id="tracing-code-example" class="d-none">
               <pre class="language-scala elevation-image">
                 <code>
                   // Adding tags to the SpanBuilder
@@ -122,18 +224,18 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
 
                 </code>
               </pre>
-              <a href="/docs/latest/core/tracing/">
-                <div class="learn-more-button">
-                  <div class="text-right">
+            <a href="/docs/latest/core/tracing/">
+              <div class="learn-more-button">
+                <div class="text-right">
                     <span class="button button-ripple-green">
                       Learn About Tracing
                     </span>
-                  </div>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
+          </div>
 
-            <div id="context-code-example" class="d-none">
+          <div id="context-code-example" class="d-none">
               <pre class="language-scala elevation-image">
                 <code>
                   // Creating a Context with two keys
@@ -149,112 +251,78 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
                   val requestID: Option[String] = context.get(RequestID)
                 </code>
               </pre>
-              <a href="/docs/latest/core/context/">
-                <div class="learn-more-button">
-                  <div class="text-right">
+            <a href="/docs/latest/core/context/">
+              <div class="learn-more-button">
+                <div class="text-right">
                     <span class="button button-ripple-green">
                       Learn About Context
                     </span>
-                  </div>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
-</div>
 
-<div class="container mt-8">
-  <div class="row">
-    <div class="col-12 text-center">
-      <h1 class="font-weight-normal">
-        Instrument your services<br class="d-inline d-lg-none"> with minimal effort
-      </h1>
-      <h5 class="mt-4 px-5">
-        Add a few lines of code and configuration and Kamon will do the rest for you with <strong>automatic instrumentation</strong>
-        that collect metrics, enables distributed tracing and performs context propagation out of the box
-      </h5>
+  <!--  THREE CARDS  -->
+  <div class="d-flex justify-content-between mt-5">
+    <!--  GIT  -->
+    <div class="elevated-container text-center instrumentation-info-card d-flex flex-column justify-content-between p-4">
+      <div>
+        <img src="/assets/img/icons/application/create-account-step-icon.svg" alt="Payment Questionmark Icon">
+        <div class="text-left">
+          <h4 class="text-dark-1 text-whitespace-pre-line">
+            Do I have to pay for
+            Kamon Telemetry?
+          </h4>
+          <p class="text-dark-2 text-whitespace-pre-line">
+            Nope. All Kamon instrumentation has been, is, and will always be free and open source.
+            The instrumentation is released under the
+            Apache V2 license and available on Github.
+          </p>
+        </div>
+      </div>
+      <a class="btn btn-lg btn-outline-secondary text-dark-2 mt-3" href="#">
+        View on Github <img src="/assets/img/icons/application/light-btn-github.svg" alt="Github Icon"/>
+      </a>
     </div>
-  </div>
-  <div class="row justify-content-center my-5">
-    <div class="col-12 col-lg-10 text-center">
-      <img class="img-fluid" src="/assets/img/enable-kamon-git-diff.png" alt="Enabling Kamon in a Project">
+    <!--  GITTER  -->
+    <div class="elevated-container text-center instrumentation-info-card d-flex flex-column justify-content-between p-4">
+      <div>
+        <img src="/assets/img/icons/application/create-account-step-icon.svg" alt="Having trouble questionmark icon">
+        <div class="text-left">
+          <h4 class="text-dark-1 text-whitespace-pre-line">
+            Having trouble?
+          </h4>
+          <p class="text-dark-2 text-whitespace-pre-line">
+            If something went wrong during your setup, you have some feature request or in general just want to hang out with the folks and talk about the experience, head over to our Gitter channel and say it all.
+          </p>
+        </div>
+      </div>
+      <a class="btn btn-lg btn-outline-secondary text-dark-2 mt-3" href="#">
+        Jump to the Gitter Chat <img src="/assets/img/icons/application/light-btn-gitter-chat.svg" alt="Gitter chat icon"/>
+      </a>
     </div>
-
-    <div class="col-12 mt-4 text-center">
-      <a href="/get-started/">
-        <span class="button button-ripple-green">
-          Start Monitoring Free
-        </span>
+    <!--  DOCS  -->
+    <div class="elevated-container text-center instrumentation-info-card d-flex flex-column justify-content-between p-4">
+      <div>
+        <img src="/assets/img/icons/application/create-account-step-icon.svg" alt="Next steps icon">
+        <div class="text-left">
+          <h4 class="text-dark-1 text-whitespace-pre-line">
+            Next Steps
+          </h4>
+          <p class="text-dark-2 text-whitespace-pre-line">
+            If you want to dig deeper into what metrics are exposed by the instrumentation, how to create your own business metrics or configure reporters, head over to the documentation to learn more.
+          </p>
+        </div>
+      </div>
+      <a class="btn btn-lg btn-outline-secondary text-dark-2 mt-3" href="#">
+        Go to Documentation <img src="/assets/img/icons/application/light-btn-deployment-unit.svg" alt="Deployment unit icon"/>
       </a>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="col-12 text-center">
-      <span class="ml-4 text-color-caption">
-        Some of the available integrations:
-      </span>
-    </div>
-    <div class="col-12 col-sm-6 col-lg-3 integration-showcase text-center">
-      <h5>JVM</h5>
-      Track time spent in garbage collection, memory usage,
-      thread pool metrics and more.
-    </div>
-    <div class="col-12 col-sm-6 col-lg-3 integration-showcase text-center">
-      <h5>Akka</h5>
-      Trace messages flowing through the cluster, gather detailed metrics
-      on actors, routers and more.
-    </div>
-    <div class="col-12 col-sm-6 col-lg-3 integration-showcase text-center">
-      <h5>Play Framework</h5>
-      Trace client and server side HTTP requests and propagate context
-      data on each call.
-    </div>
-  </div>
 </div>
-
-<div class="w-100 background-gray skew-top-left skew-bottom-left mt-8">
-  <div class="container">
-    <div class="row py-5">
-      <div class="col-sm-12 col-lg-7 order-sm-2 order-lg-1 px-4 text-center">
-          <img class="img-fluid" src="/assets/img/kamon-animation.svg" alt="Kamon Interaction">
-          <div class="mt-3">
-            Works with Prometheus, Zipkin, InfluxDB, Kamon APM<br> and other OSS and commercial solutions.
-          </div>
-      </div>
-      <div class="col-sm-12 col-lg-5 mb-4 order-sm-1 order-lg-2">
-        <h1 class="font-weight-normal">
-          Instrument once, <br>report anywhere
-        </h1>
-        <h5 class="mt-4">
-          Send all the metrics and trace data <br>
-          wherever you want, without having to<br>
-          change the instrumentation at all.
-
-          <ul>
-            <li class="mt-4">
-              Enable reporters via configuration, <br>change them any time you need.
-            </li>
-            <li class="mt-4">
-              Creating a new reporter is just about implementing an interface.
-            </li>
-          </ul>
-        </h5>
-
-        <a href="/docs/latest/reporters/">
-          <div class="mt-5 pl-4">
-            <span class="button button-ripple-green">
-              See All Reporters
-            </span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% include footer-starter-cta.html %}

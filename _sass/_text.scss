@@ -1,85 +1,267 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800');
+
+// display 1
+// display 2
+// headings 1-6
+// lead
+// blog body
+// body 1
+// body 2
+// hyperlink
+// blockquotes
+// buttons
+// capitalized
+// small
 
 html, body {
-  color: $text-color-body;
+  color: $color-dark-0;
   font-size: $base-font-size;
-  font-family: 'Open Sans';
-  letter-spacing: -0.03rem;
+  line-height: remSize(24);
+  font-family: "Inter";
 }
 
-h1, h2 {
-  color: $text-color-heading;
-  font-weight: $light;
+.text-display-1 {
+  font-weight: $typography-weight-bold;
+  font-size: remSize(64);
+  line-height: remSize(77.45);
 }
 
-h3, h4, h5, h6 {
-  color: $text-color-subtitle;
-  font-weight: $medium;
+.text-display-2 {
+  font-weight: $typography-weight-bold;
+  font-size: remSize(56);
+  line-height: remSize(67.77);
+}
+
+h1, h2, h3, h4 {
+  font-weight: $typography-weight-bold;
+}
+
+h5, h6 {
+  font-weight: $typography-weight-semi-bold;
 }
 
 h1 {
-  letter-spacing: -0.1rem;
+  size: remSize(40);
+  line-height: remSize(56);
 }
 
 h2 {
-  letter-spacing: -0.05rem;
+  size: remSize(32);
+  line-height: remSize(44);
 }
 
-h3, h4, h5 {
-  letter-spacing: -0.03rem;
+h3 {
+  size: remSize(28);
+  line-height: remSize(38);
 }
 
-ul {
-  padding-left: 1.5rem;
+h4 {
+  size: remSize(24);
+  line-height: remSize(32);
 }
 
-.underline-green {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-decoration-color: $color-kamon-green;
-  text-decoration-skip-ink: none;
+h5 {
+  size: remSize(20);
+  line-height: remSize(28);
 }
 
-.underline-blue {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-decoration-color: $color-kamon-apm-blue;
-  text-decoration-skip-ink: none;
+h5 {
+  size: remSize(16);
+  line-height: remSize(24);
 }
 
-.underline-light-blue {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-decoration-color: $color-kamon-apm-light-blue;
-  text-decoration-skip-ink: none;
+.text-lead {
+  font-weight: $typography-weight-bold;
+  font-size: remSize(14);
+  line-height: remSize(24);
 }
 
-.text-color-body {
-  color: $text-color-body;
+.text-blog-body {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(18);
+  line-height: remSize(32);
 }
 
-.text-color-subtitle {
-  color: $text-color-subtitle;
+.text-body {
+  font-weight: $typography-weight-regular;
+  font-size: remSize(14);
+  line-height: remSize(24);
 }
 
-.text-color-caption {
-  color: $text-color-caption;
+.text-body-bigger {
+  font-weight: $typography-weight-regular;
+  font-size: remSize(16);
+  line-height: remSize(24);
 }
 
-.text-color-alternate-heading {
-  color: $text-color-alternate-heading;
-  text-shadow: 0px 1px 6px #0000001a;
+.text-blockquote {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(24);
+  line-height: remSize(32);
+  color: $color-dark-1;
 }
 
-.text-color-alternate-subtitle {
-  color: $text-color-alternate-subtitle;
-  text-shadow: 0px 1px 6px #0000001a;
+.text-blockquote-small {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(20);
+  line-height: remSize(28);
+  color: $color-dark-2;
 }
 
-.text-color-alternate-body {
-  color: $text-color-alternate-body;
+// TODO: put this as button default
+.text-button {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(16);
+  line-height: remSize(16);
 }
 
-.text-color-alternate-caption {
-  color: $text-color-alternate-caption;
+.text-button-small {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(14);
+  line-height: remSize(16);
 }
+
+.text-all-uppercase {
+  font-size: remSize(14);
+  line-height: remSize(17);
+  letter-spacing: remSize(2);
+  text-transform: uppercase;
+}
+
+.text-small {
+  font-weight: $typography-weight-semi-bold;
+  font-size: remSize(12);
+  line-height: remSize(16);
+}
+
+.text-dark-1 {
+  color: $color-dark-1;
+}
+
+.text-dark-2 {
+  color: $color-dark-2;
+}
+
+.text-dark-3 {
+  color: $color-dark-3;
+}
+
+.text-azure-radiance {
+  color: $color-azure-radiance-main;
+}
+
+.link-azure-radiance {
+  color: $color-azure-radiance-main;
+  &:hover {
+    color: $color-azure-radiance-main;
+    text-decoration: none;
+  }
+}
+
+.text-whitespace-pre-line {
+  white-space: pre-line;
+}
+
+.text-tag-green {
+  background-color: $color-green-4;
+  color: $color-green-1;
+  border: 1px solid $color-green-2;
+  border-radius: 8px;
+  font-weight: $typography-weight-bold;
+  padding: remSize(4) remSize(16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800');
+//
+//html, body {
+//  color: $text-color-body;
+//  font-size: $base-font-size;
+//  font-family: 'Open Sans';
+//  letter-spacing: -0.03rem;
+//}
+//
+//h1, h2 {
+//  color: $text-color-heading;
+//  font-weight: $text-light;
+//}
+//
+//h3, h4, h5, h6 {
+//  color: $text-color-subtitle;
+//  font-weight: $medium;
+//}
+//
+//h1 {
+//  letter-spacing: -0.1rem;
+//}
+//
+//h2 {
+//  letter-spacing: -0.05rem;
+//}
+//
+//h3, h4, h5 {
+//  letter-spacing: -0.03rem;
+//}
+//
+//ul {
+//  padding-left: 1.5rem;
+//}
+//
+//.underline-green {
+//  text-decoration: underline;
+//  text-decoration-thickness: 4px;
+//  text-decoration-color: $color-kamon-green;
+//  text-decoration-skip-ink: none;
+//}
+//
+//.underline-blue {
+//  text-decoration: underline;
+//  text-decoration-thickness: 4px;
+//  text-decoration-color: $color-kamon-apm-blue;
+//  text-decoration-skip-ink: none;
+//}
+//
+//.underline-light-blue {
+//  text-decoration: underline;
+//  text-decoration-thickness: 4px;
+//  text-decoration-color: $color-kamon-apm-light-blue;
+//  text-decoration-skip-ink: none;
+//}
+//
+//.text-color-body {
+//  color: $text-color-body;
+//}
+//
+//.text-color-subtitle {
+//  color: $text-color-subtitle;
+//}
+//
+//.text-color-caption {
+//  color: $text-color-caption;
+//}
+//
+//.text-color-alternate-heading {
+//  color: $text-color-alternate-heading;
+//  text-shadow: 0px 1px 6px #0000001a;
+//}
+//
+//.text-color-alternate-subtitle {
+//  color: $text-color-alternate-subtitle;
+//  text-shadow: 0px 1px 6px #0000001a;
+//}
+//
+//.text-color-alternate-body {
+//  color: $text-color-alternate-body;
+//}
+//
+//.text-color-alternate-caption {
+//  color: $text-color-alternate-caption;
+//}

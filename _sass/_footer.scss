@@ -1,31 +1,69 @@
 .footer {
-  color: #9E9E9E;
-  z-index: 1;
-  position: absolute;
-  bottom: 0rem;
-  left: 0rem;
-  right: 0rem;
+  background-color: $color-dark-0;
+  color: $color-light-4;
 
-  .footer-heading {
-    color: #c7c7c7;
-    margin-top: 1.5rem;
-    margin-bottom: 0.2rem;
-    font-weight: $bold;
-  }
+  .footer-content {
+    padding-top: 30px;
+    max-width: 1200px;
+    margin: auto;
 
-  .footer-item-link {
-    font-size: 1rem;
-    padding: 0.3rem 0rem;
+    .footer-try-kamon-button-container {
+      height: 250px;
+      background-image: url("/assets/img/background/footer-start-monitoring-btn-background.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-    &:hover {
-    color: #c7c7c7;
+    .footer-navigation-container {
+      border-top: 1px solid $color-dark-2;
+      border-bottom: 1px solid $color-dark-2;
+      padding: 20px 0;
+
+      .footer-link {
+        display: block;
+        color: $color-dark-3;
+      }
+
+      .footer-subscribe-btn {
+        margin-left: -5px;
+      }
+    }
+
+    .footer-bottom {
+      margin-top: 10px;
+      height: 40px;
     }
   }
 }
-@media (max-width: 585px) {
-  .footer {
-    .container {
-      text-align: center;
-    }
-  }
-}
+
+//.footer {
+//  color: #9E9E9E;
+//  z-index: 1;
+//  position: absolute;
+//  bottom: 0rem;
+//  left: 0rem;
+//  right: 0rem;
+//
+//  .footer-heading {
+//    color: #c7c7c7;
+//    margin-top: 1.5rem;
+//    margin-bottom: 0.2rem;
+//    font-weight: $bold;
+//  }
+//
+//  .footer-item-link {
+//    font-size: 1rem;
+//    padding: 0.3rem 0rem;
+//
+//    &:hover {
+//    color: #c7c7c7;
+//    }
+//  }
+//}
+//@media (max-width: 585px) {
+//  .footer {
+//    .container {
+//      text-align: center;
+//    }
+//  }
+//}

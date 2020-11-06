@@ -1,0 +1,36 @@
+.homepage-container {
+
+  .eu-icon {
+    margin-top: -75px;
+  }
+
+  .step-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 75px;
+    border: 1px solid rgba(85, 87, 112, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h5 {
+      margin-bottom: 0;
+    }
+  }
+
+  .kamon-stack-icon-container {
+    max-width: 56px;
+  }
+}
+
+.client-quote {
+  background-color: $color-dark-1;
+  border-radius: 8px;
+  background-image: url("/assets/img/background/client-quote-background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  //max-width: 788px;
+  //max-height: 308px;
+  width: 788px;
+  height: 308px;
+}
