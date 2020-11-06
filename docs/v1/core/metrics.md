@@ -29,7 +29,7 @@ You can find more details in the [Metric Instruments][1] section.
 ## Creating and Removing Metrics
 
 To record metrics you need to request the appropriate instrument from the `Kamon` companion object (or static members, if
-on Java), optionally *refine* it with tags and then you are ready to record metrics. Let's look at a example:
+on Java), optionally *refine* it with tags and then you are ready to record metrics. Let's look at an example:
 
 
 {% code_example %}

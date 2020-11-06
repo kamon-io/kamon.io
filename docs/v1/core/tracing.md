@@ -59,7 +59,7 @@ certain degree and only after calling the `.start()` method on it the actual `Sp
 Tags are key-value pairs that provide additional information about the operation represented by a Span. All spans created
 by Kamon will typically have the following tags:
   - `component` specifies what library/framework instrumentation generated the Span. E.g: `akka.http.server` or `jdbc`.
-  - `span.kind` specifies the role of the Span in a RPC communication. In the case of HTTP communication you will be
+  - `span.kind` specifies the role of the Span in an RPC communication. In the case of HTTP communication you will be
     seeing `client` and `server` values for this tag.
   - `error` specifies whether an error has been added to the Span via `span.addError(...)`.
   - `http.method` specifies the request's HTTP method.
@@ -77,7 +77,7 @@ no longer be added.
 
 ## Marks
 
-Marks are timestamped labels on Spans. Marks can provide additional information regarding events that happen while a
+Marks are timestamped labels on Spans. Marks can provide additional information regarding events that happen while an
 operation is in progress. Marks like `dequeued` for the moment when a message was taken out of a queue for processing or
 `connected` once a database connection has been established are good examples.
 
@@ -94,7 +94,7 @@ short and concise names for marks but you are free to add anything you would lik
 ## Metrics
 
 By default Kamon will track metrics out of all Spans, unless explicitly disabled. Span metrics are not affected by
-sampling, every single Span is going to be measured and recorded, regarless of whether the Span is sampled or not. The
+sampling, every single Span is going to be measured and recorded, regardless of whether the Span is sampled or not. The
 metric tracking Spans' latency is called `span.processing-time` and at a minimum will have these tags:
   - `operation` with the Span operation name.
   - `error` specifying whether an error was added to the Span via `span.addError(...)`.
@@ -121,7 +121,7 @@ or `Span` instance. Calling these functions will only have effect until the Span
 ## The Current Span
 
 The tracer relies on Kamon's [Context][2] to store the Span representing the currently executing operation. At any moment
-the current Span can be accessed eiher by retrieving it from the current Context or by using the `Kamon.currentSpan()`
+the current Span can be accessed either by retrieving it from the current Context or by using the `Kamon.currentSpan()`
 function, the later is just a shorthand syntax for the former.
 
 {% code_example %}

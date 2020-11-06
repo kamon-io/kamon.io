@@ -120,7 +120,7 @@ metrics include:
 Depending on your specific instance configuration, the available garbage collectors will differ, but the same set of
 metrics are recorded regardless of the collector in place.
 
-* __garbage-collection-count__: a gauge tracking the number of garbage collections that have ocurred.
+* __garbage-collection-count__: a gauge tracking the number of garbage collections that have occurred.
 * __garbage-collection-time__: a gauge tracking the time spent in garbage collections, measured in milliseconds.
 
 

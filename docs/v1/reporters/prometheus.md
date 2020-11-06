@@ -8,7 +8,7 @@ redirect_from:
 Exposing Metrics for Prometheus
 ===============================
 
-[Prometheus][1] is a open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
+[Prometheus][1] is an open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
 flexible query language and one very important difference in comparison with all other Kamon reporters: data has to be
 pulled our of your application instead of pushed to external servers.
 
@@ -94,7 +94,7 @@ The measurement unit on each metric will dictate which bucketing configuration a
 
 ## Visualization and Fun
 
-These are extracted from our [Monitoring Akka Quickstart][2] recipe, but stay tunned for more as Grafana dashboards for
+These are extracted from our [Monitoring Akka Quickstart][2] recipe, but stay tuned for more as Grafana dashboards for
 Kamon are coming soon!
 
 Scraping endpoint exposed by Kamon:

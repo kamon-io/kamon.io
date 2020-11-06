@@ -11,13 +11,13 @@ redirect_from:
 Context
 =======
 
-A `Context` is a immutable set of key-value pairs that contain state specific to the execution of a particular request
+A `Context` is an immutable set of key-value pairs that contain state specific to the execution of a particular request
 in your application. Each request should have its own Context and all instrumentation and manual Context manipulation must
 ensure that Contexts from different requests are never mixed together.
 
 The most common use case for a Context is to store additional request information like a request ID, user ID, user
 language or correlation IDs. If there are pieces of information that you would typically store in a `ThreadLocal`
-or the `MDC`, those are good candidates to be moved to Kamon's Context. Additionaly, Kamon uses the Context propagation
+or the `MDC`, those are good candidates to be moved to Kamon's Context. Additionally, Kamon uses the Context propagation
 mechanisms to carry around the tracer's current Span.
 
 Most of the time Kamon's instrumentation will take care of creating, propagating and manipulating a Context for each
@@ -55,7 +55,7 @@ it is needed.
 ## Manipulating a Context
 
 As mentioned above, Context instances are immutable. Adding a key-value pair to a Context is achieved by actually creating
-a new Context that includes or overrides a given key. Values can be retrived by calling `.get(key)` on any Context instance:
+a new Context that includes or overrides a given key. Values can be retrieved by calling `.get(key)` on any Context instance:
 
 {% code_example %}
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:creating-a-context label:"Scala" %}
