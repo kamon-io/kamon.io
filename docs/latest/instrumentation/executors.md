@@ -18,7 +18,7 @@ start tracking an Executor Service you will need to register it with the executo
 {%   language scala instrumentation/executors/src/main/scala/kamon/examples/executors/FuturesAndExecutors.scala tag:registering-a-executor label:"Registering a Executor Service" %}
 {% endcode_example %}
 
-You will get back an instrumented Executor Service that will be recording metrics until it is shuw down. It is important
+You will get back an instrumented Executor Service that will be recording metrics until it is shut down. It is important
 to ensure that the instrumented executor is being used and not the original one, otherwise some metrics and Context
 propagation features will not work as expected.
 
