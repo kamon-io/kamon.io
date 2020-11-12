@@ -1,0 +1,15 @@
+// BOOTSTRAP THEME COLOR OVERRIDES
+$theme-colors: (
+  "primary": $color-shamrock-main,
+  "danger": $color-red-0,
+  "light": $color-light-3,
+  "secondary": $color-light-0,
+);
+
+a.btn-primary {
+  color: $color-light-4 !important;
+}
+
+a.nav-link:not(.btn) {
+  color: $color-dark-0 !important;
+}

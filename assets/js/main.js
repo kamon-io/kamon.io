@@ -1,88 +1,3 @@
-function getTopOffet(element) {
-  return parseInt($(element).offset().top) - 200
-}
-function smoothScrollToAnchor(){
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-        var href = $.attr(this, 'href')
-        $('html, body').animate({
-          scrollTop: getTopOffet(href)
-        }, 500, function () {
-          window.location.hash = href;
-        })
-        stickyMenuClass()
-    })
-  })
-}
-function setActiveAnchor(tag) {
-  $("#markdown-toc a").removeClass("active")
-  if(tag && tag.id) {
-    $("#markdown-toc a[href$='#"+tag.id+"']").addClass("active")
-  }
-}
-function findCurrentAnchor(hTags) {
-  if ((window.innerHeight + window.scrollY + 10) >= document.body.offsetHeight) {
-    return hTags[hTags.length - 1]
-  }
-
-  var currentHtag = hTags[0]
-  var scrollTop = $(window).scrollTop()
-  for(var i=0; i< hTags.length; i++){
-    currentHtag = hTags[i]
-    if(hTags.length > (i + 1)) {
-      if(getTopOffet($('#'+hTags[i + 1].id)) > scrollTop) {
-        break
-      }
-    }
-  }
-  return currentHtag
-}
-
-function toggleActiveAnchor() {
-  var hTags = []
-  $(":header[id]").each(function(i, tag){
-    var id = $(tag).attr('id')
-    if($("#markdown-toc a[href$='#"+id+"']").length > 0) {
-      hTags.push({
-        id: id,
-        top: $(tag).offset().top - parseInt($(tag).css('marginTop'))
-      })
-    }
-  })
-
-  setActiveAnchor(findCurrentAnchor(hTags))
-  $(window).scroll(function(e){
-    setActiveAnchor(findCurrentAnchor(hTags))
-  })
-
-  var normalizePath = function(path) {
-    if(path == undefined) return ""; else {
-      var newPath = path
-      if(!path.startsWith("/"))
-        newPath = "/" + newPath
-      if(!path.endsWith("/"))
-        newPath = newPath + "/"
-
-      return newPath
-    }
-  }
-
-  var currentPath = normalizePath(window.location.pathname)
-  $("#docs-sidebar a").each(function(i, anchor) {
-    var anchorPath = normalizePath(anchor.pathname)
-
-    if(anchorPath === currentPath) {
-      if(anchor.hash == undefined || anchor.hash.trim().length == 0) {
-        $(this).addClass("active")
-      }
-    } else if(currentPath.startsWith(anchorPath)) {
-      $(this).addClass("active-parent")
-    }
-  })
-}
-
-
 function displaySearchResults(results) {
   var appendString = '<li>No results found</li>';
   if (results.length > 0) {
@@ -188,92 +103,7 @@ function searchInit() {
   })
 }
 
-function moveDocumentationTocToSidebar() {
-  var tocContainer = $("#docs-sidebar #toc-container")
-  var markdownToc = $("#markdown-toc")
-
-  if(tocContainer.length) {
-    console.log("Trying to move the thing")
-    if(markdownToc.length) {
-      markdownToc.removeClass("d-none")
-      markdownToc.appendTo(tocContainer)
-    } else {
-      tocContainer.remove()
-    }
-  }
-}
-
-function scrollOnDocsSidebar() {
-  const adjustSidebarMaxHeight = function() {
-    const viewportHeight = window.innerHeight
-    const contentHeight = $(document).height()
-    const footerHeight = $("#layout-footer").height() + 280
-    const currentScroll = $(window).scrollTop()
-    var visibleFooterArea = (currentScroll + viewportHeight) - (contentHeight - footerHeight)
-    if(visibleFooterArea < 0)
-      visibleFooterArea = 0
-
-    const docsSidebarSelector = "#docs-sidebar:not(.mobile-docs-sidebar)"
-    const topMargin = currentScroll > 50 ? 200 : 265
-    const availableSidebarHeight = viewportHeight - visibleFooterArea - topMargin
-    const sidebarHeight = $("#docs-sidebar").children().height()
-
-
-    if(availableSidebarHeight < sidebarHeight) {
-      if(availableSidebarHeight > 0) {
-        $("#docs-sidebar").css({ maxHeight: availableSidebarHeight })
-        $("#docs-sidebar").addClass('d-lg-block')
-        $("#docs-sidebar").removeClass('d-lg-none')
-      } else {
-        $("#docs-sidebar").removeClass('d-lg-block')
-        $("#docs-sidebar").addClass('d-lg-none')
-      }
-    } else {
-      $("#docs-sidebar").css({ maxHeight: "" })
-      $("#docs-sidebar").addClass('d-lg-block')
-      $("#docs-sidebar").removeClass('d-lg-none')
-    }
-  }
-
-  if($("#docs-sidebar").length && $("#layout-footer").length) {
-    adjustSidebarMaxHeight()
-
-    $(window).scroll(function() {
-      adjustSidebarMaxHeight()
-    })
-  }
-}
-
-function copySidebarContentForMobile() {
-  const docsNavigationLinks = $("#docs-navigation-links > ul")
-  const mobileDocsNavigationContainer = $("#docs-navigation-container")
-  const mobileDocsSidebarContainer = $("#docs-sidebar-container")
-
-  if(docsNavigationLinks.length && mobileDocsNavigationContainer.length) {
-    const copyOfLinks = docsNavigationLinks.clone()
-    const sectionName = window.location.pathname.startsWith("/blog") ? "Blog" : "Documentation"
-    mobileDocsNavigationContainer.append("<div class=\"section-title\">" + sectionName + "</div>")
-    mobileDocsNavigationContainer.append(copyOfLinks)
-
-    const docsSidebar = $("#docs-sidebar")
-    if(docsSidebar.length && mobileDocsSidebarContainer.length) {
-      const copyOfDocsSidebar = docsSidebar.clone()
-      copyOfDocsSidebar.attr("id", "mobile-docs-sidebar")
-      copyOfDocsSidebar.addClass("mobile-docs-sidebar")
-      copyOfDocsSidebar.removeClass("col")
-      copyOfDocsSidebar.removeClass("d-none")
-      copyOfDocsSidebar.removeClass("d-lg-block")
-      mobileDocsSidebarContainer.append(copyOfDocsSidebar)
-    } else {
-      mobileDocsSidebarContainer.remove()
-    }
-  } else {
-    mobileDocsNavigationContainer.remove()
-    mobileDocsSidebarContainer.remove()
-  }
-}
-
-function startInstrumentationSlideshow() {
+function instrumentationSlideshow() {
   const options = [
     'metrics',
     'tracing',
@@ -306,31 +136,8 @@ function startInstrumentationSlideshow() {
   }
 }
 
-function installToggleOptions(rootElementID, suffix, options) {
-  if($(`#${rootElementID}`).length > 0) {
-
-    // hides all options and ensures only the provided option is shown
-    const showOption = function(optionName) {
-      options.forEach(o => {
-        if(o !== optionName) {
-          $(`#${o}-${suffix}-toggle`).removeClass("active")
-          $(`#${o}-${suffix}`).removeClass("d-block")
-          $(`#${o}-${suffix}`).addClass("d-none")
-        }
-      })
-
-      $(`#${optionName}-${suffix}-toggle`).addClass("active")
-      $(`#${optionName}-${suffix}`).addClass("d-block")
-      $(`#${optionName}-${suffix}`).removeClass("d-none")
-    }
-
-    // Register manual toggles
-    options.forEach(o => $(`#${o}-${suffix}-toggle`).click(function() { showOption(o) }))
-  }
-}
-
 function scrollHeaders() {
-  const MAIN_HEADER_HEIGHT = 52;
+  const MAIN_HEADER_HEIGHT = 57;
 
   // Switch main headers from transparent to white + border bottom depending on scroll position
   function scrollMainHeader() {
@@ -382,16 +189,8 @@ function scrollHeaders() {
   scrollDocsHeader();
 }
 
-
 $(document).ready(function() {
-  moveDocumentationTocToSidebar()
-  smoothScrollToAnchor()
-  toggleActiveAnchor()
   searchInit()
-  scrollOnDocsSidebar()
-  copySidebarContentForMobile()
-  startInstrumentationSlideshow()
-  installToggleOptions("get-started-options", "setup-steps", ['plain', 'play', 'manual'])
-  installToggleOptions("reporter-options", "setup-steps", ['apm', 'prometheus', 'zipkin', 'influxdb', 'datadog'])
+  instrumentationSlideshow()
   scrollHeaders()
 })

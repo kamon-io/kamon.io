@@ -17,6 +17,24 @@
       }
     }
   }
+
+  li.nav-item.dropdown {
+    a.nav-link::after {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid $color-dark-0;
+      border-left: 1px solid $color-dark-0;
+      transform: translate(5px, -3px) rotate(-135deg);
+    }
+
+    &.show {
+      a.nav-link::after {
+        transform: translate(5px) rotate(45deg);
+      }
+    }
+  }
 }
 
 .header-background-colour, .header-background-fixed {

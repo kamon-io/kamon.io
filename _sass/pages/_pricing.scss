@@ -1,0 +1,56 @@
+.background-primary {
+  background-color: $color-shamrock-main;
+  border-radius: 8px;
+  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+  color: $color-light-4;
+  background-image: url("/assets/img/background/client-quote-background.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 5rem;
+}
+
+.top-color-shamrock {
+  width: 100%;
+  height: 0.3rem;
+  background-color: $color-shamrock-main;
+}
+
+.top-color-azure-radiance {
+  width: 100%;
+  height: 0.3rem;
+  background-color: $color-azure-radiance-main;
+}
+
+.top-color-everglade {
+  width: 100%;
+  height: 0.3rem;
+  background-color: $color-everglade-main;
+}
+
+.faq-question-container {
+  border-bottom: 1px solid $color-light-1;
+  padding: 1rem;
+
+  p {
+    margin-top: 1rem;
+  }
+
+  .faq-question-header {
+    cursor: pointer;
+
+    .fa.fa-angle-up {
+      display: none;
+    }
+
+    &[aria-expanded=true] {
+
+      .fa.fa-angle-up {
+        display: block;
+      }
+
+      .fa.fa-angle-down {
+        display: none;
+      }
+    }
+  }
+}

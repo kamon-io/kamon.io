@@ -5,108 +5,7 @@ $base-font-size: 16px;
   @return ($pxsize/$rembase)+rem;
 }
 
-$text-light: 100;
-$regular: 400;
-$medium: 500;
-$bold: 600;
-
-$text-color-heading: #666666;
-$text-color-subtitle: #7b7b7b;
-$text-color-body: #747474;
-$text-color-caption: #c1c1c1;
-
-$text-color-alternate-heading: white;
-$text-color-alternate-subtitle: #f9fdfb;
-$text-color-alternate-body: #f9fdfb;
-$text-color-alternate-caption: #f9fdfb;
-
-$color-kamon-green: #5ad57f;
-$color-kamon-light-green: #77dc95;
-$color-kamon-apm-blue: #14c4b4;
-$color-kamon-apm-light-blue: #6ed6cc;
-$color-kamon-gray: #cccccc;
-$color-kamon-dark-green: #147242;
-
 $navbar-height: 57px;
-
-// DESIGN COLORS
-
-// - PRIMARY
-// -- shamrock
-$color-shamrock-darker: #23A966;
-$color-shamrock-main: #3BC882;
-$color-shamrock-lighter: #39D98A;
-// -- everglade
-$color-everglade-darker: #172924;
-$color-everglade-main: #223C37;
-$color-everglade-lighter: #376C66;
-
-// - SECONDARY
-// -- azure radiance
-$color-azure-radiance-darker: #007EC4;
-$color-azure-radiance-main: #0E95F6;
-$color-azure-radiance-lighter: #60B9FA;
-
-// - TEXT AND BACKGROUND
-// -- dark
-$color-dark-0: #1C1C28;
-$color-dark-1: #28293D;
-$color-dark-2: #555770;
-$color-dark-3: #8F90A6;
-$color-dark-4: #C7C9D9;
-$color-dark-outline: #8F90A6;
-// -- light
-$color-light-0: #E4E4EB;
-$color-light-1: #EBEBF0;
-$color-light-2: #F2F2F5;
-$color-light-3: #FAFAFC;
-$color-light-4: #FFFFFF;
-$color-light-outline: #E4E4EB;
-
-// - STATUS AND CUSTOM COLORS
-// -- red
-$color-red-0: #E63535;
-$color-red-1: #FF3B3B;
-$color-red-2: #FF5C5C;
-$color-red-3: #FF8080;
-$color-red-4: #FFE6E6;
-$color-red-outline: #FF3B3B;
-// -- green
-$color-green-0: #23A966;
-$color-green-1: #3BC882;
-$color-green-2: #39D98A;
-$color-green-3: #57EBA1;
-$color-green-4: #E3FFF1;
-$color-green-outline: #06C270;
-// -- blue
-$color-blue-0: #007EC4;
-$color-blue-1: #0E95F6;
-$color-blue-2: #60B9FA;
-$color-blue-3: #9DD8F9;
-$color-blue-4: #E5F6FF;
-$color-blue-outline: #008FF7;
-// -- yellow
-$color-yellow-0: #E6B800;
-$color-yellow-1: #FFCC00;
-$color-yellow-2: #FDDD48;
-$color-yellow-3: #FDED72;
-$color-yellow-4: #FFFEE6;
-$color-yellow-outline: #FFCC00;
-// -- orange
-$color-orange-0: #E67A00;
-$color-orange-1: #FF8800;
-$color-orange-2: #FDAC42;
-$color-orange-3: #FCCC75;
-$color-orange-4: #FFF8E6;
-$color-orange-outline: #FF8800;
-// -- teal
-$color-teal-0: #00B7C4;
-$color-teal-1: #00CFDE;
-$color-teal-2: #73DFE7;
-$color-teal-3: #A9EFF2;
-$color-teal-4: #E6FFFF;
-$color-teal-outline: #00CFDE;
-
 
 // DESIGN TYPOGRAPHY
 $typography-primary-font: "Inter";
@@ -115,390 +14,45 @@ $typography-weight-semi-bold: 600;
 $typography-weight-medium: 500;
 $typography-weight-regular: 400;
 
-
-// BOOTSTRAP THEME COLOR OVERRIDES
-$theme-colors: (
-  "primary": $color-shamrock-main,
-  "danger": $color-red-0,
-  "light": $color-light-3,
-  "secondary": $color-light-0,
-);
-
-$carousel-control-prev-icon-bg: url("/assets/img/icons/directional/navigation-left.svg");
-$carousel-control-next-icon-bg: url("/assets/img/icons/directional/navigation-right.svg");
-$carousel-control-width: inherit;
-$carousel-control-opacity: 1;
-$carousel-control-icon-width: 54px;
-
-$enable-responsive-font-sizes: true;
-
 $sm-breakpoint: 576px;
 $md-breakpoint: 768px;
 $lg-breakpoint: 992px;
 $xl-breakpoint: 1200px;
 
+@import "colors";
 @import "mixins";
+@import "layout";
 
+@import "bootstrap_overrides";
 @import "bootstrap/bootstrap";
-//@import "layout";
-//@import "grid";
+
 @import "text";
-//@import "button";
 @import "code";
-@import "docs";
-//@import "hyperlinks";
-//@import "elevation";
-@import "header";
-@import "footer";
-//@import "backgrounds";
-//@import "sections";
-//@import "spacing";
-@import "pricing";
-@import "blog";
-@import "mobile";
 
-@import "docs-search";
-@import "docs-version-select";
+@import "layouts/docs";
 
-@import "pages/_index";
-@import "pages/_intrumentation.scss";
+@import "includes/docs-search";
+@import "includes/docs-version-select";
+@import "includes/footer";
+@import "includes/header";
+@import "includes/pricing-models";
+@import "includes/user-quotes";
+
+@import "pages/apm";
+//@import "pages/blog";
+@import "pages/index";
+@import "pages/intrumentation.scss";
+@import "pages/pricing";
 
 img {
   max-width: 100%;
   height: auto;
 }
 
-// bootstrap overrides
-a.btn-primary {
-  color: $color-light-4 !important;
-}
-
-//a.btn {
-//  font-weight: $typography-weight-semi-bold;
-//  font-size: remSize(14);
-//  line-height: remSize(16);
-//}
-
-a.nav-link:not(.btn) {
-  color: $color-dark-0 !important;
-}
-
-li.nav-item.dropdown {
-  a.nav-link::after {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-top: 1px solid $color-dark-0;
-    border-left: 1px solid $color-dark-0;
-    transform: translate(5px, -3px) rotate(-135deg);
-  }
-
-  &.show {
-    a.nav-link::after {
-      transform: translate(5px) rotate(45deg);
-    }
-  }
-}
-
-//.carousel-control-prev,
-//.carousel-control-next {
-//  &:hover, &:focus {
-//    opacity: 1 !important;
-//  }
-//}
-//
-//.carousel-control-prev-icon {
-//  margin-left: -100%;
-//}
-//
-//.carousel-control-next-icon {
-//  margin-right: -100%;
-//}
-
-// open dropdown on hover
-//.navbar-default .navbar-nav > li.dropdown:hover > a,
-//.navbar-default .navbar-nav > li.dropdown:hover > a:hover,
-//.navbar-default .navbar-nav > li.dropdown:hover > a:focus {
-//  background-color: rgb(231, 231, 231);
-//  color: rgb(85, 85, 85);
-//}
-//li.dropdown:hover > .dropdown-menu {
-//  display: block;
-//  margin-top: -0.5rem;
-//}
-
-// LAYOUT
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-.default-content-container {
-  max-width: 1200px;
-  margin: 100px auto;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  > section {
-    margin: 5rem 0;
-  }
-
-  @media (max-width: 1400px) {
-    max-width: 900px;
-    margin: 75px auto;
-  }
-
-  @media (max-width: 1000px) {
-    max-width: 600px;
-  }
-
-  @media (max-width: $sm-breakpoint) {
-    max-width: 100%;
-    padding: 2rem;
-    margin: 50px auto;
-  }
-}
-
-.elevated-container {
-  @include rounded-elevation;
-}
-
-// OLD STUFFS
-
-.api-section-toggle {
-  cursor: pointer;
-
-  .api-section-toggle-text,
-  .api-section-toggle-drawing-active,
-  .api-section-toggle-icon-active {
-    display: none;
-  }
-
-  &.active {
-    border: 1px solid $color-shamrock-main;
-
-    .api-section-toggle-text,
-    .api-section-toggle-drawing-active,
-    .api-section-toggle-icon-active {
-      display: block;
-    }
-
-    .api-section-toggle-drawing-non-active,
-    .api-section-toggle-icon-non-active {
-      display: none;
-    }
-
-  }
-}
-
-// some stuff
-.pricing-details-list {
-  padding-left: 0;
-  list-style-type: none;
-}
-
-.vertical-line {
-  display: inline-block;
-  width: 1px;
-  height: 100%;
-  border-right: 1px solid $color-light-1;
-}
-
-.price-container {
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.background-primary {
-  background-color: $color-shamrock-main;
-  border-radius: 8px;
-  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
-  color: $color-light-4;
-  background-image: url("/assets/img/background/client-quote-background.svg");
-  background-position: right;
-  background-repeat: no-repeat;
-  padding: 5rem;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
 
-.top-color-shamrock {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-shamrock-main;
-}
-
-.top-color-azure-radiance {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-azure-radiance-main;
-}
-
-.top-color-everglade {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-everglade-main;
-}
-
-.faq-question-container {
-  border-bottom: 1px solid $color-light-1;
-  padding: 1rem;
-
-  p {
-    margin-top: 1rem;
-  }
-
-  .faq-question-header {
-    cursor: pointer;
-
-    .fa.fa-angle-up {
-      display: none;
-    }
-
-    &[aria-expanded=true] {
-
-      .fa.fa-angle-up {
-        display: block;
-      }
-
-      .fa.fa-angle-down {
-        display: none;
-      }
-    }
-  }
-}
-
 .cursor-pointer {
   cursor: pointer;
-}
-
-.w-sm-100 {
-  @media (max-width: $sm-breakpoint) {
-    width: 100%;
-  }
-}
-
-.w-sm-50 {
-  @media (max-width: $sm-breakpoint) {
-    width: 50% !important;
-  }
-}
-
-.w-md-75 {
-  @media (min-width: 768px) {
-    width: 75%;
-  }
-}
-
-.w-md-50 {
-  @media (min-width: 768px) {
-    width: 50%;
-  }
-}
-
-.w-md-25 {
-  @media (min-width: 768px) {
-    width: 25%;
-  }
-}
-
-.w-xl-75 {
-  @media (min-width: 1200px) {
-    width: 75%;
-  }
-}
-
-.w-xl-50 {
-  @media (min-width: 1200px) {
-    width: 50%;
-  }
-}
-
-// USER QUOTE
-.client-quote-container {
-  width: 80%;
-  max-width: 788px;
-  height: 308px;
-
-  @media (max-width: 574px) {
-    width: 100%;
-  }
-
-  .client-quote {
-    background-color: $color-dark-1;
-    border-radius: 8px;
-    background-image: url("/assets/img/background/client-quote-background.svg");
-    background-position: center;
-    background-repeat: repeat-y;
-    width: 100%;
-    height: 100%;
-  }
-
-  .client-quote-text {
-    height: 308px;
-  }
-}
-
-.carousel-buttons-container {
-  width: 80%;
-  max-width: 788px;
-  height: 0;
-
-  .carousel-previous-slide-btn, .carousel-next-slide-btn {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    text-decoration: none;
-    top: -175px;
-
-    &:hover, &:active {
-      text-decoration: none;
-    }
-
-    @media (max-width: 574px) {
-      position: inherit;
-      img {
-        margin-top: 1rem;
-      }
-    }
-  }
-
-  .carousel-previous-slide-btn {
-    left: -46%;
-  }
-
-  .carousel-next-slide-btn {
-    right: -46%;
-  }
-}
-
-// APM
-.sm-blue-background, .sm-green-background {
-  border-radius: 8px;
-  padding: 2rem;
-  // img {
-  //   position: relative;
-  //   top: 1rem;
-  //   left: 1rem;
-  // }
-}
-.sm-blue-background {
-  background-color: $color-blue-4;
-}
-
-.sm-green-background {
-  background-color: $color-green-4;
 }

@@ -6,3 +6,29 @@
 .wrap-text {
   word-wrap: break-word;
 }
+
+.api-section-toggle {
+  cursor: pointer;
+
+  .api-section-toggle-text,
+  .api-section-toggle-drawing-active,
+  .api-section-toggle-icon-active {
+    display: none;
+  }
+
+  &.active {
+    border: 1px solid $color-shamrock-main;
+
+    .api-section-toggle-text,
+    .api-section-toggle-drawing-active,
+    .api-section-toggle-icon-active {
+      display: block;
+    }
+
+    .api-section-toggle-drawing-non-active,
+    .api-section-toggle-icon-non-active {
+      display: none;
+    }
+
+  }
+}
