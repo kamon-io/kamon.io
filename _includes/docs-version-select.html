@@ -1,0 +1,41 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign latest_docs_paths = site.data.docs.latest.allPaths | jsonify %}
+{% assign v1_docs_paths = site.data.docs.v1.allPaths | jsonify %}
+
+<div class="dropdown">
+  <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown">
+    <span>{{ current_version }} docs</span>
+    <i class="fa fa-angle-down"></i>
+  </div>
+  <div class="dropdown-menu cursor-pointer" aria-labelledby="docs-version-select-toggle">
+    <a class="dropdown-item" onclick="changeVersion('latest')">Latest (2.0 Series)</a>
+    <a class="dropdown-item" onclick="changeVersion('v1')">Previous (1.x Series)</a>
+  </div>
+</div>
+
+<script>
+  function changeVersion(versionName) {
+    var currentPathNameParts = window.location.pathname.split("/");
+    currentPathNameParts.shift();
+    currentPathNameParts.shift();
+    var currentVersion = currentPathNameParts.shift();
+    var exactCurrentSection = currentPathNameParts.join("/");
+
+    if (currentVersion === versionName) {
+      console.log('skipping, already on that version');
+      return;
+    }
+
+    console.log(exactCurrentSection);
+    if (exactCurrentSection === "overview/" || exactCurrentSection === "overview") {
+      console.log('going to overview');
+      window.location.pathname = "/docs/" + versionName + "/overview/";
+      return;
+    }
+    var pathsToLookIn = versionName === "latest" ? {{latest_docs_paths}} : {{v1_docs_paths}};
+    var exactLinkExists = pathsToLookIn.some(function(link) { return link.path === "/" + exactCurrentSection; });
+    var goToSection = exactLinkExists ? exactCurrentSection : "/" + exactCurrentSection.split("/")[0];
+    console.log(`going to some ${exactLinkExists ? ' exact' : ' general'} section`);
+    window.location.pathname = "/docs/" + versionName + "/" + goToSection;
+  }
+</script>

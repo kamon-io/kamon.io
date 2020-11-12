@@ -1,7 +1,25 @@
 .homepage-container {
 
+  //section:first-of-type {
+  //  margin-top: 0 !important;
+  //  height: 100vh;
+  //}
+
   .eu-icon {
-    margin-top: -75px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 103;
+
+    @media (max-width: 1170px) {
+      width: 75px;
+      height: 75px;
+    }
+
+    @media (max-width: 574px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   .step-circle {
@@ -21,16 +39,20 @@
   .kamon-stack-icon-container {
     max-width: 56px;
   }
-}
 
-.client-quote {
-  background-color: $color-dark-1;
-  border-radius: 8px;
-  background-image: url("/assets/img/background/client-quote-background.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  //max-width: 788px;
-  //max-height: 308px;
-  width: 788px;
-  height: 308px;
+  .steps-horizontal-line {
+    position: relative;
+    top: 91%;
+    margin: 0 -180%;
+  }
+
+  .steps-vertical-line {
+    height: 10rem;
+    > div {
+      display: inline-block;
+      width: 1px;
+      height: 100%;
+      border: 1px solid $color-light-1;
+    }
+  }
 }

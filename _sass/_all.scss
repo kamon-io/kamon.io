@@ -1,7 +1,7 @@
 
-$base-font-size: 14px;
+$base-font-size: 16px;
 
-@function remSize($pxsize, $rembase: 14) {
+@function remSize($pxsize, $rembase: 16) {
   @return ($pxsize/$rembase)+rem;
 }
 
@@ -26,6 +26,8 @@ $color-kamon-apm-blue: #14c4b4;
 $color-kamon-apm-light-blue: #6ed6cc;
 $color-kamon-gray: #cccccc;
 $color-kamon-dark-green: #147242;
+
+$navbar-height: 57px;
 
 // DESIGN COLORS
 
@@ -128,6 +130,14 @@ $carousel-control-width: inherit;
 $carousel-control-opacity: 1;
 $carousel-control-icon-width: 54px;
 
+$enable-responsive-font-sizes: true;
+
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
+
+@import "mixins";
 
 @import "bootstrap/bootstrap";
 //@import "layout";
@@ -146,6 +156,9 @@ $carousel-control-icon-width: 54px;
 @import "pricing";
 @import "blog";
 @import "mobile";
+
+@import "docs-search";
+@import "docs-version-select";
 
 @import "pages/_index";
 @import "pages/_intrumentation.scss";
@@ -188,20 +201,20 @@ li.nav-item.dropdown {
   }
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  &:hover, &:focus {
-    opacity: 1 !important;
-  }
-}
-
-.carousel-control-prev-icon {
-  margin-left: -100%;
-}
-
-.carousel-control-next-icon {
-  margin-right: -100%;
-}
+//.carousel-control-prev,
+//.carousel-control-next {
+//  &:hover, &:focus {
+//    opacity: 1 !important;
+//  }
+//}
+//
+//.carousel-control-prev-icon {
+//  margin-left: -100%;
+//}
+//
+//.carousel-control-next-icon {
+//  margin-right: -100%;
+//}
 
 // open dropdown on hover
 //.navbar-default .navbar-nav > li.dropdown:hover > a,
@@ -234,11 +247,29 @@ li.nav-item.dropdown {
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  > section {
+    margin: 5rem 0;
+  }
+
+  @media (max-width: 1400px) {
+    max-width: 900px;
+    margin: 75px auto;
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: $sm-breakpoint) {
+    max-width: 100%;
+    padding: 2rem;
+    margin: 50px auto;
+  }
 }
 
 .elevated-container {
-  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16);
-  border-radius: 8px;
+  @include rounded-elevation;
 }
 
 // OLD STUFFS
@@ -348,4 +379,126 @@ li.nav-item.dropdown {
       }
     }
   }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.w-sm-100 {
+  @media (max-width: $sm-breakpoint) {
+    width: 100%;
+  }
+}
+
+.w-sm-50 {
+  @media (max-width: $sm-breakpoint) {
+    width: 50% !important;
+  }
+}
+
+.w-md-75 {
+  @media (min-width: 768px) {
+    width: 75%;
+  }
+}
+
+.w-md-50 {
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}
+
+.w-md-25 {
+  @media (min-width: 768px) {
+    width: 25%;
+  }
+}
+
+.w-xl-75 {
+  @media (min-width: 1200px) {
+    width: 75%;
+  }
+}
+
+.w-xl-50 {
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+}
+
+// USER QUOTE
+.client-quote-container {
+  width: 80%;
+  max-width: 788px;
+  height: 308px;
+
+  @media (max-width: 574px) {
+    width: 100%;
+  }
+
+  .client-quote {
+    background-color: $color-dark-1;
+    border-radius: 8px;
+    background-image: url("/assets/img/background/client-quote-background.svg");
+    background-position: center;
+    background-repeat: repeat-y;
+    width: 100%;
+    height: 100%;
+  }
+
+  .client-quote-text {
+    height: 308px;
+  }
+}
+
+.carousel-buttons-container {
+  width: 80%;
+  max-width: 788px;
+  height: 0;
+
+  .carousel-previous-slide-btn, .carousel-next-slide-btn {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    text-decoration: none;
+    top: -175px;
+
+    &:hover, &:active {
+      text-decoration: none;
+    }
+
+    @media (max-width: 574px) {
+      position: inherit;
+      img {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .carousel-previous-slide-btn {
+    left: -46%;
+  }
+
+  .carousel-next-slide-btn {
+    right: -46%;
+  }
+}
+
+// APM
+.sm-blue-background, .sm-green-background {
+  border-radius: 8px;
+  padding: 2rem;
+  // img {
+  //   position: relative;
+  //   top: 1rem;
+  //   left: 1rem;
+  // }
+}
+.sm-blue-background {
+  background-color: $color-blue-4;
+}
+
+.sm-green-background {
+  background-color: $color-green-4;
 }

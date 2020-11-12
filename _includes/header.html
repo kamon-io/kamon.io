@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand navbar-light bg-light fixed-top text-center">
+{% assign path_sections = page.url | split: '/' %}
+
+<nav id="main-header"
+     class='d-none d-lg-block navbar navbar-expand fixed-top text-center {% if path_sections[1] == "docs" and path_sections[3] != "overview.html" %} header-background-fixed {% endif %}'>
   <div class="d-flex w-100 justify-content-center">
     <div class="row no-gutters w-100 header-content">
       <div class="col-lg-3 text-left">
@@ -9,8 +12,8 @@
       </div>
       <div class="col-lg-6">
         <ul class="navbar-nav w-75 justify-content-around">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown cursor-pointer">
+            <a class="nav-link" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Products
             </a>
             <div class="dropdown-menu" aria-labelledby="productsDropdown">
@@ -118,7 +121,7 @@
             <a class="nav-link" href="/apm/pricing">Pricing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
+            <a class="nav-link" href="/blog">Blog</a>
           </li>
         </ul>
       </div>
@@ -128,10 +131,69 @@
             <a class="nav-link" href="https://apm.kamon.io/signin" target="_blank">Sign In</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-sm btn-primary" href="#">Start Free</a>
+            <a class="nav-link btn btn-sm btn-primary" href="/">Start Free</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE -->
+<nav class="d-block d-lg-none navbar navbar-expand navbar-light bg-light fixed-top">
+  <div class="d-flex no-gutters w-100 header-content px-4 justify-content-between">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
+    </a>
+    <a class="cursor-pointer" onclick="switchMobileNavigation(true)">
+      <img src="/assets/img/icons/menu-icon.svg" class="d-inline-block align-top" alt="Kamon Logo">
+    </a>
+  </div>
+</nav>
+
+<div id="mobileNavigationOverlay" class="d-lg-none">
+  <div class="p-4 d-flex flex-column justify-content-between h-100">
+    <div class="d-flex justify-content-between">
+      <img src="/assets/img/kamon/kamon-logo-dark.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
+      <a class="cursor-pointer closeMobileNavigationBtn text-body-bigger" onclick="switchMobileNavigation(false)">&times;</a>
+    </div>
+    <div class=" h-100 py-4">
+      <ul class="mobile-nav-list text-body-bigger">
+        <li class="mt-5">
+          <div class="products-collapse" id="products-collapse-heading" data-toggle="collapse" data-target="#products-collapse-text" aria-controls="products-collapse-text">
+            <span>Products</span>
+            <i class="fa fa-angle-down"></i>
+            <i class="fa fa-angle-up"></i>
+          </div>
+
+          <div id="products-collapse-text" class="collapse pl-3" aria-labelledby="products-collapse-heading" data-parent="#products-collapse-heading">
+            <a class="d-block mt-5" href="/apm">APM</a>
+            <a class="d-block mt-5" href="/instrumentation">Telemetry</a>
+          </div>
+        </li>
+        <li class="mt-5">
+          <a href="/docs/latest/overview">Docs</a>
+        </li>
+        <li class="mt-5">
+          <a href="/apm/pricing">Pricing</a>
+        </li>
+        <li class="mt-5">
+          <a href="/blog">Blog</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <a class="btn btn-lg btn-light w-100 text-dark-1" href="https://apm.kamon.io/signin" target="_blank">Sign In</a>
+      <a class="btn btn-lg btn-primary w-100 mt-3" href="/">Start Free</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchMobileNavigation(show) {
+    const navigation = document.getElementById("mobileNavigationOverlay")
+    if (navigation != null) {
+      navigation.style.width = show ? "100%" : "0"
+    }
+  }
+</script>

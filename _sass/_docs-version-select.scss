@@ -1,0 +1,12 @@
+.docs-version-select {
+  @include custom-select-field;
+  color: $color-dark-3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-menu.show {
+  border: none;
+  @include rounded-elevation;
+}

@@ -24,6 +24,10 @@
         color: $color-dark-3;
       }
 
+      .subscription-form {
+
+      }
+
       .footer-subscribe-btn {
         margin-left: -5px;
       }
@@ -31,7 +35,11 @@
 
     .footer-bottom {
       margin-top: 10px;
-      height: 40px;
+      height: 60px;
+    }
+
+    @media (max-width: 1400px) {
+      max-width: 900px;
     }
   }
 }

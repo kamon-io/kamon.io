@@ -1,0 +1,108 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign current_version = path_sections[2] %}
+{% assign documentation_data = site.data.docs[current_version].documentation | jsonify %}
+
+<div id="docs-search-container" class="docs-search-container">
+  <input id="docs-search-field" type="text" placeholder="Search Docs" class="w-100 docs-search-field">
+  <div id="docs-search-results" class="d-none elevated-container"></div>
+</div>
+
+<script>
+  document.addEventListener('readystatechange', function() {
+    // extracting paths from site.data (_data/docs/{version}.yaml) TODO: make nicer
+    var documentationPaths = [];
+    var rawDocumentationData = {{ documentation_data }};
+    for (var key of Object.keys(rawDocumentationData)) {
+      for (var topic of rawDocumentationData[key]) {
+        for (var page of topic.pages) {
+          if (page.pages == null) {
+            documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name}`, link: page.link});
+          } else {
+            for (var subPage of page.pages) {
+              documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name} - ${subPage.name}`, link: subPage.link });
+            }
+          }
+        }
+      }
+    }
+
+    // DEBOUNCE TODO: move this
+    function debounce(func, delay = 300) {
+      var inDebounce = void 0;
+      return function () {
+        var context = this;
+        var args = arguments;
+        clearTimeout(inDebounce);
+        inDebounce = setTimeout(function () {
+          return func.apply(context, args);
+        }, delay);
+      };
+    }
+
+    var searchField = document.getElementById("docs-search-field");
+    var searchResults = document.getElementById("docs-search-results");
+    var docsSearchContainer = document.getElementById("docs-search-container");
+
+    function clearAndHideSearchResults() {
+      searchResults.textContent = "";
+      searchResults.classList.add("d-none");
+      searchResults.classList.remove("docs-results-absolute");
+    }
+
+    function clearSearch() {
+      clearAndHideSearchResults();
+      searchField.value = "";
+    }
+
+    // do not clear the search when clicking within results or search field
+    docsSearchContainer.addEventListener("click", function(e) { e.stopPropagation(); })
+
+    // function for input change
+    var searchInputChangeHandler = function(e) {
+      var currValue = e.target.value;
+      // if empty, remove close on click listener
+      if (currValue === "") {
+        document.removeEventListener(
+          "click",
+          clearSearch,
+        );
+      }
+      // if user input is shorter than 3 characters, clear the results list and hide it
+      if (currValue.length < 3) {
+        clearAndHideSearchResults();
+        return;
+      }
+      // add a listener for clearing search on click
+      document.addEventListener(
+        "click",
+        clearSearch,
+        { once: true },
+      );
+      // filter the available paths
+      var filteredSearchResults = documentationPaths.filter(function(pathItem) {
+        return pathItem.name.toLowerCase().indexOf(currValue.toLowerCase()) !== -1;
+      })
+      // clear search if there are no results to show
+      if (filteredSearchResults.length === 0) {
+        clearAndHideSearchResults();
+        return;
+      }
+      // replace search results content with a link for each filtered result
+      searchResults.textContent = "";
+      for (var filteredSearchResult of filteredSearchResults) {
+        var a = document.createElement("a");
+        // transform the content of the link - highlight the search string occurrences (TODO: wrong casing atm)
+        var regexp = new RegExp(currValue, "ig");
+        var content = filteredSearchResult.name;
+        a.innerHTML = content.replace(regexp, '<span class="highlighted">' + currValue + '</span>');
+        a.setAttribute("href", "/docs/" + "{{ current_version }}" + filteredSearchResult.link);
+        a.classList.add("search-result-link")
+        searchResults.append(a);
+      }
+      searchResults.classList.add("docs-results-absolute");
+      searchResults.classList.remove("d-none");
+    }
+
+    searchField.addEventListener("input", debounce(searchInputChangeHandler));
+  })
+</script>

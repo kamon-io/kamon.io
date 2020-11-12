@@ -1,0 +1,60 @@
+@mixin custom-scrollbar {
+  overflow: auto;
+
+  &::-webkit-scrollbar-track
+  {
+    border-radius: 2px;
+    background-color: $color-light-1;
+  }
+
+  &::-webkit-scrollbar
+  {
+    border-radius: 2px;
+    width: 4px;
+    background-color: $color-light-1;
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 2px;
+    background-color: $color-dark-4;
+  }
+}
+
+@mixin custom-text-field {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid $color-light-0;
+  border-radius: 8px;
+  color: $color-dark-1;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-blue-1;
+    border-radius: 8px;
+  }
+
+  &::placeholder {
+    color: $color-dark-3;
+  }
+}
+
+@mixin custom-select-field {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid $color-light-0;
+  border-radius: 8px;
+  background-color: $color-light-4;
+  color: $color-dark-1;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-blue-1;
+    border-radius: 8px;
+  }
+}
+
+@mixin rounded-elevation {
+  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16);
+  border-radius: 8px;
+}

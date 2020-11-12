@@ -13,7 +13,12 @@ body {
   }
 
   .code-window-container {
+    width: 100%;
     box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+
+    @media (max-width: 320px) {
+      max-width: 280px;
+    }
 
     .learn-more-button {
       position: absolute;

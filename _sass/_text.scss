@@ -18,6 +18,10 @@ html, body {
   font-size: $base-font-size;
   line-height: remSize(24);
   font-family: "Inter";
+
+  @media (max-width: 490px) {
+    font-size: 10px;
+  }
 }
 
 .text-display-1 {
@@ -82,7 +86,7 @@ h5 {
   line-height: remSize(32);
 }
 
-.text-body {
+.text-body-smaller {
   font-weight: $typography-weight-regular;
   font-size: remSize(14);
   line-height: remSize(24);
@@ -144,6 +148,10 @@ h5 {
 
 .text-dark-3 {
   color: $color-dark-3;
+}
+
+.text-dark-4 {
+  color: $color-dark-4;
 }
 
 .text-azure-radiance {

@@ -1,0 +1,19 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign current_version = path_sections[2] %}
+
+<div class="card-shit elevated-container text-center d-flex flex-column justify-content-between h-100 p-4">
+  <div>
+    <img src="{{ include.icon }}" alt="{{ include.alt }}">
+    <div class="text-left mt-3">
+      <h4 class="text-dark-1">
+        {{ include.title }}
+      </h4>
+      <p class="text-dark-2">
+        {{ include.text }}
+      </p>
+    </div>
+  </div>
+  <a class="link-azure-radiance align-self-end" href="{% if include.outer_link %}{{ include.link }}{% else %}/docs/{{ current_version }}{{ include.link }}{% endif %}">
+    Learn More <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+  </a>
+</div>

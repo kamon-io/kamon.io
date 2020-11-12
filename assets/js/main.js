@@ -56,7 +56,7 @@ function toggleActiveAnchor() {
     setActiveAnchor(findCurrentAnchor(hTags))
   })
 
-  const normalizePath = function(path) {
+  var normalizePath = function(path) {
     if(path == undefined) return ""; else {
       var newPath = path
       if(!path.startsWith("/"))
@@ -68,9 +68,9 @@ function toggleActiveAnchor() {
     }
   }
 
-  const currentPath = normalizePath(window.location.pathname)
+  var currentPath = normalizePath(window.location.pathname)
   $("#docs-sidebar a").each(function(i, anchor) {
-    const anchorPath = normalizePath(anchor.pathname)
+    var anchorPath = normalizePath(anchor.pathname)
 
     if(anchorPath === currentPath) {
       if(anchor.hash == undefined || anchor.hash.trim().length == 0) {
@@ -188,22 +188,6 @@ function searchInit() {
   })
 }
 
-function scrollElevation() {
-  $(window).scroll(function() {
-    var scroll = $(window).scrollTop();
-
-    if (scroll >= 50) {
-        $(".header-bar").addClass("elevation-header");
-        $("body").addClass("has-scroll");
-        $("#docs-title").hide()
-      } else {
-        $(".header-bar").removeClass("elevation-header");
-        $("body").removeClass("has-scroll");
-        $("#docs-title").show()
-    }
-  });
-}
-
 function moveDocumentationTocToSidebar() {
   var tocContainer = $("#docs-sidebar #toc-container")
   var markdownToc = $("#markdown-toc")
@@ -258,26 +242,6 @@ function scrollOnDocsSidebar() {
       adjustSidebarMaxHeight()
     })
   }
-}
-
-function toggleMobileSidebar() {
-  $('#mobile-sidebar-button').click(function(event) {
-    $('#mobile-sidebar').toggleClass('open')
-    event.preventDefault()
-  })
-
-  $(window).click(function(event) {
-    if($("#mobile-sidebar.open").length) {
-      const clickTarget = $(event.target)
-
-      if(event.target.id != "mobile-sidebar-button"&& !clickTarget.parents("#mobile-sidebar-button").length) {
-        if(event.target.id != "mobile-sidebar" && !clickTarget.parents("#mobile-sidebar").length) {
-          $('#mobile-sidebar').removeClass('open')
-        }
-      }
-
-    }
-  })
 }
 
 function copySidebarContentForMobile() {
@@ -365,16 +329,69 @@ function installToggleOptions(rootElementID, suffix, options) {
   }
 }
 
+function scrollHeaders() {
+  const MAIN_HEADER_HEIGHT = 52;
+
+  // Switch main headers from transparent to white + border bottom depending on scroll position
+  function scrollMainHeader() {
+    var mainHeader = document.getElementById("main-header");
+    if (mainHeader == null) {
+      return;
+    }
+    var isMainHeaderColorFixed = mainHeader.classList.contains("header-background-fixed");
+    if (isMainHeaderColorFixed) {
+      return;
+    }
+    var isMainHeaderTransparent = true;
+    document.addEventListener(
+      "scroll",
+      function() {
+        if (isMainHeaderTransparent && window.pageYOffset > MAIN_HEADER_HEIGHT) {
+          mainHeader.classList.add("header-background-colour");
+          isMainHeaderTransparent = false;
+        } else if (!isMainHeaderTransparent && window.pageYOffset < MAIN_HEADER_HEIGHT) {
+          mainHeader.classList.remove("header-background-colour");
+          isMainHeaderTransparent = true;
+        }
+      },
+      { passive: true });
+  }
+  scrollMainHeader();
+
+  // Switch docs header/sidebar navigation position from default to fixed/sticky depending on scroll position
+  function scrollDocsHeader() {
+    var isDocsHeaderFixed = false;
+    var docsHeader = document.getElementById("docs-header");
+    if (docsHeader == null) {
+      return;
+    }
+    var offset = docsHeader.offsetTop;
+    document.addEventListener(
+      "scroll",
+      function() {
+        if (!isDocsHeaderFixed && window.pageYOffset + MAIN_HEADER_HEIGHT > offset) {
+          docsHeader.classList.add("fixed-docs-header");
+          isDocsHeaderFixed = true;
+        } else if (isDocsHeaderFixed && window.pageYOffset + MAIN_HEADER_HEIGHT < offset) {
+          docsHeader.classList.remove("fixed-docs-header");
+          isDocsHeaderFixed = false;
+        }
+      },
+      { passive: true });
+  }
+  scrollDocsHeader();
+}
+
+
 $(document).ready(function() {
   moveDocumentationTocToSidebar()
   smoothScrollToAnchor()
   toggleActiveAnchor()
   searchInit()
-  scrollElevation()
   scrollOnDocsSidebar()
-  toggleMobileSidebar()
   copySidebarContentForMobile()
   startInstrumentationSlideshow()
   installToggleOptions("get-started-options", "setup-steps", ['plain', 'play', 'manual'])
   installToggleOptions("reporter-options", "setup-steps", ['apm', 'prometheus', 'zipkin', 'influxdb', 'datadog'])
+  scrollHeaders()
 })

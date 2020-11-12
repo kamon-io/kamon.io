@@ -1,4 +1,3 @@
-
 <html lang="en">
   <head>
     <title>{{ page.title }}</title>
@@ -12,11 +11,8 @@
   <body>
     {% include gtm.html %}
     {% include header.html %}
-    {% include mobile-sidebar.html %}
 
-    <div class="default-content-container">
-      {{ content }}
-    </div>
+    {{ content }}
 
     {% include footer.html %}
     {% include includes-tail.html %}
