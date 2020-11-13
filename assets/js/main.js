@@ -171,7 +171,7 @@ function initScrollHeaders() {
         isMainHeaderTransparent = true
       }
     }
-    document.addEventListener("scroll", debounce(mainHeaderScrollListener, 50), { passive: true })
+    document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
   }
 
   // Switch docs header/sidebar navigation position from default to fixed/sticky depending on scroll position
@@ -191,7 +191,7 @@ function initScrollHeaders() {
         isDocsHeaderFixed = false
       }
     }
-    document.addEventListener("scroll", debounce(docsHeaderScrollListener, 50), { passive: true })
+    document.addEventListener("scroll", docsHeaderScrollListener, { passive: true })
   }
 
   initScrollMainHeader()
