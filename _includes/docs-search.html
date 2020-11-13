@@ -2,9 +2,9 @@
 {% assign current_version = path_sections[2] %}
 {% assign documentation_data = site.data.docs[current_version].documentation | jsonify %}
 
-<div id="docs-search-container" class="docs-search-container">
-  <input id="docs-search-field" type="text" placeholder="Search Docs" class="w-100 docs-search-field">
-  <div id="docs-search-results" class="d-none elevated-container"></div>
+<div id="docs-search-container-{{include.id}}" class="docs-search-container">
+  <input id="docs-search-field-{{include.id}}" type="text" placeholder="Search Docs" class="w-100 docs-search-field">
+  <div id="docs-search-results-{{include.id}}" class="d-none elevated-container"></div>
 </div>
 
 <script>
@@ -39,9 +39,9 @@
       };
     }
 
-    var searchField = document.getElementById("docs-search-field");
-    var searchResults = document.getElementById("docs-search-results");
-    var docsSearchContainer = document.getElementById("docs-search-container");
+    var searchField = document.getElementById("docs-search-field-{{include.id}}");
+    var searchResults = document.getElementById("docs-search-results-{{include.id}}");
+    var docsSearchContainer = document.getElementById("docs-search-container-{{include.id}}");
 
     function clearAndHideSearchResults() {
       searchResults.textContent = "";

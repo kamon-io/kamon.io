@@ -1,46 +1,51 @@
-.header-content {
-  max-width: 1200px;
+.app-header {
+  height: $navbar-height;
 
-  .header-submenu-container {
-    max-width: 573px;
-    min-width: 573px;
+  .header-content {
+    max-width: 1200px;
 
-    .header-submenu-item {
-      border-radius: 8px;
+    .header-submenu-container {
+      max-width: 573px;
+      min-width: 573px;
 
-      &:hover {
-        background-color: $color-light-3;
+      .header-submenu-item {
+        border-radius: 8px;
 
-        h6 {
-          color: $color-shamrock-main;
+        &:hover {
+          background-color: $color-light-3;
+
+          h6 {
+            color: $color-shamrock-main;
+          }
+        }
+      }
+    }
+
+    li.nav-item.dropdown {
+      a.nav-link::after {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-top: 1px solid $color-dark-0;
+        border-left: 1px solid $color-dark-0;
+        transform: translate(5px, -3px) rotate(-135deg);
+      }
+
+      &.show {
+        a.nav-link::after {
+          transform: translate(5px) rotate(45deg);
         }
       }
     }
   }
 
-  li.nav-item.dropdown {
-    a.nav-link::after {
-      content: "";
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-top: 1px solid $color-dark-0;
-      border-left: 1px solid $color-dark-0;
-      transform: translate(5px, -3px) rotate(-135deg);
-    }
-
-    &.show {
-      a.nav-link::after {
-        transform: translate(5px) rotate(45deg);
-      }
-    }
+  &.header-background-colour, &.header-background-fixed {
+    background-color: $color-light-4;
+    border-bottom: 1px solid $color-light-1;
   }
 }
 
-.header-background-colour, .header-background-fixed {
-  background-color: $color-light-4;
-  border-bottom: 1px solid $color-light-1;
-}
 
 #mobileNavigationOverlay {
   width: 0;

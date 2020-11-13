@@ -1,8 +1,13 @@
 {% assign path_sections = page.url | split: '/' %}
 
-<nav id="main-header"
-     class='d-none d-lg-block navbar navbar-expand fixed-top text-center {% if path_sections[1] == "docs" and path_sections[3] != "overview.html" %} header-background-fixed {% endif %}'>
-  <div class="d-flex w-100 justify-content-center">
+<nav
+  id="main-header"
+  class='navbar navbar-expand fixed-top text-center app-header {% if path_sections[1] == "docs" and path_sections[3] != "overview.html" %} header-background-fixed {% endif %}'
+>
+
+  <!--  DESKTOP  -->
+  <div class="d-none d-lg-block w-100">
+    <div class="d-flex w-100 justify-content-center">
     <div class="row no-gutters w-100 header-content">
       <div class="col-lg-3 text-left">
         <a class="navbar-brand" href="/">
@@ -137,20 +142,23 @@
       </div>
     </div>
   </div>
-</nav>
-
-<!-- MOBILE -->
-<nav class="d-block d-lg-none navbar navbar-expand navbar-light bg-light fixed-top">
-  <div class="d-flex no-gutters w-100 header-content px-4 justify-content-between">
-    <a class="navbar-brand" href="/">
-      <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
-    </a>
-    <a class="cursor-pointer" onclick="switchMobileNavigation(true)">
-      <img src="/assets/img/icons/menu-icon.svg" class="d-inline-block align-top" alt="Kamon Logo">
-    </a>
   </div>
+
+  <!--  MOBILE  -->
+  <div class="d-block d-lg-none w-100">
+    <div class="d-flex no-gutters w-100 header-content px-4 justify-content-between">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
+      </a>
+      <a class="cursor-pointer" onclick="switchMobileNavigation(true)">
+        <img src="/assets/img/icons/menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
+      </a>
+    </div>
+  </div>
+
 </nav>
 
+<!-- MOBILE NAVIGATION OVERLAY -->
 <div id="mobileNavigationOverlay" class="d-lg-none">
   <div class="p-4 d-flex flex-column justify-content-between h-100">
     <div class="d-flex justify-content-between">

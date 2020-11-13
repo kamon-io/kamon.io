@@ -7,7 +7,7 @@
   .docs-results-absolute {
     position: absolute;
     background-color: white;
-    z-index: 1000;
+    z-index: 1003;
     display: block;
     max-height: 300px;
     overflow: auto;
@@ -20,7 +20,13 @@
     .search-result-link {
       color: $color-dark-2;
       display: inline-block;
-      margin: 0.25rem;
+      padding: 0.5rem;
+
+      &:hover {
+        text-decoration: none;
+        background-color: $color-light-3;
+        border-radius: 8px;
+      }
 
       .highlighted {
         color: $color-shamrock-main;

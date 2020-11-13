@@ -189,8 +189,16 @@ function scrollHeaders() {
   scrollDocsHeader();
 }
 
+function initHideBodyScrollOnMobileDocsNavigation() {
+  var mobileDocsToggler = document.getElementById("mobile-docs-navigation-toggle");
+  mobileDocsToggler.addEventListener("click", function() {
+    document.getElementsByTagName("body")[0].classList.toggle("overflow-hidden");
+  })
+}
+
 $(document).ready(function() {
   searchInit()
   instrumentationSlideshow()
   scrollHeaders()
+  initHideBodyScrollOnMobileDocsNavigation()
 })
