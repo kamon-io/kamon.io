@@ -1,10 +1,9 @@
 {% assign path_sections = page.url | split: '/' %}
-{% assign latest_docs_paths = site.data.docs.latest.documentation | jsonify %}
-{% assign v1_docs_paths = site.data.docs.v1.documentation | jsonify %}
+{% assign current_version = path_sections[2] %}
 
 <div class="dropdown">
   <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown">
-    <span>{{ current_version }} docs</span>
+    <span class="text-capitalize">{{ current_version }} Docs</span>
     <i class="fa fa-angle-down"></i>
   </div>
   <div class="dropdown-menu cursor-pointer" aria-labelledby="docs-version-select-toggle">
@@ -12,6 +11,8 @@
     <a class="dropdown-item" onclick="changeVersion('v1')">Previous (1.x Series)</a>
   </div>
 </div>
+
+{% include docs-extract-paths.html %}
 
 <script>
   function changeVersion(versionName) {
@@ -22,36 +23,18 @@
     var exactCurrentSection = currentPathNameParts.join("/");
 
     if (currentVersion === versionName) {
-      console.log('skipping, already on that version');
       return;
     }
 
     if (exactCurrentSection === "overview/" || exactCurrentSection === "overview") {
-      console.log('going to overview');
       window.location.pathname = "/docs/" + versionName + "/overview/";
       return;
     }
 
-    // TODO: move this
-    var documentationPaths = [];
-    var rawDocumentationPaths = versionName === "latest" ? {{latest_docs_paths}} : {{v1_docs_paths}};
-    for (var key of Object.keys(rawDocumentationPaths)) {
-      for (var topic of rawDocumentationPaths[key]) {
-        for (var page of topic.pages) {
-          if (page.pages == null) {
-            documentationPaths.push(page.path);
-          } else {
-            for (var subPage of page.pages) {
-              documentationPaths.push(subPage.path);
-            }
-          }
-        }
-      }
-    }
+    var documentationPaths = versionName === "latest" ? window.kamonDocumentationPaths.latest : window.kamonDocumentationPaths.v1
 
-    var exactLinkExists = documentationPaths.some(function(link) { return link === "/" + exactCurrentSection; });
+    var exactLinkExists = documentationPaths.some(function(path) { return path.link === "/" + exactCurrentSection; });
     var goToSection = exactLinkExists ? exactCurrentSection : "/" + exactCurrentSection.split("/")[0];
-    console.log(`going to some ${exactLinkExists ? ' exact' : ' general'} section`);
     window.location.pathname = "/docs/" + versionName + "/" + goToSection;
   }
 </script>

@@ -1,43 +1,16 @@
 {% assign path_sections = page.url | split: '/' %}
 {% assign current_version = path_sections[2] %}
-{% assign documentation_data = site.data.docs[current_version].documentation | jsonify %}
 
 <div id="docs-search-container-{{include.id}}" class="docs-search-container">
-  <input id="docs-search-field-{{include.id}}" type="text" placeholder="Search Docs" class="w-100 docs-search-field">
+  <input id="docs-search-field-{{include.id}}" type="text" placeholder="Search the Docs..." class="w-100 docs-search-field">
   <div id="docs-search-results-{{include.id}}" class="d-none elevated-container"></div>
 </div>
 
+{% include docs-extract-paths.html %}
+
 <script>
   document.addEventListener('readystatechange', function() {
-    // extracting paths from site.data (_data/docs/{version}.yaml) TODO: make nicer
-    var documentationPaths = [];
-    var rawDocumentationData = {{ documentation_data }};
-    for (var key of Object.keys(rawDocumentationData)) {
-      for (var topic of rawDocumentationData[key]) {
-        for (var page of topic.pages) {
-          if (page.pages == null) {
-            documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name}`, link: page.path});
-          } else {
-            for (var subPage of page.pages) {
-              documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name} - ${subPage.name}`, link: subPage.path });
-            }
-          }
-        }
-      }
-    }
-
-    // DEBOUNCE TODO: move this
-    function debounce(func, delay = 300) {
-      var inDebounce = void 0;
-      return function () {
-        var context = this;
-        var args = arguments;
-        clearTimeout(inDebounce);
-        inDebounce = setTimeout(function () {
-          return func.apply(context, args);
-        }, delay);
-      };
-    }
+    var documentationPaths = "{{current_version}}" === "latest" ? window.kamonDocumentationPaths.latest : window.kamonDocumentationPaths.v1
 
     var searchField = document.getElementById("docs-search-field-{{include.id}}");
     var searchResults = document.getElementById("docs-search-results-{{include.id}}");
@@ -62,10 +35,7 @@
       var currValue = e.target.value;
       // if empty, remove close on click listener
       if (currValue === "") {
-        document.removeEventListener(
-          "click",
-          clearSearch,
-        );
+        document.removeEventListener("click", clearSearch);
       }
       // if user input is shorter than 3 characters, clear the results list and hide it
       if (currValue.length < 3) {
@@ -73,11 +43,7 @@
         return;
       }
       // add a listener for clearing search on click
-      document.addEventListener(
-        "click",
-        clearSearch,
-        { once: true },
-      );
+      document.addEventListener("click", clearSearch, { once: true });
       // filter the available paths
       var filteredSearchResults = documentationPaths.filter(function(pathItem) {
         return pathItem.name.toLowerCase().indexOf(currValue.toLowerCase()) !== -1;

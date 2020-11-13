@@ -2,6 +2,13 @@
 
   .docs-search-field {
     @include custom-text-field;
+
+    &::placeholder {
+      background-image: url("/assets/img/icons/search-icon.svg");
+      background-size: 1rem;
+      background-position: right;
+      background-repeat: no-repeat;
+    }
   }
 
   .docs-results-absolute {
