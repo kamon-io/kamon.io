@@ -29,14 +29,14 @@ $xl-breakpoint: 1200px;
 @import "text";
 @import "code";
 
-@import "layouts/docs";
-
 @import "includes/docs-search";
 @import "includes/docs-version-select";
 @import "includes/footer";
 @import "includes/header";
 @import "includes/pricing-models";
 @import "includes/user-quotes";
+
+@import "layouts/docs";
 
 @import "pages/apm";
 //@import "pages/blog";

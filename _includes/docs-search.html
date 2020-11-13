@@ -16,10 +16,10 @@
       for (var topic of rawDocumentationData[key]) {
         for (var page of topic.pages) {
           if (page.pages == null) {
-            documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name}`, link: page.link});
+            documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name}`, link: page.path});
           } else {
             for (var subPage of page.pages) {
-              documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name} - ${subPage.name}`, link: subPage.link });
+              documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name} - ${subPage.name}`, link: subPage.path });
             }
           }
         }
