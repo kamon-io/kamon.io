@@ -245,6 +245,10 @@ function smoothScrollToAnchor(){
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
       var href = $.attr(this, 'href')
+      if (href === '#') {
+        return
+      }
+
       $('html, body').animate({
         scrollTop: getTopOffset(href)
       }, 500, function () {
@@ -392,6 +396,18 @@ function initCodeExampleCopy() {
   })
 }
 
+function bootOnboarding() {
+  $(".onboarding-start-button").on("click", function() {
+    $("#onboarding-modal").modal("show")
+  })
+  window.addEventListener("message", function (tag) {
+    if (tag === "complete") {
+      window.open("https://apm.kamon.io", "_blank")
+    }
+    $("#onboarding-modal").modal("hide")
+  })
+}
+
 $(document).ready(function() {
   // searchInit()
   instrumentationSlideshow()
@@ -402,4 +418,5 @@ $(document).ready(function() {
   toggleActiveAnchor()
   smoothScrollToAnchor()
   initCodeExampleCopy()
+  bootOnboarding()
 })
