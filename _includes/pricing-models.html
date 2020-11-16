@@ -1,7 +1,10 @@
-<div class="row no-gutters justify-content-center mt-5">
-  <div class="col-12 col-md-5 col-lg-4">
-    <div class="text-center instrumentation-info-card d-flex flex-column justify-content-between p-4">
-      <img src="/assets/img/pages/pricing/starter-plan-image.svg" alt="Starter plan image">
+<div class="row no-gutters justify-content-center mt-5 pricing-models">
+
+  <div class="col-12 col-md-4 pricing-model-container">
+    <div class="text-center d-flex flex-column justify-content-between">
+      <div class="pricing-model-image d-flex align-items-center justify-content-center">
+        <img src="/assets/img/pages/pricing/starter-plan-image.svg" alt="Starter plan image">
+      </div>
       <h3 class="text-dark-1">
         Starter
       </h3>
@@ -9,29 +12,43 @@
         For developers getting started
         with production monitoring
       </p>
-      <p class="price-container text-dark-1 m-0">
-        Up to&nbsp;<b>5 services</b>
-      </p>
-      <ul class="pricing-details-list text-dark-2">
-        <li>
-          <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
-          <b>6 hours</b> data retention
-        </li>
-        <li>
-          <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
-          <b>1M spans</b> per instance
-        </li>
-      </ul>
+      <div class="pricing-model-price text-dark-1 d-flex justify-content-center align-items-center">
+        <h5 class="m-0">
+          FREE
+        </h5>
+      </div>
+      <div>
+        <ul class="pricing-model-details text-body-smaller text-left d-inline-block text-dark-2">
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            up to&nbsp;<b>5 services</b>
+          </li>
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            <b>6 hours</b> data retention (metrics and traces)
+          </li>
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            up to <b>1M spans</b> per month
+          </li>
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            <b>single production environment</b>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="col-1 align-content-center pt-5 pb-3 d-none d-md-block">
+  <div class="col-1 justify-content-center pt-5 pb-3 d-none d-md-block">
     <div class="vertical-line"></div>
   </div>
 
-  <div class="col-12 col-md-5 col-lg-4">
-    <div class="text-center instrumentation-info-card d-flex flex-column justify-content-between p-4">
-      <img src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow plan image">
+  <div class="col-12 col-md-4 mt-5 mt-md-0 pricing-model-container">
+    <div class="text-center d-flex flex-column justify-content-between">
+      <div class="pricing-model-image d-flex align-items-center justify-content-center">
+        <img src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow plan image">
+      </div>
       <h3 class="text-dark-1">
         Grow
       </h3>
@@ -39,29 +56,40 @@
         For growing teams deploying
         complex systems
       </p>
-      <div class="price-container text-dark-1">
-        <div class="d-flex align-items-start">
-          <div class="d-inline-block text-display-1">29</div>
-          <div class="text-dark-3 text-blockquote d-inline-block mt-n3">&euro;</div>
+      <div class="pricing-model-price text-dark-1">
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex align-items-start">
+            <div class="d-inline-block text-display-1" id="grow-plan-monthly-price">30</div>
+            <div class="text-dark-3 text-blockquote d-inline-block mt-n3">&euro;</div>
+          </div>
+          <div class="text-left ml-3">
+            <h5 class="m-0">Per service</h5>
+            <p class="m-0 text-body-bigger" id="growth-plan-per-month-text">Per month</p>
+          </div>
         </div>
-        <div class="text-left ml-3">
-          <h5 class="m-0">Per service</h5>
-          <p class="m-0 text-body-bigger">Per month</p>
-        </div>
+        <div id="billed-annually-text" class="text-dark-3"></div>
       </div>
       <div>
-        <ul class="pricing-details-list text-left d-inline-block text-dark-2">
+        <ul class="pricing-model-details text-body-smaller text-left d-inline-block text-dark-2">
           <li>
             <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
-            <b>14 days</b> data retention
+            <b>14 days</b> data retention for metrics
           </li>
           <li>
             <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
-            <b>1.5M spans</b> per instance
+            <b>7 days</b> data retention for traces
           </li>
           <li>
             <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
-            <b>Additional spans at &euro;1 per million</b>
+            <b>5M spans</b> per month
+          </li>
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            <b>additional spans at &euro;1 per million</b>
+          </li>
+          <li>
+            <img src="/assets/img/pages/pricing/check-circle.svg" alt="Circled checkmark icon"/>
+            <b>separate production and test environments</b>
           </li>
         </ul>
       </div>

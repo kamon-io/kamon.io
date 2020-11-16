@@ -4,19 +4,20 @@ title: 'Pricing Plans for Kamon APM'
 description: 'Start for free with a Starter account and upgrade as you grow.'
 ---
 
-<main class="default-content-container">
+<main class="default-content-container pricing-page">
   <section class="text-center w-100">
     <h1 class="text-dark-1">
       Start for <span class="text-primary">FREE</span>, upgrade as you <span class="text-primary">GROW</span>
     </h1>
     <p class="text-dark-2 text-body-bigger w-md-50 d-inline-block">
       If you’re here looking for a monitoring tool, it’s obvious you don’t like surprises.
-      Your monitoring bill should never be a surprise!
+      Your monitoring bill should never be a surprise!wwww
     </p>
-    <div>
-      <h6 class="mx-2 d-inline-block text-dark-2">Billed monthly</h6>
-      <a class="mx-2 btn btn-sm btn-secondary">toggle</a>
-      <h6 class="mx-2 d-inline-block text-dark-2">Billed annually</h6>
+    <div class="d-flex justify-content-center align-items-center billing-type-toggle">
+      <h6 class="mx-2 text-dark-2">Billed monthly</h6>
+      <input type="checkbox" id="billed-annually-switch" class="mx-2 billed-annually-checkbox"/>
+      <label for="billed-annually-switch" class="billed-annually-switch"></label>
+      <h6 class="mx-2 text-dark-2">Billed annually</h6>
       <div class="mx-2 text-tag-green d-inline-block">
         20% off
       </div>
@@ -26,7 +27,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
   </section>
 
-  <section class="background-primary w-100 my-5 d-flex flex-column flex-xl-row align-items-center">
+  <section class="pricing-banner-background w-100 my-5 d-flex flex-column flex-xl-row align-items-center">
     <div class="w-100">
       <h2>Start Free, grow at your own pace!</h2>
       <p class="text-body-bigger">Kamon free account comes with no expiration date. No credit card required.</p>
@@ -39,7 +40,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
   <section class="row no-gutters w-100">
     <div class="col-12 col-xl-4 p-3">
       <div class="elevated-container overflow-hidden h-100">
-        <div class="top-color-azure-radiance"></div>
+        <div class="thick-line background-azure-radiance"></div>
         <div class="p-5 d-flex align-items-center text-center h-100">
           <h6 class="text-dark-1">
             Simple pricing, no hidden cost
@@ -49,7 +50,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
     </div>
     <div class="col-12 col-xl-4 p-3">
       <div class="elevated-container overflow-hidden h-100">
-        <div class="top-color-shamrock"></div>
+        <div class="thick-line background-shamrock"></div>
         <div class="p-5 d-flex align-items-center text-center">
           <h6 class="text-dark-1">
             Monitor your infrastructure free of charge
@@ -59,7 +60,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
     </div>
     <div class="col-12 col-xl-4 p-3">
       <div class="elevated-container overflow-hidden h-100">
-        <div class="top-color-everglade"></div>
+        <div class="thick-line background-everglade"></div>
         <div class="p-5 d-flex align-items-center text-center">
           <h6 class="text-dark-1">
             Monitor your test environments at no extra cost

@@ -1,18 +1,30 @@
-.pricing-details-list {
-  padding-left: 0;
-  list-style-type: none;
-}
+.pricing-models {
 
-.vertical-line {
-  display: inline-block;
-  width: 1px;
-  height: 100%;
-  border-right: 1px solid $color-light-1;
-}
+  .pricing-model-image {
+    min-height: 175px;
+  }
 
-.price-container {
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .pricing-model-price {
+    min-height: 110px;
+  }
+
+  .pricing-model-details {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      margin-top: 1rem;
+
+      img {
+        margin-right: 0.25rem;
+      }
+    }
+  }
+
+  .vertical-line {
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid $color-light-1;
+  }
 }

@@ -1,56 +1,85 @@
-.background-primary {
-  background-color: $color-shamrock-main;
-  border-radius: 8px;
-  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
-  color: $color-light-4;
-  background-image: url("/assets/img/background/cubes-pattern.svg");
-  background-position: right;
-  background-repeat: no-repeat;
-  padding: 5rem;
-}
+.pricing-page {
 
-.top-color-shamrock {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-shamrock-main;
-}
+  .billing-type-toggle {
 
-.top-color-azure-radiance {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-azure-radiance-main;
-}
-
-.top-color-everglade {
-  width: 100%;
-  height: 0.3rem;
-  background-color: $color-everglade-main;
-}
-
-.faq-question-container {
-  border-bottom: 1px solid $color-light-1;
-  padding: 1rem;
-
-  p {
-    margin-top: 1rem;
-  }
-
-  .faq-question-header {
-    cursor: pointer;
-
-    .fa.fa-angle-up {
-      display: none;
+    h6, label {
+      margin-bottom: 0;
     }
 
-    &[aria-expanded=true] {
+    .billed-annually-switch {
+      position: relative;
+      display: inline-block;
+      min-width: 64px;
+      max-width: 64px;
+      min-height: 32px;
+      max-height: 32px;
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
 
-      .fa.fa-angle-up {
-        display: block;
-      }
+    .billed-annually-switch::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius:50%;
+      background-color: white;
+      top: 4px;
+      left: 4px;
+      transition: all 0.3s;
+    }
 
-      .fa.fa-angle-down {
-        display: none;
-      }
+    .billed-annually-checkbox:checked + .billed-annually-switch::after {
+      left : 36px;
+    }
+
+    .billed-annually-checkbox:checked + .billed-annually-switch {
+      background-color: $color-shamrock-main;
+    }
+
+    .billed-annually-checkbox {
+      display : none;
+    }
+  }
+
+  .pricing-banner-background {
+    background-color: $color-shamrock-main;
+    border-radius: 8px;
+    box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+    color: $color-light-4;
+    background-image: url("/assets/img/background/cubes-pattern.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    padding: 5rem;
+  }
+
+  .thick-line {
+    width: 100%;
+    height: 0.3rem;
+
+    &.background-shamrock {
+      background-color: $color-shamrock-main;
+    }
+    &.background-azure-radiance {
+      background-color: $color-azure-radiance-main;
+    }
+    &.background-everglade {
+      background-color: $color-everglade-main;
+    }
+  }
+
+  .faq-question-container {
+    border-bottom: 1px solid $color-light-1;
+    padding: 1rem;
+
+    p {
+      margin-top: 1rem;
+    }
+
+    .faq-question-header {
+      cursor: pointer;
+      @include angle-up-down-expanders;
     }
   }
 }

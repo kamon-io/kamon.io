@@ -201,9 +201,24 @@ function initScrollHeaders() {
 // mobile docs navigation covers the entire screen, hide body scroll when it's open
 function initHideBodyScrollOnMobileDocsNavigation() {
   var mobileDocsToggler = document.getElementById("mobile-docs-navigation-toggle")
-  mobileDocsToggler.addEventListener("click", function() {
-    document.getElementsByTagName("body")[0].classList.toggle("overflow-hidden")
-  })
+  if (mobileDocsToggler != null) {
+    mobileDocsToggler.addEventListener("click", function() {
+      document.getElementsByTagName("body")[0].classList.toggle("overflow-hidden")
+    })
+  }
+}
+
+// TODO: check what should happen and update, this is just some reactive example
+function initAnnualPricingToggle() {
+  var annualPricingToggle = document.getElementById("billed-annually-switch")
+  if (annualPricingToggle != null) {
+    var growPlanPriceValue = document.getElementById("grow-plan-monthly-price")
+    var billedAnnuallyText = document.getElementById("billed-annually-text")
+    annualPricingToggle.addEventListener("click", function() {
+      growPlanPriceValue.textContent = annualPricingToggle.checked ? 24 : 30
+      billedAnnuallyText.innerHTML = annualPricingToggle.checked ? "288&euro; billed annually" : ""
+    })
+  }
 }
 
 $(document).ready(function() {
@@ -211,4 +226,5 @@ $(document).ready(function() {
   instrumentationSlideshow()
   initScrollHeaders()
   initHideBodyScrollOnMobileDocsNavigation()
+  initAnnualPricingToggle()
 })

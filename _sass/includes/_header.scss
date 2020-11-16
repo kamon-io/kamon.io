@@ -74,21 +74,7 @@
 
   .products-collapse {
     cursor: pointer;
-
-    .fa.fa-angle-up {
-      display: none;
-    }
-
-    &[aria-expanded=true] {
-
-      .fa.fa-angle-up {
-        display: inline-block;
-      }
-
-      .fa.fa-angle-down {
-        display: none;
-      }
-    }
+    @include angle-up-down-expanders;
   }
 
   #products-collapse-text {

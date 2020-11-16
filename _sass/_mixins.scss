@@ -58,3 +58,20 @@
   box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16);
   border-radius: 8px;
 }
+
+@mixin angle-up-down-expanders {
+  .fa.fa-angle-up {
+    display: none;
+  }
+
+  &[aria-expanded=true] {
+
+    .fa.fa-angle-up {
+      display: inline-block;
+    }
+
+    .fa.fa-angle-down {
+      display: none;
+    }
+  }
+}
