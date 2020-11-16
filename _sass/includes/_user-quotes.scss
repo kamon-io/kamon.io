@@ -1,4 +1,6 @@
-.client-quote-container {
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700,800');
+
+.user-quote-container {
   width: 80%;
   max-width: 788px;
   height: 308px;
@@ -7,17 +9,36 @@
     width: 100%;
   }
 
-  .client-quote {
-    background-color: $color-dark-1;
-    border-radius: 8px;
-    background-image: url("/assets/img/background/client-quote-background.svg");
-    background-position: center;
-    background-repeat: repeat-y;
+  .user-quote {
     width: 100%;
     height: 100%;
+
+    &.dark-background {
+      background-color: $color-dark-1;
+      border-radius: 8px;
+      background-image: url("/assets/img/background/cubes-pattern.svg");
+      background-position: center;
+      background-repeat: repeat-y;
+    }
+
+    .quote {
+      font-family: "Source Code Pro", monospace;
+      font-size: remSize(72);
+      line-height: remSize(56);
+      color: $color-blue-4;
+      font-weight: $typography-weight-bold;
+
+      &.quote-open {
+        margin-top: -1rem;
+      }
+
+      &.quote-close {
+        margin-bottom: -1rem;
+      }
+    }
   }
 
-  .client-quote-text {
+  .user-quote-text {
     height: 308px;
   }
 }
