@@ -14,9 +14,9 @@ Actor System Metrics
 Kamon is able to gather metrics from all core Akka components: actor systems, actors, dispatchers, routers, remoting
 channels and, one addition of ours, actor groups; all thanks to bytecode instrumentation shipping with Kamon modules.
 
-<p class="alert alert-info">
+{% alert info %}
 You must start your application with the AspectJ Weaver agent if you want to collect any Akka metrics.
-</p>
+{% endalert %}
 
 
 Base Metrics

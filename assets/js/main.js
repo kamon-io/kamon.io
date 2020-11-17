@@ -221,10 +221,128 @@ function initAnnualPricingToggle() {
   }
 }
 
+function getTopOffset(element) {
+  return parseInt($(element).offset().top) - 200
+}
+
+function smoothScrollToAnchor(){
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      var href = $.attr(this, 'href')
+      $('html, body').animate({
+        scrollTop: getTopOffset(href)
+      }, 500, function () {
+        window.location.hash = href;
+      })
+    })
+  })
+}
+
+function setActiveAnchor(tag) {
+  $("#markdown-toc-container a").removeClass("active")
+  if(tag && tag.id) {
+    $("#markdown-toc-container a[href$='#"+tag.id+"']").addClass("active")
+  }
+}
+
+function findCurrentAnchor(hTags) {
+  if ((window.innerHeight + window.scrollY + 10) >= document.body.offsetHeight) {
+    return hTags[hTags.length - 1]
+  }
+
+  var currentHtag = hTags[0]
+  var scrollTop = $(window).scrollTop()
+  for(var i=0; i< hTags.length; i++){
+    currentHtag = hTags[i]
+    if(hTags.length > (i + 1)) {
+      if(getTopOffset($('#'+hTags[i + 1].id)) > scrollTop) {
+        break
+      }
+    }
+  }
+  return currentHtag
+}
+
+function toggleActiveAnchor() {
+  var hTags = []
+  $(":header[id]").each(function(i, tag){
+    var id = $(tag).attr('id')
+    if($("#markdown-toc-container a[href$='#"+id+"']").length > 0) {
+      hTags.push({
+        id: id,
+        top: $(tag).offset().top - parseInt($(tag).css('marginTop'))
+      })
+    }
+  })
+
+  setActiveAnchor(findCurrentAnchor(hTags))
+  $(window).scroll(function(e){
+    setActiveAnchor(findCurrentAnchor(hTags))
+  })
+
+  const normalizePath = function(path) {
+    if(path == null) {
+      return ""
+    } else {
+      var newPath = path
+      if(!path.startsWith("/"))
+        newPath = "/" + newPath
+      if(!path.endsWith("/"))
+        newPath = newPath + "/"
+
+      return newPath
+    }
+  }
+
+  const currentPath = normalizePath(window.location.pathname)
+  $("#docs-sidebar a").each(function(i, anchor) {
+    const anchorPath = normalizePath(anchor.pathname)
+
+    if(anchorPath === currentPath) {
+      if(anchor.hash == undefined || anchor.hash.trim().length == 0) {
+        $(this).addClass("active")
+      }
+    } else if(currentPath.startsWith(anchorPath)) {
+      $(this).addClass("active-parent")
+    }
+  })
+}
+
+function initDocsMarkdownToc() {
+  var hasMarkdownToc = document.getElementById("docs-markdown-toc")
+  if (!hasMarkdownToc) {
+    return
+  }
+  var allMarkdownSubtitles = $("#docs-content h2").get()
+  var ul = document.createElement("ul")
+  allMarkdownSubtitles.forEach(function(h2) {
+    var a = document.createElement("a")
+    a.textContent = h2.innerText
+    a.setAttribute("href", "#" + h2.id)
+    a.classList.add("search-result-link")
+    var li = document.createElement("li")
+    li.append(a)
+    li.classList.add("docs-section-link")
+    ul.append(li)
+  })
+  var markdownTocContainer = document.getElementById("markdown-toc-container")
+  // var mobileMarkdownTocContainer = document.getElementById("markdown-toc-container-mobile")
+  markdownTocContainer.append(ul)
+  // mobileMarkdownTocContainer.append(ul)
+}
+
+function copyCodeExample(snippetID) {
+  console.log(`trying to copy code with id ${snippetID}`)
+}
+
 $(document).ready(function() {
   // searchInit()
   instrumentationSlideshow()
   initScrollHeaders()
   initHideBodyScrollOnMobileDocsNavigation()
   initAnnualPricingToggle()
+  initDocsMarkdownToc()
+  toggleActiveAnchor()
+  smoothScrollToAnchor()
 })

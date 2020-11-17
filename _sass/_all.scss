@@ -28,6 +28,7 @@ $xl-breakpoint: 1200px;
 
 @import "text";
 @import "code";
+@import "alert";
 
 @import "includes/docs-search";
 @import "includes/docs-version-select";
@@ -55,4 +56,18 @@ img {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+a.arrow-right {
+  &:after {
+    content: "arr";
+    color: transparent;
+    background-image: url("/assets/img/icons/directional/arrow-right-azure-radiance.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  &:hover:after {
+    background-image: url("/assets/img/icons/directional/arrow-right-azure-radiance-darker.svg");
+  }
 }

@@ -60,11 +60,10 @@ version suffix then just pick the greatest Scala version available.
 And that is it. The bundle comes with a Guice module that will automatically initialize Kamon when the Application
 Loader is gets called.
 
-<p class="alert alert-warning">
-  If you are using any other type of dependency injection, please make sure that your custom Application Loader performs
-  the very same actions that the <a href="https://github.com/kamon-io/kamon-play/blob/master/kamon-play/src/main/scala/kamon/instrumentation/play/GuiceModule.scala" target="_blank">Kamon GuiceModule</a> does.
-</p>
-
+{% alert warning %}
+If you are using any other type of dependency injection, please make sure that your custom Application Loader performs
+the very same actions that the <a href="https://github.com/kamon-io/kamon-play/blob/master/kamon-play/src/main/scala/kamon/instrumentation/play/GuiceModule.scala" target="_blank">Kamon GuiceModule</a> does.
+{% endalert %}
 
 
 Verify the Installation

@@ -11,7 +11,7 @@ module Jekyll
       serialised_snippets = super.split("\n---\n").drop(1)
       snippets = serialised_snippets.map { |snippet_string| YAML::load(snippet_string) }
 
-      navegation_tabs = '<ul class="nav nav-tabs language-tab" role="tablist">'
+      navigation_tabs = '<ul class="nav nav-tabs language-tab" role="tablist">'
       tab_contents = '<div class="tab-content">'
 
       snippets.each_with_index { |snippet, index|
@@ -23,9 +23,9 @@ module Jekyll
 
         snippet_id = snippet[:language] + '_' + index.to_s + '_' + id_prefix
 
-        navegation_tabs = navegation_tabs +
+        navigation_tabs = navigation_tabs +
           '<li class="nav-item">' +
-            '<a class="nav-link c-pointer' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
+            '<a class="nav-link cursor-pointer' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
               snippet[:label] +
             '</a>' +
           '</li>'
@@ -40,10 +40,10 @@ module Jekyll
           '</div>'
       }
 
-      navegation_tabs = navegation_tabs + '</ul>'
+      navigation_tabs = navigation_tabs + '</ul>'
       tab_contents = tab_contents + '</div>'
 
-      '<div class="code-example my-3">' + navegation_tabs + tab_contents + '</div>'
+      '<div class="code-example my-3">' + navigation_tabs + tab_contents + '</div>'
     end
   end
 

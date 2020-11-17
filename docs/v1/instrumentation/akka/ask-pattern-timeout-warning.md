@@ -74,11 +74,11 @@ call it "heavyweight", it will __always__ create an exception to capture the sta
 times out, and, taking the exception consumes a bit of resources. Depending on how heavily your application uses the ask
 pattern, the extra overhead might be tolerable, but that is up to you to decide.
 
-<p class="alert alert-warning">
+{% alert warning %}
 Beware that taking stack traces on every use of the ask pattern doesn't come for free. When using the heavyweight mode
 Kamon creates a new Exception and stores its stack trace during the lifetime of the ask, and that will consume some
 additional CPU and memory.
-</p>
+{% endalert %}
 
 When using the heavyweight mode, the logged warning message looks like this:
 

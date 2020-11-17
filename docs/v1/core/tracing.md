@@ -101,12 +101,12 @@ metric tracking Spans' latency is called `span.processing-time` and at a minimum
   - `parentOperation` with the name of the operation of the parent Span, if any.
   - Any additional metric tags added via `span.tagMetric(...)`.
 
-<p class="alert alert-warning">
+{% alert warning %}
 <span class="d-block font-weight-bold" >Important:</span>
 It is of extreme importance that a Span's operation name and any metric-related tags are not populated with high cardinality
 values; things like user or session identifiers, SQL queries or full URLs should not be used for operation names and
 metric tags because an individual time series will be created for each unique combination of these attributes.
-</p>
+{% endalert %}
 
 If necessary, metrics collection can be toggled by calling `enableMetrics()` and `disableMetrics()` on a `SpanBuilder`
 or `Span` instance. Calling these functions will only have effect until the Span is finished.

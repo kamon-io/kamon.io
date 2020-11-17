@@ -47,8 +47,8 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
           <br/><br/>
           Automatic instrumentation collects metrics, enables distributed tracing and performs context propagation out of the box.
         </p>
-        <a class="link-azure-radiance" href="#">
-          Try Kamon Telemetry <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+        <a class="arrow-right" href="#">
+          Try Kamon Telemetry
         </a>
       </div>
     </div>
@@ -74,8 +74,8 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
           Switch reporters at any time, no need to change instrumentation.
           Works best when paired with <b>Kamon APM</b>.
         </p>
-        <a class="link-azure-radiance" href="#">
-          Try Kamon Telemetry <img src="/assets/img/icons/directional/arrow-right-azure-radiance.svg" alt="Arrow Right Icon">
+        <a class="arrow-right" href="#">
+          Try Kamon Telemetry
         </a>
       </div>
     </div>
@@ -159,14 +159,14 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
     <div class="col-12 col-xl-6 d-flex align-items-center pl-xl-5 mt-5">
       <div id="instrumentation-slideshow" class="row no-gutters code-window-container">
         <div class="col-12 align-self-end code-window">
-          <div class="row no-gutters px-2 align-items-center justify-content-end code-window-heading">
-            <div class="col-auto mx-1 code-window-circle"></div>
-            <div class="col-auto mx-1 code-window-circle"></div>
-            <div class="col-auto mx-1 code-window-circle"></div>
+          <div class="row no-gutters px-2 align-items-center code-window-heading">
+            <div class="col-auto mx-1 code-window-circle circle-red"></div>
+            <div class="col-auto mx-1 code-window-circle circle-yellow"></div>
+            <div class="col-auto mx-1 code-window-circle circle-green"></div>
           </div>
 
           <div id="metrics-code-example">
-              <pre class="language-scala">
+              <pre class="language-scala line-numbers">
                 <code>
                   // One-Liner metric and increment
                   Kamon.counter("app.orders")
@@ -199,7 +199,7 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
           </div>
 
           <div id="tracing-code-example" class="d-none">
-              <pre class="language-scala">
+              <pre class="language-scala line-numbers">
                 <code>
                   // Adding tags to the SpanBuilder
                   val span = Kamon.spanBuilder("find-users")
@@ -231,7 +231,7 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
           </div>
 
           <div id="context-code-example" class="d-none">
-              <pre class="language-scala">
+              <pre class="language-scala line-numbers">
                 <code>
                   // Creating a Context with two keys
                   val context = Context()

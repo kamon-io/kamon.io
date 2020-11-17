@@ -81,27 +81,33 @@ layout: default
             <div class="text-all-uppercase text-dark-3">{{ topic.topic }}</div>
             <ul>
               {% for topic_page in topic.pages %}
-              {% if topic_page.pages %}
-              <li>
-                <div class="text-dark-3">{{topic_page.name}}</div>
-                <ul>
-                  {% for topic_sub_page in topic_page.pages %}
-                  {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
-                  {% assign current_path = current_pretty_path | append: '/' %}
-                  <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
-                    <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
+                {% if topic_page.pages %}
+                  <li>
+                    <div class="text-dark-3">{{topic_page.name}}</div>
+                    <ul>
+                      {% for topic_sub_page in topic_page.pages %}
+                        {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
+                        {% assign current_path = current_pretty_path | append: '/' %}
+                        <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
+                          <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
+                          {% if topic_sub_page_path == current_path %}
+                          <div id="markdown-toc-container-mobile"></div>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
                   </li>
-                  {% endfor %}
-                </ul>
-              </li>
 
-              {% else %}
-              {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
-              {% assign current_path = current_pretty_path | append: '/' %}
-              <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
-                <a href="{{topic_page_path}}">{{topic_page.name}}</a>
-              </li>
-              {% endif %}
+                {% else %}
+                  {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
+                  {% assign current_path = current_pretty_path | append: '/' %}
+                  <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
+                    <a href="{{topic_page_path}}">{{topic_page.name}}</a>
+                    {% if topic_page_path == current_path %}
+                      <div id="markdown-toc-container-mobile"></div>
+                    {% endif %}
+                  </li>
+                {% endif %}
               {% endfor %}
             </ul>
           </li>
@@ -133,6 +139,9 @@ layout: default
                               {% assign current_path = current_pretty_path | append: '/' %}
                               <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
                                 <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
+                                {% if topic_sub_page_path == current_path %}
+                                  <div id="markdown-toc-container"></div>
+                                {% endif %}
                               </li>
                             {% endfor %}
                           </ul>
@@ -143,6 +152,9 @@ layout: default
                         {% assign current_path = current_pretty_path | append: '/' %}
                         <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
                           <a href="{{topic_page_path}}">{{topic_page.name}}</a>
+                          {% if topic_page_path == current_path %}
+                            <div id="markdown-toc-container"></div>
+                          {% endif %}
                         </li>
                       {% endif %}
                     {% endfor %}

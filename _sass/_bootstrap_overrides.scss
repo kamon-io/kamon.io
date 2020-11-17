@@ -4,7 +4,12 @@ $theme-colors: (
   "danger": $color-red-0,
   "light": $color-light-3,
   "secondary": $color-light-0,
+  "warning": $color-yellow-1,
 );
+
+$link-color: $color-azure-radiance-main;
+$link-hover-color: $color-azure-radiance-darker;
+$link-hover-decoration: none;
 
 a.btn-primary {
   color: $color-light-4 !important;

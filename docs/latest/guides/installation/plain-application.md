@@ -20,9 +20,9 @@ starts from a good old `main` method that you can control, like pretty much all 
 applications out there.
 
 The general idea stays the same as in the official guide, there are three simple steps to follow:
-  1. [Install Kamon](#install-kamon).
-  2. [Verify the Installation](#verify-the-installation).
-  2. [Install Reporters](#install-reporters).
+  1. [Install Kamon](#install-kamon)
+  2. [Verify the Installation](#verify-the-installation)
+  2. [Install Reporters](#install-reporters)
 
 
 Install Kamon
@@ -68,12 +68,12 @@ method is invoked:
 The initialization process will attach Kanela to the JVM, and find all modules available on the classpath and initialize
 them.
 
-<p class="alert alert-warning">
-  <strong>For Scala Developers</strong>: If you are applying mixins directly on your `App` companion object, those mixins might cause
-  initialization of certain classes before the instrumentation is applied. If this is the case, you can either
-  reorganize your companion object to ensure that the Kamon initialization comes first, or launch your application with
-  the -javaagent option.
-</p>
+{% alert warning %}
+<strong>For Scala Developers</strong>: If you are applying mixins directly on your `App` companion object, those mixins might cause
+initialization of certain classes before the instrumentation is applied. If this is the case, you can either
+reorganize your companion object to ensure that the Kamon initialization comes first, or launch your application with
+the -javaagent option.
+{% endalert %}
 
 
 Verify the Installation

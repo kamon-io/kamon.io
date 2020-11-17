@@ -3,9 +3,16 @@ body {
     border-radius: 0.25rem;
   }
 
+  code {
+    color: $color-shamrock-main;
+  }
+
   code[class*="language-"], pre[class*="language-"] {
-    font-family: monospace, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono';
-    font-weight: 700;
+    font-family: "Source Code Pro";
+    font-weight: 500;
+    font-size: remSize(14);
+    line-height: remSize(17.6);
+    color: $color-light-4;
   }
 
   pre code {
@@ -14,6 +21,8 @@ body {
 
   .code-window-container {
     width: 100%;
+    border-radius: remSize(8);
+    overflow: hidden;
     box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
 
     @media (max-width: 320px) {
@@ -28,11 +37,11 @@ body {
   }
 
   .code-window {
-    $window-circle-size: 1rem;
+    $window-circle-size: 0.5rem;
 
     .code-window-heading {
-      height: 2rem;
-      background-color: #3a3a3a;
+      height: 1.5rem;
+      background-color: $color-dark-1;
     }
 
     .code-window-circle {
@@ -40,13 +49,77 @@ body {
       height: $window-circle-size;
       width: $window-circle-size;
       border-radius: $window-circle-size / 2;
+
+      &.circle-red {
+        background-color: $color-red-2;
+      }
+      &.circle-yellow {
+        background-color: $color-yellow-2;
+      }
+      &.circle-green {
+        background-color: $color-green-2;
+      }
     }
 
     pre[class*="language-"] {
       min-height: 25rem;
-      padding: 2rem;
+      padding-top: 1rem;
       margin: 0rem;
       border-radius: 0rem;
     }
   }
+}
+
+.copy-code-button {
+  position: absolute;
+  bottom: 1.4rem;
+  right: 0.7rem;
+}
+
+// prism overrides
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: $color-dark-1;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $color-dark-3;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: $color-blue-2;
+}
+
+.token.punctuation {
+  color: $color-light-4;
+}
+
+.line-numbers .line-numbers-rows {
+  border-right: none;
+}
+
+.line-numbers-rows > span:before {
+  color: $color-dark-4;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: $color-shamrock-lighter;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: $color-orange-2;
 }

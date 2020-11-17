@@ -88,6 +88,23 @@
     li {
       margin-top: 1rem;
 
+      &.docs-section-link {
+
+        &:not(:first-of-type) {
+          margin-top: 0;
+        }
+
+        a {
+          height: 100%;
+          padding-left: 0.5rem;
+          border-left: remSize(2) solid $color-light-0;
+
+          &.active {
+            border-left: remSize(2) solid $color-shamrock-main;
+          }
+        }
+      }
+
       a {
         color: $color-dark-1;
       }
@@ -156,6 +173,10 @@
 
       a {
         color: $color-dark-1;
+
+        &.active {
+          outline: 1px dotted salmon;
+        }
       }
     }
   }
