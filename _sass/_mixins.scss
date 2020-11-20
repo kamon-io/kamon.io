@@ -4,20 +4,21 @@
   &::-webkit-scrollbar-track
   {
     border-radius: remSize(2);
-    background-color: $color-light-1;
+    background-color: $color-light-2;
   }
 
   &::-webkit-scrollbar
   {
     border-radius: remSize(2);
     width: remSize(4);
-    background-color: $color-light-1;
+    height: remSize(5);
+    background-color: $color-light-2;
   }
 
   &::-webkit-scrollbar-thumb
   {
     border-radius: remSize(2);
-    background-color: $color-dark-4;
+    background-color: $color-dark-3;
   }
 }
 

@@ -8,7 +8,7 @@ body {
   }
 
   code[class*="language-"], pre[class*="language-"] {
-    font-family: "Source Code Pro";
+    font-family: "Source Code Pro", monospace;
     font-weight: 500;
     font-size: remSize(14);
     line-height: remSize(17.6);
@@ -70,7 +70,7 @@ body {
   }
 }
 
-.code-example-with-copy {
+.code-example-container {
   border-radius: 8px;
   overflow: hidden;
 
@@ -102,11 +102,10 @@ body {
     }
   }
 
-  .tab-content {
-    pre {
-      margin: 0;
-      border-radius: 0 !important;
-    }
+  pre {
+    margin: 0;
+    border-radius: 0 !important;
+    @include custom-scrollbar;
   }
 
   .tab-footer {
@@ -130,12 +129,6 @@ body {
       }
     }
   }
-}
-
-.copy-code-button {
-  position: absolute;
-  bottom: 1.4rem;
-  right: 0.7rem;
 }
 
 // prism overrides

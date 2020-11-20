@@ -369,15 +369,21 @@ function copyToClipboard(text) {
 }
 
 function initCodeExampleCopy() {
-  var codeExamplesWithCopy = document.getElementsByClassName("code-example-with-copy")
-  if (codeExamplesWithCopy.length === 0) {
+  var codeExampleContainers = document.getElementsByClassName("code-example-container")
+  if (codeExampleContainers.length === 0) {
     return
   }
-  Array.from(codeExamplesWithCopy).forEach(function(codeExample) {
+  Array.from(codeExampleContainers).forEach(function(codeExample) {
     $(codeExample).on("click", "div.fa-copy", function(e) {
       e.preventDefault()
-      var copyText = $(codeExample).find(".tab-pane.active").text().trim()
-      copyToClipboard(copyText)
+      var codeTabs = $(codeExample).find(".tab-pane")
+      if (codeTabs != null && codeTabs.length !== 0) {
+        var copyText = $(codeExample).find(".tab-pane.active").text().trim()
+        copyToClipboard(copyText)
+      } else {
+        var copyText = $(codeExample).find("code").text().trim()
+        copyToClipboard(copyText)
+      }
     })
   })
 }

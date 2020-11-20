@@ -45,7 +45,7 @@ module Jekyll
 
       tab_footer = '<div class="tab-footer"><div class="fa fa-copy"/></div>'
 
-      '<div class="code-example my-3 code-example-with-copy">' + tab_header + tab_contents + tab_footer + '</div>'
+      '<div class="code-example my-3 code-example-container">' + tab_header + tab_contents + tab_footer + '</div>'
     end
   end
 

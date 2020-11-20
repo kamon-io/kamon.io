@@ -71,8 +71,16 @@
   @include rounded-elevation;
 }
 
-.blog-content {
-  p {
-    font-size: remSize(18);
+.blog-container {
+
+  * {
+    max-width: 100% !important;
+  }
+
+  .blog-content {
+    p {
+      font-size: remSize(18);
+    }
   }
 }
+
