@@ -7,8 +7,8 @@ html, body {
   line-height: remSize(24);
   font-family: "Inter";
 
-  @media (max-width: 490px) {
-    font-size: 10px;
+  @media (max-width: $xs-max) {
+    font-size: 12px;
   }
 }
 

@@ -44,17 +44,6 @@
     }
   }
 
-  .pricing-banner-background {
-    background-color: $color-shamrock-main;
-    border-radius: 8px;
-    box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
-    color: $color-light-4;
-    background-image: url("/assets/img/background/cubes-pattern.svg");
-    background-position: right;
-    background-repeat: no-repeat;
-    padding: 5rem;
-  }
-
   .thick-line {
     width: 100%;
     height: 0.3rem;
@@ -83,4 +72,15 @@
       @include angle-up-down-expanders;
     }
   }
+}
+
+.pricing-banner-background {
+  background-color: $color-shamrock-main;
+  border-radius: 8px;
+  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+  color: $color-light-4;
+  background-image: url("/assets/img/background/cubes-pattern.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 5rem;
 }

@@ -7,15 +7,14 @@
 
   <!--  DESKTOP  -->
   <div class="d-none d-lg-block w-100">
-    <div class="d-flex w-100 justify-content-center">
+    <div class="d-flex w-100 justify-content-center align-items-center">
     <div class="row no-gutters w-100 header-content">
       <div class="col-lg-3 text-left">
         <a class="navbar-brand" href="/">
-          <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top d-none d-sm-block" alt="Kamon Logo">
-          <img src="/assets/img/kamon-symbol.svg" class="d-inline-block align-top d-sm-none" alt="Kamon Symbol">
+          <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
         </a>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 d-flex align-items-center">
         <ul class="navbar-nav w-75 justify-content-around">
           <li class="nav-item dropdown cursor-pointer">
             <a class="nav-link" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,12 +22,12 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="productsDropdown">
               <div class="header-submenu-container px-3 py-2">
-                <div class="row">
+                <div class="row no-gutters">
                   <div class="col-6">
                     <a class="dropdown-item header-submenu-item" href="/apm">
-                      <div class="row p-3">
+                      <div class="row no-gutters py-3 align-items-center justify-content-between">
                         <div class="col-4">
-                          <img src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Icon">
+                          <img width="75" height="75" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Icon">
                         </div>
                         <div class="col-8">
                           <h6>Kamon APM</h6>
@@ -39,9 +38,9 @@
                   </div>
                   <div class="col-6">
                     <a class="dropdown-item header-submenu-item" href="/instrumentation">
-                      <div class="row p-3">
+                      <div class="row no-gutters py-3 align-items-center justify-content-between">
                         <div class="col-4">
-                          <img src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry Icon">
+                          <img width="75" height="75" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry Icon">
                         </div>
                         <div class="col-8">
                           <h6>Kamon Telemetry</h6>
@@ -130,7 +129,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-3 d-flex align-items-center">
         <ul class="navbar-nav w-75 justify-content-around">
           <li class="nav-item">
             <a class="nav-link" href="https://apm.kamon.io/signin" target="_blank">Sign In</a>

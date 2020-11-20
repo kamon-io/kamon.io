@@ -1,63 +1,78 @@
-.blog-content-wrapper {
-  color: #949494;
-  font-size: 1.2rem;
-  margin-top: 3rem;
+.post-image-container {
+  border-radius: 8px;
+  height: 100px;
+  overflow: hidden;
 
-  @media (min-width: 992px) {
-    margin-top: 8rem;
+  @media (min-width: $sm-start) {
+    height: 200px;
   }
-}
 
-.post-content {
-
-  h4 {
-    margin: 2.5rem 0rem 1rem 0rem;
+  @media (min-width: $md-start) {
+    height: 300px;
   }
-  p {
-    margin-bottom: 1.7rem;
+
+  @media (min-width: $lg-start) {
+    width: 100%;
+    height: 100%;
   }
 
   a {
-    border-bottom: dotted 1px gray;
+    display: block;
+    width: 100%;
+    height: 100%;
 
-    &:hover {
-      color: #5e5e5e;
+    &.announcement {
+      background-color: $color-yellow-1;
+      background-image: url("/assets/img/background/cubes-pattern-blog.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 }
 
-.page-jumper {
-  color: #949494;
-  font-size: 1rem;
-  line-height: 1.6rem;
-  vertical-align: top;
+.blog-post-card {
 
-  i {
-    font-size: 1.6rem;
+  .blog-post-card-content {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-post-image {
+    width: 100%;
+    height: 200px;
+
+    @media (max-width: $xs-max) {
+      height: 100px;
+    }
+
+    &.announcement {
+      background-color: $color-yellow-1;
+      background-image: url("/assets/img/background/cubes-pattern-blog.svg");
+    }
+  }
+
+  .blog-post-card-text {
+    height: calc(100% - 200px);
+
+    @media (max-width: $xs-max) {
+      height: calc(100% - 100px);
+    }
   }
 }
 
-.featured-tag, .latest-posts-tag {
-  color: white;
-  font-weight: 600;
-  padding: 0.3rem 0.6rem;
-  background-color: $color-kamon-green;
-}
-
-.latest-posts-tag {
-  background-color: #afafaf;
-}
-
-.featured-excerpt {
-  font-size: 1.2rem;
-  color: #949494;
-}
-
-.post-list {
-  h1, h2 {
-    font-weight: 400;
+.publish-details {
+  > p {
+    margin: 0;
   }
 }
-.post-list-item {
-  border-bottom: 1px solid #eaeaea;
+
+.start-monitoring-card-small {
+  background-color: $color-light-3;
+  @include rounded-elevation;
+}
+
+.blog-content {
+  p {
+    font-size: remSize(18);
+  }
 }

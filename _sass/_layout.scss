@@ -11,7 +11,7 @@
 
 .default-content-container {
   max-width: 1200px;
-  margin: 100px auto;
+  margin: remSize(80) auto;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -30,55 +30,74 @@
     max-width: 600px;
   }
 
-  @media (max-width: $sm-breakpoint) {
+  @media (max-width: 670px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: $xs-max) {
     max-width: 100%;
     padding: 2rem;
     margin: 50px auto;
+
+    > section {
+      margin: 3rem 0;
+    }
   }
 }
 
 .elevated-container {
+  background-color: $color-light-4;
   @include rounded-elevation;
 }
 
 .w-sm-100 {
-  @media (max-width: $sm-breakpoint) {
+  @media (max-width: $xs-max) {
     width: 100%;
   }
 }
 
 .w-sm-50 {
-  @media (max-width: $sm-breakpoint) {
+  @media (max-width: $xs-max) {
     width: 50% !important;
   }
 }
 
 .w-md-75 {
-  @media (min-width: 768px) {
+  @media (min-width: $md-start) {
     width: 75%;
   }
 }
 
 .w-md-50 {
-  @media (min-width: 768px) {
+  @media (min-width: $md-start) {
     width: 50%;
   }
 }
 
 .w-md-25 {
-  @media (min-width: 768px) {
+  @media (min-width: $md-start) {
     width: 25%;
   }
 }
 
 .w-xl-75 {
-  @media (min-width: 1200px) {
+  @media (min-width: $xl-start) {
     width: 75%;
   }
 }
 
+.w-xl-80 {
+  @media (min-width: $xl-start) {
+    width: 80%;
+  }
+}
+
 .w-xl-50 {
-  @media (min-width: 1200px) {
+  @media (min-width: $xl-start) {
     width: 50%;
   }
+}
+
+.height-100vh {
+  height: 100vh;
 }

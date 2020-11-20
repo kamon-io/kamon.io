@@ -1,0 +1,19 @@
+.background-top-gray-gray {
+  background-image: url("/assets/img/background/background-top-gray-gray.svg");
+  @include page-top-background-image;
+}
+
+.background-top-gray {
+  background-image: url("/assets/img/background/background-top-gray.svg");
+  @include page-top-background-image;
+}
+
+.background-top-gray-blue {
+  background-image: url("/assets/img/background/background-top-gray-blue.svg");
+  @include page-top-background-image;
+}
+
+.background-top-gray-green {
+  background-image: url("/assets/img/background/background-top-gray-green.svg");
+  @include page-top-background-image;
+}

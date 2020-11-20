@@ -1,7 +1,7 @@
 ---
 title: 'Welcome to the Kamon Blog'
 description: 'Here we share updates about Kamon, stories from users and opinions about observability and monitoring'
-layout: blog
+layout: default
 permalink: /blog/
 pagination:
   enabled: true
@@ -11,67 +11,64 @@ redirect_from:
 ---
 {% assign featured_post = site.tags.featured[0] %}
 
-<div class="container post-list pt-5">
+<!-- TODO: get default image class from categories -->
+<main class="default-content-container">
+  <div class="background-top-gray"></div>
   {% if featured_post and paginator.page == 1 %}
-    <div class="row py-4">
-      <div class="col-12 col-lg-7 pr-5">
-        <a href="{{ featured_post.url }}">
-          <span class="featured-tag">FEATURED</span>
-          <div class="mt-5">{{ featured_post.date | date: "%B %e, %Y" }}</div>
-          <h1 class="">{{ featured_post.title }}</h1>
-          <div class="mt-2 featured-excerpt">{{ featured_post.excerpt }}</div>
-        </a>
+    <section class="row no-gutters">
+      <div class="col-12 col-lg-7 pr-lg-5">
+        <h1 class="text-dark-1">{{ featured_post.title }}</h1>
+        <div class="mt-2 text-dark-2">{{ featured_post.excerpt }}</div>
+        <a class="btn btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
       </div>
       <div class="col-12 col-lg-5 order-first order-lg-last pt-0 pt-lg-3">
-        {% if featured_post.cover_image %}
-        <a href="{{ featured_post.url }}">
-          <img class="w-100 pt-0 pt-lg-5 mb-5 mb-lg-0" src="{{ featured_post.cover_image }}" alt="">
-        </a>
-        {% endif %}
+        <div class="post-image-container">
+          {% if featured_post.cover_image %}
+          <a href="{{ featured_post.url }}">
+            <img class="w-100 pt-0 pt-lg-5 mb-5 mb-lg-0" src="{{ featured_post.cover_image }}" alt="">
+          </a>
+          {% else %}
+          <a class="announcement" href="{{ featured_post.url }}"></a>
+          {% endif %}
+        </div>
       </div>
-    </div>
+    </section>
   {% endif %}
 
 
-  <div class="row">
-    {% if paginator.page == 1 %}
-      <div class="col-12 mt-6 mb-2">
-        <span class="latest-posts-tag">LATEST POSTS</span>
-      </div>
-    {% endif %}
-
-
+  <section class="row no-gutters">
     {% for post in paginator.posts %}
       {% if post.title != featured_post.title %}
-        <div class="col-12 col-lg-10 py-4 post-list-item">
-          <a href="{{ post.url }}">
-            <span>{{ post.date | date: "%B %e, %Y" }}</span>
-            <h3>{{ post.title }}</h3>
-            <div>
-              {{ post.excerpt }}
+        <div class="col-12 col-md-6 col-xl-4 p-4 blog-post-card">
+          <div class="elevated-container blog-post-card-content h-100">
+            <div class="blog-post-image announcement"></div>
+            <div class="p-4 d-flex flex-column justify-content-between blog-post-card-text">
+              <h4 class="text-dark-1">{{ post.title }}</h4>
+              <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
+              <a class="arrow-right align-self-end" href="{{ post.url }}">Read More</a>
             </div>
-          </a>
+          </div>
         </div>
       {% endif %}
     {% endfor %}
-  </div>
+  </section>
 
-  <div class="row justify-content-between my-5">
+  <div class="row no-gutters justify-content-between w-100 my-5 px-4">
     <div class="col-auto align-self-end">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | remove: 'index.html' }}">
-          <span class="page-jumper"><i class="fas fa-angle-double-left fa-fw mr-2"> </i>Newer Posts</i></span>
+        <a class="btn btn-primary" href="{{ paginator.previous_page_path | remove: 'index.html' }}">
+          <i class="fas fa-angle-double-left fa-fw mr-2"> </i>Newer Posts</i>
         </a>
       {% endif %}
     </div>
 
       <div class="col-auto align-self-end">
           {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | remove: 'index.html' }}">
-          <span class="page-jumper">Older Posts<i class="fas fa-angle-double-right fa-fw ml-2"></i></span>
+        <a class="btn btn-primary" href="{{ paginator.next_page_path | remove: 'index.html' }}">
+          Older Posts<i class="fas fa-angle-double-right fa-fw ml-2"></i>
         </a>
         {% endif %}
       </div>
   </div>
 
-</div>
+</main>

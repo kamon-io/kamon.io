@@ -14,10 +14,14 @@ $typography-weight-semi-bold: 600;
 $typography-weight-medium: 500;
 $typography-weight-regular: 400;
 
-$sm-breakpoint: 576px;
-$md-breakpoint: 768px;
-$lg-breakpoint: 992px;
-$xl-breakpoint: 1200px;
+$xs-max: 575px;
+$sm-start: 576px;
+$sm-max: 767px;
+$md-start: 768px;
+$md-max: 991px;
+$lg-start: 992px;
+$lg-max: 1199px;
+$xl-start: 1200px;
 
 @import "colors";
 @import "mixins";
@@ -29,6 +33,7 @@ $xl-breakpoint: 1200px;
 @import "text";
 @import "code";
 @import "alert";
+@import "page_backgrounds";
 
 @import "includes/docs-search";
 @import "includes/docs-version-select";
@@ -40,14 +45,50 @@ $xl-breakpoint: 1200px;
 @import "layouts/docs";
 
 @import "pages/apm";
-//@import "pages/blog";
+@import "pages/blog";
 @import "pages/index";
-@import "pages/intrumentation.scss";
+@import "pages/instrumentation.scss";
 @import "pages/pricing";
 
-img {
+img.image-100-auto {
   max-width: 100%;
   height: auto;
+}
+
+.page-illustration {
+  max-width: 100%;
+  height: auto;
+
+  @media (min-width: $lg-start) {
+    max-width: 75%;
+    height: auto;
+  }
+
+  @media (min-width: $xl-start) {
+    max-width: 120%;
+    height: auto;
+
+    &.large-screen-smaller {
+      max-width: 100%;
+    }
+
+    &.large-screen-bigger {
+      max-width: 175%;
+    }
+  }
+
+  &.illustration-left {
+
+    position: relative;
+
+    @media (min-width: $xl-start) {
+      left: -20%;
+    }
+  }
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .overflow-hidden {
@@ -69,5 +110,13 @@ a.arrow-right {
 
   &:hover:after {
     background-image: url("/assets/img/icons/directional/arrow-right-azure-radiance-darker.svg");
+  }
+}
+
+.markdown-content {
+  color: $color-dark-2;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-dark-1;
   }
 }

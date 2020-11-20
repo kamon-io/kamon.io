@@ -1,9 +1,30 @@
 .homepage-container {
 
-  //section:first-of-type {
-  //  margin-top: 0 !important;
-  //  height: 100vh;
-  //}
+  .homepage-video {
+    width: 100%;
+
+    @media (min-width:$xl-start) {
+      width: 110%;
+      height: 110%;
+    }
+  }
+
+  .main-homepage-illustration {
+
+    @media (min-width: 1400px) {
+      position: relative;
+      left: -22%;
+    }
+  }
+
+  .secondary-homepage-illustration {
+
+    @media (min-width: $xl-start) {
+      position: relative;
+      bottom: -35%;
+      margin-bottom: 5rem;
+    }
+  }
 
   .eu-icon {
     position: fixed;

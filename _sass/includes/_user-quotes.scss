@@ -3,7 +3,7 @@
   max-width: 788px;
   height: 308px;
 
-  @media (max-width: 574px) {
+  @media (max-width: $xs-max) {
     width: 100%;
   }
 
@@ -46,6 +46,10 @@
   max-width: 788px;
   height: 0;
 
+  @media (max-width: $xs-max) {
+    margin-bottom: 3rem;
+  }
+
   .carousel-previous-slide-btn, .carousel-next-slide-btn {
     width: 60px;
     height: 60px;
@@ -57,10 +61,11 @@
       text-decoration: none;
     }
 
-    @media (max-width: 574px) {
+    @media (max-width: $xs-max) {
       position: inherit;
       img {
         margin-top: 1rem;
+        margin-bottom: 3rem;
       }
     }
   }

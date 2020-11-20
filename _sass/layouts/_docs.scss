@@ -157,7 +157,7 @@
 }
 
 .docs-container {
-  @media (max-width: $lg-breakpoint) {
+  @media (max-width: $md-max) {
     margin-top: calc(57px + 52px + 1rem) !important;
   }
 }
@@ -173,10 +173,6 @@
 
       a {
         color: $color-dark-1;
-
-        &.active {
-          outline: 1px dotted salmon;
-        }
       }
     }
   }

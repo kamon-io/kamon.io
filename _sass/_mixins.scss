@@ -3,20 +3,20 @@
 
   &::-webkit-scrollbar-track
   {
-    border-radius: 2px;
+    border-radius: remSize(2);
     background-color: $color-light-1;
   }
 
   &::-webkit-scrollbar
   {
-    border-radius: 2px;
-    width: 4px;
+    border-radius: remSize(2);
+    width: remSize(4);
     background-color: $color-light-1;
   }
 
   &::-webkit-scrollbar-thumb
   {
-    border-radius: 2px;
+    border-radius: remSize(2);
     background-color: $color-dark-4;
   }
 }
@@ -24,14 +24,14 @@
 @mixin custom-text-field {
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
-  border: 1px solid $color-light-0;
-  border-radius: 8px;
+  border: remSize(1) solid $color-light-0;
+  border-radius: remSize(8);
   color: $color-dark-1;
 
   &:focus {
     outline: none;
-    border: 1px solid $color-blue-1;
-    border-radius: 8px;
+    border: remSize(1) solid $color-blue-1;
+    border-radius: remSize(8);
   }
 
   &::placeholder {
@@ -42,21 +42,25 @@
 @mixin custom-select-field {
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
-  border: 1px solid $color-light-0;
-  border-radius: 8px;
+  border: remSize(1) solid $color-light-0;
+  border-radius: remSize(8);
   background-color: $color-light-4;
   color: $color-dark-1;
 
   &:focus {
     outline: none;
-    border: 1px solid $color-blue-1;
-    border-radius: 8px;
+    border: remSize(1) solid $color-blue-1;
+    border-radius: remSize(8);
   }
 }
 
 @mixin rounded-elevation {
-  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16);
-  border-radius: 8px;
+  box-shadow: 0 0 remSize(1) rgba(40, 41, 61, 0.04), 0 remSize(2) remSize(4) rgba(96, 97, 112, 0.16);
+  border-radius: remSize(8);
+
+  &:hover {
+    box-shadow: 0 remSize(2) remSize(4) rgba(40, 41, 61, 0.04), 0 remSize(8) remSize(16) rgba(96, 97, 112, 0.16);
+  }
 }
 
 @mixin angle-up-down-expanders {
@@ -73,5 +77,42 @@
     .fa.fa-angle-down {
       display: none;
     }
+  }
+}
+
+// TODO: clean up
+@mixin page-top-background-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  width: 100%;
+  height: 100%;
+
+  @media (max-width: 1600px) {
+    background-size: contain;
+  }
+
+  @media (min-width: 1400px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 1665px) {
+    background-size: 110%;
+  }
+
+  @media (max-width: 1500px) {
+    background-size: 120%;
+  }
+
+  @media (max-width: 1399px) {
+    background-size: 130%;
+  }
+
+  @media (max-width: $lg-max) {
+    background-size: 100%;
   }
 }
