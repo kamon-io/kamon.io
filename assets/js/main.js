@@ -208,17 +208,28 @@ function initHideBodyScrollOnMobileDocsNavigation() {
   }
 }
 
-// TODO: check what should happen and update, this is just some reactive example
-function initAnnualPricingToggle() {
-  var annualPricingToggle = document.getElementById("billed-annually-switch")
-  if (annualPricingToggle != null) {
-    var growPlanPriceValue = document.getElementById("grow-plan-monthly-price")
-    var billedAnnuallyText = document.getElementById("billed-annually-text")
-    annualPricingToggle.addEventListener("click", function() {
-      growPlanPriceValue.textContent = annualPricingToggle.checked ? 24 : 30
-      billedAnnuallyText.innerHTML = annualPricingToggle.checked ? "288&euro; billed annually" : ""
-    })
+function initAnnualBillingToggle() {
+  var annualBillingToggle = document.getElementById("billed-annually-switch")
+  if (annualBillingToggle == null) {
+    return
   }
+  var billedMonthlyLabel = document.getElementById("billed-monthly-label")
+  var billedAnnualLabel = document.getElementById("billed-annually-label")
+  var growPlanPriceValue = document.getElementById("grow-plan-monthly-price")
+  var createBillingTypeToggleHandler = function(manualToggleValue) {
+    return function() {
+      if (manualToggleValue != null) {
+        if (manualToggleValue == annualBillingToggle.checked) {
+          return
+        }
+        annualBillingToggle.checked = manualToggleValue
+      }
+      growPlanPriceValue.textContent = annualBillingToggle.checked ? 24 : 30
+    }
+  }
+  annualBillingToggle.addEventListener("click", createBillingTypeToggleHandler())
+  billedMonthlyLabel.addEventListener("click", createBillingTypeToggleHandler(false))
+  billedAnnualLabel.addEventListener("click", createBillingTypeToggleHandler(true))
 }
 
 function getTopOffset(element) {
@@ -341,7 +352,7 @@ $(document).ready(function() {
   instrumentationSlideshow()
   initScrollHeaders()
   initHideBodyScrollOnMobileDocsNavigation()
-  initAnnualPricingToggle()
+  initAnnualBillingToggle()
   initDocsMarkdownToc()
   toggleActiveAnchor()
   smoothScrollToAnchor()
