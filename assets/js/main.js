@@ -343,8 +343,43 @@ function initDocsMarkdownToc() {
   // mobileMarkdownTocContainer.append(ul)
 }
 
-function copyCodeExample(snippetID) {
-  console.log(`trying to copy code with id ${snippetID}`)
+function copyToClipboard(text) {
+  if (window.clipboardData && window.clipboardData.setData) {
+    // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+    return clipboardData.setData("Text", text);
+
+  }
+  else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+    var textarea = document.createElement("textarea");
+    textarea.textContent = text;
+    textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+    }
+    catch (ex) {
+      console.warn("Copy to clipboard failed.", ex);
+      return false;
+    }
+    finally {
+      document.body.removeChild(textarea);
+    }
+  }
+}
+
+function initCodeExampleCopy() {
+  var codeExamplesWithCopy = document.getElementsByClassName("code-example-with-copy")
+  if (codeExamplesWithCopy.length === 0) {
+    return
+  }
+  Array.from(codeExamplesWithCopy).forEach(function(codeExample) {
+    $(codeExample).on("click", "div.fa-copy", function(e) {
+      e.preventDefault()
+      var copyText = $(codeExample).find(".tab-pane.active").text().trim()
+      copyToClipboard(copyText)
+    })
+  })
 }
 
 $(document).ready(function() {
@@ -356,4 +391,5 @@ $(document).ready(function() {
   initDocsMarkdownToc()
   toggleActiveAnchor()
   smoothScrollToAnchor()
+  initCodeExampleCopy()
 })

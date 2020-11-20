@@ -70,6 +70,68 @@ body {
   }
 }
 
+.code-example-with-copy {
+  border-radius: 8px;
+  overflow: hidden;
+
+  .tab-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: $color-dark-1;
+    border-bottom: 1px solid $color-dark-2;
+
+    .language-btn {
+      height: 32px;
+      line-height: 15px;
+      color: $color-light-4;
+      margin-left: 1rem;
+      border-radius: 8px;
+      background-color: transparent;
+      border-color: transparent;
+
+      &:hover {
+        color: $color-light-0;
+      }
+
+      &.active {
+        color: $color-dark-2;
+        background-color: $color-light-4;
+        border-color: $color-light-4;
+      }
+    }
+  }
+
+  .tab-content {
+    pre {
+      margin: 0;
+      border-radius: 0 !important;
+    }
+  }
+
+  .tab-footer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: $color-light-1;
+    border-top: 1px solid $color-dark-2;
+    background-color: $color-dark-0;
+
+    > div {
+      margin-right: 2rem;
+      cursor: pointer;
+      &:after {
+        content: "Copy";
+        font-family: "Inter", monospace;
+        margin-left: 1rem;
+        font-size: 16px;
+        font-weight: $typography-weight-regular;
+      }
+    }
+  }
+}
+
 .copy-code-button {
   position: absolute;
   bottom: 1.4rem;
