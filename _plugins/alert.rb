@@ -11,10 +11,10 @@ module Jekyll
       content = super
       <<-HTML.gsub /^\s+/, '' # remove whitespaces from here
       <div class="outline-alert outline-alert-#{@type} row no-gutters">
-        <div class="alert-image col-1">
+        <div class="alert-image col-2 col-sm-1">
           <img src="/assets/img/icons/alert/#{@type}.svg"/>
         </div>
-        <div class="alert-content col-11">#{content}</div>
+        <div class="alert-content col-10 col-sm-11">#{content}</div>
       </div>
       HTML
     end

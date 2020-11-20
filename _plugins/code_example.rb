@@ -46,6 +46,7 @@ module Jekyll
       # tab_copy = '<div class="mrs"><div class="fa fa-2x fa-copy"/></div>'
 
       # '<div class="code-example my-3">' + navigation_tabs + tab_contents + tab_copy + '</div>'
+      '<div class="code-example my-3">' + navigation_tabs + tab_contents + '</div>'
     end
   end
 
