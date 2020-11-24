@@ -49,6 +49,11 @@
       background-color: $color-yellow-1;
       background-image: url("/assets/img/background/cubes-pattern-blog.svg");
     }
+
+    &.blog-summary-image {
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 
   .blog-post-card-text {
@@ -61,7 +66,7 @@
 }
 
 .publish-details {
-  > p {
+  p {
     margin: 0;
   }
 }
@@ -71,16 +76,49 @@
   @include rounded-elevation;
 }
 
+.sticky-posts-actions {
+  @media (min-width: $lg-start) {
+    position: sticky;
+    top: calc(57px + 3rem);
+  }
+}
+
 .blog-container {
 
-  * {
-    max-width: 100% !important;
+  @media (max-width: $md-max) {
+    * {
+      max-width: 100%;
+    }
   }
 
   .blog-content {
+
     p {
       font-size: remSize(18);
     }
   }
 }
 
+.share-button {
+  border-radius: 20px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: $color-shamrock-main no-repeat center;
+
+  &:hover {
+    background-color: $color-shamrock-darker;
+  }
+
+  &.twitter-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/twitter-white.svg");
+  }
+
+  &.reddit-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/reddit-white.svg");
+  }
+
+  &.linkedin-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/linkedin-white.svg");
+  }
+}

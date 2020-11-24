@@ -2,35 +2,49 @@
 layout: default
 ---
 
+<div class="background-top-gray"></div>
 <main class="default-content-container blog-container">
-  <div class="background-top-gray"></div>
-  <section class="row">
+  <section>
     <div class="row no-gutters">
-      <div class="col-12 col-lg-9">
+      <div class="col-12 col-lg-8">
         <h1 class="text-dark-1 pr-lg-4">{{ page.title }}</h1>
       </div>
-      <div class="col-12 col-lg-3">
+      <div class="col-12 col-lg-4 pl-lg-5">
         <div class="d-flex">
           <img width="50" height="50" class="mr-3" src="/assets/img/kamon/kamon-avatar.svg" alt="Kamon team avatar"/>
           <div class="publish-details">
-            <p class="text-lead text-dark-1">by Kamon Team</p>
+            <p class="text-lead text-dark-1">by {{ page.author }}</p>
             <p class="text-body-smaller text-dark-2">{{ page.date | date: "%B %e, %Y" }} </p>
           </div>
         </div>
       </div>
     </div>
 
+    {% if page.cover_image %}
+    <div class="mt-5">
+      <img class="image-100-auto" src="{{ page.cover_image }}" alt="post cover image"/>
+    </div>
+    {% endif %}
+
     <div class="row no-gutters mt-5">
-      <div class="col-12 col-lg-9 px-lg-5 markdown-content blog-content">{{ content }}</div>
-      <div class="col-12 col-lg-3">
-        <div class="text-center p-5 start-monitoring-card-small">
-          <h6 class="text-dark-1">Start Monitoring for Free</h6>
-          <p class="text-body-smaller text-dark-2 mt-3">Kamon free account comes with no expiration date.</p>
-          <a class="btn btn-primary mt-3">Start Monitoring Free</a>
-        </div>
-        <div class="mt-5">
-          <h6>Share this post</h6>
-          <div class="flex">3 social media share btn</div>
+      <div class="col-12 col-lg-8">
+        <div class="markdown-content blog-content">{{ content }}</div>
+      </div>
+      <div class="col-12 col-lg-4 pl-lg-5">
+        <div class="sticky-posts-actions">
+          <div class="d-none d-lg-block text-center p-5 start-monitoring-card-small">
+            <h6 class="text-dark-1">Start Monitoring for Free</h6>
+            <p class="text-body-smaller text-dark-2 mt-3">Kamon free account comes with no expiration date.</p>
+            <a class="btn btn-primary mt-3 text-white">Start Free</a>
+          </div>
+          <div class="mt-5">
+            <h6>Share this post</h6>
+            <div class="flex">
+              <a href="#" class="share-button twitter-share"></a>
+              <a href="#" class="share-button reddit-share"></a>
+              <a href="#" class="share-button linkedin-share"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -39,3 +53,53 @@ layout: default
   {% include start-monitoring-banner.html %}
 
 </main>
+
+<script>
+  // TODO: move this to jquery popup + iframe
+  var getWindowOptions = function() {
+    var width = 500
+    var height = 350
+    var left = (window.innerWidth / 2) - (width / 2)
+    var top = (window.innerHeight / 2) - (height / 2)
+
+    return [
+      'resizable,scrollbars,status',
+      'height=' + height,
+      'width=' + width,
+      'left=' + left,
+      'top=' + top,
+    ].join()
+  };
+
+  document.addEventListener("readystatechange", function() {
+    var twitterBtn = document.querySelector(".twitter-share")
+    var twitterShareUrl = "https://twitter.com/intent/tweet?url=" + encodeURI(location.href)
+    twitterBtn.href = twitterShareUrl
+
+    var redditBtn = document.querySelector(".reddit-share")
+    var redditShareUrl = "https://www.reddit.com/submit?title=" + encodeURI(document.title) + "&url=" + encodeURI(location.href)
+    redditBtn.href = redditShareUrl
+
+    var linkedInBtn = document.querySelector(".linkedin-share")
+    var linkedInShareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURI(location.href)
+    linkedInBtn.href = linkedInShareUrl
+
+    twitterBtn.addEventListener("click", function(e) {
+      e.preventDefault()
+      var win = window.open(twitterShareUrl, "shareOnTwitter", getWindowOptions())
+      win.opener = null
+    });
+
+    redditBtn.addEventListener("click", function(e) {
+      e.preventDefault()
+      var win = window.open(redditShareUrl, "shareOnReddit", getWindowOptions())
+      win.opener = null
+    });
+
+    linkedInBtn.addEventListener("click", function(e) {
+      e.preventDefault()
+      var win = window.open(linkedInShareUrl, "shareOnLinkedIn", getWindowOptions())
+      win.opener = null
+    });
+  })
+</script>

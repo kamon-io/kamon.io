@@ -1,5 +1,14 @@
 .homepage-container {
 
+  .homepage-intro {
+    @media (min-width: $xl-start) {
+      height: calc(100vh - 5rem - 200px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
+
   .homepage-video {
     width: 100%;
 

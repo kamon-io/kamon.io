@@ -4,6 +4,9 @@ title: 'Automatically instrument, monitor and debug distributed systems'
 description: 'Kamon provides a set of tools to go from zero to a healthy and observable production deployment'
 ---
 
+
+<div class="background-top-gray-gray"></div>
+
 <main class="default-content-container homepage-container">
 
   <!--  EU ICON FIXED BOTTOM  -->
@@ -11,48 +14,48 @@ description: 'Kamon provides a set of tools to go from zero to a healthy and obs
     <img class="eu-icon" src="/assets/img/pages/homepage/EU-link.svg" alt="EU icon"/>
   </a>
 
-  <div class="background-top-gray-gray"></div>
-
   <!--   INTRO   -->
-  <section class="row no-gutters flex-row-reverse">
-    <div class="col-12 col-xl-5">
-      <img class="page-illustration main-homepage-illustration large-screen-bigger" src="/assets/img/pages/homepage/main-homepage-illustration.svg" alt="Monitoring illustration"/>
+  <section class="homepage-intro">
+    <div class="row no-gutters flex-row-reverse">
+      <div class="col-12 col-xl-5">
+        <img class="page-illustration main-homepage-illustration large-screen-bigger" src="/assets/img/pages/homepage/main-homepage-illustration.svg" alt="Monitoring illustration"/>
+      </div>
+      <div class="col-12 col-xl-7">
+        <p class="text-display-1 mt-5 mt-xl-0">Start Monitoring<br/>In <span class="text-primary">3 minutes</span></p>
+        <p>
+          Kamon helps you find errors and performance issues in your backend microservices.<br/>
+          Spend less time firefighting and more time writing code.
+        </p>
+        <a class="btn btn-primary btn-lg w-sm-100" href="#">Start Monitoring Free</a>
+        <p class="text-small mt-3">
+          Create your free account.<br/>
+          no credit card required.
+        </p>
+      </div>
     </div>
-    <div class="col-12 col-xl-7">
-      <p class="text-display-1 mt-5 mt-xl-0">Start Monitoring<br/>In <span class="text-primary">3 minutes</span></p>
-      <p class="text-dark-2">
-        Kamon helps you find errors and performance issues in your backend microservices.<br/>
-        Spend less time firefighting and more time writing code.
-      </p>
-      <a class="btn btn-primary btn-lg w-sm-100" href="#">Start Monitoring Free</a>
-      <p class="text-dark-3 text-small mt-3">
-        Create your free account.<br/>
-        no credit card required.
-      </p>
-    </div>
-  </section>
 
-  <!--  USED BY  -->
-  <section class="text-center mt-0">
-    <h5 class="text-dark-2">Join hundreds of developers using Kamon</h5>
-    {% include user-logos.html %}
+    <!--  USED BY  -->
+    <div class="text-center">
+      <h5>Join hundreds of developers using Kamon</h5>
+      {% include user-logos.html %}
+    </div>
   </section>
 
   <!--   MICROSERVICES + VIDEO   -->
   <section class="row no-gutters">
     <div class="col-12 col-xl-7">
-      <h1 class="text-dark-1">
+      <h1>
         Microservices are complex.
         Monitoring them shouldn't be.
       </h1>
-      <p class="text-dark-2 my-3 w-xl-80">
+      <p class="my-3 w-xl-80">
         No one should ever have to go to production without proper monitoring.
         And no one should have to break the bank to get decent monitoring.
         <br/><br/>
         Created specifically with microservices in mind, Kamon makes it easy to
         monitor and debug complex distributed systems in a single platform.
       </p>
-      <div class="text-dark-2 mt-5">
+      <div class="mt-5">
         <h5>Say hello to:</h5>
         <div class="mt-3">
           <img src="/assets/img/pages/homepage/clock-circle.svg" alt="Clock Icon">
@@ -83,8 +86,8 @@ description: 'Kamon provides a set of tools to go from zero to a healthy and obs
   <!--   STEPS   -->
   <section>
     <div class="text-center">
-      <h1 class="d-inline-block text-dark-1 w-md-75">You need to know what’s going on in your microservices</h1>
-      <p class="text-dark-2">Getting actionable insights into your application performance is simple:</p>
+      <h1 class="d-inline-block w-md-75">You need to know what’s going on in your microservices</h1>
+      <p>Getting actionable insights into your application performance is simple:</p>
       <div class="row mt-5 flex-column flex-md-row justify-content-center">
         <div class="col-12 col-md-3 d-flex flex-column justify-content-between">
           <div>
@@ -152,34 +155,38 @@ description: 'Kamon provides a set of tools to go from zero to a healthy and obs
   <!--   KAMON STACK   -->
   <section class="row no-gutters">
     <div class="col-12 col-xl-6">
-      <h1 class="text-dark-1">The Kamon <span class="text-primary">Stack</span></h1>
-      <p class="text-body-bigger text-dark-2">
+      <h1>The Kamon <span class="text-primary">Stack</span></h1>
+      <p>
         Go from zero to a healthy and observable production deployment with a set of reliable and easy to use tools.
         Built to work hand in hand, with a single goal - to solve your observability pains.
       </p>
-      <div class="elevated-container p-4 mt-5">
+
+      <div class="elevated-container p-4 mt-5 position-relative">
         <div class="kamon-stack-icon-container">
           <img class="image-100-auto" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Icon"/>
         </div>
-        <h3 class="text-dark-1">Why Kamon APM?</h3>
-        <p class="text-dark-2 text-body-smaller w-75">
+        <h3>Why Kamon APM?</h3>
+        <p class="text-body-smaller w-75">
           Brings all the important signals front and center so you can start monitoring and debugging right away
         </p>
         <a class="arrow-right" href="/apm">
           More About APM
         </a>
+        <a class="container-link" href="/apm"></a>
       </div>
-      <div class="elevated-container p-4 mt-5">
+
+      <div class="elevated-container p-4 mt-5 position-relative">
         <div class="kamon-stack-icon-container">
           <img class="image-100-auto" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon APM Icon"/>
         </div>
-        <h3 class="text-dark-1">Why Telemetry?</h3>
-        <p class="text-dark-2 text-body-smaller w-75">
+        <h3>Why Telemetry?</h3>
+        <p class="text-body-smaller w-75">
           Battle-tested, free and open-source tools for instrumenting distributed systems
         </p>
         <a class="arrow-right" href="/instrumentation">
           More About Telemetry
         </a>
+        <a class="container-link" href="/instrumentation"></a>
       </div>
     </div>
     <div class="col-12 col-xl-6 d-none d-xl-flex align-content-end">

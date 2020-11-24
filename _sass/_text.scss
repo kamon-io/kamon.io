@@ -2,85 +2,133 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700,800');
 
 html, body {
-  color: $color-dark-0;
+  color: $color-dark-2;
   font-size: $base-font-size;
   line-height: remSize(24);
   font-family: "Inter";
 
   @media (max-width: $xs-max) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
 .text-display-1 {
+  color: $color-dark-1;
   font-weight: $typography-weight-bold;
   font-size: remSize(64);
   line-height: remSize(77.45);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(42);
+    line-height: remSize(51);
+  }
 }
 
 .text-display-2 {
+  color: $color-dark-1;
   font-weight: $typography-weight-bold;
   font-size: remSize(56);
   line-height: remSize(67.77);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(37);
+    line-height: remSize(45);
+  }
 }
 
 h1, h2, h3, h4 {
+  color: $color-dark-1;
   font-weight: $typography-weight-bold;
 }
 
 h5, h6 {
+  color: $color-dark-2;
   font-weight: $typography-weight-semi-bold;
 }
 
 h1 {
   size: remSize(40);
   line-height: remSize(56);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(26);
+    line-height: remSize(37);
+  }
 }
 
 h2 {
   size: remSize(32);
   line-height: remSize(44);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(21);
+    line-height: remSize(29);
+  }
 }
 
 h3 {
   size: remSize(28);
   line-height: remSize(38);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(19);
+    line-height: remSize(25);
+  }
 }
 
 h4 {
   size: remSize(24);
   line-height: remSize(32);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(16);
+    line-height: remSize(21);
+  }
 }
 
 h5 {
   size: remSize(20);
   line-height: remSize(28);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(15);
+    line-height: remSize(20);
+  }
 }
 
 h6 {
   size: remSize(16);
   line-height: remSize(24);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(14);
+    line-height: remSize(20);
+  }
 }
 
 .text-lead {
+  color: $color-dark-2;
   font-weight: $typography-weight-bold;
   font-size: remSize(14);
   line-height: remSize(24);
 }
 
 .text-blog-body {
+  color: $color-dark-2;
   font-weight: $typography-weight-semi-bold;
   font-size: remSize(18);
   line-height: remSize(32);
 }
 
 .text-body-smaller {
+  color: $color-dark-2;
   font-weight: $typography-weight-regular;
   font-size: remSize(14);
   line-height: remSize(24);
 }
 
 .text-body-bigger {
+  color: $color-dark-2;
   font-weight: $typography-weight-regular;
   font-size: remSize(16);
   line-height: remSize(24);
@@ -90,6 +138,11 @@ h6 {
   font-weight: $typography-weight-semi-bold;
   font-size: remSize(24);
   line-height: remSize(32);
+
+  @media (max-width: $xs-max) {
+    font-size: remSize(16);
+    line-height: remSize(21);
+  }
 }
 
 .text-blockquote-small {
@@ -119,25 +172,26 @@ h6 {
 }
 
 .text-small {
+  color: $color-dark-3;
   font-weight: $typography-weight-semi-bold;
   font-size: remSize(12);
   line-height: remSize(16);
 }
 
 .text-dark-1 {
-  color: $color-dark-1;
+  color: $color-dark-1 !important;
 }
 
 .text-dark-2 {
-  color: $color-dark-2;
+  color: $color-dark-2 !important;
 }
 
 .text-dark-3 {
-  color: $color-dark-3;
+  color: $color-dark-3 !important;
 }
 
 .text-dark-4 {
-  color: $color-dark-4;
+  color: $color-dark-4 !important;
 }
 
 .text-azure-radiance {

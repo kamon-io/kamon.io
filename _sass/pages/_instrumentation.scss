@@ -14,23 +14,28 @@
 
 .api-section-toggle {
   cursor: pointer;
+  .code-example-icon {
+    color: $color-blue-1;
+  }
 
   .api-section-toggle-text,
-  .api-section-toggle-drawing-active,
   .api-section-toggle-icon-active {
     display: none;
   }
 
   &.active {
-    border: 1px solid $color-shamrock-main;
+    //border: 1px solid $color-shamrock-main;
+    box-shadow: 0 remSize(2) remSize(4) rgba(40, 41, 61, 0.04), 0 remSize(8) remSize(16) rgba(96, 97, 112, 0.16);
+
+    .code-example-icon {
+      color: $color-green-1;
+    }
 
     .api-section-toggle-text,
-    .api-section-toggle-drawing-active,
     .api-section-toggle-icon-active {
       display: block;
     }
 
-    .api-section-toggle-drawing-non-active,
     .api-section-toggle-icon-non-active {
       display: none;
     }

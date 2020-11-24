@@ -2,6 +2,7 @@
 layout: post
 title: 'Kamon Forecast - April 2018'
 date: 2018-04-27
+author: the Kamon Team
 categories: teamblog posts
 tags: featured
 redirect_from:
@@ -20,16 +21,16 @@ We think these ideas could be better split in two different groups:
 
 The main goal on the 1.x series is going to be improving the APIs and quality of Kamon in general. We are very happy with
 how things ended up in Kamon 1.0, but there are many details that can and should be improved. The ideas:
-  - Standarizing the way HTTP services are instrumented and make sure that all frameworks will provide a consistent
+  - Standardizing the way HTTP services are instrumented and make sure that all frameworks will provide a consistent
     behavior and metric/span tags. We are basically copy/pasting some behavior between modules and we think we have
     done it enough times to recognize good patterns and come up with a good abstraction for this.
   - Improve the way reporters are added and configured, some functionality like controlling the flush interval for a
     particular reporter could be pulled into core and make all reporting modules simpler.
-  - Formalize Context tags. Corrently we have the so called "Broadcast String Keys" which essentially are just tags in
+  - Formalize Context tags. Currently we have the so called "Broadcast String Keys" which essentially are just tags in
     the context. These keys are slightly different to other keys in the sense that we automatically provide codecs for
     them and they are using so commonly that we should probably provide a simpler access to them.
   - Have microbenchmarks for Kamon core and keep track of changes over time.
-  - Upgrade more reporting modules. The StatsD module is about to be released and we should have a official JMX module or
+  - Upgrade more reporting modules. The StatsD module is about to be released and we should have an official JMX module or
     help with a community version that is available already. Also we want to have a Google Stackdriver and Amazon
     Cloudwatch + Amazon X-Ray reporters.
   - Focus on having problem-free default behavior in all modules. This means, for example, having low cardinality operation
@@ -55,7 +56,7 @@ process of understanding what needs to be added.
 We want to provide some sort of `kamon-bundle` agent that packs Kanela and all available instrumentation for all modules
 so that users can simply start their apps with `java -javaagent:kamon-bundle.jar ...` and get metrics, tracing and
 context propagation working without the hassle. The only intervention required by users is going to be changing configuration
-settings when needed and maybe adding library depedencies for the reporting modules.
+settings when needed and maybe adding library dependencies for the reporting modules.
 
 Still, all modules will continue to be released as they are now, in case people prefer the current way of doing things.
 

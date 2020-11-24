@@ -2,6 +2,7 @@
 layout: post
 title: Get started quicker with our docker image
 date: 2014-04-27
+author: the Kamon Team
 categories: teamblog, posts
 tags: announcement
 redirect_from:

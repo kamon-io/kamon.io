@@ -1,11 +1,15 @@
 ---
 layout: post
-title: 'Playing with Streams and Monitoring Docker'
-date: 2015-10-13
+title: 'Test post which is not featured'
+date: 2020-11-22
 author: the Kamon Team
-categories: teamblog, posts
+categories: teamblog
 redirect_from:
   - /teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/
+cover_image: '/assets/img/kamon-and-apm-puzzle.svg'
+summary_image: '/assets/img/kamon-and-apm-puzzle.svg'
+excerpt: >-
+    Testing some fake post which will not be featured
 ---
 
 In this post we’ll show how to collect system metrics from Docker containers, making use of a very simple application

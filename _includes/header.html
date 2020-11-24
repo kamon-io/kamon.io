@@ -14,8 +14,8 @@
           <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
         </a>
       </div>
-      <div class="col-lg-6 d-flex align-items-center">
-        <ul class="navbar-nav w-75 justify-content-around">
+      <div class="col-lg-6">
+        <ul class="navbar-nav w-75 align-items-center justify-content-around h-100">
           <li class="nav-item dropdown cursor-pointer">
             <a class="nav-link" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Products
@@ -129,8 +129,8 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-3 d-flex align-items-center">
-        <ul class="navbar-nav w-75 justify-content-around">
+      <div class="col-lg-3">
+        <ul class="navbar-nav w-75 align-items-center justify-content-around h-100">
           <li class="nav-item">
             <a class="nav-link" href="https://apm.kamon.io/signin" target="_blank">Sign In</a>
           </li>
@@ -145,11 +145,11 @@
 
   <!--  MOBILE  -->
   <div class="d-block d-lg-none w-100">
-    <div class="d-flex no-gutters w-100 header-content px-4 justify-content-between">
+    <div class="d-flex no-gutters w-100 header-content px-2 align-items-center justify-content-between">
       <a class="navbar-brand" href="/">
         <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
       </a>
-      <a class="cursor-pointer" onclick="switchMobileNavigation(true)">
+      <a class="cursor-pointer" onclick="toggleMobileNavigation()">
         <img src="/assets/img/icons/menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
       </a>
     </div>
@@ -159,13 +159,13 @@
 
 <!-- MOBILE NAVIGATION OVERLAY -->
 <div id="mobileNavigationOverlay" class="d-lg-none">
-  <div class="p-4 d-flex flex-column justify-content-between h-100">
+  <div class="px-4 pb-4 pt-1 d-flex flex-column justify-content-between h-100">
     <div class="d-flex justify-content-between">
       <img src="/assets/img/kamon/kamon-logo-dark.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
-      <a class="cursor-pointer closeMobileNavigationBtn text-body-bigger" onclick="switchMobileNavigation(false)">&times;</a>
+      <a class="cursor-pointer text-display-2 text-white" onclick="toggleMobileNavigation()">&times;</a>
     </div>
     <div class=" h-100 py-4">
-      <ul class="mobile-nav-list text-body-bigger">
+      <ul class="mobile-nav-list text-body-bigger text-white">
         <li class="mt-5">
           <div class="products-collapse" id="products-collapse-heading" data-toggle="collapse" data-target="#products-collapse-text" aria-controls="products-collapse-text">
             <span>Products</span>
@@ -174,8 +174,8 @@
           </div>
 
           <div id="products-collapse-text" class="collapse pl-3" aria-labelledby="products-collapse-heading" data-parent="#products-collapse-heading">
-            <a class="d-block mt-5" href="/apm">APM</a>
-            <a class="d-block mt-5" href="/instrumentation">Telemetry</a>
+            <a class="d-block mt-3" href="/apm">APM</a>
+            <a class="d-block mt-3" href="/instrumentation">Telemetry</a>
           </div>
         </li>
         <li class="mt-5">
@@ -197,10 +197,7 @@
 </div>
 
 <script>
-  function switchMobileNavigation(show) {
-    const navigation = document.getElementById("mobileNavigationOverlay")
-    if (navigation != null) {
-      navigation.style.width = show ? "100%" : "0"
-    }
+  function toggleMobileNavigation() {
+    $("#mobileNavigationOverlay").fadeToggle(200);
   }
 </script>

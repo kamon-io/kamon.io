@@ -12,9 +12,13 @@ $link-hover-color: $color-azure-radiance-darker;
 $link-hover-decoration: none;
 
 a.btn-primary {
-  color: $color-light-4 !important;
+  font-weight: $typography-weight-semi-bold;
+  color: $color-light-4;
 }
 
 a.nav-link:not(.btn) {
-  color: $color-dark-0 !important;
+  color: $color-dark-2;
+  font-size: remSize(14);
+  line-height: remSize(16);
+  font-weight: $typography-weight-semi-bold;
 }

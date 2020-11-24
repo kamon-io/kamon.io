@@ -2,6 +2,7 @@
 layout: post
 title: 'Say Hello to Kamon APM'
 date: 2019-02-18
+author: the Kamon Team
 categories: teamblog posts
 tags: featured
 cover_image: '/assets/img/kamon-and-apm-puzzle.svg'
@@ -14,10 +15,10 @@ Dear community,
 
 We are pleased to announce the availability of Kamon APM, a hosted APM solution built from the ground up to work nicely
 with Kamon and along with it we are launching a [Free Starter Plan][pricing]. Starting today there are no excuses
-for your team to say that you can't have metrics and distributed tracing in production becase, well, you can get it for
+for your team to say that you can't have metrics and distributed tracing in production because, well, you can get it for
 free!
 
-There are a few question that came up while discussing this announcement with friends and coleagues so we decided to
+There are a few questions that came up while discussing this announcement with friends and coleagues so we decided to
 share them here in case you were wondering the same:
 
 
@@ -25,7 +26,7 @@ share them here in case you were wondering the same:
 
 The only change we expect to see is a surplus of effort and dedication to our open source instrumentation. We started
 Kamon years ago with the intention to help and share with the community and that intention remains unchanged. All the
-instrumentation we have writen so far is open source and all instrumentation to come in the future will be open source
+instrumentation we have written so far is open source and all instrumentation to come in the future will be open source
 as well, regardless of whether you are sending your data to Prometheus, Zipkin, Kamon APM or any other open source or
 commercial solution.
 
@@ -34,7 +35,7 @@ A key feature that people love about Kamon remains unchanged: __instrument once,
 
 #### So, you said "free starter plan"?
 
-That is correct. Over time we learned that the hardest part of all when it comes to monitoring is getting started and
+That is correct. Over time, we learned that the hardest part of all when it comes to monitoring is getting started and
 one of the ways in which we can help with this is by providing a simple way to experiment with metrics and distributed
 tracing with minimal effort from your side. The starter plan is aimed towards developers wanting to experiment and small
 teams getting started with monitoring. [Sign up][sign up] and get started with monitoring in a couple minutes!

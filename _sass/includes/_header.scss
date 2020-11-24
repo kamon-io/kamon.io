@@ -27,14 +27,19 @@
         display: inline-block;
         width: 6px;
         height: 6px;
-        border-top: 1px solid $color-dark-0;
-        border-left: 1px solid $color-dark-0;
+        border-top: 2px solid $color-dark-2;
+        border-left: 2px solid $color-dark-2;
         transform: translate(5px, -3px) rotate(-135deg);
       }
 
       &.show {
+        a.nav-link {
+          color: $color-dark-1;
+        }
         a.nav-link::after {
           transform: translate(5px) rotate(45deg);
+          border-top: 2px solid $color-dark-1;
+          border-left: 2px solid $color-dark-1;
         }
       }
     }
@@ -48,7 +53,8 @@
 
 
 #mobileNavigationOverlay {
-  width: 0;
+  display: none;
+  width: 100%;
   height: 100%;
   position: fixed;
   z-index: 1031;
@@ -56,7 +62,6 @@
   top: 0;
   background-color: $color-dark-1;
   overflow-x: hidden;
-  transition: 0.5s;
   color: $color-light-4;
 
   ul {

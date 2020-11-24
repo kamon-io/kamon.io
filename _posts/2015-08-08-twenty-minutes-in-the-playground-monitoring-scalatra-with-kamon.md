@@ -2,6 +2,7 @@
 layout: post
 title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
 date: 2015-08-08
+author: the Kamon Team
 categories: teamblog, posts
 redirect_from:
   - /teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/
@@ -37,7 +38,7 @@ The only reason why We need to register the [AspectJ] weaver is to automatically
 asynchronous operations that might be scheduled for a given Future.
 
 Also note that there is no `kamon-scalatra` module, everything we are showing in this post is just using the APIs provided by
-`kamon-core` to monitor your application. This might also serve as insperation for other people to get other web frameworks
+`kamon-core` to monitor your application. This might also serve as inspiration for other people to get other web frameworks
 working with Kamon as well.
 
 
@@ -96,7 +97,7 @@ now we have 5 URLs that we can hit:
 * **GET** */kamon/async*
 
 
-### Bootstraping Scalatra with Kamon ###
+### Bootstrapping Scalatra with Kamon ###
 
 We will need to bootstrap `Scalatra` and hook `Kamon` into it's lifecycle and the best place for this is using `ScalatraBootstrap`'s
 `init` and `destroy` hooks as shown bellow:
@@ -192,7 +193,7 @@ body of the future will be executed asynchronously on some other thread in a pro
 through bytecode instrumentation, will capture the `TraceContext` available when the Future was created and make it
 available while executing the future’s body.
 
-Let's run the application with sbt run` and we measure the async operation.
+Let's run the application with `sbt run` and we measure the async operation.
 
 * **curl** *http://localhost:8080/kamon/async*
 

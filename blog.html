@@ -12,8 +12,8 @@ redirect_from:
 {% assign featured_post = site.tags.featured[0] %}
 
 <!-- TODO: get default image class from categories -->
+<div class="background-top-gray"></div>
 <main class="default-content-container">
-  <div class="background-top-gray"></div>
   {% if featured_post and paginator.page == 1 %}
     <section class="row no-gutters">
       <div class="col-12 col-lg-7 pr-lg-5">
@@ -23,9 +23,9 @@ redirect_from:
       </div>
       <div class="col-12 col-lg-5 order-first order-lg-last pt-0 pt-lg-3">
         <div class="post-image-container">
-          {% if featured_post.cover_image %}
+          {% if featured_post.summary_image %}
           <a href="{{ featured_post.url }}">
-            <img class="w-100 pt-0 pt-lg-5 mb-5 mb-lg-0" src="{{ featured_post.cover_image }}" alt="">
+            <img class="w-100 pt-0 pt-lg-5 mb-5 mb-lg-0" src="{{ featured_post.summary_image }}" alt="">
           </a>
           {% else %}
           <a class="announcement" href="{{ featured_post.url }}"></a>
@@ -40,13 +40,18 @@ redirect_from:
     {% for post in paginator.posts %}
       {% if post.title != featured_post.title %}
         <div class="col-12 col-md-6 col-xl-4 p-4 blog-post-card">
-          <div class="elevated-container blog-post-card-content h-100">
+          <div class="elevated-container blog-post-card-content position-relative h-100">
+            {% if post.summary_image %}
+            <div class="blog-post-image" style="background: center no-repeat url('{{ post.summary_image }}')"></div>
+            {% else %}
             <div class="blog-post-image announcement"></div>
+            {% endif %}
             <div class="p-4 d-flex flex-column justify-content-between blog-post-card-text">
               <h4 class="text-dark-1">{{ post.title }}</h4>
               <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
               <a class="arrow-right align-self-end" href="{{ post.url }}">Read More</a>
             </div>
+            <a class="container-link" href="{{ post.url }}"></a>
           </div>
         </div>
       {% endif %}

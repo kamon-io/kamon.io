@@ -111,6 +111,17 @@
     }
   }
 
+  #markdown-toc-container {
+    ul {
+      padding-left: 0 !important;
+
+      li {
+        margin-top: 0 !important;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
   // BIG GREEN BORDER STUFF (more like design, but very in your face)
   //.current-active-topic {
   //  background-color: $color-shamrock-main;
@@ -129,11 +140,12 @@
 
 .current-active-topic > a {
   color: $color-shamrock-main !important;
+  font-weight: bold;;
 }
 
 .sticky-docs-navbar {
   position: sticky;
-  top: calc(52px + 52px + 3rem);
+  top: calc(57px + 52px + 3rem);
 }
 
 .mobile-docs-navbar {
