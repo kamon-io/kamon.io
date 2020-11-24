@@ -3,7 +3,7 @@ layout: post
 title: 'Say Hello to Kamon APM'
 date: 2019-02-18
 author: the Kamon Team
-categories: teamblog posts
+categories: posts
 tags: featured
 cover_image: '/assets/img/kamon-and-apm-puzzle.svg'
 excerpt: >-

@@ -3,7 +3,7 @@ layout: post
 title: Understanding Spray Client Timeout Settings
 date: 2014-11-02
 author: the Kamon Team
-categories: teamblog, posts
+categories: posts
 redirect_from:
   - /teamblog/2014/11/02/understanding-spray-client-timeout-settings/
 ---

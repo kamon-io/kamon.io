@@ -3,7 +3,7 @@ layout: post
 title: 'Playing with Streams and Monitoring Docker'
 date: 2015-10-13
 author: the Kamon Team
-categories: teamblog, posts
+categories: posts
 redirect_from:
   - /teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/
 ---

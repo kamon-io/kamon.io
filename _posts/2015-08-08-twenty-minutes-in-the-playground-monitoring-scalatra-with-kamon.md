@@ -3,7 +3,7 @@ layout: post
 title: '20 minutes in the Playground: Monitoring Scalatra with Kamon'
 date: 2015-08-08
 author: the Kamon Team
-categories: teamblog, posts
+categories: posts
 redirect_from:
   - /teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/
 ---

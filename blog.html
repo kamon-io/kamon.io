@@ -11,24 +11,23 @@ redirect_from:
 ---
 {% assign featured_post = site.tags.featured[0] %}
 
-<!-- TODO: get default image class from categories -->
 <div class="background-top-gray"></div>
 <main class="default-content-container">
   {% if featured_post and paginator.page == 1 %}
-    <section class="row no-gutters">
-      <div class="col-12 col-lg-7 pr-lg-5">
+    <section class="row no-gutters px-lg-4">
+      <div class="col-12 col-lg-7 pr-lg-5 mt-3 mt-lg-0">
         <h1 class="text-dark-1">{{ featured_post.title }}</h1>
         <div class="mt-2 text-dark-2">{{ featured_post.excerpt }}</div>
         <a class="btn btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
       </div>
-      <div class="col-12 col-lg-5 order-first order-lg-last pt-0 pt-lg-3">
-        <div class="post-image-container">
+      <div class="col-12 col-lg-5 order-first order-lg-last">
+        <div class="featured-post-summary-image">
           {% if featured_post.summary_image %}
           <a href="{{ featured_post.url }}">
-            <img class="w-100 pt-0 pt-lg-5 mb-5 mb-lg-0" src="{{ featured_post.summary_image }}" alt="">
+            <img class="image-100-auto" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
           </a>
           {% else %}
-          <a class="announcement" href="{{ featured_post.url }}"></a>
+          <a class="{{ featured_post.categories }}" href="{{ featured_post.url }}"></a>
           {% endif %}
         </div>
       </div>
@@ -39,14 +38,14 @@ redirect_from:
   <section class="row no-gutters">
     {% for post in paginator.posts %}
       {% if post.title != featured_post.title %}
-        <div class="col-12 col-md-6 col-xl-4 p-4 blog-post-card">
-          <div class="elevated-container blog-post-card-content position-relative h-100">
+        <div class="col-12 col-md-6 col-xl-4 py-4 p-lg-4 blog-card">
+          <div class="elevated-container blog-card-content position-relative h-100">
             {% if post.summary_image %}
-            <div class="blog-post-image" style="background: center no-repeat url('{{ post.summary_image }}')"></div>
+            <div class="blog-card-summary-image" style="background: center no-repeat url('{{ post.summary_image }}')"></div>
             {% else %}
-            <div class="blog-post-image announcement"></div>
+            <div class="blog-card-summary-image {{ post.categories }}"></div>
             {% endif %}
-            <div class="p-4 d-flex flex-column justify-content-between blog-post-card-text">
+            <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
               <h4 class="text-dark-1">{{ post.title }}</h4>
               <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
               <a class="arrow-right align-self-end" href="{{ post.url }}">Read More</a>

@@ -2,18 +2,23 @@
 $theme-colors: (
   "primary": $color-shamrock-main,
   "danger": $color-red-0,
-  "light": $color-light-3,
+  "light": $color-light-4,
   "secondary": $color-light-0,
   "warning": $color-yellow-1,
 );
+
+$btn-font-weight: $typography-weight-semi-bold;
 
 $link-color: $color-azure-radiance-main;
 $link-hover-color: $color-azure-radiance-darker;
 $link-hover-decoration: none;
 
 a.btn-primary {
-  font-weight: $typography-weight-semi-bold;
   color: $color-light-4;
+}
+
+a.btn-light {
+  color: $color-dark-2;
 }
 
 a.nav-link:not(.btn) {

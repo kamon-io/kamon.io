@@ -1,0 +1,57 @@
+.publish-details {
+  p {
+    margin: 0;
+  }
+}
+
+.start-monitoring-card-small {
+  background-color: $color-light-3;
+  @include rounded-elevation;
+}
+
+.sticky-posts-actions {
+  @media (min-width: $lg-start) {
+    position: sticky;
+    top: calc(57px + 3rem);
+  }
+}
+
+.post-container {
+
+  @media (max-width: $md-max) {
+    * {
+      max-width: 100%;
+    }
+  }
+
+  .post-content {
+
+    p {
+      font-size: remSize(18);
+    }
+  }
+}
+
+.share-button {
+  border-radius: 20px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: $color-shamrock-main no-repeat center;
+
+  &:hover {
+    background-color: $color-shamrock-darker;
+  }
+
+  &.twitter-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/twitter-white.svg");
+  }
+
+  &.reddit-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/reddit-white.svg");
+  }
+
+  &.linkedin-share {
+    background-image: url("/assets/img/icons/external-brand-and-logo/linkedin-white.svg");
+  }
+}

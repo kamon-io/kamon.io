@@ -1,4 +1,4 @@
-.post-image-container {
+.featured-post-summary-image {
   border-radius: 8px;
   height: 100px;
   overflow: hidden;
@@ -21,23 +21,29 @@
     width: 100%;
     height: 100%;
 
-    &.announcement {
-      background-color: $color-yellow-1;
-      background-image: url("/assets/img/background/cubes-pattern-blog.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
+    &.releases {
+      background: $color-yellow-1 url("/assets/img/background/cubes-background-pattern-lighter.svg") no-repeat center;
+    }
+
+    &.posts {
+      background: $color-blue-1 url("/assets/img/background/waves-background-pattern.svg") no-repeat bottom right;
+    }
+
+    &.teamblog {
+      background: $color-green-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat center;
     }
   }
+
 }
 
-.blog-post-card {
+.blog-card {
 
-  .blog-post-card-content {
+  .blog-card-content {
     border-radius: 8px;
     overflow: hidden;
   }
 
-  .blog-post-image {
+  .blog-card-summary-image {
     width: 100%;
     height: 200px;
 
@@ -45,80 +51,24 @@
       height: 100px;
     }
 
-    &.announcement {
-      background-color: $color-yellow-1;
-      background-image: url("/assets/img/background/cubes-pattern-blog.svg");
+    &.releases {
+      background: $color-yellow-1 url("/assets/img/background/cubes-background-pattern-lighter.svg") no-repeat center;
     }
 
-    &.blog-summary-image {
-      background-repeat: no-repeat;
-      background-position: center;
+    &.posts {
+      background: $color-blue-1 url("/assets/img/background/waves-background-pattern.svg") no-repeat bottom right;
+    }
+
+    &.teamblog {
+      background: $color-green-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat center;
     }
   }
 
-  .blog-post-card-text {
+  .blog-card-text {
     height: calc(100% - 200px);
 
     @media (max-width: $xs-max) {
       height: calc(100% - 100px);
     }
-  }
-}
-
-.publish-details {
-  p {
-    margin: 0;
-  }
-}
-
-.start-monitoring-card-small {
-  background-color: $color-light-3;
-  @include rounded-elevation;
-}
-
-.sticky-posts-actions {
-  @media (min-width: $lg-start) {
-    position: sticky;
-    top: calc(57px + 3rem);
-  }
-}
-
-.blog-container {
-
-  @media (max-width: $md-max) {
-    * {
-      max-width: 100%;
-    }
-  }
-
-  .blog-content {
-
-    p {
-      font-size: remSize(18);
-    }
-  }
-}
-
-.share-button {
-  border-radius: 20px;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background: $color-shamrock-main no-repeat center;
-
-  &:hover {
-    background-color: $color-shamrock-darker;
-  }
-
-  &.twitter-share {
-    background-image: url("/assets/img/icons/external-brand-and-logo/twitter-white.svg");
-  }
-
-  &.reddit-share {
-    background-image: url("/assets/img/icons/external-brand-and-logo/reddit-white.svg");
-  }
-
-  &.linkedin-share {
-    background-image: url("/assets/img/icons/external-brand-and-logo/linkedin-white.svg");
   }
 }

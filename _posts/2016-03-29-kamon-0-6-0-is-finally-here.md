@@ -3,7 +3,7 @@ layout: post
 title: 'Kamon 0.6.0 is finally here, download while still hot!'
 date: 2016-03-29
 author: the Kamon Team
-categories: teamblog, releases
+categories: releases
 redirect_from:
   - /teamblog/2016/03/29/kamon-0-6-0-is-finally-here/
 ---

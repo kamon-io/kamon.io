@@ -3,7 +3,7 @@ layout: post
 title: Quick look at Kamon 0.4.0
 date: 2015-03-13
 author: the Kamon Team
-categories: teamblog, posts
+categories: posts
 redirect_from:
   - /teamblog/2015/03/13/quick-look-at-kamon-0.4.0/
 ---

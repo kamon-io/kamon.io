@@ -9,24 +9,13 @@
 
     .footer-try-kamon-button-container {
       height: 250px;
-      background-image: url("/assets/img/background/footer-start-monitoring-btn-background.svg");
-      background-position: center;
-      background-repeat: no-repeat;
+      background: no-repeat center url("/assets/img/background/footer-start-monitoring-btn-background.svg");
     }
 
     .footer-navigation-container {
       border-top: 1px solid $color-dark-2;
       border-bottom: 1px solid $color-dark-2;
       padding: 20px 0;
-
-      .footer-link {
-        display: block;
-        color: $color-dark-3;
-      }
-
-      .subscription-form {
-
-      }
 
       .footer-subscribe-btn {
         margin-left: -5px;

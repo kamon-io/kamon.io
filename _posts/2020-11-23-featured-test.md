@@ -3,12 +3,12 @@ layout: post
 title: 'Featured Test Post'
 date: 2020-11-23
 author: the Kamon Team
-categories: teamblog, posts
+categories: announcements
 tags: featured
 redirect_from:
   - /teamblog/2015/10/13/playing-with-streams-and-monitoring-docker/
 cover_image: '/assets/img/posts/test-cover-img.svg'
-summary_image: '/assets/img/posts/test-summary-img.svg'
+summary_image: '/assets/img/posts/test-featured-post-summary-image.svg'
 excerpt: >-
     We are pleased to announce the availability of Kamon APM, a hosted APM solution built to work nicely with Kamon and
     a free Starter Plan that helps folks around the world get started with monitoring in no time.

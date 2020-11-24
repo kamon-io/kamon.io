@@ -3,7 +3,7 @@ layout: post
 title: Experimental support for Akka Remoting and Cluster is now available!
 date: 2014-08-31
 author: the Kamon Team
-categories: teamblog, posts
+categories: posts
 tags: announcement
 redirect_from:
   - /teamblog/2014/08/31/experimental-support-for-akka-remoting-and-cluster-is-now-available/
