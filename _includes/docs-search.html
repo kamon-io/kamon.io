@@ -27,37 +27,29 @@
       searchField.value = "";
     }
 
-    // do not clear the search when clicking within results or search field
+    // prevents clearing the search when clicking within results or search field
     docsSearchContainer.addEventListener("click", function(e) { e.stopPropagation(); })
 
-    // function for input change
     var searchInputChangeHandler = function(e) {
       var currValue = e.target.value;
-      // if empty, remove close on click listener
       if (currValue === "") {
         document.removeEventListener("click", clearSearch);
       }
-      // if user input is shorter than 3 characters, clear the results list and hide it
       if (currValue.length < 3) {
         clearAndHideSearchResults();
         return;
       }
-      // add a listener for clearing search on click
       document.addEventListener("click", clearSearch, { once: true });
-      // filter the available paths
       var filteredSearchResults = documentationPaths.filter(function(pathItem) {
         return pathItem.name.toLowerCase().indexOf(currValue.toLowerCase()) !== -1;
       })
-      // clear search if there are no results to show
       if (filteredSearchResults.length === 0) {
         clearAndHideSearchResults();
         return;
       }
-      // replace search results content with a link for each filtered result
       searchResults.textContent = "";
       for (var filteredSearchResult of filteredSearchResults) {
         var a = document.createElement("a");
-        // transform the content of the link - highlight the search string occurrences (TODO: wrong casing atm)
         var regexp = new RegExp(currValue, "ig");
         var content = filteredSearchResult.name;
         a.innerHTML = content.replace(regexp, '<span class="highlighted">' + currValue + '</span>');
