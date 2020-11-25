@@ -2,10 +2,10 @@
 
   .homepage-intro {
     @media (min-width: $xl-start) {
-      height: calc(100vh - 5rem - 200px);
+      height: calc(100vh - 170px);
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   }
 
@@ -24,14 +24,31 @@
       position: relative;
       left: -22%;
     }
+
   }
 
   .secondary-homepage-illustration {
 
     @media (min-width: $xl-start) {
       position: relative;
-      bottom: -35%;
+      transform: translateY(35%);
       margin-bottom: 5rem;
+    }
+
+    @media (min-width: $xl-start) {
+      max-width: 680px;
+    }
+
+    @media (min-width: 1400px) {
+      max-width: 750px;
+    }
+
+    @media (min-width: 1600px) {
+      max-width: 800px;
+    }
+
+    @media (min-width: 1700px) {
+      transform: translate(15%, 35%);
     }
   }
 
@@ -84,5 +101,85 @@
       height: 100%;
       border: 1px solid $color-light-1;
     }
+  }
+}
+
+.homepage-background-right {
+  background: url("/assets/img/pages/homepage/homepage-background-right.svg") no-repeat center right;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateY(1200px);
+
+  @media (min-width: 420px) {
+    transform: translateY(950px);
+  }
+
+  @media(min-width: $sm-start) {
+    transform: translateY(1300px);
+  }
+
+  @media(min-width: $xl-start) {
+    background-size: auto;
+    transform: translateY(650px);
+  }
+}
+
+.homepage-background-left {
+  background: url("/assets/img/pages/homepage/homepage-background-left.svg") no-repeat center left;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateY(3100px);
+
+  @media (min-width: 420px) {
+    transform: translateY(3050px);
+  }
+
+  @media(min-width: $sm-start) {
+    transform: translateY(3700px);
+  }
+
+  @media(min-width: $md-start) {
+    transform: translateY(2600px);
+  }
+
+  @media(min-width: $lg-start) {
+    transform: translateY(2650px);
+  }
+
+  @media(min-width: $xl-start) {
+    background-size: 30%;
+    transform: translateY(1900px);
+  }
+}
+
+.homepage-background-bottom {
+  background: url("/assets/img/pages/homepage/homepage-background-bottom.svg") no-repeat center right;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translate(100px, 2800px);
+
+  @media (min-width: 1255px) {
+    transform: translate(100px, 2700px);
+  }
+
+  @media(min-width: 1350px) {
+    transform: translate(80px, 2900px);
+  }
+
+  @media (min-width: 1400px) {
+    transform: translate(50px, 2700px);
+  }
+
+  @media (min-width: 1500px) {
+    transform: translateY(2700px);
   }
 }

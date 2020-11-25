@@ -33,11 +33,23 @@
       &.quote-close {
         margin-bottom: -1rem;
       }
+
+      @media (max-width: $xs-max) {
+        font-size: remSize(48);
+        line-height: remSize(37);
+      }
     }
   }
 
   .user-quote-text {
     height: 308px;
+  }
+
+  @media (max-width: $xs-max) {
+    height: 250px;
+    .user-quote-text {
+      height: 250px;
+    }
   }
 }
 

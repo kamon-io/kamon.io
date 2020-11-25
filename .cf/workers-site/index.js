@@ -63,12 +63,15 @@ function handleJekyllOutput() {
     const parsedUrl = new URL(request.url)
     let pathname = parsedUrl.pathname
 
-    if(pathname.endsWith('/')) {
+    if(pathname.endsWith('/') || pathname === '/blog') {
       let newPath;
 
       if (pathname === '/') {
         // Fixes trying to access directly to https://kamon.io, without any path.
         newPath = "/index.html"
+      }
+      else if (pathname === '/blog' || pathname === '/blog/') {
+        newPath = "/blog/index.html"
       }
       else {
         // Replaces paths like /instrumentation/ -> /instrumentation.html

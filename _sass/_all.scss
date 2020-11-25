@@ -60,30 +60,17 @@ img.image-100-auto {
   max-width: 100%;
   height: auto;
 
-  @media (min-width: $lg-start) {
-    max-width: 75%;
-    height: auto;
-  }
-
-  @media (min-width: $xl-start) {
-    max-width: 120%;
-    height: auto;
-
-    &.large-screen-smaller {
-      max-width: 100%;
-    }
-
-    &.large-screen-bigger {
-      max-width: 175%;
-    }
-  }
-
-  &.illustration-left {
-
-    position: relative;
-
+  &.large-screen-bigger {
     @media (min-width: $xl-start) {
-      left: -20%;
+      max-width: 500px;
+    }
+
+    @media (min-width: 1400px) {
+      max-width: 600px;
+    }
+
+    @media (min-width: 1600px) {
+      max-width: 800px;
     }
   }
 }

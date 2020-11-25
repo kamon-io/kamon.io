@@ -5,7 +5,7 @@ html, body {
   color: $color-dark-2;
   font-size: $base-font-size;
   line-height: remSize(24);
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
 
   @media (max-width: $xs-max) {
     font-size: 14px;
@@ -139,6 +139,11 @@ h6 {
   font-size: remSize(24);
   line-height: remSize(32);
 
+  @media (max-width: $md-max) {
+    font-size: remSize(20);
+    line-height: remSize(26);
+  }
+
   @media (max-width: $xs-max) {
     font-size: remSize(16);
     line-height: remSize(21);
@@ -149,19 +154,6 @@ h6 {
   font-weight: $typography-weight-semi-bold;
   font-size: remSize(20);
   line-height: remSize(28);
-}
-
-// TODO: put this as button default
-.text-button {
-  font-weight: $typography-weight-semi-bold;
-  font-size: remSize(16);
-  line-height: remSize(16);
-}
-
-.text-button-small {
-  font-weight: $typography-weight-semi-bold;
-  font-size: remSize(14);
-  line-height: remSize(16);
 }
 
 .text-all-uppercase {
@@ -192,22 +184,6 @@ h6 {
 
 .text-dark-4 {
   color: $color-dark-4 !important;
-}
-
-.text-azure-radiance {
-  color: $color-azure-radiance-main;
-}
-
-.link-azure-radiance {
-  color: $color-azure-radiance-main;
-  &:hover {
-    color: $color-azure-radiance-main;
-    text-decoration: none;
-  }
-}
-
-.text-whitespace-pre-line {
-  white-space: pre-line;
 }
 
 .text-tag-green {

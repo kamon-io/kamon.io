@@ -37,7 +37,7 @@
           color: $color-dark-1;
         }
         a.nav-link::after {
-          transform: translate(5px) rotate(45deg);
+          transform: translate(5px, -3px) rotate(45deg);
           border-top: 2px solid $color-dark-1;
           border-left: 2px solid $color-dark-1;
         }

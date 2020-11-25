@@ -1,19 +1,35 @@
+div[class^="background-top-"] {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+  width: 100%;
+  height: 100vh;
+
+  @media (min-width: 1400px) {
+    background-size: cover;
+  }
+
+  @media (min-width: 1600px) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .background-top-gray-gray {
   background-image: url("/assets/img/background/background-top-gray-gray.svg");
-  @include page-top-background-image;
 }
 
 .background-top-gray {
   background-image: url("/assets/img/background/background-top-gray.svg");
-  @include page-top-background-image;
 }
 
 .background-top-gray-blue {
   background-image: url("/assets/img/background/background-top-gray-blue.svg");
-  @include page-top-background-image;
 }
 
 .background-top-gray-green {
   background-image: url("/assets/img/background/background-top-gray-green.svg");
-  @include page-top-background-image;
 }
