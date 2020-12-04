@@ -15,7 +15,7 @@ Available Metrics
 Kamon will automatically detect and start the Process metrics module when it is in your classpath and the following
 metrics will become available:
 
-{%  include metric-detail.md name="process.cpu" %}
+{%  include metric-detail.md name="process.cpu.usage" %}
 {%  include metric-detail.md name="process.ulimit.file-descriptors.max" %}
 {%  include metric-detail.md name="process.ulimit.file-descriptors.used" %}
 {%  include metric-detail.md name="process.hiccups" %}

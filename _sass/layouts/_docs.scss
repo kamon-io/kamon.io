@@ -1,12 +1,12 @@
 .docs-title-background {
-  height: 14rem;
+  height: 11rem;
   background-color: $color-light-3;
   margin-top: $navbar-height;
 
   .docs-title-content {
-    max-width: 1200px;
+    // max-width: 992px;
     margin: 0 auto;
-    padding-top: 3rem;
+    padding-top: 2rem;
     border-bottom: 1px solid transparent;
 
     .docs-layout-version-select {
@@ -83,10 +83,10 @@
 
   ul {
     list-style: none;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
 
     li {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
 
       &.docs-section-link {
 
@@ -171,6 +171,68 @@
 .docs-container {
   @media (max-width: $md-max) {
     margin-top: calc(57px + 52px + 1rem) !important;
+  }
+
+  h1 {
+    font-size: remSize(34);
+    line-height: remSize(38);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(20);
+      line-height: remSize(24);
+    }
+  }
+  
+  h2 {
+    margin-top: 2rem;
+    font-size: remSize(26);
+    line-height: remSize(30);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(16);
+      line-height: remSize(20);
+    }
+  }
+  
+  h3 {
+    margin-top: 2rem;
+    font-size: remSize(24);
+    line-height: remSize(30);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h4 {
+    font-size: remSize(18);
+    line-height: remSize(22);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h5 {
+    font-size: remSize(15);
+    line-height: remSize(20);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h6 {
+    font-size: remSize(14);
+    line-height: remSize(18);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(14);
+      line-height: remSize(18);
+    }
   }
 }
 

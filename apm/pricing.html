@@ -6,13 +6,14 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
 <div class="background-top-gray-gray"></div>
 <main class="default-content-container pricing-page">
-  <section class="text-center w-100">
+  <section class="text-center w-100 pt-5">
     <h1 class="text-dark-1">
       Start for <span class="text-primary">FREE</span>, upgrade as you <span class="text-primary">GROW</span>
     </h1>
     <p class="text-dark-2 text-body-bigger w-md-50 d-inline-block">
-      If you’re here looking for a monitoring tool, it’s obvious you don’t like surprises.
-      Your monitoring bill should never be a surprise!
+      Start monitoring now and think about the cost later. 
+      <br>
+      Monitor up to 5 microservices for free.
     </p>
     <div class="d-flex justify-content-center align-items-center billing-type-toggle">
       <h6 id="billed-monthly-label" class="cursor-pointer mx-2 text-dark-2">Billed monthly</h6>
@@ -20,7 +21,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       <label for="billed-annually-switch" class="billed-annually-switch"></label>
       <h6 id="billed-annually-label" class="cursor-pointer mx-2 text-dark-2">Billed annually</h6>
       <div class="mx-2 text-tag-green d-inline-block">
-        20% off
+        Save 20%
       </div>
     </div>
 
@@ -30,7 +31,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
   {% include start-monitoring-banner.html %}
 
-  <section class="row no-gutters w-100">
+  <!-- <section class="row no-gutters w-100">
     <div class="col-12 col-xl-4 p-3">
       <div class="elevated-container overflow-hidden h-100">
         <div class="thick-line background-azure-radiance"></div>
@@ -61,19 +62,16 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
         </div>
       </div>
     </div>
-  </section>
-
-  <div class="w-100 text-center"><hr class="w-50 text-secondary"/></div>
+  </section> -->
 
   <section class="w-100 text-center">
-
     <h2 class="text-dark-1">Frequently Asked Questions</h2>
 
     <div class="mt-5 d-inline-block accordion w-xl-75" id="question-faq">
       <div class="faq-question-container text-left">
         <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-1-heading" data-toggle="collapse" data-target="#question-1-text" aria-controls="question-1-text">
           <h5 class="mb-0">
-            Do I have to pay for instrumentation?
+            Do I have to pay for Kamon Telemetry?
           </h5>
           <i class="fa fa-angle-down"></i>
           <i class="fa fa-angle-up"></i>
@@ -81,8 +79,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-1-text" class="collapse" aria-labelledby="question-1-heading" data-parent="#question-1-heading">
           <p class="text-dark-2">
-            Nope. All Kamon instrumentation has been, is, and will always be free and open source.
-            The instrumentation is released under the Apache V2 license and available on <a href="https://github.com/kamon-io/" target="_blank">Github</a>.
+            Nope. Kamon Telemtry is and will always be free and open source.
           </p>
         </div>
       </div>
@@ -90,7 +87,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       <div class="faq-question-container text-left">
         <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-2-heading" data-toggle="collapse" data-target="#question-2-text" aria-controls="question-2-text">
           <h5 class="mb-0">
-            So, what am I paying for?
+            What are you charging for?
           </h5>
           <i class="fa fa-angle-down"></i>
           <i class="fa fa-angle-up"></i>
@@ -98,12 +95,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-2-text" class="collapse" aria-labelledby="question-2-heading" data-parent="#question-2-heading">
           <p class="text-dark-2">
-            Kamon APM is, obviously, an Application Performance Monitoring tool for monitoring and debugging distributed systems.
-            You don't have to pay for anything to try it out, you can start monitoring up to 5 microservices for free right now!
+            The pricing plans apply only to Kamon APM. You can monitor up to 5 microservices for free with Kamon APM.
             <br/><br/>
-            If your needs grow out of our free plan you can upgrade to the GROWTH plan.
-            The cost is super simple and can be boiled down to 1 EUR/service per day or 30 EUR/service monthly.
-            We never start charging without your confirmation.
+            If your needs grow out of our Free plan you can upgrade to the Grow plan.
+            The cost can be boiled down to &euro;1 per service per day.
           </p>
         </div>
       </div>
@@ -119,24 +114,8 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-3-text" class="collapse" aria-labelledby="question-3-heading" data-parent="#question-3-heading">
           <p class="text-dark-2">
-            The total we are billing each customer at the end of the month depends on the number of active services and the number of additional spans sent.
-            Please see <a href="/apm/pricing">here a detailed breakdown</a> on our pricing model and how an invoiced fee would be calculated.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-4-heading" data-toggle="collapse" data-target="#question-4-text" aria-controls="question-4-text">
-          <h5 class="mb-0">
-            Do I need a credit card to sign up for free plan?
-          </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
-        </div>
-
-        <div id="question-4-text" class="collapse" aria-labelledby="question-4-heading" data-parent="#question-4-heading">
-          <p class="text-dark-2">
-            No credit card required. We want you to pay for Kamon because you have experienced and enjoyed Kamon APM and understood its value.
+            At the end of the month we add <b>&euro;1</b> for each day a service was active, and <b>&euro;1</b> for each
+            extra million spans. That's it.
           </p>
         </div>
       </div>
@@ -153,7 +132,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
         <div id="question-5-text" class="collapse" aria-labelledby="question-5-heading" data-parent="#question-5-heading">
           <p class="text-dark-2">
             We can accommodate more metrics, spans and retention for you.
-            Contact us through Intercom (the message bubble on the bottom-right corner of the screen) or via email at <a href="mailto:sales@kamon.io">sales@kamon.io</a>.
+            Contact us via email at <a href="mailto:hello@kamon.io">hello@kamon.io</a>.
           </p>
         </div>
       </div>
@@ -169,10 +148,9 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-6-text" class="collapse" aria-labelledby="question-6-heading" data-parent="#question-6-heading">
           <p class="text-dark-2">
-            Kamon works best with any JVM language like Java and Scala. But it’s going to work especially awesome with Akka and Play frameworks. For now.
+            Kamon works with any JVM language like Java and Scala. But it’s going to work especially awesome with <b>Akka and Play Framework</b>. 
             <br/><br/>
-            We do plan on adding other frameworks and languages.
-            If there is a language or a framework you would particularly like to see supported, just drop us an email at <a href="mailto:sales@kamon.io">sales@kamon.io</a>.
+            If there is a language or framework you would like to see supported, drop us an email at <a href="mailto:hello@kamon.io">hello@kamon.io</a>.
             Just write what you want, don't overthink it.
           </p>
         </div>
@@ -189,7 +167,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-7-text" class="collapse" aria-labelledby="question-7-heading" data-parent="#question-7-heading">
           <p class="text-dark-2">
-            Typical performance impact of Kamon is between 1 and 3 percent. If you notice anything above that, please contact our support and we will make sure to optimize it.
+            The typical performance impact of Kamon is between 1% and 3%. If you notice anything above that, please contact our support and we will help you optimize it.
           </p>
         </div>
       </div>
@@ -205,7 +183,8 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-8-text" class="collapse" aria-labelledby="question-8-heading" data-parent="#question-8-heading">
           <p class="text-dark-2">
-            The non-production environments have limited retention of 24 hours and can be used for monitoring staging, development and pre-production environments, absolutely free of charge.
+            Test environments have limited retention of 24 hours and can be used for monitoring staging, development and pre-production environments services, absolutely free of charge.
+            Only included in the Grow plan.
           </p>
         </div>
       </div>
@@ -221,10 +200,26 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-9-text" class="collapse" aria-labelledby="question-9-heading" data-parent="#question-9-heading">
           <p class="text-dark-2">
-            We will charge your credit card at the beginning of every month for all usage incurred in  the previous month.
+            We charge at the beginning of every month.
           </p>
         </div>
       </div>
+
+      <div class="faq-question-container text-left">
+        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-13-heading" data-toggle="collapse" data-target="#question-13-text" aria-controls="question-13-text">
+          <h5 class="mb-0">
+            Will you charge if my services are down?
+          </h5>
+          <i class="fa fa-angle-down"></i>
+          <i class="fa fa-angle-up"></i>
+        </div>
+
+        <div id="question-13-text" class="collapse" aria-labelledby="question-13-heading" data-parent="#question-13-heading">
+          <p class="text-dark-2">
+            No. You will only be charged for the days your services sent data to Kamon APM.
+          </p>
+        </div>
+      </div>      
 
 <!--      <div class="faq-question-container text-left">-->
 <!--        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-13-heading" data-toggle="collapse" data-target="#question-13-text" aria-controls="question-13-text">-->
@@ -253,10 +248,8 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-10-text" class="collapse" aria-labelledby="question-10-heading" data-parent="#question-10-heading">
           <p class="text-dark-2">
-            If something went wrong during your setup, you have some feature request or in general just want to hang out with us and talk about your experience with Kamon in general,
-            head over to our <a href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Github Discussions</a> and say it all.
-            <br/><br/>
-            Kamon APM users can reach us on Intercom anytime for one-on-one support.
+            We offer community support through <a href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Github Discussions</a>, live chat in Kamon APM, and you can always request
+            a one-on-one session.
           </p>
         </div>
       </div>
@@ -272,9 +265,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
 
         <div id="question-11-text" class="collapse" aria-labelledby="question-11-heading" data-parent="#question-11-heading">
           <p class="text-dark-2">
-            It really shouldn't take you more than 3 minutes!
-            Check our <a href="/get-started/">Get Started with Kamon</a> page for step-by-step instructions on how to start instrumenting your service.
-            Or go to <a href="https://apm.kamon.io/onboarding" target="_blank">Kamon APM Onboarding</a> and just follow the instructions there.
+            Click on the "Start Monitoring" links and follow the instructions. It should take you 3 minutes to get started.
           </p>
         </div>
       </div>
@@ -282,7 +273,7 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       <div class="faq-question-container text-left">
         <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-12-heading" data-toggle="collapse" data-target="#question-12-text" aria-controls="question-12-text">
           <h5 class="mb-0">
-            What are services and instances, traces and metrics?
+            What are services, metrics and traces?
           </h5>
           <i class="fa fa-angle-down"></i>
           <i class="fa fa-angle-up"></i>

@@ -9,35 +9,30 @@ description: 'Understand how your systems behave, debug issues across services a
 
 <main class="default-content-container">
 
-  <section class="row flex-row-reverse mb-0">
-    <div class="col-12 col-xl-6">
-      <img class="page-illustration large-screen-smaller" src="/assets/img/pages/apm/apm-product-illustration-1.svg" alt="Kamon APM Illustration"/>
+  <section>
+    <div class="row flex-row-reverse pt-5 mt-5">
+      <div class="col-12 col-xl-6">
+        <img class="page-illustration large-screen-smaller" src="/assets/img/pages/apm/apm-product-illustration-1.svg" alt="Kamon APM Illustration"/>
+      </div>
+      <div class="col-12 col-xl-6 mt-5 mt-xl-0 ">
+        <h1>
+          Monitor and Debug Microservices with Minimal Effort
+        </h1>
+        <p>
+          Kamon APM helps you understand microservices' behavior, debug production issues and ensure the lights are green all the time.
+          <br>
+          Go from clueless to solving issues in a few clicks.
+        </p>
+        <a class="btn btn-primary btn-lg" href="#">Start Monitoring Free</a>
+        <p class="text-small mt-2">
+          No credit card required.
+        </p>
+      </div>
     </div>
-    <div class="col-12 col-xl-6 mt-5 mt-xl-0">
-      <h1>
-        Simple and Effortless Microservices Monitoring
-      </h1>
-      <p>
-        From clueless about what went wrong to solving issues in a few clicks
-      </p>
-      <a class="btn btn-primary btn-lg" href="#">Start Monitoring Free</a>
-    </div>
-  </section>
-
-  <section class="text-center mt-0">
-    {% include user-quotes.html hide-title=true %}
   </section>
 
   <section class="text-center">
-    <div class="d-inline-block w-lg-50">
-      <h2 class="mt-5">
-        Understand how your systems behave<br/>
-        Ensure lights are green
-      </h2>
-      <p class="px-3">
-        Start monitoring immediately without having to set up additional infrastructure
-      </p>
-    </div>
+    {% include user-quotes.html hide-title=true %}
   </section>
 
   <section class="row">
@@ -45,11 +40,14 @@ description: 'Understand how your systems behave, debug issues across services a
       <div>
         <img src="/assets/img/pages/apm/icon-speed-dashboard-blue.svg" alt="Dashboard icon"/>
         <h2 class="my-3">
-          Out-of-the box dashboards
+          Cut straight to the action
         </h2>
         <p>
-          Don’t know where to start? Worried about how to organize your data or create dashboards from scratch?
-          We have you covered with ready to use integrations for mainstream libraries.
+          Start debugging right away with built-in dashboards for <b>Akka, Play Framework, JDBC</b> and several <b>JVM toolkits</b>.
+          <br>
+          <br>
+          Kamon APM detects instrumented components automatically and creates dedicated dashboards so you don't have to spend time on it yourself.
+          
         </p>
       </div>
     </div>
@@ -63,10 +61,15 @@ description: 'Understand how your systems behave, debug issues across services a
       <div>
         <img src="/assets/img/pages/apm/icon-magnifying-glass-green.svg" alt="Magnifying glass icon"/>
         <h2 class="my-3">
-          Single platform for all your telemetry data
+          See all metrics and traces in a single platform
         </h2>
         <p>
-          No more checking several different platforms. Kamon is a single place for all your metrics and traces.
+          Stop jumping between metrics and traces platforms.
+
+          <br>
+          <br>
+
+          Kamon APM joins metrics and traces with services and application components, uncovering all the context you need to fix production issues.
         </p>
       </div>
     </div>
@@ -79,9 +82,9 @@ description: 'Understand how your systems behave, debug issues across services a
     <div class="col-12 col-xl-6 d-flex align-items-center">
       <div>
         <img src="/assets/img/pages/apm/icon-alert-blue.svg" alt="Alert icon"/>
-        <h2 class="my-3">Stop worrying and wondering, start knowing</h2>
+        <h2 class="my-3">Get notified when something goes wrong</h2>
         <p>
-          Configure and set-up alerts to get notified when anything goes wrong. Reduce alert noise and get notified when something important goes wrong.
+          Monitor any metric and get notified on <b>Slack, Email or PagerDuty</b> when something important goes wrong.
         </p>
       </div>
     </div>
@@ -94,27 +97,89 @@ description: 'Understand how your systems behave, debug issues across services a
     <div class="col-12 col-xl-6">
       <div class="elevated-container p-5 mt-5">
         <img src="/assets/img/pages/apm/icon-chart-green.svg" alt="Chart icon"/>
-        <h2>Free infrastructure monitoring</h2>
+        <h2 class="my-3">Free infrastructure monitoring</h2>
         <p>
-          Monitor the servers and containers that host your services, absolutely free of charge.
+          Monitor CPU, memory, disk and network usage for all your hosts free of charge.
         </p>
       </div>
     </div>
     <div class="col-12 col-xl-6">
       <div class="elevated-container p-5 mt-5">
         <img src="/assets/img/pages/apm/icon-cubes-chart-blue.svg" alt="Chart icon"/>
-        <h2>Free test environments</h2>
+        <h2 class="my-3">Free test environments</h2>
         <p>
-          Ensure your code behaves as expected before deploying it to production, without having to pay extra.
+          Ensure your code behaves as expected before deploying it to production, without having to pay extra. Only on the Grow plan.
         </p>
       </div>
     </div>
   </section>
 
   <section class="text-center w-100">
-    <h2 class="my-5">Start for FREE, upgrade as you GROW</h2>
+    <h2 class="my-5">Start for <span class="text-primary">FREE</span>, upgrade as you <span class="text-primary">GROW</span></h2>
 
-    {% include pricing-models.html %}
+    <div class="row no-gutters justify-content-center mt-5 pricing-models">
+
+      <div class="col-12 col-md-4 pricing-model-container">
+        <div class="text-center d-flex flex-column justify-content-between">
+          <div class="pricing-model-image d-flex align-items-center justify-content-center">
+            <img src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter plan image">
+          </div>
+          <h3>
+            FREE
+          </h3>
+          <p>
+            For developers getting started<br/>
+            with production monitoring
+          </p>
+          <div class="pricing-model-price d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="text-left ml-3">
+                <h5 class="m-0 text-dark-1">Up to 5 services</h5>
+                <p class="m-0 text-body-bigger text-dark-1" id="growth-plan-per-month-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-1 justify-content-center pt-5 pb-3 d-none d-md-block">
+        <div class="vertical-line"></div>
+      </div>
+    
+      <div class="col-12 col-md-4 mt-5 mt-md-0 pricing-model-container">
+        <div class="text-center d-flex flex-column justify-content-between">
+          <div class="pricing-model-image d-flex align-items-center justify-content-center">
+            <img src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow plan image">
+          </div>
+          <h3>
+            GROW
+          </h3>
+          <p>
+            For growing teams deploying<br/>
+            complex systems
+          </p>
+          <div class="pricing-model-price d-flex align-items-center justify-content-center">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="d-flex align-items-start">
+                <div class="d-inline-block text-display-1" id="grow-plan-monthly-price">30</div>
+                <div class="text-blockquote text-dark-3 d-inline-block mt-n3">&euro;</div>
+              </div>
+              <div class="text-left ml-3">
+                <h5 class="m-0 text-dark-1">Per service</h5>
+                <p class="m-0 text-body-bigger text-dark-1" id="growth-plan-per-month-text">Per month</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a class="arrow-right" href="/apm/pricing/">
+        See our pricing plans
+      </a>
+    </div>
+    
 
   </section>
 

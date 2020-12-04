@@ -21,7 +21,7 @@ gem "pygments.rb", "~> 1.2.1"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.14.0"
+  gem "jekyll-feed", "~> 0.15.1"
   gem "jekyll-paginate-v2", "~> 3.0.0"
   gem "jekyll-redirect-from", "~> 0.16.0"
 end

@@ -1,8 +1,8 @@
 <div class="text-center">
   {% if include.hide-title != true %}
-    <h2 class="d-inline-block w-md-50">Trusted by developers in companies small and big</h2>
+    <h2 class="d-inline-block">Kamon gives developers ease of mind</h2>
   {% endif %}
-  <div class="d-inline-block mt-5 user-quote-container">
+  <div class="d-inline-block mt-3 user-quote-container">
     <div id="userQuotesCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner user-quote {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">
 
@@ -21,7 +21,7 @@
             </div>
             <div>
               <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Janko Ulaga</p>
-              <p class="mt-3 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Software Engineering @ LiveIntent</p>
+              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Software Engineering @ LiveIntent</p>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
             </div>
             <div>
               <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Steffen Gebert</p>
-              <p class="mt-3 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Technology (Infrastructure) @ Emnify</p>
+              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Technology (Infrastructure) @ Emnify</p>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
             </div>
             <div>
               <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Demian Berjman</p>
-              <p class="mt-3 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Senior Software Development Manager @ Despergar</p>
+              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Senior Software Development Manager @ Despergar</p>
             </div>
           </div>
         </div>
@@ -89,10 +89,10 @@
     </div>
   </div>
   <div class="d-inline-block carousel-buttons-container">
-    <a href="#userQuotesCarousel" data-slide="prev" class="carousel-previous-slide-btn">
+    <a data-target="#userQuotesCarousel" data-slide="prev" role="button" class="carousel-previous-slide-btn">
       <img src="/assets/img/icons/directional/carousel-navigation-previous.svg" alt="Next quote slide icon">
     </a>
-    <a href="#userQuotesCarousel" data-slide="next" class="carousel-next-slide-btn">
+    <a data-target="#userQuotesCarousel" data-slide="next" role="button" class="carousel-next-slide-btn">
       <img src="/assets/img/icons/directional/carousel-navigation-next.svg" alt="Previous quote slide icon">
     </a>
   </div>

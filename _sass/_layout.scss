@@ -15,7 +15,7 @@
   padding: 2rem;
 
   > section {
-    margin: 3rem 0;
+    padding: 5rem 0;
   }
 
   @media (min-width: $sm-start) {
@@ -24,14 +24,12 @@
   @media (min-width: $md-start) {
     max-width: 80vw;
     padding: 0;
-    margin: 100px auto;
   }
 
   @media (min-width: $lg-start) {
-    margin: 170px auto;
 
     > section {
-      margin: 5rem 0;
+      padding: 5rem 0;
     }
   }
 

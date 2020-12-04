@@ -2,6 +2,8 @@
 layout: default
 title: 'Instrument your services and get telemetry data that can be sent anywhere'
 description: 'Battle-tested, free and open source tools for instrumenting distributed systems'
+redirect_from:
+  - /instrumentation/
 ---
 
 <div class="background-top-gray-green"></div>
@@ -10,30 +12,28 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
 
 <main class="default-content-container">
 
-  <section class="row no-gutters flex-row-reverse mb-0">
-    <div class="col-12 col-xl-6">
+  <section class="row no-gutters flex-row-reverse pb-5">
+    <div class="col-12 col-xl-5">
       <img class="mt-5 page-illustration large-screen-bigger" src="/assets/img/pages/telemetry/telemetry-product-illustration-1.svg" alt="Telemetry Illustration"/>
     </div>
-    <div class="col-12 col-xl-6">
-      <h1>
-        From Installation to
-        Instrumentation in Minutes
-      </h1>
-      <p>
-        Collecting data about what exactly is going on
-        in your services is now as easy as adding a few lines of code
-      </p>
-      <a class="btn btn-primary btn-lg" href="#">Start Monitoring Free</a>
+    <div class="col-12 col-xl-7 d-flex align-items-center pt-5">
+      <div>
+        <h1>
+          Collect Metrics and Traces with minimal code
+        </h1>
+        <p>
+          Battle-tested, free and open-source instrumentation for distributed systems.
+        </p>
+        <a class="btn btn-primary btn-lg" href="#">Start Monitoring Free</a>
+      </div>
     </div>
   </section>
 
-  <section class="text-center mt-0">
-    <p class="d-inline-block w-xl-75">
-      Kamon Telemetry is battle-tested, free and open-source tool for instrumenting distributed systems.
-      <br/><br/>
-      Kamon works best with any JVM language like Java and Scala. But it’s going to work especially awesome with Akka and Play frameworks. For now.
-    </p>
-    {% include user-logos.html %}
+  <section class="text-center">
+    <div class="text-center mt-5 mb-5">
+      <h5 class="pb-3 text-body text-dark-3">Join hundreds of developers monitoring microservices with Kamon</h5>
+      {% include user-logos.html %}
+    </div>
   </section>
 
   <section class="row no-gutters">
@@ -41,15 +41,14 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
       <div>
         <img src="/assets/img/pages/telemetry/icon-plug-green.svg" alt="Electrical Plug Icon"/>
         <h2 class="my-3">
-          No sweat, minimal effort
+          Automatic Instrumentation
         </h2>
         <p>
-          Add a few lines of code and configuration and Kamon will do the rest for you!
-          <br/><br/>
-          Automatic instrumentation collects metrics, enables distributed tracing and performs context propagation out of the box.
+          Setup with a few lines of code and Kamon will do the rest for you! <br>Kamon automatically collects metrics 
+          and traces from <strong>Akka, Play</strong> and other JVM frameworks.
         </p>
-        <a class="arrow-right" href="#">
-          Try Kamon Telemetry
+        <a class="arrow-right" href="/docs/latest/instrumentation/">
+          See available instrumentations
         </a>
       </div>
     </div>
@@ -63,19 +62,15 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
       <div>
         <img src="/assets/img/pages/telemetry/icon-chart-blue.svg" alt="Chart Icon"/>
         <h2 class="my-3">
-          Instrument once,
-          report anywhere
+          Instrument Once,
+          Report Anywhere
         </h2>
         <p>
-          Send all the metrics and trace data
-          wherever you want, without having to
-          change the instrumentation at all.
-          <br/><br/>
-          Switch reporters at any time, no need to change instrumentation.
-          Works best when paired with <b>Kamon APM</b>.
+          Send metrics and traces wherever you want. Switch between <strong>Kamon APM, Prometheus, Zipkin and more</strong> 
+          at any time, without code changes.
         </p>
-        <a class="arrow-right" href="#">
-          Try Kamon Telemetry
+        <a class="arrow-right" href="/docs/latest/reporters/">
+          See available reporters
         </a>
       </div>
     </div>
@@ -84,17 +79,17 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
     </div>
   </section>
 
-  <section class="row no-gutters my-5">
+  <section class="row no-gutters my-5 pb-5">
     <div class="col-12 col-xl-6 d-flex align-items-center">
       <div>
         <img src="/assets/img/pages/telemetry/icon-code-green.svg" alt="Code Icon"/>
         <h2 class="my-3">
-          Complete Telemetry API
+          Code Your Own Instrumentation
         </h2>
         <p>
-          Use a single, comprehensive API to gather all the telemetry data you need from distributed systems
+          Collect your own metrics, define custom traces and propagate context with Kamon core APIs.
         </p>
-        <div>
+        <div class="mt-4">
           <div id="metrics-code-example-toggle" class="mt-3 api-section-toggle elevated-container active">
             <div class="row no-gutters p-3">
               <div class="col-1">
@@ -104,7 +99,7 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
                 <h5 class="text-dark-1">Metrics</h5>
                 <p class="api-section-toggle-text">
                   Track latency, errors and any business metric with
-                  a dimensional model and high-definition histograms.
+                  high-definition histograms.
                 </p>
               </div>
               <div class="col-1">
@@ -121,8 +116,8 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
               <div class="col-10">
                 <h5 class="text-dark-1">Distributed Tracing</h5>
                 <p class="api-section-toggle-text">
-                  Model operations that span several services and
-                  components - with automatically tracked metrics.
+                  Trace operations through any service and
+                  application component.
                 </p>
               </div>
               <div class="col-1">
@@ -139,8 +134,7 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
               <div class="col-10">
                 <h5 class="text-dark-1">Context Propagation</h5>
                 <p class="api-section-toggle-text">
-                  Propagate information like userID, transactionID
-                  and other correlation data between threads and processes.
+                  Propagate userID, requestID and any correlation data between threads and services.
                 </p>
               </div>
               <div class="col-1">
@@ -258,7 +252,7 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
     </div>
   </section>
 
-  <section class="row no-gutters mt-5 flex-column flex-md-row justify-content-center">
+  <section class="row no-gutters mt-5 flex-column flex-md-row justify-content-center pt-5">
     <div class="col-12 col-xl-4 p-3 text-center">
       <div class="d-inline-block">
         <div class="elevated-container instrumentation-info-card d-flex flex-column justify-content-between p-4 h-100">
@@ -266,13 +260,10 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <img src="/assets/img/pages/telemetry/free-illustration.svg" alt="Free icon">
             <div class="text-left">
               <h4 class="mt-3">
-                Do I have to pay for
-                Kamon Telemetry?
+                Is Kamon Telemetry free?
               </h4>
               <p>
-                Nope. All Kamon instrumentation has been, is, and will always be free and open source.
-                The instrumentation is released under the
-                Apache V2 license and available on Github.
+                Yes. Kamon Telemetry is and will always be free and open source.
               </p>
             </div>
           </div>
@@ -289,15 +280,16 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <img src="/assets/img/pages/telemetry/QA-illustration.svg" alt="Question icon">
             <div class="text-left">
               <h4 class="mt-3">
-                Having trouble?
+                Have questions?
               </h4>
               <p>
-                If something went wrong during your setup, you have some feature request or in general just want to hang out with the folks and talk about the experience, head over to our Gitter channel and say it all.
+                Head over to our Github discussions if you need help with your setup, have a feature request or want
+                to share your experience.
               </p>
             </div>
           </div>
           <a class="btn btn-outline-secondary text-dark-2 mt-3" href="https://gitter.im/kamon-io/Kamon" target="_blank">
-            Jump to the Gitter Chat <img src="/assets/img/pages/telemetry/light-btn-gitter-chat.svg" alt="Gitter chat icon"/>
+            Start a Github Discussion <img src="/assets/img/pages/telemetry/light-btn-github.svg" alt="Github Icon"/>
           </a>
         </div>
       </div>
@@ -309,15 +301,15 @@ description: 'Battle-tested, free and open source tools for instrumenting distri
             <img src="/assets/img/pages/telemetry/documentation-illustration.svg" alt="Documentation icon">
             <div class="text-left">
               <h4 class="mt-3">
-                Next Steps
+                Want to learn more?
               </h4>
               <p>
-                If you want to dig deeper into what metrics are exposed by the instrumentation, how to create your own business metrics or configure reporters, head over to the documentation to learn more.
+                Learn how to create your own metrics, configure reporters and understand everything about Kamon in our Docs section.
               </p>
             </div>
           </div>
           <a class="btn btn-outline-secondary text-dark-2 mt-3" href="/docs/latest/overview">
-            Go to Documentation <img src="/assets/img/pages/telemetry/light-btn-deployment-unit.svg" alt="Deployment unit icon"/>
+            Go to Docs <img src="/assets/img/pages/telemetry/light-btn-deployment-unit.svg" alt="Deployment unit icon"/>
           </a>
         </div>
       </div>

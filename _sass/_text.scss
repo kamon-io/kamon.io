@@ -15,8 +15,8 @@ html, body {
 .text-display-1 {
   color: $color-dark-1;
   font-weight: $typography-weight-bold;
-  font-size: remSize(64);
-  line-height: remSize(77.45);
+  font-size: remSize(56);
+  line-height: remSize(60);
 
   @media (max-width: $xs-max) {
     font-size: remSize(42);
@@ -27,8 +27,8 @@ html, body {
 .text-display-2 {
   color: $color-dark-1;
   font-weight: $typography-weight-bold;
-  font-size: remSize(56);
-  line-height: remSize(67.77);
+  font-size: remSize(48);
+  line-height: remSize(52);
 
   @media (max-width: $xs-max) {
     font-size: remSize(37);
@@ -47,7 +47,7 @@ h5, h6 {
 }
 
 h1 {
-  size: remSize(40);
+  font-size: remSize(40);
   line-height: remSize(56);
 
   @media (max-width: $xs-max) {
@@ -57,7 +57,7 @@ h1 {
 }
 
 h2 {
-  size: remSize(32);
+  font-size: remSize(32);
   line-height: remSize(44);
 
   @media (max-width: $xs-max) {
@@ -67,7 +67,7 @@ h2 {
 }
 
 h3 {
-  size: remSize(28);
+  font-size: remSize(28);
   line-height: remSize(38);
 
   @media (max-width: $xs-max) {
@@ -77,7 +77,7 @@ h3 {
 }
 
 h4 {
-  size: remSize(24);
+  font-size: remSize(24);
   line-height: remSize(32);
 
   @media (max-width: $xs-max) {
@@ -87,7 +87,7 @@ h4 {
 }
 
 h5 {
-  size: remSize(20);
+  font-size: remSize(20);
   line-height: remSize(28);
 
   @media (max-width: $xs-max) {
@@ -97,7 +97,7 @@ h5 {
 }
 
 h6 {
-  size: remSize(16);
+  font-size: remSize(16);
   line-height: remSize(24);
 
   @media (max-width: $xs-max) {
@@ -159,7 +159,7 @@ h6 {
 .text-all-uppercase {
   font-size: remSize(14);
   line-height: remSize(17);
-  letter-spacing: remSize(2);
+  // letter-spacing: remSize(1);
   text-transform: uppercase;
 }
 
@@ -201,4 +201,8 @@ h6 {
     padding: 0;
     margin: 0;
   }
+}
+
+b, strong {
+  font-weight: 600;
 }
