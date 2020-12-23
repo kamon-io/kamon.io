@@ -401,7 +401,7 @@ function bootOnboarding() {
     $("#onboarding-modal").modal("show")
   })
   window.addEventListener("message", function (tag) {
-    if (tag === "complete") {
+    if (tag.data === "complete") {
       window.open("https://apm.kamon.io", "_blank")
     }
     $("#onboarding-modal").modal("hide")
