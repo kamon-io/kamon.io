@@ -70,8 +70,8 @@ function handleJekyllOutput() {
         // Fixes trying to access directly to https://kamon.io, without any path.
         newPath = "/index.html"
       }
-      else if (pathname === '/blog' || pathname === '/blog/') {
-        newPath = "/blog/index.html"
+      else if (pathname === '/blog' || pathname.startsWith('/blog/')) {
+        newPath = pathname + "index.html"
       }
       else {
         // Replaces paths like /instrumentation/ -> /instrumentation.html
