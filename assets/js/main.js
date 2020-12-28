@@ -153,7 +153,7 @@ function instrumentationSlideshow() {
 }
 
 function initScrollHeaders() {
-  const MAIN_HEADER_HEIGHT = 57;
+  const MAIN_HEADER_HEIGHT = 90;
 
   // Switch main header from transparent to white + border bottom depending on scroll position
   function initScrollMainHeader() {
@@ -171,7 +171,11 @@ function initScrollHeaders() {
         isMainHeaderTransparent = true
       }
     }
+
     document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
+
+    // Must be called during setup in case the current scroll location requires the background
+    mainHeaderScrollListener()
   }
 
   // Switch docs header/sidebar navigation position from default to fixed/sticky depending on scroll position

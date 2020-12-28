@@ -27,12 +27,12 @@ html, body {
 .text-display-2 {
   color: $color-dark-1;
   font-weight: $typography-weight-bold;
-  font-size: remSize(48);
-  line-height: remSize(52);
+  font-size: remSize(64);
+  line-height: remSize(72);
 
   @media (max-width: $xs-max) {
-    font-size: remSize(37);
-    line-height: remSize(45);
+    font-size: remSize(48);
+    line-height: remSize(52);
   }
 }
 

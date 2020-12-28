@@ -14,6 +14,7 @@ redirect_from:
 <div class="background-top-gray"></div>
 <main class="default-content-container">
   {% if featured_post and paginator.page == 1 %}
+  <a href="{{ featured_post.url }}">
     <section class="row no-gutters px-lg-4">
       <div class="col-12 col-lg-7 pr-lg-5 mt-3 mt-lg-0">
         <h1 class="text-dark-1">{{ featured_post.title }}</h1>
@@ -32,6 +33,7 @@ redirect_from:
         </div>
       </div>
     </section>
+  </a>
   {% endif %}
 
   <section class="row no-gutters">

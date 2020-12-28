@@ -8,11 +8,19 @@ $theme-colors: (
 );
 
 $btn-font-weight: $typography-weight-semi-bold;
+$btn-border-radius: remSize(8);
+$btn-border-radius-lg: remSize(8);
+$btn-border-radius-sm: remSize(8);
 
 $link-color: $color-azure-radiance-main;
 $link-hover-color: $color-azure-radiance-darker;
 $link-hover-decoration: none;
-$navbar-nav-link-padding-x: 1rem;
+
+$navbar-nav-link-padding-x: remSize(20);
+$navbar-nav-link-padding-y: remSize(8);
+$nav-link-height: remSize(40);
+$nav-link-padding-x: remSize(20);
+$nav-link-padding-y: remSize(8);
 
 a.btn-primary {
   color: $color-light-4;
