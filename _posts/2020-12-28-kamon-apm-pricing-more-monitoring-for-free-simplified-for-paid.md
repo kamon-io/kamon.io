@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Announcing New Pricing for Kamon APM'
-date: 2020-12-27
+date: 2020-12-28
 author: the Kamon Team
 categories: announcement
 tags: featured
