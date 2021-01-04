@@ -185,7 +185,7 @@ function initScrollHeaders() {
       return
     }
     var isDocsHeaderFixed = false
-    var maxDocsHeaderOffset = MAIN_HEADER_HEIGHT + convertRemToPixels(14) - 52
+    var maxDocsHeaderOffset = MAIN_HEADER_HEIGHT + convertRemToPixels(14) - 92
     var docsHeaderScrollListener = function() {
       if (!isDocsHeaderFixed && window.pageYOffset > maxDocsHeaderOffset) {
         docsHeader.classList.add("fixed-docs-header")
@@ -414,6 +414,22 @@ function bootOnboarding() {
   }
 }
 
+function initNotificationBar() {
+  const CLOSED_NOTIFICATION_KEY = "ClosedNotification"
+  const currentNotificationID = $("#main-header .notification-bar").first().attr('id')
+  const closedNotification = localStorage.getItem(CLOSED_NOTIFICATION_KEY)
+
+  if(currentNotificationID != closedNotification) {
+    $("body").addClass("has-notification")
+
+    $('#main-header .close').click(function(e) {
+      e.preventDefault();
+      localStorage.setItem(CLOSED_NOTIFICATION_KEY, currentNotificationID)
+      $("body").removeClass("has-notification")
+    });
+  }
+}
+
 $(document).ready(function() {
   // searchInit()
   instrumentationSlideshow()
@@ -425,4 +441,5 @@ $(document).ready(function() {
   smoothScrollToAnchor()
   initCodeExampleCopy()
   bootOnboarding()
+  initNotificationBar()
 })

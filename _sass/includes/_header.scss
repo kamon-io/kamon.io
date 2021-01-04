@@ -101,3 +101,50 @@
     }
   }
 }
+
+body {
+  $notification-bar-height: 40px;
+
+  .app-header {
+    .notification-bar {
+      display: none !important;
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      color: white;
+      height: $notification-bar-height;
+      background-color: $color-shamrock-darker;
+
+      .nav-link {
+        line-height: inherit;
+        font-size: 16px;
+      }
+
+      .close {
+        color: #bde5d1;
+        text-shadow: none;
+      }
+    }
+
+    &.has-notification {
+      padding-top: $notification-bar-height;
+      height: $navbar-height + $notification-bar-height;
+
+      .notification-bar {
+        display: flex !important;
+      }
+    }
+  }
+
+  &.has-notification {
+    .app-header {
+      padding-top: $notification-bar-height;
+      height: $navbar-height + $notification-bar-height;
+
+      .notification-bar {
+        display: flex !important;
+      }
+    }
+  }
+}

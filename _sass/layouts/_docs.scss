@@ -25,6 +25,24 @@
   width: 100%;
 }
 
+body.has-notification {
+  $notification-bar-height: 40px;
+
+  .docs-title-background {
+    margin-top: $navbar-height + $notification-bar-height;
+  }
+
+  .fixed-docs-header {
+    position: fixed;
+    top: $navbar-height + $notification-bar-height;
+    width: 100%;
+  }
+
+  .sticky-docs-navbar {
+    top: calc(57px + 52px + 40px + 3rem);
+  }
+}
+
 .docs-navbar {
   background-color: $color-light-4;
   border-bottom: 1px solid $color-light-1;
