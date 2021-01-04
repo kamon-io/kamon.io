@@ -401,11 +401,17 @@ function bootOnboarding() {
     $("#onboarding-modal").modal("show")
   })
   window.addEventListener("message", function (tag) {
-    if (tag.data === "complete") {
-      window.open("https://apm.kamon.io", "_blank")
+    if (tag.origin.includes("apm.kamon.io")) {
+      if (tag.data === "complete") {
+        window.open("https://apm.kamon.io", "_blank")
+      }
+      $("#onboarding-modal").modal("hide")
     }
-    $("#onboarding-modal").modal("hide")
   })
+
+  if (window.location.hash === "#get-started") {
+    $("#onboarding-modal").modal("show")
+  }
 }
 
 $(document).ready(function() {
