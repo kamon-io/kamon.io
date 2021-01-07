@@ -13,7 +13,7 @@ redirect_from:
 Instrumentation Agent Setup
 ===========================
 
-In most situations, you wont need to do anything special to setup the agent other than following the directions on the
+In most situations, you won't need to do anything special to setup the agent other than following the directions on the
 [Get Started][get-started] guide, since either the `Kamon.init()` call or the SBT plugins will take care of attaching
 Kanela at runtime, but we are packing all the different options together in this guide for reference in case you need
 them.
@@ -69,7 +69,7 @@ addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.7" % "{{ site.data.versions.
 addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.6" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endcode_block scala %}
 
-The runner brings the [sbt-javaagent][sbt-javaagent] dependency with it, but it requires you to active it explicily by
+The runner brings the [sbt-javaagent][sbt-javaagent] dependency with it, but it requires you to active it explicitly by
 calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt` file, it should look like this:
 
 {% include kamon-play-enable-javaagent.md version="latest" %}

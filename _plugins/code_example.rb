@@ -11,7 +11,7 @@ module Jekyll
       serialised_snippets = super.split("\n---\n").drop(1)
       snippets = serialised_snippets.map { |snippet_string| YAML::load(snippet_string) }
 
-      navegation_tabs = '<ul class="nav nav-tabs language-tab" role="tablist">'
+      tab_header = '<div class="tab-header"><ul class="nav nav-pills language-tab" role="tablist">'
       tab_contents = '<div class="tab-content">'
 
       snippets.each_with_index { |snippet, index|
@@ -23,9 +23,9 @@ module Jekyll
 
         snippet_id = snippet[:language] + '_' + index.to_s + '_' + id_prefix
 
-        navegation_tabs = navegation_tabs +
+        tab_header = tab_header +
           '<li class="nav-item">' +
-            '<a class="nav-link c-pointer' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
+            '<a class="nav-link btn btn-secondary btn-sm language-btn' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
               snippet[:label] +
             '</a>' +
           '</li>'
@@ -40,10 +40,12 @@ module Jekyll
           '</div>'
       }
 
-      navegation_tabs = navegation_tabs + '</ul>'
+      tab_header = tab_header + '</ul></div>'
       tab_contents = tab_contents + '</div>'
 
-      '<div class="code-example my-3">' + navegation_tabs + tab_contents + '</div>'
+      tab_footer = '<div class="tab-footer"><div class="fa fa-copy"/></div>'
+
+      '<div class="code-example my-3 code-example-container">' + tab_header + tab_contents + tab_footer + '</div>'
     end
   end
 

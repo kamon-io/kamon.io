@@ -36,13 +36,13 @@ keys to ensure your data is being sent to wherever your StatsD instance is runni
 ## Metric Names
 
 Since StatsD has a hierarchical metrics model this module has to apply special rules to convert Kamon's metric name + tags
-into a single metric name that contains all this inforamtion. By default the following format will be used:
+into a single metric name that contains all this information. By default the following format will be used:
 
 ```typesafeconfig
 [service-name].[hostname].[metric-name].[tag[0].name].[tag[0].value].[tag[1].name].[tag[1].value]...
 ```
 
-Where tags are ordered alphabetically before being added to the metric name. If you wish to change the the way metric
+Where tags are ordered alphabetically before being added to the metric name. If you wish to change the way metric
 keys are generated you can supply your own implementation of `kamon.statsd.MetricKeyGenerator` using the
 `kamon.statsd.metric-key-generator` setting.
 

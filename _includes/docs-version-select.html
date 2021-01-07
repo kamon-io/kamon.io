@@ -1,0 +1,40 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign current_version = path_sections[2] %}
+
+<div class="dropdown">
+  <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown">
+    <span class="text-capitalize">{{ current_version }} Docs</span>
+    <i class="fa fa-angle-down"></i>
+  </div>
+  <div class="dropdown-menu cursor-pointer" aria-labelledby="docs-version-select-toggle">
+    <a class="dropdown-item" onclick="changeVersion('latest')">Latest (2.0 Series)</a>
+    <a class="dropdown-item" onclick="changeVersion('v1')">Previous (1.x Series)</a>
+  </div>
+</div>
+
+{% include docs-extract-paths.html %}
+
+<script>
+  function changeVersion(versionName) {
+    var currentPathNameParts = window.location.pathname.split("/");
+    currentPathNameParts.shift();
+    currentPathNameParts.shift();
+    var currentVersion = currentPathNameParts.shift();
+    var exactCurrentSection = currentPathNameParts.join("/");
+
+    if (currentVersion === versionName) {
+      return;
+    }
+
+    if (exactCurrentSection === "overview/" || exactCurrentSection === "overview") {
+      window.location.pathname = "/docs/" + versionName + "/overview/";
+      return;
+    }
+
+    var documentationPaths = versionName === "latest" ? window.kamonDocumentationPaths.latest : window.kamonDocumentationPaths.v1
+
+    var exactLinkExists = documentationPaths.some(function(path) { return path.link === "/" + exactCurrentSection; });
+    var goToSection = exactLinkExists ? exactCurrentSection : "/" + exactCurrentSection.split("/")[0];
+    window.location.pathname = "/docs/" + versionName + "/" + goToSection;
+  }
+</script>

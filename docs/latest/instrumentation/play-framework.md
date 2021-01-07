@@ -20,9 +20,11 @@ by the instrumentation is:
 The instrumentation will work out of the box with both the default Akka HTTP server or the Netty HTTP server, as well
 as instrument HTTP client requests made with the WSClient for Play Framework 2.6 and 2.7.
 
-<p class="alert alert-warning">Just as a reminder, you will need to use the SBT Kanela Runner for Play Framework
+{% alert warning %}
+Just as a reminder, you will need to use the SBT Kanela Runner for Play Framework
 applications if you plan to use Kamon while running on development mode. Please refer to the <a href="/get-started/">Get
-Started</a> guide if you need help with the setup.</p>
+Started</a> guide if you need help with the setup.
+{% endalert %}
 
 Bellow, you will find a more detailed descriptions of each feature and relevant configuration settings in case you want
 to customize the behavior, but you don't need to learn any of it start using the instrumentation! Just start to your
@@ -122,7 +124,7 @@ by adding one of the following modes to each setting:
 
 - **off** will prevent Kamon from adding the tag to Spans.
 - **span** will add the tag as a Span tag.
-- **metric** will add the tag as a Span metric tag. Please not that you should not use high cardinality values as metric
+- **metric** will add the tag as a Span metric tag. Please note that you should not use high cardinality values as metric
   tags, that's one of the reasons the URL is only set as a span tag.
 
 Also, it is possible to make Kamon copy tags from the current Context into the HTTP operation Spans by using the

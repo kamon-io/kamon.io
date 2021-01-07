@@ -3,7 +3,10 @@ title: Terms and Conditions
 layout: default
 page_css: legal
 ---
-<div class="container py-5">
+
+<div class="background-top-gray"></div>
+<main class="default-content-container">
+<section class="py-5">
 <div class="text-center mb-5" markdown="1">
 
 # Service Subscription Agreement
@@ -151,4 +154,5 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 **14.6 Delivery of Notices**. All notices to us must be in writing and addressed to support@kamon.io. All notices to you, including those regarding changes to this Agreement will be made by email, addressed to the email address associated with your User Account on the Service.
 
-</div>
+</section>
+</main>

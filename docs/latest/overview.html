@@ -1,72 +1,9 @@
 ---
-layout: docs
+layout: default
 title: 'Kamon Documentation'
 description: 'All you need to start using Kamon, from how to enable instrumentation to setting up reporters.'
+redirect_from:
+  - /docs/
 ---
 
-<h1>Welcome Aboard!</h1>
-<p>
-  All you need to know to start using Kamon is here. There is a bunch of information around and we tried to organize it
-  in a few simple groups that should get you faster to your goals. Where do you want to go?
-</p>
-
-<div class="row no-gutters">
-  <div class="col-12 col-md-6 px-3">
-    <a href="../guides/">
-      <h2><i class="fas fa-list-ol fa-fw mr-2 text-color-caption"></i>Guides</h2>
-      <p class="pl-5">
-        This is a good place to go if you are just getting started with Kamon or if you are interested in a quick
-        path to getting telemetry data out of your services.
-      </p>
-    </a>
-  </div>
-
-  <div class="col-12 col-md-6 px-3">
-    <a href="../core/">
-      <h2><i class="fas fa-book fa-fw mr-2 text-color-caption"></i>Core Reference</h2>
-      <p class="pl-5">
-        The core reference is what you need if you want to start doing manual instrumentation or to understand why
-        Kamon works the way it does.
-      </p>
-    </a>
-  </div>
-
-  <div class="col-12 col-md-6 px-3">
-    <a href="../instrumentation/">
-      <h2><i class="fas fa-toolbox fa-fw mr-2 text-color-caption"></i>Instrumentation</h2>
-      <p class="pl-5">
-        Here is a comprehensive list of all instrumentation modules available in Kamon, including what features they
-        bring and how to use and configure them.
-      </p>
-    </a>
-  </div>
-
-  <div class="col-12 col-md-6 px-3">
-    <a href="../reporters/">
-      <h2><i class="fas fa-share-alt fa-fw mr-2 text-color-caption"></i>Reporters</h2>
-      <p class="pl-5">
-        Here you can find how to send all of Kamon's telemetry data to your solution of choice.
-      </p>
-    </a>
-  </div>
-
-  <!-- <div class="col-12 col-md-6 px-3">
-    <a href="../apm/">
-      <h2><i class="fas fa-cloud fa-fw mr-2 text-color-caption"></i>APM</h2>
-      <p class="pl-5">
-        If you are a Kamon APM user, here you will find details on how to use the interface, create dashboards,
-        search for traces and all APM-related content.
-      </p>
-    </a>
-  </div> -->
-
-  <div class="col-12 col-md-6 px-3">
-    <a href="https://archive.kamon.io/">
-      <h2><i class="fas fa-code-branch fa-fw mr-2 text-color-caption"></i>Older Versions</h2>
-      <p class="pl-5">
-        This website contains documentation for <strong>Kamon 1.1 and newer</strong> versions. If you need information for previoues
-        versions please head over to  <strong>archive.kamon.io</strong>.
-      </p>
-    </a>
-  </div>
-</div>
+{% include docs-overview.html %}

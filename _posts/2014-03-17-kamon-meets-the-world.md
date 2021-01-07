@@ -2,6 +2,7 @@
 layout: post
 title: Kamon meets the World!
 date: 2014-03-17
+author: the Kamon Team
 categories: teamblog
 tags: announcement
 redirect_from:

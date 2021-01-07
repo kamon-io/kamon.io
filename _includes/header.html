@@ -1,50 +1,145 @@
-<div class="container-fluid sticky-top header-bar">
-  <div class="container">
-    <div class="row h-100 align-items-center justify-content-between no-gutters">
-      <div class="col">
-        <div id="mobile-sidebar-button" class="float-left mr-5 pt-3 d-inline-block d-lg-none c-pointer">
-          <div class="mobile-sidebar-button-inner">
-            <span></span>
-          </div>
-        </div>
+{% assign path_sections = page.url | split: '/' %}
 
-        <a href="/">
-          <img class="logo h-100 float-left d-none d-sm-block" alt="Kamon Logo" src="/assets/img/kamon-logo.svg">
-          <img class="logo h-100 float-left d-sm-none" alt="Kamon Symbol" src="/assets/img/kamon-symbol.svg">
+<nav
+  id="main-header"
+  class='navbar navbar-expand fixed-top text-center app-header {% if path_sections[1] == "docs" and path_sections[3] != "overview.html" %} header-background-fixed {% endif %}'
+>
+
+  <div id="20210104" class="notification-bar d-flex align-items-center justify-content-center">
+    <a id="notification-link" class="nav-link text-white flex-grow-1 h-100" href="/blog/new-pricing-for-kamon-apm/">
+      New Pricing for Kamon APM: More Monitoring for FREE!
+    </a>
+
+    <button type="button" class="close px-2">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="d-none d-lg-block w-100">
+    <div class="d-flex w-100 justify-content-center align-items-end">
+    <div class="row no-gutters w-100 default-content-container header-content">
+      <div class="col-lg-3 text-left">
+        <a class="navbar-brand" href="/">
+          <img src="/assets/img/kamon/kamon-logo-light.svg" width="150" height="50" class="d-inline-block align-top" alt="Kamon Logo">
         </a>
       </div>
-      <div class="col-auto menu-items">
-        <a href="/instrumentation/" class="d-none d-lg-inline">
-          <div class="header-bar-item">
-            Telemetry
-          </div>
-        </a>
-        <a href="/apm/" class="d-none d-lg-inline">
-          <div class="header-bar-item">
-            APM
-          </div>
-        </a>
-        <a href="/docs/latest/overview/" class="d-none d-lg-inline">
-          <div class="header-bar-item">
-            Docs
-          </div>
-        </a>
-        <a href="/apm/pricing/" class="d-none d-lg-inline">
-          <div class="header-bar-item">
-            Pricing
-          </div>
-        </a>
-        <a href="https://apm.kamon.io/signin" target="_blank" class="d-none d-lg-inline">
-          <div class="header-bar-item">
-            Sign In
-          </div>
-        </a>
-        <a href="/get-started/">
-          <span class="ml-1 ml-lg-4 button button-ripple-green d-none d-sm-inline-block">
-            Start Monitoring Free
-          </span>
-        </a>
+      <div class="col-lg-6">
+        <ul class="navbar-nav w-80 align-items-center justify-content-center h-100">
+          <li class="nav-item dropdown cursor-pointer">
+            <a class="nav-link" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Products
+            </a>
+            <div class="dropdown-menu dropdown-menu-center" aria-labelledby="productsDropdown">
+              <div class="header-submenu-container px-2" >
+                <div class="row no-gutters">
+                  <div class="col-6">
+                    <a class="dropdown-item header-submenu-item" href="/apm/">
+                      <div class="row no-gutters py-3 align-items-center justify-content-left">
+                        <div class="col-4">
+                          <img width="75" height="75" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Icon">
+                        </div>
+                        <div class="col-8">
+                          <h6>Kamon APM</h6>
+                          <div class="text-body-smaller item-explainer">Simple and effortless microservices monitoring</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-6">
+                    <a class="dropdown-item header-submenu-item" href="/telemetry/">
+                      <div class="row no-gutters py-3 align-items-center justify-content-left">
+                        <div class="col-4">
+                          <img width="75" height="75" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry Icon">
+                        </div>
+                        <div class="col-8">
+                          <h6>Kamon Telemetry</h6>
+                          <div class="text-body-smaller item-explainer">Open-source instrumentation for microservices</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs/latest/overview/">Docs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/apm/pricing/">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <ul class="navbar-nav w-80 align-items-center justify-content-end h-100">
+          <li class="nav-item">
+            <a class="nav-link text-nowrap" href="https://apm.kamon.io/sign-in" target="_blank">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary onboarding-start-button" href="#">Start Monitoring</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="d-block d-lg-none w-100">
+    <div class="d-flex no-gutters w-100 header-content px-2 align-items-center justify-content-between">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/img/kamon/kamon-logo-light.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
+      </a>
+      <a class="cursor-pointer" onclick="toggleMobileNavigation()">
+        <img src="/assets/img/icons/menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
+      </a>
+    </div>
+  </div>
+
+</nav>
+
+<div id="mobileNavigationOverlay" class="d-lg-none">
+  <div class="px-4 pb-4 pt-1 d-flex flex-column justify-content-between h-100">
+    <div class="d-flex justify-content-between">
+      <img src="/assets/img/kamon/kamon-logo-dark.svg" width="100" height="50" class="d-inline-block align-top" alt="Kamon Logo">
+      <a class="cursor-pointer text-display-2 text-white" onclick="toggleMobileNavigation()">&times;</a>
+    </div>
+    <div class=" h-100 py-4">
+      <ul class="mobile-nav-list text-body-bigger text-white">
+        <li class="mt-5">
+          <div class="products-collapse" id="products-collapse-heading" data-toggle="collapse" data-target="#products-collapse-text" aria-controls="products-collapse-text">
+            <span>Products</span>
+            <i class="fa fa-angle-down"></i>
+            <i class="fa fa-angle-up"></i>
+          </div>
+
+          <div id="products-collapse-text" class="collapse pl-3" aria-labelledby="products-collapse-heading" data-parent="#products-collapse-heading">
+            <a class="d-block mt-3" href="/apm/">APM</a>
+            <a class="d-block mt-3" href="/telemetry/">Telemetry</a>
+          </div>
+        </li>
+        <li class="mt-5">
+          <a href="/docs/latest/overview/">Docs</a>
+        </li>
+        <li class="mt-5">
+          <a href="/apm/pricing/">Pricing</a>
+        </li>
+        <li class="mt-5">
+          <a href="/blog/">Blog</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <a class="btn btn-lg btn-light w-100 text-dark-1" href="https://apm.kamon.io/sign-in" target="_blank">Sign In</a>
+      <a class="btn btn-lg btn-primary w-100 mt-3 onboarding-start-button" href="#">Start Free</a>
+    </div>
+  </div>
 </div>
+
+<script>
+  function toggleMobileNavigation() {
+    $("#mobileNavigationOverlay").fadeToggle(200);
+  }
+</script>

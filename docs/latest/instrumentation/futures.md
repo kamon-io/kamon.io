@@ -44,7 +44,7 @@ transformations applied to them by using these functions:
 - `traceBody(operationName: String) { ... }` which accepts a call-by-name block that can be used to wrap the Future body
   and creates a Span that will be automatically finished when the Future's body finishes executing.
 - `traceFunc(operationName: String) { ... }` which accepts a function that can be used to wrap any of the transformations
-  than can be applied on a Future and creates a Span taht will be automatically finished when the transformation finishes
+  than can be applied on a Future and creates a Span that will be automatically finished when the transformation finishes
   executing.
 
 The `traceBody` and `traceFunc` functions work very similarly, the only reason for them not being the same is the
@@ -56,7 +56,7 @@ Let's see this in a small example:
 {% endcode_example %}
 
 In the code example above, the instrumentation will automatically create a Span called `future-body` that measures how
-long did it take to executore the Future's body, as well as additional Spans for the `calculate-length` and `to-string`
+long did it take to execute the Future's body, as well as additional Spans for the `calculate-length` and `to-string`
 steps of the computation. Note that even though the rest of the transformations in this example will not get dedicated
 Spans, they will still benefit from Context propagation, just as before!
 

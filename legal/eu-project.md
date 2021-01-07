@@ -3,7 +3,8 @@ title: EU Project -
 layout: default
 ---
 
-<div class="container py-5 mb-5" style="font-size: 16px;">
+<main class="default-content-container">
+<section style="font-size: 16px;">
 <div class="row justify-content-center">
 <img class="col-auto" style="height: 160px;" src="/assets/img/eu-project/EU.PNG" alt="European Union">
 <div class="col-auto">
@@ -75,5 +76,6 @@ Dodatne informacije o EU fondovima i natječajima možete pronaći na sljedećim
 
 Sadržaj publikacije isključiva je odgovornost poduzeća Kamino Technologies d.o.o. za računalne djelatnosti i usluge.
 
-</div>
+</section>
+</main>
 

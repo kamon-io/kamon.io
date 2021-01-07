@@ -2,7 +2,8 @@
 layout: post
 title: Understanding Spray Client Timeout Settings
 date: 2014-11-02
-categories: teamblog, posts
+author: the Kamon Team
+categories: posts
 redirect_from:
   - /teamblog/2014/11/02/understanding-spray-client-timeout-settings/
 ---
@@ -102,7 +103,7 @@ Request completed in 16020 millis.
 
 Nothing special, it does exactly what we think it should do. Note that we are setting a high (60 seconds) timeout for
 the Request Level API, primarily to avoid it getting in our way for this test and we will later revisit it. Now let's
-start with the surprises, what happens if we send six requests at once with the default configration?, this modified
+start with the surprises, what happens if we send six requests at once with the default configuration?, this modified
 version of the code:
 
 {% code_block scala %}
@@ -130,9 +131,9 @@ At this point you might have two questions in mind: first, why the first four re
 last two requests take ~30 seconds to complete? That's the easy one, Spray Client creates a `HttpHostConnector` for each
 host to which you want to send requests to (roughly speaking, more details apply), you can think of the host connector
 as a connection pool that has `spray.can.host-connector.max-connections` connections to the given host and with the
-default value of four, the first four requests get dispatched immediatly and the other two have to wait until a
+default value of four, the first four requests get dispatched immediately and the other two have to wait until a
 connection is available to proceed. If you set `max-connections` to a higher value, there will be enough connections for
-all requests to be dispatched immediatly and all of them will finish in ~15 seconds, as expected.
+all requests to be dispatched immediately and all of them will finish in ~15 seconds, as expected.
 
 The second question is, why a request can take ~30 seconds to complete if `spray.can.client.request-timeout` is set to
 20 seconds by default?. The documentation is very clear stating that _"The timer for this logic is not started until the
@@ -152,7 +153,7 @@ only included the ones related to spray-client in the diagram.
 
 2. The HttpManager will use the target host (among other details) in the HTTP request to determine the HttpHostConnector
 to which the request should be sent. If no HttpHostConnector is available for the given host, a new one is created and
-the request is dispatched to it. Additionaly, based on the client connection settings (user-agent header, idle timeout,
+the request is dispatched to it. Additionally, based on the client connection settings (user-agent header, idle timeout,
 request timeout and some others) the HttpManager will find or create a HttpClientSettingsGroup that is required by the
 HttpHostConnector to work.
 
@@ -170,7 +171,7 @@ connected it will dispatch the request to it. The process of setting up the Http
 first request arrives and then the same connection will be reused as for long as possible.
 
 5. The HttpClientConnection talks to the Akka-IO layer to establish the TCP connection and sends the HTTP request data
-to it. This is a very simplyfied version of what happens here, but in order to keep it short we should just be aware
+to it. This is a very simplified version of what happens here, but in order to keep it short we should just be aware
 that it might take some time to establish the TCP connection and it has to happen within the timeout specified by
 `spray.can.client.connecting-timeout` and then, after the connection is established and the request is dispatched the
 `spray.can.client.request-timeout` starts counting.
@@ -193,7 +194,7 @@ ActorRef of the HttpHostConnector, then you can send the requests directly to it
 
 If you decide to setup and use a HttpHostConnector directly, keep in mind that it has an idle timout after which it will
 be stopped and the ActorRef that you have for the HttpHostConnector will no longer be valid and you either set the idle
-timeout to infinte or watch the ActorRef and handle the situation gracefully. We tend to recommend people to avoid the
+timeout to infinite or watch the ActorRef and handle the situation gracefully. We tend to recommend people to avoid the
 Host Level API since using it correctly adds a bit of complexity that is already solved by the HttpManager and in most
 cases saving one actor message there is not going to be a significant improvement compared to all the work that has to
 be done down the road. Of course, each case has it's needs and only testing your app yo will be able to know.
@@ -225,7 +226,7 @@ continue down the road, until a result (succesful or not) can be returned**.
 ### Continues Processing? Tell Me More ###
 
 Spray Client doesn't have the notion of a deadline for processing a HttpRequest, it just knows that the request has to
-go through a series of steps to complete (succesfuly or not) and only after all the steps are completed it will cease
+go through a series of steps to complete (successfully or not) and only after all the steps are completed it will cease
 processing the request and give you a response. If we modify the `requestTimeout` variable in our previous example to 10
 seconds, all response futures will be completed with a AskTimeoutException after 10 seconds, but still, Spray Client
 will send all requests to our service anyway, even the last two requests that have to wait ~15 seconds until a
@@ -258,7 +259,7 @@ after ~15 seconds more the last two responses arrive, also going to dead letters
 
 The last thing that you need to keep in mind is that Spray Client can (and will, by default) retry idempotent requests
 for the number of times specified in `spray.can.host-connector.max-retries` and retrying is part of the request
-processing steps mentioned before, meaning that it will retry 5 times by default before giving up, wheter you like it or
+processing steps mentioned before, meaning that it will retry 5 times by default before giving up, whether you like it or
 not. If you have a server taking too long to respond on the other side it might take at least ~100 seconds (5 retries of
 20 seconds each, without counting connection setup time) for Spray Client to give up on a given request. Not setting the
 retries limit accordingly to what your application needs might cause your system to spend time processing requests that
@@ -273,17 +274,17 @@ independently from the retries.
 
 - The time that might be spent waiting in the HttpHostConnector queue for a connection to be available. This time can
 not be limited by any configuration setting and the only thing preventing this queue to produce an out of memory error
-is the back-presure implementation in your application code. Been there, suffered that.
+is the back-pressure implementation in your application code. Been there, suffered that.
 
 - Only for new connections, the time taken to create all the relevant actors and establish the TCP connection. Usually
-creating the actors wont be a problem, but establishing the TCP connection might take awhile depending on network
+creating the actors won't be a problem, but establishing the TCP connection might take a while depending on network
 conditions.
 
 As a final advice, always do this sum with your settings and make sure that they make sense to your app. If your app can
 tolerate a maximum of 5 seconds delay for a HTTP response, then adjust all the relevant settings to make sure that Spray
-wont keep working on requests after ~5 seconds. Also, we encourage you to simulate the various conditions mentioned here
+won't keep working on requests after ~5 seconds. Also, we encourage you to simulate the various conditions mentioned here
 (more requests than connections, slow connection times, slow server, etc.) in a development environment and tune
-accodingly to the results your see, many CPU cycles and potential crashes might be saved by doing so!
+accordingly to the results your see, many CPU cycles and potential crashes might be saved by doing so!
 
 
 [spray-host-connector-documentation]: http://spray.io/documentation/1.3.2/spray-can/http-client/host-level/#using-an-httphostconnector

@@ -14,9 +14,9 @@ Actor System Metrics
 Kamon is able to gather metrics from all core Akka components: actor systems, actors, dispatchers, routers, remoting
 channels and, one addition of ours, actor groups; all thanks to bytecode instrumentation shipping with Kamon modules.
 
-<p class="alert alert-info">
+{% alert info %}
 You must start your application with the AspectJ Weaver agent if you want to collect any Akka metrics.
-</p>
+{% endalert %}
 
 
 Base Metrics
@@ -24,10 +24,10 @@ Base Metrics
 
 All actor systems will get the following metrics:
 
-* __akka.system.dead-letters__ (Counter). Number of dead letters seen for a actor system. Tags:
+* __akka.system.dead-letters__ (Counter). Number of dead letters seen for an actor system. Tags:
   * __system__: Actor system name.
 
-* __akka.system.unhandled-messages__ (Counter). Number of unhandled messages seen for a actor system. Tags:
+* __akka.system.unhandled-messages__ (Counter). Number of unhandled messages seen for an actor system. Tags:
   * __system__: Actor system name.
 
 * __akka.system.active-actors__ (Range Sampler). Number of active actors running on the actor system, regardless
@@ -42,7 +42,7 @@ of them being tracked for metrics or not. Tags:
 Filtered Metrics
 ----------------
 
-Since your application might be creating thousands of different actors, routers or even several dispatchers, Kamon wont
+Since your application might be creating thousands of different actors, routers or even several dispatchers, Kamon won't
 simply catch them all but rather rely on filters to decide which components to track. Filters are configured in the
 `kamon.util.filters` configuration key and these are the filters expected by this module:
 
@@ -151,7 +151,7 @@ Configuring actor groups is a two step process:
 name of the filter is up to you, just make sure the name doesn't clash with any other predefined filter.
 2. Include your filter name in the `kamon.akka.actor-groups` setting.
 
-Here is a example of how to configure a actor group:
+Here is an example of how to configure an actor group:
 
 {% code_example %}
 {%   language typesafeconfig instrumentation/akka/src/main/resources/application.conf tag:akka-actor-groups label:"application.conf" %}

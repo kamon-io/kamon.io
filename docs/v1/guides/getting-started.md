@@ -58,7 +58,7 @@ available in the classpath and start them appropriately.
 {%   language java guides/install/maven/src/main/java/kamon/example/Start.java tag:load-modules %}
 {% endcode_example %}
 
-Take a look at the [configuration section][configuration] if you need finer control overwhat modules are loaded during
+Take a look at the [configuration section][configuration] if you need finer control over what modules are loaded during
 startup.
 
 

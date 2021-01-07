@@ -1,0 +1,42 @@
+.apm-background-bottom {
+  background: url("/assets/img/background/background-bottom.svg") no-repeat center right;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  z-index: -1;
+  display: none;
+
+  @media (min-width: 420px) {
+    display: block;
+    transform: translateY(4300px);
+  }
+
+  @media (min-width: 520px) {
+    transform: translateY(4400px);
+  }
+
+  @media (min-width: $sm-start) {
+    transform: translateY(5250px);
+  }
+
+  @media (min-width: 600px) {
+    transform: translateY(5300px);
+  }
+
+  @media (min-width: $md-start) {
+    transform: translateY(4700px);
+  }
+
+  @media (min-width: $lg-start) {
+    transform: translateY(5000px);
+  }
+
+  @media (min-width: $xl-start) {
+    transform: translateY(3300px);
+  }
+
+  @media (min-width: 1400px) {
+    transform: translateY(3500px);
+  }
+}

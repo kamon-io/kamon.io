@@ -29,7 +29,7 @@ Kamon.addReporter(new DatadogAPIReporter())
 ## Agent Reporter
 
 By default, the Agent reporter assumes that you have an instance of the Datadog Agent running in localhost and listening on
-port 8125. If that is not the case the you can use the `kamon.datadog.agent.hostname` and `kamon.datadog.agent.port` configuration
+port 8125. If that is not the case you can use the `kamon.datadog.agent.hostname` and `kamon.datadog.agent.port` configuration
 keys to point the module at your Datadog Agent installation.
 
 ## API Reporter

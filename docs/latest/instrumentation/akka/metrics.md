@@ -14,9 +14,9 @@ Actor System Metrics
 Kamon is able to gather metrics from all core Akka components: actor systems, actors, dispatchers, routers, remoting
 channels and, one addition of ours, actor groups. All thanks to bytecode instrumentation shipping with Kamon modules.
 
-<p class="alert alert-info">
+{% alert info %}
 You must start your application with the Kanela agent if you want to collect any Akka metrics.
-</p>
+{% endalert %}
 
 
 Base Metrics
@@ -33,7 +33,7 @@ These metrics are collected for all actor systems, without any special configura
 Filtered Metrics
 ----------------
 
-Since your application might be creating thousands of different actors, routers or even several dispatchers, Kamon wont
+Since your application might be creating thousands of different actors, routers or even several dispatchers, Kamon won't
 simply catch them all but rather rely on filters to decide which components to track. Filters are configured under the
 `kamon.instrumentation.akka.filters` configuration path. Within this path, these filters are expected:
 
@@ -128,7 +128,7 @@ level and another for all `ChildActor` instances in the second level. If you wan
 for auto-grouping use the filters for the `auto-grouping` group.
 
 Finally, take into account that auto-grouping will only pick up actors that are not being explicitly tracked in any
-other way (e.g. the actor is not explicitly tracked nor included in a explicit group).
+other way (e.g. the actor is not explicitly tracked nor included in an explicit group).
 
 
 ### Explicit Groups

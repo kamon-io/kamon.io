@@ -1,0 +1,93 @@
+.user-quote-container {
+  width: 80%;
+  max-width: 788px;
+  height: 308px;
+
+  @media (max-width: $xs-max) {
+    width: 100%;
+  }
+
+  .user-quote {
+    width: 100%;
+    height: 100%;
+
+    &.dark-background {
+      background-color: $color-dark-1;
+      border-radius: 8px;
+      background-image: url("/assets/img/background/cubes-pattern.svg");
+      background-position: center;
+      background-repeat: repeat-y;
+    }
+
+    .quote {
+      font-family: "Source Code Pro", monospace;
+      font-size: remSize(72);
+      line-height: remSize(56);
+      color: $color-blue-4;
+      font-weight: $typography-weight-bold;
+
+      &.quote-open {
+        margin-top: -1rem;
+      }
+
+      &.quote-close {
+        margin-bottom: -1rem;
+      }
+
+      @media (max-width: $xs-max) {
+        font-size: remSize(48);
+        line-height: remSize(37);
+      }
+    }
+  }
+
+  .user-quote-text {
+    height: 308px;
+  }
+
+  @media (max-width: $xs-max) {
+    height: 250px;
+    .user-quote-text {
+      height: 250px;
+    }
+  }
+}
+
+.carousel-buttons-container {
+  width: 80%;
+  max-width: 788px;
+  height: 0;
+
+  @media (max-width: $xs-max) {
+    margin-bottom: 3rem;
+  }
+
+  .carousel-previous-slide-btn, .carousel-next-slide-btn {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    text-decoration: none;
+    top: -175px;
+    cursor: pointer;
+
+    &:hover, &:active {
+      text-decoration: none;
+    }
+
+    @media (max-width: $xs-max) {
+      position: inherit;
+      img {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  .carousel-previous-slide-btn {
+    left: -46%;
+  }
+
+  .carousel-next-slide-btn {
+    right: -46%;
+  }
+}

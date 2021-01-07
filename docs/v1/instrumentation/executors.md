@@ -11,7 +11,7 @@ Executor Service Instrumentation
 ================================
 
 This module lets you collect metrics from executor service: Thread Pool Executors and Fork Join Pools. To start tracking
-a executor service you must register it with the executors module by calling `kamon.executors.Executors.register(...)`
+an executor service you must register it with the executors module by calling `kamon.executors.Executors.register(...)`
 as shown bellow:
 
 {% code_example %}

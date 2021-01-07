@@ -2,6 +2,7 @@
 layout: post
 title: Bugfix Release - Kamon 0.3.4/0.2.4 is out!
 date: 2014-08-05
+author: the Kamon Team
 categories: teamblog
 tags: announcement
 redirect_from:

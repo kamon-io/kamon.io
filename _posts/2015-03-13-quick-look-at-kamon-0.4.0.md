@@ -2,7 +2,8 @@
 layout: post
 title: Quick look at Kamon 0.4.0
 date: 2015-03-13
-categories: teamblog, posts
+author: the Kamon Team
+categories: posts
 redirect_from:
   - /teamblog/2015/03/13/quick-look-at-kamon-0.4.0/
 ---
@@ -35,7 +36,7 @@ reactive applications are awesome, but we want the whole JVM and that requires s
 now and some that will come in the near future.
 
 We are taking the leap this time with a very strong and clear goal in mind: We will make Kamon __the__ monitoring tool
-for applications running on the JVM, or we will go crazy trying. It wont be easy, it wont be quick, but we will do our
+for applications running on the JVM, or we will go crazy trying. It won't be easy, it won't be quick, but we will do our
 best to make it a reality.
 
 There has been quite some time since our 0.3.5/0.2.5 release, mostly because we knew that the upcoming release was going
@@ -72,7 +73,7 @@ user you wont need to know anything beyond the APIs provided by Kamon.
 
 In previous Kamon releases there were two kinds of metrics: metric groups for things like actors, routers, traces,
 dispatchers and so, and "user metrics" that allowed you could request a single instrument (histogram, counter, min max
-counter or gauge) and use it at your own will. Both APIs were separate and apparently dedicated for different purposes
+counter or gauge) and use it at your own will. Both APIs were separate and apparently dedicated for different purposes,
 but the reality is that under the hood both were doing pretty much the same thing, so, now you simply use
 `Kamon.metrics.histogram(..)` or `Kamon.metrics.entity(..)` and will get back what you asked for.
 

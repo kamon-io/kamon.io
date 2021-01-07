@@ -4,7 +4,9 @@ layout: default
 page_css: legal
 ---
 
-<div class="container py-5">
+<div class="background-top-gray"></div>
+<main class="default-content-container">
+<section class="py-5">
 <div class="text-center mb-5" markdown="1">
 
 # Privacy Policy
@@ -377,4 +379,5 @@ email: [dpo@kamon.io](mailto:dpo@kamon.io)
 -   **Data Subject (or User)**: Data Subject is any living individual who is using our Service and is the
     subject of Personal Data.
 
-</div>
+</section>
+</main>

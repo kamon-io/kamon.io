@@ -14,7 +14,7 @@ redirect_from:
 Installation on a Plain Application
 ===================================
 
-This guide is an "extended" version of the offical [Get Started][get-started] steps for manual instrumentation, but here
+This guide is an "extended" version of the official [Get Started][get-started] steps for manual instrumentation, but here
 we dive a little bit more into what is being achieved in each step. The general idea stays the same as in the official
 guide, there are three simple steps to follow:
   1. [Install Kamon](#install-kamon).

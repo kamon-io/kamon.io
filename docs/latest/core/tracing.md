@@ -34,15 +34,17 @@ There are several conclusions that can be drawn from the graph above, without ev
 
 ## Spans
 
-Spans are created by calling the `buildSpan(operationName)` method on Kamon's companion object as shown below:
+Spans are created by calling the `spanBuilder(operationName)` method on Kamon's companion object as shown below:
 
 
 {% code_example %}
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/TraceBasics.scala tag:creating-spans label:"Scala" %}
 {% endcode_example %}
 
-The `buildSpan(operationName)` method will return a `SpanBuilder` instance that can be used to customize the Span to a
+The `spanBuilder(operationName)` method will return a `SpanBuilder` instance that can be used to customize the Span to a
 certain degree and only after calling the `.start()` method on it the actual `Span` instance is created.
+We recommend using more specific version of this method with `server|client|producer|consumer` prefix on them.
+That will ensure that Spans always have a proper kind and component tags.
 
 ###### Important facts about the SpanBuilder:
   - You can only change or decide the Span's parent with the SpanBuilder. By default a newly created Span will have the
@@ -59,9 +61,9 @@ certain degree and only after calling the `.start()` method on it the actual `Sp
 Tags are key-value pairs that provide additional information about the operation represented by a Span. All spans created
 by Kamon will typically have the following tags:
   - `component` specifies what library/framework instrumentation generated the Span. E.g: `akka.http.server` or `jdbc`.
-  - `span.kind` specifies the role of the Span in a RPC communication. In the case of HTTP communication you will be
+  - `span.kind` specifies the role of the Span in an RPC communication. In the case of HTTP communication you will be
     seeing `client` and `server` values for this tag.
-  - `error` specifies whether an error has been added to the Span via `span.addError(...)`.
+  - `error` specifies whether an error has been added to the Span via `span.fail(...)`. 
   - `http.method` specifies the request's HTTP method.
   - `http.url` specifies the request's URL.
 
@@ -94,21 +96,21 @@ short and concise names for marks but you are free to add anything you would lik
 ## Metrics
 
 By default Kamon will track metrics out of all Spans, unless explicitly disabled. Span metrics are not affected by
-sampling, every single Span is going to be measured and recorded, regarless of whether the Span is sampled or not. The
+sampling, every single Span is going to be measured and recorded, regardless of whether the Span is sampled or not. The
 metric tracking Spans' latency is called `span.processing-time` and at a minimum will have these tags:
   - `operation` with the Span operation name.
   - `error` specifying whether an error was added to the Span via `span.addError(...)`.
   - `parentOperation` with the name of the operation of the parent Span, if any.
-  - Any additional metric tags added via `span.tagMetric(...)`.
+  - Any additional metric tags added via `span.tagMetrics(...)`.
 
-<p class="alert alert-warning">
+{% alert warning %}
 <span class="d-block font-weight-bold" >Important:</span>
 It is of extreme importance that a Span's operation name and any metric-related tags are not populated with high cardinality
 values; things like user or session identifiers, SQL queries or full URLs should not be used for operation names and
 metric tags because an individual time series will be created for each unique combination of these attributes.
-</p>
+{% endalert %}
 
-If necessary, metrics collection can be toggled by calling `enableMetrics()` and `disableMetrics()` on a `SpanBuilder`
+If necessary, metrics collection can be toggled by calling `trackMetrics()` and `doNotTrackMetrics()` on a `SpanBuilder`
 or `Span` instance. Calling these functions will only have effect until the Span is finished.
 
 {% code_example %}
@@ -121,7 +123,7 @@ or `Span` instance. Calling these functions will only have effect until the Span
 ## The Current Span
 
 The tracer relies on Kamon's [Context][2] to store the Span representing the currently executing operation. At any moment
-the current Span can be accessed eiher by retrieving it from the current Context or by using the `Kamon.currentSpan()`
+the current Span can be accessed either by retrieving it from the current Context or by using the `Kamon.currentSpan()`
 function, the later is just a shorthand syntax for the former.
 
 {% code_example %}
@@ -130,7 +132,7 @@ function, the later is just a shorthand syntax for the former.
 
 Most of the time Spans will be automatically managed by Kamon; Kamon will determine when to start and finish a Span and
 when to make it part of the current Context (and thus, make it the current Span). In cases where it is necessary to
-manually set a Span as the current Span, the `Kamon.withSpan(...)` helper function can be used:
+manually set a Span as the current Span, the `Kamon.runWithSpan(...)` helper function can be used:
 
 
 {% code_example %}
@@ -138,13 +140,13 @@ manually set a Span as the current Span, the `Kamon.withSpan(...)` helper functi
 {% endcode_example %}
 
 In the code snippet above the Spans are set as the current Span only while the blocks of code provided to
-`Kamon.withSpan(...)` are executing, right after that the current Span will be whatever it was before. Under the hood
+`Kamon.runWithSpan(...)` are executing, right after that the current Span will be whatever it was before. Under the hood
 what is actually exchanged is the current Context, which in turn dictates the current Span. Please refer to the [Context][2]
 section to get a better understanding of how this mechanism works.
 
 Keep in mind that setting a Span as current has no effect on the Span's lifecycle. A Span can be made current several
 times in several threads at the same time regardless of it being finished or not. There is an overload of the
-`Kamon.withSpan(...)` method that allows finishing the Span after closing the scope in which it was used as shown above,
+`Kamon.runWithSpan(...)` method that allows finishing the Span after closing the scope in which it was used as shown above,
 this is provided as a shorthand syntax for cases where a quick, one-off Span is needed, but it must remain clear that
 finish a Span's time as current has nothing to do with actually `.finish()`ing the Span.
 

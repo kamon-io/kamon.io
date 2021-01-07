@@ -2,7 +2,8 @@
 layout: post
 title: Welcome Akka 2.4, Goodbye Akka 2.2.
 date: 2015-06-14
-categories: teamblog, posts
+author: the Kamon Team
+categories: posts
 redirect_from:
   - /teamblog/2015/06/14/welcome-akka-2.4-goodbye-akka-2.2/
 ---

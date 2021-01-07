@@ -1,86 +1,87 @@
-core:
-  - topic: Foundations
-    pages:
-    - name: Overview
-      path: /core/
-    - name: Metrics
-      path: /core/metrics/
-    - name: Tracing
-      path: /core/tracing/
-    - name: Context
-      path: /core/context/
-    - name: Configuration
-      path: /core/configuration/
-    - name: Utilities
-      path: /core/utilities/
-  - topic: Advanced
-    pages:
-    - name: Metric Instruments
-      path: /core/advanced/metric-instruments/
+documentation:
+  core:
+    - topic: Foundations
+      pages:
+        - name: Overview
+          path: /core/
+        - name: Metrics
+          path: /core/metrics/
+        - name: Tracing
+          path: /core/tracing/
+        - name: Context
+          path: /core/context/
+        - name: Configuration
+          path: /core/configuration/
+        - name: Utilities
+          path: /core/utilities/
+    - topic: Advanced
+      pages:
+        - name: Metric Instruments
+          path: /core/advanced/metric-instruments/
 
 
-guides:
-  - topic: First Steps
-    pages:
-      - name: Installing Kamon
-        path: /guides/getting-started/
-      - name: Setting up the Agent
-        path: /guides/setting-up-the-agent/
-  - topic: Frameworks
-    pages:
-      - name: Elementary Akka Setup
-        path: /guides/frameworks/elementary-akka-setup/
-  - topic: Migrations
-    pages:
-      - name: Migrating from 0.6 to 1.0
-        path: /guides/migration/from-0.6-to-1.0/
+  guides:
+    - topic: First Steps
+      pages:
+        - name: Installing Kamon
+          path: /guides/getting-started/
+        - name: Setting up the Agent
+          path: /guides/setting-up-the-agent/
+    - topic: Frameworks
+      pages:
+        - name: Elementary Akka Setup
+          path: /guides/frameworks/elementary-akka-setup/
+    - topic: Migrations
+      pages:
+        - name: Migrating from 0.6 to 1.0
+          path: /guides/migration/from-0.6-to-1.0/
 
-instrumentation:
-  - topic: Available Instrumentation
-    pages:
-      - name: Akka
-        pages:
-          - name: Overview
-            path: /instrumentation/akka/
-          - name: Metrics
-            path: /instrumentation/akka/metrics/
-          - name: Message Tracing
-            path: /instrumentation/akka/tracing/
-          - name: Context Propagation
-            path: /instrumentation/akka/context-propagation/
-          - name: Ask Pattern
-            path: /instrumentation/akka/ask-pattern-timeout-warning/
-      - name: Executors
-        path: /instrumentation/executors/
-      - name: Futures
-        path: /instrumentation/futures/
-      - name: JDBC
-        path: /instrumentation/jdbc/
-      - name: Logback
-        path: /instrumentation/logback/
-      - name: System Metrics
-        path: /instrumentation/system-metrics/
+  instrumentation:
+    - topic: Available Instrumentation
+      pages:
+        - name: Akka
+          pages:
+            - name: Overview
+              path: /instrumentation/akka/
+            - name: Metrics
+              path: /instrumentation/akka/metrics/
+            - name: Message Tracing
+              path: /instrumentation/akka/tracing/
+            - name: Context Propagation
+              path: /instrumentation/akka/context-propagation/
+            - name: Ask Pattern
+              path: /instrumentation/akka/ask-pattern-timeout-warning/
+        - name: Executors
+          path: /instrumentation/executors/
+        - name: Futures
+          path: /instrumentation/futures/
+        - name: JDBC
+          path: /instrumentation/jdbc/
+        - name: Logback
+          path: /instrumentation/logback/
+        - name: System Metrics
+          path: /instrumentation/system-metrics/
 
-reporters:
-  - topic: Combined Reporters
-    pages:
-      - name: Kamon APM
-        path: /reporters/apm/
-  - topic: Metric Reporters
-    pages:
-      - name: Prometheus
-        path: /reporters/prometheus/
-      - name: InfluxDB
-        path: /reporters/influxdb/
-      - name: StatsD
-        path: /reporters/statsd/
-      - name: Datadog
-        path: /reporters/datadog/
-      - name: Sematext SPM
-        path: /reporters/sematext-spm/
-  - topic: Span Reporters
-    pages:
-      - name: Zipkin
-        path: /reporters/zipkin/
-      - name: Jaeger
-        path: /reporters/jaeger/
+  reporters:
+    - topic: Combined Reporters
+      pages:
+        - name: Kamon APM
+          path: /reporters/apm/
+    - topic: Metric Reporters
+      pages:
+        - name: Prometheus
+          path: /reporters/prometheus/
+        - name: InfluxDB
+          path: /reporters/influxdb/
+        - name: StatsD
+          path: /reporters/statsd/
+        - name: Datadog
+          path: /reporters/datadog/
+        - name: Sematext SPM
+          path: /reporters/sematext-spm/
+    - topic: Span Reporters
+      pages:
+        - name: Zipkin
+          path: /reporters/zipkin/
+        - name: Jaeger
+          path: /reporters/jaeger/

@@ -2,7 +2,8 @@
 layout: post
 title: 'Kamon 0.6.0 is finally here, download while still hot!'
 date: 2016-03-29
-categories: teamblog, releases
+author: the Kamon Team
+categories: releases
 redirect_from:
   - /teamblog/2016/03/29/kamon-0-6-0-is-finally-here/
 ---
@@ -19,7 +20,7 @@ people around the world using Kamon and providing great feedback and fixes. To
 all of you: Thank You!
 
 We plan to publish follow-up posts digging into some of the most relevant
-features of the release but if you are anxious, here is a extract from our
+features of the release but if you are anxious, here is an extract from our
 changelog:
 
 

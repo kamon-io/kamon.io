@@ -1,0 +1,26 @@
+{% assign latest_docs_paths = site.data.docs.latest.documentation | jsonify %}
+{% assign v1_docs_paths = site.data.docs.v1.documentation | jsonify %}
+
+<script>
+  function extractPathsForDocumentationVersion(rawDocumentationData) {
+    var documentationPaths = [];
+    for (var key of Object.keys(rawDocumentationData)) {
+      for (var topic of rawDocumentationData[key]) {
+        for (var page of topic.pages) {
+          if (page.pages == null) {
+            documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name}`, link: page.path});
+          } else {
+            for (var subPage of page.pages) {
+              documentationPaths.push({ name: `${key} - ${topic.topic} - ${page.name} - ${subPage.name}`, link: subPage.path });
+            }
+          }
+        }
+      }
+    }
+    return documentationPaths;
+  }
+
+  window.kamonDocumentationPaths = {}
+  window.kamonDocumentationPaths.latest = extractPathsForDocumentationVersion({{ latest_docs_paths }})
+  window.kamonDocumentationPaths.v1 = extractPathsForDocumentationVersion({{ v1_docs_paths }})
+</script>

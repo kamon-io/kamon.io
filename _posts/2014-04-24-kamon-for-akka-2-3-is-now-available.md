@@ -2,6 +2,7 @@
 layout: post
 title: Kamon for Akka 2.3 is now available!
 date: 2014-04-24
+author: the Kamon Team
 categories: teamblog
 tags: announcement
 redirect_from:

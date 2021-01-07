@@ -4,103 +4,167 @@ layout: default
 {% assign path_sections = page.url | split: '/' %}
 {% assign current_version = path_sections[2] %}
 {% assign current_section = path_sections[3] | remove_first: '.html' %}
-{% assign sidebar_data = site.data.docs[current_version][current_section] %}
+{% assign sidebar_data = site.data.docs[current_version].documentation[current_section] %}
+{% assign documentation_data = site.data.docs[current_version].documentation %}
+{% assign all_sections = 'guides, core, instrumentation, reporters' | split: ', ' %}
 {% assign version_prefix = page.path | split: '/' | slice: 0, 2 | join: '/' %}
 {% assign current_pretty_path = page.url | remove_first: '.html' %}
 
-<div class="docs-header-bar">
-  <div class="container">
-    <div id="docs-title" class="row">
-      <div class="col mt-4">
-        <h4>Documentation</h4>
+<div class="d-none d-lg-block docs-title-background">
+  <div class="docs-title-content default-content-container mt-0">
+    <h1>Documentation</h1>
+      <div class="w-25">
+        {% include docs-version-select.html %}
       </div>
-    </div>
-    <div class="row mt-2">
-      <div id="docs-navigation-links" class="col docs-header-bar-tabs">
-        <ul>
-          <li>
-            <a class="{% if current_section == 'overview' %}active{% endif %}" href="/docs/{{current_version}}/overview/">OVERVIEW</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'guides' %}active{% endif %}" href="/docs/{{current_version}}/guides/">GUIDES</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'core' %}active{% endif %}" href="/docs/{{current_version}}/core/">CORE</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'instrumentation' %}active{% endif %}" href="/docs/{{current_version}}/instrumentation/">INSTRUMENTATION</a>
-          </li>
-          <li>
-            <a class="{% if current_section == 'reporters' %}active{% endif %}" href="/docs/{{current_version}}/reporters/">REPORTERS</a>
-          </li>
-          <!-- <li>
-            <a class="{% if current_section == 'apm' %}active{% endif %}" href="/docs/{{current_version}}/apm/">APM</a>
-          </li> -->
-        </ul>
-      </div>
-      <div class="col-auto docs-version-dropdown">
-        <div class="dropdown show">
-          <a class="dropdown-toggle text-uppercase" href="" role="button" id="versionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ current_version }} DOCS
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionsDropdown">
-            <a class="dropdown-item text-color-subtitle" href="/docs/latest/overview/">Latest (2.0 Series)</a>
-            <a class="dropdown-item text-color-subtitle" href="/docs/v1/overview/">Previous (1.x Series)</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
-<div class="container mt-5 docs-container">
-  <div class="row">
-    {% if sidebar_data %}
-      <div id="docs-sidebar" class="col docs-sidebar-nav d-none d-lg-block">
-        <ul class="docs-sections">
-          {% for topic in sidebar_data %}
-            <li class="mb-4">
-              <div class="level-one section-title">{{ topic.topic }}</div>
-                <ul>
-                  {% for topic_page in topic.pages %}
-                    {% if topic_page.pages %}
-                      <li>
-                        <div class="level-two">{{topic_page.name}}</div>
-                        <ul>
-                          {% for topic_sub_page in topic_page.pages %}
-                            {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
-                            <li>
-                              <a class="level-three" href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
-                              {% if topic_sub_page_path == current_pretty_path %}
-                                <div id="toc-container" class="level-three-margin page-toc"></div>
-                              {% endif %}
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </li>
+<nav id="docs-header" class="d-none d-lg-block docs-navbar">
+  <div class="d-flex h-100 justify-content-center default-content-container mt-0">
+    <div class="row no-gutters docs-header-content align-items-center w-100">
+      <div class="col-9 h-100">
+        <ul class="h-100 d-flex">
+          <li class="{% if current_section == 'guides' %}active{% endif %} d-flex align-items-center">
+            <a href="/docs/{{current_version}}/guides/"><b>Guides</b></a>
+          </li>
+          <li class="{% if current_section == 'core' %}active{% endif %} d-flex align-items-center">
+            <a href="/docs/{{current_version}}/core/"><b>Core</b></a>
+          </li>
+          <li class="{% if current_section == 'instrumentation' %}active{% endif %} d-flex align-items-center">
+            <a href="/docs/{{current_version}}/instrumentation/"><b>Instrumentation</b></a>
+          </li>
+          <li class="{% if current_section == 'reporters' %}active{% endif %} d-flex align-items-center">
+            <a href="/docs/{{current_version}}/reporters/"><b>Reporters</b></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        {% include docs-search.html id="desktop" %}
+      </div>
+    </div>
+  </div>
+</nav>
 
-                    {% else %}
-                      {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
-                      <li>
-                        <a class="level-two" href="{{topic_page_path}}">{{topic_page.name}}</a>
-                        {% if topic_page_path == current_pretty_path %}
-                          <div id="toc-container" class="level-two-margin page-toc"></div>
-                        {% endif %}
-                      </li>
+<nav class="d-lg-none mobile-docs-navbar">
+  <div class="d-flex align-items-center px-4 h-100">
+    <button id="mobile-docs-navigation-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <img src="/assets/img/icons/docs-mobile-menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
+    </button>
+  </div>
+</nav>
+
+<div class="d-lg-none collapse navbar-collapse w-100 p-4" id="mobile-docs-navigation">
+  <h4>Documentation</h4>
+  <div>
+    {% include docs-version-select.html %}
+  </div>
+  <div class="mt-2">
+    {% include docs-search.html id="mobile" %}
+  </div>
+  <div class="p-1 docs-mobile-navigation-container">
+    {% for section in all_sections %}
+      <div class="section-collapse {% if section != current_section %}collapsed{% endif %}" id="section-collapse-heading-{{ section }}" aria-expanded="{% if section == current_section %}true{% else %}false{% endif %}" data-toggle="collapse" data-target="#section-collapse-text-{{ section }}" aria-controls="section-collapse-text-{{ section }}">
+        <div class="d-flex justify-content-between w-100 mt-3 text-dark-2">
+          <h6 class="text-capitalize">{{ section }}</h6>
+          <i class="fa fa-angle-down"></i>
+          <i class="fa fa-angle-up"></i>
+        </div>
+      </div>
+
+      <div id="section-collapse-text-{{ section }}" class="collapse pl-3 {% if section == current_section %}show{% endif %}" aria-labelledby="section-collapse-heading-{{ section }}" data-parent="#section-collapse-heading-{{ section }}">
+        <ul class="mobile-docs-navigation-sections pr-2">
+          {% for topic in site.data.docs[current_version].documentation[section] %}
+          <li class="mb-4">
+            <div class="text-all-uppercase text-dark-3">{{ topic.topic }}</div>
+            <ul>
+              {% for topic_page in topic.pages %}
+                {% if topic_page.pages %}
+                  <li>
+                    <div class="text-dark-3">{{topic_page.name}}</div>
+                    <ul>
+                      {% for topic_sub_page in topic_page.pages %}
+                        {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
+                        {% assign current_path = current_pretty_path | append: '/' %}
+                        <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
+                          <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
+                          {% if topic_sub_page_path == current_path %}
+                          <div id="markdown-toc-container-mobile"></div>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+
+                {% else %}
+                  {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
+                  {% assign current_path = current_pretty_path | append: '/' %}
+                  <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
+                    <a href="{{topic_page_path}}">{{topic_page.name}}</a>
+                    {% if topic_page_path == current_path %}
+                      <div id="markdown-toc-container-mobile"></div>
                     {% endif %}
-                  {% endfor %}
-              </ul>
-            </li>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
           {% endfor %}
         </ul>
       </div>
+      <hr/>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="default-content-container mb-5 mt-lg-5 docs-container px-0">
+  <div class="row">
+    {% if sidebar_data %}
+      <div id="docs-sidebar" class="d-none d-lg-block col-3 docs-sidebar-nav d-none d-lg-block sticky-docs-navbar p-1 text-body-smaller">
+        <div class="docs-sidebar-scroll">
+          <ul class="docs-sections pr-2">
+            {% for topic in sidebar_data %}
+              <li class="mb-4">
+                <div class="text-all-uppercase text-dark-3 my-3">{{ topic.topic }}</div>
+                  <ul>
+                    {% for topic_page in topic.pages %}
+                      {% if topic_page.pages %}
+                        <li>
+                          <div class="text-dark-3">{{topic_page.name}}</div>
+                          <ul>
+                            {% for topic_sub_page in topic_page.pages %}
+                              {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
+                              {% assign current_path = current_pretty_path | append: '/' %}
+                              <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
+                                <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
+                                {% if topic_sub_page_path == current_path %}
+                                  <div id="markdown-toc-container"></div>
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </li>
+
+                      {% else %}
+                        {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
+                        {% assign current_path = current_pretty_path | append: '/' %}
+                        <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
+                          <a href="{{topic_page_path}}">{{topic_page.name}}</a>
+                          {% if topic_page_path == current_path %}
+                            <div id="markdown-toc-container"></div>
+                          {% endif %}
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     {% endif %}
 
-    <div class="{% if sidebar_data %}col pl-lg-5 {% else %}col-12{% endif %} docs-content">
+    <div id="docs-content" class="{% if sidebar_data %}col-12 col-lg-9 pl-lg-5 {% else %}col-12{% endif %} markdown-content">
       {{ content }}
     </div>
   </div>
 </div>
-
-{% include footer-starter-cta.html %}

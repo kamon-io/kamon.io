@@ -100,7 +100,7 @@ __Using the consumerSpan Function__
 
 If the `runWithConsumerSpan` function doesn't match your execution model, you can use the `consumerSpan` function to 
 create a new consumer Span with all the tags and info described above, but you will be in charge of managing that Span
-programatically. 
+programmatically. 
 
 You probably will want to use the `Kamon.runWithSpan` function (or similar) when creating spans like this.
 
@@ -112,7 +112,7 @@ import the `KafkaInstrumentation.Syntax` implicit class:
 
 
 {% code_block scala %}
-// Extracing the incoming Context from a consumer record:
+// Extracting the incoming Context from a consumer record:
 val incomingContext = KafkaInstrumentation.extractContext(record)
 
 // Or, importing KafkaInstrumentation.Syntax

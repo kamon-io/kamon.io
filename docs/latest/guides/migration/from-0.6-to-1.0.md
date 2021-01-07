@@ -61,7 +61,7 @@ to split these into individual metrics because not a single metrics platform sup
 
 Kamon followed the trend and moved to a simpler model that at its core has just a metric name and a set of tags that
 uniquely identify each metric. Metrics returned by the `Kamon` companion object don't have any tags associated to
-them and you will need to `.refine(...)` them if you want to get a incarnation with a specific set of tags:
+them and you will need to `.refine(...)` them if you want to get an incarnation with a specific set of tags:
 
 {% code_block scala %}
 val myCustomMetric = Kamon.histogram("my.custom.metric", time.nanoseconds)
@@ -130,9 +130,9 @@ this makes it better suited for tracking variables that move slowly or not at al
 ### Propagation of Context instead of TraceContext
 
 Everything you saw in the past related to TraceContext propagation has a twist now: there is no TraceContext anymore and
-instead we now have a more general `Context` abstraction that is propagated. The `Context` is like a immutable map of
+instead we now have a more general `Context` abstraction that is propagated. The `Context` is like an immutable map of
 keys and values, sort of `Map[Key[T], T]`. You must have a `Key` instance in order to create new contexts with a given
-entry and to retrieve entries from a existent `Context` instance. The `currentTraceContext` is now the `currentContext`
+entry and to retrieve entries from an existent `Context` instance. The `currentTraceContext` is now the `currentContext`
 and from they you can get what you need.
 
 One additional feature on the new `Context` is the keys can be defined to be either:

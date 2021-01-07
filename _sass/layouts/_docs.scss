@@ -1,0 +1,276 @@
+.docs-title-background {
+  height: 11rem;
+  background-color: $color-light-3;
+  margin-top: $navbar-height;
+
+  .docs-title-content {
+    // max-width: 992px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-bottom: 1px solid transparent;
+
+    .docs-layout-version-select {
+      .docs-version-select {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.fixed-docs-header {
+  position: fixed;
+  top: $navbar-height;
+  width: 100%;
+}
+
+body.has-notification {
+  $notification-bar-height: 40px;
+
+  .docs-title-background {
+    margin-top: $navbar-height + $notification-bar-height;
+  }
+
+  .fixed-docs-header {
+    position: fixed;
+    top: $navbar-height + $notification-bar-height;
+    width: 100%;
+  }
+
+  .sticky-docs-navbar {
+    top: calc(57px + 52px + 40px + 3rem);
+  }
+}
+
+.docs-navbar {
+  background-color: $color-light-4;
+  border-bottom: 1px solid $color-light-1;
+  z-index: 101;
+  height: 52px;
+
+  .docs-header-content {
+    max-width: 1200px;
+
+    ul {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+    }
+
+    li {
+      white-space:nowrap;
+
+      &.active {
+        border-bottom: 2px solid $color-shamrock-main;
+        margin-bottom: -1px;
+      }
+
+      a {
+        color: $color-dark-2;
+        display: inline-block;
+        line-height: 2rem;
+        padding: 0 1rem;
+
+        &.active, &.active:hover {
+          text-decoration: none;
+          color: $color-dark-2;
+          border-bottom-color: $color-shamrock-main;
+        }
+
+        &:hover {
+          text-decoration: none;
+          color: $color-dark-2;
+        }
+      }
+    }
+  }
+}
+
+.docs-sidebar-nav {
+  background-color: $color-light-3;
+  border-radius: 8px;
+  max-height: calc(676px + 0.5rem);
+
+  .docs-sidebar-scroll {
+    max-height: 676px;
+    @include custom-scrollbar;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+
+    li {
+      margin-top: 0.5rem;
+
+      &.docs-section-link {
+
+        &:not(:first-of-type) {
+          margin-top: 0;
+        }
+
+        a {
+          height: 100%;
+          padding-left: 0.5rem;
+          border-left: remSize(2) solid $color-light-0;
+
+          &.active {
+            border-left: remSize(2) solid $color-shamrock-main;
+          }
+        }
+      }
+
+      a {
+        color: $color-dark-1;
+      }
+    }
+  }
+
+  #markdown-toc-container {
+    ul {
+      padding-left: 0 !important;
+
+      li {
+        margin-top: 0 !important;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  // BIG GREEN BORDER STUFF (more like design, but very in your face)
+  //.current-active-topic {
+  //  background-color: $color-shamrock-main;
+  //  border-radius: 8px;
+  //  margin-top: 0.75rem;
+  //  margin-bottom: -0.25rem;
+  //  margin-left: -1rem;
+  //  padding-top: 0.25rem;
+  //  padding-bottom: 0.25rem;
+  //  padding-left: 1rem;
+  //  a {
+  //    color: $color-light-4;
+  //  }
+  //}
+}
+
+.current-active-topic > a {
+  color: $color-shamrock-main !important;
+  font-weight: bold;;
+}
+
+.sticky-docs-navbar {
+  position: sticky;
+  top: calc(57px + 52px + 3rem);
+}
+
+.mobile-docs-navbar {
+  background-color: $color-light-4;
+  border-bottom: 1px solid $color-light-1;
+  z-index: 101;
+  height: 52px;
+  position: fixed;
+  top: $navbar-height;
+  width: 100%;
+}
+
+#mobile-docs-navigation {
+  position: fixed;
+  top: calc(57px + 52px);
+  background-color: $color-light-3;
+  z-index: 1001;
+
+  height: calc(100% - 57px - 52px);
+  @include custom-scrollbar;
+}
+
+.docs-container {
+  @media (max-width: $md-max) {
+    margin-top: calc(57px + 52px + 1rem) !important;
+  }
+
+  h1 {
+    font-size: remSize(34);
+    line-height: remSize(38);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(20);
+      line-height: remSize(24);
+    }
+  }
+  
+  h2 {
+    margin-top: 2rem;
+    font-size: remSize(26);
+    line-height: remSize(30);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(16);
+      line-height: remSize(20);
+    }
+  }
+  
+  h3 {
+    margin-top: 2rem;
+    font-size: remSize(24);
+    line-height: remSize(30);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h4 {
+    font-size: remSize(18);
+    line-height: remSize(22);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h5 {
+    font-size: remSize(15);
+    line-height: remSize(20);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(15);
+      line-height: remSize(20);
+    }
+  }
+  
+  h6 {
+    font-size: remSize(14);
+    line-height: remSize(18);
+  
+    @media (max-width: $xs-max) {
+      font-size: remSize(14);
+      line-height: remSize(18);
+    }
+  }
+}
+
+.docs-mobile-navigation-container {
+
+  ul {
+    list-style: none;
+    padding-left: 1.5rem;
+
+    li {
+      margin-top: 1rem;
+
+      a {
+        color: $color-dark-1;
+      }
+    }
+  }
+
+  .section-collapse {
+    cursor: pointer;
+    @include angle-up-down-expanders;
+  }
+}

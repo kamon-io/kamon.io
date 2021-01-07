@@ -1,0 +1,74 @@
+.featured-post-summary-image {
+  border-radius: 8px;
+  height: 100px;
+  overflow: hidden;
+
+  @media (min-width: $sm-start) {
+    height: 200px;
+  }
+
+  @media (min-width: $md-start) {
+    height: 300px;
+  }
+
+  @media (min-width: $lg-start) {
+    width: 100%;
+    height: 100%;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    &.releases {
+      background: $color-yellow-1 url("/assets/img/background/cubes-background-pattern-lighter.svg") no-repeat center;
+    }
+
+    &.posts {
+      background: $color-blue-1 url("/assets/img/background/waves-background-pattern.svg") no-repeat bottom right;
+    }
+
+    &.teamblog {
+      background: $color-green-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat center;
+    }
+  }
+
+}
+
+.blog-card {
+
+  .blog-card-content {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-card-summary-image {
+    width: 100%;
+    height: 200px;
+
+    @media (max-width: $xs-max) {
+      height: 100px;
+    }
+
+    &.releases {
+      background: $color-yellow-1 url("/assets/img/background/cubes-background-pattern-lighter.svg") no-repeat center;
+    }
+
+    &.posts {
+      background: $color-blue-1 url("/assets/img/background/waves-background-pattern.svg") no-repeat bottom right;
+    }
+
+    &.teamblog {
+      background: $color-green-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat center;
+    }
+  }
+
+  .blog-card-text {
+    height: calc(100% - 200px);
+
+    @media (max-width: $xs-max) {
+      height: calc(100% - 100px);
+    }
+  }
+}

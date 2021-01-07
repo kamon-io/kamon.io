@@ -102,7 +102,7 @@ terms) which tells you at which point the message was dequeued from mailbox to s
 
 ### You made it!
 
-That's it, you are now collecting metrics and tracing information from a Akka application. Next step: try it on your own
+That's it, you are now collecting metrics and tracing information from an Akka application. Next step: try it on your own
 application, have fun and let us know if anything goes wrong!
 
 [1]: https://developer.lightbend.com/start/?group=akka&project=akka-quickstart-scala

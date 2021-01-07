@@ -1,0 +1,38 @@
+// BOOTSTRAP THEME COLOR OVERRIDES
+$theme-colors: (
+  "primary": $color-shamrock-main,
+  "danger": $color-red-0,
+  "light": $color-light-4,
+  "secondary": $color-light-0,
+  "warning": $color-yellow-1,
+);
+
+$btn-font-weight: $typography-weight-semi-bold;
+$btn-border-radius: remSize(8);
+$btn-border-radius-lg: remSize(8);
+$btn-border-radius-sm: remSize(8);
+
+$link-color: $color-azure-radiance-main;
+$link-hover-color: $color-azure-radiance-darker;
+$link-hover-decoration: none;
+
+$navbar-nav-link-padding-x: remSize(20);
+$navbar-nav-link-padding-y: remSize(8);
+$nav-link-height: remSize(40);
+$nav-link-padding-x: remSize(20);
+$nav-link-padding-y: remSize(8);
+
+a.btn-primary {
+  color: $color-light-4;
+}
+
+a.btn-light {
+  color: $color-dark-2;
+}
+
+a.nav-link:not(.btn) {
+  color: $color-dark-2;
+  font-size: remSize(14);
+  line-height: remSize(16);
+  font-weight: $typography-weight-semi-bold;
+}

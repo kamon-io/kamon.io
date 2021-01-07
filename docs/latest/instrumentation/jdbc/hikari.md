@@ -11,7 +11,7 @@ Hikari CP Instrumentation
 =========================
 
 As part of the JDBC instrumentation, Kamon can automatically gather performance metrics out of Hikari connection pools
-and use the pool information when creating Spans from Statements exection.
+and use the pool information when creating Spans from Statements execution.
 
 Metrics
 -------

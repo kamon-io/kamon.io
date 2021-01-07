@@ -2,6 +2,7 @@
 layout: post
 title: Bugfix Release - Kamon 0.3.3/0.2.3 is out!
 date: 2014-07-29
+author: the Kamon Team
 categories: teamblog
 tags: announcement
 redirect_from:
@@ -10,7 +11,7 @@ redirect_from:
 
 Dear users, the Kamon 0.3.2/0.2.2 release that went out last week turned out to have two problems:
 
-  * A NullPointerException was thrown when a actor is stopped (see [issue 69]).
+  * A NullPointerException was thrown when an actor is stopped (see [issue 69]).
   * User metrics were not being reported to StatsD and Datadog.
   * The `kamon-system-metrics` module artifacts didn't include all the Sigar related files.
 

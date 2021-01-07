@@ -27,7 +27,7 @@ that can be scraped with Prometheus and send trace data to Zipkin. Let's get sta
 
 ## Add the Kamon Libraries
 
-This examples is using Akka 2.5, we will need to add `kamon-akka-2.5` to our build as shown here:
+This example is using Akka 2.5, we will need to add `kamon-akka-2.5` to our build as shown here:
 
 {% code_example %}
 {%   language scala guides/frameworks/elementary-akka-setup/build.sbt tag:base-dependencies label:"Adding the Dependencies" %}
@@ -109,7 +109,7 @@ terms) which tells you at which point the message was dequeued from mailbox to s
 
 ### You made it!
 
-That's it, you are now collecting metrics and tracing information from a Akka application. Next step: try it on your own
+That's it, you are now collecting metrics and tracing information from an Akka application. Next step: try it on your own
 application, have fun and let us know if anything goes wrong!
 
 [1]: https://developer.lightbend.com/start/?group=akka&project=akka-quickstart-scala

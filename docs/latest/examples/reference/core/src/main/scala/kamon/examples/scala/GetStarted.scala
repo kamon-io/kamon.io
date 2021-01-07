@@ -6,9 +6,9 @@ import kamon.zipkin.ZipkinReporter
 
 object GetStarted extends App {
   // tag:get-started-metrics:start
-  val myHistogram = Kamon.histogram("my.histogram")
-  val myCounter = Kamon.counter("my.counter")
-  val myTaggedCounter = Kamon.counter("my.tagged.counter").refine("env" -> "test")
+  val myHistogram = Kamon.histogram("my.histogram").withoutTags()
+  val myCounter = Kamon.counter("my.counter").withoutTags()
+  val myTaggedCounter = Kamon.counter("my.tagged.counter").withTag("env", "test")
 
   myHistogram.record(42)
   myHistogram.record(50)
@@ -18,7 +18,7 @@ object GetStarted extends App {
 
 
   // tag:get-started-spans:start
-  val span = Kamon.buildSpan("my.operation").start()
+  val span = Kamon.spanBuilder("my.operation").start()
   // Do some work here
   span
     .tag("key", "value")
@@ -26,7 +26,7 @@ object GetStarted extends App {
   // tag:get-started-spans:end
 
   // tag:get-started-reporters:start
-  Kamon.addReporter(new PrometheusReporter())
-  Kamon.addReporter(new ZipkinReporter())
+  Kamon.registerModule("Foo", new PrometheusReporter())
+  Kamon.registerModule("Bar", new ZipkinReporter())
   // tag:get-started-reporters:end
 }

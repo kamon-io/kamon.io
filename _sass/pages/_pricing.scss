@@ -1,0 +1,90 @@
+.pricing-page {
+
+  .billing-type-toggle {
+
+    h6, label {
+      margin-bottom: 0;
+    }
+
+    .billed-annually-switch {
+      position: relative;
+      display: inline-block;
+      min-width: 64px;
+      max-width: 64px;
+      min-height: 32px;
+      max-height: 32px;
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .billed-annually-switch::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius:50%;
+      background-color: white;
+      top: 4px;
+      left: 4px;
+      transition: all 0.3s;
+    }
+
+    .billed-annually-checkbox:checked + .billed-annually-switch::after {
+      left : 36px;
+    }
+
+    .billed-annually-checkbox:checked + .billed-annually-switch {
+      background-color: $color-shamrock-main;
+    }
+
+    .billed-annually-checkbox {
+      display : none;
+    }
+  }
+
+  .thick-line {
+    width: 100%;
+    height: 0.3rem;
+
+    &.background-shamrock {
+      background-color: $color-shamrock-main;
+    }
+    &.background-azure-radiance {
+      background-color: $color-azure-radiance-main;
+    }
+    &.background-everglade {
+      background-color: $color-everglade-main;
+    }
+  }
+
+  .faq-question-container {
+    border-bottom: 1px solid $color-light-1;
+    padding: 1rem;
+
+    p {
+      margin-top: 1rem;
+    }
+
+    .faq-question-header {
+      cursor: pointer;
+      @include angle-up-down-expanders;
+    }
+  }
+}
+
+.pricing-banner-background {
+  background-color: $color-shamrock-main;
+  border-radius: 8px;
+  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+  color: $color-light-4;
+  background-image: url("/assets/img/background/cubes-pattern.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 2rem;
+
+  @media (min-width: $md-start) {
+    padding: 3rem;
+  }
+}

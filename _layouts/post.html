@@ -1,18 +1,63 @@
 ---
-layout: blog
+layout: default
 ---
 
-<div class="container post-content">
-  <div class="row pt-3">
-    <div class="col-12 col-md-10 py-3">
-      <h1>{{ page.title }}</h1>
-      <h6 class="text-color-caption">Published on {{ page.date | date: "%B %e, %Y" }} </h6>
+<div class="background-top-gray"></div>
+<main class="default-content-container post-container">
+  <section>
+    <div class="row no-gutters">
+      <div class="col-12 col-lg-8">
+        <h1 class="pr-lg-4">{{ page.title }}</h1>
+      </div>
+      <div class="col-12 col-lg-4 pl-lg-5">
+        <div class="d-flex">
+          <img width="50" height="50" class="mr-3" src="{% if page.author == 'the Kamon Team' %}/assets/img/kamon/kamon-avatar.svg{% else %}/assets/img/kamon/green-circle.svg{% endif %}" alt="Author avatar"/>
+          <div class="publish-details">
+            <p class="text-lead text-dark-1">by {{ page.author }}</p>
+            <p class="text-body-smaller">{{ page.date | date: "%B %e, %Y" }} </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="col-12 col-md-10">
-      {{ content }}
+    {% if page.cover_image %}
+    <div class="mt-5">
+      <img class="image-100-auto" src="{{ page.cover_image }}" alt="post cover image"/>
     </div>
-  </div>
-</div>
+    {% endif %}
 
-{% include footer-starter-cta.html %}
+    <div class="row no-gutters mt-5">
+      <div class="col-12 col-lg-8">
+        <div class="markdown-content post-content">{{ content }}</div>
+      </div>
+      <div class="col-12 col-lg-4 pl-lg-5">
+        <div class="sticky-posts-actions">
+          <div class="d-none d-lg-block text-center p-5 start-monitoring-card-small">
+            <h5 class="text-dark-1">Monitor up to 5 services for free</h5>
+            <p class="text-body-smaller mt-3">Get everything you need to monitor <b>Akka</b> and <b>Play Framework</b> services with Kamon APM</p>
+            <a class="btn btn-primary mt-3 text-white onboarding-start-button" href="#">Start Monitoring</a>
+          </div>
+          <div class="mt-5">
+            <h6>Share this post</h6>
+            <div class="flex">
+              <a href="/" class="share-button twitter-share" target="_blank"></a>
+              <a href="/" class="share-button reddit-share" target="_blank"></a>
+              <a href="/" class="share-button linkedin-share" target="_blank"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include start-monitoring-banner.html %}
+
+</main>
+
+<script>
+  document.addEventListener("readystatechange", function() {
+    $(".twitter-share").prop("href", "https://twitter.com/intent/tweet?url=" + encodeURIComponent(location.href))
+    $(".reddit-share").prop("href", "https://www.reddit.com/submit?title=" + encodeURIComponent(document.title) + "&url=" + encodeURIComponent(location.href))
+    $(".linkedin-share").prop("href", "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(location.href))
+  })
+</script>

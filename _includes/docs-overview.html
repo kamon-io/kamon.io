@@ -1,0 +1,112 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign current_version = path_sections[2] %}
+
+<div class="background-top-gray"></div>
+<main class="default-content-container">
+  <section class="text-xl-center">
+    <h1>Hello, <span class="text-primary">Welcome</span> Aboard!</h1>
+    <p class="d-inline-block w-xl-75">
+      All you need to know to start using Kamon is here.
+      There is a bunch of information around and we tried to organize it in a few simple groups that should get you faster to your goals.
+      Where do you want to go?
+    </p>
+
+    <div class="d-inline-block w-xl-50">
+      <div class="form-row mt-5">
+        <div class="col-12 col-md-4">
+          {% include docs-version-select.html %}
+        </div>
+        <div class="col-12 mt-3 mt-md-0 col-md">
+          {% include docs-search.html %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row no-gutters flex-wrap">
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-guides.svg"
+      alt="Guides icon"
+      title="Guides"
+      text="
+      This is a good place to go if you are just getting
+      started with Kamon or if you are interested in
+      a quick path to getting telemetry data out of
+      your services.
+      "
+      link="/guides/"
+      %}
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-core-reference.svg"
+      alt="Core reference icon"
+      title="Core Reference"
+      text="
+      The core reference is what you need if you want
+      to start doing manual instrumentation or to
+      understand why Kamon works the way it does.
+      "
+      link="/core/"
+      %}
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-reports.svg"
+      alt="Reporters icon"
+      title="Reporters"
+      text="
+      Here you can find how to send all of
+      Kamon's telemetry data to your solution of choice.
+      "
+      link="/reporters/"
+      %}
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-instrumentation-docs.svg"
+      alt="Instrumentation icon"
+      title="Instrumentation"
+      text="
+      Here is a comprehensive list of all
+      instrumentation modules available in Kamon,
+      including what features they bring and how to
+      use and configure them.
+      "
+      link="/instrumentation/"
+      %}
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-older-versions-docs.svg"
+      alt="Older docs version icon"
+      title="Older Versions"
+      text="
+      This website contains documentation for
+      Kamon 1.1 and newer versions. If you need
+      information for previous versions please
+      head over to archive.kamon.io
+      "
+      link="https://archive.kamon.io/documentation/get-started/"
+      outer_link=true
+      %}
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+      {% include docs-card-with-icon.html
+      icon="/assets/img/pages/docs/icon-github-docs.svg"
+      alt="Github icon"
+      title="Find us on GitHub!"
+      text="GitHub Collaboration - let's plan a party!"
+      link="https://github.com/kamon-io/Kamon"
+      outer_link=true
+      %}
+    </div>
+  </section>
+
+</main>

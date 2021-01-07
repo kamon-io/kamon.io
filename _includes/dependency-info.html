@@ -1,8 +1,8 @@
-<div class="code-example my-3">
-<ul class="nav nav-tabs language-tab" role="tablist">
-<li class="nav-item c-pointer active"><a class="nav-link active show" data-toggle="tab" data-target="#{{ include.prefix }}_sbt_library" role="tab" aria-selected="false">SBT</a></li>
-<li class="nav-item c-pointer"><a class="nav-link" data-toggle="tab" data-target="#{{ include.prefix }}_maven_library" role="tab" aria-selected="false">Maven</a></li>
-<li class="nav-item c-pointer"><a class="nav-link" data-toggle="tab" data-target="#{{ include.prefix }}_gradle_library" role="tab" aria-selected="true">Gradle</a></li>
+<div class="code-example my-3 code-example-container">
+<ul class="nav nav-pills language-tab tab-header" role="tablist">
+<li class="nav-item cursor-pointer active"><a class="nav-link btn btn-secondary btn-sm language-btn active show" data-toggle="tab" data-target="#{{ include.prefix }}_sbt_library" role="tab" aria-selected="false">SBT</a></li>
+<li class="nav-item cursor-pointer"><a class="nav-link btn btn-secondary btn-sm language-btn" data-toggle="tab" data-target="#{{ include.prefix }}_maven_library" role="tab" aria-selected="false">Maven</a></li>
+<li class="nav-item cursor-pointer"><a class="nav-link btn btn-secondary btn-sm language-btn" data-toggle="tab" data-target="#{{ include.prefix }}_gradle_library" role="tab" aria-selected="true">Gradle</a></li>
 </ul>
 <div class="tab-content">
 
@@ -46,4 +46,5 @@ implementation 'io.kamon:{{ include.module }}_2.12:{{ include.version }}'
 </div>
 
 </div>
+<div class="tab-footer"><div class="fa fa-copy"></div></div>
 </div>

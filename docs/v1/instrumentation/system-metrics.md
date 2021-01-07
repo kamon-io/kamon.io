@@ -47,9 +47,9 @@ correctly when updated in intervals of less than a second. In the sections below
 metrics that typically should be recorded with a gauge, but that we couldn't allow because of the need to have a tight
 control on timings and thread-safety.
 
-<p class="alert alert-warning">
+{% alert warning %}
 In the case that <b>Sigar</b> can't obtain some metric in the host, we will log a warning indicating the error and the metric name.
-</p>
+{% endalert %}
 
 ### cpu ###
 * __user__: a histogram tracking total percentage of system cpu user time.
@@ -120,7 +120,7 @@ metrics include:
 Depending on your specific instance configuration, the available garbage collectors will differ, but the same set of
 metrics are recorded regardless of the collector in place.
 
-* __garbage-collection-count__: a gauge tracking the number of garbage collections that have ocurred.
+* __garbage-collection-count__: a gauge tracking the number of garbage collections that have occurred.
 * __garbage-collection-time__: a gauge tracking the time spent in garbage collections, measured in milliseconds.
 
 

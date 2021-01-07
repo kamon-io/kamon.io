@@ -29,22 +29,18 @@ request.
 Context keys are used to create new Context instances and to retrieve items from the Context. All keys encode four
 pieces of information required for Context propagation to work:
   - The key name. Key names must be unique and they will be used on configuration settings.
-  - The scope, be it `local` or `broadcast`. Local Context keys will only be propagated within the process running the
-    service while broadcast Context keys will be automatically propagated across process boundaries.
   - The value type. The return value of `.get(...)` calls is tied to the Key.
   - The default value. This is the value to be returned when retrieving a key that doesn't exist in the Context.
 
-Keys are created by calling the appropriate methods on the `Key` companion object:
+Keys are created by calling the appropriate methods on the `Context` companion object:
 
 {% code_example %}
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:context-keys label:"Scala" %}
 {% endcode_example %}
 
-There are three keys defined in the example above:
-  - `UserID` as a local key, with type `String` and a default value of `"undefined"`. This key will always be propagated
-    with the context within the same process.
-  - `SessionID` as a broadcast key, with type `Option[Int]` and a default value of `None`. This key will always be
-    propagated within the same process and across processes.
+There are three keys defined in the example above.:
+  - `UserID` as a key, with type `String` and a default value of `"undefined"`. 
+  - `SessionID` as a key, with type `Option[Int]` and a default value of `None`. 
   - `RequestID` uses a shorter syntax for the very common case of having a broadcast key with type `Option[String]`.
 
 It is recommended (although not necessary) to create Context keys as static members and reuse the key instance wherever
@@ -83,16 +79,16 @@ might cause subsequent requests to see a previous and completely unrelated Conte
 
 A `Context` instance can become the current context by using any of the following methods:
   - `Kamon.storeContext(context)` which returns a `Scope` instance that must be manually closed.
-  - `Kamon.withContext(context) { ... }` which takes a Context instance and makes it current while the code block executes.
-  - `Kamon.withContextKey(key, value) { ... }` creates a new Context by adding the provided key to the current Context
+  - `Kamon.runWithContext(context) { ... }` which takes a Context instance and makes it current while the code block executes.
+  - `Kamon.runWithContextEntry(key, value) { ... }` creates a new Context by adding the provided key to the current Context
     and makes it current while the code block executes.
-  - `Kamon.withSpan(span) { ... }` is similar to the above but explicitly works with the Span context Key.
+  - `Kamon.runWithSpan(span) { ... }` is similar to the above but explicitly works with the Span context Key.
 
 {% code_example %}
 {%   language scala reference/core/src/main/scala/kamon/examples/scala/ContextBasics.scala tag:storing-a-context label:"Scala" %}
 {% endcode_example %}
 
-It is recommended to use the `Kamon.withXxx()` variants as they will ensure that Scopes will be closed appropriately.
+It is recommended to use the `Kamon.runWithXxx()` variants as they will ensure that Scopes will be closed appropriately.
 
 
 
@@ -142,5 +138,5 @@ A few important details to know when creating custom codecs:
   - The `encode` function might return an empty `TextMap` or `ByteBuffer` if the provided Context doesn't contain the
     key that a codec is responsible for.
   - The `decode` function is expected to use the provided Context instance as a base for its return value. Typically a
-    codec will try to read a value from the medium and either return the result of `context.withKey(key, readValue)` with
+    codec will try to read a value from the medium and either return the result of `context.withEntry(key, readValue)` with
     the decoded value or simply return the provided Context if no value could be read.

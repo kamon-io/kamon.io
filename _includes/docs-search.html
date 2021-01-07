@@ -1,0 +1,66 @@
+{% assign path_sections = page.url | split: '/' %}
+{% assign current_version = path_sections[2] %}
+
+<div id="docs-search-container-{{include.id}}" class="docs-search-container">
+  <input id="docs-search-field-{{include.id}}" type="text" placeholder="Search the Docs..." class="w-100 docs-search-field">
+  <div id="docs-search-results-{{include.id}}" class="d-none elevated-container"></div>
+</div>
+
+{% include docs-extract-paths.html %}
+
+<script>
+  document.addEventListener('readystatechange', function() {
+    var documentationPaths = "{{current_version}}" === "latest" ? window.kamonDocumentationPaths.latest : window.kamonDocumentationPaths.v1
+
+    var searchField = document.getElementById("docs-search-field-{{include.id}}");
+    var searchResults = document.getElementById("docs-search-results-{{include.id}}");
+    var docsSearchContainer = document.getElementById("docs-search-container-{{include.id}}");
+
+    function clearAndHideSearchResults() {
+      searchResults.textContent = "";
+      searchResults.classList.add("d-none");
+      searchResults.classList.remove("docs-results-absolute");
+    }
+
+    function clearSearch() {
+      clearAndHideSearchResults();
+      searchField.value = "";
+    }
+
+    // prevents clearing the search when clicking within results or search field
+    docsSearchContainer.addEventListener("click", function(e) { e.stopPropagation(); })
+
+    var searchInputChangeHandler = function(e) {
+      var currValue = e.target.value;
+      if (currValue === "") {
+        document.removeEventListener("click", clearSearch);
+      }
+      if (currValue.length < 3) {
+        clearAndHideSearchResults();
+        return;
+      }
+      document.addEventListener("click", clearSearch, { once: true });
+      var filteredSearchResults = documentationPaths.filter(function(pathItem) {
+        return pathItem.name.toLowerCase().indexOf(currValue.toLowerCase()) !== -1;
+      })
+      if (filteredSearchResults.length === 0) {
+        clearAndHideSearchResults();
+        return;
+      }
+      searchResults.textContent = "";
+      for (var filteredSearchResult of filteredSearchResults) {
+        var a = document.createElement("a");
+        var regexp = new RegExp(currValue, "ig");
+        var content = filteredSearchResult.name;
+        a.innerHTML = content.replace(regexp, '<span class="highlighted">' + currValue + '</span>');
+        a.setAttribute("href", "/docs/" + "{{ current_version }}" + filteredSearchResult.link);
+        a.classList.add("search-result-link")
+        searchResults.append(a);
+      }
+      searchResults.classList.add("docs-results-absolute");
+      searchResults.classList.remove("d-none");
+    }
+
+    searchField.addEventListener("input", debounce(searchInputChangeHandler));
+  })
+</script>

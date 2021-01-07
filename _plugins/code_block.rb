@@ -10,7 +10,7 @@ module Jekyll
 
     def render(context)
       block_content = super.to_s.strip
-      '<pre class="code-example line-numbers language-'+ @language +'"><code class="language-'+ @language +'">'+ block_content +'</code></pre>'
+      '<div class="code-example-container"><pre class="code-example line-numbers language-'+ @language +'"><code class="language-'+ @language +'">'+ block_content +'</code></pre><div class="tab-footer"><div class="fa fa-copy"/></div></div>'
 
     end
   end

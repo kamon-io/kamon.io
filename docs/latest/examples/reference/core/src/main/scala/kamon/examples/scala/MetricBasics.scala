@@ -1,39 +1,36 @@
 package kamon.examples.scala
 
 import kamon.Kamon
-import kamon.metric.MeasurementUnit.{information, time}
+import kamon.metric.MeasurementUnit.information
+import kamon.tag.TagSet
 
 object MetricBasics extends App {
-
   // tag:creating-metrics:start
   // Simple metrics can be one-liners, without refining (tagging)
-  Kamon.counter("app.orders.sent").increment() // (1)
-
+  Kamon.counter("app.orders.sent").withoutTags().increment() // (1)
 
   // If refining (tagging) is needed, define a metric first;
   // here is a metric called "app.error" with a counter instrument.
-  val errors = Kamon.counter("app.error") // (2)
+  val errors = Kamon.counter("app.error") // (2
 
   // Refine the metric with a specific set of tags
-  val invalidUserErrors = errors.refine("class" -> "InvalidUser") // (3)
-  val invalidPassErrors = errors.refine("class" -> "InvalidPassword") // (4)
+  val invalidUserErrors = errors.withTag("class", "InvalidUser") // (3)
+  val invalidPassErrors = errors.withTag("class", "InvalidPassword") // (4)
 
   invalidPassErrors.increment() // (5)
 
   // Removing a metric from Kamon
-  errors.remove("class" -> "InvalidUser") // (6)
+  errors.remove(TagSet.of("class", "InvalidUser")) // (6)
   // tag:creating-metrics:end
-
 
   // tag:working-with-counters:start
   // One-liner
-  Kamon.counter("app.orders.sent").increment()
+  Kamon.counter("app.orders.sent").withoutTags().increment()
+
 
   // Fully defined and refined (tagged) counter
   val sentBytes = Kamon.counter("network.traffic", information.bytes)
-    .refine(
-      "direction" -> "out",
-      "interface" -> "eth0")
+    .withTag("direction", "out").withTag("interface", "eth0")
 
   sentBytes.increment()
   sentBytes.increment(512)
@@ -41,13 +38,13 @@ object MetricBasics extends App {
 
   // tag:working-with-gauges:start
   // One-liner
-  Kamon.gauge("users").set(42)
+  Kamon.gauge("users").withoutTags().update(42)
 
   // Fully defined and refined (tagged) gauge
   val onlineUsers = Kamon.gauge("users")
-    .refine("status" -> "online")
+    .withTag("status", "online")
 
-  onlineUsers.set(42)
+  onlineUsers.update(43)
   onlineUsers.decrement()
   onlineUsers.decrement(4)
   onlineUsers.increment()
@@ -56,24 +53,24 @@ object MetricBasics extends App {
 
   // tag:working-with-histograms:start
   // One-liner
-  Kamon.histogram("messaging.payload-size").record(512)
+  Kamon.histogram("messaging.payload-size").withoutTags()
 
   // Fully defined and refined (tagged) histogram
   val responseSizes = Kamon.histogram("http.response-size", information.bytes)
-    .refine("status-code" -> "200")
+    .withTag("status-code", "200")
 
   responseSizes.record(2048)
   // tag:working-with-histograms:end
 
   // tag:working-with-timers:start
   // One-liner
-  val startedTimer = Kamon.timer("operations").start()
+  val startedTimer = Kamon.timer("operations").withoutTags().start()
   // do some work
   startedTimer.stop()
 
   // Fully defined and refined (tagged) timer
   val operationLatency = Kamon.timer("operation-latency")
-    .refine("operation" -> "login")
+    .withTag("operation", "login")
 
   val timer = operationLatency.start()
   // do some work
@@ -83,12 +80,12 @@ object MetricBasics extends App {
 
   // tag:working-with-range-samplers:start
   // One-liner
-  Kamon.rangeSampler("http.in-flight").increment()
+  Kamon.rangeSampler("http.in-flight").withoutTags().increment()
 
 
   // Fully defined and refined (tagged) timer
   val mailboxSize = Kamon.rangeSampler("actor.mailbox-size")
-    .refine("actor" -> "user/test-actor")
+    .withTag("actor", "user/test-actor")
 
   mailboxSize.increment()
   mailboxSize.increment(12)
