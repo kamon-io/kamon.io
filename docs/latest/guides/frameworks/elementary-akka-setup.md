@@ -14,20 +14,20 @@ Elementary Akka Setup
 This recipe will guide you through the process of monitoring the [Akka Quickstart][1] example application, one of the
 most basic and common examples you can find on the internet when learning how to use Akka. There is a [guide][2]
 explaining exactly what it does so it would be nice if you take a look there first to understand what the application
-does. We had a small change to the application, though: in order to make things more interesting we added a loop that
-randomly selects a greeter and sends a message to it, it looks like this:
+does. We had a small change to the application, though: in order to make things more interesting we added a loop 
+so it keeps greeting Charles:
 
 
 {% code_example %}
 {%   language scala guides/frameworks/elementary-akka-setup/src/main/scala/com/lightbend/akka/sample/AkkaQuickstart.scala tag:message-loop label:"Message Loop" %}
 {% endcode_example %}
 
-Other than that, the application is roughly the same. We will take this application, add Kamon to it, publish metrics to
+Other than that, the application is the same. We will take this application, add Kamon to it, publish metrics to
 that can be scraped with Prometheus and send trace data to Zipkin. Let's get started!
 
 ## Add the Kamon Libraries
 
-Following the steps from the [Get Started][get-started] guide, we will add the Bundle dependency, as well as the
+First, we will add the Bundle dependency, as well as the
 Prometheus and Zipkin reporters to this project:
 
 {% code_example %}
@@ -45,24 +45,19 @@ Next, we ensure that Kamon will be initialized as the very first thing during th
 ## Configure the Akka Filters
 
 You will need to explicitly tell Kamon which actors, routers, dispatchers and groups you would like to track and trace.
-This application will start 4 different actors: `helloGreeter`, `howdyGreeter`, `goodDayGreeter` and `printerActor`. Now
-imagine that your monitoring requirements include:
-
-  - Metrics on all actors, except for `howdyGreeter`.
-  - Metrics on all dispatchers.
-  - Message tracing for all actor messages.
 
 All that can be achieved by simply providing the right filters under `kamon.instrumentation.akka.filters` in your
-`application.conf` file as shown below:
+`application.conf` file in the `resources` folder.
+
+You can read [about more complex filters][6] later, but for now let's just track all user created actors:
 
 {% code_example %}
 {%   language hcl guides/frameworks/elementary-akka-setup/src/main/resources/application.conf tag:filters label:"application.conf" %}
 {% endcode_example %}
 
 
-
 That's it! Now you can simply `sbt run` the application and after a few seconds you will get the Prometheus metrics
-exposed on <http://localhost:9095/> and message traces sent to Zipkin!
+exposed on <http://localhost:9095/metrics> and message traces sent to Zipkin!
 
 The default configuration publishes the Prometheus endpoint on port 9095 and assumes that you have a Zipkin instance
 running locally on port 9411 but you can change these values under the `kamon.prometheus` and `kamon.zipkin`
@@ -80,12 +75,13 @@ ready to run some queries like this:
 
 <img class="img-fluid" src="/assets/img/recipes/quickstart-prometheus-query.png">
 
-Those are the actor metrics that we configured Kamon to record. Notice how there are no metrics for the `howdyActor`.
+Those are the actor metrics that we configured Kamon to record.
 Now you can go ahead, explore the available metrics and create your own dashboards!
 
 
 #### Traces
 
+First, add this 
 Assuming that you have a Zipkin instance running locally with the default ports, you can go to <http://localhost:9411>
 and start investigating traces for this application. Once you find a trace you are interested in you will see something
 like this:
@@ -110,4 +106,5 @@ application, have fun and let us know if anything goes wrong!
 [3]: ../../setting-up-the-agent/
 [4]: ../../setting-up-the-agent/#running-from-sbt
 [5]: https://github.com/kamon-io/sbt-aspectj-runner
+[6]: https://kamon.io/docs/latest/instrumentation/akka/metrics/#filtered-metrics
 [get-started]: /get-started/

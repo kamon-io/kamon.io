@@ -12,8 +12,8 @@ libraryDependencies ++= Seq(
 
 // tag:base-dependencies:start
 libraryDependencies ++= Seq(
-  "io.kamon" %% "kamon-bundle" % "2.0.0",
-  "io.kamon" %% "kamon-prometheus" % "1.0.0",
-  "io.kamon" %% "kamon-zipkin" % "1.0.0"
+  "io.kamon" %% "kamon-bundle" % "2.1.9",
+  "io.kamon" %% "kamon-prometheus" % "2.1.9",
+  "io.kamon" %% "kamon-zipkin" % "2.1.9"
 )
 // tag:base-dependencies:end
