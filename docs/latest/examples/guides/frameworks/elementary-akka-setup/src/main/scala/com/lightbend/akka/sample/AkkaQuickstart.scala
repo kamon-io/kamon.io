@@ -40,11 +40,12 @@ class Printer extends Actor with ActorLogging {
 }
 
 // tag:init-kamon:start
-object AkkaQuickstart extends App {
+def main(args: Array[String]): Unit = {
+  //Initializing Kamon!
   Kamon.init()
 
-  // Create the 'AkkaQuickStart' actor system
-  val greeterMain: ActorSystem[GreeterMain.SayHello] = ActorSystem(GreeterMain(), "AkkaQuickStart")
+  //#server-bootstrapping
+  val rootBehavior = Behaviors.setup[Nothing] { context =>
   // The rest of the initialization code...
 
 // tag:init-kamon:end
