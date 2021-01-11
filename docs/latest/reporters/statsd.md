@@ -18,7 +18,7 @@ fast with little to no overhead.
 
 ## Installation and Startup
 
-{% include dependency-info.html module="kamon-statsd" version="1.0.0" %}
+{% include dependency-info.html module="kamon-statsd" version=site.data.versions.latest.statsd %}
 
 Once you have the dependency on your classpath, start the reporter:
 

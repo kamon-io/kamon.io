@@ -1,3 +1,5 @@
+require "vine"
+
 #encoding: utf-8
 module Jekyll
   class CodeExampleBlock < Liquid::Block
@@ -11,6 +13,9 @@ module Jekyll
       serialised_snippets = super.split("\n---\n").drop(1)
       snippets = serialised_snippets.map { |snippet_string| YAML::load(snippet_string) }
 
+      site = context.registers[:site]
+      render_data = site.data
+
       tab_header = '<div class="tab-header"><ul class="nav nav-pills language-tab" role="tablist">'
       tab_contents = '<div class="tab-content">'
 
@@ -23,6 +28,15 @@ module Jekyll
 
         snippet_id = snippet[:language] + '_' + index.to_s + '_' + id_prefix
 
+        code = snippet[:code].gsub(/\{\{([\w\.]+)\}\}/) { |k|
+          key = k.gsub("{{", "").gsub("}}", "")
+          begin
+            render_data.access(key)
+          rescue
+            ""
+          end
+        }
+
         tab_header = tab_header +
           '<li class="nav-item">' +
             '<a class="nav-link btn btn-secondary btn-sm language-btn' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
@@ -34,7 +48,7 @@ module Jekyll
           '<div class="tab-pane' + active + '" id="' + snippet_id + '" role="tabpanel">' +
             '<pre class="line-numbers language-'+ snippet[:language] +'">' +
               '<code class="language-'+ snippet[:language] +'">' +
-                snippet[:code] +
+                code +
               '</code>' +
             '</pre>' +
           '</div>'

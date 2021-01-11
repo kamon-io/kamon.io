@@ -19,7 +19,7 @@ Installation
 
 [Sign up]. [Create 'Akka' app] in SPM. Get your SPM app token. Add `kamon-spm` dependency to your project according to application creation instructions.
 
-{% include dependency-info.html module="kamon-spm" version="1.1.3" %}
+{% include dependency-info.html module="kamon-spm" version=site.data.versions.latest.apm %}
 
 Configuration
 -------------
