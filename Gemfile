@@ -15,6 +15,9 @@ gem "jekyll", "~> 4.1.1"
 
 gem "pygments.rb", "~> 1.2.1"
 
+# Library for accessing deep JSON objects
+gem 'vine', '~> 0.2'
+
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins

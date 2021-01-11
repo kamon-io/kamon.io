@@ -1,4 +1,4 @@
 // tag:add-aspectj:start
 resolvers += Resolver.bintrayIvyRepo("kamon-io", "sbt-plugins")
-addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "2.0.1")
+addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{versions.latest.kanela_runner}}")
 // tag:add-aspectj:end

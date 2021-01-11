@@ -10,7 +10,7 @@ scalaVersion := "2.12.8"
 
 libraryDependencies += guice
 // tag:play-dependency:start
-libraryDependencies += "io.kamon" %% "kamon-bundle" % "2.1.0"
+libraryDependencies += "io.kamon" %% "kamon-bundle" % "{{versions.latest.bundle}}"
 
 // Enable JavaAgent plugin
 lazy val root = (project in file(".")).enablePlugins(PlayScala, JavaAgent)
