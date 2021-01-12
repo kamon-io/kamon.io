@@ -2,13 +2,13 @@
 {% assign current_version = path_sections[2] %}
 
 <div class="dropdown">
-  <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown">
+  <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown" tabindex=0>
     <span class="text-capitalize">{{ current_version }} Docs</span>
     <i class="fa fa-angle-down"></i>
   </div>
-  <div class="dropdown-menu cursor-pointer" aria-labelledby="docs-version-select-toggle">
-    <a class="dropdown-item" onclick="changeVersion('latest')">Latest (2.0 Series)</a>
-    <a class="dropdown-item" onclick="changeVersion('v1')">Previous (1.x Series)</a>
+  <div class="dropdown-menu cursor-pointer w-100" aria-labelledby="docs-version-select-toggle">
+    <a tabindex=0 class="dropdown-item" id="version-latest" onclick="changeVersion('latest')">Latest (2.0 Series)</a>
+    <a tabindex=0 class="dropdown-item" id="version-v1" onclick="changeVersion('v1')">Previous (1.x Series)</a>
   </div>
 </div>
 
@@ -37,4 +37,20 @@
     var goToSection = exactLinkExists ? exactCurrentSection : "/" + exactCurrentSection.split("/")[0];
     window.location.pathname = "/docs/" + versionName + "/" + goToSection;
   }
+
+  document.addEventListener("readystatechange", function() {
+    function getListenerForVersion(version) {
+      return function(event) {
+        if (event.code === "Enter" || event.keyCode === 13) {
+          changeVersion(version)
+        }
+      }
+    }
+
+    var latest = document.getElementById("version-latest")
+    var v1 = document.getElementById("version-v1")
+
+    latest.addEventListener("keyup", getListenerForVersion("latest"));
+    v1.addEventListener("keyup", getListenerForVersion("v1"));
+  })
 </script>
