@@ -11,7 +11,7 @@ layout: default
 {% assign current_pretty_path = page.url | remove_first: '.html' %}
 
 <div class="d-none d-lg-block docs-title-background">
-  <div class="docs-title-content default-content-container mt-0">
+  <div class="docs-title-content responsive-max-width">
     <h1>Documentation</h1>
       <div class="w-25">
         {% include docs-version-select.html %}
@@ -20,7 +20,7 @@ layout: default
 </div>
 
 <nav id="docs-header" class="d-none d-lg-block docs-navbar">
-  <div class="d-flex h-100 justify-content-center default-content-container mt-0">
+  <div class="d-flex h-100 justify-content-center">
     <div class="row no-gutters docs-header-content align-items-center w-100">
       <div class="col-9 h-100">
         <ul class="h-100 d-flex">
