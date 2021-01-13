@@ -6,16 +6,15 @@ layout: docs
 
 {% include toc.html %}
 
-Installation on the Play Framework
+Installation of the Play Framework
 ==================================
 
-This guide is an "extended" version of the official [Get Started][get-started] steps for a Play Framework app, but here
-we dive a little bit more into what is being achieved in each step. The general idea stays the same as in the official
-guide, there are three simple steps to follow:
+This recipe will guide you through the process of monitoring the Scala Play [getting started][1] app.
+There are three simple steps to follow:
 
-  1. [Install Kamon](#install-kamon).
-  2. [Verify the Installation](#verify-the-installation).
-  2. [Install Reporters](#install-reporters).
+1. [Install Kamon](#install-kamon).
+2. [Verify the Installation](#verify-the-installation).
+2. [Install Reporters](#install-reporters).
 
 
 Install Kamon
@@ -29,7 +28,7 @@ this to your `project/plugins.sbt` file:
 
 {% include kamon-play-plugin.md version="latest" %}
 
-The plugin is published for Play Framework 2.6 and 2.7, make sure you get the suffix right!
+The plugin is published for Play Framework 2.6, 2.7, and 2.8, make sure you get the suffix right!
 
 
 ### Add the Bundle Dependency
@@ -56,7 +55,7 @@ Loader is gets called.
 
 {% alert warning %}
 If you are using any other type of dependency injection, please make sure that your custom Application Loader performs
-the very same actions that the <a href="https://github.com/kamon-io/kamon-play/blob/master/kamon-play/src/main/scala/kamon/instrumentation/play/GuiceModule.scala" target="_blank">Kamon GuiceModule</a> does.
+the very same actions that the <a href="https://github.com/kamon-io/Kamon/blob/master/instrumentation/kamon-play/src/main/scala/kamon/instrumentation/play/GuiceModule.scala" target="_blank">Kamon GuiceModule</a> does.
 {% endalert %}
 
 
@@ -89,6 +88,7 @@ over to the [Reporters Section][reporters] to see all available reporters, inclu
 [Zipkin][zipkin], [InfluxDB][influxdb], [Datadog][datadog] and several more!
 
 
+[1]: https://www.playframework.com/getting-started
 [get-started]: /get-started/
 [reporters]: ../../../reporters/
 [apm-reporter]: ../../../reporters/apm/
