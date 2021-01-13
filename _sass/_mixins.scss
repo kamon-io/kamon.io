@@ -80,3 +80,17 @@
     }
   }
 }
+
+@mixin responsive-max-width {
+  max-width: 100%;
+  padding: 2rem;
+
+  @media (min-width: $md-start) {
+    max-width: 80vw;
+    padding: 0;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1200px;
+  }
+}

@@ -152,54 +152,28 @@ function instrumentationSlideshow() {
   }
 }
 
-function initScrollHeaders() {
+// Switch main header from transparent to white + border bottom depending on scroll position
+function initScrollMainHeader() {
   const MAIN_HEADER_HEIGHT = 90;
-
-  // Switch main header from transparent to white + border bottom depending on scroll position
-  function initScrollMainHeader() {
-    var mainHeader = document.getElementById("main-header")
-    if (mainHeader == null || mainHeader.classList.contains("header-background-fixed")) {
-      return
+  var mainHeader = document.getElementById("main-header")
+  if (mainHeader == null || mainHeader.classList.contains("header-background-fixed")) {
+    return
+  }
+  var isMainHeaderTransparent = true
+  var mainHeaderScrollListener = function() {
+    if (isMainHeaderTransparent && window.pageYOffset >= MAIN_HEADER_HEIGHT) {
+      mainHeader.classList.add("header-background-color")
+      isMainHeaderTransparent = false
+    } else if (!isMainHeaderTransparent && window.pageYOffset <= MAIN_HEADER_HEIGHT) {
+      mainHeader.classList.remove("header-background-color")
+      isMainHeaderTransparent = true
     }
-    var isMainHeaderTransparent = true
-    var mainHeaderScrollListener = function() {
-      if (isMainHeaderTransparent && window.pageYOffset >= MAIN_HEADER_HEIGHT) {
-        mainHeader.classList.add("header-background-color")
-        isMainHeaderTransparent = false
-      } else if (!isMainHeaderTransparent && window.pageYOffset <= MAIN_HEADER_HEIGHT) {
-        mainHeader.classList.remove("header-background-color")
-        isMainHeaderTransparent = true
-      }
-    }
-
-    document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
-
-    // Must be called during setup in case the current scroll location requires the background
-    mainHeaderScrollListener()
   }
 
-  // Switch docs header/sidebar navigation position from default to fixed/sticky depending on scroll position
-  function initScrollDocsHeader() {
-    var docsHeader = document.getElementById("docs-header")
-    if (docsHeader == null) {
-      return
-    }
-    var isDocsHeaderFixed = false
-    var maxDocsHeaderOffset = MAIN_HEADER_HEIGHT + convertRemToPixels(14) - 92
-    var docsHeaderScrollListener = function() {
-      if (!isDocsHeaderFixed && window.pageYOffset > maxDocsHeaderOffset) {
-        docsHeader.classList.add("fixed-docs-header")
-        isDocsHeaderFixed = true
-      } else if (isDocsHeaderFixed && window.pageYOffset < maxDocsHeaderOffset) {
-        docsHeader.classList.remove("fixed-docs-header")
-        isDocsHeaderFixed = false
-      }
-    }
-    document.addEventListener("scroll", docsHeaderScrollListener, { passive: true })
-  }
+  document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
 
-  initScrollMainHeader()
-  initScrollDocsHeader()
+  // Must be called during setup in case the current scroll location requires the background
+  mainHeaderScrollListener()
 }
 
 // mobile docs navigation covers the entire screen, hide body scroll when it's open
@@ -433,7 +407,7 @@ function initNotificationBar() {
 $(document).ready(function() {
   // searchInit()
   instrumentationSlideshow()
-  initScrollHeaders()
+  initScrollMainHeader()
   initHideBodyScrollOnMobileDocsNavigation()
   initAnnualBillingToggle()
   initDocsMarkdownToc()

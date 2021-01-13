@@ -49,6 +49,9 @@ body.has-notification {
   z-index: 101;
   height: 52px;
 
+  position: sticky;
+  top: 90px;
+
   .docs-header-content {
     max-width: 1200px;
 

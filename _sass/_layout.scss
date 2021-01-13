@@ -10,20 +10,11 @@
 }
 
 .default-content-container {
+  @include responsive-max-width;
   margin: 90px auto;
-  max-width: 100%;
-  padding: 2rem;
 
   > section {
     padding: 5rem 0;
-  }
-
-  @media (min-width: $sm-start) {
-  }
-
-  @media (min-width: $md-start) {
-    max-width: 80vw;
-    padding: 0;
   }
 
   @media (min-width: $lg-start) {
@@ -32,10 +23,10 @@
       padding: 5rem 0;
     }
   }
+}
 
-  @media (min-width: 1400px) {
-    max-width: 1200px;
-  }
+.responsive-max-width {
+  @include responsive-max-width;
 }
 
 .elevated-container {
