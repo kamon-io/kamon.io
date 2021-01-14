@@ -372,6 +372,7 @@ function initCodeExampleCopy() {
 
 function bootOnboarding() {
   $(".onboarding-start-button").on("click", function() {
+    $("#onboarding-iframe").attr("src", "https://apm.kamon.io/onboarding?external=yes")
     $("#onboarding-modal").modal("show")
   })
   window.addEventListener("message", function (tag) {
