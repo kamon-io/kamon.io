@@ -1,0 +1,11 @@
+.dropdown.dropdown-docs {
+  display: inline-block;
+  cursor: pointer;
+
+  .dropdown-toggle {
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid $color-dark-4;
+  }
+}

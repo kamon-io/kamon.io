@@ -33,6 +33,7 @@ highlighter: pygments
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-loading-lazy
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -54,11 +55,5 @@ pagination:
 autopages:
   enabled: false
 
-# source: 'website'
-# plugins_dir: 'website/jekyll/plugins'
-# includes_dir: 'jekyll/includes'
-# layouts_dir: 'jekyll/layouts'
-# data_dir: 'jekyll/data'
-
-
-# destination: 'build'
+sass:
+  style: compressed

@@ -1,30 +1,27 @@
 {% assign path_sections = page.url | split: '/' %}
 {% assign current_version = path_sections[2] %}
 
-<div class="background-top-gray"></div>
-<main class="default-content-container">
-  <section class="text-xl-center">
-    <h1>Hello, <span class="text-primary">Welcome</span> Aboard!</h1>
-    <p class="d-inline-block w-xl-75">
+<div class="background-top-gray-green"></div>
+
+<main class="container">
+  <section class="row justify-content-center">
+    <h1 class="col-12 text-center">
+      Hello, <span class="text-primary">Welcome</span> Aboard!
+    </h1>
+    <p class="col-12 col-lg-8 text-center">
       All you need to know to start using Kamon is here.
-      There is a bunch of information around and we tried to organize it in a few simple groups that should get you faster to your goals.
+      <br>
       Where do you want to go?
     </p>
 
-    <div class="d-inline-block w-xl-50">
-      <div class="form-row mt-5">
-        <div class="col-12 col-md-4">
-          {% include docs-version-select.html %}
-        </div>
-        <div class="col-12 mt-3 mt-md-0 col-md">
-          {% include docs-search.html %}
-        </div>
-      </div>
+    <div class="col-12 col-lg-8 text-center">
+      {% include docs-version-select.html %}
+      {% include docs-search.html %}
     </div>
   </section>
-
-  <section class="row no-gutters flex-wrap">
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+  
+  <section class="row flex-wrap">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-guides.svg"
       alt="Guides icon"
@@ -39,7 +36,7 @@
       %}
     </div>
 
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-core-reference.svg"
       alt="Core reference icon"
@@ -53,7 +50,7 @@
       %}
     </div>
 
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-reports.svg"
       alt="Reporters icon"
@@ -66,7 +63,7 @@
       %}
     </div>
 
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-instrumentation-docs.svg"
       alt="Instrumentation icon"
@@ -81,7 +78,7 @@
       %}
     </div>
 
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-older-versions-docs.svg"
       alt="Older docs version icon"
@@ -90,19 +87,19 @@
       This website contains documentation for
       Kamon 1.1 and newer versions. If you need
       information for previous versions please
-      head over to archive.kamon.io
+      head over to the archive.
       "
       link="https://archive.kamon.io/documentation/get-started/"
       outer_link=true
       %}
     </div>
 
-    <div class="col-12 col-md-6 col-xl-4 py-3 p-md-4">
+    <div class="col-12 col-md-6 col-xl-4 py-3" role="button">
       {% include docs-card-with-icon.html
       icon="/assets/img/pages/docs/icon-github-docs.svg"
       alt="Github icon"
       title="Find us on GitHub!"
-      text="GitHub Collaboration - let's plan a party!"
+      text="Check out the code and learn how Kamon works under the hood. Don't forget to star our repo!"
       link="https://github.com/kamon-io/Kamon"
       outer_link=true
       %}

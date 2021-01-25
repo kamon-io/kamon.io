@@ -1,6 +1,9 @@
+@import "mixins";
+@import "functions";
+
 body {
   .code-example, :not(pre) > code[class*="language-"], pre[class*="language-"] {
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
   }
 
   code {
@@ -10,7 +13,7 @@ body {
 
   code[class*="language-"], pre[class*="language-"] {
     font-family: "Source Code Pro", monospace;
-    font-weight: 500;
+    font-weight: 600;
     font-size: remSize(14);
     line-height: remSize(17.6);
     color: $color-light-4;
@@ -74,6 +77,7 @@ body {
 .code-example-container {
   border-radius: 8px;
   overflow: hidden;
+  margin: 1rem 0rem;
 
   .tab-header {
     height: 50px;
@@ -86,7 +90,7 @@ body {
       height: 32px;
       line-height: 15px;
       color: $color-light-4;
-      margin-left: 1rem;
+      margin-left: 8px;
       border-radius: 8px;
       background-color: transparent;
       border-color: transparent;

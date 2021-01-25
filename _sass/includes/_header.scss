@@ -3,27 +3,7 @@
 
   .header-content {
 
-    .header-submenu-container {
-      max-width: 750px;
-      min-width: 750px;
 
-      .header-submenu-item {
-        height: 100%;
-        border-radius: 8px;
-
-        .item-explainer {
-          white-space: normal;
-        }
-
-        &:hover {
-          background-color: $color-light-3;
-
-          h6 {
-            color: $color-shamrock-main;
-          }
-        }
-      }
-    }
 
     li.nav-item.dropdown {
       a.nav-link::after {
@@ -48,13 +28,7 @@
       }
     }
 
-    .dropdown-menu-center {
-      right: auto;
-      left: 50%;
-      -webkit-transform: translate(-50%, 0);
-      -o-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
+
   }
 
   &.header-background-color, &.header-background-fixed {

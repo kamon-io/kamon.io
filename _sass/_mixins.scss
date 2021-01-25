@@ -1,15 +1,19 @@
 @mixin custom-scrollbar {
+  $width: 8px;
   overflow: auto;
+
+  // For Firefox only
+  scrollbar-width: thin;
 
   &::-webkit-scrollbar-track
   {
-    border-radius: remSize(2);
+    border-radius: $width;
     background-color: $color-light-2;
   }
 
   &::-webkit-scrollbar
   {
-    border-radius: remSize(2);
+    border-radius: $width;
     width: remSize(4);
     height: remSize(5);
     background-color: $color-light-2;
@@ -17,8 +21,8 @@
 
   &::-webkit-scrollbar-thumb
   {
-    border-radius: remSize(2);
-    background-color: $color-dark-3;
+    border-radius: $width;
+    background-color: $color-dark-2;
   }
 }
 

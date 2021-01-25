@@ -1,0 +1,40 @@
+// This file should only include the basic styles that are used across most of the website.
+
+@import "colors";
+@import "variables";
+@import "functions";
+@import "mixins";
+
+@import "bootstrap_overrides";
+@import "bootstrap/bootstrap-reboot";
+@import "bootstrap/bootstrap-grid";
+@import "bootstrap/type";
+@import "bootstrap/buttons";
+@import "bootstrap/carousel";
+@import "bootstrap/close";
+@import "bootstrap/dropdown";
+@import "bootstrap/input-group";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/modal";
+@import "bootstrap/images"; // NOT SURE
+@import "bootstrap/transitions";
+@import "bootstrap/utilities/borders";
+@import "bootstrap/utilities/background";
+@import "bootstrap/utilities/float";
+@import "bootstrap/utilities/position";
+@import "bootstrap/utilities/sizing";
+@import "bootstrap/utilities/shadows";
+@import "bootstrap/utilities/overflow";
+@import "bootstrap/utilities/text";
+
+@import "text";
+@import "layout";
+@import "nav";
+@import "list";
+@import "links";
+@import "dropdown";
+@import "sizing";
+@import "onboarding";
+@import "page_backgrounds";
+@import "includes/user-quotes"

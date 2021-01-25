@@ -1,0 +1,21 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/breakpoints";
+
+.w-100-lg-down {
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}
+
+.w-100-md-down {
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+.w-100-sm-down {
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+  }
+}

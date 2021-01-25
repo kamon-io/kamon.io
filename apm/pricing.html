@@ -2,46 +2,107 @@
 layout: default
 title: 'Pricing Plans for Kamon APM'
 description: 'Start for free with a Starter account and upgrade as you grow.'
+custom_css:
+- pages/pricing
 ---
 
 <div class="background-top-gray-gray"></div>
-<main class="default-content-container pricing-page">
-  <section class="text-center w-100 mt-5">
-    <h1 class="text-dark-1">
-      Start for <span class="text-primary">Free</span>, upgrade as you <span class="text-primary">Grow</span>
+
+<main class="container pricing-page">
+  <section class="row text-center w-100 justify-content-center">
+    <h1 class="col-12 text-center">
+      Start for <span class="text-primary">Free</span>,
+      <br class="d-md-none">
+      upgrade as you <span class="text-primary">Grow</span>
     </h1>
-    <p class="text-dark-2 text-body-bigger w-md-50 d-inline-block">
+    <p class="col-12">
       Start monitoring now and think about the cost later. 
-      <br>
+      <br class="d-none d-md-inline">
       Monitor up to 5 microservices for free.
     </p>
-    <div class="d-flex justify-content-center align-items-center billing-type-toggle">
-      <h6 id="billed-monthly-label" class="cursor-pointer mx-2 text-dark-2">Billed monthly</h6>
+    <div class="col-12 d-flex justify-content-center align-items-center billing-type-toggle mt-5">
+      <h6 role="button" id="billed-monthly-label" class="cursor-pointer mx-2 text-dark-2">Billed monthly</h6>
       <input type="checkbox" id="billed-annually-switch" class="mx-2 billed-annually-checkbox"/>
       <label for="billed-annually-switch" class="billed-annually-switch"></label>
-      <h6 id="billed-annually-label" class="cursor-pointer mx-2 text-dark-2">Billed annually</h6>
+      <h6 role="button" id="billed-annually-label" class="cursor-pointer mx-2 text-dark-2">Billed annually</h6>
       <div class="mx-2 text-tag-green d-inline-block">
         Save 20%
       </div>
     </div>
 
-    {% include pricing-models.html %}
 
+    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 144px;">
+        <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
+      </div>
+      <h3 class="mt-3">
+        Free
+      </h3>
+      <p class="text-center">
+        For developers getting started<br/>
+        with production monitoring
+      </p>
+      <h5 class="price-container mb-0">Up to 5 services</h5>
+      <ul class="icon-list text-left px-4 mt-4">
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>6 hours</b> data retention (metrics and traces)
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Up to <b>1M spans</b> per month
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>Single production environment</b>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
+      <img height="144" width="144" src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow Plan">
+      <h3 class="mt-3">
+        Grow
+      </h3>
+      <p class="text-center">
+        For growing teams deploying<br/>
+        complex systems
+      </p>
+      <div class="d-flex align-items-center price-container">
+        <h1 class="mb-0 display-4">&euro;<span id="grow-plan-monthly-price">30</span></h1>
+        <div class="ml-3">
+          <h5 class="mb-0">Per Service</h5>
+          <span>Per Month</span>
+        </div>
+      </div>
+      <ul class="icon-list text-left px-4 mt-4">
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>14 days</b> data retention for metrics
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>7 days</b> data retention for traces
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>5M included spans</b> per service
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>Extra spans at &euro;1 per million</b>
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>Separate production and test environments</b>
+        </li>
+      </ul>
+    </div>
   </section>
 
   {% include start-monitoring-banner.html %}
 
-  <section class="w-100 text-center">
-    <h2 class="text-dark-1">Frequently Asked Questions</h2>
+  <section class="row text-center">
+    <h2 class="col-12">Frequently Asked Questions</h2>
 
-    <div class="mt-5 d-inline-block accordion w-xl-75" id="question-faq">
+    <div class="col-12 mt-5 accordion w-xl-75" id="question-faq">
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-1-heading" data-toggle="collapse" data-target="#question-1-text" aria-controls="question-1-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-1-heading" data-toggle="collapse" data-target="#question-1-text" aria-controls="question-1-text">
           <h5 class="mb-0">
             Do I have to pay for Kamon Telemetry?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-1-text" class="collapse" aria-labelledby="question-1-heading" data-parent="#question-1-heading">
@@ -52,12 +113,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-2-heading" data-toggle="collapse" data-target="#question-2-text" aria-controls="question-2-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-2-heading" data-toggle="collapse" data-target="#question-2-text" aria-controls="question-2-text">
           <h5 class="mb-0">
             What are you charging for?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-2-text" class="collapse" aria-labelledby="question-2-heading" data-parent="#question-2-heading">
@@ -71,12 +130,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-3-heading" data-toggle="collapse" data-target="#question-3-text" aria-controls="question-3-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-3-heading" data-toggle="collapse" data-target="#question-3-text" aria-controls="question-3-text">
           <h5 class="mb-0">
             How do you charge?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-3-text" class="collapse" aria-labelledby="question-3-heading" data-parent="#question-3-heading">
@@ -88,12 +145,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-5-heading" data-toggle="collapse" data-target="#question-5-text" aria-controls="question-5-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-5-heading" data-toggle="collapse" data-target="#question-5-text" aria-controls="question-5-text">
           <h5 class="mb-0">
             What if I need a custom plan?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-5-text" class="collapse" aria-labelledby="question-5-heading" data-parent="#question-5-heading">
@@ -105,12 +160,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-6-heading" data-toggle="collapse" data-target="#question-6-text" aria-controls="question-6-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-6-heading" data-toggle="collapse" data-target="#question-6-text" aria-controls="question-6-text">
           <h5 class="mb-0">
             What languages/frameworks does Kamon support?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-6-text" class="collapse" aria-labelledby="question-6-heading" data-parent="#question-6-heading">
@@ -124,12 +177,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-7-heading" data-toggle="collapse" data-target="#question-7-text" aria-controls="question-7-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-7-heading" data-toggle="collapse" data-target="#question-7-text" aria-controls="question-7-text">
           <h5 class="mb-0">
             What is the overhead of monitoring services with Kamon?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-7-text" class="collapse" aria-labelledby="question-7-heading" data-parent="#question-7-heading">
@@ -140,12 +191,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-8-heading" data-toggle="collapse" data-target="#question-8-text" aria-controls="question-8-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-8-heading" data-toggle="collapse" data-target="#question-8-text" aria-controls="question-8-text">
           <h5 class="mb-0">
             How do test environments work?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-8-text" class="collapse" aria-labelledby="question-8-heading" data-parent="#question-8-heading">
@@ -157,12 +206,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-9-heading" data-toggle="collapse" data-target="#question-9-text" aria-controls="question-9-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-9-heading" data-toggle="collapse" data-target="#question-9-text" aria-controls="question-9-text">
           <h5 class="mb-0">
             How often will you charge me?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-9-text" class="collapse" aria-labelledby="question-9-heading" data-parent="#question-9-heading">
@@ -173,12 +220,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-13-heading" data-toggle="collapse" data-target="#question-13-text" aria-controls="question-13-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-13-heading" data-toggle="collapse" data-target="#question-13-text" aria-controls="question-13-text">
           <h5 class="mb-0">
             Will you charge if my services are down?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-13-text" class="collapse" aria-labelledby="question-13-heading" data-parent="#question-13-heading">
@@ -186,31 +231,13 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
             No. You will only be charged for the days your services sent data to Kamon APM.
           </p>
         </div>
-      </div>      
-
-<!--      <div class="faq-question-container text-left">-->
-<!--        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-13-heading" data-toggle="collapse" data-target="#question-13-text" aria-controls="question-13-text">-->
-<!--          <h5 class="mb-0">-->
-<!--            Will you charge me if my services are down?-->
-<!--          </h5>-->
-<!--          <i class="fa fa-angle-down"></i>-->
-<!--          <i class="fa fa-angle-up"></i>-->
-<!--        </div>-->
-
-<!--        <div id="question-13-text" class="collapse" aria-labelledby="question-13-heading" data-parent="#question-13-heading">-->
-<!--          <p class="text-dark-2">-->
-<!--            Nope. You will be charged only the hours your services and instances were sending data.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
+      </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-10-heading" data-toggle="collapse" data-target="#question-10-text" aria-controls="question-10-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-10-heading" data-toggle="collapse" data-target="#question-10-text" aria-controls="question-10-text">
           <h5 class="mb-0">
             What type of support is available?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-10-text" class="collapse" aria-labelledby="question-10-heading" data-parent="#question-10-heading">
@@ -222,12 +249,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-11-heading" data-toggle="collapse" data-target="#question-11-text" aria-controls="question-11-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-11-heading" data-toggle="collapse" data-target="#question-11-text" aria-controls="question-11-text">
           <h5 class="mb-0">
             How do I start using Kamon?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-11-text" class="collapse" aria-labelledby="question-11-heading" data-parent="#question-11-heading">
@@ -238,12 +263,10 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
       </div>
 
       <div class="faq-question-container text-left">
-        <div class="faq-question-header d-flex align-items-center justify-content-between" id="question-12-heading" data-toggle="collapse" data-target="#question-12-text" aria-controls="question-12-text">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-12-heading" data-toggle="collapse" data-target="#question-12-text" aria-controls="question-12-text">
           <h5 class="mb-0">
             What are services, metrics and traces?
           </h5>
-          <i class="fa fa-angle-down"></i>
-          <i class="fa fa-angle-up"></i>
         </div>
 
         <div id="question-12-text" class="collapse" aria-labelledby="question-12-heading" data-parent="#question-12-heading">
@@ -258,4 +281,6 @@ description: 'Start for free with a Starter account and upgrade as you grow.'
   <section class="text-center mt-5 w-100">
     {% include user-quotes.html dark-background=true %}
   </section>
+
+  <script src="/assets/js/pricing.js" async></script>
 </main>

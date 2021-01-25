@@ -1,11 +1,102 @@
 {% assign path_sections = page.url | split: '/' %}
 
-<nav
-  id="main-header"
-  class='navbar navbar-expand fixed-top text-center app-header {% if path_sections[1] == "docs" and path_sections[3] != "overview.html" %} header-background-fixed {% endif %}'
->
+<div id="20210104" class="notification-bar fixed-top d-flex align-items-center">
+  <div class="container-fluid text-center">
+    <a class="text-white font-weight-bold flex-grow-1 h-100" href="/blog/new-pricing-for-kamon-apm/">
+      <span class="d-md-none">Now More Monitoring for Free!</span>
+      <span class="d-none d-md-inline">New Pricing for Kamon APM: More Monitoring for FREE!</span>
+    </a>
+    <button type="button" class="close px-2">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+</div>
 
-  <div id="20210104" class="notification-bar d-flex align-items-center justify-content-center">
+<nav id="main-header" class="navbar navbar-expand-lg fixed-top">
+  <div class="container-lg">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/img/kamon/kamon-logo-light.svg" width="170" height="64" loading="eager" alt="Kamon">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle Navigation">
+      <img src="/assets/img/icons/menu-icon.svg" alt="Menu">
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNavigation">
+      <ul class="navbar-nav ml-lg-3 flex-grow-1 justify-content-center">
+        <li class="navbar-item dropdown d-lg-none">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <ul class="navbar-nav pl-3 d-lg-none">
+            <li class="navbar-item">
+              <a class="nav-link" href="/telemetry/">Kamon Telemetry</a>
+            </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="/apm/">Kamon APM</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="navbar-item dropdown d-none d-lg-block">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="productsDropdown">
+            <div class="nav-submenu-container px-2" >
+              <div class="row no-gutters">
+                <div class="col-6">
+                  <a class="dropdown-item p-0 nav-submenu-item" href="/apm/">
+                    <div class="row no-gutters py-3 align-items-center justify-content-left">
+                      <div class="col-auto">
+                        <img width="75" height="75" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM" loading="eager">
+                      </div>
+                      <div class="col px-3">
+                        <h6>Kamon APM</h6>
+                        <p class="item-explainer">Simple and effortless microservices monitoring</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-6">
+                  <a class="dropdown-item p-0 nav-submenu-item" href="/telemetry/">
+                    <div class="row no-gutters py-3 align-items-center justify-content-left">
+                      <div class="col-4 pl-2">
+                        <img width="75" height="75" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry" loading="eager">
+                      </div>
+                      <div class="col-8">
+                        <h6>Kamon Telemetry</h6>
+                        <p class="item-explainer">Open-source instrumentation for microservices</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link" href="/docs/latest/overview/">Docs</a>
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link" href="/apm/pricing/">Pricing</a>
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="navbar-item">
+          <a class="nav-link" href="https://apm.kamon.io/signin" target="_blank" rel="noopener">Sign In</a>
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link btn btn-primary onboarding-start-button" href="#">Start Monitoring</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- <div id="20210104" class="notification-bar d-flex align-items-center justify-content-center">
     <a id="notification-link" class="nav-link text-white flex-grow-1 h-100" href="/blog/new-pricing-for-kamon-apm/">
       New Pricing for Kamon APM: More Monitoring for FREE!
     </a>
@@ -13,8 +104,11 @@
     <button type="button" class="close px-2">
       <span aria-hidden="true">×</span>
     </button>
-  </div>
+  </div> -->
 
+
+
+<!--   
   <div class="d-none d-lg-block w-100">
     <div class="d-flex w-100 justify-content-center align-items-end">
     <div class="row no-gutters w-100 header-content responsive-max-width">
@@ -135,8 +229,8 @@
       <a class="btn btn-lg btn-light w-100 text-dark-1" href="https://apm.kamon.io/sign-in" target="_blank">Sign In</a>
       <a class="btn btn-lg btn-primary w-100 mt-3 onboarding-start-button" href="#">Start Free</a>
     </div>
-  </div>
-</div>
+  </div> -->
+</nav>
 
 <script>
   function toggleMobileNavigation() {

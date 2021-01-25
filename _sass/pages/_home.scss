@@ -1,0 +1,101 @@
+.eu-icon {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 103;
+  width: 100px;
+  height: 100px;
+
+  @media (max-width: 1170px) {
+    width: 75px;
+    height: 75px;
+  }
+
+  @media (max-width: 574px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.homepage-background-right {
+  background: url("/assets/img/pages/homepage/homepage-background-right.svg") no-repeat center right;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateY(1100px);
+  overflow-y: hidden;
+
+  @media (min-width: 420px) {
+    transform: translateY(950px);
+  }
+
+  @media(min-width: $sm-start) {
+    transform: translateY(1100px);
+  }
+
+  @media(min-width: $xl-start) {
+    background-size: auto;
+    transform: translateY(650px);
+  }
+}
+
+.homepage-background-left {
+  overflow-y: hidden;
+  background: url("/assets/img/pages/homepage/homepage-background-left.svg") no-repeat center left;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateY(1100px);
+
+  @media (min-width: 420px) {
+    transform: translateY(1500px);
+  }
+
+  @media(min-width: $sm-start) {
+    transform: translateY(1500px);
+  }
+
+  @media(min-width: $md-start) {
+    transform: translateY(1500px);
+  }
+
+  @media(min-width: $lg-start) {
+    transform: translateY(1500px);
+  }
+
+  @media(min-width: $xl-start) {
+    background-size: 30%;
+    transform: translateY(1500px);
+  }
+}
+
+.homepage-background-bottom {
+  overflow-y: hidden;
+  background: url("/assets/img/pages/homepage/homepage-background-bottom.svg") no-repeat center right;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  z-index: -1;
+  transform: translate(100px, 2300px);
+
+  @media (min-width: 1255px) {
+    transform: translate(100px, 2300px);
+  }
+
+  @media(min-width: 1350px) {
+    transform: translate(80px, 2300px);
+  }
+
+  @media (min-width: 1400px) {
+    transform: translate(50px, 2300px);
+  }
+
+  @media (min-width: 1500px) {
+    transform: translateY(2300px);
+  }
+}

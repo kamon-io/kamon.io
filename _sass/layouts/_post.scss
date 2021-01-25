@@ -16,19 +16,10 @@
   }
 }
 
-.post-container {
+.post-content {
 
-  @media (max-width: $md-max) {
-    * {
-      max-width: 100%;
-    }
-  }
-
-  .post-content {
-
-    p {
-      font-size: remSize(18);
-    }
+  p {
+    font-size: remSize(18);
   }
 }
 
@@ -53,5 +44,20 @@
 
   &.linkedin-share {
     background-image: url("/assets/img/icons/external-brand-and-logo/linkedin-white.svg");
+  }
+}
+
+.pricing-banner-background {
+  background-color: $color-shamrock-main;
+  border-radius: 8px;
+  box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
+  color: $color-light-4;
+  background-image: url("/assets/img/background/cubes-pattern.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 2rem;
+
+  @media (min-width: $md-start) {
+    padding: 3rem;
   }
 }

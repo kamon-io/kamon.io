@@ -7,39 +7,37 @@ pagination:
   enabled: true
   permalink: /:num/
 redirect_from:
-  - /teamblog/
+- /teamblog/
+custom_css:
+- pages/blog
 ---
 {% assign featured_post = site.tags.featured[0] %}
 
 <div class="background-top-gray"></div>
-<main class="default-content-container">
+
+<main class="container">
   {% if featured_post and paginator.page == 1 %}
-  <a href="{{ featured_post.url }}">
-    <section class="row no-gutters px-lg-4">
-      <div class="col-12 col-lg-7 pr-lg-5 mt-3 mt-lg-0">
-        <h1 class="text-dark-1">{{ featured_post.title }}</h1>
-        <div class="mt-2 text-dark-2">{{ featured_post.excerpt }}</div>
-        <a class="btn btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
-      </div>
-      <div class="col-12 col-lg-5 order-first order-lg-last">
-        <div class="featured-post-summary-image">
-          {% if featured_post.summary_image %}
-          <a href="{{ featured_post.url }}">
-            <img class="image-100-auto" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
-          </a>
-          {% else %}
-          <a class="{{ featured_post.categories }}" href="{{ featured_post.url }}"></a>
-          {% endif %}
-        </div>
-      </div>
-    </section>
-  </a>
+  <section class="row position-relative" role="button">
+    <div class="col-12 col-lg-7 pr-lg-5">
+      <h1>{{ featured_post.title }}</h1>
+      <p class="lead">{{ featured_post.excerpt }}</p>
+      <a class="btn btn-lg btn-primary" href="{{ featured_post.url }}">Read More</a>
+    </div>
+    <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
+      {% if featured_post.summary_image %}
+      <img class="w-100" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
+      {% endif %}
+    </div>
+    <a href="{{ featured_post.url }}" class="grow-to-container">
+      <span></span>
+    </a>
+  </section>
   {% endif %}
 
-  <section class="row no-gutters">
+  <section class="row">
     {% for post in paginator.posts %}
       {% if post.title != featured_post.title %}
-        <div class="col-12 col-md-6 col-xl-4 py-4 p-lg-4 blog-card">
+        <div class="col-12 col-md-6 col-xl-4 py-3 blog-card">
           <div class="elevated-container blog-card-content position-relative h-100">
             {% if post.summary_image %}
             <div class="blog-card-summary-image" style="background: center no-repeat url('{{ post.summary_image }}')"></div>
@@ -49,9 +47,11 @@ redirect_from:
             <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
               <h4 class="text-dark-1">{{ post.title }}</h4>
               <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
-              <a class="arrow-right align-self-end" href="{{ post.url }}">Read More</a>
+              <a class="arrow-link align-self-end" href="{{ post.url }}">Read More</a>
             </div>
-            <a class="container-link" href="{{ post.url }}"></a>
+            <a class="grow-to-container" href="{{ post.url }}">
+              <span></span>
+            </a>
           </div>
         </div>
       {% endif %}

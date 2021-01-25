@@ -1,14 +1,13 @@
 {% assign path_sections = page.url | split: '/' %}
 {% assign current_version = path_sections[2] %}
 
-<div class="dropdown">
-  <div id="docs-version-select-toggle" class="docs-version-select cursor-pointer" data-toggle="dropdown" tabindex=0>
-    <span class="text-capitalize">{{ current_version }} Docs</span>
-    <i class="fa fa-angle-down"></i>
+<div class="dropdown dropdown-docs">
+  <div id="docs-version-select-toggle" class="dropdown-toggle cursor-pointer" data-toggle="dropdown" tabindex=0>
+    <span class="text-capitalize text-light">{{ current_version }} Docs</span>
   </div>
-  <div class="dropdown-menu cursor-pointer w-100" aria-labelledby="docs-version-select-toggle">
-    <a tabindex=0 class="dropdown-item" id="version-latest" onclick="changeVersion('latest')">Latest (2.0 Series)</a>
-    <a tabindex=0 class="dropdown-item" id="version-v1" onclick="changeVersion('v1')">Previous (1.x Series)</a>
+  <div class="dropdown-menu cursor-pointer" aria-labelledby="docs-version-select-toggle">
+    <a tabindex=0 class="dropdown-item" id="version-latest" onclick="changeVersion('latest')">Kamon 2.x <small>latest</small></a>
+    <a tabindex=1 class="dropdown-item" id="version-v1" onclick="changeVersion('v1')">Kamon 1.x</a>
   </div>
 </div>
 

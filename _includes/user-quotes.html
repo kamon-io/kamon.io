@@ -1,99 +1,80 @@
-<div class="text-center">
-  {% if include.hide-title != true %}
-    <h2 class="d-inline-block">Kamon gives developers ease of mind</h2>
-  {% endif %}
-  <div class="d-inline-block mt-3 user-quote-container">
-    <div id="userQuotesCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner user-quote {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">
-
-        <div class="carousel-item active">
-          <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between">
-            <div class="d-flex">
-              {% if include.dark-background != true %}
-              <span class="quote quote-open">“</span>
-              {% endif %}
-              <p class="text-blockquote">
-                Kamon gives us ease of mind and makes our monitoring better, allowing LiveIntent engineering to push the boundaries of what’s possible.
-              </p>
-              {% if include.dark-background != true %}
-              <span class="quote quote-close align-self-end">”</span>
-              {% endif %}
-            </div>
-            <div>
-              <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Janko Ulaga</p>
-              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Software Engineering @ LiveIntent</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between">
-            <div class="d-flex">
-              {% if include.dark-background != true %}
-              <span class="quote quote-open">“</span>
-              {% endif %}
-              <p class="text-blockquote">
-                Kamon helped us to quickly spot bottlenecks at vaguely known as well as totally unexpected parts of our IoT mobile core network.
-              </p>
-              {% if include.dark-background != true %}
-              <span class="quote quote-close align-self-end">”</span>
-              {% endif %}
-            </div>
-            <div>
-              <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Steffen Gebert</p>
-              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Technology (Infrastructure) @ EMnify</p>
+<section>
+  <div class="text-center">
+    {% if include.hide-title != true %}
+      <h2>Kamon gives developers ease of mind</h2>
+    {% endif %}
+    <div class="d-inline-block mt-3 user-quote-container">
+      <div id="userQuotesCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner user-quote {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">
+          <div class="carousel-item active">
+            <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between">
+              <div class="d-flex">
+                {% if include.dark-background != true %}
+                <span class="quote quote-open">“</span>
+                {% endif %}
+                <p class="text-blockquote">
+                  Kamon gives us ease of mind and makes our monitoring better, allowing LiveIntent engineering to push the boundaries of what’s possible.
+                </p>
+                {% if include.dark-background != true %}
+                <span class="quote quote-close align-self-end">”</span>
+                {% endif %}
+              </div>
+              <div>
+                <h6 class="text-lead font-weight-bold {% if include.dark-background %}text-white{% endif %}">Janko Ulaga</h6>
+                <p class="{% if include.dark-background %}text-white{% endif %}">Director of Software Engineering @ LiveIntent</p>
+              </div>
             </div>
           </div>
-        </div>
 
-<!--        <div class="carousel-item">-->
-<!--          <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">-->
-<!--            <div class="d-flex">-->
-<!--              {% if include.dark-background != true %}-->
-<!--              <span class="quote quote-open">“</span>-->
-<!--              {% endif %}-->
-<!--              <p class="text-blockquote">-->
-<!--                We were one of the first users of Kamon APM and love it's nice graphs that allow us to dive deep into the performance data of our Akka applications.-->
-<!--              </p>-->
-<!--              {% if include.dark-background != true %}-->
-<!--              <span class="quote quote-close align-self-end">”</span>-->
-<!--              {% endif %}-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Steffen Gebert</p>-->
-<!--              <p class="mt-3 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Director of Technology (Infrastructure) @ EMnify</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-        <div class="carousel-item">
-          <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">
-            <div class="d-flex">
-              {% if include.dark-background != true %}
-              <span class="quote quote-open">“</span>
-              {% endif %}
-              <p class="text-blockquote">
-                Metrics are the best friends of developers and therefore Kamon is a great ally!
-              </p>
-              {% if include.dark-background != true %}
-              <span class="quote quote-close align-self-end">”</span>
-              {% endif %}
+          <div class="carousel-item">
+            <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between">
+              <div class="d-flex">
+                {% if include.dark-background != true %}
+                <span class="quote quote-open">“</span>
+                {% endif %}
+                <p class="text-blockquote">
+                  Kamon helped us to quickly spot bottlenecks at vaguely known as well as totally unexpected parts of our IoT mobile core network.
+                </p>
+                {% if include.dark-background != true %}
+                <span class="quote quote-close align-self-end">”</span>
+                {% endif %}
+              </div>
+              <div>
+                <h6 class="text-lead font-weight-bold font-weight-bold {% if include.dark-background %}text-white{% endif %}">Steffen Gebert</h6>
+                <p class="{% if include.dark-background %}text-white{% endif %}">Director of Technology (Infrastructure) @ EMnify</p>
+              </div>
             </div>
-            <div>
-              <p class="text-lead {% if include.dark-background %}text-white{% endif %}">Demian Berjman</p>
-              <p class="mt-1 text-body-smaller {% if include.dark-background %}text-white{% endif %}">Senior Software Development Manager @ Despegar</p>
+          </div>
+
+          <div class="carousel-item">
+            <div class="user-quote-text p-3 p-md-5 d-flex flex-column justify-content-between {% if include.dark-background %}text-white dark-background{% else %}text-dark-1{% endif %}">
+              <div class="d-flex">
+                {% if include.dark-background != true %}
+                <span class="quote quote-open">“</span>
+                {% endif %}
+                <p class="text-blockquote">
+                  Metrics are the best friends of developers and therefore Kamon is a great ally!
+                </p>
+                {% if include.dark-background != true %}
+                <span class="quote quote-close align-self-end">”</span>
+                {% endif %}
+              </div>
+              <div>
+                <h6 class="text-lead font-weight-bold {% if include.dark-background %}text-white{% endif %}">Demian Berjman</h6>
+                <p class="{% if include.dark-background %}text-white{% endif %}">Senior Software Development Manager @ Despegar</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="d-inline-block carousel-buttons-container">
+      <a data-target="#userQuotesCarousel" data-slide="prev" role="button" class="carousel-previous-slide-btn">
+        <img src="/assets/img/icons/directional/carousel-navigation-previous.svg" alt="Next quote slide icon">
+      </a>
+      <a data-target="#userQuotesCarousel" data-slide="next" role="button" class="carousel-next-slide-btn">
+        <img src="/assets/img/icons/directional/carousel-navigation-next.svg" alt="Previous quote slide icon">
+      </a>
+    </div>
   </div>
-  <div class="d-inline-block carousel-buttons-container">
-    <a data-target="#userQuotesCarousel" data-slide="prev" role="button" class="carousel-previous-slide-btn">
-      <img src="/assets/img/icons/directional/carousel-navigation-previous.svg" alt="Next quote slide icon">
-    </a>
-    <a data-target="#userQuotesCarousel" data-slide="next" role="button" class="carousel-next-slide-btn">
-      <img src="/assets/img/icons/directional/carousel-navigation-next.svg" alt="Previous quote slide icon">
-    </a>
-  </div>
-</div>
+</section>

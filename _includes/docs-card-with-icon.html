@@ -5,23 +5,24 @@
   <div>
     <img src="{{ include.icon }}" alt="{{ include.alt }}">
     <div class="text-left mt-3">
-      <h4 class="text-dark-1">
+      <h2>
         {{ include.title }}
-      </h4>
-      <p class="text-dark-2">
+      </h2>
+      <p>
         {{ include.text }}
       </p>
     </div>
   </div>
   <a
-    class="arrow-right align-self-end"
+    class="arrow-link align-self-end"
     href="{% if include.outer_link %}{{ include.link }}{% else %}/docs/{{ current_version }}{{ include.link }}{% endif %}"
     target="{% if include.outer_link %}_blank{% endif %}"
   >
     Learn More
   </a>
+
   <a href="{% if include.outer_link %}{{ include.link }}{% else %}/docs/{{ current_version }}{{ include.link }}{% endif %}"
      target="{% if include.outer_link %}_blank{% endif %}"
-     class="container-link"
-  ></a>
+     class="grow-to-container"
+  ><span></span></a>
 </div>

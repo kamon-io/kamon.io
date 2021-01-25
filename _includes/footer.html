@@ -1,20 +1,22 @@
-<div class="footer">
-  <div class="footer-content px-4 px-lg-0">
-    <div class="row no-gutters justify-content-around align-items-center">
-      <div class="col-12 col-lg-6 text-lg-center">
-        <h2 class="text-white">Start monitoring in <span class="text-primary">3 minutes</span></h2>
+<footer class="bg-footer">
+  <div class="container pt-4">
+    <div class="row justify-content-around align-items-center py-4">
+      <div class="col-12 col-md-auto text-center pt-4">
+        <h2 class="text-white d-none d-sm-block">Start monitoring in <span class="text-primary">3 minutes</span></h2>
+        <h3 class="text-white d-sm-none">Start monitoring in <span class="text-primary">3 minutes</span></h3>
         <h5 class="text-white">No credit card required.</h5>
       </div>
-      <div class="col-12 col-lg-6 footer-try-kamon-button-container d-flex align-items-center justify-content-around">
-        <a class="btn btn-primary btn-lg w-sm-100 onboarding-start-button" href="#">Start Monitoring Free</a>
+      <div class="col-12 col-md-auto my-4 my-md-0 d-flex align-items-center justify-content-around">
+        <a class="btn btn-primary btn-lg w-100-sm-down onboarding-start-button" href="#">Start Monitoring Free</a>
       </div>
     </div>
-    <div class="row no-gutters justify-content-between footer-navigation-container">
-      <div class="col-12 col-lg-3 mt-4 mt-lg-0">
+
+    <div class="row no-gutters justify-content-between border-top border-bottom border-light mt-lg-5 py-4">
+      <div class="col-12 col-md-6 col-lg-4 my-3">
         <a href="/">
-          <img src="/assets/img/kamon/kamon-logo-dark.svg" alt="Kamon Logo"/>
+          <img height="48" src="/assets/img/kamon/kamon-logo-dark.svg" alt="Kamon Logo"/>
         </a>
-        <p class="mt-3">Simple and Effortless<br/>Microservices Monitoring</p>
+        <p class="mt-2 text-white">Simple and Effortless<br/>Microservices Monitoring</p>
         <div>
           <a href="https://www.linkedin.com/company/kamon-apm/" target="_blank" class="d-inline-block">
             <img src="/assets/img/icons/external-brand-and-logo/linkedin.svg" alt="LinkedIn Logo">
@@ -24,55 +26,61 @@
           </a>
         </div>
       </div>
-      <div class="col-6 col-lg-2 mt-4 mt-lg-0">
-        <p class="text-all-uppercase">Products</p>
-        <div class="d-flex flex-column">
-          <a class="align-self-start text-dark-3" href="/apm/">APM</a>
-          <a class="align-self-start text-dark-3" href="/telemetry/">Telemetry</a>
-          <a class="align-self-start text-dark-3" href="/apm/pricing/">Pricing</a>
-        </div>
-      </div>
-      <div class="col-6 col-lg-2 mt-4 mt-lg-0">
-        <p class="text-all-uppercase">Resources</p>
-        <div class="d-flex flex-column">
-          <a class="align-self-start text-dark-3" href="/docs/latest/overview/">Documentation</a>
-          <a class="align-self-start text-dark-3" href="/blog/">Blog</a>
-          <a class="align-self-start text-dark-3" href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Support</a>
-        </div>
-      </div>
-      <div class="col-6 col-lg-2 mt-4 mt-lg-0">
-        <p class="text-all-uppercase">Company</p>
-        <div class="d-flex flex-column">
-          <a class="align-self-start text-dark-3" href="/about/">About Us</a>
-        </div>
-      </div>
-      <div class="col-12 col-lg-3 mt-4 mt-lg-0">
-        <p class="text-all-uppercase">Monitoring news</p>
-        <div class="subscription-form row no-gutters">
-          <form action="https://kamon.us7.list-manage.com/subscribe/post?u=875b290811bdd14ffc3a06124&amp;id=176f1d690b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank" novalidate>
-            <div class="input-group">
-              <input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Your Email" required>
 
-              <div class="input-group-append">
-                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="form-control btn btn-primary footer-subscribe-btn">
-              </div>
+      <div class="col-12 col-md-6 col-lg-8 my-3">
+        <div class="row">
+          <div class="col-6 col-lg-4 pr-5 mt-4">
+            <p class="text-white">Products</p>
+            <div class="text-light">
+              <a class="d-block my-2 no-decoration" href="/apm/">APM</a>
+              <a class="d-block my-2 no-decoration" href="/telemetry/">Telemetry</a>
+              <a class="d-block my-2 no-decoration" href="/apm/pricing/">Pricing</a>
             </div>
+          </div>
 
-            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-              <input type="text" name="b_875b290811bdd14ffc3a06124_176f1d690b" tabindex="-1" value="">
+          <div class="col-6 col-lg-4 pr-5 mt-4">
+            <p class="text-white">Resources</p>
+            <div class="text-light">
+              <a class="d-block my-2 no-decoration" href="/docs/latest/overview/">Documentation</a>
+              <a class="d-block my-2 no-decoration" href="/blog/">Blog</a>
+              <a class="d-block my-2 no-decoration" href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Support</a>
             </div>
-          </form>
+          </div>
+
+          <div class="col-6 col-lg-4 pr-5 mt-4">
+            <p class="text-white">Company</p>
+            <div class="text-light">
+              <a class="d-block my-2 no-decoration" href="/company/">About Us</a>
+            </div>
+          </div>
+
+          <div class="col-12 pr-5 mt-4">
+            <p class="text-white">Monitoring News</p>
+            <div class="subscription-form row no-gutters">
+              <form action="https://kamon.us7.list-manage.com/subscribe/post?u=875b290811bdd14ffc3a06124&amp;id=176f1d690b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank" novalidate>
+                <div class="input-group">
+                  <input style="padding-left: 8px; border-radius: 8px 0px 0px 8px;" type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Your Email" required>
+                  <div class="input-group-append">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="form-control btn btn-primary footer-subscribe-btn">
+                  </div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_875b290811bdd14ffc3a06124_176f1d690b" tabindex="-1" value="">
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="row no-gutters justify-content-between flex-lg-row-reverse footer-bottom">
-      <div class="col-12 col-lg-6 d-flex justify-content-lg-end">
+      <div class="col-12 col-lg-6 d-flex justify-content-lg-end my-2">
         <a class="text-light mr-3 mr-lg-0" href="/legal/privacy/">Privacy Policy</a>
         <a href="/legal/subscription-agreement/" class="ml-lg-3 text-light">Terms of Service</a>
       </div>
-      <div class="col-12 col-lg-6">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</div>
+      <div class="col-12 col-lg-6  my-2">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</div>
     </div>
   </div>
-
-</div>
+</footer>

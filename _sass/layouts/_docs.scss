@@ -1,104 +1,92 @@
-.docs-title-background {
-  height: 11rem;
-  background-color: $color-light-3;
-  margin-top: $navbar-height;
+@import url(/assets/css/prism.css);
+@import "code";
 
-  .docs-title-content {
-    // max-width: 992px;
-    margin: 0 auto;
-    padding-top: 2rem;
-    border-bottom: 1px solid transparent;
+.docs-search-container {
+  input {
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid $color-dark-4;
+  }
 
-    .docs-layout-version-select {
-      .docs-version-select {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  .docs-results-absolute {
+    right: 0px;
+    position: absolute;
+    background-color: white;
+    z-index: 1003;
+    display: block;
+    max-height: 450px;
+    overflow: auto;
+    text-align: left;
+    padding: 0.5rem;
+    width: 50vw;
+
+    @include custom-scrollbar;
+
+    .search-result-link {
+      color: $color-dark-2;
+      display: inline-block;
+      padding: 8px 16px;
+      width: 100%;
+
+      &:hover {
+        text-decoration: none;
+        background-color: $color-light-3;
+        border-radius: 8px;
+      }
+
+      .highlighted {
+        color: $color-shamrock-main;
+        background-color: $color-green-4;
+        border-radius: 5px;
       }
     }
   }
-}
-
-.fixed-docs-header {
-  position: fixed;
-  top: $navbar-height;
-  width: 100%;
 }
 
 body.has-notification {
-  $notification-bar-height: 40px;
 
-  .docs-title-background {
-    margin-top: $navbar-height + $notification-bar-height;
+  .docs-header {
+    margin-top: $notification-bar-height;
   }
 
-  .fixed-docs-header {
-    position: fixed;
-    top: $navbar-height + $notification-bar-height;
-    width: 100%;
+  .docs-navbar {
+    margin-top: $notification-bar-height;
   }
 
   .sticky-docs-navbar {
-    top: calc(57px + 52px + 40px + 3rem);
+    top: calc(57px + 52px + $notification-bar-height + 3rem);
   }
+}
+
+.sticky-docs-navbar {
+  position: sticky;
+  top: calc(57px + 52px + 3rem);
 }
 
 .docs-navbar {
+  z-index: 101;
+  height: $docs-navbar-height;
   background-color: $color-light-4;
   border-bottom: 1px solid $color-light-1;
-  z-index: 101;
-  height: 52px;
-
   position: sticky;
-  top: 90px;
+  top: $navbar-height;
 
-  .docs-header-content {
-    max-width: 1200px;
-
-    ul {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: flex;
-    }
-
-    li {
-      white-space:nowrap;
-
-      &.active {
-        border-bottom: 2px solid $color-shamrock-main;
-        margin-bottom: -1px;
-      }
-
-      a {
-        color: $color-dark-2;
-        display: inline-block;
-        line-height: 2rem;
-        padding: 0 1rem;
-
-        &.active, &.active:hover {
-          text-decoration: none;
-          color: $color-dark-2;
-          border-bottom-color: $color-shamrock-main;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: $color-dark-2;
-        }
-      }
-    }
+  .active {
+    border-bottom: 3px solid $color-shamrock-main;
+    margin-bottom: -20px;
   }
 }
 
-.docs-sidebar-nav {
-  background-color: $color-light-3;
+.docs-sidebar-nav, .docs-mobile-navigation-container {
+  $sidebar-vertical-margin: 120px;
+
   border-radius: 8px;
-  max-height: calc(676px + 0.5rem);
+  background-color: $color-light-3;
+  max-height: calc(100vh - #{$docs-navbar-height} - #{$navbar-height} - #{$sidebar-vertical-margin});
 
   .docs-sidebar-scroll {
-    max-height: 676px;
+    max-height: calc(100vh - #{$docs-navbar-height} - #{$navbar-height} - #{$sidebar-vertical-margin});
     @include custom-scrollbar;
   }
 
@@ -107,22 +95,23 @@ body.has-notification {
     padding-left: 1rem;
 
     li {
-      margin-top: 0.5rem;
+      position: relative;
 
-      &.docs-section-link {
+      .docs-sidebar-link {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        padding-right: 1.5rem;
+        border-radius: 8px;
+        width: 100%;
 
-        &:not(:first-of-type) {
-          margin-top: 0;
+        &:hover {
+          background-color: $color-light-2;
         }
 
-        a {
-          height: 100%;
-          padding-left: 0.5rem;
-          border-left: remSize(2) solid $color-light-0;
-
-          &.active {
-            border-left: remSize(2) solid $color-shamrock-main;
-          }
+        &.active {
+          color: white;
+          background-color: $color-shamrock-main;
+          font-weight: bold;;
         }
       }
 
@@ -131,42 +120,26 @@ body.has-notification {
       }
     }
   }
+}
 
-  #markdown-toc-container {
-    ul {
-      padding-left: 0 !important;
 
-      li {
-        margin-top: 0 !important;
-        font-size: 0.75rem;
-      }
-    }
+.collapse-caret {
+  ::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 3px solid $color-dark-3;
+    border-left: 3px solid $color-dark-3;
+    transform: translate(8px, -2px) rotate(135deg);
+    transition: 0.2s;
   }
 
-  // BIG GREEN BORDER STUFF (more like design, but very in your face)
-  //.current-active-topic {
-  //  background-color: $color-shamrock-main;
-  //  border-radius: 8px;
-  //  margin-top: 0.75rem;
-  //  margin-bottom: -0.25rem;
-  //  margin-left: -1rem;
-  //  padding-top: 0.25rem;
-  //  padding-bottom: 0.25rem;
-  //  padding-left: 1rem;
-  //  a {
-  //    color: $color-light-4;
-  //  }
-  //}
-}
-
-.current-active-topic > a {
-  color: $color-shamrock-main !important;
-  font-weight: bold;;
-}
-
-.sticky-docs-navbar {
-  position: sticky;
-  top: calc(57px + 52px + 3rem);
+  &.collapsed{
+    ::after {
+      transform: translate(8px, -4px) rotate(225deg);
+    }
+  }
 }
 
 .mobile-docs-navbar {
@@ -181,18 +154,16 @@ body.has-notification {
 
 #mobile-docs-navigation {
   position: fixed;
-  top: calc(57px + 52px);
+  // top: calc(57px + 52px);
   background-color: $color-light-3;
-  z-index: 1001;
+  // z-index: 1001;
 
   height: calc(100% - 57px - 52px);
   @include custom-scrollbar;
 }
 
 .docs-container {
-  @media (max-width: $md-max) {
-    margin-top: calc(57px + 52px + 1rem) !important;
-  }
+
 
   h1 {
     font-size: remSize(34);

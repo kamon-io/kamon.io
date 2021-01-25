@@ -1,0 +1,32 @@
+.onboarding-modal-dialog {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+
+  @media (min-width: $md-start) {
+    position: relative;
+    top: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+}
+
+.modal-content {
+  @media (min-width: 620px) {
+    max-height: 90vh;
+  }
+}
+
+.onboarding-iframe {
+  width: 100%;
+
+  @media (min-width: 620px) {
+    max-height: 90vh;
+  }
+}
+ 
