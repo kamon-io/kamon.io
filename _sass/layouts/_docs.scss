@@ -55,7 +55,7 @@ body.has-notification {
   }
 
   .sticky-docs-navbar {
-    top: calc(57px + 52px + $notification-bar-height + 3rem);
+    top: calc(57px + 52px + #{$notification-bar-height} + 3rem);
   }
 }
 
