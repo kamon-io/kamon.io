@@ -19,15 +19,17 @@ function initScrollMainHeader() {
   mainHeaderScrollListener()
 }
 
-function bootOnboarding() {
-  $(".onboarding-start-button").on("click", function() {
-    const width = Math.min(window.innerWidth, 1200)
-    const height = Math.max(window.innerHeight, 800)
+function showOnboardingModal() {
+  const width = Math.min(window.innerWidth, 1200)
+  const height = Math.max(window.innerHeight, 800)
 
-    $("#onboarding-iframe").attr("width", width).attr("height", height)
-    $("#onboarding-iframe").attr("src", "https://apm.kamon.io/onboarding?external=yes")
-    $("#onboarding-modal").modal("show")
-  })
+  $("#onboarding-iframe").attr("width", width).attr("height", height)
+  $("#onboarding-iframe").attr("src", "https://apm.kamon.io/onboarding?external=yes")
+  $("#onboarding-modal").modal("show")
+}
+
+function bootOnboarding() {
+  $(".onboarding-start-button").on("click", showOnboardingModal)
 
   window.addEventListener("message", function (tag) {
     if (tag.origin.includes("apm.kamon.io")) {
@@ -39,7 +41,7 @@ function bootOnboarding() {
   })
 
   if (window.location.hash === "#get-started") {
-    $("#onboarding-modal").modal("show")
+    showOnboardingModal()
   }
 }
 
