@@ -2,6 +2,13 @@
 layout: docs
 title: 'Kamon Guides | Kamon Documentation'
 description: 'Learn how to install Kamon in your services and start getting telemetry data out of it'
+permalink: /docs/latest/guides/
+redirect_from:
+  - /docs/latest/guides/getting-started/
+  - /documentation/0.6.x/get-started/
+  - /documentation/1.x/get-started/
+  - /documentation/get-started/
+  - /introduction/get-started/
 ---
 
 Installation

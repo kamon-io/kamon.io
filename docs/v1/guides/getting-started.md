@@ -2,11 +2,6 @@
 title: 'Getting Started with Kamon | Kamon Documentation'
 description: 'Learn how to setup Kamon from scratch'
 layout: docs
-redirect_from:
-  - /documentation/0.6.x/get-started/
-  - /documentation/1.x/get-started/
-  - /documentation/get-started/
-  - /introduction/get-started/
 ---
 
 {% include toc.html %}
