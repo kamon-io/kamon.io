@@ -23,7 +23,7 @@ after starting this module is add the target to your Prometheus server and start
 {% include dependency-info.html module="kamon-prometheus" version=site.data.versions.latest.prometheus %}
 
 Once the reporter is on your classpath it will be automatically picked up by Kamon. When your application starts, you
-can go to <http://localhost:9095/> to see your exposed metrics.
+can go to <http://localhost:9095/metrics> to see your exposed metrics.
 
 
 ## Configuration
