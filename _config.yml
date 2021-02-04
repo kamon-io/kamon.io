@@ -57,3 +57,10 @@ autopages:
 
 sass:
   style: compressed
+
+permalink: pretty
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
