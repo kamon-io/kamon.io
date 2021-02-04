@@ -87,6 +87,30 @@ The measurement unit on each metric will dictate which bucketing configuration a
   - `information-buckets` for all units in the information dimension. Everything is scaled to bytes.
   - `default-buckets` are used when there is no measurement unit information in a metric.
 
+## Sending environment tags to Prometheus
+
+It is possible to provide custom tags in `application.conf` by providing `kamon.environment.tags`
+with the value you wish to set.
+
+```
+kamon.environment.tags {
+  custom1 = "test1"
+  env = staging
+}
+```
+
+To enable the Prometheus reporter to use these values within your application metrics, you have to enable
+the `include-environment-tags` in your `kamon.prometheus` configuration:
+
+```
+kamon.prometheus {
+  include-environment-tags = true
+  embedded-server {
+    hostname = 0.0.0.0
+    port = 9095
+  }
+}
+```
 
 ## Teasers
 
