@@ -89,7 +89,7 @@ The measurement unit on each metric will dictate which bucketing configuration a
 
 ## Sending environment tags to Prometheus
 
-Since 1.1.0, it is possible to provide custom tags in `application.conf` by providing `kamon.environment.tags`
+It is possible to provide custom tags in `application.conf` by providing `kamon.environment.tags`
 with the value you wish to set.
 
 ```
