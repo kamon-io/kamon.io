@@ -1,6 +1,6 @@
 ---
-title: 'Getting Started with Kamon | Kamon Documentation'
-description: 'Learn how to setup Kamon from scratch'
+title: 'Play Framework Application Performance Monitoring | Kamon Documentation'
+description: 'A guide on how to start collecting metrics and traces from Play Framework Application.'
 layout: docs
 ---
 
