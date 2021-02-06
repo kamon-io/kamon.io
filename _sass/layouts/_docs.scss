@@ -51,12 +51,20 @@ body.has-notification {
   }
 
   .docs-navbar {
-    margin-top: $notification-bar-height;
+    top: $notification-bar-height + $navbar-height;
   }
 
   .sticky-docs-navbar {
     top: calc(57px + 52px + #{$notification-bar-height} + 3rem);
   }
+
+  :target:before {
+    content: "";
+    display: block;
+    height: 170px + $notification-bar-height;
+    margin: (-170px + $notification-bar-height) 0 0;
+  }
+  
 }
 
 .sticky-docs-navbar {
@@ -163,7 +171,26 @@ body.has-notification {
 }
 
 .docs-container {
+  line-height: 1.6rem;
 
+  a {
+    font-weight: bold;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    .heading-anchor {
+      position: relative;
+      // top: -500px;
+      display: none;
+    }
+
+    &:hover {
+      .heading-anchor {
+        display: inline-block;
+      }
+    }
+  }
+  
 
   h1 {
     font-size: remSize(34);
