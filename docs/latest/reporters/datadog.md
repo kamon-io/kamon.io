@@ -1,5 +1,6 @@
 ---
 title: 'Sending Metrics to Datadog with Kamon | Kamon Documentation'
+description: 'How to send metrics and traces from Kamon to Datadog'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/datadog/
@@ -11,8 +12,7 @@ redirect_from:
 Datadog Reporter
 ================
 
-[Datadog] is a monitoring service for IT, Operations and Development teams who write and run applications at scale, and
-want to turn the massive amounts of data produced by their apps, tools and services into actionable insight.
+Datadog is a monitoring service for IT, Operations and Development teams who write and run applications at scale.
 
 ## Installation
 
