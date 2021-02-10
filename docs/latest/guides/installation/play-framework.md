@@ -1,98 +1,133 @@
 ---
-title: 'Getting Started with Kamon | Kamon Documentation'
-description: 'Learn how to setup Kamon from scratch'
+title: 'Setting up Kamon with Play Framework'
+description: 'Learn how to collect metrics and traces from Play Framework apps using Kamon'
 layout: docs
 ---
 
-{% include toc.html %}
+Setting up Kamon with Play Framework
+====================================
 
-Installation of the Play Framework
-==================================
+This guide walks you through setting up Kamon with a Play Framework application and sending your first metrics and
+traces to Kamon APM. The same steps will work if you choose any other [reporter][reporter].
 
-This recipe will guide you through the process of monitoring the Scala Play [getting started][1] app.
-There are three simple steps to follow:
+Before we start, make sure you are using **Play Framework 2.6, 2.7 or 2.8**. This guide assumes that you have a Play
+Framework project using SBT as the build tool, and that you are not using a custom Application Loader (see the [special
+cases](#special-cases) section below).
 
-1. [Install Kamon](#install-kamon).
-2. [Verify the Installation](#verify-the-installation).
-2. [Install Reporters](#install-reporters).
-
-
-Install Kamon
--------------
-
-### Add SBT plugin
-
-We created a dedicated SBT plugin for users running Play Framework applications, so that you can simply hit `run` from
-your SBT console and the instrumentation will just work! To install the `sbt-kanela-runner` plugin for Play, just add
-this to your `project/plugins.sbt` file:
-
-{% include kamon-play-plugin.md version="latest" %}
-
-The plugin is published for Play Framework 2.6, 2.7, and 2.8, make sure you get the suffix right!
+Let's get to it!
 
 
-### Add the Bundle Dependency
+## 1. Add the Kamon Dependencies
 
-Add the `kamon-bundle` dependency using your build system of choice. The bundle contains **all** the
-instrumentation available in Kamon, it even includes Kanela! (our instrumentation agent). Here is how it would look like
-in your build:
+Add the `kamon-bundle` and `kamon-apm-reporter` dependencies to your `build.sbt` file:
 
 {% include kamon-play-dependency.md version="latest" %}
 
-Enabling `JavaAgent` plugin in your Play project will make sure all instrumentation is included and attached in your
-distribution or running in Production Mode. Depending on your build the details might be a bit different but it is just
-about calling `.enablePlugin(JavaAgent)` on the right project instance in your `build.sbt`
-
-After this, whenever you hit
-`run` the instrumentation will be applied as expected when running on development mode.
-
-The bundle is available for Java 8+ and published for Scala 2.11, 2.12 and 2.13. If you are not familiar with the Scala
-version suffix then just pick the greatest Scala version available.
+The Kamon Bundle dependency contains all the Kamon [automatic instrumentation][automatic-instrumentation] modules in a
+single jar, so that you don't need any additional dependencies. The APM reporter dependency is in charge of sending all
+your metrics and traces to Kamon APM.
 
 
-And that is it. The bundle comes with a Guice module that will automatically initialize Kamon when the Application
-Loader is gets called.
+## 2. Add the SBT Kanela Runner Plugin
 
-{% alert warning %}
-If you are using any other type of dependency injection, please make sure that your custom Application Loader performs
-the very same actions that the <a href="https://github.com/kamon-io/Kamon/blob/master/instrumentation/kamon-play/src/main/scala/kamon/instrumentation/play/GuiceModule.scala" target="_blank">Kamon GuiceModule</a> does.
-{% endalert %}
+Add the SBT Kanela Runner Plugin to your `project/build.sbt` file:
+
+{% include kamon-play-plugin.md version="latest" %}
+
+Make sure that the `play-2.x` suffix matches your Play Framework version.
+
+The SBT Kanela Runner Plugin ensures that Kamon's instrumentation is applied when you hit `run` from the SBT console on
+Play Framework projects (a.k.a. Development Mode). See the special cases below if you want to enable instrumentation
+in [Production Mode](#using-instrumentation-in-production-mode-only) only.
 
 
-Verify the Installation
------------------------
+## 3. Enable the JavaAgent Plugin
 
-Next time you start your application, Kamon should start the Status Page module included in the bundle, which provides a
-very convenient way to figure out whether everything is in place or not: just got to
-<a href="http://localhost:5266/" target="_blank"><strong>localhost:5266</strong></a> on your browser and something like
-this should show up:
+Include the `JavaAgent` plugin in the call to `.enablePlugins` in your `build.sbt` file:
+
+{% include kamon-play-enable-javaagent.md version="latest" %}
+
+The SBT Java Agent Plugin is downloaded as a depency of the SBT Kanela Runner Plugin, you only need to enable it. Enabling
+the SBT Java Agent Plugin ensures that the Kamon instrumentation will be initialized properly when running in Production
+Mode.
+
+## 4. Configure the APM Reporter
+
+Add your service name and API key to the `conf/application.conf` file:
+
+{% code_block hcl %}
+kamon {
+  environment.service = "Play Application"
+  apm.api-key = "Your API Key"
+}
+{% endcode_block %}
+
+You can copy your API key directly from [Kamon APM](https://apm.kamon.io/api-keys){:target="_blank" rel="noopener"}.
+
+
+
+Verifying the Installation
+==========================
+
+Next time your application starts, Kamon should be up and running as well! Open [http://localhost:5266/](http://localhost:5266/){:target="_blank" rel="noopener"}
+in your browser and you'll find the Kamon Status Page. It should look like this:
 
 <img class="img-fluid" src="/assets/img/kamon-status-page.png" alt="Kamon Status Page">
 
-The important bit here is to ensure that modules are loaded and instrumentation is active. As you start adding more and
-more metrics modules and custom telemetry to Kamon, you will probably be coming back to this page to verify that all is
-working as expected.
+The important bits to check in the Status Page are that the modules have a green check mark and instrumentation is shown
+as active on the top-left corner. If your installation didn't go well, please stop by our [Github Discussions](https://github.com/kamon-io/Kamon/discussions){:target="_blank" rel="noopener"}
+and post a question. We will do our best to help!
+
+That is it, your installation is done! You might want to check out the [How To Guides][how-to-guides] for common 
+post-installation steps to improve your instrumentation.
+
+Special Cases
+=============
+
+## Custom Application Loaders
+If your Play Framework application has a custom `ApplicationLoader`, you will need to add a few lines of code  to ensure 
+that Kamon is initialized and stopped properly. Add these lines to the `load` method in your `ApplicationLoader` 
+implementation:
+
+{% code_block scala %}
+import kamon.Kamon
+
+class MyApplicationLoader extends ApplicationLoader {
+  def load(context: ApplicationLoader.Context): Application = {
+
+    // 1. Ensures that Kamon is configured with Play's conf/application.conf file
+    Kamon.reconfigure(context.initialConfiguration.underlying)
+
+    // 2. Starts reporters and system metrics collection
+    Kamon.loadModules()
+
+    // 3. Ensures that Kamon stops after every run. Specially importart
+    //    when running on Development mode.
+    context.lifecycle.addStopHook { () =>
+      Kamon.stop()
+    }
+
+    new MyComponents(context).application
+  }
+}
+{% endcode_block %}
 
 
-Install Reporters
------------------
+## Using Instrumentation in Production Mode Only
+If you want to use Kamon's instrumentation in Production Mode only, you can skip the SBT Kanela Runner Plugin and use the 
+SBT Javaagent Plugin directly. 
 
-At this point, the only thing you are missing is to install some reporters that will take the metrics and trace data
-collected by Kamon into an external system. Adding a reporter is just about adding the appropriate dependency to your
-build. For example, if you wanted to add the [Kamon APM reporter][apm-reporter] to your build, just add the appropriate dependency:
+To swap the plugins, remove the SBT Kanela Runner Plugin from [Step #2](#2-add-the-sbt-kanela-runner-plugin) and add this 
+line instead:
 
-{% include dependency-info.html module="kamon-apm-reporter" version=site.data.versions.latest.apm prefix="reporter" %}
+{% code_block scala %}
+addSbtPlugin("com.lightbend.sbt" % "sbt-javaagent" % "0.1.6")
+{% endcode_block scala %}
 
-And that is all, Kamon will automatically pick up the module from the classpath and initialize it during startup! Head
-over to the [Reporters Section][reporters] to see all available reporters, including the ones for [Prometheus][prometheus],
-[Zipkin][zipkin], [InfluxDB][influxdb], [Datadog][datadog] and several more!
+The rest of the installation steps remain the same.
 
 
-[1]: https://www.playframework.com/getting-started
-[get-started]: /get-started/
-[reporters]: ../../../reporters/
-[apm-reporter]: ../../../reporters/apm/
-[prometheus]: ../../../reporters/prometheus/
-[zipkin]: ../../../reporters/zipkin/
-[influxdb]: ../../../reporters/influxdb/
-[datadog]: ../../../reporters/datadog/
+
+[reporter]: ../../../reporters/
+[automatic-instrumentation]: ../../../instrumentation/
+[how-to-guides]: ../../../guides/#how-to-guides
