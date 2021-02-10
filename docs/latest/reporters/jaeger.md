@@ -1,5 +1,6 @@
 ---
 title: 'Sending Spans to Jaeger with Kamon | Kamon Documentation'
+description: ' How to set up sending spans collected with Kamon Telemetry to Jaeger'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/jaeger/
@@ -10,7 +11,7 @@ redirect_from:
 Jaeger Reporter
 ===============
 
-[Jaeger][1] is a distributed tracing system. It was originally created at Uber. The `kamon-jaeger` module translates
+Jaeger is a distributed tracing system. It was originally created at Uber. The `kamon-jaeger` module translates
 Kamon's representation of Spans and sends them to Jaeger using HTTP (collector) or UDP (agent).
 
 
