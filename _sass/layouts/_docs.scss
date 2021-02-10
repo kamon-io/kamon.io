@@ -107,10 +107,11 @@ body.has-notification {
 
       .docs-sidebar-link {
         display: inline-block;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.7rem;
         padding-right: 1.5rem;
         border-radius: 8px;
         width: 100%;
+        font-size: 0.9rem;
 
         &:hover {
           background-color: $color-light-2;
@@ -162,15 +163,13 @@ body.has-notification {
 
 #mobile-docs-navigation {
   position: fixed;
-  // top: calc(57px + 52px);
   background-color: $color-light-3;
-  // z-index: 1001;
-
   height: calc(100% - 57px - 52px);
   @include custom-scrollbar;
 }
 
 .docs-container {
+  margin-top: -2rem;
   line-height: 1.6rem;
 
   a {
@@ -178,9 +177,12 @@ body.has-notification {
   }
 
   h1, h2, h3, h4, h5, h6 {
+    color: $color-dark-2;
+    margin-bottom: 1rem;
+
     .heading-anchor {
       position: relative;
-      // top: -500px;
+      color: $color-shamrock-main;
       display: none;
     }
 
@@ -193,6 +195,8 @@ body.has-notification {
   
 
   h1 {
+    color: $color-dark-1;
+    margin-top: 2rem;
     font-size: remSize(34);
     line-height: remSize(38);
   
