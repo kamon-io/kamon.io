@@ -71,7 +71,7 @@ kamon {
 }
 {% endcode_block %}
 
-You can copy your API key directly from [Kamon APM](https://apm.kamon.io/api-keys){:target="_blank" rel="noopener"}.
+You can copy your API key directly from [Kamon APM](https://apm.kamon.io?envinfo=show){:target="_blank" rel="noopener"}.
 
 
 Verifying the Installation
