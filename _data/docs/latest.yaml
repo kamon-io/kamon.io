@@ -32,16 +32,12 @@ documentation:
           path: /guides/installation/plain-application/
         - name: Manual Instrumentation
           path: /guides/installation/manual-instrumentation/
-    - topic: How To...
+    - topic: How To Guides
       pages:
         - name: Start with the Kanela Agent
           path: /guides/how-to/start-with-the-kanela-agent/
         - name: Logging with Context
           path: /guides/common-tweaks/logging-with-context/
-    - topic: Frameworks
-      pages:
-        - name: Elementary Akka Setup
-          path: /guides/frameworks/elementary-akka-setup/
     - topic: Migrations
       pages:
         - name: Migrating from 0.6 to 1.0

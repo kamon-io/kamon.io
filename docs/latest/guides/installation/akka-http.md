@@ -2,6 +2,9 @@
 title: 'Setting up Kamon with Akka HTTP'
 description: 'Learn how to collect metrics and traces from Akka HTTP apps using Kamon'
 layout: docs
+redirect_from:
+- /docs/latest/guides/frameworks/elementary-akka-setup/
+- /documentation/1.x/recipes/monitoring-akka-quickstart/
 ---
 
 Setting up Kamon with Akka HTTP
