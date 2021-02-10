@@ -42,7 +42,7 @@ Follow these guides if you are upgrading from early Kamon versions:
   - [Upgrading from Kamon 1.x to 2.0](./migration/from-1.x-to-2.0/).
 
 
-[akka-http-guide]: ./installation/akka-http-framework/
+[akka-http-guide]: ./installation/akka-http/
 [play-guide]: ./installation/play-framework/
 [lagom-guide]: ./installation/lagom-framework/
 [logging-with-context]: ./how-to/log-trace-id-and-context-info/
