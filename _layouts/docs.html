@@ -141,7 +141,7 @@ layout: default
                           <ul class="collapse show" id="{{topic_page.name | slugify }}">
                             {% for topic_sub_page in topic_page.pages %}
                               {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
-                              {% assign current_path = current_pretty_path | append: '/' %}
+                              {% assign current_path = current_pretty_path %}
                               <li>
                                 <a href="{{topic_sub_page_path}}">
                                   <span class="docs-sidebar-link {% if topic_sub_page_path == current_path %}active{% endif %}">{{topic_sub_page.name}}</span>
@@ -156,7 +156,7 @@ layout: default
 
                       {% else %}
                         {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
-                        {% assign current_path = current_pretty_path | append: '/' %}
+                        {% assign current_path = current_pretty_path %}
                         <li>
                           <a href="{{topic_page_path}}">
                             <span class="docs-sidebar-link {% if topic_page_path == current_path %}active{% endif %}">{{topic_page.name}}</span>
@@ -176,7 +176,7 @@ layout: default
     {% endif %}
 
     <div id="docs-content" class="docs-container {% if sidebar_data %}col-12 col-lg-9 pl-lg-5 pt-5 pt-lg-0 {% else %}col-12{% endif %}">
-      {{ content }}
+      {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" %}
     </div>
   </div>
 </div>

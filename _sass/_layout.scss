@@ -17,6 +17,17 @@ body {
 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+:target:before {
+  content: "";
+  display: block;
+  height: 180px;
+  margin: -180px 0 0;
+}
+
 section {
   margin-top: 5rem;
   margin-bottom: 5rem;

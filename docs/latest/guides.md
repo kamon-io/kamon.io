@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: 'Kamon Guides | Kamon Documentation'
-description: 'Learn how to install Kamon in your services and start getting telemetry data out of it'
+title: 'Start using Kamon'
+description: 'Learn how to get metrics and traces out of your services with Kamon'
 permalink: /docs/latest/guides/
 redirect_from:
   - /docs/latest/guides/getting-started/
@@ -14,43 +14,36 @@ redirect_from:
 Installation
 ============
 
-These guides are aimed towards getting your feet wet and start getting telemetry data from your services as quick as
-possible. There is one for each type of service:
+These guides walk you through setting up Kamon on your application and getting your first metrics and traces out of it.
+Long story short is that you need to add the Kamon dependencies and ensure that Kamon is initialized, but there are
+little details that change for each framework:
 
-- The [**Plain Application Guide**][plain-app] is meant for any application where you are in control of the "main"
-  method, like with most Akka, Akka HTTP and Spring Boot services.
-- For [**Play Framework Applications**][play-app] follow these steps since there are a few differences in the process.
-- You can head to the [**Manual Instrumentation**][manual-instrumentation] guide if you want to get your hands dirty
-  from the start.
-- [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
-  with your build tool and IDE.
+- Follow these steps for [Play Framework][play-guide] applications. Kamon has support for Play Framework **2.6, 2.7 and 2.8**.
+- There are slightly different steps for [Lagom Framework][lagom-guide]. Kamon has support for Lagom Framework **1.6**,
+  although it will probably work with Lagom **1.4 and 1.5**.
+- You can also get started with [Akka HTTP][akka-http-guide]. Kamon has support for Akka HTTP **10.1 and 10.2**.
 
-
-Common Tweaks
+How to Guides
 =============
 
-Here are some of the most common tweaks you might want to apply after your service is up and running with Kamon:
+These are typical tasks that you will want to get done after your initial Kamon installation is done:
 
-- On the [**Logging with Context**][logging-with-context] guide you will learn how to include things like the current
-  trace ID and Context tags in your log events.
+- [Include Trace IDs and Context information][logging-with-context] in your log patterns.
+- [Starting with the Kanela agent][start-with-the-kanela-agent] has tips and tricks that can help you setup the 
+  instrumentation agent with your build tool and IDE.
 
 
-Frameworks
+
+Migrations
 ==========
 
-Guides in this section are aimed to getting you from zero to telemetry with a particular framework or toolkit, including
-setup, basic configuration and seeing example data in several metrics and tracing solutions.
-
-- The [**Elementary Akka setup**][elementary-akka] guide takes one of the most common example Akka applications and
-  enables metrics and distributed tracing on it using Kamon's automatic instrumentation.
+Follow these guides if you are upgrading from early Kamon versions:
+  - [Upgrading from Kamon 0.6 to 1.0](./migration/from-0.6-to-1.0/).
+  - [Upgrading from Kamon 1.x to 2.0](./migration/from-1.x-to-2.0/).
 
 
-
-[plain-app]: ./installation/plain-application/
-[play-app]: ./installation/play-framework/
-[manual-instrumentation]: ./installation/manual-instrumentation/
-[logging-with-context]: ./common-tweaks/logging-with-context/
-
-[getting-started]: ./getting-started/
-[setting-up-the-agent]: ./installation/setting-up-the-agent/
-[elementary-akka]: ./frameworks/elementary-akka-setup/
+[akka-http-guide]: ./installation/akka-http-framework/
+[play-guide]: ./installation/play-framework/
+[lagom-guide]: ./installation/lagom-framework/
+[logging-with-context]: ./how-to/log-trace-id-and-context-info/
+[start-with-the-kanela-agent]: ./how-to/start-with-the-kanela-agent/

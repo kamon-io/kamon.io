@@ -22,22 +22,22 @@ documentation:
   guides:
     - topic: Installation
       pages:
-        - name: Plain Application
-          path: /guides/installation/plain-application/
+        - name: Akka HTTP
+          path: /guides/installation/akka-http/
         - name: Play Framework
           path: /guides/installation/play-framework/
+        - name: Lagom Framework
+          path: /guides/installation/lagom-framework/
+        - name: Plain Application
+          path: /guides/installation/plain-application/
         - name: Manual Instrumentation
           path: /guides/installation/manual-instrumentation/
-        - name: Setting up the Agent
-          path: /guides/installation/setting-up-the-agent/
-    - topic: Common Tweaks
+    - topic: How To Guides
       pages:
-        - name: Logging with Context
-          path: /guides/common-tweaks/logging-with-context/
-    - topic: Frameworks
-      pages:
-        - name: Elementary Akka Setup
-          path: /guides/frameworks/elementary-akka-setup/
+        - name: Start with the Kanela Agent
+          path: /guides/how-to/start-with-the-kanela-agent/
+        - name: Log Trace ID and Context Info
+          path: /guides/how-to/log-trace-id-and-context-info/
     - topic: Migrations
       pages:
         - name: Migrating from 0.6 to 1.0

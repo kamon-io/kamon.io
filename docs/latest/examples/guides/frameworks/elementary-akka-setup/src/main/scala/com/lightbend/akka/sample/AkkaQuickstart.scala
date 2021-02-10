@@ -40,13 +40,12 @@ class Printer extends Actor with ActorLogging {
 }
 
 // tag:init-kamon:start
-object AkkaQuickstart extends App {
-  import Greeter._
-
+def main(args: Array[String]): Unit = {
+  //Initializing Kamon!
   Kamon.init()
 
-  // Create the 'helloAkka' actor system
-  val system: ActorSystem = ActorSystem("helloAkka")
+  //#server-bootstrapping
+  val rootBehavior = Behaviors.setup[Nothing] { context =>
   // The rest of the initialization code...
 
 // tag:init-kamon:end
@@ -75,11 +74,8 @@ object AkkaQuickstart extends App {
   goodDayGreeter ! Greet
 
   // tag:message-loop:start
-  val allGreeters = Vector(howdyGreeter, helloGreeter, goodDayGreeter)
-  def randomGreeter = allGreeters(Random.nextInt(allGreeters.length))
-
   while(true) {
-    randomGreeter ! Greet
+    greeterMain ! SayHello("Charles")
     Thread.sleep(100)
   }
   // tag:message-loop:end

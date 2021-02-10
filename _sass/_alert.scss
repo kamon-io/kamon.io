@@ -1,20 +1,18 @@
+@import "colors";
+
 .outline-alert {
   border-radius: remSize(8);
-  border: remSize(1) solid $color-shamrock-main;
-  padding: 1rem;
+  border: remSize(2) solid $color-shamrock-main;
+  padding: 1rem 1rem 0rem 1rem;
   margin-bottom: 1rem;
 
-  p {
-    margin: 0;
-  }
-
   &.outline-alert-info {
-    border: remSize(1) solid $color-blue-1;
+    border: remSize(2) solid $color-blue-1;
   }
   &.outline-alert-warning {
-    border: remSize(1) solid $color-yellow-1;
+    border: remSize(2) solid $color-yellow-1;
   }
   &.outline-alert-danger {
-    border: remSize(1) solid $color-red-1;
+    border: remSize(2) solid $color-red-1;
   }
 }
