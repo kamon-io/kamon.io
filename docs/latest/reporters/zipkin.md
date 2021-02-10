@@ -1,5 +1,6 @@
 ---
 title: 'Sending Spans to Zipkin with Kamon | Kamon Documentation'
+description: 'How to set up sending spans collected with Kamon Telemetry to Zipkin'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/zipkin/
@@ -10,9 +11,8 @@ redirect_from:
 Zipkin Reporter
 ===============
 
-[Zipkin][1] is distributed tracing system. It was originally created at Twitter but currently is run as a completely
-independent open source project. Most people would recognize Zipkin as _the_ distributed tracing platform since it has
-a really strong and active community and it is integrated with most major libraries and toolkits on the JVM.
+Zipkin is distributed tracing system. It was originally created at Twitter but currently is run as an
+independent open source project. 
 
 The `kamon-zipkin` module translates Kamon's representation of Spans and sends them to Zipkin's v2 API.
 
