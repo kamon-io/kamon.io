@@ -23,8 +23,13 @@ function showOnboardingModal() {
   const width = Math.min(window.innerWidth, 1200)
   const height = Math.max(window.innerHeight, 800)
 
+  const solution = $(this).data("solution")
+  const url = solution != null
+    ? `https://apm.kamon.io/onboarding?external=yes&solution=${solution}`
+    : "https://apm.kamon.io/onboarding?external=yes"
+
   $("#onboarding-iframe").attr("width", width).attr("height", height)
-  $("#onboarding-iframe").attr("src", "https://apm.kamon.io/onboarding?external=yes")
+  $("#onboarding-iframe").attr("src", url)
   $("#onboarding-modal").modal("show")
 }
 
