@@ -5,6 +5,7 @@ layout: docs
 tags: core, docs
 redirect_from:
   - /docs/latest/guides/setting-up-the-agent/
+  - /docs/latest/guides/installation/setting-up-the-agent/
   - /documentation/1.x/recipes/adding-the-aspectj-weaver/
 ---
 

@@ -22,16 +22,20 @@ documentation:
   guides:
     - topic: Installation
       pages:
-        - name: Plain Application
-          path: /guides/installation/plain-application/
+        - name: Akka HTTP
+          path: /guides/installation/akka-http/
         - name: Play Framework
           path: /guides/installation/play-framework/
+        - name: Lagom Framework
+          path: /guides/installation/lagom-framework/
+        - name: Plain Application
+          path: /guides/installation/plain-application/
         - name: Manual Instrumentation
           path: /guides/installation/manual-instrumentation/
-        - name: Setting up the Agent
-          path: /guides/installation/setting-up-the-agent/
-    - topic: Common Tweaks
+    - topic: How To...
       pages:
+        - name: Start with the Kanela Agent
+          path: /guides/how-to/start-with-the-kanela-agent/
         - name: Logging with Context
           path: /guides/common-tweaks/logging-with-context/
     - topic: Frameworks

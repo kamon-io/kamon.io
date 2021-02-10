@@ -14,19 +14,20 @@ redirect_from:
 Installation
 ============
 
-These guides are aimed towards getting your feet wet and start getting telemetry data from your services as quick as
-possible. There is one for each type of service:
+These guides walk you through installing Kamon on your application and getting your first metrics and traces out of it.
+Long story short is that you need to add the Kamon dependencies and ensure that Kamon is initialized, but there are
+little details that change for each framework:
 
-- The [**Plain Application Guide**][plain-app] is meant for any application where you are in control of the "main"
+- For [Play Framework Applications][play-app] follow these steps since there are a few differences in the process.
+- Plain  [Plain Application Guide][plain-app] is meant for any application where you are in control of the "main"
   method, like with most Akka, Akka HTTP and Spring Boot services.
-- For [**Play Framework Applications**][play-app] follow these steps since there are a few differences in the process.
 - You can head to the [**Manual Instrumentation**][manual-instrumentation] guide if you want to get your hands dirty
   from the start.
 - [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
   with your build tool and IDE.
 
 
-Common Tweaks
+How to Guides
 =============
 
 Here are some of the most common tweaks you might want to apply after your service is up and running with Kamon:
@@ -35,7 +36,7 @@ Here are some of the most common tweaks you might want to apply after your servi
   trace ID and Context tags in your log events.
 
 
-Frameworks
+Migrations
 ==========
 
 Guides in this section are aimed to getting you from zero to telemetry with a particular framework or toolkit, including
