@@ -10,8 +10,8 @@ lazy val root = (project in file(".")).
     name := "akka-http-quickstart-scala",
     libraryDependencies ++= Seq(
       // tag:kamon-dependencies:start
-      "io.kamon" %% "kamon-bundle" % "2.1.11",
-      "io.kamon" %% "kamon-apm-reporter" % "2.1.11",
+      "io.kamon" %% "kamon-bundle" % "2.1.12",
+      "io.kamon" %% "kamon-apm-reporter" % "2.1.12",
       // tag:kamon-dependencies:end
       "com.typesafe.akka" %% "akka-http"                % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-spray-json"     % akkaHttpVersion,

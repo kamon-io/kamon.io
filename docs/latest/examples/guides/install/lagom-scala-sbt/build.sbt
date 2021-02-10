@@ -27,8 +27,8 @@ lazy val `hello-impl` = (project in file("hello-impl"))
       lagomScaladslKafkaBroker,
       lagomScaladslTestKit,
       // tag:kamon-dependencies:start
-      "io.kamon" %% "kamon-bundle" % "2.1.11",
-      "io.kamon" %% "kamon-apm-reporter" % "2.1.11",
+      "io.kamon" %% "kamon-bundle" % "2.1.12",
+      "io.kamon" %% "kamon-apm-reporter" % "2.1.12",
       // tag:kamon-dependencies:end
       macwire,
       scalaTest

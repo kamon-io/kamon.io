@@ -18,8 +18,8 @@ dependencies {
     // Ensure that the Scala version suffix (2.13 in this case)
     // matches your Akka HTTP Scala version suffix!
 
-    implementation "io.kamon:kamon-bundle:2.1.11_2.13"
-    implementation "io.kamon:kamon-apm-reporter:2.1.11_2.13"
+    implementation "io.kamon:kamon-bundle:2.1.12_2.13"
+    implementation "io.kamon:kamon-apm-reporter:2.1.12_2.13"
     // tag:kamon-dependencies:end
 
     implementation "com.typesafe.akka:akka-http_${versions.ScalaBinary}"
