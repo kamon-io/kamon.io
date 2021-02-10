@@ -1,5 +1,6 @@
 ---
 title: 'Exposing Metrics for Prometheus with Kamon | Kamon Documentation'
+description: 'How to set up sending metrics collected with Kamon Telemetry to Prometheus'
 layout: docs
 redirect_from:
   - /documentation/1.x/reporters/prometheus/
@@ -10,9 +11,9 @@ redirect_from:
 Exposing Metrics for Prometheus
 ===============================
 
-[Prometheus][1] is an open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
+Prometheus is an open source monitoring and alerting toolkit. It has a dimensional data model, a really powerful and
 flexible query language and one very important difference in comparison with all other Kamon reporters: data has to be
-pulled our of your application instead of pushed to external servers.
+pulled out of your application instead of pushed to external servers.
 
 This module exposes a scraping endpoint with all Kamon metrics in the Prometheus text format, all you will have to do
 after starting this module is add the target to your Prometheus server and start enjoying the awesomeness.
