@@ -36,8 +36,8 @@ documentation:
       pages:
         - name: Start with the Kanela Agent
           path: /guides/how-to/start-with-the-kanela-agent/
-        - name: Logging with Context
-          path: /guides/common-tweaks/logging-with-context/
+        - name: Log Trace ID and Context Info
+          path: /guides/how-to/log-trace-id-and-context-info/
     - topic: Migrations
       pages:
         - name: Migrating from 0.6 to 1.0

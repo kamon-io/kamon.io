@@ -1,13 +1,13 @@
 ---
-title: 'Logging with Context | Kamon Documentation'
-description: 'Learn how to setup Kamon from scratch'
+title: 'Logging Trace ID and Context Information'
+description: 'Learn how to include Trace IDs and Context information in your log files with Kamon'
 layout: docs
+redirect_from:
+- /docs/latest/guides/common-tweaks/logging-with-context/
 ---
 
-{% include toc.html %}
-
-Logging with Context
-====================
+Logging Trace ID and Context Information
+========================================
 
 This guide helps you use the Logback instrumentation to include additional Context information in your log patterns. We
 assume that you already have a working Kamon setup before starting here.
@@ -21,10 +21,21 @@ There are four built-in converters in the Logback module, which should be added 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" debug="false">
-  <conversionRule conversionWord="traceID" converterClass="kamon.instrumentation.logback.tools.TraceIDConverter" />
-  <conversionRule conversionWord="spanID" converterClass="kamon.instrumentation.logback.tools.SpanIDConverter" />
-  <conversionRule conversionWord="contextTag" converterClass="kamon.instrumentation.logback.tools.ContextTagConverter" />
-  <conversionRule conversionWord="contextEntry" converterClass="kamon.instrumentation.logback.tools.ContextEntryConverter" />
+  <conversionRule
+    conversionWord="traceID"
+    converterClass="kamon.instrumentation.logback.tools.TraceIDConverter"/>
+
+  <conversionRule
+    conversionWord="spanID"
+    converterClass="kamon.instrumentation.logback.tools.SpanIDConverter"/>
+
+  <conversionRule
+    conversionWord="contextTag"
+    converterClass="kamon.instrumentation.logback.tools.ContextTagConverter"/>
+
+  <conversionRule
+    conversionWord="contextEntry"
+    converterClass="kamon.instrumentation.logback.tools.ContextEntryConverter"/>
 
   <!-- the rest of your config... -->
 
