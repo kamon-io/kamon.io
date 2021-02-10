@@ -1,5 +1,6 @@
 ---
 title: 'Sending Metrics to New Relic with Kamon | Kamon Documentation'
+description: 'How to set up sending metrics collected with Kamon Telemetry to New Relic'
 layout: docs
 ---
 
@@ -8,7 +9,7 @@ layout: docs
 New Relic Reporter
 ================
 
-[New Relic] is a cloud-based platform that gives developers, engineers, operations, and management a clear view of what’s happening in today’s complex software environments. So you can find and fix problems faster, build high-performing DevOps teams, and deliver delightful experiences for your customers.
+New Relic is a cloud-based platform that gives developers, engineers, operations, and management a clear view of what’s happening in software environments. 
 
 ## Installation
 
@@ -50,11 +51,11 @@ To disable tracing, simply comment out `span-metrics` for the appropriate module
 
 <img class="img-fluid my-4" src="/assets/img/newrelic-overview.png">
 
-[New Relic One distributed tracing] provides a powerful tool for visualizing all of your traces in a meaningful and convenient manner so that you can quickly diagnose any performance issues:
+[New Relic One distributed tracing] provides a tool for visualizing all of your traces so that you can quickly diagnose performance issues:
 
 <img class="img-fluid my-4" src="/assets/img/newrelic-tracing.png">
 
-[New Relic One dashboards] allow you to combine data from anywhere in the New Relic platform, including dimensional metrics and trace data sent by the Kamon New Relic Reporter, to build flexible, interactive visualizations. You can easily explore your data and correlate connected sources with tailored, user-friendly charts, and quickly learn the state of your system and applications for faster, more efficient troubleshooting.
+[New Relic One dashboards] allow you to combine data from anywhere in the New Relic platform, including dimensional metrics and trace data sent by the Kamon New Relic Reporter, to build interactive visualizations. You can explore your data and correlate connected sources with tailored and learn the state of your system and applications for efficient troubleshooting.
 
 <img class="img-fluid my-4" src="/assets/img/newrelic-dashboard.png">
 
