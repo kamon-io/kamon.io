@@ -46,7 +46,8 @@ addSbtPlugin("com.lightbend.sbt" % "sbt-javaagent" % "0.1.6")
 
 ## 3. Enable the JavaAgent Plugin
 
-Include the `JavaAgent` plugin in the call to `.enablePlugins` in your `build.sbt` file:
+Include the `JavaAgent` plugin in the call to `.enablePlugins` and add a new value to the `javaAgents` setting with the 
+Kanela agent in your `build.sbt` file:
 
 {% code_example %}
 {%   language scala guides/install/lagom-scala-sbt/build.sbt tag:enable-javaagent version:latest label:"SBT / build.sbt" %}
@@ -61,7 +62,7 @@ Add your service name and API key to the `application.conf` file:
 
 {% code_block hcl %}
 kamon {
-  environment.service = "Play Application"
+  environment.service = "Lagom Application"
   apm.api-key = "Your API Key"
 }
 {% endcode_block %}
@@ -84,51 +85,6 @@ and post a question. We will do our best to help!
 
 That is it, your installation is done! You might want to check out the [How To Guides][how-to-guides] for common 
 post-installation steps to improve your instrumentation.
-
-Special Cases
-=============
-
-## Custom Application Loaders
-If your Play Framework application has a custom `ApplicationLoader`, you will need to add a few lines of code  to ensure 
-that Kamon is initialized and stopped properly. Add these lines to the `load` method in your `ApplicationLoader` 
-implementation:
-
-{% code_block scala %}
-import kamon.Kamon
-
-class MyApplicationLoader extends ApplicationLoader {
-  def load(context: ApplicationLoader.Context): Application = {
-
-    // 1. Ensures that Kamon is configured with Play's conf/application.conf file
-    Kamon.reconfigure(context.initialConfiguration.underlying)
-
-    // 2. Starts reporters and system metrics collection
-    Kamon.loadModules()
-
-    // 3. Ensures that Kamon stops after every run. Specially importart
-    //    when running on Development mode.
-    context.lifecycle.addStopHook { () =>
-      Kamon.stop()
-    }
-
-    new MyComponents(context).application
-  }
-}
-{% endcode_block %}
-
-
-## Using Instrumentation in Production Mode Only
-If you want to use Kamon's instrumentation in Production Mode only, you can skip the SBT Kanela Runner Plugin and use the 
-SBT Javaagent Plugin directly. 
-
-To swap the plugins, remove the SBT Kanela Runner Plugin from [Step #2](#2-add-the-sbt-kanela-runner-plugin) and add this 
-line instead:
-
-{% code_block scala %}
-addSbtPlugin("com.lightbend.sbt" % "sbt-javaagent" % "0.1.6")
-{% endcode_block scala %}
-
-The rest of the installation steps remain the same.
 
 
 

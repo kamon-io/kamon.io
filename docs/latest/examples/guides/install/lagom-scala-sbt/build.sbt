@@ -20,8 +20,9 @@ lazy val `hello-api` = (project in file("hello-api"))
 // tag:enable-javaagent:start
 lazy val `hello-impl` = (project in file("hello-impl"))
   .enablePlugins(LagomScala, JavaAgent)
-// tag:enable-javaagent:end
   .settings(
+    javaAgents += "io.kamon" % "kanela-agent" % "1.0.7",
+    // tag:enable-javaagent:end
     libraryDependencies ++= Seq(
       lagomScaladslPersistenceCassandra,
       lagomScaladslKafkaBroker,
