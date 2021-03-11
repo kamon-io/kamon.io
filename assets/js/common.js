@@ -1,3 +1,25 @@
+const GAEvents = {
+  onboarding_start: "onboarding_start",
+  onboarding_choose_integration: "onboarding_choose_integration",
+  onboarding_signup: "onboarding_signup",
+}
+
+function getBaseAPMUrl() {
+  return window.location.hostname === "0.0.0.0"
+    ? "http://localhost:9999"
+    : "https://apm.kamon.io"
+}
+
+function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
+  const dataLayer = window.dataLayer
+  if (dataLayer != null) {
+    dataLayer.push({
+      "event": eventCategory,
+      "customEventAction": eventAction.toLowerCase()
+    })
+  }
+}
+
 function initScrollMainHeader() {
   const HEADER_BACKGROUND_TRIGGER_SCROLL = 40;
   var mainHeader = document.getElementById("main-header")
@@ -23,10 +45,11 @@ function showOnboardingModal() {
   const width = Math.min(window.innerWidth, 1200)
   const height = Math.max(window.innerHeight, 800)
 
+  const baseAPMUrl = getBaseAPMUrl()
   const solution = $(this).data("solution")
   const url = solution != null
-    ? `https://apm.kamon.io/onboarding?external=yes&solution=${solution}`
-    : "https://apm.kamon.io/onboarding?external=yes"
+    ? `${baseAPMUrl}/onboarding?external=yes&solution=${solution}`
+    : `${baseAPMUrl}/onboarding?external=yes`
 
   $("#onboarding-iframe").attr("width", width).attr("height", height)
   $("#onboarding-iframe").attr("src", url)
@@ -34,18 +57,33 @@ function showOnboardingModal() {
 }
 
 function bootOnboarding() {
-  $(".onboarding-start-button").on("click", showOnboardingModal)
+  $(".onboarding-start-button").on("click", () => {
+    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "cta_click")
+    showOnboardingModal()
+  })
 
   window.addEventListener("message", function (tag) {
-    if (tag.origin.includes("apm.kamon.io")) {
-      if (tag.data === "complete") {
-        window.open("https://apm.kamon.io", "_blank")
+    const baseAPMUrl = getBaseAPMUrl()
+    if (tag.origin.includes(baseAPMUrl)) {
+      if (tag.data.type === "ga-event") {
+        if (GAEvents[tag.data.eventCategory] == null) {
+          console.error(`Cannot submit GA event with category [${tag.data.eventCategory}]. Allowed categories: [${Object.keys(GAEvents).join(", ")}]`)
+        } else {
+          sendGoogleAnalyticsEvent(GAEvents[tag.data.eventCategory], tag.data.eventAction)
+        }
       }
-      $("#onboarding-modal").modal("hide")
+      if (tag.data === "complete") {
+        window.open(baseAPMUrl, "_blank")
+        $("#onboarding-modal").modal("hide")
+      }
+      if (tag.data === "close") {
+        $("#onboarding-modal").modal("hide")
+      }
     }
   })
 
   if (window.location.hash === "#get-started") {
+    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "get_started_url")
     showOnboardingModal()
   }
 }
