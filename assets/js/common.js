@@ -4,12 +4,25 @@ const GAEvents = {
   onboarding_signup: "onboarding_signup",
 }
 
+function getPageViewForGAEvent(eventCategory, eventAction) {
+  switch (eventCategory) {
+    case GAEvents.onboarding_start:
+      return ({ title: "Onboarding Solution Selection", path: "onboarding/solution-selection/" })
+    case GAEvents.onboarding_choose_integration:
+      return { title: `Onboarding Started with ${eventAction}`, path: `onboarding/started-with/${eventAction.toLowerCase()}/`}
+    case GAEvents.onboarding_signup:
+      return { title: "Onboarding Signed up with APM", path: "onboarding/signed-up/" }
+  }
+}
+
 function getBaseAPMUrl() {
   return window.location.hostname === "0.0.0.0"
     ? "http://localhost:9999"
     : "https://apm.kamon.io"
 }
 
+// NOTE: we're deliberately submitting both custom events and manual page view events.
+// Why? Because you cannot visualise a sequence of events in GA, but you can do so with page views.
 function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
   const dataLayer = window.dataLayer
   if (dataLayer != null) {
@@ -17,6 +30,14 @@ function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
       "event": eventCategory,
       "customEventAction": eventAction.toLowerCase()
     })
+    let pageView = getPageViewForGAEvent(eventCategory, eventAction)
+    if (pageView != null) {
+      dataLayer.push({
+        "event": "pageView",
+        "customPageViewTitle": pageView.title,
+        "customPageViewPath": pageView.path,
+      })
+    }
   }
 }
 
