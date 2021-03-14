@@ -4,7 +4,6 @@ title: 'Kamon Forecast - April 2018'
 date: 2018-04-27
 author: the Kamon Team
 categories: posts
-tags: featured
 redirect_from:
   - /teamblog/2018/04/27/kamon-forecast-april-2018/
 ---
