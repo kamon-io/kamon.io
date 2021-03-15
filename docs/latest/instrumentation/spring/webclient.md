@@ -1,0 +1,31 @@
+---
+title: 'Spring WebClient Documentation'
+description: 'Automatically extract metrics, traces and perform context propagation on Spring applications'
+layout: docs
+---
+{% include toc.html %}
+
+Spring WebClient Instrumentation
+=======================
+Since __2.1.13__
+
+Overview
+--------
+
+The Spring WebClient instrumentation will automatically create spans for requests sent using Spring WebClient.
+
+All requests will have a name that corresponds to the request type sent by the client, and add HTTP trace and span headers
+to the request.
+Example span: 
+
+<img class="img-fluid rounded" src="/assets/img/webclient-example.png">
+
+
+Manual Installation
+-------------------
+
+In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+
+{% include dependency-info.html module="kamon-spring" version=site.data.versions.latest.core %}
+{% include instrumentation-agent-notice.html %}
+

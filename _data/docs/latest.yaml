@@ -84,6 +84,12 @@ documentation:
           path: /instrumentation/logback/
         - name: Play Framework
           path: /instrumentation/play-framework/
+        - name: Spring Framework
+          pages:
+            - name: Spring MVC
+              path: /instrumentation/spring/spring-mvc/
+            - name: Spring WebClient
+              path: /instrumentation/spring/webclient/
         - name: System Metrics
           pages:
             - name: JVM Metrics
