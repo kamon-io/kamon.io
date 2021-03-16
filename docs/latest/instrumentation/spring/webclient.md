@@ -9,6 +9,12 @@ Spring WebClient Instrumentation
 =======================
 Since __2.1.13__
 
+{% alert info %}
+This is a new feature that is currently disabled by default.
+You can enable it by adding `kanela.modules.spring.enabled = yes`
+to your configuration.
+{% endalert %}
+
 Overview
 --------
 
