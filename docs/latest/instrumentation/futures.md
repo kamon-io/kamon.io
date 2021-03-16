@@ -66,7 +66,7 @@ instrumentation agent, since that will lead to threads not being properly cleane
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+In case you are not using the Kamon Bundle, add the dependency below to your build.
 
 {% include dependency-info.html module="kamon-scala-future" version=site.data.versions.latest.futures %}
 {% include instrumentation-agent-notice.html %}

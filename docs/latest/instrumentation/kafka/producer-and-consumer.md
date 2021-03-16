@@ -123,7 +123,7 @@ val incomingContext = record.context
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+In case you are not using the Kamon Bundle, add the dependency below to your build.
 
 {% include dependency-info.html module="kamon-kafka" version=site.data.versions.latest.core %}
 {% include instrumentation-agent-notice.html %}

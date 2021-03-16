@@ -134,7 +134,7 @@ When connection pool tracking is enabled, you will start seeing these metrics fo
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+In case you are not using the Kamon Bundle, add the dependency below to your build.
 
 {% include dependency-info.html module="kamon-cassandra" version=site.data.versions.latest.core %}
 {% include instrumentation-agent-notice.html %}
