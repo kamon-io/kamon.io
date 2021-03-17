@@ -9,6 +9,7 @@ layout: default
 {% assign all_sections = 'guides, core, instrumentation, reporters' | split: ', ' %}
 {% assign version_prefix = page.path | split: '/' | slice: 0, 2 | join: '/' %}
 {% assign current_pretty_path = page.url | remove_first: '.html' %}
+{% assign latest_version_link = page.url | replace: current_version, "latest" %}
 
 <div class="d-none d-lg-block bg-lightest docs-header">
   <div class="container">
@@ -176,6 +177,9 @@ layout: default
     {% endif %}
 
     <div id="docs-content" class="docs-container {% if sidebar_data %}col-12 col-lg-9 pl-lg-5 pt-5 pt-lg-0 {% else %}col-12{% endif %}">
+      {% if current_version == 'v1' %}
+        {% include outdated-docs-notice.html link=latest_version_link %}
+      {% endif %}
       {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" %}
     </div>
   </div>
