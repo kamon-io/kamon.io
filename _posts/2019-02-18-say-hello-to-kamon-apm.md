@@ -4,7 +4,6 @@ title: 'Say Hello to Kamon APM'
 date: 2019-02-18
 author: the Kamon Team
 categories: posts
-tags: featured
 cover_image: '/assets/img/kamon-and-apm-puzzle.svg'
 excerpt: >-
   We are pleased to announce the availability of Kamon APM, a hosted APM solution built to work nicely with Kamon and
