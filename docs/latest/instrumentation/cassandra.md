@@ -16,12 +16,6 @@ Overview
 The Cassandra Driver instrumentation automatically traces queries sent to Cassandra, and collects performance metrics
 for the driver sessions and connection pools. 
 
-{% alert info %}
-The instrumentation only supports the 3.x series of the Cassandra Java Driver. If you are interested in support for the
-4.x series, please comment and subscribe to <a href="https://github.com/kamon-io/Kamon/issues/798">this issue</a> on
-Github.
-{% endalert %}
-
 
 Query Tracing
 -------------
