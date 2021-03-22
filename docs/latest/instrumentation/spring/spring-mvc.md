@@ -24,7 +24,7 @@ processed with Spring MVC, as well as lower level HTTP server metrics. The gist 
 
 * Context will be automatically propagated using HTTP headers.
 * Server HTTP request Spans will be automatically created and propagated.
-* Spans for view rendering operations.
+* Spans are created for view rendering operations.
 * Lower level HTTP server metrics will be collected for the HTTP server side.
 
 

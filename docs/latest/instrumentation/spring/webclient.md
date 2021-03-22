@@ -19,10 +19,10 @@ Overview
 --------
 
 The Spring WebClient instrumentation will automatically create spans for requests sent using Spring WebClient.
-
 All requests will have a name that corresponds to the request type sent by the client, and add HTTP trace and span headers
 to the request.
-Example span: 
+
+Example span and tags: 
 
 <img class="img-fluid rounded" src="/assets/img/webclient-example.png">
 
