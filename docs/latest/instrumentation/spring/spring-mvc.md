@@ -10,22 +10,26 @@ Spring MVC Instrumentation
 Since __2.1.13__
 
 {% alert info %}
-This is a new feature that is currently disabled by default.
-You can enable it by adding `kanela.modules.spring.enabled = yes`
+This is an experimental feature that is currently enabled by default.
+You can disable it by adding `kanela.modules.spring.enabled = no`
 to your configuration.
 {% endalert %}
 
 The Spring MVC server instrumentation gives you traces and metrics for incoming requests.
 
-
 HTTP Server Tracing
 -------------------
-When using synchronous controllers and Callable asynchronous controllers, Kamon measures execution time and
-propagates context to where other Kamon instrumentation (like `kamon-jdbc`) can pick it up!
+The Spring MVC instrumentation automatically enables Context propagation and distributed tracing for incoming requests
+processed with Spring MVC, as well as lower level HTTP server metrics. The gist of the features provided by the instrumentation is:
+
+* Context will be automatically propagated using HTTP headers.
+* Server HTTP request Spans will be automatically created and propagated.
+* Spans for view rendering operations.
+* Lower level HTTP server metrics will be collected for the HTTP server side.
+
+
 Here's an example trace from [spring-petclinic]:
 <img class="img-fluid rounded" src="/assets/img/spring-petclinic-example-trace.png">
-
-Notice that we include a separate span for rendering of views!
 
 {% alert info %}
 If You're using DeferredResult for asynchronous controllers, there's good news and bad news.
@@ -67,6 +71,6 @@ In case you are not using the Kamon Bundle, add the dependency below to your bui
 {% include dependency-info.html module="kamon-spring" version=site.data.versions.latest.core %}
 {% include instrumentation-agent-notice.html %}
 
-[context]: /docs/latest/core/
+[context]: /docs/latest/core/context
 [instrumented executor]: /docs/latest/instrumentation/executors/
 [spring-petclinic]: https://github.com/spring-projects/spring-petclinic

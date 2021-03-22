@@ -10,8 +10,8 @@ Spring WebClient Instrumentation
 Since __2.1.13__
 
 {% alert info %}
-This is a new feature that is currently disabled by default.
-You can enable it by adding `kanela.modules.spring.enabled = yes`
+This is an experimental feature that is currently enabled by default.
+You can disable it by adding `kanela.modules.spring.enabled = no`
 to your configuration.
 {% endalert %}
 
