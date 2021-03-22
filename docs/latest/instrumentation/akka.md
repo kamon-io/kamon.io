@@ -30,7 +30,7 @@ Kamon supports instrumenting Akka 2.4 and Akka 2.5 and bring all of these featur
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build to instrument Akka 2.4 and Akka 2.5
+In case you are not using the Kamon Bundle, add the dependency below to your build to instrument Akka 2.4 and Akka 2.5
 applications.
 
 {% include dependency-info.html module="kamon-akka" version=site.data.versions.latest.akka %}

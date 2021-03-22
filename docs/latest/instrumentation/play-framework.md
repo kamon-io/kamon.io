@@ -187,7 +187,7 @@ This feature is enabled by default and will collect the following metrics:
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+In case you are not using the Kamon Bundle, add the dependency below to your build.
 
 {% include dependency-info.html module="kamon-play" version=site.data.versions.latest.play %}
 {% include instrumentation-agent-notice.html %}

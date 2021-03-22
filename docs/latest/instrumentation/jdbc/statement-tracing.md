@@ -87,7 +87,7 @@ kamon.instrumentation.jdbc.statements {
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build:
+In case you are not using the Kamon Bundle, add the dependency below to your build:
 
 {% include dependency-info.html module="kamon-jdbc" version=site.data.versions.latest.jdbc %}
 {% include instrumentation-agent-notice.html %}

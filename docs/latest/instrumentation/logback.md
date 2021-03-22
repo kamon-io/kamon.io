@@ -144,7 +144,7 @@ Once the appender is added, you will start to see the following metric:
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to your build.
+In case you are not using the Kamon Bundle, add the dependency below to your build.
 
 {% include dependency-info.html module="kamon-logback" version=site.data.versions.latest.logback %}
 {% include instrumentation-agent-notice.html %}

@@ -59,7 +59,7 @@ Kamon will still recognize that the module is available, but will not automatica
 Manual Installation
 -------------------
 
-In case you are not using the Kamon Bundle, add the dependency bellow to yor build (the Process metrics module is
+In case you are not using the Kamon Bundle, add the dependency below to your build (the Process metrics module is
 distributed as part of the system metrics module).
 
 {% include dependency-info.html module="kamon-system-metrics" version=site.data.versions.latest.system %}
