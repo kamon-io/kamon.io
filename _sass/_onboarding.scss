@@ -24,6 +24,8 @@
 
 .onboarding-iframe {
   width: 100%;
+  border: none;
+  border-radius: 8px;
 
   @media (min-width: 620px) {
     max-height: 90vh;
