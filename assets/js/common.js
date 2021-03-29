@@ -19,7 +19,7 @@ function getPageViewForGAEvent(eventCategory, eventAction) {
 }
 
 function getBaseAPMUrl() {
-  return window.location.hostname === "0.0.0.0"
+  return window.location.hostname === "0.0.0.0" || window.location.hostname === "localhost"
     ? "http://localhost:9999"
     : "https://apm.kamon.io"
 }
