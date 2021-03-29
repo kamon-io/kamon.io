@@ -1,15 +1,18 @@
 const GAEvents = {
   onboarding_start: "onboarding_start",
   onboarding_choose_integration: "onboarding_choose_integration",
+  onboarding_choose_project_type: "onboarding_choose_project_type",
   onboarding_signup: "onboarding_signup",
 }
 
 function getPageViewForGAEvent(eventCategory, eventAction) {
   switch (eventCategory) {
     case GAEvents.onboarding_start:
-      return ({ title: "Onboarding Solution Selection", path: "onboarding/solution-selection/" })
+      return ({ title: "Onboarding Started", path: "onboarding/start/" })
     case GAEvents.onboarding_choose_integration:
-      return { title: `Onboarding Started with ${eventAction}`, path: `onboarding/started-with/${eventAction.toLowerCase()}/`}
+      return { title: `Choose integration`, path: `onboarding/choose-integration/${eventAction.toLowerCase()}/`}
+    case GAEvents.onboarding_choose_project_type:
+      return { title: `Choose project type`, path: `onboarding/choose-project-type/${eventAction.toLowerCase()}/`}
     case GAEvents.onboarding_signup:
       return { title: "Onboarding Signed up with APM", path: "onboarding/signed-up/" }
   }
