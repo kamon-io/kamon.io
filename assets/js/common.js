@@ -10,9 +10,9 @@ function getPageViewForGAEvent(eventCategory, eventAction) {
     case GAEvents.onboarding_start:
       return ({ title: "Onboarding Started", path: "onboarding/start/" })
     case GAEvents.onboarding_choose_integration:
-      return { title: `Choose integration`, path: `onboarding/choose-integration/${eventAction.toLowerCase()}/`}
+      return { title: `Choose Integration ${eventAction}`, path: `onboarding/choose-integration/${eventAction.toLowerCase()}/`}
     case GAEvents.onboarding_choose_project_type:
-      return { title: `Choose project type`, path: `onboarding/choose-project-type/${eventAction.toLowerCase()}/`}
+      return { title: `Choose Project Type ${eventAction}`, path: `onboarding/choose-project-type/${eventAction.toLowerCase()}/`}
     case GAEvents.onboarding_signup:
       return { title: "Onboarding Signed up with APM", path: "onboarding/signed-up/" }
   }
