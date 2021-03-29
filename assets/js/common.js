@@ -31,7 +31,7 @@ function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
   if (dataLayer != null) {
     dataLayer.push({
       "event": eventCategory,
-      "customEventAction": eventAction.toLowerCase()
+      "customEventAction": eventAction ? eventAction.toLowerCase() : undefined
     })
     const pageView = getPageViewForGAEvent(eventCategory, eventAction)
     if (pageView != null) {
