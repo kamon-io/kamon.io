@@ -17,6 +17,9 @@
 }
 
 .modal-content {
+  border-radius: 8px;
+  border: none;
+
   @media (min-width: 620px) {
     max-height: 90vh;
   }
