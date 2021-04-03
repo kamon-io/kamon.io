@@ -6,7 +6,7 @@ import scala.concurrent.{ExecutionContext, Future}
 
 object FuturesAndExecutors extends App {
   // tag:registering-a-executor:start
-  val executor = java.util.concurrent.Executors.newFixedexecutor(10)
+  val executor = java.util.concurrent.Executors.newFixedThreadPool(10)
   val instrumented = ExecutorInstrumentation.instrument(executor, "sample-executor")
 
   // Form this point on, submit tasks to the "instrumented" executor.
