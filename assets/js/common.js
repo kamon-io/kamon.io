@@ -99,9 +99,11 @@ function bootOnboarding() {
       if (tag.data === "complete") {
         window.open(baseAPMUrl, "_blank")
         $("#onboarding-modal").modal("hide")
+        $("#onboarding-iframe").attr("src", undefined)
       }
       if (tag.data === "close") {
         $("#onboarding-modal").modal("hide")
+        $("#onboarding-iframe").attr("src", undefined)
       }
     }
   })
