@@ -1,22 +1,25 @@
 const GAEvents = {
   onboarding_start: "onboarding_start",
   onboarding_choose_integration: "onboarding_choose_integration",
+  onboarding_choose_project_type: "onboarding_choose_project_type",
   onboarding_signup: "onboarding_signup",
 }
 
 function getPageViewForGAEvent(eventCategory, eventAction) {
   switch (eventCategory) {
     case GAEvents.onboarding_start:
-      return ({ title: "Onboarding Solution Selection", path: "onboarding/solution-selection/" })
+      return ({ title: "Onboarding Started", path: "onboarding/start/" })
     case GAEvents.onboarding_choose_integration:
-      return { title: `Onboarding Started with ${eventAction}`, path: `onboarding/started-with/${eventAction.toLowerCase()}/`}
+      return { title: `Choose Integration ${eventAction}`, path: `onboarding/choose-integration/${eventAction.toLowerCase()}/`}
+    case GAEvents.onboarding_choose_project_type:
+      return { title: `Choose Project Type ${eventAction}`, path: `onboarding/choose-project-type/${eventAction.toLowerCase()}/`}
     case GAEvents.onboarding_signup:
       return { title: "Onboarding Signed up with APM", path: "onboarding/signed-up/" }
   }
 }
 
 function getBaseAPMUrl() {
-  return window.location.hostname === "0.0.0.0"
+  return window.location.hostname === "0.0.0.0" || window.location.hostname === "localhost"
     ? "http://localhost:9999"
     : "https://apm.kamon.io"
 }
@@ -28,7 +31,7 @@ function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
   if (dataLayer != null) {
     dataLayer.push({
       "event": eventCategory,
-      "customEventAction": eventAction.toLowerCase()
+      "customEventAction": eventAction ? eventAction.toLowerCase() : undefined
     })
     const pageView = getPageViewForGAEvent(eventCategory, eventAction)
     if (pageView != null) {
@@ -96,9 +99,11 @@ function bootOnboarding() {
       if (tag.data === "complete") {
         window.open(baseAPMUrl, "_blank")
         $("#onboarding-modal").modal("hide")
+        $("#onboarding-iframe").attr("src", undefined)
       }
       if (tag.data === "close") {
         $("#onboarding-modal").modal("hide")
+        $("#onboarding-iframe").attr("src", undefined)
       }
     }
   })
