@@ -46,16 +46,8 @@
 
 body.has-notification {
 
-  .docs-header {
-    margin-top: $notification-bar-height;
-  }
-
-  .docs-navbar {
-    top: $notification-bar-height + $navbar-height;
-  }
-
   .sticky-docs-navbar {
-    top: calc(57px + 52px + #{$notification-bar-height} + 3rem);
+    top: calc(#{$notification-bar-height} + 3rem);
   }
 
   :target:before {
@@ -64,90 +56,119 @@ body.has-notification {
     height: 170px + $notification-bar-height;
     margin: (-170px + $notification-bar-height) 0 0;
   }
-  
+
 }
 
 .sticky-docs-navbar {
   position: sticky;
-  top: calc(57px + 52px + 3rem);
-}
-
-.docs-navbar {
-  z-index: 101;
-  height: $docs-navbar-height;
-  background-color: $color-light-4;
-  border-bottom: 1px solid $color-light-1;
-  position: sticky;
-  top: $navbar-height;
-
-  .active {
-    border-bottom: 3px solid $color-shamrock-main;
-    margin-bottom: -20px;
-  }
+  top: 8rem;
 }
 
 .docs-sidebar-nav, .docs-mobile-navigation-container {
-  $sidebar-vertical-margin: 120px;
+  $sidebar-vertical-margin: 170px;
 
-  border-radius: 8px;
   background-color: $color-light-3;
-  max-height: calc(100vh - #{$docs-navbar-height} - #{$navbar-height} - #{$sidebar-vertical-margin});
+  max-height: calc(100vh - #{$sidebar-vertical-margin});
+  @include custom-scrollbar;
 
-  .docs-sidebar-scroll {
-    max-height: calc(100vh - #{$docs-navbar-height} - #{$navbar-height} - #{$sidebar-vertical-margin});
-    @include custom-scrollbar;
+  // Sections are the top of the docs: Guides, Core, Instrumentation and so on.
+  .docs-section {
+    cursor: pointer;
+    border-radius: 8px;
+    color: $color-dark-3;
+    font-weight: 500;
+    font-size: 1rem;
+
+    &.active {
+      color: $color-shamrock-main;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background-color: $color-light-2;
+    }
+  }
+
+  // Topics are the tiny groups inside sections. They don't have any
+  // special function other than separating pages inside a topic.
+  .docs-topic {
+    padding-left: 1rem;
+    color: $color-dark-3;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  // The actual pages users can click on
+  .docs-page {
+    cursor: pointer;
+    border-radius: 8px;
+    padding-left: 2rem;
+    color: $color-dark-2;
+    font-weight: 500;
+    font-size: 0.9rem;
+
+    &.active {
+      font-weight: 600;
+      background-color: $color-light-1;
+    }
+
+    &:hover {
+      background-color: $color-light-2;
+    }
+  }
+
+  // Pages that are nested in other pages. Some sections like Akka,
+  // JDBC and Kafka have nested pages that are styled by this class.
+  .docs-sub-page {
+    cursor: pointer;
+    border-radius: 8px;
+    padding-left: 1rem;
+    color: $color-dark-3;
+    font-weight: 400;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $color-light-2;
+    }
+
+    &.active {
+      color: $color-dark-2;
+      font-weight: 600;
+    }
+  }
+
+  .docs-sub-page-group {
+    margin-left: 2rem;
+    padding-left: 1rem;
+    border-left: 1px solid $color-light-1;
   }
 
   ul {
     list-style: none;
-    padding-left: 1rem;
-
-    li {
-      position: relative;
-
-      .docs-sidebar-link {
-        display: inline-block;
-        padding: 0.5rem 0.7rem;
-        padding-right: 1.5rem;
-        border-radius: 8px;
-        width: 100%;
-        font-size: 0.9rem;
-
-        &:hover {
-          background-color: $color-light-2;
-        }
-
-        &.active {
-          color: white;
-          background-color: $color-shamrock-main;
-          font-weight: bold;;
-        }
-      }
-
-      a {
-        color: $color-dark-1;
-      }
-    }
+    padding-left: 0px;
   }
 }
 
 
 .collapse-caret {
-  ::after {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-top: 3px solid $color-dark-3;
-    border-left: 3px solid $color-dark-3;
-    transform: translate(8px, -2px) rotate(135deg);
-    transition: 0.2s;
-  }
+  float: right;
+  width: 8px;
+  height: 8px;
+  border-top: 3px solid $color-dark-3;
+  border-left: 3px solid $color-dark-3;
+  transform: translate(0px, 10px) rotate(45deg);
+  transition: 0.2s;
+}
 
-  &.collapsed{
-    ::after {
-      transform: translate(8px, -4px) rotate(225deg);
-    }
+.collapse-caret-small {
+  border-top: 2px solid $color-dark-4;
+  border-left: 2px solid $color-dark-4;
+}
+
+.collapsed {
+  .collapse-caret {
+    transform: translate(0px, 7px) rotate(225deg);
   }
 }
 
@@ -169,7 +190,8 @@ body.has-notification {
 }
 
 .docs-container {
-  margin-top: -2rem;
+  background-color: white;
+  border-radius: 16px;
   line-height: 1.6rem;
 
   a {
@@ -179,6 +201,7 @@ body.has-notification {
   h1, h2, h3, h4, h5, h6 {
     color: $color-dark-2;
     margin-bottom: 1rem;
+    scroll-margin-top: -4rem;
 
     .heading-anchor {
       position: relative;
@@ -192,66 +215,66 @@ body.has-notification {
       }
     }
   }
-  
+
 
   h1 {
     color: $color-dark-1;
     margin-top: 2rem;
     font-size: remSize(34);
     line-height: remSize(38);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(20);
       line-height: remSize(24);
     }
   }
-  
+
   h2 {
     margin-top: 2rem;
     font-size: remSize(26);
     line-height: remSize(30);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(16);
       line-height: remSize(20);
     }
   }
-  
+
   h3 {
     margin-top: 2rem;
     font-size: remSize(24);
     line-height: remSize(30);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(15);
       line-height: remSize(20);
     }
   }
-  
+
   h4 {
     font-size: remSize(18);
     line-height: remSize(22);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(15);
       line-height: remSize(20);
     }
   }
-  
+
   h5 {
     font-size: remSize(15);
     line-height: remSize(20);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(15);
       line-height: remSize(20);
     }
   }
-  
+
   h6 {
     font-size: remSize(14);
     line-height: remSize(18);
-  
+
     @media (max-width: $xs-max) {
       font-size: remSize(14);
       line-height: remSize(18);

@@ -59,10 +59,15 @@ function initScrollMainHeader() {
     }
   }
 
-  document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
+  if(window.location.pathname.startsWith("/docs/")) {
+    mainHeader.classList.add("bg-white")
+  } else {
 
-  // Must be called during setup in case the current scroll location requires the background
-  mainHeaderScrollListener()
+    document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
+
+    // Must be called during setup in case the current scroll location requires the background
+    mainHeaderScrollListener()
+  }
 }
 
 function showOnboardingModal() {

@@ -1,129 +1,141 @@
 documentation:
-  core:
-    - topic: Foundations
-      pages:
-        - name: Overview
-          path: /core/
-        - name: Metrics
-          path: /core/metrics/
-        - name: Tracing
-          path: /core/tracing/
-        - name: Context
-          path: /core/context/
-        - name: Configuration
-          path: /core/configuration/
-        - name: Utilities
-          path: /core/utilities/
-    - topic: Advanced
-      pages:
-        - name: Metric Instruments
-          path: /core/advanced/metric-instruments/
+  - name: Guides
+    path: /guides/
+    icon: /assets/img/icons/docs-guides.svg
+    topics:
+      - name: Installation
+        path: /guides/installation/
+        pages:
+          - name: Akka HTTP
+            path: /guides/installation/akka-http/
+          - name: Play Framework
+            path: /guides/installation/play-framework/
+          - name: Lagom Framework
+            path: /guides/installation/lagom-framework/
+          - name: Plain Application
+            path: /guides/installation/plain-application/
+          - name: Manual Instrumentation
+            path: /guides/installation/manual-instrumentation/
+      - name: How To Guides
+        path: /guides/how-to/
+        pages:
+          - name: Start with the Kanela Agent
+            path: /guides/how-to/start-with-the-kanela-agent/
+          - name: Log Trace ID and Context Info
+            path: /guides/how-to/log-trace-id-and-context-info/
+      - name: Migrations
+        path: /guides/migration/
+        pages:
+          - name: Migrating from 0.6 to 1.0
+            path: /guides/migration/from-0.6-to-1.0/
+          - name: Migrating from 1.x to 2.0
+            path: /guides/migration/from-1.x-to-2.0/
 
-  guides:
-    - topic: Installation
-      pages:
-        - name: Akka HTTP
-          path: /guides/installation/akka-http/
-        - name: Play Framework
-          path: /guides/installation/play-framework/
-        - name: Lagom Framework
-          path: /guides/installation/lagom-framework/
-        - name: Plain Application
-          path: /guides/installation/plain-application/
-        - name: Manual Instrumentation
-          path: /guides/installation/manual-instrumentation/
-    - topic: How To Guides
-      pages:
-        - name: Start with the Kanela Agent
-          path: /guides/how-to/start-with-the-kanela-agent/
-        - name: Log Trace ID and Context Info
-          path: /guides/how-to/log-trace-id-and-context-info/
-    - topic: Migrations
-      pages:
-        - name: Migrating from 0.6 to 1.0
-          path: /guides/migration/from-0.6-to-1.0/
-        - name: Migrating from 1.x to 2.0
-          path: /guides/migration/from-1.x-to-2.0/
+  - name: Core Concepts
+    path: /core/
+    icon: /assets/img/icons/docs-core-concepts.svg
+    topics:
+      - name: Foundations
+        pages:
+          - name: Overview
+            path: /core/
+          - name: Metrics
+            path: /core/metrics/
+          - name: Tracing
+            path: /core/tracing/
+          - name: Context
+            path: /core/context/
+          - name: Configuration
+            path: /core/configuration/
+          - name: Utilities
+            path: /core/utilities/
+      - name: Advanced
+        pages:
+          - name: Metric Instruments
+            path: /core/advanced/metric-instruments/
 
-  instrumentation:
-    - topic: Automatic Instrumentation
-      pages:
-        - name: Akka
-          pages:
-            - name: Overview
-              path: /instrumentation/akka/
-            - name: Metrics
-              path: /instrumentation/akka/metrics/
-            - name: Message Tracing
-              path: /instrumentation/akka/tracing/
-            - name: Context Propagation
-              path: /instrumentation/akka/context-propagation/
-            - name: Ask Pattern
-              path: /instrumentation/akka/ask-pattern-timeout-warning/
-        - name: Akka HTTP
-          path: /instrumentation/akka-http/
-        - name: Cassandra Driver
-          path: /instrumentation/cassandra/
-        - name: Elasticsearch
-          path: /instrumentation/elasticsearch/
-        - name: Executors
-          path: /instrumentation/executors/
-        - name: Futures
-          path: /instrumentation/futures/
-        - name: JDBC
-          pages:
-            - name: Statement Tracing
-              path: /instrumentation/jdbc/statement-tracing/
-            - name: HikariCP
-              path: /instrumentation/jdbc/hikari/
-        - name: Kafka
-          pages:
-            - name: Producer and Consumer
-              path: /instrumentation/kafka/producer-and-consumer/
-        - name: Logback
-          path: /instrumentation/logback/
-        - name: Play Framework
-          path: /instrumentation/play-framework/
-        - name: Spring Framework
-          pages:
-            - name: Spring MVC
-              path: /instrumentation/spring/spring-mvc/
-            - name: Spring WebClient
-              path: /instrumentation/spring/webclient/
-        - name: System Metrics
-          pages:
-            - name: JVM Metrics
-              path: /instrumentation/system/jvm-metrics/
-            - name: Process Metrics
-              path: /instrumentation/system/process-metrics/
-            - name: Host Metrics
-              path: /instrumentation/system/host-metrics/
+  - name: Instrumentation
+    path: /instrumentation/
+    icon: /assets/img/icons/docs-instrumentation.svg
+    topics:
+      - name: Automatic
+        path: /instrumentation/
+        pages:
+          - name: Akka
+            pages:
+              - name: Overview
+                path: /instrumentation/akka/
+              - name: Metrics
+                path: /instrumentation/akka/metrics/
+              - name: Message Tracing
+                path: /instrumentation/akka/tracing/
+              - name: Context Propagation
+                path: /instrumentation/akka/context-propagation/
+              - name: Ask Pattern
+                path: /instrumentation/akka/ask-pattern-timeout-warning/
+          - name: Akka HTTP
+            path: /instrumentation/akka-http/
+          - name: Cassandra Driver
+            path: /instrumentation/cassandra/
+          - name: Elasticsearch
+            path: /instrumentation/elasticsearch/
+          - name: Executors
+            path: /instrumentation/executors/
+          - name: Futures
+            path: /instrumentation/futures/
+          - name: JDBC
+            pages:
+              - name: Statement Tracing
+                path: /instrumentation/jdbc/statement-tracing/
+              - name: HikariCP
+                path: /instrumentation/jdbc/hikari/
+          - name: Kafka
+            pages:
+              - name: Producer and Consumer
+                path: /instrumentation/kafka/producer-and-consumer/
+          - name: Logback
+            path: /instrumentation/logback/
+          - name: Play Framework
+            path: /instrumentation/play-framework/
+          - name: Spring Framework
+            pages:
+              - name: Spring MVC
+                path: /instrumentation/spring/spring-mvc/
+              - name: Spring WebClient
+                path: /instrumentation/spring/webclient/
+          - name: System Metrics
+            pages:
+              - name: JVM Metrics
+                path: /instrumentation/system/jvm-metrics/
+              - name: Process Metrics
+                path: /instrumentation/system/process-metrics/
+              - name: Host Metrics
+                path: /instrumentation/system/host-metrics/
 
-  reporters:
-    - topic: Combined Reporters
-      pages:
-        - name: Kamon APM
-          path: /reporters/apm/
-        - name: Datadog
-          path: /reporters/datadog/
-        - name: New Relic
-          path: /reporters/newrelic/
-    - topic: Metrics Only
-      pages:
-        - name: Prometheus
-          path: /reporters/prometheus/
-        - name: InfluxDB
-          path: /reporters/influxdb/
-        # - name: StatsD
-        #   path: /reporters/statsd/
-        # - name: Sematext SPM
-        #   path: /reporters/sematext-spm/
-    - topic: Spans Only
-      pages:
-        - name: Zipkin
-          path: /reporters/zipkin/
-        - name: Jaeger
-          path: /reporters/jaeger/
+  - name: Reporters
+    path: /reporters/
+    icon: /assets/img/icons/docs-reporters.svg
+    topics:
+      - name: Combined Reporters
+        pages:
+          - name: Kamon APM
+            path: /reporters/apm/
+          - name: Datadog
+            path: /reporters/datadog/
+          - name: New Relic
+            path: /reporters/newrelic/
+      - name: Metrics Only
+        pages:
+          - name: Prometheus
+            path: /reporters/prometheus/
+          - name: InfluxDB
+            path: /reporters/influxdb/
+      - name: Spans Only
+        pages:
+          - name: Zipkin
+            path: /reporters/zipkin/
+          - name: Jaeger
+            path: /reporters/jaeger/
 
 metrics:
   akka.system.active-actors:

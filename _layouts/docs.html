@@ -4,183 +4,172 @@ layout: default
 {% assign path_sections = page.url | split: '/' %}
 {% assign current_version = path_sections[2] %}
 {% assign current_section = path_sections[3] | remove_first: '.html' %}
-{% assign sidebar_data = site.data.docs[current_version].documentation[current_section] %}
-{% assign documentation_data = site.data.docs[current_version].documentation %}
+{% assign documentation = site.data.docs[current_version].documentation %}
 {% assign all_sections = 'guides, core, instrumentation, reporters' | split: ', ' %}
 {% assign version_prefix = page.path | split: '/' | slice: 0, 2 | join: '/' %}
 {% assign current_pretty_path = page.url | remove_first: '.html' %}
 {% assign latest_version_link = page.url | replace: current_version, "latest" %}
+{% assign path_without_version = path_sections | drop: 3 | join: "/" | prepend: "/" | append: "/" %}
 
-<div class="d-none d-lg-block bg-lightest docs-header">
-  <div class="container">
-    <div class="row py-4">
-      <h2 class="col-12">Documentation</h2>
-      <div class="col-auto">
-        {% include docs-version-select.html %}
-      </div>
-    </div>
-  </div>
-</div>
 
-<nav id="docs-header" class="d-none d-lg-block docs-navbar">
-  <div class="container h-100">
-    <div class="row align-items-center justify-content-between h-100">
-      <div class="col-auto">
-        <div class="row">
-          <div class="{% if current_section == 'guides' %}active{% endif %} px-3">
-            <a class="no-decoration" href="/docs/{{current_version}}/guides/"><b class="py-4">Guides</b></a>
-          </div>
-          <div class="{% if current_section == 'core' %}active{% endif %} px-3">
-            <a class="no-decoration" href="/docs/{{current_version}}/core/"><b class="py-4">Core</b></a>
-          </div>
-          <div class="{% if current_section == 'instrumentation' %}active{% endif %} px-3">
-            <a class="no-decoration" href="/docs/{{current_version}}/instrumentation/"><b class="py-4">Instrumentation</b></a>
-          </div>
-          <div class="{% if current_section == 'reporters' %}active{% endif %} px-3">
-            <a class="no-decoration" href="/docs/{{current_version}}/reporters/"><b class="py-4">Reporters</b></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-auto">
-        {% include docs-search.html id="desktop" %}
-      </div>
-    </div>
-  </div>
-</nav>
-
-<!-- NEED TO CHECK THIS ONE -->
 <nav class="d-lg-none mobile-docs-navbar" role="button">
   <div class="d-flex align-items-center h-100" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
     <button id="mobile-docs-navigation-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
       <img src="/assets/img/icons/docs-mobile-menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
     </button>
-    <h4 class="d-inline mb-0" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">Documentation</h4>
+    <h4 class="d-inline mb-0" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="true" aria-label="Toggle navigation">Documentation</h4>
   </div>
 
 
+  {% if documentation %}
+  <div id="mobile-docs-navigation" style="z-index: 200;" class="d-lg-none w-100 p-0 pr-3 docs-sidebar-scroll docs-mobile-navigation-container collapse navbar-collapse">
+    <ul>
+      {% for section in documentation %}
+      {% assign section_id = section.name | slugify %}
+      {% assign is_section_expanded = path_without_version | start_with: section.path %}
 
-  <div class="collapse navbar-collapse w-100 py-4 px-3" id="mobile-docs-navigation">
-    <div class="">
-      {% include docs-version-select.html %}
-      {% include docs-search.html %}
-    </div>
-    <div class="p-1 docs-mobile-navigation-container">
-      {% for section in all_sections %}
-        <div class="section-collapse {% if section != current_section %}collapsed{% endif %}" id="section-collapse-heading-{{ section }}" aria-expanded="{% if section == current_section %}true{% else %}false{% endif %}" data-toggle="collapse" data-target="#section-collapse-text-{{ section }}" aria-controls="section-collapse-text-{{ section }}">
-          <div class="d-flex justify-content-between w-100 mt-3 text-dark-2">
-            <h6 class="text-capitalize ml-2 mb-0">{{ section }}</h6>
-          </div>
+      <li>
+        <div class="docs-section py-2 px-3 {% if is_section_expanded %}active{% else %}collapsed{% endif %}"
+          type="button"
+          data-toggle="collapse"
+          data-target="#{{ section_id }}"
+          aria-expanded="{{ is_section_expanded }}"
+          aria-controls="{{ section_id }}">
+
+          <span style="padding-left: 2rem; background-image: url({{section.icon}}); background-repeat: no-repeat; background-size: contain;">{{ section.name }}</span>
+          <span class="collapse-caret"></span>
         </div>
-  
-        <div id="section-collapse-text-{{ section }}" class="collapse pl-3 {% if section == current_section %}show{% endif %}" aria-labelledby="section-collapse-heading-{{ section }}" data-parent="#section-collapse-heading-{{ section }}">
-          <ul class="mobile-docs-navigation-sections pr-2">
-            {% for topic in site.data.docs[current_version].documentation[section] %}
-            <li class="mb-4">
-              <div class="text-light">{{ topic.topic }}</div>
-              <ul>
-                {% for topic_page in topic.pages %}
-                  {% if topic_page.pages %}
-                    <li>
-                      <div class="text-dark-3">{{topic_page.name}}</div>
-                      <ul>
-                        {% for topic_sub_page in topic_page.pages %}
-                          {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
-                          {% assign current_path = current_pretty_path | append: '/' %}
-                          <li class="{% if topic_sub_page_path == current_path %}current-active-topic{% endif %}">
-                            <a href="{{topic_sub_page_path}}">{{topic_sub_page.name}}</a>
-                            {% if topic_sub_page_path == current_path %}
-                            <div id="markdown-toc-container-mobile"></div>
-                            {% endif %}
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    </li>
-  
+
+        <ul id="{{ section_id }}" class="collapse {% if is_section_expanded %}show{% endif %}" aria-labelledby="{{ section_id }}">
+          {% for topic in section.topics %}
+          <li class="pb-3">
+            <div class="docs-topic py-2 ">{{ topic.name }}</div>
+
+            <ul>
+              {% for page in topic.pages %}
+                <li>
+                  {% if page.pages %}
+                  {% assign page_id = page.name | slugify %}
+                  {% assign is_page_expanded = page.pages | map: 'path' | contains: path_without_version %}
+                  <div
+                    class="docs-page py-2 pr-3 {% if is_page_expanded %}active{% else %}collapsed{% endif %}"
+                    data-toggle="collapse"
+                    data-target="#{{ page_id }}"
+                    aria-expanded="{{ is_page_expanded }}">
+                    {{page.name}}
+                    <span class="collapse-caret collapse-caret-small"></span>
+                  </div>
+
+                  <ul id="{{ page_id }}" class="docs-sub-page-group collapse {% if is_page_expanded %}show{% endif %}">
+                    <div class="my-2">
+                      {% for sub_page in page.pages %}
+                      <a href="/{{ version_prefix | append: sub_page.path }}">
+                        <li class="docs-sub-page py-2 {% if sub_page.path == path_without_version %}active{% endif %}">
+                          {{sub_page.name}}
+                        </li>
+                      </a>
+                      {% endfor %}
+                    </div>
+                  </ul>
+
                   {% else %}
-                    {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
-                    {% assign current_path = current_pretty_path | append: '/' %}
-                    <li class="{% if topic_page_path == current_path %}current-active-topic{% endif %}">
-                      <a href="{{topic_page_path}}">{{topic_page.name}}</a>
-                      {% if topic_page_path == current_path %}
-                        <div id="markdown-toc-container-mobile"></div>
-                      {% endif %}
-                    </li>
+                  <a href="/{{ version_prefix | append: page.path }}">
+                    <div class="docs-page py-2 {% if page.path == path_without_version %}active{% endif %}">{{page.name}}</div>
+                  </a>
                   {% endif %}
-                {% endfor %}
-              </ul>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <hr/>
+
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor%}
+        </ul>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
+  {% endif %}
 </nav>
 
+<div class="w-100"  style="background-color: #FAFAFC;">
+  <div class="container-lg pb-5 pt-5">
+    <div class="row">
 
+      {% if documentation %}
+      <div id="docs-sidebar" class="d-none d-lg-block col-3 p-0 pr-3 docs-sidebar-nav d-none d-lg-block sticky-docs-navbar docs-sidebar-scroll">
+        <ul>
+          {% for section in documentation %}
+          {% assign section_id = section.name | slugify %}
+          {% assign is_section_expanded = path_without_version | start_with: section.path %}
 
+          <li>
+            <div class="docs-section py-2 px-3 {% if is_section_expanded %}active{% else %}collapsed{% endif %}"
+              type="button"
+              data-toggle="collapse"
+              data-target="#{{ section_id }}"
+              aria-expanded="{{ is_section_expanded }}"
+              aria-controls="{{ section_id }}">
 
+              <span style="padding-left: 2rem; background-image: url({{section.icon}}); background-repeat: no-repeat; background-size: contain;">{{ section.name }}</span>
+              <span class="collapse-caret"></span>
+            </div>
 
+            <ul id="{{ section_id }}" class="collapse {% if is_section_expanded %}show{% endif %}" aria-labelledby="{{ section_id }}">
+              {% for topic in section.topics %}
+              <li class="pb-3">
+                <div class="docs-topic py-2 ">{{ topic.name }}</div>
 
-<div class="container-lg my-5">
-  <div class="row">
-    {% if sidebar_data %}
-      <div id="docs-sidebar" class="d-none d-lg-block col-3 docs-sidebar-nav d-none d-lg-block sticky-docs-navbar p-1">
-        <div class="docs-sidebar-scroll">
-          <ul class="docs-sections pr-2">
-            {% for topic in sidebar_data %}
-              <li>
-                <div class="text-light py-3">{{ topic.topic }}</div>
-                  <ul class="pl-1">
-                    {% for topic_page in topic.pages %}
-                      {% if topic_page.pages %}
-                        <li>
-                          <a class="text-secondary collapse-caret" data-toggle="collapse" href="#{{ topic_page.name | slugify }}" role="button" aria-expanded="true" aria-controls="{{ topic_page.name | slugify}}">
-                            <span class="docs-sidebar-link">{{topic_page.name}}</span>
+                <ul>
+                  {% for page in topic.pages %}
+                    <li>
+                      {% if page.pages %}
+                      {% assign page_id = page.name | slugify %}
+                      {% assign is_page_expanded = page.pages | map: 'path' | contains: path_without_version %}
+                      <div
+                        class="docs-page py-2 pr-3 {% if is_page_expanded %}active{% else %}collapsed{% endif %}"
+                        data-toggle="collapse"
+                        data-target="#{{ page_id }}"
+                        aria-expanded="{{ is_page_expanded }}">
+                        {{page.name}}
+                        <span class="collapse-caret collapse-caret-small"></span>
+                      </div>
+
+                      <ul id="{{ page_id }}" class="docs-sub-page-group collapse {% if is_page_expanded %}show{% endif %}">
+                        <div class="my-2">
+                          {% for sub_page in page.pages %}
+                          <a href="/{{ version_prefix | append: sub_page.path }}">
+                            <li class="docs-sub-page py-2 {% if sub_page.path == path_without_version %}active{% endif %}">
+                              {{sub_page.name}}
+                            </li>
                           </a>
-                          <ul class="collapse show" id="{{topic_page.name | slugify }}">
-                            {% for topic_sub_page in topic_page.pages %}
-                              {% assign topic_sub_page_path = topic_sub_page.path | prepend: version_prefix | prepend: '/' %}
-                              {% assign current_path = current_pretty_path %}
-                              <li>
-                                <a href="{{topic_sub_page_path}}">
-                                  <span class="docs-sidebar-link {% if topic_sub_page_path == current_path %}active{% endif %}">{{topic_sub_page.name}}</span>
-                                </a>
-                                {% if topic_sub_page_path == current_path %}
-                                  <div id="markdown-toc-container"></div>
-                                {% endif %}
-                              </li>
-                            {% endfor %}
-                          </ul>
-                        </li>
+                          {% endfor %}
+                        </div>
+                      </ul>
 
                       {% else %}
-                        {% assign topic_page_path = topic_page.path | prepend: version_prefix | prepend: '/' %}
-                        {% assign current_path = current_pretty_path %}
-                        <li>
-                          <a href="{{topic_page_path}}">
-                            <span class="docs-sidebar-link {% if topic_page_path == current_path %}active{% endif %}">{{topic_page.name}}</span>
-                          </a>
-                          {% if topic_page_path == current_path %}
-                            <div id="markdown-toc-container"></div>
-                          {% endif %}
-                        </li>
+                      <a href="/{{ version_prefix | append: page.path }}">
+                        <div class="docs-page py-2 {% if page.path == path_without_version %}active{% endif %}">{{page.name}}</div>
+                      </a>
                       {% endif %}
-                    {% endfor %}
+
+                    </li>
+                  {% endfor %}
                 </ul>
               </li>
-            {% endfor %}
-          </ul>
-        </div>
+              {% endfor%}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-    {% endif %}
-
-    <div id="docs-content" class="docs-container {% if sidebar_data %}col-12 col-lg-9 pl-lg-5 pt-5 pt-lg-0 {% else %}col-12{% endif %}">
-      {% if current_version == 'v1' %}
-        {% include outdated-docs-notice.html link=latest_version_link %}
       {% endif %}
-      {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" %}
+
+      <div id="docs-content" class="docs-container px-5 pb-5 {% if documentation %}col-12 col-lg-9 {% else %}col-12{% endif %}">
+        {% if current_version == 'v1' %}
+          {% include outdated-docs-notice.html link=latest_version_link %}
+        {% endif %}
+        {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" %}
+      </div>
     </div>
   </div>
 </div>

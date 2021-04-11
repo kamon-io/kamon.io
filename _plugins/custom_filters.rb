@@ -23,12 +23,20 @@ module Jekyll
       !list.nil? && list.include?(element)
     end
 
+    def drop(list, count)
+      !list.nil? && list.drop(count)
+    end
+
     def match(variable, left, right)
       if variable
         left
       else
         right
       end
+    end
+
+    def start_with(text, query)
+      return !text.nil? && !query.nil? && ((text.start_with? query) || (text.equal? query))
     end
 
     def if_truthy(variable, left, right)
@@ -41,48 +49,5 @@ module Jekyll
 
   end
 end
-
-# class ModuleTree < Liquid::Drop
-#   attr_reader :name
-#   attr_reader :versions
-#   attr_reader :current_version
-#   attr_reader :sections
-#   attr_reader :pages
-
-#   def initialize(name, versions, current_version)
-#     @name = name
-#     @versions = versions
-#     @current_version = current_version
-#     @sections = []
-#     @pages = []
-#   end
-
-#   def add(page)
-#     tree_path = page.url.split('/').drop(4)
-
-#     if tree_path.length() == 2 then
-#       section_name = tree_path[0]
-#       if @sections.count { |te| te.name.eql? section_name } == 0 then
-#         @sections.push(Section.new(section_name))
-#       end
-
-#       @sections
-#         .select { |te| te.name.eql? section_name }
-#         .each   { |te| te.pages.push(page) }
-#     else
-#       @pages.push(page)
-#     end
-#   end
-# end
-
-# class Section < Liquid::Drop
-#   attr_reader :name
-#   attr_reader :pages
-
-#   def initialize(name)
-#     @name = name
-#     @pages = []
-#   end
-# end
 
 Liquid::Template.register_filter(Jekyll::CustomFilters)
