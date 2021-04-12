@@ -47,7 +47,11 @@
 body.has-notification {
 
   .sticky-docs-navbar {
-    top: calc(#{$notification-bar-height} + 3rem);
+    top: calc(#{$notification-bar-height} + 8rem);
+  }
+
+  .docs-container {
+    margin-top: $notification-bar-height;
   }
 
   :target:before {
