@@ -10,114 +10,135 @@ description: 'Easy to use application performance monitoring tool to monitor and
 <main class="container">
 
   <section class="row flex-row-reverse">
-    <div class="col-12 col-lg-6">
-      <img class="w-100-lg-down" src="/assets/img/pages/apm/apm-product-illustration-1.svg" alt="Kamon APM Illustration"  loading="eager"/>
+    <div class="col-12 col-lg-5">
+      <img class="w-100-md-down" style="max-height: 600px; overflow-x: visible;" src="/assets/img/pages/apm/service-map.png" alt="Kamon APM Showcase"  loading="eager"/>
     </div>
-    <div class="col-12 col-lg-6 pt-5 pr-5">
+    <div class="col-12 col-lg-7 pt-5">
       <div class="d-flex align-items-center mb-3">
-        <img height="64" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Icon" loading="eager"/>
-        <h3 class="d-inline mb-0 ml-2 font-weight-bolder">APM</h3>
+        <img height="40" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager"/>
       </div>
 
       <h1>
-        Monitor Microservices with Minimal Effort
+        Fix slow requests across microservices and databases
       </h1>
-      <p class="lead">
-        Kamon APM helps you understand microservices' behavior, debug production issues
-        and ensure the lights are green all the time.
+      <p class="lead mt-4">
+        Kamon APM brings together metrics and distributed tracing to help you 
+        <b>eliminate slow requests and errors</b> from your production systems
       </p>
-      <p class="lead">
-        Go from clueless to solving issues in a few clicks.
-      </p>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button" data-solution="KamonAPM" href="#">
-        Start Monitoring Free
+      <a class="btn btn-lg btn-primary px-4 w-100-sm-down" data-solution="KamonAPM" href="https://apm.kamon.io/signup">
+        Sign Up for Kamon APM
       </a>
-      <h6 class="text-light text-center text-sm-left mt-2">
-        No credit card required
-      </h6>
+      <div class="text-light text-center text-sm-left mt-2">
+        Free up to 5 services - No card required
+      </div>
     </div>
   </section>
 
-  {% include user-quotes.html hide-title=true %}
+  <section class="row justify-content-center py-5">
+    <div class="col-12 col-lg-10">
+      <div class="green-halo-left"></div>
+      <div class="p-4 rounded elevated-container">
+        <h3 class="text-center">
+          Forget about scanning <br class="d-md-none">
+          logs to debug issues
+        </h3>
+        <p class="lead my-3 text-center">
+          Point and click on the anomalies to <b>start fixing problems</b> with Kamon APM
+        </p>
+      </div>
+    </div>
+  </section>
 
   <section class="row">
-    <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/apm/icon-speed-dashboard-blue.svg" alt="Dashboard icon"/>
+    <div class="col-12 col-lg-5">
+      <img src="/assets/img/pages/apm/icon-analyze-blue.svg" alt="Analyze Outliers Icon"/>
       <h2 class="my-3">
-        Cut straight to the action
+        Find the root cause of outliers and errors
       </h2>
-      <p>
-        Start debugging right away with built-in dashboards for <b>Akka, Play Framework, JDBC</b> and several <b>JVM toolkits</b>.
-      </p>
-      <p>
-        Kamon APM detects instrumented components automatically and creates dedicated dashboards so you don't have to spend time on it yourself.
+      <p class="lead">
+        Drill down to the specific <b>requests and database calls</b> that hurt your systems' performance.
       </p>
     </div>
-    <div class="col-12 col-lg-6">
-      <img class="w-100" src="/assets/img/pages/apm/apm-product-illustration-2.svg" alt="Kamon APM illustration"/>
+    <div class="col-12 col-lg-7 mt-5 mt-lg-0">
+      <div class="blue-halo-right"></div>
+      <img class="w-100 rounded elevated-container" style="max-height: 500px;" src="/assets/img/pages/apm/analyze-and-trace-detail.png" alt="Kamon APM Analyze and Trace"/>
     </div>
   </section>
 
   <section class="row flex-lg-row-reverse">
-    <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/apm/icon-magnifying-glass-green.svg" alt="Magnifying glass icon"/>
+    <div class="col-12 col-lg-5 pl-lg-4">
+      <img src="/assets/img/pages/apm/icon-alerts-green.svg" alt="Magnifying glass icon"/>
       <h2 class="my-3">
-        See all metrics and traces in a single platform
+        Get notifications when things go wrong
       </h2>
-      <p>
-        Stop jumping between metrics and traces platforms.
-      </p>
-      <p>
-        Kamon APM joins metrics and traces with services and application components, uncovering all the context you need to fix production issues.
+      <p class="lead">
+        Send alert notifications to <b>Slack or PagerDuty (and more)</b> when latency increses or
+        errors start to show up.
       </p>
     </div>
-    <div class="col-12 col-lg-6">
-      <img class="w-100" src="/assets/img/pages/apm/apm-product-illustration-3.svg" alt="Kamon APM Illustration"/>
+    <div class="col-12 col-lg-7 mt-5 mt-lg-0">
+      <div class="green-halo-left"></div>
+      <img class="w-100 rounded elevated-container" src="/assets/img/pages/apm/apm-alerts.png" alt="Kamon APM Alerts"/>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="col-12 col-lg-5">
+      <img src="/assets/img/pages/apm/icon-dashboards-blue.svg" alt="Alert icon"/>
+      <h2 class="my-3">
+        Monitor the metrics <br>that matter to you
+      </h2>
+      <p class="lead">
+        Create custom dashboards, get alert notifications and drill down with <b>any metric</b> you send to Kamon APM.
+      </p>
+    </div>
+    <div class="col-12 col-lg-7 mt-5 mt-lg-0">
+      <div class="blue-halo-right"></div>
+      <img class="w-100 rounded elevated-container" src="/assets/img/pages/apm/apm-dashboards.png" alt="Kamon APM Dashboards"/>
+    </div>
+  </section>
+
+  <section class="row justify-content-center pb-0">
+    <div class="col-12 col-lg-10">
+      <h2 class="text-center">
+        Get an easy start with <br class="d-md-none ">built-in integrations
+      </h2>
+      <p class="lead my-3 text-center">
+        Start debugging from the get-go with automatic dashboards for applications using
+        the <b>JVM, JDBC, Akka, and more</b>.
+      </p>
     </div>
   </section>
 
   <section class="row">
     <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/apm/icon-alert-blue.svg" alt="Alert icon"/>
-      <h2 class="my-3">Get notified when something goes wrong</h2>
-      <p>
-        Monitor any metric and get notified on <b>Slack, Email or PagerDuty</b> when something important goes wrong.
-      </p>
-    </div>
-    <div class="col-12 col-lg-6">
-      <img class="w-100" src="/assets/img/pages/apm/apm-product-illustration-4.svg" alt="Kamon APM illustration"/>
-    </div>
-  </section>
-
-  <section class="row">
-    <div class="col-12 col-lg-6">
-      <div class="elevated-container p-4 mt-3">
-        <img src="/assets/img/pages/apm/icon-chart-green.svg" alt="Chart icon"/>
-        <h2 class="my-3">Free infrastructure monitoring</h2>
-        <p>
-          Monitor CPU, memory, disk and network usage for all your hosts free of charge.
+      <div class="p-4 h-100 d-flex flex-column justify-content-end">
+        <img class="w-100" src="/assets/img/pages/apm/apm-host-monitoring.png" alt="Kamon APM Free Hosts Monitoring"/>
+        <h2 class="my-3 text-center">Free hosts monitoring</h2>
+        <p class="lead text-center" style="height: 7rem;">
+          Monitor <b>CPU, memory, disk and network usage</b> for all your hosts.
         </p>
       </div>
     </div>
     <div class="col-12 col-lg-6">
-      <div class="elevated-container p-4 mt-3">
-        <img src="/assets/img/pages/apm/icon-cubes-chart-blue.svg" alt="Chart icon"/>
-        <h2 class="my-3">Free test environments</h2>
-        <p>
-          Ensure your code behaves as expected before deploying it to production, without having to pay extra. Only on the Grow plan.
+      <div class="p-4 h-100 d-flex flex-column justify-content-end">
+        <img class="w-100" src="/assets/img/pages/apm/apm-test-environments.png" alt="Kamon APM Free Test Environments"/>
+        <h2 class="my-3 text-center">Free test environments</h2>
+        <p class="lead text-center" style="height: 7rem;">
+          Test all you want without <b>messing with production data</b>.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="row justify-content-center">
+  <section class="row justify-content-center pt-0">
     <h2 class="col-12 text-center">
-      Start using APM for <span class="text-primary">Free</span>,
-      <br class="d-md-none">
+      Start monitoring for <span class="text-primary">Free</span> with Kamon APM,
+      <br>
       upgrade as you <span class="text-primary">Grow</span>
     </h2>
 
-    <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center mt-5">
+    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
       <div class="d-flex align-items-end" style="height: 144px;">
         <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
       </div>
@@ -128,19 +149,19 @@ description: 'Easy to use application performance monitoring tool to monitor and
         For developers getting started<br/>
         with production monitoring
       </p>
-      <h5>Up to 5 services</h5>
+      <h4 class="mt-5">Up to 5 services</h4>
     </div>
 
-    <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center mt-5">
+    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5 border-left">
       <img height="144" width="144" src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow Plan">
       <h3 class="mt-3">
         Grow
       </h3>
       <p class="text-center">
         For growing teams deploying<br/>
-        complex systems
+        several microservices
       </p>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center mt-4">
         <h1 class="mb-0 display-4">&euro;30</h1>
         <div class="ml-3">
           <h5 class="mb-0">Per Service</h5>
@@ -149,11 +170,11 @@ description: 'Easy to use application performance monitoring tool to monitor and
       </div>
     </div>
 
-    <div class="col-12 mt-5 text-center">
+    <h4 class="col-12 mt-5 text-center">
       <a class="arrow-link" href="/apm/pricing/">
-        See our pricing plan details
+        Learn more about Kamon APM pricing
       </a>
-    </div>
+    </h4>
   </section>
 
 </main>

@@ -1,0 +1,38 @@
+@mixin halo {
+  position: absolute;
+  overflow-inline: clip;
+  border-radius: 16px;
+  margin-top: -32px;
+  width: calc(100% - 32px);
+  height: 100%;
+  z-index: -1;
+
+  @include media-breakpoint-down(md) {
+    width: calc(100% - 48px);
+  }
+}
+
+.blue-halo-left {
+  @include halo;
+  background-color: #E5F6FF;
+  margin-left: -32px;
+}
+
+.green-halo-left {
+  @include halo;
+  background-color: #E3FFF1;
+  margin-left: -32px;
+}
+
+.blue-halo-right {
+  @include halo;
+  background-color: #E5F6FF;
+  margin-left: 32px;
+}
+
+.green-halo-right {
+  @include halo;
+  background-color: #E3FFF1;
+  margin-left: 32px;
+}
+
