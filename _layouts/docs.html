@@ -97,7 +97,10 @@ layout: default
 
       {% if documentation %}
       <div id="docs-sidebar" class="d-none d-lg-block col-3 p-0 pr-3 docs-sidebar-nav d-none d-lg-block sticky-docs-navbar">
-        <input id="docSearch" type="text">
+        <div class="doc-search-container">
+          <input id="docSearch" type="text" placeholder="Search the Docs...">
+          <img class="doc-search-icon" src="/assets/img/icons/search-icon.svg" />
+        </div>
         <ul>
           {% for section in documentation %}
           {% assign section_id = section.name | slugify %}
@@ -179,9 +182,12 @@ layout: default
 <script src="/assets/js/docs.js" defer></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript"> docsearch({
-apiKey: 'b8559453007fa5c62d8074697f3db5f5',
-indexName: 'kamon',
-inputSelector: '#docSearch',
-debug: false
+  apiKey: 'b8559453007fa5c62d8074697f3db5f5',
+  indexName: 'kamon',
+  inputSelector: '#docSearch',
+  debug: false,
+  algoliaOptions: {
+    hitsPerPage: 12,
+  },
 });
 </script> 
