@@ -70,10 +70,17 @@ body.has-notification {
 
 .docs-sidebar-nav, .docs-mobile-navigation-container {
   $sidebar-vertical-margin: 170px;
+  overflow: visible;
 
   background-color: $color-light-3;
   max-height: calc(100vh - #{$sidebar-vertical-margin});
   @include custom-scrollbar;
+
+  #docSearch {
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+  }
 
   // Sections are the top of the docs: Guides, Core, Instrumentation and so on.
   .docs-section {
@@ -194,6 +201,7 @@ body.has-notification {
 }
 
 .docs-container {
+  z-index: 1000;
   background-color: white;
   border-radius: 16px;
   line-height: 1.6rem;
