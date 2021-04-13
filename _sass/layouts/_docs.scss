@@ -70,16 +70,46 @@ body.has-notification {
 
 .docs-sidebar-nav, .docs-mobile-navigation-container {
   $sidebar-vertical-margin: 170px;
-  overflow: visible;
 
   background-color: $color-light-3;
-  max-height: calc(100vh - #{$sidebar-vertical-margin});
-  @include custom-scrollbar;
+  z-index: 1010;
+  
+  > ul {
+    max-height: calc(100vh - #{$sidebar-vertical-margin} - 40px - 24px);
+    @include custom-scrollbar;
+  }
 
-  #docSearch {
-    position: absolute;
-    width: 100%;
-    z-index: 999;
+  .doc-search-container {
+    position: relative;
+    padding-bottom: 24px;
+
+    .algolia-autocomplete {
+      width: 100%;
+    }
+
+    .doc-search-icon {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: calc(20px - 9px);
+      right: 8px;
+    }
+
+    #docSearch {
+      width: 100%;
+      border: none;
+      height: 40px;
+      border-radius: 8px;
+      outline: none;
+      padding: 8px 16px;
+      color: #8F90A6;
+      font-size: 14px;
+      line-height: 24px;
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
   }
 
   // Sections are the top of the docs: Guides, Core, Instrumentation and so on.
