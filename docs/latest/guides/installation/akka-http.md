@@ -75,7 +75,7 @@ You can copy your API key directly from [Kamon APM](https://apm.kamon.io?envinfo
 
 
 Verifying the Installation
-==========================
+--------------------------
 
 Next time your application starts, Kamon should be up and running as well! Open [http://localhost:5266/](http://localhost:5266/){:target="_blank" rel="noopener"}
 in your browser and you'll find the Kamon Status Page. It should look like this:
