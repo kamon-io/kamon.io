@@ -137,6 +137,45 @@ documentation:
           - name: Jaeger
             path: /reporters/jaeger/
 
+  - name: Kamon APM
+    path: /kamon/
+    icon: /assets/img/icons/docs-reporters.svg
+    topics:
+      - name: Overview
+        pages:
+          - name: Getting Started
+            path: /apm/overview/
+      - name: Services
+        pages:
+          - name: Service Map
+            path: /apm/services/service-map/
+          - name: Service List
+            path: /apm/services/service-list/
+          - name: Integrations
+            path: /apm/services/integrations/
+      - name: Traces
+        pages:
+          - name: Traces and Spans
+            path: /apm/traces/
+      - name: Dashboards
+        pages:
+          - name: Using Dashboards
+            path: /apm/dashboards/
+      - name: Alerts
+        pages:
+          - name: Setting up Alerts
+            path: /apm/alerts/
+      - name: Hosts
+        pages:
+          - name: Host Metrics
+            path: /apm/hosts/
+      - name: Advanced
+        pages:
+          - name: Analyze
+            path: /apm/analyze/
+          - name: Administration and Billing
+            path: /apm/administration/
+
 metrics:
   akka.system.active-actors:
     description: Tracks the number of active Actors in an Actor System.

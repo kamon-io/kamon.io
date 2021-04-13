@@ -330,6 +330,31 @@ body.has-notification {
       line-height: remSize(18);
     }
   }
+
+  table {
+    margin: 16px 0;
+
+    td, th {
+      padding: 8px 12px;
+      color: $color-dark-1;
+      border: 1px solid $color-light-0;
+    }
+
+    td {
+      background-color: $color-light-3;
+    }
+
+    tr:nth-child(2n) td {
+      background-color: $color-light-4;
+    }
+
+    th {
+      font-size: 13px;
+      font-weight: 600;
+      background-color: $color-light-2;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .docs-mobile-navigation-container {
