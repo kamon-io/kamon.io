@@ -119,6 +119,7 @@ body.has-notification {
     color: $color-dark-3;
     font-weight: 500;
     font-size: 1rem;
+    -webkit-appearance: none;
 
     &.active {
       color: $color-shamrock-main;
