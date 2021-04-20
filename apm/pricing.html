@@ -15,54 +15,54 @@ custom_css:
       <br class="d-md-none">
       upgrade as you <span class="text-primary">Grow</span>
     </h1>
-    <p class="col-12">
-      Start monitoring now and think about the cost later. 
-      <br class="d-none d-md-inline">
-      Monitor up to 5 microservices for free.
+    <p class="lead col-12">
+      Monitor up to 5 services for free with the <b>Starter Plan</b> <br class="d-none d-md-inline">
+      and upgrade when you grow beyond that
     </p>
-    <div class="col-12 d-flex justify-content-center align-items-center billing-type-toggle mt-5">
-      <h6 role="button" id="billed-monthly-label" class="cursor-pointer mx-2 text-dark-2">Billed monthly</h6>
-      <input type="checkbox" id="billed-annually-switch" class="mx-2 billed-annually-checkbox"/>
-      <label for="billed-annually-switch" class="billed-annually-switch"></label>
-      <h6 role="button" id="billed-annually-label" class="cursor-pointer mx-2 text-dark-2">Billed annually</h6>
-      <div class="mx-2 text-tag-green d-inline-block">
-        Save 20%
-      </div>
-    </div>
 
 
     <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
       <div class="d-flex align-items-end" style="height: 144px;">
         <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
       </div>
-      <h3 class="mt-3">
-        Free
-      </h3>
-      <p class="text-center">
+      <h2 class="mt-3">
+        Starter
+      </h2>
+      <p class="text-center text-explainer">
         For developers getting started<br/>
         with production monitoring
       </p>
-      <h5 class="price-container mb-0">Up to 5 services</h5>
-      <ul class="icon-list text-left px-4 mt-4">
+      <div class="d-flex align-items-center price-container">
+        <h1 class="mb-0 display-4">Free</h1>
+      </div>
+      <h5 class="mb-0">Up to 5 Services</h5>
+
+      <ul class="icon-list text-left px-4 mt-5" style="height: 200px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>6 hours</b> data retention (metrics and traces)
+          Retain metrics for <b>6 Hours</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Send up to <b>30K spans</b> per day
+          Retain traces for <b>6 Hours</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>Single production environment</b>
+          Send up to <b>30K Spans</b> per day
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>Single Prod Environment</b>
         </li>
       </ul>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mr-3" href="#" data-url="signup?external=yes">
+        Sign up for APM
+      </a>
     </div>
 
     <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
       <img height="144" width="144" src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow Plan">
-      <h3 class="mt-3">
-        Grow
-      </h3>
-      <p class="text-center">
-        For growing teams deploying<br/>
+      <h2 class="mt-3">
+        Teams
+      </h2>
+      <p class="text-center text-explainer">
+        For growing teams monitoring<br/>
         complex systems
       </p>
       <div class="d-flex align-items-center price-container">
@@ -72,32 +72,37 @@ custom_css:
           <span>Per Month</span>
         </div>
       </div>
-      <ul class="icon-list text-left px-4 mt-4">
+      <div class="text-light">
+        or <b>&euro;24</b> when billed anually
+      </div>
+
+      <ul class="icon-list text-left px-4 mt-5" style="height: 200px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>14 days</b> data retention for metrics
+          Retain metrics for <b>14 days</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>7 days</b> data retention for traces
+          Retain traces for <b>7 days</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>200K included spans</b> per day
+          Send up to <b>200K spans</b> per day
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>Extra spans at &euro;1 per million</b>
+          Extra spans at <b>&euro;1 per million</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>Separate production and test environments</b>
+          Free <b>Test Environments</b>
         </li>
       </ul>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mr-3" href="#" data-url="signup?external=yes">
+        Sign up for APM
+      </a>
     </div>
   </section>
 
-  {% include start-monitoring-banner.html %}
+  <section class="row text-center justify-content-center pt-2">
+    <h2 class="col-12 col-lg-8">Common Questions</h2>
 
-  <section class="row text-center">
-    <h2 class="col-12">Frequently Asked Questions</h2>
-
-    <div class="col-12 mt-5 accordion w-xl-75" id="question-faq">
+    <div class="col-12 col-lg-8 mt-5 accordion" id="question-faq">
       <div class="faq-question-container text-left">
         <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-1-heading" data-toggle="collapse" data-target="#question-1-text" aria-controls="question-1-text">
           <h5 class="mb-0">
@@ -106,8 +111,9 @@ custom_css:
         </div>
 
         <div id="question-1-text" class="collapse" aria-labelledby="question-1-heading" data-parent="#question-1-heading">
-          <p class="text-dark-2">
-            Nope. Kamon Telemetry is and will always be free and open source.
+          <p class="text-dark-2 pr-5">
+            No. Kamon Telemetry is and will always be a Free and Open Source tool. You can use Kamon Telemetry with
+            any other vendors like Prometheus, Zipkin, Datadog and others totally free of charge.
           </p>
         </div>
       </div>
@@ -115,16 +121,19 @@ custom_css:
       <div class="faq-question-container text-left">
         <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-2-heading" data-toggle="collapse" data-target="#question-2-text" aria-controls="question-2-text">
           <h5 class="mb-0">
-            What are you charging for?
+            How do you calculate my monthly bill?
           </h5>
         </div>
 
         <div id="question-2-text" class="collapse" aria-labelledby="question-2-heading" data-parent="#question-2-heading">
-          <p class="text-dark-2">
-            The pricing plans apply only to Kamon APM. You can monitor up to 5 microservices for free with Kamon APM.
-            <br/><br/>
-            If your needs grow out of our Free plan you can upgrade to the Grow plan.
-            The cost can be boiled down to &euro;1 per service per day.
+          <p class="text-dark-2 pr-5">
+            We add <b>&euro;1</b> for each day a service was active and <b>&euro;1</b> for every 
+            extra million Spans, if any.
+          </p>
+          <p class="text-dark-2 pr-5">
+            For example, if you are running 5 active services and decide to add one more service in the 
+            middle of the month, your monthly bill will only increase for the days your new service was active. In
+            this case you can expect a bill of <b>&euro;165</b>.
           </p>
         </div>
       </div>
@@ -132,14 +141,44 @@ custom_css:
       <div class="faq-question-container text-left">
         <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-3-heading" data-toggle="collapse" data-target="#question-3-text" aria-controls="question-3-text">
           <h5 class="mb-0">
-            How do you charge?
+            How do you count Spans?
           </h5>
         </div>
 
         <div id="question-3-text" class="collapse" aria-labelledby="question-3-heading" data-parent="#question-3-heading">
-          <p class="text-dark-2">
-            At the end of the month we add <b>&euro;1</b> for each day a service was active, and <b>&euro;1</b> for each
-            extra million spans. That's it.
+          <p class="text-dark-2 pr-5">
+            Spans are accumulated and counted per environment.
+          </p>
+          <p class="text-dark-2 pr-5">
+            On the Starter plan you can send up to <b>30K Spans</b> per environment per day. Whether you have
+            one or five services, the limit is the same.
+          </p>
+          <p class="text-dark-2 pr-5">
+            On the Teams plan your daily limit increases by <b>200K Spans</b> for each active service in a Production
+            environment. For example, if you have 5 active services you can send up to 1M Spans (200K Spans x 5 services) per
+            day, regardless of which service produces more or less Spans.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-question-container text-left">
+        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-9-heading" data-toggle="collapse" data-target="#question-9-text" aria-controls="question-9-text">
+          <h5 class="mb-0">
+            What happens if I'm sending too many Spans?
+          </h5>
+        </div>
+
+        <div id="question-9-text" class="collapse" aria-labelledby="question-9-heading" data-parent="#question-9-heading">
+          <p class="text-dark-2 pr-5">
+            By default, Kamon APM will start dropping a portion of your Spans if you are sending more than
+            what your plan allows for. This keeps your invoice under control.
+          </p>
+          <p class="text-dark-2 pr-5">
+            You can enable <b>Extra Spans Ingestion</b> in the Admin Settings to increase the daily ingestion limits
+            Extra Spans are charged at <b>&euro;1</b> per million.
+          </p>
+          <p class="text-dark-2 pr-5">
+            For example, setting your daily Extra Spans Limit to 2M Spans allows you to ingest up to 2M
           </p>
         </div>
       </div>
@@ -152,9 +191,9 @@ custom_css:
         </div>
 
         <div id="question-5-text" class="collapse" aria-labelledby="question-5-heading" data-parent="#question-5-heading">
-          <p class="text-dark-2">
-            We can accommodate more metrics, spans and retention for you.
-            Contact us via email at <a href="mailto:hello@kamon.io">hello@kamon.io</a>.
+          <p class="text-dark-2 pr-5">
+            We can accommodate more metrics, spans and retention for you. Contact us via email at <a href="mailto:hello@kamon.io">hello@kamon.io</a>
+            or using the Intercom Chat inside Kamon APM.
           </p>
         </div>
       </div>
@@ -162,14 +201,15 @@ custom_css:
       <div class="faq-question-container text-left">
         <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-6-heading" data-toggle="collapse" data-target="#question-6-text" aria-controls="question-6-text">
           <h5 class="mb-0">
-            What languages/frameworks does Kamon support?
+            What languages and frameworks does Kamon support?
           </h5>
         </div>
 
         <div id="question-6-text" class="collapse" aria-labelledby="question-6-heading" data-parent="#question-6-heading">
-          <p class="text-dark-2">
-            Kamon works with any JVM language like Java and Scala. But it’s going to work especially awesome with <b>Akka and Play Framework</b>. 
-            <br/><br/>
+          <p class="text-dark-2 pr-5">
+            Kamon works with JVM languages like Java and Scala. And it’s going to work especially awesome with <b>Akka, Spring Boot and Play Framework</b>.
+          </p>
+          <p class="text-dark-2 pr-5">
             If there is a language or framework you would like to see supported, drop us an email at <a href="mailto:hello@kamon.io">hello@kamon.io</a>.
             Just write what you want, don't overthink it.
           </p>
@@ -184,7 +224,7 @@ custom_css:
         </div>
 
         <div id="question-7-text" class="collapse" aria-labelledby="question-7-heading" data-parent="#question-7-heading">
-          <p class="text-dark-2">
+          <p class="text-dark-2 pr-5">
             The typical performance impact of Kamon is between 1% and 3%. If you notice anything above that, please contact our support and we will help you optimize it.
           </p>
         </div>
@@ -198,23 +238,9 @@ custom_css:
         </div>
 
         <div id="question-8-text" class="collapse" aria-labelledby="question-8-heading" data-parent="#question-8-heading">
-          <p class="text-dark-2">
-            Test environments have limited retention of 24 hours and can be used for monitoring staging, development and pre-production environments services, absolutely free of charge.
-            Only included in the Grow plan.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-question-container text-left">
-        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-9-heading" data-toggle="collapse" data-target="#question-9-text" aria-controls="question-9-text">
-          <h5 class="mb-0">
-            How often will you charge me?
-          </h5>
-        </div>
-
-        <div id="question-9-text" class="collapse" aria-labelledby="question-9-heading" data-parent="#question-9-heading">
-          <p class="text-dark-2">
-            We charge at the beginning of every month.
+          <p class="text-dark-2 pr-5">
+            Test environments have limited retention of 24 hours and can be used for monitoring staging, development and 
+            pre-production environments services, absolutely free of charge. Only included in the Teams plan.
           </p>
         </div>
       </div>
@@ -227,7 +253,7 @@ custom_css:
         </div>
 
         <div id="question-13-text" class="collapse" aria-labelledby="question-13-heading" data-parent="#question-13-heading">
-          <p class="text-dark-2">
+          <p class="text-dark-2 pr-5">
             No. You will only be charged for the days your services sent data to Kamon APM.
           </p>
         </div>
@@ -241,7 +267,7 @@ custom_css:
         </div>
 
         <div id="question-10-text" class="collapse" aria-labelledby="question-10-heading" data-parent="#question-10-heading">
-          <p class="text-dark-2">
+          <p class="text-dark-2 pr-5">
             We offer community support through <a href="https://github.com/kamon-io/Kamon/discussions" target="_blank">GitHub Discussions</a>, live chat in Kamon APM, and you can always request
             a one-on-one session.
           </p>
@@ -256,31 +282,11 @@ custom_css:
         </div>
 
         <div id="question-11-text" class="collapse" aria-labelledby="question-11-heading" data-parent="#question-11-heading">
-          <p class="text-dark-2">
+          <p class="text-dark-2 pr-5">
             Click on the "Start Monitoring" links and follow the instructions. It should take you 3 minutes to get started.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-question-container text-left">
-        <div class="faq-question-header collapsed d-flex align-items-center justify-content-between" id="question-12-heading" data-toggle="collapse" data-target="#question-12-text" aria-controls="question-12-text">
-          <h5 class="mb-0">
-            What are services, metrics and traces?
-          </h5>
-        </div>
-
-        <div id="question-12-text" class="collapse" aria-labelledby="question-12-heading" data-parent="#question-12-heading">
-          <p class="text-dark-2">
-            Happy you want to know more. Please head to our <a href="/docs/latest/guides/">Docs</a> page, there are plenty of resources there.
           </p>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="text-center mt-5 w-100">
-    {% include user-quotes.html dark-background=true %}
-  </section>
-
-  <script src="/assets/js/pricing.js" defer></script>
 </main>

@@ -43,27 +43,17 @@
               <div class="row no-gutters">
                 <div class="col-6">
                   <a href="/apm/">
-                    <div class="nav-submenu-item row no-gutters py-3 align-items-center justify-content-left">
-                      <div class="col-auto">
-                        <img width="75" height="75" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM" loading="eager">
-                      </div>
-                      <div class="col px-3">
-                        <h6>Kamon APM</h6>
-                        <p class="item-explainer">Fix slow requests across microservices</p>
-                      </div>
+                    <div class="px-4 pt-4 nav-submenu-item">
+                      <img style="max-height: 24px;" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager">
+                      <p class="item-explainer text-secondary">Fix slow requests across microservices and databases</p>
                     </div>
                   </a>
                 </div>
                 <div class="col-6">
                   <a href="/telemetry/">
-                    <div class="nav-submenu-item row no-gutters py-3 align-items-center justify-content-left">
-                      <div class="col-4 pl-2">
-                        <img width="75" height="75" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry" loading="eager">
-                      </div>
-                      <div class="col-8">
-                        <h6>Kamon Telemetry</h6>
-                        <p class="item-explainer">Collect metrics and traces automatically</p>
-                      </div>
+                    <div class="px-4 pt-4 nav-submenu-item">
+                      <img style="max-height: 22px;" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager">
+                      <p class="item-explainer text-secondary">Collect metrics and traces from microservices on the JVM</p>
                     </div>
                   </a>
                 </div>
@@ -86,10 +76,14 @@
 
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <a class="nav-link" href="https://apm.kamon.io/signin" target="_blank" rel="noopener">Sign In</a>
+          <a class="nav-link onboarding-start-button mr-3" href="#">
+            Install Telemetry
+          </a>
         </li>
         <li class="navbar-item">
-          <a class="nav-link btn btn-primary onboarding-start-button" href="#">Start Monitoring</a>
+          <a class="nav-link btn btn-primary onboarding-start-button" href="#"  data-url="signup?external=yes">
+            Sign up for APM
+          </a>
         </li>
       </ul>
 

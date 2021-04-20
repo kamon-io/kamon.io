@@ -4,3 +4,17 @@
 @import 'variables';
 @import 'colors';
 @import 'pages/telemetry';
+
+.outro-cover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  min-width: 1140px;
+  min-height: 374px;
+  transform: translateX(-50%);
+  object-fit: contain;
+  background-image: url('/assets/img/pages/telemetry/outro-background.svg');
+  background-size: auto 140%;
+  background-position: center center;
+}

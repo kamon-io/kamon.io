@@ -7,3 +7,20 @@
     width: 100%;
   }
 }
+
+.btn-outline-secondary {
+  border-color: #E4E4EB;
+  background-color: #FFFFFF;
+
+  &:hover {
+    color:inherit;
+    border-color: #C7C9D9;
+    background-color: #FAFAFC;
+  }
+
+  &:focus, &:active {
+    color:inherit !important;
+    border-color: #C7C9D9 !important;
+    background-color: #EBEBF0 !important;
+  }
+}

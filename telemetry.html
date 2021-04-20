@@ -12,263 +12,153 @@ custom_css:
 
 <div class="background-top-gray-green"></div>
 <div class="telemetry-background-left"></div>
-<div class="telemetry-background-bottom"></div>
+
 
 <main class="container">
 
   <section class="row no-gutters flex-row-reverse">
-    <div class="col-12 col-lg-6">
-      <img class="w-100-lg-down" src="/assets/img/pages/telemetry/telemetry-product-illustration-1.svg" alt="Kamon Telemetry" loading="eager"/>
+    <div class="col-12 col-lg-5">
+      <img class="w-100-md-down" src="/assets/img/pages/telemetry/telemetry-product-illustration-1.svg" alt="Kamon Telemetry" loading="eager"/>
     </div>
-    <div class="col-12 col-lg-6 pt-5 pr-5">
+    <div class="col-12 col-lg-7 pt-5">
       <div class="d-flex align-items-center mb-3">
-        <img height="64" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry Icon" loading="eager"/>
-        <h3 class="d-inline mb-0 ml-2 font-weight-bolder">Telemetry</h3>
+        <img height="36" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager"/>
       </div>
       <h1>
-        Collect Metrics and Traces with minimal code
+        Measure latency and trace requests across microservices
       </h1>
-      <p class="lead">
-        Battle-tested, free and open-source instrumentation for distributed systems.
+      <p class="lead mt-4">
+        Kamon Telemetry helps you <b>collect metrics, correlate requests and get distributed traces</b>
+        from applications built with Java, Scala and any other JVM language.
       </p>
       <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button" href="#">
-        Start Monitoring Free
+        Install Kamon Telemetry
       </a>
-      <h6 class="text-light text-center text-sm-left mt-2">
-        No credit card required
-      </h6>
+      <div class="text-light text-center text-sm-left mt-2">
+        It's a 3-minute setup -  Better now than after your next production incident
+      </div>
     </div>
   </section>
 
-  {% include user-logos.html %}
+  <!-- {% include user-logos.html %} -->
 
-  <section class="row">
-    <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/telemetry/icon-plug-green.svg" alt="Electrical Plug Icon"/>
+  <section class="row pt-0">
+    <div class="col-12 text-center">
       <h2 class="my-3">
-        Automatic Instrumentation
+        Get telemetry data without rewriting your code
       </h2>
-      <p>
-        Setup with a few lines of code and Kamon will do the rest for you!
+      <p class="text-explainer py-3">
+        Get latency histograms, traces and JVM metrics <b>automatically</b> from
+        <b>Spring Boot, <br>Akka, Play Framework and other</b> supported frameworks.
       </p>
-      <p>
-        Kamon automatically collects metrics and traces from <strong>Akka, Play Framework</strong> and other JVM frameworks.
-      </p>
-      <a class="arrow-link" href="/docs/latest/instrumentation/">
-        See available instrumentations
-      </a>
+      <h5>
+        <a class="arrow-link" href="/docs/latest/instrumentation/">
+          Learn more about instrumentation
+        </a>
+      </h5>
     </div>
-    <div class="col-12 col-lg-6 mt-5 mt-lg-0">
-      <img height=300 class="w-100" src="/assets/img/pages/telemetry/telemetry-product-illustration-2.svg" alt="Telemetry Illustration"/>
-    </div>
-  </section>
-
-  <section class="row flex-lg-row-reverse">
-    <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/telemetry/icon-chart-blue.svg" alt="Chart Icon"/>
-      <h2 class="my-3">
-        Instrument Once, Report Anywhere
-      </h2>
-      <p>
-        Send metrics and traces wherever you want. Switch between <strong>Kamon APM, Prometheus, Zipkin and more</strong> 
-        at any time, without code changes.
-      </p>
-      <a class="arrow-link" href="/docs/latest/reporters/">
-        See available reporters
-      </a>
-    </div>
-    <div class="col-12 col-lg-6 mt-5 mt-lg-0">
-      <img class="w-100 pr-5" src="/assets/img/pages/telemetry/telemetry-product-illustration-3.svg" alt="Telemetry Illustration"/>
+    <div class="col-12 mt-5">
+      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-boot-and-status-page.png" alt="Telemetry Illustration"/>
     </div>
   </section>
 
   <section class="row">
-    <div class="col-12 col-lg-6">
-      <img src="/assets/img/pages/telemetry/icon-code-green.svg" alt="Code Icon"/>
-      <h2 class="my-3">
-        Code Your Own Instrumentation
+    <div class="col-12 col-lg-4">
+      <h2 class="mb-3">
+        Propagate request and trace context across services
       </h2>
-      <p>
-        Collect your own metrics, define custom traces and propagate context with Kamon core APIs.
+      <p class="text-explainer">
+        Propagate and <b>log trace ids, request ids and other correlation data</b> automatically.
       </p>
-
-        <div class="container my-4">
-          <div id="metrics-code-example-toggle" class="row elevated-container p-3 my-3 api-section-toggle active">
-            <div class="col">
-              <h5>Metrics</h5>
-              <p class="api-section-toggle-text">
-                Track latency, errors and any business metric with
-                high-definition histograms.
-              </p>
-            </div>
-            <div class="col-auto">
-              <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Arrow down icon"/>
-              <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Arrow up icon"/>
-            </div>
-          </div>
-
-          <div id="tracing-code-example-toggle" class="row elevated-container p-3 my-3 api-section-toggle">
-            <div class="col">
-              <h5>Distributed Tracing</h5>
-              <p class="api-section-toggle-text">
-                Trace operations through any service and
-                application component.
-              </p>
-            </div>
-            <div class="col-auto">
-              <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Arrow down icon"/>
-              <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Arrow up icon"/>
-            </div>
-          </div>
-
-          <div id="context-code-example-toggle" class="row elevated-container p-3 my-3 api-section-toggle">
-            <div class="col">
-              <h5>Context Propagation</h5>
-              <p class="api-section-toggle-text">
-                Propagate userID, requestID and any correlation data between threads and services.
-              </p>
-            </div>
-            <div class="col-auto">
-              <img class="api-section-toggle-icon-non-active" src="/assets/img/icons/directional/down-light.svg" alt="Arrow down icon"/>
-              <img class="api-section-toggle-icon-active" src="/assets/img/icons/directional/up-light.svg" alt="Arrow up icon"/>
-            </div>
-          </div>
-        </div>
+      <p class="text-explainer mb-5">
+        Interoperate with other Telemetry libraries using <b>W3C TraceContext, Zipkin and Jaeger</b> compatible headers.
+      </p>
     </div>
+    <div class="col-12 col-lg-8">
+      <div class="green-halo-right"></div>
+      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-context-propagation.png" alt="Telemetry Illustration"/>
+    </div>
+  </section>
 
-    <div class="col-12 col-lg-6 d-flex align-items-center mt-5 pl-lg-5 telemetry-code-examples">
-      <div id="instrumentation-slideshow" class="row no-gutters code-window-container">
-        <div class="col-12 align-self-end code-window">
-          <div class="row no-gutters px-2 align-items-center code-window-heading">
-            <div class="col-auto mx-1 code-window-circle circle-red"></div>
-            <div class="col-auto mx-1 code-window-circle circle-yellow"></div>
-            <div class="col-auto mx-1 code-window-circle circle-green"></div>
-          </div>
 
-          <div id="metrics-code-example">
-            <pre class="language-scala line-numbers">
-              <code>
-                // One-Liner metric and increment
-                Kamon.counter("app.orders")
-                  .withoutTags()
-                  .increment()
 
-                // Fully define a metric
-                val DataSent = Kamon.counter(
-                  name = "network.data.sent",
-                  description = "Counts data sent out",
-                  unit = bytes
-                )
-
-                // Tag and use an instrument
-                val sentOnInterface = DataSent
-                  .withTag("interface", "eth0")
-
-                sentOnInterface.increment(512)
-              </code>
-            </pre>
-          </div>
-
-          <div id="tracing-code-example" class="d-none">
-            <pre class="language-scala line-numbers">
-              <code>
-                // Adding tags to the SpanBuilder
-                val span = Kamon.spanBuilder("find-users")
-                  .tag("string-tag", "hello")
-                  .tag("number-tag", 42)
-                  .tag("boolean-tag", true)
-                  .start()
-
-                // Adding tags to the Span.
-                span
-                  .tag("other-string-tag", "bye")
-                  .tag("other-number-tag", 24)
-                  .tag("other-boolean-tag", false)
-
-                // After this point no tags can be added.
-                span.finish()
-
-              </code>
-            </pre>
-          </div>
-
-          <div id="context-code-example" class="d-none">
-              <pre class="language-scala line-numbers">
-                <code>
-                  // Creating a Context with two keys
-                  val context = Context()
-                    .withKey(UserID, "1234")
-                    .withKey(SessionID, Some(42))
-
-                  // Reading values from a Context
-                  val userID: String = context.get(UserID)
-                  val sessionID: Option[Int] = context.get(SessionID)
-
-                  // The default value is returned for non-existent keys
-                  val requestID: Option[String] = context.get(RequestID)
-                </code>
-              </pre>
-          </div>
-        </div>
-
-      </div>
+  <section class="row flex-lg-row-reverse py-5">
+    <div class="col-12 col-lg-6">
+      <h2 class="my-3">
+        Change metrics and tracing <br>vendors at any time
+      </h2>
+      <p class="text-explainer">
+        Send telemetry data to <b>Kamon APM, Prometheus, Zipkin, OpenTelemetry-compatible backends</b>
+        and several others without changing your instrumentation.
+      </p>
+      <h5>
+        <a class="arrow-link" href="/docs/latest/reporters/">
+          Learn more about reporters
+        </a>
+      </h5>
+    </div>
+    <div class="col-12 col-lg-6">
+      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-and-reporters.svg" alt="Telemetry and Reporters Ilustration"/>
     </div>
   </section>
 
   <section class="row">
-    <div class="col-12 col-lg-4 p-3 text-center d-flex">
-      <div class="elevated-container p-4 flex-grow-1 d-flex flex-column">
-        <div class="flex-grow-1">
-          <img width="160" src="/assets/img/pages/telemetry/free-illustration.svg" alt="Free icon">
-          <h4 class="mt-3">
-            Is Kamon Telemetry free?
-          </h4>
-          <p>
-            Yes. Kamon Telemetry is and will always be Free and Open Source.
-          </p>
-        </div>
-        <a class="btn btn-outline-secondary w-100 mt-3 py-2" href="https://github.com/kamon-io/Kamon" target="_blank">
-          View on Github <img src="/assets/img/pages/telemetry/light-btn-github.svg" alt="Github Icon"/>
+    <div class="col-12 col-lg-4">
+      <h2 class="my-3">
+        Measure critical <br>code paths
+      </h2>
+      <p class="text-explainer">
+        Create <b>custom metrics and spans</b> on top of the automatic instrumentation to
+        understand how your critical code paths behave in production.
+      </p>
+      <h5>
+        <a class="arrow-link" href="/docs/latest/reporters/">
+          Check out the APIs
         </a>
-      </div>
+      </h5>
     </div>
-
-    <div class="col-12 col-lg-4 p-3 text-center d-flex">
-      <div class="elevated-container p-4 flex-grow-1 d-flex flex-column">
-        <div class="flex-grow-1">
-          <img width="160" src="/assets/img/pages/telemetry/QA-illustration.svg" alt="Free icon">
-          <h4 class="mt-3">
-            Have questions?
-          </h4>
-          <p>
-            Head over to our Github discussions if you need help with your setup, have a feature request or want
-            to share your experience.
-          </p>
-        </div>
-        <a class="btn btn-outline-secondary w-100 mt-3 py-2" href="https://github.com/kamon-io/Kamon/discussions" target="_blank">
-          Start a Discussion <img src="/assets/img/pages/telemetry/light-btn-github.svg" alt="Github Icon"/>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-12 col-lg-4 p-3 text-center d-flex">
-      <div class="elevated-container p-4 flex-grow-1 d-flex flex-column">
-        <div class="flex-grow-1">
-          <img width="160" src="/assets/img/pages/telemetry/documentation-illustration.svg" alt="Documentation">
-          <h4 class="mt-3">
-            Want to learn more?
-          </h4>
-          <p>
-            Learn how to create your own metrics, configure reporters and understand everything about Kamon in our Docs section.
-          </p>
-        </div>
-        <a class="btn btn-outline-secondary w-100 mt-3 py-2" href="/docs/latest/guides/">
-          Read the Docs <img src="/assets/img/pages/telemetry/light-btn-deployment-unit.svg" alt="Deployment unit icon"/>
-        </a>
-      </div>
+    <div class="col-12 col-lg-8 pt-5">
+      <div class="green-halo-right"></div>
+      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-custom-instrumentation.png" alt="Telemetry Illustration"/>
     </div>
   </section>
 
-  <script src="/assets/js/prism.js" defer></script>
-  <script src="/assets/js/telemetry.js" defer></script>
+  <section class="row pt-3">
+    <div class="col-12 text-center">
+      <h2 class="my-3">
+        Get an easy start with Kamon APM
+      </h2>
+      <p class="text-explainer pb-3">
+        Forget about setting up your own monitoring infrastructure and use all the built-in<br class="d-none d-md-inline">
+        integrations to start fixing slow requests and errors with Kamon APM right away
+      </p>
+      <h5>
+        <a class="arrow-link" href="/apm/">
+          Check out Kamon APM
+        </a>
+      </h5>
+    </div>
+    <div class="col-12 mt-5">
+      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-with-apm.png" alt="Telemetry with APM"/>
+    </div>
+  </section>
+
+  <section class="row position-relative">
+    <div class="outro-cover"></div>
+    <div class="col-12 text-center position-relative">
+      <h2 class="my-3">
+        Ready to get rid of those slow requests?
+      </h2>
+      <p class="text-explainer py-3">
+        It takes 3 minutes to start monitoring. Better now than <br class="d-none d-md-inline">
+        after your next production incident
+      </p>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mr-3 my-3" href="#" data-url="signup?external=yes">
+        Sign up for APM
+      </a>
+      <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2" href="#">
+        Install Telemetry
+      </a>
+    </div>
+  </section>
 </main>

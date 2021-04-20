@@ -3,7 +3,7 @@
 @import "bootstrap/mixins/breakpoints";
 
 a.nav-link {
-  font-size: remSize(16);
+  font-size: remSize(18);
   font-weight: $typography-weight-semi-bold;
 
   &:not(.btn) {
@@ -45,14 +45,14 @@ a.nav-link {
 .dropdown-menu-center {
   right: auto;
   left: 40%;
-  -webkit-transform: translate(-43%, 0);
-  -o-transform: translate(-43%, 0);
-  transform: translate(-43%, 0);
+  -webkit-transform: translate(-23%, 0);
+  -o-transform: translate(-23%, 0);
+  transform: translate(-23%, 0);
 }
 
 .nav-submenu-container {
-  max-width: 750px;
-  min-width: 750px;
+  max-width: 600px;
+  min-width: 600px;
 
   .nav-submenu-item {
     height: 100%;
@@ -65,6 +65,8 @@ a.nav-link {
     }
 
     .item-explainer {
+      padding-top: 16px;
+      padding-right: 16px;
       white-space: normal;
     }
   }
