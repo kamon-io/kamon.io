@@ -4,8 +4,8 @@ layout: default
 page_css: legal
 ---
 
-<div class="background-top-gray"></div>
-<main class="default-content-container">
+<div class="background-top-gray-blue"></div>
+<main class="container">
 <section class="py-5">
 <div class="text-center mb-5" markdown="1">
 
