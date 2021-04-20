@@ -70,25 +70,27 @@ function initScrollMainHeader() {
   }
 }
 
-function showOnboardingModal() {
+function showOnboardingModal(externalUrl) {
   const width = Math.min(window.innerWidth, 1200)
   const height = Math.max(window.innerHeight, 800)
-
   const baseAPMUrl = getBaseAPMUrl()
   const solution = $(this).data("solution")
-  const url = solution != null
-    ? `${baseAPMUrl}/onboarding?external=yes&solution=${solution}`
-    : `${baseAPMUrl}/onboarding?external=yes`
-
+  const extension = externalUrl != null
+    ? externalUrl
+    : solution != null
+      ? `onboarding?external=yes&solution=${solution}`
+      : `onboarding?external=yes`
+  const url = `${baseAPMUrl}/${extension}`
   $("#onboarding-iframe").attr("width", width).attr("height", height)
   $("#onboarding-iframe").attr("src", url)
   $("#onboarding-modal").modal("show")
 }
 
 function bootOnboarding() {
-  $(".onboarding-start-button").on("click", () => {
+  $(".onboarding-start-button").on("click", function() {
     sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "cta_click")
-    showOnboardingModal()
+    const url = $(this).data("url")
+    showOnboardingModal(url)
   })
 
   window.addEventListener("message", function (tag) {
