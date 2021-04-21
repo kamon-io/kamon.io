@@ -12,7 +12,7 @@ Executor Service Instrumentation
 
 This module lets you collect metrics from an Executor Service, be it a Thread Pool Executor or a Fork Join Pool. To
 start tracking an Executor Service you will need to register it with the executors module by calling
-`ExecutorsInstrumentation.instrument(...)` as shown bellow:
+`ExecutorsInstrumentation.instrument(...)` as shown below:
 
 {% code_example %}
 {%   language scala instrumentation/executors/src/main/scala/kamon/examples/executors/FuturesAndExecutors.scala tag:registering-a-executor label:"Registering a Executor Service" %}

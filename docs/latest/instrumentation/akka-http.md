@@ -17,7 +17,7 @@ by the instrumentation is:
      will also get HTTP endpoint metrics via the `span.processing-time` metric.
   3. Lower level HTTP server metrics will be collected for the HTTP server side.
 
-Bellow, you will find a more detailed descriptions of each feature and relevant configuration settings in case you want
+Below, you will find a more detailed descriptions of each feature and relevant configuration settings in case you want
 to customize the behavior, but you don't need to learn any of it start using the instrumentation! Just start to your
 application with the instrumentation agent and you are good to go.
 
@@ -37,7 +37,7 @@ happening under the hood and how to modify the instrumentation behavior.
 The instrumentation will automatically read/write Kamon's Context from/tp HTTP headers in all HTTP requests and set that
 Context as current while requests are being processed, enabling higher level features like distributed tracing. If you
 want to change the propagation channel or completely disable Context propagation you can use the `propagation` settings
-bellow:
+below:
 
 ```hcl
 kamon.instrumentation.akka.http {
@@ -86,7 +86,7 @@ Request Tracing
 
 HTTP Server and Client requests processed by the application will be automatically traced, which in turn means that
 metrics can (and will) be recorded for the HTTP operations. You can control whether tracing is enabled or not under the
-`tracking` section bellow, as well as controlling whether Span Metrics will be recorded when tracing is enabled:
+`tracking` section below, as well as controlling whether Span Metrics will be recorded when tracing is enabled:
 
 ```hcl
 kamon.instrumentation.akka.http {
@@ -119,7 +119,7 @@ by adding one of the following modes to each setting:
   tags, that's one of the reasons the URL is only set as a span tag.
 
 Also, it is possible to make Kamon copy tags from the current Context into the HTTP operation Spans by using the
-`from-context` section. In the example bellow we are showing the default settings for the Akka HTTP instrumentation and
+`from-context` section. In the example below we are showing the default settings for the Akka HTTP instrumentation and
 additionally, we are instructing Kamon to copy the `requestID` tag as a Span tag for both the client and server side
 instrumentation.
 

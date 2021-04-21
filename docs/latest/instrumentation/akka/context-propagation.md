@@ -15,11 +15,11 @@ Besides the metrics recording side of our Akka integration, we also provide byte
 automatically propagate Kamon's Context through certain specific events in order to keep the principle of having a
 single and predictable place to look for the "current" context.
 
-In the examples bellow we will explore the conditions under which Kamon will automatically propagate the currently
+In the examples below we will explore the conditions under which Kamon will automatically propagate the currently
 available context. Please note that even while in these examples we are explicitly wrapping the code sections with a new
 `Context`, it is very unlikely that you will need to do so yourself if you are using other supported toolkits such
 as Akka HTTP and Play Framework. You will commonly need a context to be present only when the first event is generated
-and then Kamon will take care of propagating the `Context` to all related events, under the conditions explained bellow.
+and then Kamon will take care of propagating the `Context` to all related events, under the conditions explained below.
 
 
 ### Tell, ! and Forward ###

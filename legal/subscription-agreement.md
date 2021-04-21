@@ -64,7 +64,7 @@ Data Persistence. Any data you enter into the Service and any configurations mad
 
 **5.1 Term**. The term of this agreement will commence on the Effective Date and will remain in effect until terminated under the provisions of Section 5.2 of this Agreement.
 
-**5.2 Termination**. Either party may terminate this agreement by providing a notice of termination. Any notice of termination must include a cause of termination and an effective Termination Date that complies with the causes and notice periods expressed bellow and must be delivered in accordance to Section 14.6 of this Agreement.
+**5.2 Termination**. Either party may terminate this agreement by providing a notice of termination. Any notice of termination must include a cause of termination and an effective Termination Date that complies with the causes and notice periods expressed below and must be delivered in accordance to Section 14.6 of this Agreement.
 
 <div class="pl-5" markdown="1">
 

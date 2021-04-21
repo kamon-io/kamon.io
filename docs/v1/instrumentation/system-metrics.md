@@ -19,7 +19,7 @@ the appropriate [Sigar] native library is correctly loaded. To do so, the `kamon
 [sigar-loader] to simplify the sigar native library provisioning process.
 
 As you might expect, you and any other module can subscribe to all the metrics that are reported by this module using
-the `system-metric` category and the entity recorder names described bellow.
+the `system-metric` category and the entity recorder names described below.
 
 By default the `kamon-system-metrics` module starts with Host and JVM metrics enabled, in the case that you want to **enable/disable** one of them, you can configure it this way:
 

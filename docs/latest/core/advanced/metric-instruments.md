@@ -51,7 +51,7 @@ The HdrHistogram mixes linear and exponential bucket systems to produce a unique
 measurements with configurable precision and fixed memory and CPU costs, regardless of the number of measurements
 recorded. Under the hood, the HdrHistogram stores all the data in a single array of `long`s as occurrences of a given value,
 adjusted with the precision configuration provided when creating the HdrHistogram. For example, if we were to store a
-recording of 10 units in an HdrHistogram with an underlying array similar to the one shown in the diagram bellow, all
+recording of 10 units in an HdrHistogram with an underlying array similar to the one shown in the diagram below, all
 that's needed is to add one to the value in the ninth bucket.
 
 <img class="img-fluid" src="/assets/img/diagrams/hdr-layout.png">

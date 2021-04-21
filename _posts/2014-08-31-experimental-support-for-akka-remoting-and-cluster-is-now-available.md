@@ -17,7 +17,7 @@ have finally arrived to a point where we can share a working feature with you!
 Initially our plans were to deliver support for remoting and cluster in two releases from now 0.2.6/0.3.6 but during the
 last few months we received requests for this feature from many of our users, so we decided to deliver a experimental
 version earlier than what we initially expected and, if possible, ship this at least as experimental in 0.2.5/0.3.5.
-Here is a brief summary of what is included in the snapshots detailed bellow:
+Here is a brief summary of what is included in the snapshots detailed below:
 
 * __First, it doesn't blow up in your face anymore__, previous to this snapshot users of remoting and cluster might experiment
 errors because some parts of Kamon were not `Serializable`, making it impossible for them to use Kamon in such projects.

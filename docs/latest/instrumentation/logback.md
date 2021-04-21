@@ -44,7 +44,7 @@ Converters need to be registered manually by adding these conversion rulers to y
 ```
 
 Once your conversion rules are in place, all you need to do is decide where you include them in your log patter. For
-example, in the pattern bellow we are including the current Trace and Span identifiers, as well as the value of the
+example, in the pattern below we are including the current Trace and Span identifiers, as well as the value of the
 `user.id` Context tag:
 
 
