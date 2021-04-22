@@ -43,11 +43,23 @@ If values are grouped, multiple lines will be shown, one for each of the groups 
 
 ### Bar Charts
 
-{% lightbox /assets/img/pages/apm/bar-chart.png %}Bar Chart{% endlightbox %}
+{% lightbox /assets/img/pages/apm/bar-chart.png %}
+Bar Chart
+{% endlightbox %}
 
 Bar charts show values as stacked bars, with the x axis corresponding to time buckets, and the y axis corresponding to the measured value. They are useful for visualizing counts, throughput, or sums of values, all of which can be visualized for any of the metric instrument types.
 
-If values are grouped, multiple stacked blocks will be shown will be shown, one for each of the groups, and with its own color. You can expand the [legend](#chart-legend) to see the details. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
+If values are grouped, multiple stacked blocks will be shown, one for each of the groups, and with its own color. You can expand the [legend](#chart-legend) to see the details. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
+
+### Histogram Charts
+
+{% lightbox /assets/img/pages/apm/histogram-chart.png %}
+Histogram Chart
+{% endlightbox %}
+
+Histograms show the distribution of values grouped into value range buckets, with the height of the bar showing the number of entries that fall into each range. The x axis corresponds to the measured values in the distribution, and the y axis corresponds to the number of entries for that bucket. They are one of the traditional ways of visualizing distribuutions, and are vailable for gauge, histogram, range sampler and timer metric instrument types.
+
+As with the bar chart, if values are grouped, multiple stacked blocks will be shown, one for each of the groups, and with its own color. You can expand the [legend](#chart-legend) to see the details. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
 
 Chart Legend
 -------------
