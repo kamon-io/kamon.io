@@ -213,7 +213,9 @@ Teasers
 Creating a dashboard in the Datadog user interface is really simple, all metric names will match the Kamon metric names
 with the additional "qualifier" suffix. Here is a very simple example of a dashboard created with metrics reported by Kamon:
 
-<img class="img-fluid my-4" src="/assets/img/datadog-dashboard.png">
+{% lightbox /assets/img/datadog-dashboard.png %}
+Datadog Dashboard
+{% endlightbox %}
 
 [Datadog]: http://www.datadoghq.com/
 [get started]: /docs/latest/guides/getting-started/

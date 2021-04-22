@@ -19,8 +19,9 @@ side, and provides a small API to create Spans for message processing on the con
 In the example trace below, the `producer.send` Span is automatically created on the producer side, and the 
 `consumer.process` Span is manually created on the consumer side, using the `runWithConsumerSpan` helper function.
 
-<img class="img-fluid rounded" src="/assets/img/kafka-producer-consumer-spans.png">
-
+{% lightbox /assets/img/kafka-producer-consumer-spans.png %}
+Kafka Producer-Consumer Spans
+{% endlightbox %}
 
 Producer Spans
 --------------

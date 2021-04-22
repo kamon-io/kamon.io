@@ -27,7 +27,9 @@ All you need to do is download the latest release from our [Kanela releases][kan
 repository and start your JVM with the `-javaagent:path-to-kanela.jar` JVM option. For example, if you are running your 
 application from IntelliJ IDEA you will need to add the `-javaagent` option to the "VM options" section as shown below:
 
-<img class="img-fluid rounded" src="/assets/img/agent/intellij-javaagent.png">
+{% lightbox /assets/img/agent/intellij-javaagent.png %}
+IntelliJ JavaAgent
+{% endlightbox %}
 
 And that is pretty much it. Even though it is a simple task, it can be challenging in different environments so please,
 follow the instructions below when:

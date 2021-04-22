@@ -47,31 +47,47 @@ Visualisation
 
 Overview:
 
-<img class="img-fluid" src="/assets/img/spm-module-overview.png">
+{% lightbox /assets/img/spm-module-overview %}
+SPM Module Overview
+{% endlightbox %}
+
 
 Actors:
 
-<img class="img-fluid" src="/assets/img/spm-module-actors.png">
+{% lightbox /assets/img/spm-module-actors.png %}
+SPM Actors
+{% endlightbox %}
+
 
 Dispatchers:
 
-<img class="img-fluid" src="/assets/img/spm-module-dispatchers.png">
+{% lightbox /assets/img/spm-module-dispatchers.png %}
+SPM Dispatchers
+{% endlightbox %}
 
 Routers:
 
-<img class="img-fluid" src="/assets/img/spm-module-routers.png">
+{% lightbox /assets/img/spm-module-routers.png %}
+SPM Routers
+{% endlightbox %}
 
 System:
 
-<img class="img-fluid" src="/assets/img/spm-module-system.png">
+{% lightbox /assets/img/spm-module-system.png %}
+SPM System
+{% endlightbox %}
 
 Custom:
 
-<img class="img-fluid" src="/assets/img/spm-module-custom.png">
+{% lightbox /assets/img/spm-module-custom.png %}
+SPM Custom
+{% endlightbox %}
 
 Traces:
 
-<img class="img-fluid" src="/assets/img/spm-module-traces.png">
+{% lightbox /assets/img/spm-module-traces.png %}
+SPM Traces
+{% endlightbox %}
 
 
 [SPM]: http://sematext.com/spm/index.html

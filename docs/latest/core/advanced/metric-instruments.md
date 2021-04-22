@@ -54,7 +54,9 @@ adjusted with the precision configuration provided when creating the HdrHistogra
 recording of 10 units in an HdrHistogram with an underlying array similar to the one shown in the diagram below, all
 that's needed is to add one to the value in the ninth bucket.
 
-<img class="img-fluid" src="/assets/img/diagrams/hdr-layout.png">
+{% lightbox /assets/img/diagrams/hdr-layout.png %}
+HDR Histogram Layout
+{% endlightbox %}
 
 If you need to store a recording of 19 units, then the lower closest bucket is used, in this case the thirteenth
 bucket corresponding to the value 20 is used. The actual number of buckets necessary for a HdrHistogram is calculated

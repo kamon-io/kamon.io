@@ -31,7 +31,9 @@ Normally, each library that uses the Typesafe Config library for configuration p
 provide "overrides" to those values primarily via your own `application.conf` file or via system properties. Probably an
 image of the common lookup priorities will settle quickly in your mind:
 
-<img class="img-fluid" src="/assets/img/diagrams/typesafe-config-overview.png">
+{% lightbox /assets/img/diagrams/typesafe-config-overview.png %}
+Typesafe Configuration Overview
+{% endlightbox %}
 
 These configuration files are usually written using the [HOCON] notation. All Kamon modules that need configuration ship
 with a reference.conf file where default settings are contained and you are free to override any of those values by

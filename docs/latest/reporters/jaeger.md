@@ -54,11 +54,16 @@ there to learn more about how to get started with Monitoring Akka with Kamon!
 
 Trace view in Jaeger:
 
-<img class="img-fluid my-4" src="/assets/img/jaeger-trace-search.png">
+{% lightbox /assets/img/jaeger-trace-search.png %}
+Jaeger Trace Search
+{% endlightbox %}
+
 
 Trace Details:
 
-<img class="img-fluid my-4" src="/assets/img/jaeger-trace-detail.png">
+{% lightbox /assets/img/jaeger-trace-detail.png %}
+Jaeger Trace Details
+{% endlightbox %}
 
 [1]: https://github.com/jaegertracing/jaeger
 [2]: ../../guides/frameworks/elementary-akka-setup/

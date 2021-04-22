@@ -24,8 +24,9 @@ to the request.
 
 Example span and tags: 
 
-<img class="img-fluid rounded" src="/assets/img/webclient-example.png">
-
+{% lightbox /assets/img/webclient-example.png %}
+WebClient Example Span
+{% endlightbox %}
 
 Manual Installation
 -------------------

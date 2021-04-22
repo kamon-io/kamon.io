@@ -77,7 +77,9 @@ Verifying the Installation
 Next time your application starts, Kamon should be up and running as well! Open [http://localhost:5266/](http://localhost:5266/){:target="_blank" rel="noopener"}
 in your browser and you'll find the Kamon Status Page. It should look like this:
 
-<img class="img-fluid" src="/assets/img/kamon-status-page.png" alt="Kamon Status Page">
+{% lightbox /assets/img/kamon-status-page.png %}
+Kamon Status Page
+{% endlightbox %}
 
 The important bits to check in the Status Page are that the modules have a green check mark and instrumentation is shown
 as active on the top-left corner. If your installation didn't go well, please stop by our [Github Discussions](https://github.com/kamon-io/Kamon/discussions){:target="_blank" rel="noopener"}

@@ -20,8 +20,9 @@ From a bird's eye view, Kamon can be decomposed in three main components: the co
 propagation; the automatic instrumentation modules and the reporting modules. Your services' code will only ever
 interact with Kamon's APIs and abstract you away from how and where the collected data will end up going to.
 
-
-<img class="img-fluid mx-auto d-block" src="/assets/img/kamon-animation.svg">
+{% lightbox /assets/img/kamon-animation.svg %}
+Kamon Components
+{% endlightbox %}
 
 ## Core APIs
 
