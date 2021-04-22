@@ -29,7 +29,7 @@ You can get started with Kamon APM **for free**, in just 3 minutes. You can [sig
 [traces]: ./traces/
 [Service Map]: ./services/service-map/
 [alerts]: ./alerts/
-[dashboards]: ./dashboards/
+[dashboard]: ./dashboards/
 [hosts]: ./hosts/
 [plans]: ./plans/
 [sign up]: https://apm.kamon.io/signup
