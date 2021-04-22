@@ -10,9 +10,9 @@ Getting Help
 
 If you ever experience issues, need help, or have other questions or requests, do not be afraid to reach out to us. You can do so by clicking on the question mark icon in the sidebar, on the bottom left. This will open the Help menu.
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/help-menu.png" alt="Help Menu">
-</div>
+{% lightbox /assets/img/pages/apm/help-menu.png %}
+Help Menu
+{% endlightbox %}
 
 **Chat with Us** will open a message prompt, where you can talk to us and get your issues resolved, or browse through previous conversations you've had with us. We usually respond in up to a day, and sometimes much faster for urgent issues.
 

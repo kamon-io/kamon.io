@@ -25,9 +25,9 @@ You will encounter several types of charts in Kamon APM, each with its use cases
 
 ### Line Charts
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/line-chart.png" alt="Line Chart">
-</div>
+{% lightbox /assets/img/pages/apm/line-chart.png %}
+Line Chart
+{% endlightbox %}
 
 Line charts show values as one or more lines, with the x axis corresponding to time, and the y axis corresponding to the measured value. They are useful for visualizing counts, throughput, or various aggregations of values. The exact values that can be visualized depend on the metric instrument type.
 
@@ -43,9 +43,7 @@ If values are grouped, multiple lines will be shown, one for each of the groups 
 
 ### Bar Charts
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/bar-chart.png" alt="Bar Chart">
-</div>
+{% lightbox /assets/img/pages/apm/bar-chart.png %}Bar Chart{% endlightbox %}
 
 Bar charts show values as stacked bars, with the x axis corresponding to time buckets, and the y axis corresponding to the measured value. They are useful for visualizing counts, throughput, or sums of values, all of which can be visualized for any of the metric instrument types.
 

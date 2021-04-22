@@ -13,7 +13,9 @@ Overview
 
 When using Kamon APM, you want to gauge the state of your entire system as completely as possible. The Service Map is the page that enables you to do so, presenting the state of your service architecture. Here you can see the state of your services, how they connect, as well as an overview of the state of your hosts and dashboards.
 
-<img class="img-fluid my-4" src="/assets/img/pages/apm/service-map-marked.png" alt="Service Map">
+{% lightbox /assets/img/pages/apm/service-map-marked.png %}
+Service Map
+{% endlightbox %}
 
 The Service Map
 -------------------
@@ -48,7 +50,9 @@ The Service Map layout is generated automatically, and will attempt to arrange y
 
 If the generated layout does not suit you, you can enter **edit mode** by pressing the button in the top left corner. In this mode, you can re-arrange the nodes by dragging them. If the layout is saved, it will be shared by all users in your organization. In edit mode, you can also discard **all changes** and reset to the pre-calculated layout.
 
-<img class="img-fluid my-4" src="/assets/img/pages/apm/service-map-edit.png" alt="Service Map">
+{% lightbox /assets/img/pages/apm/service-map-edit.png %}
+Service Map Edit Mode
+{% endlightbox %}
 
 {% alert info %}
 If you save a layout and a new service is added, the layout will be lost and a new layout will be calculated for all your services, in an attempt to include the newly added nodes.
@@ -87,17 +91,17 @@ Service Map Sidebar
 
 On the right-hand-side of the Service Map, you can see the Overview Sidebar. This sidebar contains an overview of your services, alerts, dashboards, and hosts. It will show basic information such as names, statuses, and (for services and hosts) sparkline summaries of some basic metrics.
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/service-map-sidebar.png" alt="Service Map Sidebar">
-</div>
+{% lightbox /assets/img/pages/apm/service-map-sidebar.png %}
+Service Map Sidebar
+{% endlightbox %}
 
 When viewing _All_, it will show, by default, up to three items for each category. Services and Alerts will be sorted by severity, while Dashboards and Hosts will be sorted alphabetically. More items, if available, can be loaded by clicking <span class="primary--text">Load More</span>.
 
 Other tabs will include a full list, as well as a button to add another instance of the item.
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/service-map-sidebar-services.png" alt="Service Map Sidebar - Services">
-</div>
+{% lightbox /assets/img/pages/apm/service-map-sidebar-services.png %}
+Service Map Sidebar - Services
+{% endlightbox %}
 
 Focused Mode
 -------------
@@ -111,10 +115,9 @@ By clicking on a service, you will enter **Focused Mode**. In this mode only the
 * A bar chart of spans including errors for this service
 * Dropdown menu that allows you to delete the service or define a new alert for it
 
-
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/service-map-focus-mode.png" alt="Service Map - Focused Mode">
-</div>
+{% lightbox /assets/img/pages/apm/service-map-focus-mode.png %}
+Service Map - Focused Mode
+{% endlightbox %}
 
 Clicking on another service will switch the view to Focused Mode for that particular service.
 

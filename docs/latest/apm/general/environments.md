@@ -27,17 +27,17 @@ Environment Picker
 
 With the environment picker, you can see the currently used environment, as well as switch between all available environments. It is located in the header, next to the [time picker], on every page in the application where it is applicable. When expanded via clicking on it, the dropdown will also show a quick summary of all of your environments. If you need additional environments, contact us using the [help] menu.
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/environment-picker.png" alt="Environment Picker">
-</div>
-
+{% lightbox /assets/img/pages/apm/environment-picker.png %}
+Environment Picker
+{% endlightbox %}
 ### Environment Information
 
 You can access information about your summary - its API key and retention - by clicking the key icon on the Environment Picker to open a modal window.
 
-<div class="w-100 text-center">
-  <img class="img-fluid my-4" src="/assets/img/pages/apm/environment-info.png" alt="Environment Info Dialog">
-</div>
+
+{% lightbox /assets/img/pages/apm/environment-info.png %}
+Environment Info Dialog
+{% endlightbox %}
 
 Production Environments
 ------------------------

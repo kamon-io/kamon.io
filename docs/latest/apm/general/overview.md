@@ -13,7 +13,9 @@ Overview
 
 [Kamon APM][apm] is a hosted monitoring and debugging platform for microservices, designed from the ground up with one goal in mind: accept all the metrics and tracing data exactly as Kamon records it, no averages, no summaries, no downsampling, no data quality loss. Having the entire data that Kamon captures means proper aggregation of data across instances and proper percentiles calculation, which translates in better, accurate and relevant alerts and insight on your application’s behavior.
 
-<img class="img-fluid my-4" src="/assets/img/apm-preview.png">
+{% lightbox /assets/img/apm-preview.png %}
+Kamon APM
+{% endlightbox %}
 
 With Kamon APM, you can [deep dive][analyze] into the metrics your services send, use [traces] to analyze performance bottlenecks and errors, see the layout of your microservice architecture using the [Service Map]. When your system is behaving unusually, you can set up [alerts] to receive reports to your e-mail, Slack, or elsewhere. If the pre-defined integrations are not enough, you can set up a [dashboard] to visualize any metric received by the system, including [host metrics][hosts] and span processing metrics.
 
