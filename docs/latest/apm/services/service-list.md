@@ -27,6 +27,8 @@ Specific lines in the sparkline chart can be highlighted by hovering the appropr
 
 **NOTE:** The numbers shown are only for _server_ spans. This means that database call spans and other client-side and internal spans will not be included.
 
+Clicking on any particular service will take you to the [detailed overview][integrations] of that service.
+
 <div class="w-100 text-center">
   <img class="img-fluid my-4" src="/assets/img/pages/apm/service-list.png" alt="Service List">
 </div>
@@ -50,6 +52,28 @@ Dead services are those services which are no longer sending data to the system.
 
 Restricted services are those services which go beyond the maximum number of services allowed by your subscription plan. On the Free Plan, you can have **up to 5** services at the same time, but any additional services will be restricted. While data sent by them will be ingested, you will not be able to see or use the data in any way, unless you delete another existing service to reduce to number to 5 or below, or upgrade to a paid plan. On **all** paid plans, the number of services is **unrestricted**. If clicked, these services will show the Upgrade Prompt, allowing you to switch to a paid plan directly from the Service List.
 
+Adding New Services
+--------------------
+
+To add a new service to Kamon APM, all you need to do is have a service start sending data to Kamon APM with the correct API key. You can click the **Add Service** button in the top right corner to open the Add Service modal dialog. In this dialog, you can select which framework or library you are using to get instructions tailored to your particular use case. Note that the **Service Name** field is editable, and it will update the configuration block below it for easy of copy-pasting the configuration changes into the appropriate file. Clicking on the _copy_ icon next to any of the inputs or code display boxes will copy the code into your clipboard.
+
+<div class="w-100 text-center">
+  <img class="img-fluid my-4" src="/assets/img/pages/apm/add-service.png" alt="Add Service Dialog">
+</div>
+
+Upon completing the process by clicking the Done button, the new service should appear in the application within a minute. If the service does not appear, make sure that you have (re)started your service with the correct configuration and code changes. In case that does not help, contact us using the [help menu].
+
+Removing Services
+------------------
+
+If you no longer wish to see a service in Kamon APM, or in this particular [environment], you can delete it using the **delete** action in the context menu, to the right-hand-side of the row in the service list. You will be prompted to confirm the removal of the service. Note that this action is _not_ permanent - if the service sends data to this Kamon APM environment again, it will re-appear in the application. If you wish to make sure that the service is permanently removed from the list, make sure that you have **removed or changed the Kamon Telemetry code changes and configuration** and restart your service.
+
+<div class="w-100 text-center">
+  <img class="img-fluid my-4" src="/assets/img/pages/apm/delete-service-prompt.png" alt="Delete Service Prompt">
+</div>
+
 [Service Overview]: ./integrations/
 [integrations]: [./integrations/]
 [alerts]: ../alerts/
+[help menu]: ../general/help/
+[environment]: ../general/environments/

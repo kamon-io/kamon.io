@@ -138,13 +138,24 @@ documentation:
             path: /reporters/jaeger/
 
   - name: Kamon APM
-    path: /kamon/
+    path: /apm/
     icon: /assets/img/icons/docs-reporters.svg
     topics:
       - name: Overview
+        path: /apm/general/
         pages:
           - name: Getting Started
-            path: /apm/overview/
+            path: /apm/general/overview/
+          - name: Environments
+            path: /apm/general/environments/
+          - name: Time Picker
+            path: /apm/general/time-picker/
+          - name: Charts
+            path: /apm/general/charts/
+          - name: Getting Help
+            path: /apm/general/help/
+          - name: Plans
+            path: /apm/general/plans/
       - name: Services
         pages:
           - name: Service Map
@@ -169,12 +180,20 @@ documentation:
         pages:
           - name: Host Metrics
             path: /apm/hosts/
-      - name: Advanced
+      - name: Investigating Issues
         pages:
           - name: Analyze
-            path: /apm/analyze/
-          - name: Administration and Billing
-            path: /apm/administration/
+            path: /apm/deep-dive/analyze/
+      - name: Administration
+        pages:
+          - name: Profile
+            path: /apm/administration/profile/
+          - name: Organization Management
+            path: /apm/administration/organization/
+          - name: Billing
+            path: /apm/administration/billing/
+          - name: Span Ingestion
+            path: /apm/administration/span-ingestion/
 
 metrics:
   akka.system.active-actors:
