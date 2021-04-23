@@ -154,8 +154,6 @@ documentation:
             path: /apm/general/charts/
           - name: Getting Help
             path: /apm/general/help/
-          - name: Subscription Plans
-            path: /apm/general/plans/
       - name: Services
         pages:
           - name: Service Map

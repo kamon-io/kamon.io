@@ -16,7 +16,7 @@ In Live mode, all charts and traces in the application will be showing a sliding
 Live Time Picker
 {% endlightbox %}
 
-In Fixed mode, the time will not update, and all metrics and traces will be constrained to that time window. In Fixed mode, you can debug incidents and performance bottlenecks without risking your data updating while you're analyzing it. When in Fixed mode, the time picker will show a pause icon in dark gray, and the time window will be shown, with granity of up to a minute.
+<a id="fixed-time-mode" /> In Fixed mode, the time will not update, and all metrics and traces will be constrained to that time window. In Fixed mode, you can debug incidents and performance bottlenecks without risking your data updating while you're analyzing it. When in Fixed mode, the time picker will show a pause icon in dark gray, and the time window will be shown, with granity of up to a minute.
 
 {% lightbox /assets/img/pages/apm/fixed-time-picker.png %}
 Fixed Time Picker
@@ -55,5 +55,5 @@ Analyze Time Picker
 
 [charts]: ./charts/
 [analyze]: ../deep-dive/analyze.md
-[paid plans]: ./plans/
+[paid plans]: /apm/pricing/
 [environment]: ./environments/

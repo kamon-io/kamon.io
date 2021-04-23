@@ -108,9 +108,8 @@ The [legend](#chart-legend) will show the same values, but will respect grouping
 Chart Legend
 -------------
 
-{% lightbox /assets/img/pages/apm/legend-toggle.png %}
-Chart Legend Toggle
-{% endlightbox %}
+<div data-video-src="/assets/video/chart-legend-toggle.mp4" data-caption="Chart Legend" />
+
 
 Every chart in Kamon APM has a legend that can be expanded. When expanded, it will show the legend in tabular format, with one row per group. Each row will have at least two columns, and can be sorted by any of the columns by clicking on the header. The first column will always be the name, which can be one of the following:
 
@@ -120,10 +119,6 @@ Every chart in Kamon APM has a legend that can be expanded. When expanded, it wi
 The name will also include a color indicator which matches the color the values assume in the chart above it (with the exception of the [heatmap](#heatmap-charts), which has different semantics).
 
 The other column(s) depend on the chart in question, and can be the number of values, throughput, value at a certain percentile, or any other value that can be visualized in Kamon APM. These values will largely depend on the chart in question, and is arbitrary. The two exceptions are [histograms](#histogram-charts) and [percentile charts](#percentile-charts), which will always have a pre-defined legend, as stated in sections dedicated to them.
-
-{% lightbox /assets/img/pages/apm/chart-legend.png %}
-Expanded Chart Legend
-{% endlightbox %}
 
 When hovering on a certain row, the values which correspond to the that group will be highlighted in the chart. This can be useful when many different groups appear in the same chart and it becomes difficult to differentiate them. The one exception is the [heatmap](#heatmap-chart), for which this has no effect.
 
@@ -143,11 +138,39 @@ For any chart, hovering on areas of it will update the values in the summaries t
 Hover, Selection and Zoom
 --------------------------
 
+Every chart in Kamon APM will respond to hovering over it. When doing so, a certain area of the chart will be highlighted and summaries and legends will change to match only that chunk of the recorded values. These updates will also be **synchronized** between all charts that share a time axis (i.e., all but [percentile](#percentile-charts) and [histogram](#histogram-charts) charts). This means that hovering one chart on the time axis will highlight all charts on the page and update their legends and summaries.
+
+<div data-video-src="/assets/video/chart-hover.mp4" data-caption="Chart Hover Behavior" />
+
+With a few exceptions, which we will get into later, any chart with a time axis can also be zoomed into by clicking and dragging a desired time period. The selected area will be aligned to the nearest time period granularity, and will update the [time picker], and with it every other chart in the application. Doing this will transfer the application into [fixed time mode], independently of the mode you are currently in. If you wish to return to live update mode, you will need to interact with the [time picker].
+
+The exceptions to this rule are as follows:
+
+1. Any chart without a time axis cannot be selected in this way ([percentiles] and [histograms])
+2. Chart previews when creating [alerts] and [dashboards] cannot be selected
+3. The [alert drawer] cannot be selected
+4. The [analyze] view has special behaviour discussed in its own chapter
+
+<div data-video-src="/assets/video/chart-selection.mp4" data-caption="Chart Selection Behavior" />
+
 Chart Operations
 ------------------
 
+{% lightbox /assets/img/pages/apm/chart-operations.png %}
+Chart Operations
+{% endlightbox %}
+
+Every chart in Kamon APM has a set of operations that can be performed with it. They can be accessed by clicking the toggle on the chart name to reveal a dropdown menu. At the very least, you will be able to:
+
+1. Create an [alert][alerts] based on the data in this chart
+2. Create a new [dashboard][dashboards] chart based on this chart
+
+In certain contexts, such as [dashboards], additional operations might be available, and will be outlined in their respective sections.
+
+Additionally, upon hovering, each chart will show a green Analyze button. Upon clicking on this button, you will be taken to the [analyze] view, and will be able to drill down into the metric details and correlate traces.
 
 [alerts]: ../alerts/
+[alert drawer]: ../alerts/#alert-drawer
 [dashboards]: ../dashboards/
 [analyze]: ../deep-dive/analyze
 [counters]: ../../core/metrics/#counters
@@ -156,3 +179,4 @@ Chart Operations
 [timers]: ../../core/metrics/#timers
 [range samplers]: ../../core/metrics/#range-samplers
 [time picker]: ./time-picker/
+[fixed time mode]: ./time-picker/#fixed-time-mode

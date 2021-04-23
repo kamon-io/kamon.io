@@ -55,6 +55,6 @@ Not every environment consists of services which are in use all day, every day, 
 1. They will always have metric and trace retention of up to 1 day
 2. You can monitor an unlimited number of services _for free_
 
-[paid plans]: ./plans/
+[paid plans]: /apm/pricing/
 [time picker]: ./time-picker/
 [help]: ./help/
