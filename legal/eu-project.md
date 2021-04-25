@@ -3,7 +3,7 @@ title: EU Project -
 layout: default
 ---
 
-<main class="default-content-container">
+<main class="container">
 <section style="font-size: 16px;">
 <div class="row justify-content-center">
 <img class="col-auto" style="height: 160px;" src="/assets/img/eu-project/EU.PNG" alt="European Union">
@@ -20,7 +20,11 @@ layout: default
 </div>
 
 <div class="text-center mb-5" markdown="1">
-# Unapređenje i komercijalizacija inovativnih sustava za rano upozorenje, identifikaciju, mjerenje i upravljanje nepravilnostima u radu poslužiteljskih aplikacija
+## Projekte je sufinancirala Europska unija iz Europskog fonda za regionalni razvoj
+</div>
+
+<div class="text-center text-secondary mb-5" markdown="1">
+## This project is co-funded by the European Union through the European Funds for Regional Development
 </div>
 
 #### NAZIV PROJEKTA
@@ -61,7 +65,7 @@ od 01.09.2019 do 01.03.2021.
 18 mjeseci
 
 #### KONTAKT OSOBA ZA VIŠE INFORMACIJA
-Mladen Subotić, direktor. Email: mladen@kamino.io
+Ivan Jose Topolnak Mares, direktor. Email: ivantopo@kamino.io
 
 Dodatne informacije o EU fondovima i natječajima možete pronaći na sljedećim stranicama:
 
