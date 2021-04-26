@@ -26,7 +26,7 @@ You can get started with Kamon APM **for free**, in just 3 minutes. You can [sig
 
 [apm]: https://apm.kamon.io
 [analyze]: ../../deep-dive/analyze/
-[traces]: ../traces/
+[traces]: ../traces/overview/
 [Service Map]: ../../services/service-map/
 [alerts]: ../../alerts/
 [dashboard]: ../../dashboards/

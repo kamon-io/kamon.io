@@ -34,7 +34,7 @@ Each Service Overview page has three charts: a service latency heatmap, the serv
 Service Overview - Server Operations
 {% endlightbox %}
 
-The server operations table is a breakdown of all server operations (i.e., where span kind is `server`) for this service. Two separate visualizations are present - a chart and a tabular breakdown. The table can show four different operations, with the default being throughput, chosen by selecting the appropriate operation in the top right corner: throughput, error count, 90th percentile latency, and the 99th percentile latency. The values in the chart will be grouped by operation. Unlike other [charts], this chart does not feature a [legend]. Instead, the table beneath it acts as an extended version of the same. The table features the operation name, and a numeric representation of all four of the values that can be chosen between as chart visualization, as well as a visual indicator that shows where the particular operation's value is in the overall distribution. Each column can be sorted by, and sorting is toggled by clicking on the appropriate table header. Much like in the regular chart legend, hovering a table row will highlight the appropriate value in the chart above.
+The server operations table is a breakdown of all server operations (i.e., where span kind is `server`) for this service. Two separate visualizations are present - a chart and a tabular breakdown. The table can show four different operations, with the default being throughput, chosen by selecting the appropriate operation in the top right corner: throughput, error count, 90th percentile latency, and the 99th percentile latency. The values in the chart will be grouped by operation. Unlike other [charts], this chart does not feature a [legend]. Instead, the table beneath it acts as an extended version of the same. The table features the operation name, and a numeric representation of all four of the values that can be chosen between as chart visualization, as well as a visual indicator that shows where the particular operation's value is in the overall distribution. Each column can be sorted by, and sorting is toggled by clicking on the appropriate table header. Much like in the regular chart legend, hovering a table row will highlight the appropriate value in the chart above. Clicking on any table row will take you to the [operation details](#operation-details) page for that particular operation.
 
 #### Service Operations Sidebar
 
@@ -48,6 +48,26 @@ The alerts portion of the sidebar will list all of the alerts you have defined f
 
 The linked services portion of the sidebar is split into two portions: upstream and downstream services. Upstream services are those that are being **called by** the current service, while downstream services are those that **call** the current service. Toggling between them will show a list of services, including their name and a description of the connection type, with that link directionality. These connections map one-on-one to the links visualized in the [service map].
 
+Service Operations
+--------------------
+
+{% lightbox /assets/img/pages/apm/service-operations-page.png %}
+Service Operations
+{% endlightbox %}
+
+The Service Operations page will be defined for any service sending telemetry data to Kamon APM, including OpenTelemetry-instrumented services. The service is very similar to the [overview operations table](#service-operations-table), with the same chart with four operations (throughput, error count, 90th and 99th percentiles of latency), grouping per service, and table legend behaviour. However, there are two crucial differences: Firstly, _all_ operations are represented here, not just server span operations. Secondly, in the first column, underneath the service name, two more entries will be present, if applicable. The first is the span kind, and the second is the instrumentation component that is the source of this information, with the two values separated by a slash (`/`) character. Clicking on any table row will take you to the [operation details](#operation-details) page for that particular operation.
+
+Operation Details
+-------------------
+
+{% lightbox /assets/img/pages/apm/operation-details.png %}
+Service Operation Details
+{% endlightbox %}
+
+The Service Operation Details page offers a drill-down into information gathered about one particular operation. Like the Overview, it contains the Latency histogram and the throughput and error charts. However, unlike the overview page, only trace metric information gathered for this particular operation is included in the charts.
+
+Underneath the charts is located a trace list, with all sampled traces belonging to this operation. It can be used to inspect, sort, and dive into trace details. Read about the [trace list] for more information.
+
 [analyze]: ../../deep-dive/analyze/
 [charts]: ../../general/charts/
 [legend]: ../../general/charts/#chart-legend
@@ -56,3 +76,4 @@ The linked services portion of the sidebar is split into two portions: upstream 
 [availability target]: ../../general/alerts/
 [alert sidebar]: ../../general/alerts/
 [service map]: ../service-map/#service-links
+[trace list]: ../../traces/trace-list/

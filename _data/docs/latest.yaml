@@ -165,7 +165,13 @@ documentation:
       - name: Traces
         pages:
           - name: Traces and Spans
-            path: /apm/traces/
+            path: /apm/traces/overview/
+          - name: Span List
+            path: /apm/traces/trace-list/
+          - name: Trace Search
+            path: /apm/traces/trace-search/
+          - name: Trace Details
+            path: /apm/traces/trace-details/
       - name: Dashboards
         pages:
           - name: Using Dashboards
