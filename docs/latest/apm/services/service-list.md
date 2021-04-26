@@ -72,8 +72,8 @@ If you no longer wish to see a service in Kamon APM, or in this particular [envi
 Delete Service Prompt
 {% endlightbox %}
 
-[Service Overview]: ./integrations/
-[integrations]: [./integrations/]
-[alerts]: ../alerts/
-[help menu]: ../general/help/
-[environment]: ../general/environments/
+[Service Overview]: ../integrations/
+[integrations]: ../integrations/
+[alerts]: ../../alerts/
+[help menu]: ../../general/help/
+[environment]: ../../general/environments/

@@ -25,11 +25,11 @@ Getting Started
 You can get started with Kamon APM **for free**, in just 3 minutes. You can [sign up] with your e-mail or via Google _without_ having to enter your credit card details. The free Starter plan can be used for free for any duration of time, but will not offer the full range of Kamon APM capabilities. See the list of [plans] for more details.
 
 [apm]: https://apm.kamon.io
-[analyze]: ./analyze/
-[traces]: ./traces/
-[Service Map]: ./services/service-map/
-[alerts]: ./alerts/
-[dashboard]: ./dashboards/
-[hosts]: ./hosts/
+[analyze]: ../../deep-dive/analyze/
+[traces]: ../traces/
+[Service Map]: ../../services/service-map/
+[alerts]: ../../alerts/
+[dashboard]: ../../dashboards/
+[hosts]: ../../hosts/
 [plans]: /apm/pricing/
 [sign up]: https://apm.kamon.io/signup

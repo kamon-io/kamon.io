@@ -122,6 +122,6 @@ Service Map - Focused Mode
 Clicking on another service will switch the view to Focused Mode for that particular service.
 
 [akka-context-propagation]: ../../../instrumentation/akka-http/#context-propagation
-[Kafka documentation]: ../../instrumentation/kafka/producer-and-consumer/
-[alerts]: ../alerts/
-[service overview]: ./integrations/
+[Kafka documentation]: ../../../instrumentation/kafka/producer-and-consumer/
+[alerts]: ../../alerts/
+[service overview]: ../integrations/

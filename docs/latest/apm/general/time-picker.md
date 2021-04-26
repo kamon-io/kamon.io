@@ -53,7 +53,7 @@ When going into [Analyze][analyze] mode, a separate instance of the Time Picker 
 Analyze Time Picker
 {% endlightbox %}
 
-[charts]: ./charts/
-[analyze]: ../deep-dive/analyze.md
+[charts]: ../charts/
+[analyze]: ../../deep-dive/analyze.md
 [paid plans]: /apm/pricing/
-[environment]: ./environments/
+[environment]: ../environments/

@@ -169,14 +169,14 @@ In certain contexts, such as [dashboards], additional operations might be availa
 
 Additionally, upon hovering, each chart will show a green Analyze button. Upon clicking on this button, you will be taken to the [analyze] view, and will be able to drill down into the metric details and correlate traces.
 
-[alerts]: ../alerts/
-[alert drawer]: ../alerts/#alert-drawer
-[dashboards]: ../dashboards/
-[analyze]: ../deep-dive/analyze
-[counters]: ../../core/metrics/#counters
-[gauges]: ../../core/metrics/#gauges
-[histograms]: ../../core/metrics/#histograms
-[timers]: ../../core/metrics/#timers
-[range samplers]: ../../core/metrics/#range-samplers
-[time picker]: ./time-picker/
-[fixed time mode]: ./time-picker/#fixed-time-mode
+[alerts]: ../../alerts/
+[alert drawer]: ../../alerts/#alert-drawer
+[dashboards]: ../../dashboards/
+[analyze]: ../../deep-dive/analyze
+[counters]: ../../../core/metrics/#counters
+[gauges]: ../../../core/metrics/#gauges
+[histograms]: ../../../core/metrics/#histograms
+[timers]: ../../../core/metrics/#timers
+[range samplers]: ../../../core/metrics/#range-samplers
+[time picker]: ../time-picker/
+[fixed time mode]: ../time-picker/#fixed-time-mode
