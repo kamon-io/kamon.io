@@ -68,6 +68,93 @@ The Service Operation Details page offers a drill-down into information gathered
 
 Underneath the charts is located a trace list, with all sampled traces belonging to this operation. It can be used to inspect, sort, and dive into trace details. Read about the [trace list] for more information.
 
+JVM
+-----
+
+{% lightbox /assets/img/pages/apm/jvm-page.png %}
+JVM Integration
+{% endlightbox %}
+
+Services running on the JVM and collecting the [JVM metrics][jvm-metrics] will have a JVM integration tab, displaying charts with information collected about the Java virtual machine your service is running on. They can be split into three main categories:
+
+The top half of the page displays garbage collection metrics - the duration and number of garbage collection intervals, with an additional split between young and old GC generations. The second section is dedicated to heap and memory usage. Here you can see the memory usage, both in heap and outside of the heap, as well as additional memory allocations in your code and promotions of memory chunks to the old generation. Finally, the third section shows durations of [JVM hiccups], as well as their distribution in a [percentiles chart].
+
+One particular correlation that can be of interest is that between hiccups and garbage collection time. If you have many, or very long, hiccups that do not correlate very well to the garbage collection times, it might mean that there are issues in your host setup, or that other processes are taking up resources that your service running on JVM might make better use of instead.
+
+JDBC
+-----
+
+{% lightbox /assets/img/pages/apm/jdbc-page.png %}
+JDBC Integration
+{% endlightbox %}
+
+If your service is running one of the [supported database drivers][jdbc-metrics], Kamon APM will automatically make available to you a JDBC integration page, which will show a list of all traces related to database queries. It can be used to inspect, sort, and dive into trace details. Read about the [trace list] for more information.
+
+Additionally, if using one or more [Hikari connection pools][connection-pool-metrics], each pool will get its dedicated charts displaying the following metrics for the connection pool: the distribution of the number of open connections, the distribution of concurrently borrowed collection counts, the 99th percentile of borrow times for those connections, and durations of any borrow timeouts occurring in your application.
+
+Akka
+------
+
+Kamon APM offers a number of built-in integrations for services running Akka, allowing you to easily deep-dive into your actor systems. The particular services will depend on the features your application is using and, in the case of per-actor metrics, configuration.
+
+#### Akka Actor System Dashboards
+
+{% lightbox /assets/img/pages/apm/akka-actor-systems.png %}
+Akka Actor Systems Integration
+{% endlightbox %}
+
+Kamon will collect the [actor system metrics] from inside of your Akka application, and display them in a handy chart and list. You can see your message throughput or count, grouped per actor system, as well as the number of dead letters (messages that were not delivered) and the maximum number of active actors in the time period. Actor systems will be automatically identified by the Kamon instrumentation. Clicking on any of the table rows will take you the per-system details page.
+
+{% lightbox /assets/img/pages/apm/akka-actor-system-details.png %}
+Akka Actor System Details Integration
+{% endlightbox %}
+
+This page will show the same general metrics, but in a chart format which can then be used as a starting point for a deeper analysis and investigation. Namely, throughput of messages, the number of tracked versus untracked messages, the number of dead letters, the distribution of active actors through time, and the number of unhandled messages will be shown.
+
+#### Akka Actor Dashboards
+
+{% lightbox /assets/img/pages/apm/akka-actors.png %}
+Akka Actors Integration
+{% endlightbox %}
+
+{% lightbox /assets/img/pages/apm/akka-actor-details.png %}
+Akka Actor Details Integration
+{% endlightbox %}
+
+#### Akka Actor Group Dashboards
+
+{% lightbox /assets/img/pages/apm/actor-groups.png %}
+Akka Actor Groups Integration
+{% endlightbox %}
+
+{% lightbox /assets/img/pages/apm/actor-group-details.png %}
+Akka Actor Group Details Integration
+{% endlightbox %}
+
+#### Akka Dispatcher Dashboards
+
+{% lightbox /assets/img/pages/apm/akka-dispatchers.png %}
+Akka Dispatchers Integration
+{% endlightbox %}
+
+{% lightbox /assets/img/pages/apm/akka-dispatcher-details.png %}
+Akka Dispatcher Details Integration
+{% endlightbox %}
+
+#### Akka Router Dashboards
+
+{% lightbox /assets/img/pages/apm/akka-routers.png %}
+Akka Routers Integration
+{% endlightbox %}
+
+{% lightbox /assets/img/pages/apm/akka-router-details.png %}
+Akka Router Details Integration
+{% endlightbox %}
+
+#### Akka Cluster Shard Dashboards
+
+#### Akka Remote Dashboard
+
 [analyze]: ../../deep-dive/analyze/
 [charts]: ../../general/charts/
 [legend]: ../../general/charts/#chart-legend
@@ -77,3 +164,9 @@ Underneath the charts is located a trace list, with all sampled traces belonging
 [alert sidebar]: ../../general/alerts/
 [service map]: ../service-map/#service-links
 [trace list]: ../../traces/trace-list/
+[jvm-metrics]: ../../../instrumentation/system/jvm-metrics/
+[JVM hiccups]: https://www.azul.com/giltene-how-java-got-the-hiccups/
+[percentiles chart]: ../../general/charts/#percentiles-chart
+[jdbc-metrics]: ../../../instrumentation/jdbc/statement-tracing/
+[connection-pool-metrics]: ../../../instrumentation/jdbc/hikari/
+[actor system metrics]: ../../../instrumentation/akka/metrics/#actor-system-metrics
