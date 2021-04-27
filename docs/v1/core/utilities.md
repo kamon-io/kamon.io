@@ -25,7 +25,7 @@ Additionally, a matcher type prefix can be added to select a different type of m
   - `glob:` specifies that the remaining of the string is a glob-like pattern.
   - `regex:` specifies that the remaining of the string is a regular expression pattern.
 
-After filters have been defined they can be applied by using the `Kamon.filter(...)` function as shown bellow:
+After filters have been defined they can be applied by using the `Kamon.filter(...)` function as shown below:
 
 
 {% code_example %}

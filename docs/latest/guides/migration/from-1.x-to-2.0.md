@@ -7,7 +7,7 @@ Migrating from Kamon 1.x to 2.0
 ===============================
 
 Most of the work put into Kamon `2.0` has been geared towards having cleaner, easier to use APIs and instrumentation
-mechanisms and some of those improvements resulted in breaking changes that we are enumerating bellow. The amount of
+mechanisms and some of those improvements resulted in breaking changes that we are enumerating below. The amount of
 effort needed to upgrade can vary based on whether you were just using plain Kamon to gather standard metrics or you
 were actively using the APIs to manage context and create your own metrics and traces, but in general this should not be
 a big effort and you are like to remove lines rather than add.
@@ -21,7 +21,7 @@ we'll give you a hand and update this guide accordingly.
 
 The `Kamon.init()` method takes care of a few common tasks performed during initialization:
   - It will try to attach the instrumentation agent to the current JVM if you have the bundle dependency (more on that
-    bellow).
+    below).
   - It will scan your classpath for modules and automatically start them.
   - It can optionally take a new `Config` instance to be used by Kamon.
 
@@ -68,7 +68,7 @@ Kamon.registerModule("reporter name", reporter);
 The `refine` method has been renamed to `withTag`, which return a new instrument with the specified tags. This also
 allows for chaining calls to `withTag` and the parent tags will be preserved.
 
-Also, it was possible to call instrument actions directly on a metric (see the example bellow) which would result in
+Also, it was possible to call instrument actions directly on a metric (see the example below) which would result in
 recording values on an instrument without any tags. In order to keep the separation between a metric and its instruments
 as clearly defined as possible, those APIs are no longer available and if you were doing this, you will need to
 explicitly call `withoutTags` to get the instrument without tags:
@@ -88,7 +88,7 @@ counter.withTag("zone", "east").increment()
 
 #### Metrics changes
 
-Gauges changed as show bellow:
+Gauges changed as show below:
 
 {% code_block scala %}
 // Kamon 1.x
@@ -111,7 +111,7 @@ hold both entries and tags, and since tags are made out of known types (String, 
 them without additional intervention across HTTP and Binary propagation channels.
 
 Context instances are immutable and you can create a new Context that includes or overrides certain tag using the
-`withTag` function as show bellow:
+`withTag` function as show below:
 
 {% code_block scala %}
 
@@ -123,7 +123,7 @@ val context = Context.Empty
 {% endcode_block %}
 
 Remember though, creating a Context has nothing to do with making it current or propagating it, make sure you use the
-appropriate functions for that (see more bellow).
+appropriate functions for that (see more below).
 
 
 ### Tags and Metrics Names

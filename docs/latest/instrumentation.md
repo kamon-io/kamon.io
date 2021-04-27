@@ -7,7 +7,7 @@ Instrumentation Modules
 =======================
 
 All the instrumentation modules are included in the Kamon Bundle so, out of the box, you get instrumentation for
-everything bellow! If you are not using the Kamon Bundle please refer to each module's Manual Installation section.
+everything below! If you are not using the Kamon Bundle please refer to each module's Manual Installation section.
 
 - **[Akka](./akka/)** instrumentation provides context propagation, metrics and tracing for Akka actors, routers,
   dispatchers, actor systems, cluster sharding and remoting components.

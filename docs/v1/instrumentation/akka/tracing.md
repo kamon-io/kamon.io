@@ -14,7 +14,7 @@ Additionally to all metrics and context propagation that you can get with Kamon,
 generate Spans for actor messages using Kamon's tracing API, effectively giving you distributed tracing for your Akka
 applications, wohoo!
 
-Tracing must be enabled on a per-actor basis using the `akka.traced-actor` filter as shown bellow:
+Tracing must be enabled on a per-actor basis using the `akka.traced-actor` filter as shown below:
 
 {% code_example %}
 {%   language typesafeconfig instrumentation/akka/src/main/resources/application.conf tag:akka-message-tracing label:"application.conf" %}
@@ -34,7 +34,7 @@ has finished. Additionally, these Spans will get:
 ## Customizing the Message Span
 
 In case you would like to modify the Span automatically created by instrumentation, you can access it using the `Kamon.currentSpan()`
-shortcut and do anything you want with it! This example bellow adds a custom tag to the Span:
+shortcut and do anything you want with it! This example below adds a custom tag to the Span:
 
 {% code_example %}
 {%   language scala instrumentation/akka/src/main/scala/kamon/examples/akka/scala/ContextPropagation.scala tag:customizing-a-span label:"Customizing the Spans" %}

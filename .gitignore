@@ -57,3 +57,6 @@ server.pid
 # Default sigar library provision location.
 native/
 .jekyll-cache
+
+# Tags file
+.tags

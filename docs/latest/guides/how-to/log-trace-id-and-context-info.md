@@ -42,7 +42,7 @@ There are four built-in converters in the Logback module, which should be added 
 </configuration>
 ```
 
-Once they are there, use the conversion words to include pieces of the Context in your log patters as shown bellow.
+Once they are there, use the conversion words to include pieces of the Context in your log patters as shown below.
 
 
 ### Trace and Span Identifiers
@@ -71,7 +71,7 @@ conversion word configured above in the desired position of the log pattern:
 
 Including Context Tags and Entries is very similar to including the trace and span identifiers, but the conversion words
 must be provided with a parameter that specifies the name of the tag or entry that you want to include in the log. For
-example, the configuration bellow will write the value of the `user.id` tag and the `someKey` entry in the logs:
+example, the configuration below will write the value of the `user.id` tag and the `someKey` entry in the logs:
 
 ```xml
 <configuration scan="false" debug="false">

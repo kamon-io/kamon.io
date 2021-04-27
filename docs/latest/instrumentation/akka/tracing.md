@@ -61,7 +61,7 @@ Customizing Spans
 -----------------
 
 In case you would like to modify the Span automatically created by instrumentation, you can access it using the
-`Kamon.currentSpan()` shortcut and do anything you want with it! This example bellow adds a custom tag to the Span:
+`Kamon.currentSpan()` shortcut and do anything you want with it! This example below adds a custom tag to the Span:
 
 {% code_example %}
 {%   language scala instrumentation/akka/src/main/scala/kamon/examples/akka/scala/ContextPropagation.scala tag:customizing-a-span label:"Customizing the Spans" %}

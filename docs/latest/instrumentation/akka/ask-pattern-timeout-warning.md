@@ -48,7 +48,7 @@ can know for sure what failed. This implies a bit more of coding, but certainly 
 Nevertheless, sometimes you can't introduce these code changes but you still need to know what is going on. If you get
 to this point, Kamon offers you the possibility to gather information about the call sites where the ask pattern was
 used and log a warning message with this info in case the ask times out. You can enable this timeout warning by setting
-the `kamon.akka.ask-pattern-timeout-warning` configuration key. This warning comes in two flavors as described bellow:
+the `kamon.akka.ask-pattern-timeout-warning` configuration key. This warning comes in two flavors as described below:
 
 
 ### Lightweight Warning ###

@@ -25,12 +25,12 @@ In a Nutshell
 
 All you need to do is download the latest release from our [Kanela releases][kanela-releases]{:target="_blank" rel="noopener"} 
 repository and start your JVM with the `-javaagent:path-to-kanela.jar` JVM option. For example, if you are running your 
-application from IntelliJ IDEA you will need to add the `-javaagent` option to the "VM options" section as shown bellow:
+application from IntelliJ IDEA you will need to add the `-javaagent` option to the "VM options" section as shown below:
 
 <img class="img-fluid rounded" src="/assets/img/agent/intellij-javaagent.png">
 
 And that is pretty much it. Even though it is a simple task, it can be challenging in different environments so please,
-follow the instructions bellow when:
+follow the instructions below when:
   1. [Running applications from SBT](#running-from-sbt)
   2. [Running a Play Framework application on development mode](#play-framework)
   3. [Packaging applications with sbt-native-packager](#using-sbt-native-packager)

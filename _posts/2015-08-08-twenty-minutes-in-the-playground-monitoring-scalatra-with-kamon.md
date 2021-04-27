@@ -100,7 +100,7 @@ now we have 5 URLs that we can hit:
 ### Bootstrapping Scalatra with Kamon ###
 
 We will need to bootstrap `Scalatra` and hook `Kamon` into it's lifecycle and the best place for this is using `ScalatraBootstrap`'s
-`init` and `destroy` hooks as shown bellow:
+`init` and `destroy` hooks as shown below:
 
 {% code_block scala %}
 

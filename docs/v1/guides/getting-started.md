@@ -62,7 +62,7 @@ Enabling Instrumentation
 
 The bytecode instrumentation is powered by [AspectJ][aspectj], all you need to do is add the `-javaagent` JVM
 startup parameter pointing to the `aspectjweaver.jar` file from the latest [AspectJ distribution][aspectjweaver] as shown
-bellow:
+below:
 
 {% code_block %}
 java -javaagent:/path/to/aspectjweaver.jar ...
