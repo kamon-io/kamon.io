@@ -111,7 +111,7 @@ Chart Legend
 <div data-video-src="/assets/video/chart-legend-toggle.mp4" data-caption="Chart Legend" />
 
 
-Every chart in Kamon APM has a legend that can be expanded. When expanded, it will show the legend in tabular format, with one row per group. Each row will have at least two columns, and can be sorted by any of the columns by clicking on the header. The first column will always be the name, which can be one of the following:
+Every standard chart in Kamon APM has a legend that can be expanded. When expanded, it will show the legend in tabular format, with one row per group. Each row will have at least two columns, and can be sorted by any of the columns by clicking on the header. The first column will always be the name, which can be one of the following:
 
 * Tags which make up the grouping **(most common)**
 * Metrics, if multiple metrics are shown in the same chart **(rare)**
