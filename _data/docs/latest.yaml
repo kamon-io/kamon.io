@@ -152,6 +152,8 @@ documentation:
             path: /apm/general/time-picker/
           - name: Charts
             path: /apm/general/charts/
+          - name: Search
+            path: /apm/general/search/
           - name: Getting Help
             path: /apm/general/help/
       - name: Services
