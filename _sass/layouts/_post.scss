@@ -17,8 +17,18 @@
 }
 
 .post-content {
+ 
+  h2, h3, h4  {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
 
   p, ul {
+    line-height: remSize(28);
     font-size: remSize(18);
   }
 }
