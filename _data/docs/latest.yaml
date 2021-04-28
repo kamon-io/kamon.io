@@ -195,7 +195,7 @@ documentation:
           pages:
             - name: Analyze
               path: /apm/deep-dive/analyze/
-        - name: Administration
+        - name: Settings and Administration
           pages:
             - name: Profile
               path: /apm/administration/profile/
