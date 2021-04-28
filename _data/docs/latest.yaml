@@ -197,7 +197,7 @@ documentation:
           - name: Billing
             path: /apm/administration/billing/
           - name: Span Ingestion
-            path: /apm/administration/span-ingestion/
+            path: /apm/administration/span-management/
 
 metrics:
   akka.system.active-actors:

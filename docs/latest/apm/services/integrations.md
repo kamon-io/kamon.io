@@ -117,15 +117,33 @@ This page will show the same general metrics, but in a chart format which can th
 Akka Actors Integration
 {% endlightbox %}
 
+If [actor metrics] are [enabled][enable_actor_metrics], Kamon APM will keep display information about them in the form of a chart and a list with a numerical breakdown. Message throughput, the number of processed messages, and the number of errors are tracked, with the first two being available in a chart visualization. All of them can be sorted in the table, and hovering on any table row will highlight the corresponding entry in the chart. Clicking on any of the table rows will take you to the details page for that specific actor. In the first cell, the actor path will be shown in the first row, while the second row shows the actor's Akka actor system, as well as the class which implements the actor.
+
 {% lightbox /assets/img/pages/apm/akka-actor-details.png %}
 Akka Actor Details Integration
 {% endlightbox %}
+
+The details page will focus on a particular actor, and will show the following metrics in a chart:
+
+* Actor message throughput
+* Actor throughput, per service instance
+* Actor errors, as throughput, per service instance
+* Actor message processing time distribution
+* Actor message processing time [percentiles chart]
+* Messages' time in mailbox distribution
+* Actor mailbox size distribution
+
+{% alert warning %}
+Note that actor metrics require [configuration][enable_actor_metrics] and are not collected by default. This is due to the fact that you might hundreds or even thousands of actors in your system, and may not wish to instrument them by default.
+{% endalert %}
 
 #### Akka Actor Group Dashboards
 
 {% lightbox /assets/img/pages/apm/actor-groups.png %}
 Akka Actor Groups Integration
 {% endlightbox %}
+
+When using Kamon Telemetry and Kamon APM together, you will also have access to [actor group metrics]. As mentioned in the previous section, it is not always plausible to keep track of every actor, but with Kamon Telemetry, automatic or configuration-based grouping of actors into actor groups allows us to intelligently group and display useful metrics about your actors while still keeping the number of groups to a manageable level.
 
 {% lightbox /assets/img/pages/apm/actor-group-details.png %}
 Akka Actor Group Details Integration
@@ -170,3 +188,6 @@ Akka Router Details Integration
 [jdbc-metrics]: ../../../instrumentation/jdbc/statement-tracing/
 [connection-pool-metrics]: ../../../instrumentation/jdbc/hikari/
 [actor system metrics]: ../../../instrumentation/akka/metrics/#actor-system-metrics
+[actor metrics]: ../../../instrumentation/akka/metrics/#actor-metrics
+[enable_actor_metrics]: ../../../instrumentation/akka/metrics/#filtered-metrics
+[actor group metrics]: ../../../instrumentation/akka/metrics/#actor-group-metrics
