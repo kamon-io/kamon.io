@@ -141,69 +141,70 @@ documentation:
     path: /apm/
     icon: /assets/img/icons/docs-reporters.svg
     topics:
-      - name: Overview
-        path: /apm/general/
+      - name: Using Kamon APN
         pages:
-          - name: Getting Started
-            path: /apm/general/overview/
-          - name: Environments
-            path: /apm/general/environments/
-          - name: Time Picker
-            path: /apm/general/time-picker/
-          - name: Charts
-            path: /apm/general/charts/
-          - name: Search
-            path: /apm/general/search/
-          - name: Getting Help
-            path: /apm/general/help/
-      - name: Services
-        pages:
-          - name: Service Map
-            path: /apm/services/service-map/
-          - name: Service List
-            path: /apm/services/service-list/
-          - name: Integrations
-            path: /apm/services/integrations/
-      - name: Traces
-        pages:
-          - name: Traces and Spans
-            path: /apm/traces/overview/
-          - name: Span List
-            path: /apm/traces/trace-list/
-          - name: Trace Search
-            path: /apm/traces/trace-search/
-          - name: Trace Details
-            path: /apm/traces/trace-details/
-      - name: Dashboards
-        pages:
-          - name: Using Dashboards
-            path: /apm/dashboards/
-      - name: Alerts
-        pages:
-          - name: Setting up Alerts
-            path: /apm/alerts/
-      - name: Hosts
-        pages:
-          - name: Host Monitor
-            path: /apm/hosts/host-monitor/
-          - name: Host List
-            path: /apm/hosts/host-list/
-          - name: Host Details
-            path: /apm/hosts/host-details/
-      - name: Investigating Issues
-        pages:
-          - name: Analyze
-            path: /apm/deep-dive/analyze/
-      - name: Administration
-        pages:
-          - name: Profile
-            path: /apm/administration/profile/
-          - name: Organization Management
-            path: /apm/administration/organization/
-          - name: Billing
-            path: /apm/administration/billing/
-          - name: Span Ingestion
-            path: /apm/administration/span-management/
+        - name: Overview
+          pages:
+            - name: Getting Started
+              path: /apm/general/overview/
+            - name: Environments
+              path: /apm/general/environments/
+            - name: Time Picker
+              path: /apm/general/time-picker/
+            - name: Charts
+              path: /apm/general/charts/
+            - name: Search
+              path: /apm/general/search/
+            - name: Getting Help
+              path: /apm/general/help/
+        - name: Services
+          pages:
+            - name: Service Map
+              path: /apm/services/service-map/
+            - name: Service List
+              path: /apm/services/service-list/
+            - name: Integrations
+              path: /apm/services/integrations/
+        - name: Traces
+          pages:
+            - name: Traces and Spans
+              path: /apm/traces/overview/
+            - name: Span List
+              path: /apm/traces/trace-list/
+            - name: Trace Search
+              path: /apm/traces/trace-search/
+            - name: Trace Details
+              path: /apm/traces/trace-details/
+        - name: Dashboards
+          pages:
+            - name: Using Dashboards
+              path: /apm/dashboards/
+        - name: Alerts
+          pages:
+            - name: Setting up Alerts
+              path: /apm/alerts/
+        - name: Hosts
+          pages:
+            - name: Host Monitor
+              path: /apm/hosts/host-monitor/
+            - name: Host List
+              path: /apm/hosts/host-list/
+            - name: Host Details
+              path: /apm/hosts/host-details/
+        - name: Investigating Issues
+          pages:
+            - name: Analyze
+              path: /apm/deep-dive/analyze/
+        - name: Administration
+          pages:
+            - name: Profile
+              path: /apm/administration/profile/
+            - name: Organization Management
+              path: /apm/administration/organization/
+            - name: Billing
+              path: /apm/administration/billing/
+            - name: Span Ingestion
+              path: /apm/administration/span-management/
 
 metrics:
   akka.system.active-actors:
