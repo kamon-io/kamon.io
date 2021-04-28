@@ -141,7 +141,7 @@ documentation:
     path: /apm/
     icon: /assets/img/icons/docs-reporters.svg
     topics:
-      - name: Using Kamon APN
+      - name: Using Kamon APM
         pages:
         - name: Overview
           pages:
