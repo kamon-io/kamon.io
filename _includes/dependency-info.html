@@ -12,7 +12,7 @@
 <code class="language-scala">
 libraryDependencies += "io.kamon" %% "{{ include.module }}" % "{{ include.version }}"
 {% if include.showSbtPlugin %}
-// If you want to be able to run yor app with instrumentation
+// If you want to be able to run your app with instrumentation
 // from SBT, add this to your project/plugins.sbt file:
 addSbtPlugin("io.kamon" % "sbt-kanela-runner" % "{{ site.data.versions.latest.kanela_runner }}")
 {% endif %}

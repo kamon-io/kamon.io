@@ -182,8 +182,12 @@ documentation:
             path: /apm/alerts/
       - name: Hosts
         pages:
-          - name: Host Metrics
-            path: /apm/hosts/
+          - name: Host Monitor
+            path: /apm/hosts/host-monitor/
+          - name: Host List
+            path: /apm/hosts/host-list/
+          - name: Host Details
+            path: /apm/hosts/host-details/
       - name: Investigating Issues
         pages:
           - name: Analyze

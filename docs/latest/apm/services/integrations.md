@@ -184,7 +184,7 @@ Akka Router Details Integration
 [trace list]: ../../traces/trace-list/
 [jvm-metrics]: ../../../instrumentation/system/jvm-metrics/
 [JVM hiccups]: https://www.azul.com/giltene-how-java-got-the-hiccups/
-[percentiles chart]: ../../general/charts/#percentiles-chart
+[percentiles chart]: ../../general/charts/#percentile-chart
 [jdbc-metrics]: ../../../instrumentation/jdbc/statement-tracing/
 [connection-pool-metrics]: ../../../instrumentation/jdbc/hikari/
 [actor system metrics]: ../../../instrumentation/akka/metrics/#actor-system-metrics
