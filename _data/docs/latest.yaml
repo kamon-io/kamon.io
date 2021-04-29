@@ -177,8 +177,14 @@ documentation:
               path: /apm/traces/trace-details/
         - name: Dashboards
           pages:
-            - name: Using Dashboards
-              path: /apm/dashboards/
+            - name: Dashboards in Kamon APM
+              path: /apm/dashboards/introduction/
+            - name: Dashboard List
+              path: /apm/dashboards/dashboard-list/
+            - name: Managing Dashboards
+              path: /apm/dashboards/dashboard/
+            - name: Adding Charts
+              path: /apm/dashboards/create-edit-dashboard/
         - name: Alerts
           pages:
             - name: Setting up Alerts

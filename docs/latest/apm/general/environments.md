@@ -8,7 +8,7 @@ layout: docs
 Environments
 ============
 
-In Kamon APM, everything is grouped in terms of _environments_. Services running in production and those running in development, maybe even on your local machine, do not have the same monitoring needs and you should not be forced to pay the same for them. For this reason, Kamon APM offers non-production environments **free of charge**. You can run any number of services in these environments without incurring any extra costs.
+In Kamon APM, nearly everything is grouped in terms of _environments_. Services running in production and those running in development, maybe even on your local machine, do not have the same monitoring needs and you should not be forced to pay the same for them. For this reason, Kamon APM offers non-production environments **free of charge**. You can run any number of services in these environments without incurring any extra costs.
 
 {% alert info %}
 Non-production environments are a premium feature. You can use them without paying a cent extra, but they are only available on one of the [paid plans].
