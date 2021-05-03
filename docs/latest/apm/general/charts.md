@@ -92,7 +92,7 @@ Percentiles Chart
 
 The percentiles chart shows at what percentile of recordings assume a certain value. On the x axis, the percentile at which a value first appears is shown, while on the y axis the values themselves are displayed. It is split into 45 buckets, with gradually reduced granularity and eventual precision of up to 3 decimals (up to the 99.999th percentile). They are available for gauge, histogram, range sampler and timer metric instrument types. Values in the chart will match the time selected in the [time picker], but will do not display the time axis.
 
-Like for line charts, if values are grouped, multiple lines will be shown, one for each of the groups and with its own color. You can expand the [legend](#chart-legend) to see the details. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
+Like for line charts, if values are grouped, multiple lines will be shown, one for each of the groups and with its own color. In addition to that, a *dashed* line will be shown, with the overall distribution for *all groups*. You can expand the [legend](#chart-legend) to see the details per group. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
 
 Percentiles charts do not support selection or zooming at all, as their purpose is to show the entire distribution.
 
@@ -101,7 +101,7 @@ The [summary](#chart-summaries) of the percentiles chart will always show two th
 1. The value at a given percentile
 2. The number of recorded values at a percentile higher than this one
 
-If the chart is hovered, the appropriate percentile will be shown. Otherwise, when the chart is not interacted with, values for the 99th percentile are shown.
+If the chart is hovered, the appropriate percentile will be shown. Otherwise, when the chart is not interacted with, values for the 99th percentile are shown. When the chart shows multiple groups, hovering it will still show the overall distribution across all groups.
 
 The [legend](#chart-legend) will show the same values, but will respect grouping, if any is specified.
 
@@ -171,8 +171,8 @@ Additionally, upon hovering, each chart will show a green Analyze button. Upon c
 
 [alerts]: ../../alerts/
 [alert drawer]: ../../alerts/#alert-drawer
-[dashboards]: ../../dashboards/
-[analyze]: ../../deep-dive/analyze
+[dashboards]: ../../dashboards/introduction/
+[analyze]: ../../deep-dive/analyze/
 [counters]: ../../../core/metrics/#counters
 [gauges]: ../../../core/metrics/#gauges
 [histograms]: ../../../core/metrics/#histograms
