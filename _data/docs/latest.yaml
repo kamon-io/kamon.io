@@ -177,7 +177,7 @@ documentation:
               path: /apm/traces/trace-details/
         - name: Dashboards
           pages:
-            - name: Dashboards in Kamon APM
+            - name: Dashboards Overview
               path: /apm/dashboards/introduction/
             - name: Dashboard List
               path: /apm/dashboards/dashboard-list/
@@ -187,8 +187,18 @@ documentation:
               path: /apm/dashboards/create-edit-dashboard/
         - name: Alerts
           pages:
+            - name: Alerts Overview
+              path: /apm/alerts/overview/
+            - name: Alert Drawer
+              path: /apm/alerts/alert-drawer/
+            - name: Alert Lists
+              path: /apm/alerts/alert-list/
+            - name: Incidents
+              path: /apm/alerts/incidents/
+            - name: Channels
+              path: /apm/alerts/channels/
             - name: Setting up Alerts
-              path: /apm/alerts/
+              path: /apm/alerts/create-edit/
         - name: Hosts
           pages:
             - name: Host Monitor
