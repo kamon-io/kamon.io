@@ -49,15 +49,21 @@ To disable tracing, simply comment out `span-metrics` for the appropriate module
 
 ## Teasers
 
-<img class="img-fluid my-4" src="/assets/img/newrelic-overview.png">
+{% lightbox /assets/img/newrelic-overview.png %}
+New Relic Overview
+{% endlightbox %}
 
 [New Relic One distributed tracing] provides a tool for visualizing all of your traces so that you can quickly diagnose performance issues:
 
-<img class="img-fluid my-4" src="/assets/img/newrelic-tracing.png">
+{% lightbox /assets/img/newrelic-tracing.png %}
+New Relic Tracing
+{% endlightbox %}
 
 [New Relic One dashboards] allow you to combine data from anywhere in the New Relic platform, including dimensional metrics and trace data sent by the Kamon New Relic Reporter, to build interactive visualizations. You can explore your data and correlate connected sources with tailored and learn the state of your system and applications for efficient troubleshooting.
 
-<img class="img-fluid my-4" src="/assets/img/newrelic-dashboard.png">
+{% lightbox /assets/img/newrelic-dashboard.png %}
+New Relic Dashboard
+{% endlightbox %}
 
 [New Relic]: https://newrelic.com/
 

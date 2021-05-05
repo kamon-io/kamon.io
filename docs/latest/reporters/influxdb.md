@@ -98,7 +98,9 @@ Teasers
 
 Here is a simple example showing some Actor and Span metrics using InfluxDB and Grafana together:
 
-<img class="img-fluid my-4" src="/assets/img/influxdb-dashboard.png">
+{% lightbox /assets/img/influxdb-dashboard.png %}
+InfluxDB + Grafana Dashboard
+{% endlightbox %}
 
 [Datadog]: http://www.datadoghq.com/
 [get started]: /docs/latest/guides/getting-started/

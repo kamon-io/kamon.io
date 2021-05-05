@@ -49,11 +49,17 @@ started with Monitoring Akka with Kamon!
 
 Tracer view in Zipkin:
 
-<img class="img-fluid my-4" src="/assets/img/recipes/quickstart-zipkin-trace.png">
+{% lightbox /assets/img/recipes/quickstart-zipkin-trace.png %}
+Zipkin Trace View
+{% endlightbox %}
+
 
 Span details:
 
-<img class="img-fluid my-4" src="/assets/img/recipes/quickstart-zipkin-span-detail.png">
+{% lightbox /assets/img/recipes/quickstart-zipkin-span-detail.png %}
+Zipkin Span Details
+{% endlightbox %}
+
 
 [1]: https://zipkin.io/
 [2]: ../../guides/frameworks/elementary-akka-setup/

@@ -29,7 +29,9 @@ processed with Spring MVC, as well as lower level HTTP server metrics. The gist 
 
 
 Here's an example trace from [spring-petclinic]:
-<img class="img-fluid rounded" src="/assets/img/spring-petclinic-example-trace.png">
+{% lightbox /assets/img/spring-petclinic-example-trace.png %}
+Spring Petclinic Example Trace
+{% endlightbox %}
 
 {% alert info %}
 If You're using DeferredResult for asynchronous controllers, there's good news and bad news.

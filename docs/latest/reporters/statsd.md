@@ -85,9 +85,15 @@ get up and running in a few minutes and see it with your own metrics!
 
 TODO: Update the dashboards and images.
 
-<img class="img-fluid my-4" src="http://kamon.io/assets/img/kamon-statsd-grafana.png">
+{% lightbox /assets/img/kamon-statsd-grafana.png %}
+StatsD and Grafana
+{% endlightbox %}
 
-<img class="img-fluid my-4" src="http://kamon.io/assets/img/kamon-system-metrics.png">
+
+{% lightbox /assets/img/kamon-system-metrics.png %}
+System Metrics
+{% endlightbox %}
+
 
 
 [StatsD]: https://github.com/etsy/statsd/

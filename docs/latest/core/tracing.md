@@ -21,8 +21,9 @@ Once you put all related Spans together it is possible to reconstruct the entire
 trace as a picture of what needed to happen for a request to be processed by your system. That story will usually be
 represented by something that like this:
 
-
-<img class="img-fluid my-3" src="/assets/img/diagrams/tracing-basics.png">
+{% lightbox /assets/img/diagrams/tracing-basics.png %}
+Tracing Basics
+{% endlightbox %}
 
 There are several conclusions that can be drawn from the graph above, without even looking at the code:
   - There are two services involved in serving the `/users` endpoint of this system.

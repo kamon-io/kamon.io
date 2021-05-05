@@ -70,7 +70,9 @@ The context storage works similar to Stack; every time you store a Context it be
 will make the most recently stored context be the current (like the top of a stack) but as the associated scopes get
 closed, the previous contexts will become current again until eventually the current Context is `Context.Empty` again.
 
-<img class="img-fluid my-3" src="/assets/img/diagrams/context-storage.png">
+{% lightbox /assets/img/diagrams/context-storage.png %}
+Context Storage
+{% endlightbox %}
 
 Effectively, the current Context is stored in a `ThreadLocal` but depending on the threading model of the frameworks and
 libraries used to build your service a Context might need to be made current on several threads and for brief periods

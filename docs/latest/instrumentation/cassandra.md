@@ -23,7 +23,9 @@ Query Tracing
 With the default configuration, the driver instrumentation will only trace calls to `Session.execute(...)`. For example,
 if you prepare a statement and execute seven different queries on a session, your trace will look similar to this:
 
-<img class="img-fluid rounded" src="/assets/img/cassandra-without-roundtrip-spans.png">
+{% lightbox /assets/img/cassandra-without-roundtrip-spans.png %}
+Cassandra without Roundtrip Spans
+{% endlightbox %}
 
 Each executed query generates a single Span, regardless of whether the query had to be retried or speculated on.
 
@@ -56,7 +58,9 @@ Every interaction with Cassandra servers is traced when round trip tracing is en
 statements, retries and speculative executions. For example, the same application used in the query tracing above 
 generates all these Spans in a normal request processing:
 
-<img class="img-fluid rounded" src="/assets/img/cassandra-with-roundtrip-spans.png">
+{% lightbox /assets/img/cassandra-with-roundtrip-spans.png %}
+Cassandra with Roundtrip Spans
+{% endlightbox %}
 
 Notice the `cassandra.query.prepare` span, and all of the `cassandra.query.execution` spans that were automatically
 created for each query sent to Cassandra.

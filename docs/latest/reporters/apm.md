@@ -46,10 +46,24 @@ Kamon APM has a deep understanding on all metrics reported by Kamon and provides
 super easy to start looking at service, JVM, Hosts, Akka-related metrics, Traces and more. Here are some examples from a
 demo application:
 
-<img class="img-fluid my-4" src="/assets/img/apm-service-map.png">
-<img class="img-fluid my-4" src="/assets/img/apm-services-list.png">
-<img class="img-fluid my-4" src="/assets/img/apm-analyze.png">
-<img class="img-fluid my-4" src="/assets/img/apm-analyze-trace-detail.png">
-<img class="img-fluid my-4" src="/assets/img/apm-jvm-metrics.png">
+{% lightbox /assets/img/apm-service-map.png %}
+Kamon APM Service Map
+{% endlightbox %}
+
+{% lightbox /assets/img/apm-services-list.png %}
+Kamon APM Services List
+{% endlightbox %}
+
+{% lightbox /assets/img/apm-analyze.png %}
+Kamon APM Analyze View
+{% endlightbox %}
+
+{% lightbox /assets/img/apm-analyze-trace-detail.png %}
+Kamon APM Analyze Trace Details
+{% endlightbox %}
+
+{% lightbox /assets/img/apm-jvm-metrics.png %}
+Kamon APM JVM Metrics
+{% endlightbox %}
 
 [apm]: /apm/

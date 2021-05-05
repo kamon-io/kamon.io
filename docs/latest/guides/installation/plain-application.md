@@ -79,7 +79,9 @@ very convenient way to figure out whether everything is in place or not: just go
 <a href="http://localhost:5266/" target="_blank"><strong>localhost:5266</strong></a> on your browser and something like
 this should show up:
 
-<img class="img-fluid" src="/assets/img/kamon-status-page.png" alt="Kamon Status Page">
+{% lightbox /assets/img/kamon-status-page.png %}
+Kamon Status Page
+{% endlightbox %}
 
 The important bit here is to ensure that modules are loaded and instrumentation is active. As you start adding more and
 more metrics modules and custom telemetry to Kamon, you will probably be coming back to this page to verify that all is

@@ -119,11 +119,17 @@ These are extracted from our [Elementary Akka Setup][2] guide.
 
 Scraping endpoint exposed by Kamon:
 
-<img class="img-fluid my-4" src="/assets/img/recipes/quickstart-prometheus-metrics.png">
+{% lightbox /assets/img/recipes/quickstart-prometheus-metrics.png %}
+Prometheus Metrics
+{% endlightbox %}
+
 
 A simple query with actor's processing time in Prometheus' UI:
 
-<img class="img-fluid my-4" src="/assets/img/recipes/quickstart-prometheus-query.png">
+{% lightbox /assets/img/recipes/quickstart-prometheus-query.png %}
+Prometheus Query
+{% endlightbox %}
+
 
 [1]: https://prometheus.io/
 [2]: ../../guides/frameworks/elementary-akka-setup/
