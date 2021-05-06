@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Time Picker | Kamon Documentation'
+description: 'Learn how to use the time picker to constrain metrics and traces. Examine your services in real time, or drill down into incident periods'
 layout: docs
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Host List | Kamon Documentation'
+description: 'Keep track of your service hosts with Kamon APM, and discover CPU or memory bottlenecks at a glance'
 layout: docs
 ---
 

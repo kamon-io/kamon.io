@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Host Monitor | Kamon Documentation'
+description: 'Get started monitoring your hosts in just a minute with the Kamon APM Host Monitor'
 layout: docs
 ---
 

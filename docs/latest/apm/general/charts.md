@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Charts | Kamon Documentation'
+description: 'Learn how Kamon APM visualized any metric in your system using line charts, bar charts, heatmaps, histograms, percentile distribution visualizations, and more'
 layout: docs
 ---
 

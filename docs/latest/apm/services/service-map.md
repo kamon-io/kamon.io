@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Service Map | Kamon Documentation'
+description: 'Visualize your entire service architecture using the Service Map. Discover issues propagating across microservices and gain insights with just a few clicks'
 layout: docs
 ---
 

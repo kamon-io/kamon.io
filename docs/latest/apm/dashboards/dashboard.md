@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Managing Dashboards | Kamon Documentation'
+description: 'Discover how to manage custom dashboards in Kamon APM, and visualize your metrics the way you need to use them'
 layout: docs
 ---
 

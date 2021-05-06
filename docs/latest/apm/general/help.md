@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Getting Help | Kamon Documentation'
+description: 'Learn about getting help with Kamon APM or setting up monitoring and instrumentation in your application'
 layout: docs
 ---
 
@@ -16,6 +17,6 @@ Help Menu
 
 **Chat with Us** will open a message prompt, where you can talk to us and get your issues resolved, or browse through previous conversations you've had with us. We usually respond in up to a day, and sometimes much faster for urgent issues.
 
-**Read the Docs** will take you back here! Not all problems require outside help, sometimes the documentation answers the questions we need.
+**Read the Docs** will take you back here! Not all problems require outside help, sometimes the documentation answers the questions we have.
 
-**Schedule a Support Session** is for when you have a more complex issue and need to have a video call with somebody from the Kamon team.
+**Schedule a Support Session** is for when you have a more complex issue and need to have a video call with somebody from the Kamon team. You will be taken to a booking application where you can schedule a call with an expert on monitoring your JVM-based applications.

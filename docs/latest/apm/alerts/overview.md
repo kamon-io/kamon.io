@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Alerts | Kamon Documentation'
+description: 'Learn about alerting in Kamon APM, managing availability targets, and setting up notifications so you never miss a production incident again'
 layout: docs
 ---
 

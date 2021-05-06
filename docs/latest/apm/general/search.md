@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Search | Kamon Documentation'
+description: 'Navigate relevant topics in Kamon APM with ease by using the global search functionality'
 layout: docs
 ---
 

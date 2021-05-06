@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Service Integrations | Kamon Documentation'
+describe: "Learn about Kamon APM's integrations for JVM metrics, JDBC connection pools and operations and Akka microservices with dashboards already prepared by experts"
 layout: docs
 ---
 

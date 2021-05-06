@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Alert Drawer | Kamon Documentation'
+description: 'Deep-dive into alert configuration, incidents, and connected traces with the Kamon APM Alert Drawer'
 layout: docs
 ---
 

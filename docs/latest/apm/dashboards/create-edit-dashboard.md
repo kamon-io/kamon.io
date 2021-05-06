@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Adding Dashboard Charts | Kamon Documentation'
+description: 'Create custom dashboard charts to visualize your metrics and make sense of your system at your own pace'
 layout: docs
 ---
 

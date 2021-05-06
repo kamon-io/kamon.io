@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Service List | Kamon Documentation'
+description: 'Learn how to leverage the Kamon APM Service List to monitor your overall microservice architecture and discover issues immediately.'
 layout: docs
 ---
 

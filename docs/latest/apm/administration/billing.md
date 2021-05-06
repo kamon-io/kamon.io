@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Billing | Kamon Documentation'
+description: 'Keep track of your billing history and manage your subscription plan and payment details from within Kamon APM'
 layout: docs
 ---
 

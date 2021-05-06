@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Environments | Kamon Documentation'
+description: 'Learn how Kamon APM manages environments, separating your critical production services from staging deployments, and save money by leveraging this separation'
 layout: docs
 ---
 

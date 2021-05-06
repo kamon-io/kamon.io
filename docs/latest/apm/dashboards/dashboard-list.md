@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Dashboard List | Kamon Documentation'
+description: 'Manage and explore custom dashboards in Kamon APM'
 layout: docs
 ---
 

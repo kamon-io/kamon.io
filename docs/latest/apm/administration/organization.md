@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Organization Management | Kamon Documentation'
+description: 'Learn about managing your organization members, administration privileges, and customizing your organization in Kamon APM'
 layout: docs
 ---
 

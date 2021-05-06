@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | User Profile | Kamon Documentation'
+description: 'Manage your user profile and organization memberships in Kamon APM'
 layout: docs
 ---
 

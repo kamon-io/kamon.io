@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Host Details | Kamon Documentation'
+description: 'Use Kamon APM to gather insights about your host machines and discover issues with your resources as soon as they happen'
 layout: docs
 ---
 

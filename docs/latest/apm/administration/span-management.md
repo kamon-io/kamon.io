@@ -1,5 +1,6 @@
 ---
 title: 'Kamon APM | Span Ingestion | Kamon Documentation'
+description: 'Learn how to monitor and manage your expenditure in Kamon APM with just a few clicks. Spend exactly as much as you want to.'
 layout: docs
 ---
 
