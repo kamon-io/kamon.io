@@ -37,7 +37,9 @@ Alert Drawer - Toggled Incident
 
 Underneath the chart visualization, you will see a list of recent incidents for the alert. Note that this alert will respond to the [time picker]. If you are in live mode, all alerts in that time period will be shown. Otherwise, alerts will be shown for the frozen time period.
 
-Each incident will display its status (and a small clock marker on it if it has completed)
+Each incident will display its status (and a small clock marker on it if it has completed), the duration of the incident, and the start time, both as a date and time, and as the amount of time that has passed since its beginning. Note that for ongoing incidents, the duration and the time since it started will always be the same, since the duration is in fact the duration _thus far_.
+
+The alert incident list will refresh automatically every minute, but can be forced to refresh manually by clicking on the refresh button in the top right corner of the list.
 
 [incidents]: ../incidents/
 [edit mode]: ../create-edit/#editing-alerts

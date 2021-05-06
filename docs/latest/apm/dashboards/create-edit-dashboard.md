@@ -18,6 +18,18 @@ Adding a Chart from Scratch
 
 New charts can be added to a dashboard by clicking the Add Chart button on any dashboard. This will open a chart creation modal dialog where you can select your data source and visualization settings. Initially, there will be no preview, and nothing except the environment will be selected. By selecting an environment, you limit which data sources you can draw data from. You can select any of your environments, which will [lock] your chart to that environment. Alternatively, you can select *Current* as the environment, which will update the charts as you [change the environment]. When you use the *Current* environment, the list of Data Sources will be appropriate to whichever environment you are currently viewing. This means that the process of creating chart from the *Current* environment might be subtly different depending on which environment you are currently using when you start the creation process.
 
+| Step                  | Required | Default Value | Explanation                                                              |
+|:----------------------|:--------:|:--------------|:-------------------------------------------------------------------------|
+| Environment           | Yes      | Current       | Tied to specific environment or changes with environment                 |
+| Data Source           | Yes      | *None*        | Service or usage statistic from which to track a metric                  |
+| Metric                | Yes      | *None*        | Which metric to keep track of (e.g., `jvm.gc` or `span.processing-time`) |
+| Filter By             | No       | *None*        | Only include records which have a metric tag matching all of the values  |
+| Group By              | No       | Everything    | Group by, and draw separately, according to value for selected metric tags |
+| Chart Type            | Yes      | Line          | Which [chart type] to use to visualize the metric                        |
+| Aggregation           | Line/Bar only | 99th %        | For line or bar charts, how to aggregate the data                   |
+| Percentile            | Percentile only | 99     | For percentile aggregation, which percentile to plot                     |
+| Unit                  | Yes      | Latency       | Which unit to use to label the y axis                                    |
+
 Once you have selected the environment (or continue with the *Current* environment), you will need to select a Data Source. The Data Source can be one of three things:
 
 * Any Service sending metrics to Kamon APM for this environment
@@ -32,7 +44,22 @@ When on the free Starter Plan, you will only be able to use the first 5 services
 
 You will be able to select any of the metrics being sent by the service. These include span metrics, metrics provided by your active instrumentation modules, or any custom metric you are manually keeping track of inside of your application! Depending on the metric selected, you will be able to set up custom filtering (i.e., including only some data points) or grouping into separate values. The possible filters and grouping will correspond to the recorded [metric tags].
 
-After this point, the data is all set. What remains is to determine how we will visualize the data. In the second section, you can choose which type of chart you wish to use for the visualization. The options depending on your particular [metric instrument type]. For line or bar charts, you will additionally need to select which aggregation to show, as those charts can only display a single dimension across time. When showing a percentile aggregation, you will also need to enter the particular percentile you are interested in.
+After this point, the data is all set. What remains is to determine how we will visualize the data. In the second section, you can choose which type of chart you wish to use for the visualization. The options depending on your particular [instrument type]. For line or bar charts, you will additionally need to select which aggregation to show, as those charts can only display a single dimension across time. When showing a percentile aggregation, you will also need to enter the particular percentile you are interested in. You can view the possible aggregations, depending on the [instrument type], in this table:
+
+|            | Counter | Gauge | Range Sampler | Timer | Histogram |
+|:-----------|:-------:|:-----:|:-------------:|:-----:|:---------:|
+| Count      | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Throughput | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Sum        | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Min        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Max        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Meadian    | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Mean       | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Percentile | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+
+A measure is a certain aspect, or aggregation, of a metric's value. To configure alerts, we need data points through time. This is a simple matter of [counters], but with other [metric instruments]
+Kamon APM allows you more flexibility.
+
 
 Additionally, Kamon APM is not aware of the semantics of the data you are visualizing. You will need the select the correct unit to show, as one of Latency, Information, Count, or Percentage. The unit chosen will, however, scale with the data.
 
@@ -80,4 +107,6 @@ Any dashboard can be edited to change its parameters (including invalid/placehol
 [service statuses]: ../../services/service-list/#service-status
 [plans]: /apm/pricing/
 [metric tags]: ../../../core/metrics/#creating-and-removing-metrics
-[metric instrument type]: ../../general/charts/#chart-types
+[counters]: ../../../core/metrics/#counters
+[metric instruments]: ../../../core/metrics
+[instrument type]: ../../../core/metrics
