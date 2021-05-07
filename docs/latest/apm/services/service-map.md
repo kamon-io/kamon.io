@@ -12,7 +12,7 @@ Service Map
 Overview
 ------------
 
-When using Kamon APM, you want to gauge the state of your entire system as completely as possible. The Service Map is the page that enables you to do so, presenting the state of your service architecture. Here you can see the state of your services, how they connect, as well as an overview of the state of your hosts and dashboards.
+When using Kamon APM, you want to gauge the state of your entire system as completely as possible, as easily as possible. The Service Map is the page that enables you to do so, presenting the state of your service architecture. Here you can see the state of your services, how they connect and communicate, as well as an overview of the state of your hosts and dashboards.
 
 {% lightbox /assets/img/pages/apm/service-map-marked.png %}
 Service Map
