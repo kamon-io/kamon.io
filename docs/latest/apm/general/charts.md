@@ -147,10 +147,10 @@ With a few exceptions, which we will get into later, any chart with a time axis 
 
 The exceptions to this rule are as follows:
 
-1. Any chart without a time axis cannot be selected in this way ([percentiles] and [histograms])
+1. Any chart without a time axis cannot be selected in this way ([percentiles](#percentile-charts) and [histograms])
 2. Chart previews when creating [alerts] and [dashboards] cannot be selected
 3. The [alert drawer] cannot be selected
-4. The [analyze] view has special behaviour discussed in its own chapter
+4. The [analyze] view has special behavior discussed in its own chapter
 
 <div data-video-src="/assets/video/chart-selection.mp4" data-caption="Chart Selection Behavior" />
 
@@ -170,8 +170,8 @@ In certain contexts, such as [dashboards], additional operations might be availa
 
 Additionally, upon hovering, each chart will show a green Analyze button. Upon clicking on this button, you will be taken to the [analyze] view, and will be able to drill down into the metric details and correlate traces.
 
-[alerts]: ../../alerts/
-[alert drawer]: ../../alerts/#alert-drawer
+[alerts]: ../../alerts/overview/
+[alert drawer]: ../../alerts/alert-drawer/
 [dashboards]: ../../dashboards/introduction/
 [analyze]: ../../deep-dive/analyze/
 [counters]: ../../../core/metrics/#counters

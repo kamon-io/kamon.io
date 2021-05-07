@@ -31,7 +31,7 @@ You can get started with Kamon APM **for free**, in just 3 minutes. You can [sig
 [analyze]: ../../deep-dive/analyze/
 [traces]: ../traces/overview/
 [Service Map]: ../../services/service-map/
-[alerts]: ../../alerts/
+[alerts]: ../../alerts/overview/
 [dashboard]: ../../dashboards/introduction/
 [hosts]: ../../hosts/
 [plans]: /apm/pricing/

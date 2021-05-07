@@ -75,6 +75,6 @@ Delete Service Prompt
 
 [Service Overview]: ../integrations/
 [integrations]: ../integrations/
-[alerts]: ../../alerts/
+[alerts]: ../../alerts/overview/
 [help menu]: ../../general/help/
 [environment]: ../../general/environments/

@@ -45,7 +45,7 @@ Service Overview - Sidebar
 
 The overview sidebar includes two useful pieces of information - the status of [alerts] defined for the service, and the discovered links between this service and other services in your architecture.
 
-The alerts portion of the sidebar will list all of the alerts you have defined for the service in question, as well as their overall status, and the time of the last (or current) [incident]. When an [availability target] has been defined, an additional indicator shaped like a progress bar will be displayed in the top right corner of each alert, showing the service availability status according to that alert. If it is above the set target, the indicator will be green, and otherwise it will be red. Clicking on an alert representation will open the [alert sidebar]. Additionally, above it a small indicator will be shown that states the overall health of the system, according to all of the defined alerts.
+The alerts portion of the sidebar will list all of the alerts you have defined for the service in question, as well as their overall status, and the time of the last (or current) [incident]. When an [availability target] has been defined, an additional indicator shaped like a progress bar will be displayed in the top right corner of each alert, showing the service availability status according to that alert. If it is above the set target, the indicator will be green, and otherwise it will be red. Clicking on an alert representation will open the [alert drawer]. Additionally, above it a small indicator will be shown that states the overall health of the system, according to all of the defined alerts.
 
 The linked services portion of the sidebar is split into two portions: upstream and downstream services. Upstream services are those that are being **called by** the current service, while downstream services are those that **call** the current service. Toggling between them will show a list of services, including their name and a description of the connection type, with that link directionality. These connections map one-on-one to the links visualized in the [service map].
 
@@ -177,10 +177,10 @@ Akka Router Details Integration
 [analyze]: ../../deep-dive/analyze/
 [charts]: ../../general/charts/
 [legend]: ../../general/charts/#chart-legend
-[alerts]: ../../general/alerts/
-[incident]: ../../general/alerts/
-[availability target]: ../../general/alerts/
-[alert sidebar]: ../../general/alerts/
+[alerts]: ../../general/alerts/overview/
+[incident]: ../../general/alerts/incidents/
+[availability target]: ../../general/alerts/overview/#availability-target
+[alert drawer]: ../../general/alerts/alert-drawer/
 [service map]: ../service-map/#service-links
 [trace list]: ../../traces/trace-list/
 [jvm-metrics]: ../../../instrumentation/system/jvm-metrics/
