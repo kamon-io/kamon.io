@@ -76,7 +76,7 @@ slowdowns and errors. It will be tagged with a number of trace-related metrics, 
 You can read more about deep-diving into analyzing the behavior of this metric and using it to discover issues in the [deep dive documentation][analyze].
 
 Note that for Kamon Telemetry, `span.processing-time` values will be recorded and sent even for spans that are *not sampled*. That means that, depending on
-your sampling configuration, you will likely have more processing time metric records in Kamon APN than you will have actual spans.
+your sampling configuration, you will likely have more processing time metric records in Kamon APM than you will have actual spans.
 
 {% alert info %}
 If you are using Kamon Telemetry, you will have full control over the metrics tags for `span.processing-time`. However, if you are using OpenTelemetry, the metric
