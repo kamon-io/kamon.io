@@ -1,38 +1,77 @@
+$halo-offset-desktop: 24px;
+$halo-offset-mobile: 8px;
+
 @mixin halo {
-  position: absolute;
-  overflow-inline: clip;
-  border-radius: 16px;
-  margin-top: -32px;
-  width: calc(100% - 32px);
-  height: 100%;
-  z-index: -1;
+  border-radius: 12px;
+
+  img {
+    margin-top: $halo-offset-desktop;
+    margin-bottom: -$halo-offset-desktop;
+  }
 
   @include media-breakpoint-down(md) {
-    width: calc(100% - 48px);
+    img {
+      margin-top: $halo-offset-mobile;
+      margin-bottom: -$halo-offset-mobile;
+    }
+  }
+}
+
+@mixin halo-right {
+  @include halo;
+
+  margin-left: $halo-offset-desktop;
+
+  img {
+    margin-left: -$halo-offset-desktop;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-left: $halo-offset-mobile;
+
+    img {
+      margin-left: -$halo-offset-mobile;
+    }
+  }
+}
+
+@mixin halo-left {
+  @include halo;
+
+  text-align: right;
+
+  margin-right: $halo-offset-desktop;
+
+  img {
+    margin-right: -$halo-offset-desktop;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-right: $halo-offset-mobile;
+
+    img {
+      margin-right: -$halo-offset-mobile;
+    }
   }
 }
 
 .blue-halo-left {
-  @include halo;
+  @include halo-left;
   background-color: #E5F6FF;
-  margin-left: -32px;
 }
 
 .green-halo-left {
-  @include halo;
+  @include halo-left;
   background-color: #E3FFF1;
-  margin-left: -32px;
 }
 
 .blue-halo-right {
-  @include halo;
+  @include halo-right;
   background-color: #E5F6FF;
-  margin-left: 32px;
 }
 
 .green-halo-right {
-  @include halo;
+  @include halo-right;
   background-color: #E3FFF1;
-  margin-left: 32px;
 }
 

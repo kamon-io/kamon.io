@@ -9,15 +9,7 @@ layout: default
     <div class="row no-gutters">
       <div class="col-12 col-lg-8">
         <h1 class="pr-lg-4">{{ page.title }}</h1>
-      </div>
-      <div class="col-12 col-lg-4 pl-lg-5">
-        <div class="d-flex">
-          <img width="50" height="50" class="mr-3" src="{% if page.author == 'the Kamon Team' %}/assets/img/kamon/kamon-avatar.svg{% else %}/assets/img/kamon/green-circle.svg{% endif %}" alt="Author avatar"/>
-          <div class="publish-details">
-            <p class="text-lead text-dark-1">by {{ page.author }}</p>
-            <p class="text-body-smaller">{{ page.date | date: "%B %e, %Y" }} </p>
-          </div>
-        </div>
+        <span class="text-light">Published on {{ page.date | date: "%B %e, %Y" }} </span>
       </div>
     </div>
 
@@ -36,9 +28,18 @@ layout: default
       <div class="col-12 col-lg-4 pl-lg-5">
         <div class="sticky-posts-actions">
           <div class="d-none d-lg-block text-center p-5 start-monitoring-card-small">
-            <h5 class="text-dark-1">Monitor up to 5 services for free</h5>
-            <p class="text-body-smaller mt-3">Get everything you need to monitor <b>Akka</b> and <b>Play Framework</b> services with Kamon APM</p>
-            <a class="btn btn-primary mt-3 text-white onboarding-start-button" href="#">Start Monitoring</a>
+            <h5 class="text-dark-1">Eliminate slow requests <br>and errors like a Pro</h5>
+            <p class="text-body-smaller mt-3">
+              Don't wait until production goes down again to setup monitoring.<br>
+              It's a 3-minute setup and <br>you can start for <b>Free</b>!
+            </p>
+            <p>
+              
+            </p>
+
+            <a class="btn btn-primary mt-3 text-white onboarding-start-button px-5 py-2" href="#">
+              Try Kamon APM
+            </a>
           </div>
           <div class="mt-5">
             <h6>Share this post</h6>
