@@ -51,24 +51,40 @@ a.nav-link {
 }
 
 .nav-submenu-container {
-  max-width: 600px;
-  min-width: 600px;
+  max-width: 700px;
+  min-width: 700px;
 
   .nav-submenu-item {
-    height: 100%;
     border-radius: 8px;
     text-decoration: none;
-    color: $dropdown-link-color;
 
     &:hover {
       background-color: $color-light-3;
+
+      .item-icon {
+        background-color: white;
+      }
+    }
+
+    .item-icon {
+      max-width: 48px;
+      margin-right: 12px;
+      border-radius: 8px;
+      background-color: $color-light-3;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: $color-dark-1;
+      font-size: remSize(16);
     }
 
     .item-explainer {
-      padding-top: 16px;
-      padding-right: 16px;
+      max-width: 220px;
       white-space: normal;
     }
+
+    
   }
 }
 

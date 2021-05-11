@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }} | Kamon</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ page.description }}">
+
+    <!-- Open Graph -->
+    <meta name="og:locale" content="en_us">
+    <meta name="og:title" content="{{ page.title }}">
+    <meta name="og:description" content="{{ page.description }}">
+    <meta name="og:url" content="https://kamon.io{{ page.url }}">
+    <meta name="og:image" content="https://kamon.io/assets/img/og/og-kamon.png">
+
+    {% if page.layout == 'post' %}
+    <meta name="og:type" content="article">
+    {% else %}
+    <meta name="og:type" content="website">
+    {% endif %}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="twitter:site" content="@kamonteam">
+    <meta name="twitter:image" content="https://kamon.io/assets/img/og/og-kamon.png">
 
     {% include includes-head.html %}
   </head>

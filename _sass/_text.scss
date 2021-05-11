@@ -30,6 +30,20 @@ html, body {
   font-weight: 400;
 }
 
+ul.text-explainer {
+  list-style: none;
+  padding-left: remSize(24);
+  
+  li {
+    margin-bottom: remSize(24);
+  }
+
+  li::before {
+    content: "-";
+    margin-left: remSize(-16);
+  }
+}
+
 .text-blockquote-small {
   font-weight: $typography-weight-semi-bold;
   font-size: remSize(20);

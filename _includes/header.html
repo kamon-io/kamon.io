@@ -35,34 +35,110 @@
             </li>
           </ul>
         </li>
+        <li class="navbar-item dropdown d-lg-none">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <ul class="navbar-nav pl-3 d-lg-none">
+            <li class="navbar-item">
+              <a class="nav-link" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
+            </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="/solutions/monitoring-for-play-framework/">Monitoring for Play Framework</a>
+            </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
+            </li>
+          </ul>
+        </li>        
 
         <li class="navbar-item dropdown d-none d-lg-block">
           <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
-          <div class="dropdown-menu dropdown-menu-center" aria-labelledby="productsDropdown">
-            <div class="nav-submenu-container px-2" >
+          <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="productsDropdown">
+            <div class="nav-submenu-container p-3" >
               <div class="row no-gutters">
                 <div class="col-6">
                   <a href="/apm/">
-                    <div class="px-4 pt-4 nav-submenu-item">
-                      <img style="max-height: 24px;" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager">
-                      <p class="item-explainer text-secondary">Fix slow requests across microservices and databases</p>
+                    <div class="nav-submenu-item p-3">
+                      <div class="d-inline-block align-top">
+                        <img class="item-icon" src="/assets/img/kamon/kamon-apm-icon-light.svg" alt="Kamon APM Logo" loading="eager">
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="item-title pb-1">Kamon APM</div>
+                        <div class="item-explainer text-secondary">
+                          Visualize metrics, create alerts, and find slow request traces
+                        </div>
+                      </div>
                     </div>
                   </a>
                 </div>
                 <div class="col-6">
                   <a href="/telemetry/">
-                    <div class="px-4 pt-4 nav-submenu-item">
-                      <img style="max-height: 22px;" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager">
-                      <p class="item-explainer text-secondary">Collect metrics and traces from microservices on the JVM</p>
+                    <div class="nav-submenu-item p-3">
+                      <div class="d-inline-block align-top">
+                        <img class="item-icon" src="/assets/img/kamon/kamon-telemetry-icon-light.svg" alt="Kamon Telemetry Logo" loading="eager">
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="item-title pb-1">Kamon Telemetry</div>
+                        <div class="item-explainer text-secondary">
+                          Collect metrics and traces from JVM microservices
+                        </div>
+                      </div>
                     </div>
                   </a>
                 </div>
               </div>
             </div>
           </div>
-
-
         </li>
+
+        <li class="navbar-item dropdown d-none d-lg-block">
+          <a class="nav-link dropdown-toggle" href="#" id="solutionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
+          <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="solutionsDropdown">
+            <div class="nav-submenu-container p-3" >
+              <div class="row no-gutters">
+                <div class="col-4">
+                  <a href="/solutions/monitoring-for-akka/">
+                    <div class="nav-submenu-item p-3">
+                      <div class="d-inline-block align-top">
+                        <img class="item-icon p-2" src="/assets/img/pages/solutions/akka/akka-logo.svg" alt="Akka Logo" loading="eager">
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="item-explainer text-secondary">Monitoring for </div>
+                        <div class="item-title">Akka</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/solutions/monitoring-for-play-framework/">
+                    <div class="nav-submenu-item p-3">
+                      <div class="d-inline-block align-top">
+                        <img class="item-icon p-2" src="/assets/img/pages/solutions/play/play-logo.svg" alt="Play Framework Logo" loading="eager">
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="item-explainer text-secondary">Monitoring for </div>
+                        <div class="item-title">Play Framework</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/solutions/monitoring-for-spring-boot/">
+                    <div class="nav-submenu-item p-3">
+                      <div class="d-inline-block align-top">
+                        <img class="item-icon p-2" src="/assets/img/pages/solutions/spring/spring-icon.svg" alt="Spring Logo" loading="eager">
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="item-explainer text-secondary">Monitoring for </div>
+                        <div class="item-title">Spring Boot</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>        
+
         <li class="navbar-item">
           <a class="nav-link" href="/docs/latest/guides/">Docs</a>
         </li>
@@ -76,7 +152,7 @@
 
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <a class="nav-link onboarding-start-button mr-3" href="#">
+          <a class="nav-link onboarding-start-button mr-3 text-center" href="#">
             Install Telemetry
           </a>
         </li>

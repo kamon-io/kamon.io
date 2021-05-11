@@ -46,6 +46,8 @@
   .blog-card-summary-image {
     width: 100%;
     height: 200px;
+    background-position: top; 
+    background-size: cover;
 
     @media (max-width: $xs-max) {
       height: 100px;
