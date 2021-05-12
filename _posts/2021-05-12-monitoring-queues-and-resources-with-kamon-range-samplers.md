@@ -27,31 +27,31 @@ monitoring queues for now, and visit some of those other use cases later in this
 Let's start with an imaginary queue with the following behavior over time:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data.png" alt="Queue Behavior Illustration">
 </div>
 
 The queue size goes up and down as elements flow through it, and every now and then there are periods of inactivity
-signaled by the flat lines.
+signaled by flat lines.
 
 So, how do we monitor this thing?
 
 The basic monitoring instinct says: create a gauge for the queue size and update it every time an element is added
 or removed from the queue. 
 
-Implementing the initial idea and exporting the gauge's value every 10 seconds yields the black line on the chart below:
+Implementing the initial idea and exporting the gauge's value every 10 seconds yields recordings represented by the black line on the chart below:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data-with-gauge.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data-with-gauge.png" alt="Tracking Queue Behavior - Attempt 1">
 </div>
 
 All the activity in those 40 seconds got reduced to four numbers: **8, 12, 7 and 10**. That's _some_ data, but far from
 enough to describe what really happened in those 40 seconds.
 
 We are missing out on two important aspects of the queue's behavior:
-  - There was a spike of more than twice the highest value we got from the gauge (notice that 25 on the second period).
-  - There was a brief moment when the queue was able to catch up with all the work (notice that 0 on the third period).
+  - There was a spike of more than twice the highest value we got from the gauge (notice that 25 during the second period).
+  - There was a brief moment when the queue was able to catch up with all the work (notice that 0 during the third period).
 
-This queue might have grown to hundreds of elements in a small period of time and we wouldn't have noticed. Let's try to
+This queue might have grown to hundreds of elements for a small period of time and we wouldn't have noticed. Let's try to
 fix that.
 
 
@@ -68,12 +68,12 @@ periods, and only track the newly set highs and lows on the current period.
 Drawing those two extra gauges give us to the red and green lines below:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data-with-peaks-and-lows.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-example-data-with-peaks-and-lows.png" alt="Tracking Queue Behavior - Attempt 2">
 </div>
 
 The highs and lows can tell us a little bit more about the queue's behavior:
-  - We can see that the queue had a spike of up to 25 elements on the second period.
-  - We can also see that the queue was able to catch up with all the work when the lowest went down to zero on the third
+  - We can see that the queue had a spike of up to 25 elements during the second period.
+  - We can also see that the queue was able to catch up with all the work when the lowest went down to zero during the third
     period.
 
 These two extra gauges give us a better idea of what **range** the queue operates on. That's much better than the
@@ -123,7 +123,7 @@ The scene has changed a lot over the years, and nowadays many tools allow for 1-
 Graphite, InfluxDB, and several more. That doesn't mean that you should do it, though. 
 
 Reporting and visualizing data in 1-second periods comes with with a burden: a lot more data needs to be transferred to,
-and stored by your monitoring solution. Your mileage may vary, but in many cases it is not practical to go for 1-second
+and stored by, your monitoring solution. Your mileage may vary, but in many cases it is not practical to go for 1-second
 periods because of the additional overhead on the network and storage. It is possible, but not practical.
 
 
@@ -136,7 +136,7 @@ We knew that histograms were a very good fit for storing and exporting the queue
 
 So, what if we keep the lowest, the highest and the latest queue size values in three separate variables, and record those
 three values in a histogram once per second? We would never miss a high or low, and we could get an idea of how much time
-was at each level based on the number of recordings.
+was at each level based on the number of recordings, all without the performance impact of recording every single observed value.
 
 And that's how Range Samplers were born. In the early days we called them "Min-Max Counter". Terribly name, we know.
 They were later renamed to Range Sampler, and we use them all over the place in Kamon's automatic instrumentation.
@@ -188,11 +188,11 @@ Instead of focusing on absolute figures like "the queue size is 50", what you re
 the most common area in which a queue operates, if any. Heatmaps are excellent tools for visualizing exactly that:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-pretty-range-samplers-data.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-pretty-range-samplers-data.png" alt="Range Sampler Histogram">
 </div>
 
 There are several insights on the **behavior** of a queue from looking at this heatmap:
-  - It rarely goes below 10 elements. This means that almost always there is some work waiting to be done in the queue.
+  - It rarely goes below 10 elements. This means that there is almost always some work waiting to be done in the queue.
   - It never goes above 70. Signaling that even though there are spikes in the amount of work to be done, it is never
     getting out of hand.
   - Most of the time the queue size stays around 20 elements. That's where the "heat" is concentrated.
@@ -203,18 +203,18 @@ consistent range from 10 to 70 elements. Nothing to worry about there.
 Let's look at a very different example:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-overflow-sample-data.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-overflow-sample-data.png" alt="Range Sampler Histogram - Runaway Values">
 </div>
 
 That's not the kind of heatmap you want to see for a queue. After 11:00 PM the queue size started growing and the lowest
 value never made it back to zero. Spikes are not necessarily a bad thing, but when a queue size doesn't make it back to
 a baseline value it signals two important facts:
-  - There is a lot more work than what the queue can handle. You probably should add more processing resources or
+  - There is more work than what the queue can handle. You probably should add more processing resources or
     improve processing performance.
   - The queue is on its way to an overflow. It might take a few minutes or hours, but work is piling up in that queue
     and it will eventually lead to out of memory and/or garbage collection issues.
 
-The important bits are that the lowest, highest and most common values are the only signals that can really tell you
+The important part is that the lowest, highest and most common values are the only signals that can really tell you
 something about a queue's behavior, and help you draw conclusions on whether you should act or not.
 
 
@@ -224,7 +224,7 @@ Let's say we are using a Range Sampler to monitor borrowed connections in a conn
 this:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-example.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-example.png" alt="Range Sampler Histogram - Connection Pool">
 </div>
 
 Those spikes might require some attention. Are they something we should worry about? 
@@ -234,7 +234,7 @@ as a measure of how much time a queue was at certain size or bigger. For example
 of a heatmap:
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-p99.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-p99.png" alt="Range Sampler 99th Percentile">
 </div>
 
 In most time periods, 99% of the time there is no more than one borrowed connection. This also means that most of the
@@ -244,7 +244,7 @@ We can go further and analyze all percentiles across the entire time period, get
 behavior for this connection pool (notice that the horizontal axis represents percentiles, not time):
 
 <div class="text-center my-5">
-  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-all-percentiles.png" alt="Kamon APM Pricing Plans">
+  <img class="img-fluid" src="/assets/img/posts/range-sampler-borrowed-connections-all-percentiles.png" alt="Range Sampler Percentiles Chart">
 </div>
 
 Now we know that:
@@ -283,7 +283,7 @@ comments and questions, we will be glad to hear from you!
 
 ## Ready to Monitor with Range Samplers?
 
-Range Samplers are part of [Kamon Telemetry](/telemetry/), and you can use them regardless of where you send data to.
+Range Samplers are a part of [Kamon Telemetry](/telemetry/), and you can use them regardless of where you send data to.
 The heatmaps and percentile charts in this post were taken from [Kamon APM](/apm/).
 
 If you want to use the same tools to monitor your queues, actor mailboxes, and a lot more, [Sign Up for Kamon APM](#){: .onboarding-start-button} and start monitoring for Free!
