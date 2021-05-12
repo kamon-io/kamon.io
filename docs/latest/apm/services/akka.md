@@ -1,5 +1,5 @@
 ---
-title: 'Kamon APM | JVM Integration | Kamon Documentation'
+title: 'Kamon APM | Akka Integrations | Kamon Documentation'
 describe: "Monitor Akka actors, dispatchers, routers, time in mailbox, and more with pre-made dashboard starting for free with Kamon APM"
 layout: docs
 ---
@@ -42,7 +42,7 @@ If [actor metrics] are [enabled][enable_actor_metrics], Kamon APM will keep disp
 Akka Actor Details Integration
 {% endlightbox %}
 
-The details page will focus on a particular actor, and will show the following metrics in a chart:
+The details page will focus on a particular actor, and will show the following metrics as charts:
 
 * Actor message throughput
 * Actor throughput, per service instance
@@ -68,15 +68,38 @@ When using Kamon Telemetry and Kamon APM together, you will also have access to 
 Akka Actor Group Details Integration
 {% endlightbox %}
 
+The details page will focus on a particular actor, and will show the following metrics as charts:
+
+* Actor group message throughput
+* Actor group throughput, per service instance
+* Actor group errors, as throughput, per service instance
+* Actor group message processing time distribution
+* Actor group message processing time [percentiles chart]
+* Messages' time in mailbox distribution
+* Pending work gauge
+
 #### Akka Dispatcher Dashboards
 
 {% lightbox /assets/img/pages/apm/akka-dispatchers.png %}
 Akka Dispatchers Integration
 {% endlightbox %}
 
+Kamon APM will automatically detect Akka Dispatchers used in your application, and will show an integration tab for the [dispatcher metrics]. An overview page will show an [aggregation summary chart], with throughput, number of processed messages, maximum recorded queue size, and maximum number of active threads, grouped per dispatcher. Each entry will show not only the dispatcher name, but also display (and be grouped by) the Akka actor system, and the thread pool type.
+
 {% lightbox /assets/img/pages/apm/akka-dispatcher-details.png %}
 Akka Dispatcher Details Integration
 {% endlightbox %}
+
+Clicking on any of the entries will bring up the Dispatcher Details page, with a dashboard displaying the following metrics, all for that particular dispatcher:
+
+* Dispatcher completed tasks
+* Dispatcher completed tasks per instance
+* Dispatcher queue size
+* Active threads heatmap
+* Active thread counts
+* Maximum threads per instance
+* Maximum parallel threads
+* Maximum pool size
 
 #### Akka Router Dashboards
 
@@ -84,13 +107,68 @@ Akka Dispatcher Details Integration
 Akka Routers Integration
 {% endlightbox %}
 
+If making use of Akka Routers to distribute the workload, Kamon will automatically detect them and integrate with them. An overview page will show an [aggregation summary chart], with throughput, number of processed messages, number of errors, and 99th percentile of time in mailbox, grouped per router and actor system. Both the router and the actor system will be used to label the entry.
+
 {% lightbox /assets/img/pages/apm/akka-router-details.png %}
 Akka Router Details Integration
 {% endlightbox %}
 
+Clicking on any of the entries will bring up the Router Details page, with a dashboard displaying the following metrics, all for that particular router:
+
+* Router throughput
+* Throughput per instance
+* Number of errors per instance
+* Processing time heatmap
+* Processing time [percentiles chart], per instance
+* Time in mailbox heatmap
+* Routing time heatmap
+* Number of pending messages per instance
+* Routee count per instance
+* Overall number of pending messages
+* Overall routee count
+
 #### Akka Cluster Shard Dashboards
 
-#### Akka Remote Dashboard
+{% lightbox /assets/img/pages/apm/akka-cluster-shard-list.png %}
+Akka Cluster Shard List
+{% endlightbox %}
+
+If you are distributing the work of Akka across several nodes using Akka Cluster Sharding, Kamon Telemetry will automatically integrate with it, and a detailed breakdown will appear in Kamon APM. An [aggregation summary chart] will group data per shard type and Akka actor system. Each entry will display the number of hosted shard, the number of region messages, number of processed messages in the shard overall, and the number of entities for that shard. Only the number of hosted shards will be visualized in the chart.
+
+{% lightbox /assets/img/pages/apm/akka-cluster-shard-details.png %}
+Akka Cluster Shard Details
+{% endlightbox %}
+
+Clicking on any of the entries will bring up the Cluster Shard Details page, which is split up into a region overview section, a shard breakdown section, and an entity performance tracking section.
+
+The region overview section will display the following metrics:
+
+* Message throughput per region
+* Histogram of shard counts per region
+* Histogram of entity counts per region
+
+The shards breakdown will display:
+
+* Histogram of entities per shard
+* Histogram of messager per shard
+* Number of entities per shard, as a stacked bar chart
+
+Finally, the entity performance section includes the following:
+
+* Processing time throughput, per instance
+* Error throughput per instance
+* Processing time histogram
+* Processing time [percentiles chart]
+* Time in mailbox distribution
+* Histogram of pending work counts
+
+#### Akka Remote Messages Dashboard
+
+{% lightbox /assets/img/pages/apm/akka-remote.png %}
+Akka Remote Messages Dashboard
+{% endlightbox %}
+
+For microservices making use of Akka remoting to communicate remotely across nodes, Kamon APM will show a pre-made dashboard with details about messages exchanged. Counts and sizes (in bytes) of incoming and outgoing messages will be shown, grouped by Akka system as well as instance. Additionally, maximum serialization times for each system and instance are shown, with the chart summary also indicating the minimum time and the summed up time spent on marshalling data overall.
 
 [service overview]: ../service-details/
 [aggregation summary chart]: ../../general/aggregation-summary-chart/
@@ -99,3 +177,4 @@ Akka Router Details Integration
 [actor metrics]: ../../../instrumentation/akka/metrics/#actor-metrics
 [enable_actor_metrics]: ../../../instrumentation/akka/metrics/#filtered-metrics
 [actor group metrics]: ../../../instrumentation/akka/metrics/#actor-group-metrics
+[dispatcher metrics]: ../../../instrumentation/akka/metrics/#dispatcher-metrics
