@@ -42,7 +42,7 @@ Span List - Errors Only
 
 The span list also includes an error toggle. If turned on, only spans with errors (an error occurred during the execution of the operation) will be shown in the list.
 
-[JDBC]: ../../services/integrations/#jdbc
+[JDBC]: ../../services/jdbc/
 [trace search]: ../trace-search/
 [analyze view]: ../../deep-dive/analyze/#trace-list
 [span tag]: ../overview/#span-tags

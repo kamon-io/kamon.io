@@ -165,8 +165,14 @@ documentation:
               path: /apm/services/service-map/
             - name: Service List
               path: /apm/services/service-list/
-            - name: Integrations
-              path: /apm/services/integrations/
+            - name: Service Details
+              path: /apm/services/service-details/
+            - name: JVM Dashboards
+              path: /apm/services/jvm/
+            - name: JDBC Dashboards
+              path: /apm/services/jdbc/
+            - name: Akka Dashboards
+              path: /apm/services/akka/
         - name: Traces
           pages:
             - name: Traces and Spans

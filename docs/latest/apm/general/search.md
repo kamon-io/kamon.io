@@ -24,4 +24,4 @@ You can open the search bar at any point by either clicking on the search icon i
 [services]: ../../services/service-list/
 [hosts]: ../../hosts/host-details/
 [dashboards]: ../../dashboards/introduction/
-[specific integrations]: ../../services/integrations/
+[specific integrations]: ../../services/service-details/#integrations

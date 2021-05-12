@@ -141,7 +141,7 @@ The [availability target] is determined by two numbers:
 * The period for which to evaluate
 
 [Alerts]: ../alert-list/
-[service overview]: ../../services/integrations/#service-overview
+[service overview]: ../../services/service-details/#service-overview
 [host metrics]: ../../hosts/host-monitor/
 [create-from-chart]: ../../general/charts/#chart-operations
 [time picker]: ../../general/time-picker/

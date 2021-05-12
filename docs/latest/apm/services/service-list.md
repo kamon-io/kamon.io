@@ -26,7 +26,10 @@ Each service entry will show the following information:
 
 Specific lines in the sparkline chart can be highlighted by hovering the appropriate column (latency, throughput, or errors) for easier management. Services can also be sorted by name, latency, throughput or number of errors by clicking on the header.
 
-**NOTE:** The numbers shown are only for _server_ spans. This means that database call spans and other client-side and internal spans will not be included.
+{% alert info %}
+The numbers shown are only for _server_ spans (spans with `span.kind` of `server`). This means that database call spans and other client-side and internal spans will not be included in
+these numbers and visualizations.
+{% endalert %}
 
 Clicking on any particular service will take you to the [detailed overview][integrations] of that service.
 
@@ -73,8 +76,8 @@ If you no longer wish to see a service in Kamon APM, or in this particular [envi
 Delete Service Prompt
 {% endlightbox %}
 
-[Service Overview]: ../integrations/
-[integrations]: ../integrations/
+[Service Overview]: ../servide-details/
+[integrations]: ../service-details/#integrations
 [alerts]: ../../alerts/overview/
 [help menu]: ../../general/help/
 [environment]: ../../general/environments/

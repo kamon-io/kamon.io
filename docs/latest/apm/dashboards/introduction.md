@@ -32,10 +32,10 @@ Dashboards and dashboard charts have one peculiarity - unlike services, hosts, o
 When switching between environments, charts bound to the **current** evironment will match services **by name**. Make sure the same services share the same name across environments.
 {% endalert %}
 
-[server metrics]: ../../services/integrations/#service-overview-charts
-[JVM information]: ../../services/integrations/#jvm
-[JDBC and DB pool]: ../../services/integrations/#jdbc
-[Akka metrics]: ../../services/integrations/#akka
+[server metrics]: ../../services/service-details/#service-overview-charts
+[JVM information]: ../../services/jvm/
+[JDBC and DB pool]: ../../services/jdbc/
+[Akka metrics]: ../../services/akka/
 [host metrics]: ../../host/host-list/
 [chart types]: ../../general/charts/#chart-types
 [time picker]: ../../general/time-picker/

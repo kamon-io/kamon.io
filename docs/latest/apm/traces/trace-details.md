@@ -128,6 +128,6 @@ since the last mark has been recorded
 
 [clock drift]: https://en.wikipedia.org/wiki/Clock_drift
 [marks]: ../overview/#span-marks
-[operation details]: ../../services/integrations/#operation-details
+[operation details]: ../../services/service-details/#operation-details
 [span list]: ../trace-list/
 [joint]: ./#joint-spans

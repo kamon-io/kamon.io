@@ -125,4 +125,4 @@ Clicking on another service will switch the view to Focused Mode for that partic
 [akka-context-propagation]: ../../../instrumentation/akka-http/#context-propagation
 [Kafka documentation]: ../../../instrumentation/kafka/producer-and-consumer/
 [alerts]: ../../alerts/overview/
-[service overview]: ../integrations/
+[service overview]: ../service-details/

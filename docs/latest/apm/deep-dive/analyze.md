@@ -92,7 +92,7 @@ expand with the same information, as well. This information can be _very useful_
 out in some way, be it a certain host, an operation, or maybe a particular database connection pool.
 
 
-[integrations]: ../../services/integrations/
+[integrations]: ../../services/service-details/#integrations
 [dashboards]: ../../dashboards/introduction/
 [aggregation summary chart]: ../../general/aggregation-summary-chart/
 [incident]: ../../alerts/incidents/
