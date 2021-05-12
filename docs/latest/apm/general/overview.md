@@ -12,7 +12,7 @@ Kamon APM
 Overview
 --------
 
-[Kamon APM][apm] is a hosted monitoring and debugging platform for microservices, designed from the ground up with one goal in mind: accept all the metrics and tracing data exactly as Kamon Telemetry records it. No averaging, no pre-aggregating, no downsampling of metrics, no data quality loss. This policy of seamless integration with Kamon Telemetry translates in better, accurate and relevant alerts and insight on your application’s behavior.
+[Kamon APM][apm] is a hosted monitoring and debugging platform for microservices, designed from the ground up with one goal in mind: accept all the metrics and tracing data exactly as Kamon Telemetry records it. No averaging, no pre-aggregating, no downsampling of metrics, no data quality loss. This policy of seamless integration with Kamon Telemetry translates into better, accurate and relevant alerts and insight on your application’s behavior.
 
 {% lightbox /assets/img/apm-preview.png %}
 Kamon APM
