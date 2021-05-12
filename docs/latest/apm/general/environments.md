@@ -17,11 +17,11 @@ Non-production environments are a premium feature. You can use them without payi
 
 See this table for a quick overview of the default environments:
 
-| Environment | Available on Starter Plan | Metrics Retention | Traces Retention | Service Limit |
+| Environment | With Starter Plan         | Metrics Retention | Traces Retention | Service Limit |
 |-------------|---------------------------|-------------------|------------------|---------------|
-| Production  | Yes (up to 5 services)    | 14 days (Teams) / 6h (Starter) | 7 days (Teams) / 6h (Starter) | Unlimited (Paid) / 5 (Starter) |
-| Staging     | No                        | 1 day             | 1 day            | Unlimited     |
-| Development | No                        | 1 day             | 1 day            | Unlimited     |
+| Production  | Yes <br> (max 5 services) | 14 days (Teams) <br> 6h (Starter) | 7 days (Teams) <br> 6h (Starter) | Unlimited (Paid) <br> 5 (Starter) |
+| Staging     | _No_                      | 1 day             | 1 day            | Unlimited     |
+| Development | _No_                      | 1 day             | 1 day            | Unlimited     |
 
 Environment Picker
 -------------------

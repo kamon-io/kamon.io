@@ -150,7 +150,7 @@ The region overview section will display the following metrics:
 The shards breakdown will display:
 
 * Histogram of entities per shard
-* Histogram of messager per shard
+* Histogram of messages per shard
 * Number of entities per shard, as a stacked bar chart
 
 Finally, the entity performance section includes the following:
