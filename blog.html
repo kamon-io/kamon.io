@@ -15,13 +15,13 @@ custom_css:
 
 <div class="background-top-gray-blue"></div>
 
-<main class="container">
+<main class="container pt-5">
   {% if featured_post and paginator.page == 1 %}
-  <section class="row position-relative" role="button">
-    <div class="col-12 col-lg-7 pr-lg-5">
+  <section class="row position-relative elevated-container px-4 py-5 mt-5" role="button">
+    <div class="col-12 col-lg-7">
       <h1>{{ featured_post.title }}</h1>
-      <p class="lead">{{ featured_post.excerpt }}</p>
-      <a class="btn btn-lg btn-primary" href="{{ featured_post.url }}">Read More</a>
+      <p class="lead mt-3">{{ featured_post.excerpt }}</p>
+      <a class="btn btn-lg btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
     </div>
     <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
       {% if featured_post.summary_image %}

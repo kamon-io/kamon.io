@@ -9,7 +9,11 @@ layout: default
     <div class="row no-gutters">
       <div class="col-12 col-lg-8">
         <h1 class="pr-lg-4">{{ page.title }}</h1>
+        {% if page.last_update %}
+        <span class="text-light">Last Updated on {{ page.last_update | date: "%B %e, %Y" }} </span>
+        {% else %}
         <span class="text-light">Published on {{ page.date | date: "%B %e, %Y" }} </span>
+        {% endif %}
       </div>
     </div>
 
