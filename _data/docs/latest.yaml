@@ -153,6 +153,8 @@ documentation:
               path: /apm/general/time-picker/
             - name: Charts
               path: /apm/general/charts/
+            - name: Aggregation Summary Charts
+              path: /apm/general/aggregation-summary-chart/
             - name: Search
               path: /apm/general/search/
             - name: Getting Help

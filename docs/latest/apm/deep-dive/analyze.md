@@ -16,7 +16,7 @@ you can use the Analyze Modal to deep-dive into that issue, correlate metrics wi
 Analyze Button
 {% endlightbox %}
 
-Almost any metric visualization in Kamon APM can be visualized. Any chart on [pre-made][integrations] or [custom dashboards][dashboards], [light chart],
+Almost any metric visualization in Kamon APM can be visualized. Any chart on [pre-made][integrations] or [custom dashboards][dashboards], [aggregation summary chart],
 alert [incident], and more, can be taken into analyze mode by hovering the chart or entry in question and clicking on the analyze button.
 
 {% lightbox /assets/img/pages/apm/analyze-modal.png %}
@@ -33,7 +33,7 @@ Analyze Modal
 
 The modal will always show the same metric, and initially in the same mode of visualization (i.e., chart type, grouping, and more) as the original chart. However, from this
 starting point, you can do a lot more. Through the filter bar in the top of the analyze modal, you can filter by any available [metric tag] value, group by [metric tag] labels,
-or constrain the value range the metric takes (the y axis, for all charts but the [histogram]). Additionally, you can switch between any available chart type that is [available][chart-types] for the metric you are analyzing. When picking a [line chart] or a [bar chart], you can also pick between a variety of aggregations to use for visualization by
+or constrain the value range the metric takes (the y axis, for all charts but the [histogram]). Additionally, you can switch between any available chart type that is [available][chart types] for the metric you are analyzing. When picking a [line chart] or a [bar chart], you can also pick between a variety of aggregations to use for visualization by
 toggling the [chart title menu]. The default operations will be _count_ for the bar chart, and _throughput_ for the line chart.
 
 Trace List
@@ -94,7 +94,7 @@ out in some way, be it a certain host, an operation, or maybe a particular datab
 
 [integrations]: ../../services/integrations/
 [dashboards]: ../../dashboards/introduction/
-[light chart]: ../../general/light-chart/
+[aggregation summary chart]: ../../general/aggregation-summary-chart/
 [incident]: ../../alerts/incidents/
 [time picker]: ../../general/time-picker/
 [analyze time picker]: ../../general/time-picker/#analyze-time-picker
