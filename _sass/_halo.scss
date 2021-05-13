@@ -4,13 +4,13 @@ $halo-offset-mobile: 8px;
 @mixin halo {
   border-radius: 12px;
 
-  img {
+  img, iframe {
     margin-top: $halo-offset-desktop;
     margin-bottom: -$halo-offset-desktop;
   }
 
   @include media-breakpoint-down(md) {
-    img {
+    img, iframe {
       margin-top: $halo-offset-mobile;
       margin-bottom: -$halo-offset-mobile;
     }
@@ -22,14 +22,14 @@ $halo-offset-mobile: 8px;
 
   margin-left: $halo-offset-desktop;
 
-  img {
+  img, iframe {
     margin-left: -$halo-offset-desktop;
   }
 
   @include media-breakpoint-down(md) {
     margin-left: $halo-offset-mobile;
 
-    img {
+    img, iframe {
       margin-left: -$halo-offset-mobile;
     }
   }
@@ -42,14 +42,14 @@ $halo-offset-mobile: 8px;
 
   margin-right: $halo-offset-desktop;
 
-  img {
+  img, iframe {
     margin-right: -$halo-offset-desktop;
   }
 
   @include media-breakpoint-down(md) {
     margin-right: $halo-offset-mobile;
 
-    img {
+    img, iframe {
       margin-right: -$halo-offset-mobile;
     }
   }
