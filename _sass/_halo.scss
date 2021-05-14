@@ -43,7 +43,9 @@ $halo-offset-mobile: 8px;
   margin-right: $halo-offset-desktop;
 
   img, iframe {
+    text-align: right;
     margin-right: -$halo-offset-desktop;
+    margin-left: $halo-offset-desktop;
   }
 
   @include media-breakpoint-down(md) {
@@ -51,6 +53,7 @@ $halo-offset-mobile: 8px;
 
     img, iframe {
       margin-right: -$halo-offset-mobile;
+      margin-left: $halo-offset-mobile;
     }
   }
 }

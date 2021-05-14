@@ -38,6 +38,14 @@ section {
   }
 }
 
+.section-icon-padding {
+  padding-top: 66px;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 0px;
+  }
+}
+
 .elevated-container {
   background-color: $color-light-4;
   @include rounded-elevation;

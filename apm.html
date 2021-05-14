@@ -22,7 +22,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
         Fix slow requests across microservices and databases
       </h1>
       <p class="lead mt-4">
-        Kamon APM brings together metrics and distributed tracing to help you 
+        Kamon APM brings together metrics and distributed traces to help you 
         <b>eliminate slow requests and errors</b> from your production systems
       </p>
       <a class="btn btn-lg btn-primary px-4 w-100-sm-down" data-solution="KamonAPM" href="https://apm.kamon.io/signup">
@@ -34,20 +34,33 @@ description: 'Easy to use application performance monitoring tool to monitor and
     </div>
   </section>
 
-  <section class="row">
+  <section class="row pt-0">
     <div class="col-12 col-lg-4">
       <img src="/assets/img/pages/apm/icon-analyze-blue.svg" alt="Analyze Outliers Icon"/>
       <h2 class="my-3">
-        Find the root cause of outliers and errors
+        Find the root cause of 
+        <br class="d-none d-lg-inline">
+        outliers and errors
       </h2>
       <p class="text-explainer">
-        Drill down to the specific <b>requests and database calls</b> that hurt your systems' performance.
+        Measure response time for every operation and <b>drill down</b> to the specific 
+        <b>requests and database calls</b> that hurt your systems' performance
       </p>
+      <ul class="text-explainer">
+        <li>
+          Get out-of-the-box dashboards with <b>latency, throughput, and errors</b>
+          for <b>Spring Boot, Play Framework, Akka</b>, and more
+        </li>
+        <li>
+          Trace requests across services and calls to 
+          <b>Postgres, Elasticsearch, MongoDB, Kafka, and Cassandra</b>
+        </li>
+      </ul>      
     </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0">
+    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
       <div class="blue-halo-right">
         <div class="video-container">
-          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/548801390?muted=1&autoplay=1&loop=1&autopause=0&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/548801390?muted=1&autoplay=0&loop=1&autopause=0&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -60,13 +73,26 @@ description: 'Easy to use application performance monitoring tool to monitor and
         Get notifications when things go wrong
       </h2>
       <p class="text-explainer">
-        Send alert notifications to <b>Slack or PagerDuty (and more)</b> when latency increases or
-        errors start to show up.
+        Send alert notifications to <b>Slack or PagerDuty</b> 
+        when latency increases or errors start to show up. <b>Discord</b> support is on the way!
       </p>
+      <ul class="text-explainer">
+        <li>
+          Get the full picture of <b>service status and dependencies</b> between them
+        </li>
+        <li>
+          Create alerts with <b>accurate percentiles</b>, calculated from all your raw data
+        </li>
+        <li>
+          Track <b>Service Level Objectives (SLOs)</b> for all your services
+        </li>
+      </ul>      
     </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0">
+    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
       <div class="green-halo-left">
-        <img class="img-cover img-elevated" src="/assets/img/pages/apm/apm-alerts.png" alt="Kamon APM Alerts"/>
+        <div class="video-container">
+          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/549256946?muted=1&autoplay=0&loop=1&autopause=0&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -78,12 +104,22 @@ description: 'Easy to use application performance monitoring tool to monitor and
         Monitor the metrics <br>that matter to you
       </h2>
       <p class="text-explainer">
-        Create custom dashboards, get alert notifications and drill down into <b>any metric</b> you send to Kamon APM.
+        Create custom dashboards and drill down into <b>any metric</b> you send to Kamon APM
       </p>
+      <ul class="text-explainer">
+        <li>
+          Use high-definition histograms to get <b>accurate percentiles and heatmaps</b>
+        </li>
+        <li>
+          Click on any chart to <b>slice and dice</b> across <b>any metric dimension</b>
+        </li>
+      </ul>
     </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0">
+    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
       <div class="blue-halo-right">
-        <img class="img-cover img-elevated" src="/assets/img/pages/apm/apm-dashboards.png" alt="Kamon APM Dashboards"/>
+        <div class="video-container">
+          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/549332886?muted=1&autoplay=0&loop=1&autopause=0&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -95,7 +131,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
       </h2>
       <p class="text-explainer my-3 text-center">
         Start debugging from the get-go with automatic dashboards for<br>
-        applications using the <b>JVM, JDBC, Akka, and more</b>.
+        applications using the <b>JVM, JDBC, Akka, and more</b>
       </p>
     </div>
   </section>
@@ -106,7 +142,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
         <img class="img-cover" src="/assets/img/pages/apm/apm-host-monitoring.png" alt="Kamon APM Free Hosts Monitoring"/>
         <h2 class="my-3 text-center">Free hosts monitoring</h2>
         <p class="text-explainer text-center" style="height: 7rem;">
-          Monitor <b>CPU, memory, disk and network usage</b> for all your hosts.
+          Monitor <b>CPU, memory, disk and network usage</b> for all your hosts
         </p>
       </div>
     </div>
@@ -115,7 +151,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
         <img class="img-cover" src="/assets/img/pages/apm/apm-test-environments.png" alt="Kamon APM Free Test Environments"/>
         <h2 class="my-3 text-center">Free test environments</h2>
         <p class="text-explainer text-center" style="height: 7rem;">
-          Test all you want without <b>messing with production data</b>.
+          Test all you want without <b>messing with production data</b>
         </p>
       </div>
     </div>
@@ -165,7 +201,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
         </div>
       </div>
       <div class="text-light text-explainer">
-        or <b>&euro;24</b> when billed anually
+        or <b>&euro;24</b> when billed annually
       </div>
       <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mt-5" href="#" data-url="signup?external=yes">
         Sign up for APM
