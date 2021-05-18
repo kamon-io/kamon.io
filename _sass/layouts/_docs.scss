@@ -396,6 +396,10 @@ body.has-notification {
   font-size: 12px;
   line-height: 1.4;
 
+  .img-fluid {
+    max-height: 560px;
+  }
+
   a {
     font-weight: 400;
     color: $color-dark-3;
