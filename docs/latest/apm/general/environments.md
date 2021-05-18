@@ -9,7 +9,7 @@ layout: docs
 Environments
 ============
 
-In Kamon APM, nearly everything is grouped in terms of _environments_. Services running in production and those running in development, maybe even on your local machine, do not have the same monitoring needs and you should not be forced to pay the same for them. For this reason, Kamon APM offers non-production environments **free of charge**. You can run any number of services in these environments without incurring any extra costs.
+In Kamon APM, nearly everything is grouped in terms of _environments_. An environment is a collection of services and hosts, grouped for some audience. A testing or staging environment might be used locally for making sure everything works, while a production or live environment will be customer-facing. Kamon APM offers three environments by default: a production environment, staging environment, and a development environment. Services running on the staging or development environment, collectively called non-production environments, have lower retention, but will _never_ contribute to your monthly bill.
 
 {% alert info %}
 Non-production environments are a premium feature. You can use them without paying a cent extra, but they are only available on one of the [paid plans].
@@ -19,18 +19,19 @@ See this table for a quick overview of the default environments:
 
 | Environment | With Starter Plan         | Metrics Retention | Traces Retention | Service Limit |
 |-------------|---------------------------|-------------------|------------------|---------------|
-| Production  | Yes <br> (max 5 services) | 14 days (Teams) <br> 6h (Starter) | 7 days (Teams) <br> 6h (Starter) | Unlimited (Paid) <br> 5 (Starter) |
-| Staging     | _No_                      | 1 day             | 1 day            | Unlimited     |
-| Development | _No_                      | 1 day             | 1 day            | Unlimited     |
+| Production  | &#x2714; <br> (max 5 services) | 14 days (Teams) <br> 6h (Starter) | 7 days (Teams) <br> 6h (Starter) | Unlimited (Paid) <br> 5 (Starter) |
+| Staging     | &#x274C;                  | 1 day             | 1 day            | Unlimited     |
+| Development | &#x274C;                  | 1 day             | 1 day            | Unlimited     |
 
 Environment Picker
 -------------------
 
-With the environment picker, you can see the currently used environment, as well as switch between all available environments. It is located in the header, next to the [time picker], on every page in the application where it is applicable. When expanded via clicking on it, the dropdown will also show a quick summary of all of your environments. If you need additional environments, contact us using the [help] menu.
-
 {% lightbox /assets/img/pages/apm/environment-picker.png %}
 Environment Picker
 {% endlightbox %}
+
+With the environment picker, you can see the currently used environment, as well as switch between all available environments. It is located in the header, next to the [time picker], on every page in the application where it is applicable. When expanded via clicking on it, the dropdown will also show a quick summary of all of your environments. If you need additional environments, contact us using the [help] menu.
+
 ### Environment Information
 
 

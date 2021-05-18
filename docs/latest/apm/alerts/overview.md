@@ -35,14 +35,14 @@ Kamon APM allows you more flexibility. Depending on the instrument type you are 
 
 |            | Counter | Gauge | Range Sampler | Timer | Histogram |
 |:-----------|:-------:|:-----:|:-------------:|:-----:|:---------:|
-| Count      | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Throughput | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Sum        | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Min        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Max        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Meadian    | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Mean       | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Percentile | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Count      | &#x2714;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Throughput | &#x2714;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Sum        | &#x2714;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Min        | &#x274C;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Max        | &#x274C;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Meadian    | &#x274C;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Mean       | &#x274C;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
+| Percentile | &#x274C;      | &#x2714;    | &#x2714;            | &#x2714;    | &#x2714;        |
 
 Note: Any percentile can be chosen, as a number. 
 

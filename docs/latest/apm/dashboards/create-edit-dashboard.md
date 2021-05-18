@@ -20,15 +20,15 @@ New charts can be added to a dashboard by clicking the Add Chart button on any d
 
 | Step                  | Required | Default Value | Explanation                                                              |
 |:----------------------|:--------:|:--------------|:-------------------------------------------------------------------------|
-| Environment           | Yes      | Current       | Tied to specific environment or changes with environment                 |
-| Data Source           | Yes      | *None*        | Service or usage statistic from which to track a metric                  |
-| Metric                | Yes      | *None*        | Which metric to keep track of (e.g., `jvm.gc` or `span.processing-time`) |
-| Filter By             | No       | *None*        | Only include records which have a metric tag matching all of the values  |
-| Group By              | No       | Everything    | Group by, and draw separately, according to value for selected metric tags |
-| Chart Type            | Yes      | Line          | Which [chart type] to use to visualize the metric                        |
+| Environment           | &#x2714;      | Current       | Tied to specific environment or changes with environment                 |
+| Data Source           | &#x2714;      | *None*        | Service or usage statistic from which to track a metric                  |
+| Metric                | &#x2714;      | *None*        | Which metric to keep track of (e.g., `jvm.gc` or `span.processing-time`) |
+| Filter By             | &#x274C;       | *None*        | Only include records which have a metric tag matching all of the values  |
+| Group By              | &#x274C;       | Everything    | Group by, and draw separately, according to value for selected metric tags |
+| Chart Type            | &#x2714;      | Line          | Which [chart type] to use to visualize the metric                        |
 | Aggregation           | Line/Bar only | 99th %        | For line or bar charts, how to aggregate the data                   |
 | Percentile            | Percentile only | 99     | For percentile aggregation, which percentile to plot                     |
-| Unit                  | Yes      | Latency       | Which unit to use to label the y axis                                    |
+| Unit                  | &#x2714;      | Latency       | Which unit to use to label the y axis                                    |
 
 Once you have selected the environment (or continue with the *Current* environment), you will need to select a Data Source. The Data Source can be one of three things:
 
@@ -48,14 +48,14 @@ After this point, the data is all set. What remains is to determine how we will 
 
 |            | Counter | Gauge | Range Sampler | Timer | Histogram |
 |:-----------|:-------:|:-----:|:-------------:|:-----:|:---------:|
-| Count      | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Throughput | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Sum        | **Yes**     | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Min        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Max        | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Meadian    | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Mean       | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
-| Percentile | No      | **Yes**   | **Yes**           | **Yes**   | **Yes**       |
+| Count      | &#x2714;     | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Throughput | &#x2714;     | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Sum        | &#x2714;     | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Min        | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Max        | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Meadian    | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Mean       | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Percentile | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
 
 A measure is a certain aspect, or aggregation, of a metric's value. To configure alerts, we need data points through time. This is a simple matter of [counters], but with other [metric instruments]
 Kamon APM allows you more flexibility.

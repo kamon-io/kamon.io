@@ -9,15 +9,25 @@ layout: docs
 Time Picker
 ============
 
+{% lightbox /assets/img/pages/apm/time-picker.png %}
+Time Picker
+{% endlightbox %}
+
 When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - **Live** and **Fixed** - and allows for switching between them.
 
 In Live mode, all charts and traces in the application will be showing a sliding window, which will update with new information _every minute_. When you are in Live mode, the status indicator will be green, and will display a spinning icon. The text on the time picker will indicate which sliding window duration has been set.
+
+Live Time
+----------
 
 {% lightbox /assets/img/pages/apm/live-time-picker.png %}
 Live Time Picker
 {% endlightbox %}
 
 <a id="fixed-time-mode" /> In Fixed mode, the time window will not update, and all metrics and traces will be constrained to that time window. In Fixed mode, you can debug past incidents and performance bottlenecks without risking your data updating while you're analyzing it. When in Fixed mode, the time picker will show a pause icon in dark gray, and the selected time window boundaries will be shown.
+
+Fixed Time
+-----------
 
 {% lightbox /assets/img/pages/apm/fixed-time-picker.png %}
 Fixed Time Picker
@@ -39,20 +49,22 @@ you can upgrade to one of the [paid plans].
 Time &amp; Charts
 -----------------
 
-As noted, all data shown in the application will correspond to the selected time period. The relationship between charts is two-directional. If a specific chart has a time axis, it can be zoomed into by dragging and making a selection. This will update the time picker, moving it into Fixed mode for the selected period, and will update all other charts. You can read about the types of [charts] to learn more.
-
 {% lightbox /assets/img/pages/apm/chart-selection.png %}
 Chart Time Selection
 {% endlightbox %}
 
+Charts and the time picker are connected in a two-way relationship. Charts will show the period of time selected in the time picker, but the time picker can also be updated by making
+a selection on any chart. You can read more about this in the [charts] documentation.
+
+
 Analyze Time Picker
 -------------------
-
-When going into [Analyze][analyze] mode, a separate instance of the Time Picker is present. It will automatically be in Fixed mode and correspond to whichever interval you were viewing when you clicked the Analyze button, be it Live or Fixed. The analyze will be connected to the chart in the same way that charts regularly are, but it will not affect the global time picker when you exit the Analyze view. This allows you to deep-dive into issues and diagnose problems without losing the overall context in your application.
 
 {% lightbox /assets/img/pages/apm/analyze-time-picker.png %}
 Analyze Time Picker
 {% endlightbox %}
+
+When entering the [Analyze][analyze] view, you will always automatically enter the [Fixed mode](#fixed-time), with the time period ranging the same time period you were viewing when you clicked the analyze button. Any changes you make to the time picker while in the Analyze view are local only, and will _not_ be persisted once you exit the Analyze view.
 
 [charts]: ../charts/
 [analyze]: ../../deep-dive/analyze.md
