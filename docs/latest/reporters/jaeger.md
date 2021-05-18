@@ -40,6 +40,9 @@ kamon {
     #   - udp: Sends spans using jaeger.thrift compact over UDP (agent).
     protocol = http
 
+    # for http and https, this is the full url to be used
+    http-url = ${kamon.jaeger.protocol}"://"${kamon.jaeger.host}":"${kamon.jaeger.port}"/api/traces"
+
     # Enable or disable including tags from kamon.environment as labels
     include-environment-tags = no
   }
