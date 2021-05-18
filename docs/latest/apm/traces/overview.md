@@ -12,7 +12,7 @@ Traces and Spans
 With Kamon APM, you can visualize, analyze, and deep-dive into traces, to discover what is happening with your microservices, analyze failures, and
 do so much more. However, before we can get into any of that, we need to explain what traces and spans are, and what Kamon APM utilizes them for.
 
-{% lightbox /assets/img/pages/apm/trace.png %}
+{% lightbox /assets/img/apm/trace.png %}
 A Trace
 {% endlightbox %}
 
@@ -31,7 +31,7 @@ multiple different services as they communicate with each others. We call such t
 Span Tags
 ----------
 
-{% lightbox /assets/img/pages/apm/span-tags.png %}
+{% lightbox /assets/img/apm/span-tags.png %}
 Span Tags
 {% endlightbox %}
 
@@ -42,7 +42,7 @@ be freely added using both Kamon Telemetry and OpenTelemetry. You can gain acces
 Span Marks
 ----------
 
-{% lightbox /assets/img/pages/apm/span-marks.png %}
+{% lightbox /assets/img/apm/span-marks.png %}
 Span Marks
 {% endlightbox %}
 
@@ -52,7 +52,7 @@ moments or segments of an operation. You can read more about recording marks wit
 Trace Critical Path
 --------------------
 
-{% lightbox /assets/img/pages/apm/trace-critical-path.png %}
+{% lightbox /assets/img/apm/trace-critical-path.png %}
 Trace Critical Path
 {% endlightbox %}
 
@@ -66,7 +66,7 @@ The critical path in Kamon APM will always be marked by a thick dark line at the
 Span Processing Time
 ---------------------
 
-{% lightbox /assets/img/pages/apm/span-processing-time.png %}
+{% lightbox /assets/img/apm/span-processing-time.png %}
 Span Processing Time Distribution
 {% endlightbox %}
 

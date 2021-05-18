@@ -9,7 +9,7 @@ layout: docs
 User Profile
 =============
 
-{% lightbox /assets/img/pages/apm/profile-page.png %}
+{% lightbox /assets/img/apm/profile-page.png %}
 Profile Page
 {% endlightbox %}
 
@@ -17,6 +17,6 @@ The profile page allows you to manage your credentials and organization membersh
 
 You can access the profile page from the user menu in the bottom left of the screen, or from any other Administration page using the tabs at the top of the screen.
 
-{% lightbox /assets/img/pages/apm/menu-profile.png %}
+{% lightbox /assets/img/apm/menu-profile.png %}
 Menu
 {% endlightbox %}

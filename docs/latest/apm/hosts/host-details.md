@@ -9,7 +9,7 @@ layout: docs
 Host Details
 =============
 
-{% lightbox /assets/img/pages/apm/host-details.png %}
+{% lightbox /assets/img/apm/host-details.png %}
 Host Details
 {% endlightbox %}
 

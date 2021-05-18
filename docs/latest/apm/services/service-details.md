@@ -9,7 +9,7 @@ layout: docs
 Service Details
 =====================
 
-{% lightbox /assets/img/pages/apm/service-integrations.png %}
+{% lightbox /assets/img/apm/service-integrations.png %}
 Service Dashboards
 {% endlightbox %}
 
@@ -18,7 +18,7 @@ Kamon APM is built with the idea of understanding the metrics sent by Kamon Tele
 Service Overview
 -----------------
 
-{% lightbox /assets/img/pages/apm/service-overview.png %}
+{% lightbox /assets/img/apm/service-overview.png %}
 Service Overview
 {% endlightbox %}
 
@@ -30,7 +30,7 @@ Each Service Overview page has three charts: a service latency heatmap, the serv
 
 #### Server Operations Table
 
-{% lightbox /assets/img/pages/apm/service-overview-operations.png %}
+{% lightbox /assets/img/apm/service-overview-operations.png %}
 Service Overview - Server Operations
 {% endlightbox %}
 
@@ -38,7 +38,7 @@ The server operations table is a breakdown of all server operations (i.e., where
 
 #### Service Operations Sidebar
 
-{% lightbox /assets/img/pages/apm/service-operations-sidebar.png %}
+{% lightbox /assets/img/apm/service-operations-sidebar.png %}
 Service Overview - Sidebar
 {% endlightbox %}
 
@@ -51,7 +51,7 @@ The linked services portion of the sidebar is split into two portions: upstream 
 Service Operations
 --------------------
 
-{% lightbox /assets/img/pages/apm/service-operations-page.png %}
+{% lightbox /assets/img/apm/service-operations-page.png %}
 Service Operations
 {% endlightbox %}
 
@@ -60,7 +60,7 @@ The Service Operations page will be defined for any service sending telemetry da
 Operation Details
 -------------------
 
-{% lightbox /assets/img/pages/apm/operation-details.png %}
+{% lightbox /assets/img/apm/operation-details.png %}
 Service Operation Details
 {% endlightbox %}
 

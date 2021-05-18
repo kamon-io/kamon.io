@@ -9,7 +9,7 @@ layout: docs
 Billing
 =======
 
-{% lightbox /assets/img/pages/apm/billing-page.png %}
+{% lightbox /assets/img/apm/billing-page.png %}
 Billing
 {% endlightbox %}
 
@@ -19,17 +19,17 @@ The billing page offers you insights into your payment history and payment statu
 Billing details are only available if you are on a paid plan, or were on the paid plan at some point in the past. Read about the [plans][plan] for more details.
 {% endalert %}
 
-{% lightbox /assets/img/pages/apm/downgrade-dialog.png %}
+{% lightbox /assets/img/apm/downgrade-dialog.png %}
 Downgrade Dialog
 {% endlightbox %}
 
 In the sidebar, several contextual actions will be available. On the top, you will be able to see payment breakdown details for your current plan. Note that you can *always* change your plan by upgrading or downgrading. Clicking on the button will open the change plan dialog, where you can see details about each plan and start the upgrade or downgrade flow.
 
-{% lightbox /assets/img/pages/apm/upgrade-billing.png %}
+{% lightbox /assets/img/apm/upgrade-billing.png %}
 Billing Information
 {% endlightbox %}
 
-{% lightbox /assets/img/pages/apm/upgrade-payment-method.png %}
+{% lightbox /assets/img/apm/upgrade-payment-method.png %}
 Credit Card Information
 {% endlightbox %}
 
@@ -39,7 +39,7 @@ Subsequent upgrades or plan changes will allow you to use the already specified 
 
 You can access the billing page from the user menu in the bottom left of the screen, or from any other Administration page using the tabs at the top of the screen.
 
-{% lightbox /assets/img/pages/apm/menu-profile.png %}
+{% lightbox /assets/img/apm/menu-profile.png %}
 Menu
 {% endlightbox %}
 

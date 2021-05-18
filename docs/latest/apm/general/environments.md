@@ -26,7 +26,7 @@ See this table for a quick overview of the default environments:
 Environment Picker
 -------------------
 
-{% lightbox /assets/img/pages/apm/environment-picker.png %}
+{% lightbox /assets/img/apm/environment-picker.png %}
 Environment Picker
 {% endlightbox %}
 
@@ -35,7 +35,7 @@ With the environment picker, you can see the currently used environment, as well
 ### Environment Information
 
 
-{% lightbox /assets/img/pages/apm/environment-info.png %}
+{% lightbox /assets/img/apm/environment-info.png %}
 Environment Info Dialog
 {% endlightbox %}
 

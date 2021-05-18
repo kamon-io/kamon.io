@@ -9,7 +9,7 @@ layout: docs
 Trace Search
 ============
 
-{% lightbox /assets/img/pages/apm/trace-search.png %}
+{% lightbox /assets/img/apm/trace-search.png %}
 Trace Search
 {% endlightbox %}
 
@@ -22,7 +22,7 @@ selected by toggling the error spans only switch.
 
 Every time the filters are updated, a [span list] will be displayed, and will be populated with spans that match the filters specified (if any).
 
-{% lightbox /assets/img/pages/apm/find-trace-error.png %}
+{% lightbox /assets/img/apm/find-trace-error.png %}
 Find Trace - Wrong Trace ID
 {% endlightbox %}
 

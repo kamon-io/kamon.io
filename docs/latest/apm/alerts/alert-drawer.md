@@ -9,7 +9,7 @@ layout: docs
 The Alert Drawer
 ================
 
-{% lightbox /assets/img/pages/apm/alert-drawer.png %}
+{% lightbox /assets/img/apm/alert-drawer.png %}
 Alert Drawer
 {% endlightbox %}
 
@@ -31,7 +31,7 @@ Below the header, a chart visualization of the alert will be present. It behaves
 
 Otherwise, it behaves like a regular line chart - you can expand the legend, [analyze it], or create [new alerts] or [dashboard charts] from it.
 
-{% lightbox /assets/img/pages/apm/alert-drawer-toggled.png %}
+{% lightbox /assets/img/apm/alert-drawer-toggled.png %}
 Alert Drawer - Toggled Incident
 {% endlightbox %}
 

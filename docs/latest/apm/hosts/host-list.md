@@ -9,7 +9,7 @@ layout: docs
 Host List
 =============
 
-{% lightbox /assets/img/pages/apm/host-list.png %}
+{% lightbox /assets/img/apm/host-list.png %}
 Host List
 {% endlightbox %}
 
@@ -18,7 +18,7 @@ With the Host List, you can get a quick overview of the status of your service h
 Connect Host
 -------------
 
-{% lightbox /assets/img/pages/apm/connect-host.png %}
+{% lightbox /assets/img/apm/connect-host.png %}
 Connect Host
 {% endlightbox %}
 

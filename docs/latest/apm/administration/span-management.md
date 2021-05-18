@@ -9,7 +9,7 @@ layout: docs
 Span Ingestion
 ==============
 
-{% lightbox /assets/img/pages/apm/span-ingestion-page.png %}
+{% lightbox /assets/img/apm/span-ingestion-page.png %}
 Span Ingestion Management
 {% endlightbox %}
 
@@ -19,7 +19,7 @@ On the right-hand-side, ingestion numbers are shown for both periods, as numbers
 
 If you are on the free Starter plan, the hard limit for span ingestion is **30k spans** for all environments. On the **Teams** plan, the limit is computed from the number of services registered for that environment, on the Production environment. Each service on the Production environment allows for **200k spans** to be ingested in a 24 hour period. Note that this amount is a total - if you have two services, you can ingest **400k spans** daily, and it does not matter which of the services is sending them - only the sum is relevant. For **non-production** environments, the limit will always be **100k spans** in a 24 hour window.
 
-{% lightbox /assets/img/pages/apm/manage-extra-spans.png %}
+{% lightbox /assets/img/apm/manage-extra-spans.png %}
 Manage Extra Spans
 {% endlightbox %}
 
@@ -45,7 +45,7 @@ Extra Span Management is a premium feature available exclusively on [paid plans]
 
 You can access the span management page from the user menu in the bottom left of the screen, or from any other Administration page using the tabs at the top of the screen.
 
-{% lightbox /assets/img/pages/apm/menu-profile.png %}
+{% lightbox /assets/img/apm/menu-profile.png %}
 Menu
 {% endlightbox %}
 

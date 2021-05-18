@@ -9,7 +9,7 @@ layout: docs
 Aggregation Summary Chart
 =========================
 
-{% lightbox /assets/img/pages/apm/aggregation-summary-chart.png %}
+{% lightbox /assets/img/apm/aggregation-summary-chart.png %}
 Aggregation Summary Chart
 {% endlightbox %}
 

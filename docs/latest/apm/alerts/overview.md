@@ -9,7 +9,7 @@ layout: docs
 Alerts - Overview
 =================
 
-{% lightbox /assets/img/pages/apm/alert-drawer.png %}
+{% lightbox /assets/img/apm/alert-drawer.png %}
 Alert Drawer
 {% endlightbox %}
 

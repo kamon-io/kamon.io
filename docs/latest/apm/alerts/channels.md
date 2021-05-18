@@ -9,7 +9,7 @@ layout: docs
 Notification Channels
 =====================
 
-{% lightbox /assets/img/pages/apm/notification-channels.png %}
+{% lightbox /assets/img/apm/notification-channels.png %}
 Notification Channels
 {% endlightbox %}
 
@@ -22,7 +22,7 @@ the switch in the notification channel list.
 
 Note that creating a notification channel does *not* mean that you will automatically start getting messages there - they need to be configured when [creating an alert].
 
-{% lightbox /assets/img/pages/apm/create-channel.png %}
+{% lightbox /assets/img/apm/create-channel.png %}
 Create Notification Channels
 {% endlightbox %}
 
@@ -35,14 +35,14 @@ For PagerDuty, you will need to enter a custom name and a valid API key for Page
 
 Slack will only present you with a button which will allow you to easily configure an integration with Slack in just one or two minutes, from the Slack online integration administration tool.
 
-{% lightbox /assets/img/pages/apm/delete-channel.png %}
+{% lightbox /assets/img/apm/delete-channel.png %}
 Delete Notification Channel
 {% endlightbox %}
 
 You can delete any channel at any time by clicking the delete button in the extreme right of each entry in the table. You will be prompted to confirm this action. Note that this action
 is irreversible!
 
-{% lightbox /assets/img/pages/apm/slack-notification.png %}
+{% lightbox /assets/img/apm/slack-notification.png %}
 Slack Alert Notification
 {% endlightbox %}
 

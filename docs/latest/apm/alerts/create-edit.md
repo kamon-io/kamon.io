@@ -15,7 +15,7 @@ configure them to bring attention to issues, and even send alerts to outside not
 You can create a new alert in Kamon APM by using the _Create Alert_ button on the [Alerts] page, using the same button in the [service overview] sidebar, or by [creating it from an existing chart][create-from-chart] anywhere in the application. Any of these buttons will open a Create Alert modal. When creating an alert from the service overview page, the [data source](#data-source) will be
 prefilled to match that service. When creating it from a chart, all revelant chart information will be copied into the modal.
 
-{% lightbox /assets/img/pages/apm/create-alert-modal-0.png %}
+{% lightbox /assets/img/apm/create-alert-modal-0.png %}
 Create Alert Modal
 {% endlightbox %}
 
@@ -36,7 +36,7 @@ otherwise behave as other [line charts] in the application, with three further c
 Underneath it, a list of *Simulated Incidents* will be previewed. These incidents are a preview of the incidents that would have happened in the currently selected time period, if the
 alert had existed at the time. They will match the incidents previewed in the chart above.
 
-{% lightbox /assets/img/pages/apm/full-alert-preview.png %}
+{% lightbox /assets/img/apm/full-alert-preview.png %}
 Alert Preview with All Sections
 {% endlightbox %}
 
@@ -63,7 +63,7 @@ The configuration form is split into several steps, split across topics, in whic
 
 #### Basic Settings
 
-{% lightbox /assets/img/pages/apm/alert-form-basics.png %}
+{% lightbox /assets/img/apm/alert-form-basics.png %}
 Alert Form - Basic Settings
 {% endlightbox %}
 
@@ -73,7 +73,7 @@ notifications. There is an icon next to it which, upon hover, will note so in a 
 
 #### Pick a Metric
 
-{% lightbox /assets/img/pages/apm/alert-form-metric.png %}
+{% lightbox /assets/img/apm/alert-form-metric.png %}
 Alert Form - Pick a Metric
 {% endlightbox %}
 
@@ -94,7 +94,7 @@ You will be able to select any of the metrics being sent by the service. These i
 
 #### Thresholds
 
-{% lightbox /assets/img/pages/apm/alert-form-thresholds.png %}
+{% lightbox /assets/img/apm/alert-form-thresholds.png %}
 Alert Form - Thresholds
 {% endlightbox %}
 
@@ -116,7 +116,7 @@ incident. Finally, you will need to select a unit, as Kamon APM is not always aw
 
 #### Notifications
 
-{% lightbox /assets/img/pages/apm/alert-form-notifications.png %}
+{% lightbox /assets/img/apm/alert-form-notifications.png %}
 Alert Form - Notifications
 {% endlightbox %}
 
@@ -130,7 +130,7 @@ Note that alerts will be sent out only for Critical [severity] alerts! Additiona
 
 #### Availability Target
 
-{% lightbox /assets/img/pages/apm/alert-form-availability-target.png %}
+{% lightbox /assets/img/apm/alert-form-availability-target.png %}
 Alert Form - Availability Target
 {% endlightbox %}
 

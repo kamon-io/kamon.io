@@ -9,7 +9,7 @@ layout: docs
 Dashboard List
 ===============
 
-{% lightbox /assets/img/pages/apm/dashboard-list.png %}
+{% lightbox /assets/img/apm/dashboard-list.png %}
 Dashboard List
 {% endlightbox %}
 
@@ -30,7 +30,7 @@ Dashboards are tied to your entire organization, not just the current environmen
 Creating Dashboards
 --------------------
 
-{% lightbox /assets/img/pages/apm/create-dashboard.png %}
+{% lightbox /assets/img/apm/create-dashboard.png %}
 Dashboard Creation Dialog
 {% endlightbox %}
 
@@ -39,7 +39,7 @@ New dashboards can be created using the **Create Dashboard** button in the top r
 Editing Dashboards
 -------------------
 
-{% lightbox /assets/img/pages/apm/rename-dashboard.png %}
+{% lightbox /assets/img/apm/rename-dashboard.png %}
 Rename Dashboard Dialog
 {% endlightbox %}
 
@@ -48,7 +48,7 @@ Though dashboards offer plenty of editing capabilities, the only way to change t
 Cloning Dashboards
 -------------------
 
-{% lightbox /assets/img/pages/apm/clone-dashboard.png %}
+{% lightbox /assets/img/apm/clone-dashboard.png %}
 Clone Dashboard Dialog
 {% endlightbox %}
 
@@ -57,7 +57,7 @@ For those cases where you need to make a very similar dashboard to an existing o
 Deleting Dashboards
 --------------------
 
-{% lightbox /assets/img/pages/apm/delete-dashboard.png %}
+{% lightbox /assets/img/apm/delete-dashboard.png %}
 Delete Dashboard Confirmation Dialog
 {% endlightbox %}
 

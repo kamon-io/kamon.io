@@ -9,7 +9,7 @@ layout: docs
 Trace Details
 =============
 
-{% lightbox /assets/img/pages/apm/trace-details.png %}
+{% lightbox /assets/img/apm/trace-details.png %}
 Trace Details
 {% endlightbox %}
 
@@ -26,7 +26,7 @@ started, and more. Each tag can be hovered for more detailed information. On the
 The rest of the drawer can broadly be split into the trace visualization, with a list of spans in a timeline and ways to toggle additional details, and the [span details](#span-details) sidebar, which shows a more detailed breakdown of a particular span. When the drawer is initially opened by clicking on a span, the details drawer will have
 that span as the focused span.
 
-{% lightbox /assets/img/pages/apm/trace-details-tooltip.png %}
+{% lightbox /assets/img/apm/trace-details-tooltip.png %}
 Span Tooltip
 {% endlightbox %}
 
@@ -48,7 +48,7 @@ or by clicking the zoom out button.
 Span Breakdown
 ---------------
 
-{% lightbox /assets/img/pages/apm/trace-details-breakdown.png %}
+{% lightbox /assets/img/apm/trace-details-breakdown.png %}
 Span Breakdown
 {% endlightbox %}
 
@@ -66,7 +66,7 @@ the colors and breakdown.
 Operations
 ----------
 
-{% lightbox /assets/img/pages/apm/trace-details-operations.png %}
+{% lightbox /assets/img/apm/trace-details-operations.png %}
 Span Operations
 {% endlightbox %}
 
@@ -79,7 +79,7 @@ Additionally, in this mode, every parent span can be collapsed (or expanded agai
 Span Details
 -------------
 
-{% lightbox /assets/img/pages/apm/trace-details-sidebar.png %}
+{% lightbox /assets/img/apm/trace-details-sidebar.png %}
 Span Details
 {% endlightbox %}
 
@@ -104,7 +104,7 @@ well-known tags, will get special formatting and be formatted as blocks of code 
 
 #### Joint Spans
 
-{% lightbox /assets/img/pages/apm/trace-details-joint-span.png %}
+{% lightbox /assets/img/apm/trace-details-joint-span.png %}
 Joint Span
 {% endlightbox %}
 
@@ -115,7 +115,7 @@ can be clicked to switch between them and their details.
 
 #### Marks
 
-{% lightbox /assets/img/pages/apm/trace-details-marks.png %}
+{% lightbox /assets/img/apm/trace-details-marks.png %}
 Span Marks
 {% endlightbox %}
 

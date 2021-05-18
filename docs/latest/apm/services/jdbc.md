@@ -9,7 +9,7 @@ layout: docs
 JDBC Integration
 ================
 
-{% lightbox /assets/img/pages/apm/jdbc-page.png %}
+{% lightbox /assets/img/apm/jdbc-page.png %}
 JDBC Integration
 {% endlightbox %}
 

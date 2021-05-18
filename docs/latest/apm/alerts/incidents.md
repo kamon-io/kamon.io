@@ -9,7 +9,7 @@ layout: docs
 Incidents
 =========
 
-{% lightbox /assets/img/pages/apm/alert-incidents.png %}
+{% lightbox /assets/img/apm/alert-incidents.png %}
 Alert Incidents
 {% endlightbox %}
 

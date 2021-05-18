@@ -9,7 +9,7 @@ layout: docs
 Span List
 ==========
 
-{% lightbox /assets/img/pages/apm/span-list.png %}
+{% lightbox /assets/img/apm/span-list.png %}
 Span List
 {% endlightbox %}
 
@@ -26,7 +26,7 @@ They will list spans that match certain criteria, as determined by the context t
 The span might also include one of two markers next to the duration, that indicate presence of errors:
 
 
-{% lightbox /assets/img/pages/apm/span-error-markers.png %}
+{% lightbox /assets/img/apm/span-error-markers.png %}
 Span Error Markers
 {% endlightbox %}
 
@@ -36,7 +36,7 @@ itself did not experience an error, once of the operations it called (its descen
 Every trace list is *time sensitive*, and will only show spans within the time period selected in the [time picker]. If you are browsing the application in live mode, the list will
 auto-update every minute. You can force it to update manually by pressing the refresh button in the top right corner of the span list.
 
-{% lightbox /assets/img/pages/apm/span-list-errors.png %}
+{% lightbox /assets/img/apm/span-list-errors.png %}
 Span List - Errors Only
 {% endlightbox %}
 

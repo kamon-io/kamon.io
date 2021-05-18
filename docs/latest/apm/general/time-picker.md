@@ -9,7 +9,7 @@ layout: docs
 Time Picker
 ============
 
-{% lightbox /assets/img/pages/apm/time-picker.png %}
+{% lightbox /assets/img/apm/time-picker.png %}
 Time Picker
 {% endlightbox %}
 
@@ -20,7 +20,7 @@ In Live mode, all charts and traces in the application will be showing a sliding
 Live Time
 ----------
 
-{% lightbox /assets/img/pages/apm/live-time-picker.png %}
+{% lightbox /assets/img/apm/live-time-picker.png %}
 Live Time Picker
 {% endlightbox %}
 
@@ -29,13 +29,13 @@ Live Time Picker
 Fixed Time
 -----------
 
-{% lightbox /assets/img/pages/apm/fixed-time-picker.png %}
+{% lightbox /assets/img/apm/fixed-time-picker.png %}
 Fixed Time Picker
 {% endlightbox %}
 
 When clicking on the time picker, it will expand to offer a number of useful pre-selected time periods. Selecting any of these periods will switch to using Live mode for the given period. It can be expanded further by clicking on the Custom Range button and selecting an exact range of dates to view in Fixed mode.
 
-{% lightbox /assets/img/pages/apm/expanded-time-picker.png %}
+{% lightbox /assets/img/apm/expanded-time-picker.png %}
 Expanded Time Picker
 {% endlightbox %}
 
@@ -49,7 +49,7 @@ you can upgrade to one of the [paid plans].
 Time &amp; Charts
 -----------------
 
-{% lightbox /assets/img/pages/apm/chart-selection.png %}
+{% lightbox /assets/img/apm/chart-selection.png %}
 Chart Time Selection
 {% endlightbox %}
 
@@ -60,7 +60,7 @@ a selection on any chart. You can read more about this in the [charts] documenta
 Analyze Time Picker
 -------------------
 
-{% lightbox /assets/img/pages/apm/analyze-time-picker.png %}
+{% lightbox /assets/img/apm/analyze-time-picker.png %}
 Analyze Time Picker
 {% endlightbox %}
 

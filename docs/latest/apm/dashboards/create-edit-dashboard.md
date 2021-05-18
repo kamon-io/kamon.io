@@ -79,7 +79,7 @@ When doing this, the dashboard creation dialog will be pre-filled with the value
 
 #### Cloning Charts
 
-{% lightbox /assets/img/pages/apm/dashboard-chart-menu.png %}
+{% lightbox /assets/img/apm/dashboard-chart-menu.png %}
 Dashboard Chart Menu
 {% endlightbox %}
 
@@ -93,7 +93,7 @@ use the create from existing chart flow.
 Editing Charts
 ---------------
 
-{% lightbox /assets/img/pages/apm/dashboard-chart-menu.png %}
+{% lightbox /assets/img/apm/dashboard-chart-menu.png %}
 Dashboard Chart Menu
 {% endlightbox %}
 

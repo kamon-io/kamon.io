@@ -11,13 +11,13 @@ Dashboards
 
 Kamon APM comes with charts and breakdowns already prepared with [server metrics], [JVM information], [JDBC and DB pool] information, [Akka metrics], [host metrics], and more. But we can neither predict every monitoring need you may have, nor can we visualize your custom metrics automatically. This is where dashboards come in.
 
-{% lightbox /assets/img/pages/apm/dashboard.png %}
+{% lightbox /assets/img/apm/dashboard.png %}
 Custom Dashboard
 {% endlightbox %}
 
 With Kamon APM dashboards, you can create *named* custom collections of charts for *any metric* you are reporting to Kamon APM, choose any of the [chart types] available for those metrics, and customise the layout of your dashboards to suit your own needs. The metrics can come from your services, for your hosts, or even from Kamon APM's internal statistics. You can have as many dashboards as you like, and each can have an unlimited number of charts inside of it. These custom charts have the same abilities as any other chart in the system, and will respond to [time picker], can be hovered and zoomed, and will have summaries and legends of their own.
 
-{% lightbox /assets/img/pages/apm/dashboard-edits.gif %}
+{% lightbox /assets/img/apm/dashboard-edits.gif %}
 Arranging a Dashboard
 {% endlightbox %}
 

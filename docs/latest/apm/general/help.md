@@ -11,7 +11,7 @@ Getting Help
 
 If you ever experience issues, need help, or have other questions or requests, do not be afraid to reach out to us. You can do so by clicking on the question mark icon in the sidebar, on the bottom left. This will open the Help menu.
 
-{% lightbox /assets/img/pages/apm/help-menu.png %}
+{% lightbox /assets/img/apm/help-menu.png %}
 Help Menu
 {% endlightbox %}
 

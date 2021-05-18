@@ -9,13 +9,13 @@ layout: docs
 Search
 =======
 
-{% lightbox /assets/img/pages/apm/search.png %}
+{% lightbox /assets/img/apm/search.png %}
 Search Bar
 {% endlightbox %}
 
 When you cannot find what you are looking for something in Kamon APM, you can find it more quickly and easily by using the search bar. It is a global search over the entire application, and can find [services], [hosts], [dashboards], and [specific integrations]. Note that it does not search for traces or alerts.
 
-{% lightbox /assets/img/pages/apm/search-toggle.png %}
+{% lightbox /assets/img/apm/search-toggle.png %}
 Search Toggle
 {% endlightbox %}
 

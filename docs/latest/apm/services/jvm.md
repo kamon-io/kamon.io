@@ -9,7 +9,7 @@ layout: docs
 JVM Integration
 ===============
 
-{% lightbox /assets/img/pages/apm/jvm-page.png %}
+{% lightbox /assets/img/apm/jvm-page.png %}
 JVM Integration
 {% endlightbox %}
 

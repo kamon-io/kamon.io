@@ -9,7 +9,7 @@ layout: docs
 Alert List
 ==========
 
-{% lightbox /assets/img/pages/apm/alert-list.png %}
+{% lightbox /assets/img/apm/alert-list.png %}
 Alert List
 {% endlightbox %}
 
@@ -34,9 +34,9 @@ Each alert can be in one of three statuses:
 
 | Status  | Indicator   | Description      |
 |:--------|:-----------:|------------------|
-| Healthy | <img src="/assets/img/pages/apm/status/healthy.svg"> | The alert is currently not triggered |
-| Warning | <img src="/assets/img/pages/apm/status/warning.svg"> | The alert is currently active, and has the **warning** [severity] |
-| Critical | <img src="/assets/img/pages/apm/status/critical.svg"> |  The alert is currently active, and has the **critical** [severity] |
+| Healthy | <img src="/assets/img/apm/status/healthy.svg"> | The alert is currently not triggered |
+| Warning | <img src="/assets/img/apm/status/warning.svg"> | The alert is currently active, and has the **warning** [severity] |
+| Critical | <img src="/assets/img/apm/status/critical.svg"> |  The alert is currently active, and has the **critical** [severity] |
 
 If an alert is currently healthy, but has triggered in the past, a small clock icon will be attached to the bottom right corner of the indicator.
 
@@ -53,7 +53,7 @@ a message stating:
 Notification Channels
 ----------------------
 
-{% lightbox /assets/img/pages/apm/alert-list-channels.png %}
+{% lightbox /assets/img/apm/alert-list-channels.png %}
 Alert List Notification Channels
 {% endlightbox %}
 
@@ -63,21 +63,21 @@ active, the icon will be crossed out.
 Alert Actions
 -------------
 
-{% lightbox /assets/img/pages/apm/alert-list-menu.png %}
+{% lightbox /assets/img/apm/alert-list-menu.png %}
 Alert List Menu
 {% endlightbox %}
 
 Each alert entry in the list will have a context menu to its extreme right. This menu will allow you to [create new alerts], [clone] existing ones, delete the alert, or [mute](#muted-alerts) them
 for a certain amount of time. If the alert is already in a muted state, the menu will instead include an action to unmute it instead.
 
-{% lightbox /assets/img/pages/apm/alert-list-muted.png %}
+{% lightbox /assets/img/apm/alert-list-muted.png %}
 Muted Alert
 {% endlightbox %}
 
 Muted alerts are temporarily (or permanently) prevented from sending out notifications. This feature might be useful if you are expecting a period of downtime, or are already dealing with a
 problem and do not need to be notified about it for the time being.
 
-{% lightbox /assets/img/pages/apm/delete-alert-prompt.png %}
+{% lightbox /assets/img/apm/delete-alert-prompt.png %}
 Delete Alert Prompt
 {% endlightbox %}
 

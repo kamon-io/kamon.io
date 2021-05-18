@@ -12,14 +12,14 @@ Analyze Modal
 Once an issue has been detected, be it slow requests, long time spent in garbage collection, an alert incident, or anything else that might cause you concern,
 you can use the Analyze Modal to deep-dive into that issue, correlate metrics with traces, and get suggestions as to the root causes.
 
-{% lightbox /assets/img/pages/apm/analyze-button.png %}
+{% lightbox /assets/img/apm/analyze-button.png %}
 Analyze Button
 {% endlightbox %}
 
 Almost any metric visualization in Kamon APM can be visualized. Any chart on [pre-made][integrations] or [custom dashboards][dashboards], [aggregation summary chart],
 alert [incident], and more, can be taken into analyze mode by hovering the chart or entry in question and clicking on the analyze button.
 
-{% lightbox /assets/img/pages/apm/analyze-modal.png %}
+{% lightbox /assets/img/apm/analyze-modal.png %}
 Analyze Modal
 {% endlightbox %}
 
@@ -27,7 +27,7 @@ The Analyze Modal will open to overlay your current view, and will be frozen to 
 assumption is that you wish to investigate anomalous data at a given time, and do not wish the data to change as you are viewing it. As with any [time picker], you
 can switch it into live mode, and receive data as it comes in.
 
-{% lightbox /assets/img/pages/apm/analyze-modal-visualization.png %}
+{% lightbox /assets/img/apm/analyze-modal-visualization.png %}
 Analyze Modal
 {% endlightbox %}
 
@@ -39,7 +39,7 @@ toggling the [chart title menu]. The default operations will be _count_ for the 
 Trace List
 ----------
 
-{% lightbox /assets/img/pages/apm/analyze-trace-list.png %}
+{% lightbox /assets/img/apm/analyze-trace-list.png %}
 Analyze Trace List
 {% endlightbox %}
 
@@ -77,7 +77,7 @@ If you are viewing the `span.process-time` metric, selection on the value axis w
 Facets and Suggestions
 -----------------------
 
-{% lightbox /assets/img/pages/apm/analyze-modal-breakdown.png %}
+{% lightbox /assets/img/apm/analyze-modal-breakdown.png %}
 Analyze Trace Filters Breakdown
 {% endlightbox %}
 

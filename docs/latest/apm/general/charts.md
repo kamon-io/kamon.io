@@ -26,7 +26,7 @@ You will encounter several types of charts in Kamon APM, each with its use cases
 
 ### Line Charts
 
-{% lightbox /assets/img/pages/apm/line-chart.png %}
+{% lightbox /assets/img/apm/line-chart.png %}
 Line Chart
 {% endlightbox %}
 
@@ -46,7 +46,7 @@ Line chart support selection along the time axis (x axis) and, in [analyze] view
 
 ### Bar Charts
 
-{% lightbox /assets/img/pages/apm/bar-chart.png %}
+{% lightbox /assets/img/apm/bar-chart.png %}
 Bar Chart
 {% endlightbox %}
 
@@ -58,7 +58,7 @@ Bar chart support selection along the time axis (x axis) and, in [analyze] view,
 
 ### Histogram Charts
 
-{% lightbox /assets/img/pages/apm/histogram-chart.png %}
+{% lightbox /assets/img/apm/histogram-chart.png %}
 Histogram Chart
 {% endlightbox %}
 
@@ -75,7 +75,7 @@ The [legend](#chart-legend) will show the same values, but will respect grouping
 
 ### Heatmap Charts
 
-{% lightbox /assets/img/pages/apm/heatmap-chart.png %}
+{% lightbox /assets/img/apm/heatmap-chart.png %}
 Heatmap Chart
 {% endlightbox %}
 
@@ -87,7 +87,7 @@ Histogram support selection on the time axis (x axis), while in the [analyze] vi
 
 ### Percentile Charts
 
-{% lightbox /assets/img/pages/apm/percentiles-chart.png %}
+{% lightbox /assets/img/apm/percentiles-chart.png %}
 Percentiles Chart
 {% endlightbox %}
 
@@ -128,7 +128,7 @@ For any chart with a time axis (i.e., all but percentiles and histogram charts),
 Chart Summaries
 ----------------
 
-{% lightbox /assets/img/pages/apm/chart-summary.png %}
+{% lightbox /assets/img/apm/chart-summary.png %}
 Chart Summary
 {% endlightbox %}
 
@@ -157,7 +157,7 @@ The exceptions to this rule are as follows:
 Chart Operations
 ------------------
 
-{% lightbox /assets/img/pages/apm/chart-operations.png %}
+{% lightbox /assets/img/apm/chart-operations.png %}
 Chart Operations
 {% endlightbox %}
 
