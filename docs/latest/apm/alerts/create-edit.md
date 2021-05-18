@@ -33,7 +33,7 @@ otherwise behave as other [line charts] in the application, with three further c
 * The chart cannot be [analyzed]
 * The chart cannot be selected or zoomed into - the time period is locked
 
-Underneath it, a list of *Simulated Incidents* will be previewed. These incidents are simply a preview of the incidents that would have happened in the currently selected time period, if the
+Underneath it, a list of *Simulated Incidents* will be previewed. These incidents are a preview of the incidents that would have happened in the currently selected time period, if the
 alert had existed at the time. They will match the incidents previewed in the chart above.
 
 {% lightbox /assets/img/pages/apm/full-alert-preview.png %}

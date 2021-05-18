@@ -13,7 +13,7 @@ Managing Dashboards
 Empty Dashboard
 {% endlightbox %}
 
-When you create your first dashboard, it will most likely be empty. You will need to [create dashboard charts] to start populating your dashboard. However, once you have added some charts to your dashboard, you will be able to perform additional actions on them, available only for custom dashboards. On a dashboard with charts present, an Add Chart button will always be available in the top right of the dashboard.
+When you create your first dashboard, it will most likely be empty. You will need to [create dashboard charts] to start populating your dashboard. Once you have added some charts to your dashboard, you will be able to perform additional actions on them, available only for custom dashboards. On a dashboard with charts present, an Add Chart button will always be available in the top right of the dashboard.
 
 {% lightbox /assets/img/pages/apm/dashboard-edits.gif %}
 Arranging a Dashboard
@@ -25,7 +25,7 @@ Any chart can be *resized* by clicking and dragging the resize toggle in the bot
 Dashboard Chart Menu
 {% endlightbox %}
 
-In addition the the [regular chart actions], dashboard charts will have three more actions in the chart action menu, toggled by clicking on its title. You will be able to edit the chart, clone it, or delete the chart from the dashboard. Read more about cloning and editing in the [adding charts] documentation. The delete action will simply remove the chart from the dashboard, after prompting for confirmation.
+In addition the the [regular chart actions], dashboard charts will have three more actions in the chart action menu, toggled by clicking on its title. You will be able to edit the chart, clone it, or delete the chart from the dashboard. Read more about cloning and editing in the [adding charts] documentation. The delete action will remove the chart from the dashboard, after prompting for confirmation.
 
 {% lightbox /assets/img/pages/apm/dashboard-chart-delete.png %}
 Deleting a Dashboard Chart

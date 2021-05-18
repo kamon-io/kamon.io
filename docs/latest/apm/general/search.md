@@ -19,7 +19,7 @@ When you cannot find what you are looking for something in Kamon APM, you can fi
 Search Toggle
 {% endlightbox %}
 
-You can open the search bar at any point by either clicking on the search icon in the left application sidebar, or by pressing the `S` key. The latter will not work when you are focusing on an input or when a dialog is open, however.
+You can open the search bar at any point by either clicking on the search icon in the left application sidebar, or by pressing the `S` key. The latter will not work when you are focusing on an input or when a dialog is open.
 
 [services]: ../../services/service-list/
 [hosts]: ../../hosts/host-details/

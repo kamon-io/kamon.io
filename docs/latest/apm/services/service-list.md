@@ -59,7 +59,7 @@ Restricted services are those services which go beyond the maximum number of ser
 Adding New Services
 --------------------
 
-To add a new service to Kamon APM, all you need to do is have a service start sending data to Kamon APM with the correct API key. You can click the **Add Service** button in the top right corner to open the Add Service modal dialog. In this dialog, you can select which framework or library you are using to get instructions tailored to your particular use case. Note that the **Service Name** field is editable, and it will update the configuration block below it for easy of copy-pasting the configuration changes into the appropriate file. Clicking on the _copy_ icon next to any of the inputs or code display boxes will copy the code into your clipboard.
+To add a new service to Kamon APM, all you need to do is have a service start sending data to Kamon APM with the correct API key. You can click the **Add Service** button in the top right corner to open the Add Service modal dialog. In this dialog, you can select which framework or library you are using to get instructions tailored to your particular use case. Note that the **Service Name** field is editable, and it will update the configuration block below it for ease of copy-pasting the configuration changes into the appropriate file. Clicking on the _copy_ icon next to any of the inputs or code display boxes will copy the code into your clipboard.
 
 {% lightbox /assets/img/pages/apm/add-service.png %}
 Add Service Dialog

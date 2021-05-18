@@ -61,7 +61,7 @@ A measure is a certain aspect, or aggregation, of a metric's value. To configure
 Kamon APM allows you more flexibility.
 
 
-Additionally, Kamon APM is not aware of the semantics of the data you are visualizing. You will need the select the correct unit to show, as one of Latency, Information, Count, or Percentage. The unit chosen will, however, scale with the data.
+Additionally, Kamon APM is not aware of the semantics of the data you are visualizing. You will need the select the correct unit to show, as one of Latency, Information, Count, or Percentage. The unit chosen will scale with the data, if applicable (e.g., B, kB, MB, or GB, depending on the scale of the data).
 
 Finally, you may set a custom name for your chart. Otherwise, the name of the metric will be the default chart title.
 
@@ -71,7 +71,7 @@ When closing the chart creation dialog after having changed some of the data, yo
 
 <div data-video-src="/assets/video/add-to-dashboard.mp4" data-caption="Add to Dashboard" />
 
-Not every occasion is one that requires creating charts from scratch. Instead, maybe you just with to reuse an existing chart from elsewhere in the application, possibly with some minimal changes. Kamon APM supports this by providing an *Add to Dashboard* action for every chart in the application, accessible from the context menu.
+Not every occasion is one that requires creating charts from scratch. Instead, maybe you wish to reuse an existing chart from elsewhere in the application, possibly with some minimal changes. Kamon APM supports this by providing an *Add to Dashboard* action for every chart in the application, accessible from the context menu.
 
 You can add a chart to either an existing dashboard, or to a new dashboard - in which case you will be required to name it, and it will be created in the background for you. The dashboard name will need to be at least three characters long, and unique amongst all dashboards in your organization.
 

@@ -20,7 +20,7 @@ The basic building block of traces are **spans**. A span is a record of a single
 A span can describe a HTTP request, a database call, or any arbitrary unit of work inside of a service. Spans also have a reference to their *parent*
 span, or the span which started the operation. A span which has no parent is called a *root* span.
 
-When we collect these spans together to describe everything that needed to happen for a process to be executed, we get a *trace*. A trace is simply an
+When we collect these spans together to describe everything that needed to happen for a process to be executed, we get a *trace*. A trace is an
 organized collection of spans that make up the larger process. For example, when an API endpoint is called, the code that is started makes several database
 calls, crunches some numbers, and returns a response. In this case, the root span is the API endpoint handler, and all other operations will be recorded
 as separate spans, as children or other descendants of the original operation.
@@ -35,7 +35,7 @@ Span Tags
 Span Tags
 {% endlightbox %}
 
-Spans can also carry an arbitrary number of tags, which are merely key-value pairs. All spans should have some common tags, such as `operation`, `component`
+Spans can also carry an arbitrary number of tags, which are free-form string key-value pairs. All spans should have some common tags, such as `operation`, `component`
 (typically the library used to instrument your code), or `error`. You can learn more about them in the Kamon Telemetry [tags documentation][tags]. They can
 be freely added using both Kamon Telemetry and OpenTelemetry. You can gain access to these tags in the [trace details] drawer.
 
@@ -46,7 +46,7 @@ Span Marks
 Span Marks
 {% endlightbox %}
 
-In addition to tags, spans can also have *marks*. Marks are merely free-form text labels with a timestamp, and are meant to provide markers for certain key
+In addition to tags, spans can also have *marks*. Marks are free-form text labels with a timestamp, and are meant to provide markers for certain key
 moments or segments of an operation. You can read more about recording marks with Kamon Telemetry [here][marks].
 
 Trace Critical Path
@@ -57,7 +57,7 @@ Trace Critical Path
 {% endlightbox %}
 
 In Kamon APM, we also introduce the concept of a *critical path*. The critical path are the computations happening in the innermost calls of the call stack. In particular, Kamon
-APM makes the assumption that when a parent operation calls a child operation, the work is being done inside of the child operation, and the parent is merely
+APM makes the assumption that when a parent operation calls a child operation, the work is being done inside of the child operation, and the parent is always
 waiting for the child to complete. In that case, all the critical work is happening in the child operation at this moment. If multiple operations are happening
 in parallel, and all of them are operations at the very leaves of the call tree, all of them will be in the critical path at the same time.
 
@@ -79,7 +79,7 @@ Note that for Kamon Telemetry, `span.processing-time` values will be recorded an
 your sampling configuration, you will likely have more processing time metric records in Kamon APM than you will have actual spans.
 
 {% alert info %}
-If you are using Kamon Telemetry, you will have full control over the metrics tags for `span.processing-time`. However, if you are using OpenTelemetry, the metric
+If you are using Kamon Telemetry, you will have full control over the metrics tags for `span.processing-time`. If you are using OpenTelemetry, the metric
 is synthetically collected from sampled traces, and might have more limited [tags](#span-tags). Additionally, make sure you are sampling *all* OTEL traces if you want
 complete information from Kamon APM.
 {% endalert %}

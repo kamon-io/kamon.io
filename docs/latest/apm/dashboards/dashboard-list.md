@@ -52,7 +52,7 @@ Cloning Dashboards
 Clone Dashboard Dialog
 {% endlightbox %}
 
-For those cases where you need to make a very similar dashboard to an existing one, or to back up an existing dashboard, Kamon APM offers a Clone Dashboard functionality. You can create a dashboard which has the exact same charts and chart layout as an already existing dashboard in just two steps. The action can be accessed from the context menu on each dashboard row, and will open a dialog. It will look the same as the Create Dashboard dialog, requiring you to name the dashboard. A default name of `Clone of <original_name>` will be filled in. The name needs to be at least three characters long and unique. Upon completing the flow, you will be taken to the [dashboard details] for he new dashboard, and may continue to edit it.
+For those cases where you need to make a very similar dashboard to an existing one, or to back up an existing dashboard, Kamon APM offers a Clone Dashboard functionality. You can create a dashboard which has the exact same charts and chart layout as an already existing dashboard in two steps. The action can be accessed from the context menu on each dashboard row, and will open a dialog. It will look the same as the Create Dashboard dialog, requiring you to name the dashboard. A default name of `Clone of <original_name>` will be filled in. The name needs to be at least three characters long and unique. Upon completing the flow, you will be taken to the [dashboard details] for he new dashboard, and may continue to edit it.
 
 Deleting Dashboards
 --------------------

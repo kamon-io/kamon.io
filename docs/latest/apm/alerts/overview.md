@@ -49,12 +49,12 @@ Note: Any percentile can be chosen, as a number.
 Alert Severity
 ---------------
 
-Alerts can have two different states of severity: **Warning** and **Critical**. Other than their relative importance, there is one more crucial difference. Critical alerts can trigger [notifications to outside channels]. Warnings will simply be visible inside of Kamon APM, and are not considered severe enough to wake you up in the middle of the night.
+Alerts can have two different states of severity: **Warning** and **Critical**. Other than their relative importance, there is one more crucial difference. Critical alerts can trigger [notifications to outside channels]. Warnings will exclusively be visible inside of Kamon APM, and are not considered severe enough to wake you up in the middle of the night.
 
 Alert Availability Target
 --------------------------
 
-Alerts may have a certain availability target set up. An availability target is simple - it's merely saying that the alert must be healhty for a certain percentage of time, in a certain time window. For example, you may demand that an alert be healthy 99% of the time in every one week period. You can learn more about setting up availability targets in the chapter on [creating alerts], and more about where you can see them in chapters about the [alert drawer] and [alert lists].
+Alerts may have a certain availability target set up. An availability target is a constraint that the alert must be healhty for a certain percentage of time, inside a certain time window. For example, you may demand that an alert be healthy 99% of the time in every one week period. You can learn more about setting up availability targets in the chapter on [creating alerts], and more about where you can see them in chapters about the [alert drawer] and [alert lists].
 
 Alert Evaluation Period
 ------------------------

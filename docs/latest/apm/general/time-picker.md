@@ -9,7 +9,7 @@ layout: docs
 Time Picker
 ============
 
-When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - **Live** and **Fixed** - and allows easy switching between them.
+When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - **Live** and **Fixed** - and allows for switching between them.
 
 In Live mode, all charts and traces in the application will be showing a sliding window, which will update with new information _every minute_. When you are in Live mode, the status indicator will be green, and will display a spinning icon. The text on the time picker will indicate which sliding window duration has been set.
 
@@ -39,7 +39,7 @@ you can upgrade to one of the [paid plans].
 Time &amp; Charts
 -----------------
 
-As noted, all data shown in the application will correspond to the selected time period. However, the relationship between charts is two-directional. If a specific chart has a time axis, it can be zoomed into by dragging and making a selection. This will update the time picker, moving it into Fixed mode for the selected period, and will update all other charts. You can read about the types of [charts] to learn more.
+As noted, all data shown in the application will correspond to the selected time period. The relationship between charts is two-directional. If a specific chart has a time axis, it can be zoomed into by dragging and making a selection. This will update the time picker, moving it into Fixed mode for the selected period, and will update all other charts. You can read about the types of [charts] to learn more.
 
 {% lightbox /assets/img/pages/apm/chart-selection.png %}
 Chart Time Selection

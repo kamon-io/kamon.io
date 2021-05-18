@@ -64,7 +64,7 @@ Operation Details
 Service Operation Details
 {% endlightbox %}
 
-The Service Operation Details page offers a drill-down into information gathered about one particular operation. Like the Overview, it contains the Latency histogram and the throughput and error charts. However, unlike the overview page, only trace metric information gathered for this particular operation is included in the charts.
+The Service Operation Details page offers a drill-down into information gathered about one particular operation. Like the Overview, it contains the Latency histogram and the throughput and error charts. Unlike the overview page, only trace metric information gathered for this particular operation is included in the charts.
 
 Underneath the charts is located a trace list, with all sampled traces belonging to this operation. It can be used to inspect, sort, and dive into trace details. Read about the [trace list] for more information.
 

@@ -24,14 +24,14 @@ Analyze Modal
 {% endlightbox %}
 
 The Analyze Modal will open to overlay your current view, and will be frozen to the [current time][time picker], even if you were viewing data in _Live_ mode. The underlying
-assumption is that you wish to investigate anomalous data at a given time, and do not wish the data to change as you are viewing it. However, as with any [time picker], you
+assumption is that you wish to investigate anomalous data at a given time, and do not wish the data to change as you are viewing it. As with any [time picker], you
 can switch it into live mode, and receive data as it comes in.
 
 {% lightbox /assets/img/pages/apm/analyze-modal-visualization.png %}
 Analyze Modal
 {% endlightbox %}
 
-The modal will always show the same metric, and initially in the same mode of visualization (i.e., chart type, grouping, and more) as the original chart. However, from this
+The modal will always show the same metric, and initially in the same mode of visualization (i.e., chart type, grouping, and more) as the original chart. From this
 starting point, you can do a lot more. Through the filter bar in the top of the analyze modal, you can filter by any available [metric tag] value, group by [metric tag] labels,
 or constrain the value range the metric takes (the y axis, for all charts but the [histogram]). Additionally, you can switch between any available chart type that is [available][chart types] for the metric you are analyzing. When picking a [line chart] or a [bar chart], you can also pick between a variety of aggregations to use for visualization by
 toggling the [chart title menu]. The default operations will be _count_ for the bar chart, and _throughput_ for the line chart.
@@ -64,7 +64,7 @@ Selection and Zooming
 ----------------------
 
 Like most charts, the chart in the Analyze Modal can be [selected][selection] by clicking and dragging over the chart. The selection is two-dimensional (both across time and values)
-for heatmaps, and one-dimensional otherwise (but for percentile charts, which do not allow for selection). However, this view has one key difference to the typical chart - when the
+for heatmaps, and one-dimensional otherwise (but for percentile charts, which do not allow for selection). This view has one key difference to the typical chart - when the
 selection completes, the chart will not be zoomed in automatically. Instead, you can click the zoom in button on the chart, or double-click on the suggestion, to zoom in.
 
 Selection will affect the [trace list](#trace-list), as well as the [facets and suggestions](#facets-and-suggestions), allowing you to more easily drill down into root causes and
@@ -86,7 +86,7 @@ same groups and values as the filter bar, but with one important addition: it wi
 applied to discover irregular values. Such a suggestion will be indicated by a green dot, which can be hovered for an explanation tooltip. Each value entry will feature a small
 blue indicator, which will show what percentage of recorded values have this tag attached to the time series. The indicator can be hovered for a more detailed breakdown.
 
-These suggestions gain another dimension of usefulness, however, when a [selection](#selection-and-zooming) is made on the chart. In this case, a second indicator will appear, this
+These suggestions gain another dimension of usefulness when a [selection](#selection-and-zooming) is made on the chart. In this case, a second indicator will appear, this
 one green, to show what percentage of events in the _selection_ have this tag, in addition to the percentage of such events in the entire chart. The detailed breakdown tooltip will
 expand with the same information, as well. This information can be _very useful_ due to the fact that you can easily visually see that a particular selected area of the chart stands
 out in some way, be it a certain host, an operation, or maybe a particular database connection pool.
