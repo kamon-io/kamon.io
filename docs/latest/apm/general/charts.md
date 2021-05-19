@@ -121,7 +121,7 @@ The name will also include a color indicator which matches the color the values 
 
 The other column(s) depend on the chart in question, and can be the number of values, throughput, value at a certain percentile, or any other value that can be visualized in Kamon APM. These values will largely depend on the chart in question, and is arbitrary. The two exceptions are [histograms](#histogram-charts) and [percentile charts](#percentile-charts), which will always have a pre-defined legend, as stated in sections dedicated to them.
 
-When hovering on a certain row, the values which correspond to the that group will be highlighted in the chart. This can be useful when many different groups appear in the same chart and it becomes difficult to differentiate them. The one exception is the [heatmap](#heatmap-chart), for which this has no effect.
+When hovering on a certain row, the values which correspond to the that group will be highlighted in the chart. This can be useful when many different groups appear in the same chart and it becomes difficult to differentiate them. The one exception is the [heatmap](#heatmap-chart), for which this has no effect. Clicking on a row will toggle where that group is visualized in the chart (including heatmaps).
 
 For any chart with a time axis (i.e., all but percentiles and histogram charts), hovering on the chart will update the values in the legend to match the time range being hovered.
 

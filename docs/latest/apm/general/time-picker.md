@@ -13,9 +13,7 @@ Time Picker
 Time Picker
 {% endlightbox %}
 
-When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - **Live** and **Fixed** - and allows for switching between them.
-
-In Live mode, all charts and traces in the application will be showing a sliding window, which will update with new information _every minute_. When you are in Live mode, the status indicator will be green, and will display a spinning icon. The text on the time picker will indicate which sliding window duration has been set.
+When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - [**Live**](#live-time) and [**Fixed**](#fixed-time) - and allows for switching between them.
 
 Live Time
 ----------
@@ -24,7 +22,7 @@ Live Time
 Live Time Picker
 {% endlightbox %}
 
-<a id="fixed-time-mode" /> In Fixed mode, the time window will not update, and all metrics and traces will be constrained to that time window. In Fixed mode, you can debug past incidents and performance bottlenecks without risking your data updating while you're analyzing it. When in Fixed mode, the time picker will show a pause icon in dark gray, and the selected time window boundaries will be shown.
+In Live mode, all charts and traces in the application will be showing a sliding window, which will update with new information _every minute_. When you are in Live mode, the status indicator will be green, and will display a spinning icon. The text on the time picker will indicate which sliding window duration has been set.
 
 Fixed Time
 -----------
@@ -32,6 +30,8 @@ Fixed Time
 {% lightbox /assets/img/apm/fixed-time-picker.png %}
 Fixed Time Picker
 {% endlightbox %}
+
+<a id="fixed-time-mode" /> In Fixed mode, the time window will not update, and all metrics and traces will be constrained to that time window. In Fixed mode, you can debug past incidents and performance bottlenecks without risking your data updating while you're analyzing it. When in Fixed mode, the time picker will show a pause icon in dark gray, and the selected time window boundaries will be shown.
 
 When clicking on the time picker, it will expand to offer a number of useful pre-selected time periods. Selecting any of these periods will switch to using Live mode for the given period. It can be expanded further by clicking on the Custom Range button and selecting an exact range of dates to view in Fixed mode.
 

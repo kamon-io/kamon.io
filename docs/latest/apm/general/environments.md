@@ -9,7 +9,7 @@ layout: docs
 Environments
 ============
 
-In Kamon APM, nearly everything is grouped in terms of _environments_. An environment is a collection of services and hosts, grouped for some audience. A testing or staging environment might be used locally for making sure everything works, while a production or live environment will be customer-facing. Kamon APM offers three environments by default: a production environment, staging environment, and a development environment. Services running on the staging or development environment, collectively called non-production environments, have lower retention, but will _never_ contribute to your monthly bill.
+In Kamon APM, nearly everything is grouped in terms of _environments_. An environment is a collection of services and hosts, grouped for some audience. A testing or staging environment might be used internally for making sure everything works, while a production or live environment will be customer-facing. Kamon APM offers three environments by default: a production environment, staging environment, and a development environment. Services running on the staging or development environment, collectively called non-production environments, have lower retention, but will _never_ contribute to your monthly bill.
 
 {% alert info %}
 Non-production environments are a premium feature. You can use them without paying a cent extra, but they are only available on one of the [paid plans].
