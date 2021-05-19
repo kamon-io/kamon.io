@@ -33,8 +33,7 @@ Span Error Markers
 The red **X** indicator shows the the span itself has an error (or, rather, an error occurred during the operation). The yellow exclamation mark indicates that while the operation
 itself did not experience an error, once of the operations it called (its descendant spans) did.
 
-Every trace list is *time sensitive*, and will only show spans within the time period selected in the [time picker]. If you are browsing the application in live mode, the list will
-auto-update every minute. You can force it to update manually by pressing the refresh button in the top right corner of the span list.
+Every trace list is *time sensitive*, and will only show spans within the time period selected in the [time picker]. If you are browsing the application in live mode, the list **will not** auto-update every minute, unlike charts. You can force it to update manually by pressing the refresh button in the top right corner of the span list. If you do so in live mode, the current time will be used, and the list will be updated to match the sliding time window.
 
 {% lightbox /assets/img/apm/span-list-errors.png %}
 Span List - Errors Only
