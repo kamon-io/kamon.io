@@ -30,14 +30,14 @@ The Service Map represents each one of your instrumented microservices as a hexa
 | Warning | <img src="/assets/img/apm/status/warning.svg"> | A service which is sending data, but has an active alert with the **warning** severity |
 | Critical | <img src="/assets/img/apm/status/critical.svg"> | A service which is sending data, but has an active alert with the **critical** severity |
 | Dead | <img src="/assets/img/apm/status/dead.svg"> | A service which has stopped sending data |
-| Restricted | <img src="/assets/img/apm/status/restricted.svg"> | A service which surpasses the count allowed by the free plan and is obscured |
+| Restricted | <img src="/assets/img/apm/status/restricted.svg"> | A service which surpasses the count allowed by the plan and is obscured |
 
 
 When multiple alerts have active incidents for the same service, the most severe one will determine its state. You can see the [alerts] documentation for more details.
 
 Dead services are those services which are no longer sending data to the system. This could be due to them being stopped, or due to an issue in your configuration. Historical data for these services will still be shown, as long as some data was sent inside of the currently selected period.
 
-Restricted services are those services which go beyond the maximum number of services allowed by your subscription plan. On the Free Plan, you can have **up to 5** services at the same time, but any additional services will be restricted. While data sent by them will be ingested, you will not be able to see or use the data in any way, unless you delete another existing service to reduce to number to 5 or below, or upgrade to a paid plan. On **all** paid plans, the number of services is **unrestricted**. If clicked, these services will show the Upgrade Prompt, allowing you to switch to a paid plan directly from the Service Map.
+Restricted services are those services which go beyond the maximum number of services allowed by your subscription plan. On the Developer Plan, you can have **up to 5** services at the same time, but any additional services will be restricted. While data sent by them will be ingested, you will not be able to see or use the data in any way, unless you delete another existing service to reduce to number to 5 or below, or upgrade to a paid plan. On **all** paid plans, the number of services is **unrestricted**. If clicked, these services will show the Upgrade Prompt, allowing you to switch to a paid plan directly from the Service Map.
 
 Each (unrestricted service) can be hovered to highlight the service itself, and its links to other services, if any. By clicking on a service, you will enter [focused mode](#focused-mode), while double-clicking will take you to the [service overview].
 

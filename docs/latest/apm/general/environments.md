@@ -17,11 +17,11 @@ Non-production environments are a premium feature. You can use them without payi
 
 See this table for a quick overview of the default environments:
 
-| Environment | With Starter Plan         | Metrics Retention | Traces Retention | Service Limit |
-|-------------|---------------------------|-------------------|------------------|---------------|
-| Production  | &#x2714; <br> (max 5 services) | 14 days (Teams) <br> 6h (Starter) | 7 days (Teams) <br> 6h (Starter) | Unlimited (Paid) <br> 5 (Starter) |
-| Staging     | &#x274C;                  | 1 day             | 1 day            | Unlimited     |
-| Development | &#x274C;                  | 1 day             | 1 day            | Unlimited     |
+| Environment | On Developer Plan     | Data Retention | Service Limit |
+|-------------|:---------------------:|-------------------|------------------|---------------|
+| Production  | &#x2714; | 14 days (Teams) <br> 14 days (Starter) <br> 6 hours (Developer) <br> | Unlimited (Teams) <br> Up to **10** (Starter) <br> Up to **5** (Developer) |
+| Staging     | &#x274C;                  | 1 day | Unlimited     |
+| Development | &#x274C;                  | 1 day | Unlimited     |
 
 Environment Picker
 -------------------
@@ -45,7 +45,7 @@ You can access information about the current environment - its API key and reten
 Production Environments
 ------------------------
 
-Production environments offer higher retention rates, allowing you to investigate and debug errors and slowdowns in production even after they've happened. Each organization starts with an active production environment by default. On the Starter plan, it allows you to monitor up to 5 services and retains both metric and trace data for up to 6 hours. On the Teams plan, the number of services is _unlimited_, and the retention rates go up to 14 days for metrics and 7 days for traces.
+Production environments offer higher retention rates, allowing you to investigate and debug errors and slowdowns in production even after they've happened. Each organization starts with an active production environment by default. On the Developer plan, it allows you to monitor up to 5 services and retains both metric and trace data for up to 6 hours. With the Starter plan, up to 10 services can be monitored, and the retention is 7 days. On the Teams plan, the number of services is _unlimited_, and the retention rates go up to 14 days for both metrics and traces.
 
 If these limitations are not a match for your business needs, or you have a need for multiple production environments, you can [talk to us][help] to make adjustments!
 

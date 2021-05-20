@@ -25,7 +25,7 @@ Kamon APM has a deep understanding of [JVM metrics], the [JDBC], [Cassandra], [K
 Getting Started
 ----------------
 
-You can get started with Kamon APM **for free**, in just 3 minutes. You can [sign up] with your e-mail or via Google _without_ having to enter your credit card details. The free Starter plan can be used for free for any duration of time, but will not offer the full range of Kamon APM capabilities. See the list of [plans] for more details.
+You can get started with Kamon APM **for free**, in just 3 minutes. You can [sign up] with your e-mail or via Google _without_ having to enter your credit card details. The free Developer plan can be used for free for any duration of time, but will not offer the full range of Kamon APM capabilities. See the list of [plans] for more details.
 
 [apm]: https://apm.kamon.io
 [OpenTelemetry]: https://opentelemetry.io/

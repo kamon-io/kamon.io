@@ -33,7 +33,7 @@ Billing Information
 Credit Card Information
 {% endlightbox %}
 
-The first time you upgrade from a free plan, you will be required to set up your billing information and credit card information. Make sure the billing information is correct, as it will appear in invoices as such! The payment information will be stored using [BrainTree](https://www.braintreepayments.com/) and will be kept secure. We do not store your payment data inside of our own databases.
+The first time you upgrade from the Developer plan, you will be required to set up your billing information and credit card information. Make sure the billing information is correct, as it will appear in invoices as such! The payment information will be stored using [BrainTree](https://www.braintreepayments.com/) and will be kept secure. We do not store your payment data inside of our own databases.
 
 Subsequent upgrades or plan changes will allow you to use the already specified payment method information, or to change it. Additionally, you can always see the currently set information in the sidebar of the billing page, and change them from there. Any member of the organization will be able to change this information, even if you are not an administrator!
 
