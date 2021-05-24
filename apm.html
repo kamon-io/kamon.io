@@ -2,6 +2,8 @@
 layout: default
 title: 'Kamon APM - Application Performance Monitoring Tool for Akka/Play/JVM Distributed Systems'
 description: 'Easy to use application performance monitoring tool to monitor and debug distributed systems in a single, integrated platform.'
+custom_css:
+- pages/apm
 ---
 
 <div class="background-top-gray-blue"></div>
@@ -26,7 +28,7 @@ description: 'Easy to use application performance monitoring tool to monitor and
         <b>eliminate slow requests and errors</b> from your production systems
       </p>
       <a class="btn btn-lg btn-primary px-4 w-100-sm-down" data-solution="KamonAPM" href="https://apm.kamon.io/signup">
-        Sign up for APM
+        Try Kamon APM
       </a>
       <div class="text-light text-center text-sm-left mt-2">
         It's a 3-minute setup -  Better now than after your next production incident
@@ -158,55 +160,101 @@ description: 'Easy to use application performance monitoring tool to monitor and
   </section>
 
   <section class="row justify-content-center pt-0">
-    <h2 class="col-12 text-center">
-      Start monitoring for <span class="text-primary">Free</span> with Kamon APM,
-      <br>
-      then upgrade as you Grow
-    </h2>
+    <div class="col-12 text-center">
+      <h2>
+        Find a plan that suits your needs
+      </h2>
+      <p class="text-explainer text-center">
+        Start monitoring your production services for <b>Free</b> with Kamon APM, 
+        <br class="d-none d-lg-inline">
+        then upgrade as you grow
+      </p>
+    </div>
 
-    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
-      <div class="d-flex align-items-end" style="height: 144px;">
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
+        <img width="144" src="/assets/img/pages/pricing/developer-plan-illustration.svg" alt="Starter Plan">
+      </div>
+      <h3 class="mt-3">
+        Developer
+      </h3>
+      <p class="text-center text-explainer">
+        For developers getting started<br/>
+        with production monitoring
+      </p>
+      <div class="price-container mt-4">
+        <h1 class="mb-0 display-4">Free</h1>
+      </div>
+      <div class="mb-0 text-light text-explainer d-flex align-items-end" style="height: 47px;">Up to 5 Services</div>
+      <div style="height: 70px" class="text-center mb-5 mt-3">
+        Explore the last <b>6 hours</b> of<br/>
+        production data for <b>Free</b>
+      </div>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3" href="#" data-url="signup?external=yes">
+        Try Kamon APM
+      </a>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
         <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
       </div>
       <h3 class="mt-3">
         Starter
       </h3>
       <p class="text-center text-explainer">
-        For developers getting started<br/>
-        with production monitoring
+        For small teams getting serious<br/>
+        about production monitoring
       </p>
-      <div class="d-flex align-items-center price-container mt-4">
-        <h1 class="mb-0 display-4">Free</h1>
+      <div class="price-container mt-4">
+        <h1 class="mb-0 display-4">&euro;90</h1>
       </div>
-      <div class="mb-0 text-light text-explainer">Up to 5 Services</div>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mt-5" href="#" data-url="signup?external=yes">
-        Sign up for APM
+      <div class="billed-monthly">Per Month</div>
+      <div class="mb-0 text-light text-explainer text-center">Up to 10 Services</div>
+      <div style="height: 70px" class="text-center mb-5 mt-3">
+        Explore the last <b>7 days</b> of<br/>
+        production data for a <b>Fixed Price</b>,<br/>
+        with <b>10 services</b> included
+      </div>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3" href="#" data-url="signup?external=yes">
+        Try Kamon APM
       </a>
     </div>
 
-    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
-      <img height="144" width="144" src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow Plan">
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
+        <img style="margin-left: -30px" width="180" src="/assets/img/pages/pricing/teams-plan-illustration.svg" alt="Teams Plan">
+      </div>
       <h3 class="mt-3">
         Teams
       </h3>
       <p class="text-center text-explainer">
-        For growing teams monitoring<br/>
-        several microservices
+        For large teams monitoring<br/>
+        complex systems in production
       </p>
-      <div class="d-flex align-items-center mt-4">
-        <h1 class="mb-0 display-4">&euro;30</h1>
-        <div class="ml-3">
-          <h5 class="mb-0">Per Service</h5>
-          <span>Per Month</span>
-        </div>
+      <div class="price-container mt-4">
+        <h1 class="mb-0 display-4"><span id="teams-plan-monthly-price">&euro;150</span></h1>
       </div>
-      <div class="text-light text-explainer">
-        or <b>&euro;24</b> when billed annually
+      <div class="billed-monthly" id="teams-plan-price-explainer">Per Month</div>
+      <div class="mb-0 text-light text-explainer d-flex">
+        For
+        <input class="text-center ml-1" type="text" id="teams-plan-service-number" value="5" />
+        <span class="d-flex flex-column align-items-end teams-plan-service-buttons-container">
+          <button class="mt-1" id="teams-plan-service-up-button"></button>
+          <button id="teams-plan-service-down-button"></button>
+        </span>
+        <label class="mb-0 ml-1" for="teams-plan-service-number">Services</label>
       </div>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mt-5" href="#" data-url="signup?external=yes">
-        Sign up for APM
+      <div style="height: 70px" class="text-center mb-5 mt-3">
+        Explore the last <b>14 days</b> of<br/>
+        production data for <b>&euro;30/service</b>,<br/>
+        <b>Save 20%</b> with annual billing
+      </div>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3" href="#" data-url="signup?external=yes">
+        Try Kamon APM
       </a>
     </div>
+
     <h5 class="col-12 mt-5 pt-3 text-center">
       <a class="arrow-link" href="/apm/pricing/">
         Learn more about APM pricing
