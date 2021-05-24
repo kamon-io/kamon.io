@@ -139,7 +139,7 @@ documentation:
 
   - name: Kamon APM
     path: /apm/
-    icon: /assets/img/icons/docs-reporters.svg
+    icon: /assets/img/icons/docs-kamon-apm.svg
     topics:
       - name: Using Kamon APM
         pages:
