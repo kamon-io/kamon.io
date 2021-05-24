@@ -1,0 +1,49 @@
+.price-container {
+  height: 70px;
+}
+
+.billed-monthly {
+  transform: translateY(-10px);
+}
+
+#teams-plan-service-number {
+  border: none;
+  border-bottom: 1px solid $color-dark-4;
+  padding: unset;
+  height: 25px;
+  width: 35px;
+  color: $color-shamrock-main;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $color-shamrock-main;
+  }
+}
+
+.teams-plan-service-buttons-container {
+
+  button {
+    border: none;
+    background-color: transparent;
+    width: 15px;
+    height: 10px;
+    padding: 0;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 1px solid $color-dark-3;
+    }
+  }
+
+  #teams-plan-service-up-button {
+    background: center no-repeat url(/assets/img/icons/directional/angle-up.svg);
+  }
+
+  #teams-plan-service-down-button {
+    background: center no-repeat url(/assets/img/icons/directional/angle-down.svg);
+  }
+}

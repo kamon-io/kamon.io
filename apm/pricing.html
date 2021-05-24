@@ -16,39 +16,37 @@ custom_css:
       upgrade as you Grow
     </h1>
     <p class="lead col-12">
-      Monitor up to 5 services for free with the <b>Starter Plan</b> <br class="d-none d-md-inline">
-      and upgrade when you grow beyond that
+      Monitor up to 5 services for free with the <b>Developer Plan</b> <br class="d-none d-md-inline">
+      and upgrade when you grow
     </p>
 
 
-    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
-      <div class="d-flex align-items-end" style="height: 144px;">
-        <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
+        <img width="144" src="/assets/img/pages/pricing/developer-plan-illustration.svg" alt="Developer Plan">
       </div>
       <h2 class="mt-3">
-        Starter
+        Developer
       </h2>
       <p class="text-center text-explainer">
         For developers getting started<br/>
         with production monitoring
       </p>
-      <div class="d-flex align-items-center price-container">
+      <div class="price-container">
         <h1 class="mb-0 display-4">Free</h1>
       </div>
-      <div class="mb-0 text-light text-explainer">Up to 5 Services</div>
+      <div class="mb-0 text-light text-explainer d-flex align-items-end" style="height: 47px;">Up to 5 Services</div>
 
-      <ul class="icon-list text-left px-4 mt-5" style="height: 200px;">
+      <ul class="icon-list text-left px-4 mt-5" style="height: 300px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Retain metrics for <b>6 Hours</b>
-        </li>
-        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Retain traces for <b>6 Hours</b>
+          Explore the last <b>6 Hours</b> of data
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
           Send up to <b>30K Spans</b> per day
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          <b>Single Prod Environment</b>
+          Access a single <b>Production</b><br/>
+          environment
         </li>
       </ul>
       <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mr-3" href="#" data-url="signup?external=yes">
@@ -56,41 +54,88 @@ custom_css:
       </a>
     </div>
 
-    <div class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center mt-5">
-      <img height="144" width="144" src="/assets/img/pages/pricing/grow-plan-illustration.svg" alt="Grow Plan">
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
+        <img width="144" src="/assets/img/pages/pricing/starter-plan-illustration.svg" alt="Starter Plan">
+      </div>
+      <h2 class="mt-3">
+        Starter
+      </h2>
+      <p class="text-center text-explainer">
+        For small teams getting serious<br/>
+        about production monitoring
+      </p>
+      <div class="price-container">
+        <h1 class="mb-0 display-4">&euro;90</h1>
+      </div>
+      <div class="mb-0 billed-monthly text-dark-1">Per Month</div>
+      <div class="mb-0 text-light text-explainer">Up to 10 Services</div>
+
+      <ul class="icon-list text-left px-4 mt-5" style="height: 300px;">
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Explore the last <b>7 days</b> of data
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Send up to <b>500K spans</b> per day
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Send extra spans at <b>&euro;1/million</b>
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Access <b>Production and Test</b><br/> environments
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          Pay a <b>Fixed Price</b> with <b>10 services</b><br/> included
+        </li>
+      </ul>
+      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mr-3" href="#" data-url="signup?external=yes">
+        Sign up for APM
+      </a>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center mt-5">
+      <div class="d-flex align-items-end" style="height: 200px;">
+        <img style="margin-left: -30px" width="180" src="/assets/img/pages/pricing/teams-plan-illustration.svg" alt="Teams Plan">
+      </div>
       <h2 class="mt-3">
         Teams
       </h2>
       <p class="text-center text-explainer">
-        For growing teams monitoring<br/>
-        several microservices
+        For large teams monitoring<br/>
+        complex systems in production
       </p>
-      <div class="d-flex align-items-center price-container">
-        <h1 class="mb-0 display-4">&euro;<span id="grow-plan-monthly-price">30</span></h1>
-        <div class="ml-3">
-          <h5 class="mb-0">Per Service</h5>
-          <span>Per Month</span>
-        </div>
+      <div class="price-container">
+        <h1 class="mb-0 display-4"><span id="teams-plan-monthly-price">&euro;150</span></h1>
       </div>
-      <div class="text-light text-explainer">
-        or <b>&euro;24</b> when billed annually
+      <div class="mb-0 billed-monthly text-dark-1" id="teams-plan-price-explainer">Per Month</div>
+      <div class="mb-0 text-light text-explainer d-flex">
+        For
+        <input class="text-center ml-1" type="text" id="teams-plan-service-number" value="5" />
+        <span class="d-flex flex-column align-items-end teams-plan-service-buttons-container">
+          <button class="mt-1" id="teams-plan-service-up-button"></button>
+          <button id="teams-plan-service-down-button"></button>
+        </span>
+        <label class="mb-0 ml-1" for="teams-plan-service-number">Services</label>
       </div>
 
-      <ul class="icon-list text-left px-4 mt-5" style="height: 200px;">
+      <ul class="icon-list text-left px-4 mt-5" style="height: 300px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Retain metrics for <b>14 days</b>
+          Explore the last <b>14 days</b> of data
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Retain traces for <b>7 days</b>
+          Send up to <b><span id="teams-plan-spans-count">1M</span> spans</b> per day
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Send up to <b>200K spans</b> per day
+          Send extra spans at <b>&euro;1/million</b>
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Extra spans at <b>&euro;1 per million</b>
+          Access <b>Production and Test</b><br/> environments
         </li>
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
-          Free <b>Test Environments</b>
+          Pay for what you use, starting<br/>at <b>&euro;30/service</b>
+        </li>
+        <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
+          <b>Save 20%</b> and get additional<br/>retention with <b>annual billing</b>
         </li>
       </ul>
       <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-4 py3 mr-3" href="#" data-url="signup?external=yes">
