@@ -26,6 +26,8 @@ The third filter is the range duration filter. Upon page load, the minimum and m
 
 Time selection in the time picker will also affect the filtered values, and updating the time picker will update the chart and list of spans.
 
+By default, a tag filter of `span.kind` set to `server` will be set. Adding or removing any filters will make a "Reset Filters" button appear in the top right of the page, allowing you to return to the initial state.
+
 Sampled Span Chart
 -------------------
 
