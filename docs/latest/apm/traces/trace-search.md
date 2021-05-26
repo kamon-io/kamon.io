@@ -20,7 +20,12 @@ Span Filters
 
 The spans may be filtered using the Service filter, which will constrain it only to spans that have been recorded from inside a certain service - though the service does not need to be the originator (or root) of the trace. If no services are selected, all searches will be done across *all* spans, no matter the originating service.
 
-The second filter is the tag search, which allows you to filter spans by the [span tag] values that the span has. For example, these can be the operation, http method, presence of error, or other arbitrary tags added either via automatic instrumentation or manually. The tag search allows for searching across both tag keys and tag values asynchronously by typing into the dropdown search field. Note that the available tags *are* constrained by the selected services. They are not, however, constrained by already selected tag. It is therefore possible to select a combination of tags that never occur in the application.
+The second filter is the tag search, which allows you to filter spans by the [span tag] values that the span has. For example, these can be the operation, http method, presence of error, or other arbitrary tags added either via automatic instrumentation or manually. The tag search allows for searching across both tag keys and tag values asynchronously by typing into the dropdown search field. If you wish to search *exclusively* for values within a certain tag, you can do so in one of two ways:
+
+1. Type in `groupname:` (with a colon), where the group match must be exact. For example `http.status_code:`
+2. Click on the section, in which case the input will be pre-filled and exclusively values within the section shown
+
+Note that the available tags *are* constrained by the selected services. They are not, however, constrained by already selected tag. It is therefore possible to select a combination of tags that never occur in the application, or are logically impossible
 
 The third filter is the range duration filter. Upon page load, the minimum and maximum will be set to match the extreme values from your ingested spans. Spans can be filtered out by duration by changing the value in the slider or the input field. [Zooming into the chart](#sampled-span-chart) will also automatically update the values in the range filter.
 
