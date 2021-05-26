@@ -41,10 +41,11 @@ Below the filters bar, a [heatmap chart] showing durations of all sampled spans 
 Span List
 ----------
 
-A [span list] component lies underneath the tables, and shows a paginated list of spans that match the given criteria, as well as any selection on the heatmap. The component differs from the basic span list in two ways:
+A [span list] component lies underneath the tables, and shows a paginated list of spans that match the given criteria, as well as any selection on the heatmap. The component differs from the basic span list in three ways:
 
 * It does not update with live time ticking. Instead, there is a refresh button that will bring the list (and chart) up to speed with any time that has passed
 * There is an error toggle, which, when live, shows only spans with errors. Checking it will update both the list and the chart
+* It has an additional column indicating the service name
 
 Clicking on any of the span entries will open the [trace details] view.
 
