@@ -330,6 +330,37 @@ body.has-notification {
       line-height: remSize(18);
     }
   }
+
+  blockquote {
+    padding-left: 16px;
+    border-left: 4px solid $color-dark-3;
+    color: $color-dark-3;
+  }
+
+  table {
+    margin: 16px 0;
+
+    td, th {
+      padding: 8px 12px;
+      color: $color-dark-1;
+      border: 1px solid $color-light-0;
+    }
+
+    td {
+      background-color: $color-light-3;
+    }
+
+    tr:nth-child(2n) td {
+      background-color: $color-light-4;
+    }
+
+    th {
+      font-size: 13px;
+      font-weight: 600;
+      background-color: $color-light-2;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .docs-mobile-navigation-container {
@@ -364,6 +395,10 @@ body.has-notification {
 .kamon-lightbox {
   font-size: 12px;
   line-height: 1.4;
+
+  .img-fluid {
+    max-height: 560px;
+  }
 
   a {
     font-weight: 400;

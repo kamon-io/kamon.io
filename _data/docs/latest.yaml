@@ -137,6 +137,99 @@ documentation:
           - name: Jaeger
             path: /reporters/jaeger/
 
+  - name: Kamon APM
+    path: /apm/
+    icon: /assets/img/icons/docs-kamon-apm.svg
+    topics:
+      - name: Using Kamon APM
+        pages:
+        - name: Overview
+          pages:
+            - name: Getting Started
+              path: /apm/general/overview/
+            - name: Environments
+              path: /apm/general/environments/
+            - name: Time Picker
+              path: /apm/general/time-picker/
+            - name: Charts
+              path: /apm/general/charts/
+            - name: Aggregation Summary Charts
+              path: /apm/general/aggregation-summary-chart/
+            - name: Search
+              path: /apm/general/search/
+            - name: Getting Help
+              path: /apm/general/help/
+        - name: Services
+          pages:
+            - name: Service Map
+              path: /apm/services/service-map/
+            - name: Service List
+              path: /apm/services/service-list/
+            - name: Service Details
+              path: /apm/services/service-details/
+            - name: JVM Dashboards
+              path: /apm/services/jvm/
+            - name: JDBC Dashboards
+              path: /apm/services/jdbc/
+            - name: Akka Dashboards
+              path: /apm/services/akka/
+        - name: Traces
+          pages:
+            - name: Traces and Spans
+              path: /apm/traces/overview/
+            - name: Span List
+              path: /apm/traces/trace-list/
+            - name: Trace Search
+              path: /apm/traces/trace-search/
+            - name: Trace Details
+              path: /apm/traces/trace-details/
+        - name: Dashboards
+          pages:
+            - name: Dashboards Overview
+              path: /apm/dashboards/introduction/
+            - name: Dashboard List
+              path: /apm/dashboards/dashboard-list/
+            - name: Managing Dashboards
+              path: /apm/dashboards/dashboard/
+            - name: Adding Charts
+              path: /apm/dashboards/create-edit-dashboard/
+        - name: Alerts
+          pages:
+            - name: Alerts Overview
+              path: /apm/alerts/overview/
+            - name: Alert Drawer
+              path: /apm/alerts/alert-drawer/
+            - name: Alert Lists
+              path: /apm/alerts/alert-list/
+            - name: Incidents
+              path: /apm/alerts/incidents/
+            - name: Channels
+              path: /apm/alerts/channels/
+            - name: Setting up Alerts
+              path: /apm/alerts/create-edit/
+        - name: Hosts
+          pages:
+            - name: Host Monitor
+              path: /apm/hosts/host-monitor/
+            - name: Host List
+              path: /apm/hosts/host-list/
+            - name: Host Details
+              path: /apm/hosts/host-details/
+        - name: Investigating Issues
+          pages:
+            - name: Analyze
+              path: /apm/deep-dive/analyze/
+        - name: Settings and Administration
+          pages:
+            - name: Profile
+              path: /apm/administration/profile/
+            - name: Organization Management
+              path: /apm/administration/organization/
+            - name: Billing
+              path: /apm/administration/billing/
+            - name: Span Ingestion
+              path: /apm/administration/span-management/
+
 metrics:
   akka.system.active-actors:
     description: Tracks the number of active Actors in an Actor System.

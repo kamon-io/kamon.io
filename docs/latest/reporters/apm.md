@@ -13,7 +13,7 @@ Kamon APM Reporter
 [Kamon APM][apm] is a hosted monitoring and debugging platform for microservices, designed from the ground up with one
 goal in mind: accept all the metrics and tracing data exactly as Kamon records it, no averages, no summaries,
 no downsampling, no data quality loss. Having the entire data that Kamon captures means proper aggregation of data
-across instances and proper percentiles calculation, which translates in better, accurate and relevant alerts and insight
+across instances and proper percentiles calculation, which translates into better, accurate and relevant alerts and insight
 on your application's behavior.
 
 

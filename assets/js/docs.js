@@ -43,6 +43,26 @@ function initCodeExampleCopy() {
   })
 }
 
+function initVideoLightbox() {
+  const $videos = $('[data-video-src]')
+  $videos.each(function() {
+    const $video = $(this)
+    const src = $video.data('video-src')
+    const caption = $video.data('caption')
+    const videoHtml = `<div class="w-100 my-4 text-center kamon-lightbox">
+    <a href="${src}" data-caption="${caption}" data-fancybox="lightbox">
+      <video loop muted autoplay width="100%" class="my-2">
+        <source src="${src}" type="video/mp4">
+      </video>
+      <br>
+      ${caption}
+    </a>
+  </div>`
+    $video.replaceWith(videoHtml)
+  })
+}
+
 $(document).ready(function() {
   initCodeExampleCopy()
+  initVideoLightbox()
 })
