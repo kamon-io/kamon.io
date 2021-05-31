@@ -43,7 +43,7 @@ happening under the hood and how to modify the instrumentation behavior.
 
 ### Controlling Propagation
 
-The instrumentation will automatically read/write Kamon's Context from/tp HTTP headers in all HTTP requests and set that
+The instrumentation will automatically read/write Kamon's Context from/to HTTP headers in all HTTP requests and set that
 Context as current while requests are being processed, enabling higher level features like distributed tracing. If you
 want to change the propagation channel or completely disable Context propagation you can use the `propagation` settings
 below:
