@@ -1,15 +1,9 @@
 .price-container {
   height: 70px;
-  padding-top: 20px;
-
-  &--discounted {
-    height: 110px;
-    padding-top: 0;
-  }
 }
 
 .billed-monthly {
-  // transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 #teams-plan-service-number {
@@ -51,26 +45,5 @@
 
   #teams-plan-service-down-button {
     background: center no-repeat url(/assets/img/icons/directional/angle-down.svg);
-  }
-}
-
-.pricing-inactive-price {
-  font-size: 33px;
-  line-height: 1.2;
-  font-weight: 600;
-  text-decoration: line-through;
-  color: $color-light-0;
-}
-
-.pricing-discounted-price {
-  color: $color-shamrock-main;
-}
-
-.pricing-special-offer {
-  margin-top: 4px;
-
-  &__time {
-    color: $color-shamrock-main;
-    font-weight: 700;
   }
 }
