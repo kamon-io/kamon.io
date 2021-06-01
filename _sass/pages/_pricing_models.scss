@@ -1,9 +1,15 @@
 .price-container {
   height: 70px;
+  padding-top: 20px;
+
+  &--discounted {
+    height: 110px;
+    padding-top: 0;
+  }
 }
 
 .billed-monthly {
-  transform: translateY(-10px);
+  // transform: translateY(-10px);
 }
 
 #teams-plan-service-number {
