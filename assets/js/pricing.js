@@ -8,7 +8,7 @@ function getTimeUntil(when) {
   }
 
   if (when.diff(now.startOf("day"), "days") >= 1) {
-    return "in " + when.diff(now, "days") + " days"
+    return when.diff(now, "days") + " days"
   }
 
   return now.to(when)
