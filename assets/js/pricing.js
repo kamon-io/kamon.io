@@ -1,27 +1,25 @@
-function initAnnualBillingToggle() {
-  var annualBillingToggle = document.getElementById("billed-annually-switch")
-  if (annualBillingToggle == null) {
+// Moment when the special offer becomes null and void
+var SPECIAL_OFFER_END = moment('2021-07-01').startOf("day")
+
+function getTimeUntil(when) {
+  var now = moment()
+  if (now.isAfter(when)) {
     return
   }
-  var billedMonthlyLabel = document.getElementById("billed-monthly-label")
-  var billedAnnualLabel = document.getElementById("billed-annually-label")
-  var growPlanPriceValue = document.getElementById("grow-plan-monthly-price")
-  var createBillingTypeToggleHandler = function(manualToggleValue) {
-    return function() {
-      if (manualToggleValue != null) {
-        if (manualToggleValue == annualBillingToggle.checked) {
-          return
-        }
-        annualBillingToggle.checked = manualToggleValue
-      }
-      growPlanPriceValue.textContent = annualBillingToggle.checked ? 24 : 30
-    }
+
+  if (when.diff(now.startOf("day"), "days") >= 1) {
+    return "in " + when.diff(now, "days") + " days"
   }
-  annualBillingToggle.addEventListener("click", createBillingTypeToggleHandler())
-  billedMonthlyLabel.addEventListener("click", createBillingTypeToggleHandler(false))
-  billedAnnualLabel.addEventListener("click", createBillingTypeToggleHandler(true))
+
+  return now.to(when)
+}
+
+function setDiscountExpirationTime() {
+  var $discountEl = $('.js-discount-expires-in')
+  var untilString = getTimeUntil(SPECIAL_OFFER_END)
+  $discountEl.text(untilString)
 }
 
 $(document).ready(function() {
-  initAnnualBillingToggle()
+  setDiscountExpirationTime()
 })

@@ -35,9 +35,9 @@ custom_css:
       <div class="price-container">
         <h1 class="mb-0 display-4">Free</h1>
       </div>
-      <div class="mb-0 text-light text-explainer d-flex align-items-end" style="height: 47px;">Up to 5 Services</div>
+      <div class="mb-2 text-light text-explainer d-flex align-items-end" style="height: 47px;">Up to 5 Services</div>
 
-      <ul class="icon-list text-left px-4 mt-5" style="height: 300px;">
+      <ul class="icon-list text-left px-4 mt-5 pt-5" style="height: 340px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
           Explore the last <b>6 Hours</b> of data
         </li>
@@ -65,13 +65,17 @@ custom_css:
         For small teams getting serious<br/>
         about production monitoring
       </p>
-      <div class="price-container">
-        <h1 class="mb-0 display-4">&euro;90</h1>
+      <div class="price-container price-container--discounted">
+        <h1 class="mb-0 pricing-inactive-price">&euro;90</h1>
+        <h1 class="my-0 display-4 pricing-discounted-price">&euro;72</h1>
       </div>
       <div class="mb-0 billed-monthly text-dark-1">Per Month</div>
       <div class="mb-0 text-light text-explainer">Up to 10 Services</div>
+      <div class="mb-0 text-explainer pricing-special-offer">
+        Special 1 year offer expires <span class="pricing-special-offer__time js-discount-expires-in">in ... days</span>
+      </div>
 
-      <ul class="icon-list text-left px-4 mt-5" style="height: 300px;">
+      <ul class="icon-list text-left px-4 mt-4 mb-0" style="height: 312px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
           Explore the last <b>7 days</b> of data
         </li>
@@ -115,10 +119,10 @@ custom_css:
           <button class="mt-1" id="teams-plan-service-up-button"></button>
           <button id="teams-plan-service-down-button"></button>
         </span>
-        <label class="mb-0 ml-1" for="teams-plan-service-number">Services</label>
+        <label class="mb-2 ml-1" for="teams-plan-service-number">Services</label>
       </div>
 
-      <ul class="icon-list text-left px-4 mt-5" style="width: 291px; height: 300px;">
+      <ul class="icon-list text-left px-4 mt-5 pt-5" style="width: 291px; height: 340px;">
         <li style="background-image: url(/assets/img/pages/pricing/icon-check-circle.svg);">
           Explore the last <b>14 days</b> of data
         </li>
@@ -345,3 +349,5 @@ custom_css:
     </div>
   </section>
 </main>
+
+<script src="/assets/js/pricing.js" defer></script>
