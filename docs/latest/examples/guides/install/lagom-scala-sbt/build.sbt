@@ -21,15 +21,15 @@ lazy val `hello-api` = (project in file("hello-api"))
 lazy val `hello-impl` = (project in file("hello-impl"))
   .enablePlugins(LagomScala, JavaAgent)
   .settings(
-    javaAgents += "io.kamon" % "kanela-agent" % "1.0.7",
+    javaAgents += "io.kamon" % "kanela-agent" % "{{versions.latest.kanela}}",
     // tag:enable-javaagent:end
     libraryDependencies ++= Seq(
       lagomScaladslPersistenceCassandra,
       lagomScaladslKafkaBroker,
       lagomScaladslTestKit,
       // tag:kamon-dependencies:start
-      "io.kamon" %% "kamon-bundle" % "2.1.12",
-      "io.kamon" %% "kamon-apm-reporter" % "2.1.12",
+      "io.kamon" %% "kamon-bundle" % "{{versions.latest.bundle}}",
+      "io.kamon" %% "kamon-apm-reporter" % "{{versions.latest.bundle}}",
       // tag:kamon-dependencies:end
       macwire,
       scalaTest
