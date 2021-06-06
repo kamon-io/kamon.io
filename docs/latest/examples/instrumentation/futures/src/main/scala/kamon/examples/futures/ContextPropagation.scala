@@ -1,8 +1,10 @@
 package kamon.akka.examples.scala
 
 import kamon.Kamon
+import kamon.Kamon.{span}
 import kamon.context.Context
 import scala.concurrent.{ExecutionContext, Future}
+
 
 object ContextPropagation extends App {
   implicit val ec = ExecutionContext.Implicits.global
@@ -26,7 +28,35 @@ object ContextPropagation extends App {
   }
   // tag:future-body:end
 
+  case class Result()
 
+  // tag:wrapping-futures:start
+  /**
+   * The Span counts the Future body's execution time
+   * and any time spent waiting for the Future to start
+   * running
+   */
+  def wrappingTheFuture(id: Long): Future[Result] = {
+    span("getCachedRecord") {
+      Future {
+        Result()
+      }
+    }
+  }
+
+  /**
+   * The Span only counts the Future body's execution time,
+   * ignoring any time spent waiting for the Future to start
+   * running
+   */
+  def wrappingTheBody(id: Long): Future[Result] = {
+    Future {
+      span("getCachedRecord") {
+        Result()
+      }
+    }
+  }
+  // tag:wrapping-futures:end
 
   // tag:future-spans:start
   import kamon.instrumentation.futures.scala.ScalaFutureInstrumentation.{traceBody, traceFunc}
