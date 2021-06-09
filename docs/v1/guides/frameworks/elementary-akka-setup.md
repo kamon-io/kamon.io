@@ -1,6 +1,6 @@
 ---
 title: 'Elementary Akka Setup Guide | Kamon Documentation'
-description: 'Learn how to setup Kamon to collect metrics and distributed traces from an Akka application'
+description: 'Learn how to set up Kamon to collect metrics and distributed traces from an Akka application'
 layout: docs
 redirect_from:
   - /documentation/1.x/recipes/monitoring-akka-quickstart/
@@ -35,7 +35,7 @@ This example is using Akka 2.5, we will need to add `kamon-akka-2.5` to our buil
 
 ## Setting up the Agent
 
-There are several ways to setup the AspectJ Weaver, we even [wrote a guide][3] specifically dedicated to it. Here we
+There are several ways to set up the AspectJ Weaver, we even [wrote a guide][3] specifically dedicated to it. Here we
 will be [running from SBT][4] and just adding the [`sbt-aspectj-runner`][5] plugin to the build is enough to get it
 working.
 

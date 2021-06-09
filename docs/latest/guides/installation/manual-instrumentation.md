@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started with Kamon | Kamon Documentation'
-description: 'Learn how to setup Kamon from scratch'
+description: 'Learn how to set up Kamon from scratch'
 layout: docs
 ---
 

@@ -12,7 +12,7 @@ possible.
 
 - [**Getting Started**][getting-started] is the beginning of it all. Here you will learn how to add the Kamon
   libraries and get a basic setup ready for any application you want to instrument with Kamon.
-- [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you setup the instrumentation agent
+- [**Setting up the Agent**][setting-up-the-agent] has tips and tricks that can help you set up the instrumentation agent
   with your build tool and IDE.
 
 

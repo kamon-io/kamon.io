@@ -59,7 +59,7 @@ spray.can {
 
 Their meanings are very clearly described in the comments, but do people really understand what they mean? quite often
 the answer is no, so we decided to throw a bit of light over these configuration settings and uncover what is going on
-under the hood, hoping to develop a decent understanding of what happens when you send a HTTP request with spray-client
+under the hood, hoping to develop a decent understanding of what happens when you send an HTTP request with spray-client
 using the Request Level API as well as the Host Level API.
 
 Please note that this post is not intended to be a comprehensive guide on how to configure spray-client timeouts but
@@ -147,7 +147,7 @@ there.
 Following the flow in the diagram:
 
 1. Your application code uses a `sendReceive` to send a HTTP request. By default, the `sendReceive` will use the
-HttpManager as the transport for the HTTP request (that's what you get when you evaluate `IO(Http)` for a actor system).
+HttpManager as the transport for the HTTP request (that's what you get when you evaluate `IO(Http)` for an actor system).
 The HttpManager is the root of all the Spray-related actors, both on the server and client side, but for simplicity we
 only included the ones related to spray-client in the diagram.
 
@@ -192,12 +192,12 @@ get to it. After that, everything is the same as what we described above. The gi
 `Http.HostConnectorSetup` message to the HttpManager and it will reply with a `Http.HostConnectorInfo` containing the
 ActorRef of the HttpHostConnector, then you can send the requests directly to it.
 
-If you decide to setup and use a HttpHostConnector directly, keep in mind that it has an idle timout after which it will
+If you decide to set up and use a HttpHostConnector directly, keep in mind that it has an idle timout after which it will
 be stopped and the ActorRef that you have for the HttpHostConnector will no longer be valid and you either set the idle
 timeout to infinite or watch the ActorRef and handle the situation gracefully. We tend to recommend people to avoid the
 Host Level API since using it correctly adds a bit of complexity that is already solved by the HttpManager and in most
 cases saving one actor message there is not going to be a significant improvement compared to all the work that has to
-be done down the road. Of course, each case has it's needs and only testing your app yo will be able to know.
+be done down the road. Of course, each case has it's needs and only testing your app you will be able to know.
 
 
 
@@ -219,7 +219,7 @@ The implicit timeout provided in our example as `requestTimeout` satisfies the `
 just used to satisfy the timeout required by the [ask] made to the transport actor (the HttpManager by default) and give
 you back a `Future[HttpResponse]` that will be fulfilled when the response arrives. If the future timeout is reached and
 no response was received, the future will be completed with a AskTimeoutException **but the request processing will
-continue down the road, until a result (succesful or not) can be returned**.
+continue down the road, until a result (successful or not) can be returned**.
 
 
 
@@ -281,7 +281,7 @@ creating the actors won't be a problem, but establishing the TCP connection migh
 conditions.
 
 As a final advice, always do this sum with your settings and make sure that they make sense to your app. If your app can
-tolerate a maximum of 5 seconds delay for a HTTP response, then adjust all the relevant settings to make sure that Spray
+tolerate a maximum of 5 seconds delay for an HTTP response, then adjust all the relevant settings to make sure that Spray
 won't keep working on requests after ~5 seconds. Also, we encourage you to simulate the various conditions mentioned here
 (more requests than connections, slow connection times, slow server, etc.) in a development environment and tune
 accordingly to the results your see, many CPU cycles and potential crashes might be saved by doing so!

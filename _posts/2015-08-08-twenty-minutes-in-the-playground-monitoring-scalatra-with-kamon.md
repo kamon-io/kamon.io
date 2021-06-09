@@ -8,7 +8,7 @@ redirect_from:
   - /teamblog/2015/08/08/twenty-minutes-in-the-playground-monitoring-scalatra-with-kamon/
 ---
 
-In this post we’ll show how to take a simple Scalatra project and setup up basic monitoring with Kamon. This is a really
+In this post we’ll show how to take a simple Scalatra project and set up basic monitoring with Kamon. This is a really
 simplified example and also we will skip some issues related to the installation, because there are awesome tutorials
 about that. Having said that, let's get to it!
 
