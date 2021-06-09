@@ -1,6 +1,6 @@
 ---
 title: 'Setting up the Instrumentation Agent'
-description: 'Learn how to setup the instrumentation agent for Kamon'
+description: 'Learn how to set up the instrumentation agent for Kamon'
 layout: docs
 tags: core, docs
 redirect_from:
@@ -12,7 +12,7 @@ redirect_from:
 Instrumentation Agent Setup
 ===========================
 
-In most situations, you won't need to do anything special to setup the Kanela agent other than following the instructions 
+In most situations, you won't need to do anything special to set up the Kanela agent other than following the instructions 
 in the [Installation Guides][installation-guides]. In a guided installation either the call to `Kamon.init()` or the SBT 
 plugins will take care of attaching the Kanela agent at runtime. 
 
