@@ -5,42 +5,19 @@ const GAEvents = {
   onboarding_signup: "onboarding_signup",
 }
 
-function getPageViewForGAEvent(eventCategory, eventAction) {
-  switch (eventCategory) {
-    case GAEvents.onboarding_start:
-      return ({ title: "Onboarding Started", path: "onboarding/start/" })
-    case GAEvents.onboarding_choose_integration:
-      return { title: `Choose Integration ${eventAction}`, path: `onboarding/choose-integration/${eventAction.toLowerCase()}/`}
-    case GAEvents.onboarding_choose_project_type:
-      return { title: `Choose Project Type ${eventAction}`, path: `onboarding/choose-project-type/${eventAction.toLowerCase()}/`}
-    case GAEvents.onboarding_signup:
-      return { title: "Onboarding Signed up with APM", path: "onboarding/signed-up/" }
-  }
-}
-
 function getBaseAPMUrl() {
   return window.location.hostname === "0.0.0.0" || window.location.hostname === "localhost"
     ? "http://localhost:9999"
     : "https://apm.kamon.io"
 }
 
-// NOTE: we're deliberately submitting both custom events and manual page view events.
-// Why? Because you cannot visualise a sequence of events in GA, but you can do so with page views.
-function sendGoogleAnalyticsEvent(eventCategory, eventAction) {
+function sendGoogleAnalyticsEvent(eventName, eventLabel) {
   const dataLayer = window.dataLayer
   if (dataLayer != null) {
     dataLayer.push({
-      "event": eventCategory,
-      "customEventAction": eventAction ? eventAction.toLowerCase() : undefined
+      "event": eventName,
+      "eventLabel": eventLabel
     })
-    const pageView = getPageViewForGAEvent(eventCategory, eventAction)
-    if (pageView != null) {
-      dataLayer.push({
-        "event": "pageView",
-        "customPageViewTitle": pageView.title,
-        "customPageViewPath": pageView.path,
-      })
-    }
   }
 }
 
@@ -88,7 +65,7 @@ function showOnboardingModal(externalUrl) {
 
 function bootOnboarding() {
   $(".onboarding-start-button").on("click", function() {
-    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "cta_click")
+    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
     const url = $(this).data("url")
     showOnboardingModal(url)
   })
@@ -116,7 +93,7 @@ function bootOnboarding() {
   })
 
   if (window.location.hash === "#get-started") {
-    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "get_started_url")
+    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via URL")
     showOnboardingModal()
   }
 }
