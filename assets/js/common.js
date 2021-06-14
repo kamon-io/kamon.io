@@ -47,19 +47,38 @@ function initScrollMainHeader() {
   }
 }
 
-function showOnboardingModal(externalUrl) {
-  const width = Math.min(window.innerWidth, 1200)
+/**
+ * 
+ * @param {string} externalUrl External path instead of /onboarding (no leading slash)
+ * @param {boolean} isSmall Should a smaller version of the modal with no extra graphics be shown
+ */
+function showOnboardingModal(externalUrl, isSmall) {
+  const width = Math.min(window.innerWidth, isSmall ? 600 : 1200)
   const height = Math.max(window.innerHeight, 800)
   const baseAPMUrl = getBaseAPMUrl()
   const solution = $(this).data("solution")
-  const extension = externalUrl != null
-    ? externalUrl
-    : solution != null
-      ? `onboarding?external=yes&solution=${solution}`
-      : `onboarding?external=yes`
-  const url = `${baseAPMUrl}/${extension}`
+  const extension = externalUrl != null ? externalUrl : "onboarding"
+  const queryParams = new URLSearchParams()
+  queryParams.set("external", "yes")
+  
+  if (solution != null) {
+    queryParams.set("solution", solution)
+  }
+
+  if (isSmall) {
+    queryParams.set("small", "true")
+  }
+
+  const url = `${baseAPMUrl}/${extension}?${queryParams.toString()}`
   $("#onboarding-iframe").attr("width", width).attr("height", height)
   $("#onboarding-iframe").attr("src", url)
+  
+  if (isSmall) {
+    $(".onboarding-modal-dialog").addClass("small-dialog")
+  } else {
+    $(".onboarding-modal-dialog").removeClass("small-dialog")
+  }
+
   $("#onboarding-modal").modal("show")
 }
 
@@ -67,7 +86,8 @@ function bootOnboarding() {
   $(".onboarding-start-button").on("click", function() {
     sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
     const url = $(this).data("url")
-    showOnboardingModal(url)
+    const isSmall = $(this).data("small") != null
+    showOnboardingModal(url, isSmall)
   })
 
   window.addEventListener("message", function (tag) {
