@@ -41,6 +41,8 @@ Follow these guides if you are upgrading from early Kamon versions:
   - [Upgrading from Kamon 0.6 to 1.0](./migration/from-0.6-to-1.0/).
   - [Upgrading from Kamon 1.x to 2.0](./migration/from-1.x-to-2.0/).
 
+The documentation for Kamon 1.x is still alive [here](/docs/v1/core/), in case you need it.
+
 
 [akka-http-guide]: ./installation/akka-http/
 [play-guide]: ./installation/play-framework/

@@ -1,6 +1,7 @@
 ---
 title: 'Sending Metrics to StatsD with Kamon | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-statsd/overview/
   - /documentation/1.x/reporters/statsd/

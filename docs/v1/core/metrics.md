@@ -1,6 +1,7 @@
 ---
 title: 'Using the Metrics API | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-core/metrics/core-concepts/
   - /documentation/1.x/core/basics/metrics/

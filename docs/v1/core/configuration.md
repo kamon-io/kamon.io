@@ -1,6 +1,7 @@
 ---
 title: 'Configuring Kamon | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-core/configuration/
 ---

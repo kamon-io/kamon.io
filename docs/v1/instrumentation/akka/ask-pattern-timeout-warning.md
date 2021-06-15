@@ -1,6 +1,7 @@
 ---
 title: 'Akka Ask Pattern Timeout Warning | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-akka/ask-pattern-timeout-warning/
   - /documentation/1.x/instrumentation/akka/ask-pattern-timeout-warning/

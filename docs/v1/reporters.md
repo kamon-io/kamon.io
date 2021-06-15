@@ -1,5 +1,6 @@
 ---
 layout: docs
+noindex: true
 title: 'Kamon Reporters | Kamon Documentation'
 ---
 

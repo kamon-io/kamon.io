@@ -1,6 +1,7 @@
 ---
 title: 'Using the Tracing API | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-core/tracing/core-concepts/
   - /documentation/0.6.x/kamon-core/tracing/trace-metrics/

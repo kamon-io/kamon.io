@@ -1,6 +1,7 @@
 ---
 title: 'Context Propagation with Futures | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/instrumentation/futures/
   - /documentation/0.6.x/kamon-scala/overview/

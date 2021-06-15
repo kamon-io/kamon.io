@@ -1,6 +1,7 @@
 ---
 title: 'Akka Metrics | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-akka/actor-router-and-dispatcher-metrics/
   - /documentation/1.x/instrumentation/akka/actor-system-metrics/

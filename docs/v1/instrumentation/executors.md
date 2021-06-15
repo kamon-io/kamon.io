@@ -1,6 +1,7 @@
 ---
 title: 'Executor Service Metrics | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/instrumentation/executor-service/
 ---

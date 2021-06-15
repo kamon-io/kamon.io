@@ -2,6 +2,7 @@
 title: 'Akka Instrumentation | Kamon Documentation'
 description: 'Automatically extract metrics, distributed traces and perform context propagation on Akka applications'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/instrumentation/akka/
   - /documentation/0.6.x/kamon-akka/overview/

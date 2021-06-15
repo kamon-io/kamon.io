@@ -2,6 +2,7 @@
 title: 'Setting up the Instrumentation Agent'
 description: 'Learn how to set up the instrumentation agent for Kamon'
 layout: docs
+noindex: true
 tags: core, docs
 redirect_from:
   - /documentation/1.x/recipes/adding-the-aspectj-weaver/

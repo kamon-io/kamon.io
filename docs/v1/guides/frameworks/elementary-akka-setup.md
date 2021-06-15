@@ -2,6 +2,7 @@
 title: 'Elementary Akka Setup Guide | Kamon Documentation'
 description: 'Learn how to set up Kamon to collect metrics and distributed traces from an Akka application'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/recipes/monitoring-akka-quickstart/
 ---

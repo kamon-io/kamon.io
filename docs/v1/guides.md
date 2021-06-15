@@ -1,5 +1,6 @@
 ---
 layout: docs
+noindex: true
 title: 'Kamon Guides | Kamon Documentation'
 description: 'Learn how to install Kamon in your services and start getting telemetry data out of it'
 ---

@@ -1,6 +1,7 @@
 ---
 title: 'Migrating from 0.6 to 1.0 | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/recipes/migrating-from-kamon-0.6/
 ---

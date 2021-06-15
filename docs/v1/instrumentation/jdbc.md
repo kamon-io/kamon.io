@@ -1,6 +1,7 @@
 ---
 title: 'JDBC Operations Tracing | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-jdbc/overview/
 ---

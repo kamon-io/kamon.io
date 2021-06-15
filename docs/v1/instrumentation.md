@@ -1,5 +1,6 @@
 ---
 layout: docs
+noindex: true
 title: 'Instrumentation Modules | Kamon Documentation'
 ---
 

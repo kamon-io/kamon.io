@@ -1,6 +1,7 @@
 ---
 title: 'Sending Metrics to InfluxDB with Kamon | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/reporters/influxdb/
   - /documentation/0.6.x/kamon-influxdb/overview/

@@ -1,6 +1,7 @@
 ---
 title: 'Sending Metrics and Spans to Kamon APM | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/reporters/kamino/
 ---

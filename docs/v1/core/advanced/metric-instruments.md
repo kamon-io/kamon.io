@@ -1,6 +1,7 @@
 ---
 title: 'Advanced: Metric Instruments Explained | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/0.6.x/kamon-core/metrics/instruments/
   - /documentation/1.x/core/advanced/metric-instruments/

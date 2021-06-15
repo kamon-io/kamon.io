@@ -1,5 +1,6 @@
 ---
 layout: docs
+noindex: true
 title: 'Kamon Core Overview | Kamon Documentation'
 description: 'Learn about the fundamental building blocks of Kamon'
 redirect_from:

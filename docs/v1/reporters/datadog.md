@@ -1,6 +1,7 @@
 ---
 title: 'Sending Metrics to Datadog with Kamon | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/reporters/datadog/
   - /documentation/0.6.x/kamon-datadog/overview/

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: 'Logging with Context | Kamon Documentation'
+noindex: true
 redirect_from:
   - /integrations/logback/mdc-in-an-asyncronous-environment/
 ---

@@ -1,6 +1,7 @@
 ---
 title: 'Context Propagation | Kamon Documentation'
 layout: docs
+noindex: true
 redirect_from:
   - /documentation/1.x/core/basics/context/
   - /documentation/0.6.x/kamon-core/tracing/trace-context-manipulation/
