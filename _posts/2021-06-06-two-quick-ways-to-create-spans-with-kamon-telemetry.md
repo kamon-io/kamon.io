@@ -6,7 +6,8 @@ author: the Kamon Team
 categories: blog
 tags: featured
 permalink: /blog/two-quick-ways-to-create-spans-with-kamon-telemetry/
-summary_image: '/assets/img/posts/creating-spans-cover.png'
+summary_image: '/assets/img/posts/creating-spans-summary.png'
+cover_image: '/assets/img/posts/creating-spans-cover.png'
 excerpt: >-
     Learn how to create Spans programmatically using Kamon Telemetry's helper functions and annotations.
 description: >-

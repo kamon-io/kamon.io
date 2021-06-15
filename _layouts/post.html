@@ -19,7 +19,7 @@ layout: default
 
     {% if page.cover_image %}
     <div class="mt-5">
-      <img class="image-100-auto" src="{{ page.cover_image }}" alt="post cover image"/>
+      <img class="w-100" src="{{ page.cover_image }}" alt="post cover image"/>
     </div>
     {% endif %}
 
@@ -32,18 +32,19 @@ layout: default
       <div class="col-12 col-lg-4 pl-lg-5">
         <div class="sticky-posts-actions">
           <div class="d-none d-lg-block text-center p-5 start-monitoring-card-small">
-            <h5 class="text-dark-1">Eliminate slow requests <br>and errors like a Pro</h5>
-            <p class="text-body-smaller mt-3">
-              Don't wait until production goes down again to set up monitoring.<br>
-              It's a 3-minute setup and <br>you can start for <b>Free</b>!
-            </p>
-            <p>
-              
+            <h5 class="text-dark-1">Searching for an APM Tool?</h5>
+            <p class="mt-3">
+              Kamon APM is <b>easy to setup</b>, <br>
+              integrates awesomely with Kamon Telemetry,
+              and correlates <b>metrics & traces</b> for you. Give it a try!
             </p>
 
-            <a class="btn btn-primary mt-3 text-white onboarding-start-button px-5 py-2" href="#">
+            <a class="btn btn-primary mt-3 text-white onboarding-start-button px-5 py-2 w-100" href="#">
               Try Kamon APM
             </a>
+            <div class="d-block text-center pt-3 text-light">
+              It's a 3-minute setup, and you <br> can monitor 5 services for <b>Free</b>
+            </div>
           </div>
           <div class="mt-5">
             <h6>Share this post</h6>

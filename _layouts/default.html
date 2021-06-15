@@ -37,8 +37,9 @@
     <meta property="twitter:description" content="{{ page.description }}">
     <meta property="twitter:site" content="@kamonteam">
 
-    {% if page.summary_image %}
-    <meta property="twitter:image" content="https://kamon.io{{ page.summary_image }}">
+    {% if page.cover_image %}
+    <meta name="robots" content="max-image-preview:large">
+    <meta property="twitter:image" content="https://kamon.io{{ page.cover_image }}">
     {% else %}
     <meta property="twitter:image" content="https://kamon.io/assets/img/og/og-kamon.png">
     {% endif %}
