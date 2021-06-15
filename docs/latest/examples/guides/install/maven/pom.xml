@@ -12,24 +12,24 @@
   <dependencies>
     <dependency>
       <groupId>io.kamon</groupId>
-      <artifactId>kamon-bundle_2.12</artifactId>
+      <artifactId>kamon-bundle_2.13</artifactId>
       <version>{{versions.latest.bundle}}</version>
     </dependency>
 
     <!-- Reporter Dependencies -->
     <dependency>
       <groupId>io.kamon</groupId>
-      <artifactId>kamon-apm-reporter_2.12</artifactId>
+      <artifactId>kamon-apm-reporter_2.13</artifactId>
       <version>{{versions.latest.apm}}</version>
     </dependency>
     <dependency>
       <groupId>io.kamon</groupId>
-      <artifactId>kamon-prometheus_2.12</artifactId>
+      <artifactId>kamon-prometheus_2.13</artifactId>
       <version>{{versions.latest.prometheus}}</version>
     </dependency>
     <dependency>
       <groupId>io.kamon</groupId>
-      <artifactId>kamon-zipkin_2.12</artifactId>
+      <artifactId>kamon-zipkin_2.13</artifactId>
       <version>{{versions.latest.zipkin}}</version>
     </dependency>
   </dependencies>

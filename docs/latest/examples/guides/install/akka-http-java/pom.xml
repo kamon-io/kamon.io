@@ -57,13 +57,13 @@
 
         <dependency>
             <groupId>io.kamon</groupId>
-            <artifactId>kamon-bundle</artifactId>
-            <version>2.1.12_2.13</version>
+            <artifactId>kamon-bundle_2.13</artifactId>
+            <version>{{versions.latest.bundle}}</version>
         </dependency>
         <dependency>
             <groupId>io.kamon</groupId>
-            <artifactId>kamon-apm-reporter</artifactId>
-            <version>2.1.12_2.13</version>
+            <artifactId>kamon-apm-reporter_2.13</artifactId>
+            <version>{{versions.latest.bundle}}</version>
         </dependency>
         // tag:kamon-dependencies:end
         <dependency>
