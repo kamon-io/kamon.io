@@ -6,7 +6,14 @@ a.nav-link {
   font-size: remSize(18);
   font-weight: $typography-weight-semi-bold;
 
+  &:focus-visible {
+    outline: none;
+    border: none;
+  }
+
   &:not(.btn) {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
     color: $color-dark-1;
   }
 
@@ -104,6 +111,7 @@ a.nav-link {
 }
 
 .dropdown-menu.show {
+  margin-top: -1px;
   border: none;
   @include rounded-elevation;
 }

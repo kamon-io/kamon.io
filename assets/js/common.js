@@ -114,6 +114,13 @@ function initNotificationBar() {
   }
 }
 
+function initHeaderDropdownOnHover() {
+  $('.dropdown').hover(function(){ 
+    $('.dropdown-toggle', this).trigger('click'); 
+  });
+  
+}
+
 function initMobileNavBackground() {
   $("#siteNavigation").on("show.bs.collapse", function () {
     $("#main-header").addClass("mobile-expanded")
@@ -223,10 +230,12 @@ function initTeamsPlanPriceCalculation() {
   servicesInput.on("change", updatePlanInfo)
 }
 
+
 $(document).ready(function() {
   initNotificationBar()
   initScrollMainHeader()
   initMobileNavBackground()
   bootOnboarding()
   initTeamsPlanPriceCalculation()
+  initHeaderDropdownOnHover()
 })

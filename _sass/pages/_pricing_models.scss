@@ -1,20 +1,74 @@
-.price-container {
-  height: 70px;
-}
-
 .featured-plan {
   position: relative;
-  border-radius: 1rem;
-  border: 3px solid $color-shamrock-main;  
+  border-radius: 0.8rem;
+  border: 3px solid $color-shamrock-main;
+  margin-top: -3px;
 
   .special-offer {
     position: absolute;
     width: 100%;
+    left: 0px;
     font-size: 1.2rem;
     color: white;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     background-color: $color-shamrock-main;
+  }
+}
+
+.pricing-plan {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+
+  .pricing-header {
+    height: 22rem;
+
+    @media (min-width: 768px) {
+      height: 25rem;
+    }
+  }
+
+  .pricing-price {
+    height: 7rem;
+
+    @media (min-width: 768px) {
+      height: 9rem;
+    }
+
+    .pricing-frequency {
+      padding-left: 0.3rem;
+      font-size: 1.7rem;
+    }
+  }
+
+  .pricing-explainer {
+    height: 7rem;
+
+    .text-explainer {
+      height: 2.3rem;
+    }
+  }
+
+  .pricing-breakdown {
+    padding-left: 1rem;
+
+    @media (min-width: 768px) {
+      height: 37rem;
+      padding-left: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      height: 28rem;
+    }
+
+
+    @media (min-width: 1200px) {
+      height: 24rem;
+    }
+  }
+
+  .pricing-cta {
+    height: 10rem;
   }
 }
 
