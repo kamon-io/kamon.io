@@ -168,6 +168,7 @@ function initTeamsPlanPriceCalculation() {
   const serviceUpButton = $("#teams-plan-service-up-button")
   const serviceDownButton = $("#teams-plan-service-down-button")
   const teamsPlanPrice = $("#teams-plan-monthly-price")
+  const teamsPlanPriceFrequency = $("#teams-plan-price-frequency")
   const teamsPlanPriceExplainer = $("#teams-plan-price-explainer")
   const teamsPlanSpans = $("#teams-plan-spans-count")
 
@@ -178,16 +179,19 @@ function initTeamsPlanPriceCalculation() {
     }
     if (newVal < 1) {
       servicesInput.val(1)
+      teamsPlanPriceFrequency.show()
     } else if (newVal > 50) {
       servicesInput.val("50+")
-      teamsPlanPrice.text("Let's talk")
+      teamsPlanPrice.text("Let's talk!")
+      teamsPlanPriceFrequency.hide()
       teamsPlanPriceExplainer.html("Reach us via <a class='text-primary' href='mailto:hello@kamon.io'>hello@kamon.io</a>")
-      teamsPlanSpans.text("10+M")
+      teamsPlanSpans.text("10M+")
     } else {
       servicesInput.val(newVal)
+      teamsPlanPriceFrequency.show()
       teamsPlanPrice.html("&euro;" + newVal * 30)
       if (teamsPlanPriceExplainer.text() !== "Per Month") {
-        teamsPlanPriceExplainer.text("Per Month")
+        teamsPlanPriceExplainer.text("")
       }
       const spansCount = newVal * 200_000
       if (spansCount < 1_000_000) {
