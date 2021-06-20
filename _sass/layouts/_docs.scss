@@ -241,8 +241,10 @@ body.has-notification {
   z-index: 1000;
   background-color: white;
   border-radius: 16px;
-  line-height: 1.6rem;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
   min-height: 80vh;
+
 
   a {
     font-weight: bold;
@@ -250,7 +252,7 @@ body.has-notification {
 
   h1, h2, h3, h4, h5, h6 {
     color: $color-dark-2;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     scroll-margin-top: -4rem;
 
     .heading-anchor {

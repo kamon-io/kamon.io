@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'io.kamon.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // tag:kamon-dependencies:start
+    // Ensure that the Scala version suffix (2.13 in this case)
+	// matches all your Scala dependencies, if you have any.
+
+    implementation "io.kamon:kamon-bundle_2.13:{{versions.latest.bundle}}"
+    implementation "io.kamon:kamon-apm-reporter_2.13:{{versions.latest.bundle}}"
+    // tag:kamon-dependencies:end
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

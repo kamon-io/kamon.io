@@ -1,11 +1,13 @@
 ---
-title: 'Play Framework Application Performance Monitoring | Kamon Documentation'
-description: 'Learn how to collect metrics and traces from Play Framework apps using Kamon'
+title: Monitoring Play Framework Applications with Kamon | Installation Guides
+description: >-
+  This guide walks you through setting up Kamon with a Play Framework application and sending your first metrics and 
+  traces to Kamon APM
 layout: docs
 ---
 
-Setting up Kamon with Play Framework
-====================================
+Monitoring Play Framework Applications with Kamon
+=================================================
 
 This guide walks you through setting up Kamon with a Play Framework application and sending your first metrics and
 traces to Kamon APM. The same steps will work if you choose any other [reporter][reporter].

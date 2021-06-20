@@ -8,6 +8,8 @@ documentation:
         pages:
           - name: Akka HTTP
             path: /guides/installation/akka-http/
+          - name: Spring Boot
+            path: /guides/installation/spring-boot/            
           - name: Play Framework
             path: /guides/installation/play-framework/
           - name: Lagom Framework

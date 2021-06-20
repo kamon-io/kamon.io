@@ -1,34 +1,29 @@
 ---
-title: Monitoring Akka HTTP Applications with Kamon | Installation Guides
+title: Monitoring Spring Boot Applications with Kamon | Installation Guides
 description: >-
-  This guide walks you through setting up Kamon with Akka HTTP applications and sending your first metrics and 
-  traces to Kamon APM
+  This guide walks you through setting up Kamon with a Spring Boot application and sending your first metrics and traces 
+  to Kamon APM
 layout: docs
 redirect_from:
 - /docs/latest/guides/frameworks/elementary-akka-setup/
 - /documentation/1.x/recipes/monitoring-akka-quickstart/
 ---
 
-Monitoring Akka HTTP Applications with Kamon 
-===================================================
+Monitoring Spring Boot Applications with Kamon
+==============================================
 
-This guide walks you through setting up Kamon with an Akka HTTP application and sending your first metrics and traces to
-Kamon APM. The same steps will work if you choose any other [reporter][reporter].
-
-Before we start, make sure you are using **Akka HTTP 10.1 or 10.2**. Earlier Akka HTTP versions are not supported.
-
-Let's get to it!
+This guide walks you through setting up Kamon with a Spring Boot application and sending your first metrics and traces
+to Kamon APM. The same steps will work if you choose any other [reporter][reporter].
 
 
 ## 1. Add the Kamon Dependencies
 
-Add the `kamon-bundle` and `kamon-apm-reporter` dependencies to your `build.sbt` file (or equivalent for other build 
+Add the `kamon-bundle` and `kamon-apm-reporter` dependencies to your `pom.xml` file (or equivalent for other build 
 tools):
 
 {% code_example %}
-{%   language scala guides/install/akka-http-scala/build.sbt tag:kamon-dependencies version:latest label:"SBT / build.sbt" %}
-{%   language markup guides/install/akka-http-java/pom.xml tag:kamon-dependencies version:latest label:"Maven / pom.xml" %}
-{%   language groovy guides/install/akka-http-java/build.gradle tag:kamon-dependencies version:latest label:"Gradle / build.gradle" %}
+{%   language markup guides/install/spring-boot/pom.xml tag:kamon-dependencies version:latest label:"Maven / pom.xml" %}
+{%   language groovy guides/install/spring-boot/build.gradle tag:kamon-dependencies version:latest label:"Gradle / build.gradle" %}
 {% endcode_example %}
 
 The Kamon Bundle dependency contains all the Kamon [automatic instrumentation][automatic-instrumentation] modules in a
@@ -41,34 +36,29 @@ your metrics and traces to Kamon APM.
 Call `Kamon.init()` as the first thing in your main method:
 
 {% code_example %}
-{%   language scala guides/install/akka-http-scala/src/main/scala/com/example/QuickstartApp.scala tag:kamon-init version:latest %}
-{%   language java guides/install/akka-http-java/src/main/java/com/example/QuickstartApp.java tag:kamon-init version:latest %}
+{%   language java guides/install/spring-boot/src/main/java/io/kamon/example/boot/SpringBootExample.java tag:kamon-init version:latest %}
 {% endcode_example %}
 
 The call to `Kamon.init()` installs the automatic instrumentation on the JVM and starts sending data to Kamon APM (and
-any other reporters you might have). It is very important that the call to `Kamon.init()` happens before creating your 
-`ActorSystem` instance, otherwise the automatic instrumentation will not be able to hook into all the Akka-related classes.
+any other reporters you might have). It is very important that the call to `Kamon.init()` happens before initializing
+the Spring Boot classes, otherwise some parts of your application might not be processed by the automatic
+instrumentation.
 
 {% alert warning %}
   <p>
-    Beware that some Scala projects apply mixins to their "main" companion object, and those mixins might cause
-    Akka-related classes to load before Kamon initializes.
-  </p>
-
-  <p>
-    Start your applications with the [-javaagent JVM option](../../how-to/start-with-the-kanela-agent/) if you can't work
-    around the mixins' initialization order.
+    You can start your applications with the [-javaagent JVM option](../../how-to/start-with-the-kanela-agent/) if you 
+    can't ensure that the call to `Kamon.init()` will be the first thing in your `main` method.
   </p>
 {% endalert %}
 
 
 ## 3. Configure the APM Reporter
 
-Add your service name and API key to the `conf/application.conf` file:
+Add your service name and API key to the `resources/application.conf` file:
 
 {% code_block hcl %}
 kamon {
-  environment.service = "Play Application"
+  environment.service = "Spring Boot App"
   apm.api-key = "Your API Key"
 }
 {% endcode_block %}
