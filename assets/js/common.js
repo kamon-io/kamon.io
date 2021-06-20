@@ -86,7 +86,7 @@ function bootOnboarding() {
   $(".onboarding-start-button").on("click", function() {
     sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
     const url = $(this).data("url")
-    const isSmall = $(this).data("small") != null
+    const isSmall = $(this).data("small") == null || $(this).data("small")
     showOnboardingModal(url, isSmall)
   })
 
