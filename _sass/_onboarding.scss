@@ -14,13 +14,23 @@
     max-width: 1200px;
     max-height: 90vh;
   }
+
+  &.small-dialog {
+    @media (min-width: $md-start) {
+      max-width: 600px;
+      height: 100%;
+      max-height: unset;
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .modal-content {
   border-radius: 8px;
   border: none;
 
-  @media (min-width: 620px) {
+  @media (min-width: $md-start) {
     max-height: 90vh;
   }
 }
@@ -30,8 +40,16 @@
   border: none;
   border-radius: 8px;
 
-  @media (min-width: 620px) {
+  @media (min-width: $md-start) {
     max-height: 90vh;
+  }
+}
+
+.small-dialog {
+  .modal-content, .onboarding-iframe {
+    @media (min-width: $md-start) {
+      max-height: 764px;
+    }
   }
 }
  
