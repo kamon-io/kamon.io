@@ -1,5 +1,6 @@
 const GAEvents = {
   onboarding_start: "onboarding_start",
+  onboarding_start_signup: "onboarding_start_signup",
   onboarding_choose_integration: "onboarding_choose_integration",
   onboarding_choose_project_type: "onboarding_choose_project_type",
   onboarding_signup: "onboarding_signup",
@@ -84,7 +85,12 @@ function showOnboardingModal(externalUrl, isSmall) {
 
 function bootOnboarding() {
   $(".onboarding-start-button").on("click", function() {
-    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
+    const isSignup = $(this).data("url") == "signup"
+    if(isSignup)
+      sendGoogleAnalyticsEvent(GAEvents.onboarding_start_signup, "Via CTA")
+    else
+      sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
+
     const url = $(this).data("url")
     const isSmall = $(this).data("small") == null || $(this).data("small")
     showOnboardingModal(url, isSmall)
