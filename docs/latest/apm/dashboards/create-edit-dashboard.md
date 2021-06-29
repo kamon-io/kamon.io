@@ -56,9 +56,9 @@ After this point, the data is all set. What remains is to determine how we will 
 | Meadian    | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
 | Mean       | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
 | Percentile | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Error %    | &#x274C;      | &#x274C;   | &#x274C; | `span.processing-time` | &#x274C; |
 
-A measure is a certain aspect, or aggregation, of a metric's value. To configure alerts, we need data points through time. This is a simple matter of [counters], but with other [metric instruments]
-Kamon APM allows you more flexibility.
+A measure is a certain aspect, or aggregation, of a metric's value. To configure alerts, we need data points through time. This is a simple matter with [counters], but with other [metric instruments] Kamon APM allows you more flexibility. One special metric, `span.processing-time`, allows the **error rate** aggregation, which is the percentage of requests that are error, in overall requests. This aggregation will appear only if this metric is used, and will require you to always group values by the `error` tag, but never filter by its values.
 
 
 Additionally, Kamon APM is not aware of the semantics of the data you are visualizing. You will need the select the correct unit to show, as one of Latency, Information, Count, or Percentage. The unit chosen will scale with the data, if applicable (e.g., B, kB, MB, or GB, depending on the scale of the data).

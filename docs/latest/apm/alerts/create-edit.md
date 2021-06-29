@@ -113,6 +113,9 @@ incident. Finally, you will need to select a unit, as Kamon APM is not always aw
 | Meadian    | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
 | Mean       | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
 | Percentile | &#x274C;      | &#x2714;   | &#x2714;           | &#x2714;   | &#x2714;       |
+| Error %    | &#x274C;      | &#x274C;   | &#x274C; | `span.processing-time` | &#x274C; |
+
+One special metric, `span.processing-time`, allows the **error rate** aggregation, which is the percentage of requests that are error, in overall requests. This aggregation will appear only if this metric is used, and will require you to always group values by the `error` tag, but never filter by its values. When setting the threshold for this, it can have a precision of up to three decimals.
 
 #### Notifications
 
