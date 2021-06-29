@@ -168,8 +168,7 @@ Hover, Selection and Zoom
 --------------------------
 
 <a id="selection"/>
-<!-- TODO: Update recording -->
-<div data-video-src="/assets/video/chart-selection.mp4" data-caption="Chart Selection and Zoom" />
+<div data-video-src="/assets/video/chart-selection-zoom.mp4" data-caption="Chart Selection and Zoom" />
 
 By default, legends and summaries will show values for the entire chart, rather than a section of it being hovered. The only component that will directly respond to hovering is the [tooltip](#chart-tooltip). However, summary and legend values can be constrained by making a selection on the chart. Selections along the x axis will also be **synchronized** between all charts that share a time axis (i.e., all but [percentile](#percentile-charts) and [histogram](#histogram-charts) charts). This means that making a selection on one chart on the time axis will highlight all charts on the page and update their legends and summaries.
 
@@ -181,6 +180,10 @@ The exceptions to this rule are as follows:
 2. Chart previews when creating [alerts] and [dashboards] cannot be selected
 3. The [alert drawer] preview chart cannot be zoomed into
 4. The [analyze] view has special behavior discussed in its own chapter
+
+{% alert warning %}
+  **NOTE:** Zooming in when not in [analyze] view or on the [trace search] page will only zoom into the time axis.
+{% endalert %}
 
 Additionally, when a selection is made, the [analyze] button will also appear. Clicking on this button will take you into the [analyze] mode with the selection already made. This will automatically apply to the trace list and suggested filters.
 
@@ -211,3 +214,4 @@ Additionally, upon hovering, each chart will show a green Analyze button. Upon c
 [range samplers]: ../../../core/metrics/#range-samplers
 [time picker]: ../time-picker/
 [fixed time mode]: ../time-picker/#fixed-time-mode
+[trace search]: ../../traces/trace-search/
