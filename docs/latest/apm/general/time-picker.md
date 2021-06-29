@@ -54,7 +54,7 @@ Chart Time Selection
 {% endlightbox %}
 
 Charts and the time picker are connected in a two-way relationship. Charts will show the period of time selected in the time picker, but the time picker can also be updated by making
-a selection on any chart. You can read more about this in the [charts] documentation.
+a selection on any chart with a time axis. You can read more about this in the [charts] documentation.
 
 
 Analyze Time Picker

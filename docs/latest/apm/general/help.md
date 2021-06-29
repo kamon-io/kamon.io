@@ -19,4 +19,4 @@ Help Menu
 
 **Read the Docs** will take you back here! Not all problems require outside help, sometimes the documentation answers the questions we have.
 
-**Schedule a Support Session** is for when you have a more complex issue and need to have a video call with somebody from the Kamon team. You will be taken to a booking application where you can schedule a call with an expert on monitoring your JVM-based applications.
+**Schedule a Support Session** is for when you have a more complex issue and need to have a video call with somebody from the Kamon team. You will be taken to a booking application where you can schedule a call with an expert on monitoring JVM-based applications.
