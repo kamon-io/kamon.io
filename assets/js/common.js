@@ -141,10 +141,14 @@ function initNotificationBar() {
 }
 
 function initHeaderDropdownOnHover() {
-  $('.dropdown').hover(function(){ 
-    $('.dropdown-toggle', this).trigger('click'); 
-  });
-  
+  $('.dropdown').hover(
+    function() { 
+      $('.dropdown-toggle', this).trigger('click'); 
+    },
+    function() { 
+      if($('.dropdown-toggle', this).attr("aria-expanded") == "true")
+        $('.dropdown-toggle', this).trigger('click'); 
+    });
 }
 
 function initMobileNavBackground() {
