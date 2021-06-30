@@ -27,6 +27,28 @@ Getting Started
 
 You can get started with Kamon APM **for free**, in just 3 minutes. You can [sign up] with your e-mail or via Google _without_ having to enter your credit card details. The free Developer plan can be used for free for any duration of time, but will not offer the full range of Kamon APM capabilities. See the list of [plans] for more details.
 
+### Onboarding
+
+{% lightbox /assets/img/apm/welcome-dialog.png %}
+Welcome Dialog
+{% endlightbox %}
+
+Once you have signed up for Kamon APM, you will immediately be greeted with the welcome carousel dialog, which will showcase the features of Kamon APM. Completing this carousel will be the first step in your onboarding, a process which will guide you through setting up Kamon APM in a way that will enable you to get as much out of it as possible.
+
+{% lightbox /assets/img/apm/onboarding-sidebar.png %}
+Onboarding Sidebar
+{% endlightbox %}
+
+You can continue the process by opening the onboarding sidebar by clicking on the onboarding step counter, located in the application sidebar. Each step will have a name and an indication of whether it is pending, completed, or locked (blocked by some previous step). A step can be expanded by clicking on it to see a description of it, and to preview a call to action to begin completing the step. For the first and last step, this will simply open a straightforward dialog. For the other steps, it will start a walkthrough, which should take you through completing the action.
+
+{% lightbox /assets/img/apm/walkthrough-step.png %}
+Walkthrough Step
+{% endlightbox %}
+
+THe walkthrough will guide you through the described activity by showing you what to do via a red, pulsating dot. Underneath it, a tooltip will explain the step in more detail. Every step can be completed by clicking on the indicating element. Alternatively, if the tooltip features an `x` button, the step is merely explanatory and can be completed by closing the tooltip. At any point, you can abort the process, instead of going through with it, by clicking on the "Abort" button in the tooltip.
+
+By the end of each walkthrough, you will have completed the step in question, and the step counter should increase to track your progress as you learn more about Kamon APM.
+
 [apm]: https://apm.kamon.io
 [OpenTelemetry]: https://opentelemetry.io/
 [analyze]: ../../deep-dive/analyze/

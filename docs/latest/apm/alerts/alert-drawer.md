@@ -13,7 +13,7 @@ The Alert Drawer
 Alert Drawer
 {% endlightbox %}
 
-The Alert Drawer is your one stop shop for information about a particular alert. It gives you a quick overview of the alert status and parameters, lists recent [incidents], shows the alert visualization, and allows you to go into [edit mode]. It can be accessed from many different points in the application, as detailed in the [alerts lists] chapter.
+The Alert Drawer is your one stop shop for information about a particular alert. It gives you a quick overview of the alert status and parameters, lists recent [incidents], shows the alert visualization, and allows you to go into [edit mode]. It can be accessed from many different points in the application, as detailed in the [alerts lists][alert-lists] chapter.
 
 The alert heading lists a quick overview of the alert - its name, the [severity] of the alert, information and the comparison between the current status and the [availability target]. If the alert is active (on fire), it will state since when is the alert in this state. If there is no active incident, it will state the number of time passed since the service became healthy. The availability target status will be shown only if an availability target is specified. It will show three things: the configured target percentage as number and arrow indicator, the current status as fullness of the bar, and the color (green if met, red if not met).
 
@@ -27,7 +27,7 @@ Below the header, a chart visualization of the alert will be present. It behaves
 
 * A threshold line will be shown, as well as a pale red threshold "danger area"
 * Any incidents will be highlighted by painting the entire background of the area a semi-transparent red
-* This chart cannot be selected on the time axis to drill down into it
+* This chart cannot be zoomed into, but selection to update the summaries and legends can be made
 
 Otherwise, it behaves like a regular line chart - you can expand the legend, [analyze it], or create [new alerts] or [dashboard charts] from it.
 
