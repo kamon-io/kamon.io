@@ -119,7 +119,7 @@ class MyApplicationLoader extends ApplicationLoader {
 
 ## Using Instrumentation in Production Mode Only
 If you want to use Kamon's instrumentation in Production Mode only, you can skip the SBT Kanela Runner Plugin and use the 
-SBT Javaagent Plugin directly. 
+`sbt-javaagent` plugin directly. 
 
 To swap the plugins, remove the SBT Kanela Runner Plugin from [Step #2](#2-add-the-sbt-kanela-runner-plugin) and add this 
 line instead:
@@ -128,7 +128,13 @@ line instead:
 addSbtPlugin("com.lightbend.sbt" % "sbt-javaagent" % "0.1.6")
 {% endcode_block scala %}
 
-The rest of the installation steps remain the same.
+Then, add the `javaAgents` option to your Play project, pointing to the Kanela agent:
+
+{% code_block scala %}
+javaAgents += "io.kamon" % "kanela-agent" % "{{ site.data.versions.latest.kanela }}"
+{% endcode_block scala %}
+
+That's it. The rest of the installation steps remain the same.
 
 
 
