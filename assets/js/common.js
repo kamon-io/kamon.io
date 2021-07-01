@@ -173,103 +173,11 @@ function debounce(func, delay = 300) {
   };
 }
 
-function initTeamsPlanPriceCalculation() {
-  const servicesInput = $("#teams-plan-service-number")
-  const serviceUpButton = $("#teams-plan-service-up-button")
-  const serviceDownButton = $("#teams-plan-service-down-button")
-  const teamsPlanPrice = $("#teams-plan-monthly-price")
-  const teamsPlanPriceFrequency = $("#teams-plan-price-frequency")
-  const teamsPlanPriceExplainer = $("#teams-plan-price-explainer")
-  const teamsPlanSpans = $("#teams-plan-spans-count")
-
-  function updatePlanInfo() {
-    let newVal = servicesInput.val()
-    if (newVal.indexOf("+") != null && newVal !== "50+") {
-      newVal = newVal.replace(/\+/g, "")
-    }
-    if (newVal < 1) {
-      servicesInput.val(1)
-      teamsPlanPriceFrequency.show()
-    } else if (newVal > 50) {
-      servicesInput.val("50+")
-      teamsPlanPrice.text("Let's talk!")
-      teamsPlanPriceFrequency.hide()
-      teamsPlanPriceExplainer.html("Reach us via <a class='text-primary' href='mailto:hello@kamon.io'>hello@kamon.io</a>")
-      teamsPlanSpans.text("10M+")
-    } else {
-      servicesInput.val(newVal)
-      teamsPlanPriceFrequency.show()
-      teamsPlanPrice.html("&euro;" + newVal * 30)
-      if (teamsPlanPriceExplainer.text() !== "Per Month") {
-        teamsPlanPriceExplainer.text("")
-      }
-      const spansCount = newVal * 200_000
-      if (spansCount < 1_000_000) {
-        teamsPlanSpans.text(spansCount / 1_000 + "K")
-      } else {
-        teamsPlanSpans.text(spansCount / 1_000_000 + "M")
-      }
-    }
-  }
-
-  function serviceCountDecrement() {
-    if (servicesInput.val() === "50+") {
-      servicesInput.val(50)
-      updatePlanInfo()
-    } else {
-      const currentCount = parseFloat(servicesInput.val())
-      if (currentCount > 1) {
-        servicesInput.val(currentCount - 1)
-        updatePlanInfo()
-      }
-    }
-  }
-
-  function serviceCountIncrement() {
-    if (servicesInput.val() !== "50+") {
-      const currentCount = parseFloat(servicesInput.val())
-      if (currentCount <= 50) {
-        servicesInput.val(currentCount + 1)
-        updatePlanInfo()
-      }
-    }
-  }
-
-  servicesInput.on("keydown", function(event) {
-    // increment/decrement on arrow up/down
-    if (event.keyCode === 38) {
-      event.preventDefault()
-      serviceCountIncrement()
-    } else if (event.keyCode === 40) {
-      event.preventDefault()
-      serviceCountDecrement()
-    } else {
-      // allow: keyboard 0-9, numpad 0-9, backspace, tab, left arrow, right arrow, delete
-      const isAllowedKey =
-        (event.keyCode >= 48 && event.keyCode <= 57)
-        || (event.keyCode >= 96 && event.keyCode <= 105)
-        || event.keyCode == 8
-        || event.keyCode == 9
-        || event.keyCode == 37
-        || event.keyCode == 39
-        || event.keyCode == 46
-      if (!isAllowedKey) {
-        event.preventDefault()
-      }
-    }
-  })
-
-  serviceDownButton.on("click", serviceCountDecrement)
-  serviceUpButton.on("click", serviceCountIncrement)
-  servicesInput.on("change", updatePlanInfo)
-}
-
 
 $(document).ready(function() {
   initNotificationBar()
   initScrollMainHeader()
   initMobileNavBackground()
   bootOnboarding()
-  initTeamsPlanPriceCalculation()
   initHeaderDropdownOnHover()
 })

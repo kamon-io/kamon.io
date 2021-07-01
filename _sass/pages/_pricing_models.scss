@@ -1,31 +1,13 @@
-.featured-plan {
-  position: relative;
-  border-radius: 0.8rem;
-  border: 3px solid $color-shamrock-main;
-  margin-top: -3px;
-
-  .special-offer {
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    font-size: 1.2rem;
-    color: white;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: $color-shamrock-main;
-  }
-}
-
 .pricing-plan {
   padding-left: 2rem !important;
   padding-right: 2rem !important;
 
   .pricing-header {
-    height: 22rem;
+    height: 24rem;
 
-    @media (min-width: 768px) {
-      height: 25rem;
-    }
+    // @media (min-width: 768px) {
+    //   height: 24rem;
+    // }
   }
 
   .pricing-price {
@@ -36,21 +18,32 @@
     }
 
     .pricing-frequency {
+      color: $color-light-0;
       padding-left: 0.3rem;
-      font-size: 1.7rem;
+      font-size: 2rem;
     }
   }
 
   .pricing-explainer {
-    height: 7rem;
+    background-color: $color-light-3;
+    border: 1px solid #E4E4EB;
+    border-radius: .75rem;
 
-    .text-explainer {
-      height: 2.3rem;
+    .pricing-plan-details {
+      li {
+        background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+        background-size: 1rem;
+      }
     }
   }
 
   .pricing-breakdown {
     padding-left: 1rem;
+
+    li {
+      background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+      background-size: 1rem;
+    }
 
     @media (min-width: 768px) {
       height: 37rem;
@@ -68,8 +61,35 @@
   }
 
   .pricing-cta {
-    height: 10rem;
+    height: 8rem;
   }
+}
+
+.featured-plan {
+  position: relative;
+  border-radius: 0.8rem;
+  border: 2px solid $color-shamrock-main;
+
+  .pricing-header {
+    margin-top: -1.6rem;
+  }
+
+  .plan-qualifier {
+    display: inline-block;
+    margin-top: -2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
+    border-radius: 1rem;
+    background-color: $color-shamrock-main;
+  }
+}
+
+.faq-question-container {
+  font-size: 1.1rem;
 }
 
 #teams-plan-service-number {
