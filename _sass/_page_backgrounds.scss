@@ -24,3 +24,16 @@ div[class^="background-top-"] {
 .background-top-gray-green {
   background-image: url("/assets/img/background/background-top-gray-green.svg");
 }
+
+
+.dark-heading-background {
+  background-image: url("/assets/img/background/dark-heading-background.svg");
+  background-size: cover;
+}
+
+.dark-heading-simple-elements-background {
+  background-image: url("/assets/img/background/dark-heading-simple-elements.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}

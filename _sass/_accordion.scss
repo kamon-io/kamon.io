@@ -1,0 +1,26 @@
+.accordion {
+  .accordion-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .accordion-content {
+    padding: 1rem 2rem 2rem 2rem;
+
+    &.text-explainer {
+      font-size: 18px;
+    }
+  }
+}
+
+.accordion-img {
+  max-height: 750px;
+  max-width: 100%;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 remSize(1) rgba(40, 41, 61, 0.04), 0 remSize(2) remSize(4) rgba(96, 97, 112, 0.16);
+
+  &.no-shadow {
+    box-shadow: none;
+  }
+}

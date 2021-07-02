@@ -1,5 +1,3 @@
-{% assign path_sections = page.url | split: '/' %}
-
 <div id="20210601" class="notification-bar fixed-top d-flex align-items-center">
   <div class="container-fluid text-center">
     <a class="text-white font-weight-bold flex-grow-1 h-100" href="/apm/pricing/">
@@ -12,10 +10,10 @@
   </div>
 </div>
 
-<nav id="main-header" class="navbar navbar-expand-lg fixed-top">
+<nav id="main-header" class="navbar navbar-expand-lg fixed-top bg-dark-background" {% if page.transparent_heading %}data-transparent="true"{% endif %}>
   <div class="container-lg">
     <a class="navbar-brand" href="/">
-      <img src="/assets/img/kamon/kamon-logo-light.svg" width="170" height="64" loading="eager" alt="Kamon">
+      <img src="/assets/img/kamon/kamon-logo-dark.svg" width="170" height="64" loading="eager" alt="Kamon">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle Navigation">
@@ -25,33 +23,33 @@
     <div class="collapse navbar-collapse" id="siteNavigation">
       <ul class="navbar-nav ml-lg-3 flex-grow-1 justify-content-center">
         <li class="navbar-item dropdown d-lg-none">
-          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <a class="nav-link text-white" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
           <ul class="navbar-nav pl-3 d-lg-none">
             <li class="navbar-item">
-              <a class="nav-link" href="/telemetry/">Kamon Telemetry</a>
+              <a class="nav-link text-white" href="/telemetry/">Kamon Telemetry</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link" href="/apm/">Kamon APM</a>
+              <a class="nav-link text-white" href="/apm/">Kamon APM</a>
             </li>
           </ul>
         </li>
         <li class="navbar-item dropdown d-lg-none">
-          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <a class="nav-link text-white" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
           <ul class="navbar-nav pl-3 d-lg-none">
             <li class="navbar-item">
-              <a class="nav-link" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
+              <a class="nav-link text-white" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link" href="/solutions/monitoring-for-play-framework/">Monitoring for Play Framework</a>
+              <a class="nav-link text-white" href="/solutions/monitoring-for-play-framework/">Monitoring for Play Framework</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
+              <a class="nav-link text-white" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
             </li>
           </ul>
         </li>        
 
         <li class="navbar-item dropdown d-none d-lg-block">
-          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
           <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="productsDropdown">
             <div class="nav-submenu-container p-3" >
               <div class="row no-gutters">
@@ -91,7 +89,7 @@
         </li>
 
         <li class="navbar-item dropdown d-none d-lg-block">
-          <a class="nav-link dropdown-toggle" href="#" id="solutionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="solutionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
           <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="solutionsDropdown">
             <div class="nav-submenu-container p-3" >
               <div class="row no-gutters">
@@ -140,24 +138,24 @@
         </li>        
 
         <li class="navbar-item">
-          <a class="nav-link" href="/docs/latest/guides/">Docs</a>
+          <a class="nav-link text-white" href="/docs/latest/guides/">Docs</a>
         </li>
         <li class="navbar-item">
-          <a class="nav-link" href="/apm/pricing/">Pricing</a>
+          <a class="nav-link text-white" href="/apm/pricing/">Pricing</a>
         </li>
         <li class="navbar-item">
-          <a class="nav-link" href="/blog/">Blog</a>
+          <a class="nav-link text-white" href="/blog/">Blog</a>
         </li>
       </ul>
 
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <a class="nav-link onboarding-start-button mr-3 text-center" href="#" data-small="false">
+          <a class="nav-link text-white onboarding-start-button mr-3 text-center" href="#" data-small="false">
             Install Telemetry
           </a>
         </li>
         <li class="navbar-item">
-          <a class="nav-link btn btn-primary onboarding-start-button" href="#" data-url="signup">
+          <a class="nav-link btn btn-primary onboarding-start-button text-white" href="#" data-url="signup">
             Try Kamon APM
           </a>
         </li>

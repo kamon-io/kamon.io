@@ -15,6 +15,11 @@ body {
     }
   }
 
+  .navbar-offset {
+    margin-top: -$navbar-height;
+    padding-top: $navbar-height;
+  }
+
 }
 
 html {
