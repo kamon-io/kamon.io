@@ -19,7 +19,7 @@ See this table for a quick overview of the default environments:
 
 | Environment | On Developer Plan     | Data Retention | Service Limit |
 |-------------|:---------------------:|-------------------|------------------|---------------|
-| Production  | &#x2714; | 14 days (Teams) <br> 14 days (Starter) <br> 6 hours (Developer) <br> | Unlimited (Teams) <br> Up to **10** (Starter) <br> Up to **5** (Developer) |
+| Production  | &#x2714; | 14 days (Teams) <br> 7 days (Starter) <br> 6 hours (Developer) <br> | Unlimited (Teams or Starter) <br> Up to **5** (Developer) |
 | Staging     | &#x274C;                  | 1 day | Unlimited     |
 | Development | &#x274C;                  | 1 day | Unlimited     |
 
@@ -45,7 +45,8 @@ You can access information about the current environment - its API key and reten
 Production Environments
 ------------------------
 
-Production environments offer higher retention rates, allowing you to investigate and debug errors and slowdowns in production even after they've happened. Each organization starts with an active production environment by default. On the Developer plan, it allows you to monitor up to 5 services and retains both metric and trace data for up to 6 hours. With the Starter plan, up to 10 services can be monitored, and the retention is 7 days. On the Teams plan, the number of services is _unlimited_, and the retention rates go up to 14 days for both metrics and traces.
+Production environments offer higher retention rates, allowing you to investigate and debug errors and slowdowns in production even after they've happened. Each organization starts with an active production environment by default. On the Developer plan, it allows you to monitor up to 5 services and retains both metric and trace data for up to 6 hours. Both the Starter and Teams plans
+offer _unlimited_ services, with the starter plan having metric and trace retention of 7 days, and the Teams plan a retention of 14 days.
 
 If these limitations are not a match for your business needs, or you have a need for multiple production environments, you can [talk to us][help] to make adjustments!
 

@@ -15,6 +15,11 @@ Organization Membership
 
 On the organization member management page, you can manage members invitations and existing organization members. You will only be able to see the current organization here, and will need to use the menu if you wish to manage another organization's members.
 
+{% alert info %}
+Multi-user organizations are a premium feature available only on one of the [paid plans].
+Organizations on the Developer plan cannot invite other users.
+{% endalert %}
+
 {% lightbox /assets/img/apm/members-page-blank.png %}
 Name Organization
 {% endlightbox %}
@@ -42,3 +47,5 @@ You can access the organization management page from the user menu in the bottom
 {% lightbox /assets/img/apm/menu-profile.png %}
 Menu
 {% endlightbox %}
+
+[paid plans]: /apm/pricing/
