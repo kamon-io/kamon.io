@@ -52,18 +52,31 @@ function initScrollMainHeader() {
  * 
  * @param {string} externalUrl External path instead of /onboarding (no leading slash)
  * @param {boolean} isSmall Should a smaller version of the modal with no extra graphics be shown
+ * @param {string} solution The name of the solution/APM for which instructions should be given
+ * @param {string} plan Which plan name to use (starter, teams, or developer), defaults to starter
  */
-function showOnboardingModal(externalUrl, isSmall) {
+function showOnboardingModal(externalUrl, isSmall, solution, plan) {
   const width = Math.min(window.innerWidth, isSmall ? 600 : 1200)
   const height = Math.max(window.innerHeight, 800)
   const baseAPMUrl = getBaseAPMUrl()
-  const solution = $(this).data("solution")
   const extension = externalUrl != null ? externalUrl : "onboarding"
   const queryParams = new URLSearchParams()
   queryParams.set("external", "yes")
   
   if (solution != null) {
     queryParams.set("solution", solution)
+  }
+
+  if (plan != null) {
+    const planID = (() => {
+      switch (plan) {
+        case "developer": return "v2-free"
+        case "teams": return "v3-teams"
+        case "starter":
+        default: return "v3-starter"
+      } 
+    })()
+    queryParams.set("plan", planID)
   }
 
   if (isSmall) {
@@ -93,7 +106,9 @@ function bootOnboarding() {
 
     const url = $(this).data("url")
     const isSmall = $(this).data("small") == null || $(this).data("small")
-    showOnboardingModal(url, isSmall)
+    const solution = $(this).data("solution")
+    const plan = $(this).data("plan")
+    showOnboardingModal(url, isSmall, solution, plan)
   })
 
   window.addEventListener("message", function (tag) {
