@@ -1,6 +1,6 @@
 ---
 title: 'Kamon APM | Traces | Kamon Documentation'
-description: 'Use distributed tracing with Kamon APM, visualize requests across microservices, and pinpoint failures and performance bottlenecks'
+description: 'Use distributed tracing with Kamon APM, visualize requests across services, and pinpoint failures and performance bottlenecks'
 layout: docs
 ---
 
@@ -9,7 +9,7 @@ layout: docs
 Traces and Spans
 ================
 
-With Kamon APM, you can visualize, analyze, and deep-dive into traces, to discover what is happening with your microservices, analyze failures, and
+With Kamon APM, you can visualize, analyze, and deep-dive into traces, to discover what is happening with your services and APIs, analyze failures, and
 do so much more. However, before we can get into any of that, we need to explain what traces and spans are, and what Kamon APM utilizes them for.
 
 {% lightbox /assets/img/apm/trace.png %}

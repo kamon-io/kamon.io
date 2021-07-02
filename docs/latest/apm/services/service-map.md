@@ -1,6 +1,6 @@
 ---
 title: 'Kamon APM | Service Map | Kamon Documentation'
-description: 'Visualize your entire service architecture using the Service Map. Discover issues propagating across microservices and gain insights with just a few clicks'
+description: 'Visualize your entire service architecture using the Service Map. Discover issues propagating across services or APIs and gain insights with just a few clicks'
 layout: docs
 ---
 
@@ -21,7 +21,7 @@ Service Map
 The Service Map
 -------------------
 
-The Service Map represents each one of your instrumented microservices as a hexagonal node. The node can be in one of five states, depending on its liveness and [alert status][alerts]:
+The Service Map represents each one of your instrumented services or APIs as a hexagonal node. The node can be in one of five states, depending on its liveness and [alert status][alerts]:
 
 
 | State   | Status      | Description      |

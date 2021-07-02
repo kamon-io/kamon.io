@@ -168,7 +168,7 @@ Finally, the entity performance section includes the following:
 Akka Remote Messages Dashboard
 {% endlightbox %}
 
-For microservices making use of Akka remoting to communicate remotely across nodes, Kamon APM will show a pre-made dashboard with details about messages exchanged. Counts and sizes (in bytes) of incoming and outgoing messages will be shown, grouped by Akka system as well as instance. Additionally, maximum serialization times for each system and instance are shown, with the chart summary also indicating the minimum time and the summed up time spent on marshalling data overall.
+For JVM services making use of Akka remoting to communicate remotely across nodes, Kamon APM will show a pre-made dashboard with details about messages exchanged. Counts and sizes (in bytes) of incoming and outgoing messages will be shown, grouped by Akka system as well as instance. Additionally, maximum serialization times for each system and instance are shown, with the chart summary also indicating the minimum time and the summed up time spent on marshalling data overall.
 
 [service overview]: ../service-details/
 [aggregation summary chart]: ../../general/aggregation-summary-chart/

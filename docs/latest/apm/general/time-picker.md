@@ -13,7 +13,7 @@ Time Picker
 Time Picker
 {% endlightbox %}
 
-When looking at metrics and traces coming out of your monitored microservices, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - [**Live**](#live-time) and [**Fixed**](#fixed-time) - and allows for switching between them.
+When looking at metrics and traces coming out of your monitored services or APIs, one of the important questions you need to ask is _when_. With the Time Picker, you can drill down into the exact time period you are interested in, or keep an eye on data inside a live sliding window as new information arrives. The time picker is located in the header, in the top right corner of the application. It has two modes of operations - [**Live**](#live-time) and [**Fixed**](#fixed-time) - and allows for switching between them.
 
 Live Time
 ----------

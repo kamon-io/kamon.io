@@ -53,7 +53,7 @@ If these limitations are not a match for your business needs, or you have a need
 Non-Production Environments
 ----------------------------
 
-Not every environment consists of services which are in use all day, every day, and require careful monitoring at all times. When you're developing or testing new updates or microservices, it's more important that you detect problems quickly - and solve them as they happen - before rolling them out into production. For this purpose, all Kamon APM paid plans include two free non-production environments, named _Staging_ and _Development_. They are different from the production environment in two ways:
+Not every environment consists of services which are in use all day, every day, and require careful monitoring at all times. When you're developing or testing new updates or APIs, it's more important that you detect problems quickly - and solve them as they happen - before rolling them out into production. For this purpose, all Kamon APM paid plans include two free non-production environments, named _Staging_ and _Development_. They are different from the production environment in two ways:
 
 1. They will always have metric and trace retention of up to 1 day
 2. You can monitor an unlimited number of services _for free_
