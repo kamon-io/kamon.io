@@ -17,6 +17,11 @@ You can think of Notification channels as a way to notify the outside world of i
 easily set up notifications when something goes wrong an an alert triggers. Each notification channel will have an icon to indicate its type, a channel time determined by the creator, a type,
 and can be turned on and off, as well as deleted.
 
+{% alert info %}
+Custom channels are premium feature available only on the [paid plans].
+Users on the Developer plan can only receive e-mail notifications to the e-mail address they registered with.
+{% endalert %}
+
 A communication channel may be in an enabled or disabled state. If they are disabled, notifications that would usually go to this channel will instead be ignored. The state can be toggled using
 the switch in the notification channel list.
 
@@ -48,3 +53,4 @@ Slack Alert Notification
 
 
 [creating an alert]: ../create-edit/
+[paid plans]: /apm/pricing/

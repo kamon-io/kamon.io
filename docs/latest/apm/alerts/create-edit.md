@@ -87,7 +87,7 @@ Upon selecting a data source, you will be able to select any of the metrics comi
 will appear in the preview area to the left.
 
 {% alert info %}
-When on the free Developer Plan, you will only be able to use the first 5 services added as the Data Source. On the paid Starter Plan, the first 10 services can be used. You can read about [service statuses] and [plans] to learn more.
+When on the free Developer Plan, you will only be able to use the first 5 services added as the Data Source. You can read about [service statuses] and [plans] to learn more.
 {% endalert %}
 
 You will be able to select any of the metrics being sent by the service. These include span metrics, metrics provided by your active instrumentation modules, or any custom metric you are manually keeping track of inside of your application! Depending on the metric selected, you will be able to set up custom filtering (i.e., including only some data points) or grouping into separate values. The possible filters and grouping will correspond to the recorded [metric tags].
