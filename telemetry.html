@@ -4,7 +4,9 @@ title: Open Source Telemetry Tools for Java, Scala, and Kotlin
 description: >-
   Add a few lines of code and start collecting metrics, correlating requests, and tracing calls 
   to databases and external APIs from backend services running on the JVM
-load_optimize: true
+load_optimize: false
+transparent_heading: true
+footer_background: bg-lightest
 redirect_from:
 - /instrumentation/
 custom_css:
@@ -12,160 +14,270 @@ custom_css:
 - prism
 - code
 ---
-
-<div class="background-top-gray-green"></div>
-<div class="telemetry-background-left"></div>
-
-
-<main class="container">
-
-  <section class="row no-gutters flex-row-reverse">
-    <div class="col-12 col-lg-5">
-      <img class="w-100-md-down" src="/assets/img/pages/telemetry/telemetry-product-illustration-1.svg" alt="Kamon Telemetry" loading="eager"/>
+<main>
+  <div class="container-fluid dark-heading-background navbar-offset">
+    <div class="container">
+      <section class="row dark-heading-simple-elements-background pb-0">
+        <div class="col-12 text-center">
+          <img height="64" src="/assets/img/kamon/kamon-telemetry-logo-dark.svg" alt="Kamon Telemetry Logo" loading="eager"/>
+          <h1 class="display-4 text-white mt-4">
+            Generate metrics and traces
+            <br class="d-none d-lg-inline">
+            with minimal code changes
+          </h1>
+          <p class="lead text-lightest my-5">
+            Add a few lines of code and generate the metrics & traces you  
+            <br class="d-none d-md-inline">
+            need to troubleshoot production issues in Java, Scala, and Kotlin applications
+          </p>
+          <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mt-4 mr-3" href="#">
+            Install Kamon Telemetry
+          </a>
+          <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2 mt-4" href="#" data-url="signup">
+            Try Kamon Telemetry + APM
+          </a>
+          <div class="text-explainer text-lightest text-center mt-4">
+            It's a 3-minute setup - Works awesome with Kamon APM, Prometheus, Zipkin, and more
+          </div>
+          <img class="img-cover mt-5" style="max-height: 600px;" src="/assets/img/pages/telemetry/kamon-telemetry-showcase.png" alt="Generating Metrics and Traces with Kamon Telemetry"  loading="eager"/>
+        </div>
+      </section>
     </div>
-    <div class="col-12 col-lg-7 pt-5">
-      <div class="d-flex align-items-center mb-3">
-        <img height="36" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager"/>
-      </div>
-      <h1>
-        Get production-ready instrumentation without rewriting your code
-      </h1>
-      <p class="lead mt-4">
-        Add a few lines of code and start collecting <b>metrics, correlating requests,</b> and <b>tracing database and HTTP calls</b> 
-        from your backend services built with Java, Scala, and Kotlin
-      </p>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button mt-3 px-4" href="#">
-        Install Kamon Telemetry
-      </a>
-      <div class="text-explainer text-light text-center text-sm-left mt-2">
-        It's a 3-minute setup - Better now than after your next production incident
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- {% include user-logos.html %} -->
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-8 text-center">
+          <div class="text-section-title py-4">Generate Metrics and Traces</div>
+          <h2>
+            Instrument your platform from end to end, automatically
+          </h2>
+          <p class="text-explainer px-3 px-xl-0 mb-5">
+            Metrics are great for monitoring. Traces are great for debugging. You need both. Get a ton of insights 
+            out of the box with automatic instrumentation, then enrich them with your own tags and custom metrics
+          </p>
+        </div>
 
-  <section class="row pt-0">
-    <div class="col-12 text-center">
-      <h2 class="my-3">
-        Get telemetry data without rewriting your code
-      </h2>
-      <p class="text-explainer py-3">
-        Get latency histograms, traces and JVM metrics <b>automatically</b> from
-        <b>Spring Boot, <br class="d-none d-lg-inline">Akka, Play Framework and other</b> supported frameworks
-      </p>
-      <h5>
-        <a class="arrow-link" href="/docs/latest/instrumentation/">
-          Learn more about instrumentation
-        </a>
-      </h5>
-    </div>
-    <div class="col-12 mt-5">
-      <img class="img-cover" src="/assets/img/pages/telemetry/telemetry-boot-and-status-page.png" alt="Telemetry Illustration"/>
-    </div>
-  </section>
+        <div class="col-12 py-lg-4"></div>
 
-  <section class="row">
-    <div class="col-12 col-lg-4">
-      <h2 class="mb-3">
-        Propagate request and trace context across services
-      </h2>
-      <p class="text-explainer">
-        Propagate and <b>log trace ids, request ids and other correlation data</b> automatically
-      </p>
-      <p class="text-explainer mb-5">
-        Interoperate with other Telemetry libraries using <b>W3C TraceContext, Zipkin and Jaeger</b> compatible headers
-      </p>
+        <!-- Automatic Instrumentation -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Automatic Instrumentation
+            </span>
+            <h4 class="mt-4">
+              Get immediate insights into common libraries and frameworks
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Understanding how certain frameworks work under the hood can be really challenging, but we already did that for you</p>
+            <p>Leverage automatic instrumentation to get started, and save your energy for enriching the default integrations</p>
+            <p>Kamon Telemetry has built-in support for Spring, Play Framework, Akka, and a lot more</p>
+            <img class="mt-3" style="max-height: 96px;" src="/assets/img/pages/telemetry/featured-integrations.png" alt="Monitor Spring, Play Framework, and Akka Applications with Kamon"  loading="eager"/>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/telemetry/telemetry-status-page-instrumentations.png" alt="Kamon has built-in support for Spring, Akka, Play Framework, and a lot more">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Simple Span Tagging -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Simple Span Tagging
+            </span>
+            <h4 class="mt-4">
+              Add your own tags to automatic traces
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Adding tags like appVersion, userId, or request-specific data can help you narrow down issues when investigating</p>
+            <p>Enrich the automatic instrumentation with your own tags and make it easier to troubleshoot issues later</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/telemetry/telemetry-span-tagging.png" alt="Add tags like requestId and userId to your Spans using Kamon Telemetry">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Manual Instrumentation -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Manual Instrumentation
+            </span>
+            <h4 class="mt-4">
+              Get full control over the instrumentation, if you want to
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Want to do everything by hand? You got it</p>
+            <p>
+              Kamon separates the core instrumentation libraries from the automatic instrumentation, 
+              so you can use the metrics and tracing APIs alone, and still be able to send data to any vendor 
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/telemetry/telemetry-manual-instrumentation.png" alt="Create Spans programmatically using the Kamon Telemetry tracing APIs">
+        </div>  
+
+        <div class="col-12 py-3"></div>
+        
+        <!-- Custom Metrics -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Custom Metrics
+            </span>
+            <h4 class="mt-4">
+              Measure the signals and metrics that matter to you
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Getting latency and error metrics out of the box is nice, but what about the other things you care about?</p>
+            <p>Create your own metrics and track anything that is important to monitor your application’s health</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/telemetry/telemetry-custom-metrics.png" alt="Create custom metrics using the Kamon Telemetry metrics API">
+        </div>          
+      </section>
     </div>
-    <div class="col-12 col-lg-8">
-      <div class="green-halo-right">
-        <img class="img-cover" src="/assets/img/pages/telemetry/telemetry-context-propagation.png" alt="Telemetry Illustration"/>
-      </div>
-    </div>
-  </section>
+  </div>  
 
 
 
-  <section class="row flex-lg-row-reverse py-5">
-    <div class="col-12 col-lg-6">
-      <h2 class="my-3">
-        Change metrics and tracing <br>vendors at any time
-      </h2>
-      <p class="text-explainer">
-        Send telemetry data to <b>Kamon APM, Prometheus, Zipkin, OpenTelemetry-compatible backends</b>
-        and several others without changing your instrumentation
-      </p>
-      <h5>
-        <a class="arrow-link" href="/docs/latest/reporters/">
-          Learn more about reporters
-        </a>
-      </h5>
-    </div>
-    <div class="col-12 col-lg-6">
-      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-and-reporters.svg" alt="Telemetry and Reporters Ilustration"/>
-    </div>
-  </section>
+  <div class="container-fluid bg-white">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">Correlate Requests</div>
+          <h2>
+            Correlate requests across services and logs
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            When your logs are flooded with tons of requests, you need a consistent identifier to 
+            filter the logs and investigate a single request. Correlate requests with log statements, and across 
+            service calls automatically with Kamon
+          </p>
+        </div>
 
-  <section class="row">
-    <div class="col-12 col-lg-4">
-      <h2 class="my-3">
-        Measure critical <br class="d-none d-lg-inline">code paths
-      </h2>
-      <p class="text-explainer">
-        Create <b>custom metrics and spans</b> on top of the automatic instrumentation to
-        understand how your critical code paths behave in production
-      </p>
-      <h5>
-        <a class="arrow-link" href="/docs/latest/reporters/">
-          Check out the APIs
-        </a>
-      </h5>
-    </div>
-    <div class="col-12 col-lg-8">
-      <div class="green-halo-right">
-        <img class="img-cover img-elevated" src="/assets/img/pages/telemetry/telemetry-custom-instrumentation.png" alt="Telemetry Illustration"/>
-      </div>
-    </div>
-  </section>
+        <div class="col-12 py-lg-4"></div>
 
-  <section class="row pt-3">
-    <div class="col-12 text-center">
-      <h2 class="my-3">
-        Get an easy start 
-        <br class="d-inline d-md-none">
-        with Kamon APM
-      </h2>
-      <p class="text-explainer pb-3">
-        Forget about setting up your own monitoring infrastructure and use all the built-in<br class="d-none d-md-inline">
-        integrations to start fixing slow requests and errors with Kamon APM right away
-      </p>
-      <h5>
-        <a class="arrow-link" href="/apm/">
-          Check out Kamon APM
-        </a>
-      </h5>
-    </div>
-    <div class="col-12 mt-5">
-      <img class="w-100" src="/assets/img/pages/telemetry/telemetry-with-apm.png" alt="Telemetry with APM"/>
-    </div>
-  </section>
+        <div class="col-12 col-lg-8 mt-5">
+          <img class="accordion-img no-shadow" src="/assets/img/pages/telemetry/telemetry-propagation.png" alt="Propagate requestId, traceId and other request data across services and integrated with logs">
+        </div>
+        
+        <!-- Context Propagation -->
+        <div class="col-12 col-lg-6 mt-5">
+          <div class="accordion-card my-2 px-lg-5">
+            <span class="text-tag text-tag-green">
+              Context Propagation
+            </span>
+            <h4 class="mt-4">
+              Propagate request-specific data across services
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4 px-lg-5">
+            <p>If you include tags like userId and requestId in your logs, you probably want those tags to propagate across services</p>
+            <p>Kamon propagates context tags automatically with its own propagation protocol, and is compatible with W3C Trace Context, B3, and Uber-trace-id</p>
+          </div>
+        </div>       
 
-  <section class="row position-relative">
-    <div class="outro-cover"></div>
-    <div class="col-12 text-center position-relative">
-      <h2 class="my-3">
-        Ready to get rid of those slow requests?
-      </h2>
-      <p class="text-explainer py-3">
-        It takes 3 minutes to start monitoring. Better now than <br class="d-none d-md-inline">
-        after your next production incident
-      </p>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mr-3 my-2" href="#" data-url="signup">
-        Try Kamon APM
-      </a>
-      <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2" href="#">
-        Install Telemetry
-      </a>
+        <!-- Logging Integration -->
+        <div class="col-12 col-lg-6 mt-5">
+          <div class="accordion-card my-2 px-lg-5">
+            <span class="text-tag text-tag-green">
+              Logging Integration
+            </span>
+            <h4 class="mt-4">
+              Correlated your logs with the right request
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4 px-lg-5">
+            <p>When you combine asynchronous actions and jump across threads, correlating requests becomes harder than usual</p>
+            <p>Ensure that log statements are connected to the right traceId and context, regardless of your threading model</p>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>  
+
+
+
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 mb-5">
+            <img class="img-cover" style="max-height: 600px;" src="/assets/img/pages/telemetry/telemetry-connected-with-apm-and-others.png" alt="Monitor services with Kamon Telemetry and visualize the data in Kamon APM and other tools"  loading="eager"/>
+          </div>
+          <div class="col-12 col-xl-9 text-center">
+            <div class="text-section-title py-4">Visualize Anywhere you Want</div>
+            <h2>
+              Visualize metrics and traces anywhere you want
+            </h2>
+            <p class="text-explainer px-3 px-xl-0">
+              Getting metrics and traces out of your services is only half the battle. You still need to 
+              send your telemetry data to a tool where you can visualize and analyze it
+            </p>
+          </div>
+          <div class="col-12 py-lg-4"></div>
+        </div>
+        
+
+        <!-- Works awesome with APM -->
+        <div class="row flex-lg-row-reverse">
+          <div class="col-12 col-lg-5 mt-5 px-4">         
+            <div class="accordion-card my-2 pr-lg-5">
+              <span class="text-tag text-tag-green">
+                Awesome with Kamon APM
+              </span>
+              <h4 class="mt-4">
+                Use the platform designed for Kamon Telemetry
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-lg-5">
+              <p>We created Kamon APM as the perfect tool to visualize the high-fidelity metrics generated with Kamon Telemetry</p>
+              <p>Don’t waste time setting up your own infrastructure and give Kamon APM a try. You'll thank us later</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-7 mt-5">
+            <img class="accordion-img mb-5" src="/assets/img/pages/telemetry/telemetry-works-with-apm.png" alt="Kamon Telemetry works perfectly with Kamon APM">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 py-lg-4"></div>
+        </div>
+
+        <!-- Compatible with any vendor -->
+        <div class="row flex-lg-row-reverse">
+          <div class="col-12 col-lg-5 mt-5 px-4">
+            <div class="accordion-card my-2 pr-lg-5">
+              <span class="text-tag text-tag-green">
+                Vendor Agnostic
+              </span>
+              <h4 class="mt-4">
+                Use any vendor without changing instrumentation
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-lg-5">
+              <p>All Kamon instrumentation is independent from the components that send data to external systems</p>
+              <p>You can send your data to Prometheus, Zipkin, OpenTelemetry-compatible endpoints, and more without changing the instrumentation</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-7 mt-5">
+            <img class="accordion-img mb-5" src="/assets/img/pages/telemetry/telemetry-multiple-reporters.png" alt="Kamon Telemetry can send data to Prometheus, Zipkin, and OpenTelemetry-compatible endpoints">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div> 
 </main>

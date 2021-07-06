@@ -25,20 +25,24 @@ function sendGoogleAnalyticsEvent(eventName, eventLabel) {
 function initScrollMainHeader() {
   const HEADER_BACKGROUND_TRIGGER_SCROLL = 40;
   var mainHeader = document.getElementById("main-header")
-  var isMainHeaderTransparent = true
+  var shouldBeTransparentHeader = $(mainHeader).data("transparent") === true
+  var isMainHeaderTransparent = !shouldBeTransparentHeader
+  
   
   var mainHeaderScrollListener = function() {
-    if (isMainHeaderTransparent && window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
-      mainHeader.classList.add("bg-white")
-      isMainHeaderTransparent = false
-    } else if (!isMainHeaderTransparent && window.pageYOffset <= HEADER_BACKGROUND_TRIGGER_SCROLL) {
-      mainHeader.classList.remove("bg-white")
-      isMainHeaderTransparent = true
+    if(shouldBeTransparentHeader) {
+      if (isMainHeaderTransparent && window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
+        mainHeader.classList.remove("bg-transparent")
+        isMainHeaderTransparent = false
+      } else if (!isMainHeaderTransparent && window.pageYOffset <= HEADER_BACKGROUND_TRIGGER_SCROLL) {
+        mainHeader.classList.add("bg-transparent")
+        isMainHeaderTransparent = true
+      }
     }
   }
 
   if(window.location.pathname.startsWith("/docs/")) {
-    mainHeader.classList.add("bg-white")
+    // mainHeader.classList.add("bg-dark-nav")
   } else {
 
     document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
@@ -188,6 +192,63 @@ function debounce(func, delay = 300) {
   };
 }
 
+function initApmAccordions() {
+  
+  $(window).resize(function() {
+    var windowWidth = $(window).width();
+    if(windowWidth < 992) {
+      $("#alertsContent").removeClass("collapse")
+      $("#dashboardsContent").removeClass("collapse")
+      $("#serviceOverviewContent").removeClass("collapse")
+      $("#serviceMapContent").removeClass("collapse")
+      $("#highFidelityMetricsContent").removeClass("collapse")
+      $("#builtInDashboardsContent").removeClass("collapse")
+      $(".monitoring-features-accordion-1").attr("id", "disabledAccordion1")
+      $(".monitoring-features-accordion-2").attr("id", "disabledAccordion2")
+
+    } else {
+
+      $("#alertsContent").addClass("collapse")
+      $("#serviceMapContent").addClass("collapse")
+      
+      $("#dashboardsContent").addClass("collapse")
+      $("#serviceOverviewContent").addClass("collapse")
+      $("#highFidelityMetricsContent").addClass("collapse")
+      $("#builtInDashboardsContent").addClass("collapse")
+      $(".monitoring-features-accordion-1").attr("id", "monitoringFeaturesFirst")
+      $(".monitoring-features-accordion-2").attr("id", "monitoringFeaturesSecond")
+    }
+  })
+
+
+  $("#alertsContent").on("show.bs.collapse", function() {
+    $("#firstAccordionImage").attr("src", "/assets/img/pages/apm/apm-alert-drawer.png")
+  })
+
+  $("#dashboardsContent").on("show.bs.collapse", function() {
+    $("#firstAccordionImage").attr("src", "/assets/img/pages/apm/apm-dashboard.png")
+  })
+
+  $("#serviceOverviewContent").on("show.bs.collapse", function() {
+    $("#firstAccordionImage").attr("src", "/assets/img/pages/apm/apm-service-overview.png")
+  })
+
+  $("#serviceMapContent").on("show.bs.collapse", function() {
+    $("#secondAccordionImage").attr("src", "/assets/img/pages/apm/apm-service-map.png")
+  })
+
+  $("#highFidelityMetricsContent").on("show.bs.collapse", function() {
+    $("#secondAccordionImage").attr("src", "/assets/img/pages/apm/apm-high-fidelity-metrics.png")
+  })
+
+  $("#builtInDashboardsContent").on("show.bs.collapse", function() {
+    $("#secondAccordionImage").attr("src", "/assets/img/pages/apm/apm-built-in-dashboards.png")
+  })
+
+  
+}
+
+
 
 $(document).ready(function() {
   initNotificationBar()
@@ -195,4 +256,5 @@ $(document).ready(function() {
   initMobileNavBackground()
   bootOnboarding()
   initHeaderDropdownOnHover()
+  initApmAccordions()
 })

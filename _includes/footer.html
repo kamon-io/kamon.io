@@ -1,80 +1,136 @@
-<footer class="bg-footer position-relative pb-2">
-  <div class="container">
+<footer class="position-relative">
+  <div class="footer-box-background {% if page.footer_background %}{{ page.footer_background }}{% endif %}">
+    <div class="container">
+      <div class="row align-items-end footer-conversion-box">
+        <div class="col-12 col-md-6 col-xl-7 mt-5 align-self-center">
+          <h1 class="text-white pr-5">
+            {% if page.footer_box_heading %}
+            {{ page.footer_box_heading}}
+            {% else %}
+            Get ready for your next incident!
+            {% endif %}
+          </h1>
+          <p class="text-white text-explainer mt-3">
+            {% if page.footer_box_description %}
+            {{ page.footer_box_description}}
+            {% else %}
+            There is no way around it: slow requests and errors will happen. Get ready to notice and fix them with Kamon APM
+            {% endif %}
+          </p>
 
-    <div class="row no-gutters justify-content-between pt-4">
-      <div class="col-12 col-lg-4 my-3 py-lg-5">
-        <a href="/">
-          <img height="48" src="/assets/img/kamon/kamon-logo-light.svg" alt="Kamon Logo"/>
-        </a>
-        <p class="text-explainer pr-5 mt-4">
-          Performance Monitoring Tools for Backend Services and APIs
-        </p>
-        <div class="mt-5">
-          <a href="https://www.linkedin.com/company/kamon-apm/" target="_blank" class="d-inline-block">
-            <img src="/assets/img/icons/external-brand-and-logo/linkedin.svg" alt="LinkedIn Logo">
-          </a>
-          <a href="https://github.com/kamon-io/Kamon" target="_blank" class="d-inline-block ml-2">
-            <img src="/assets/img/icons/external-brand-and-logo/github.svg" alt="Github Logo">
-          </a>
-          <a href="https://twitter.com/kamonteam" target="_blank" class="d-inline-block ml-2">
-            <img src="/assets/img/icons/external-brand-and-logo/twitter.svg" alt="Twitter Logo">
-          </a>
         </div>
-      </div>
 
-      <div class="col-12 col-lg-8 my-3 py-lg-5">
-        <div class="row pl-lg-5">
-          <div class="col-4 col-lg-3 pr-5 mb-5">
-            <p class="text-explainer">Products</p>
-            <div class="text-light">
-              <a class="d-block my-2 text-light" href="/apm/">APM</a>
-              <a class="d-block my-2 text-light" href="/telemetry/">Telemetry</a>
-              <a class="d-block my-2 text-light" href="/apm/pricing/">Pricing</a>
+        <div class="col-12 col-md-6 offset-xl-1 col-xl-4 mt-5 p-2">
+          <div class="offer-box bg-white p-4 text-center">
+            <h3 class="mt-3">
+              Start Monitoring <span class="text-primary">Now</span>
+            </h3>
+            <div class="text-light mt-2 mb-4">
+              No complex configurations
+              <br>
+              No card required
             </div>
-          </div>
-
-          <div class="col-8 col-lg-5 pr-5 mb-5">
-            <p class="text-explainer">Solutions</p>
-            <div class="text-light">
-              <a class="d-block my-2 text-light" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
-              <a class="d-block my-2 text-light" href="/solutions/monitoring-for-play-framework/">Monitoring for Play</a>
-              <a class="d-block my-2 text-light" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
-            </div>
-          </div>
-
-          <div class="col-4 col-lg-4 pr-5 mb-5">
-            <p class="text-explainer">Resources</p>
-            <div class="text-light">
-              <a class="d-block my-2 text-light" href="/docs/latest/guides/">Documentation</a>
-              <a class="d-block my-2 text-light" href="/blog/">Blog</a>
-              <a class="d-block my-2 text-light" href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Support</a>
-            </div>
-          </div>
-
-          <div class="col-7 col-lg-3 pr-5 mb-5">
-            <p class="text-explainer">Company</p>
-            <div class="text-light">
-              <a class="d-block my-2 text-light" href="/about/">About Us</a>
-              <a class="d-block my-2 text-light" href="/legal/privacy/">Privacy Policy</a>
-              <a class="d-block my-2 text-light" href="/legal/subscription-agreement/">Terms of Service</a>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-8 pr-5 mb-5">
-            <p class="text-explainer">Supported By</p>
-            <a href="https://filrougecapital.com/" target="_blank">
-              <img class="d-inline my-4 mr-5 align-top" height="48" src="/assets/img/icons/external-brand-and-logo/frc.png" alt="Fil Rouge Capital Logo">
-            </a>
-            <a href="https://strukturnifondovi.hr/" target="_blank">
-              <img class="d-inline my-4 align-top" height="64" src="/assets/img/icons/external-brand-and-logo/esif.png" alt="European Structural and Investment Fund Logo">
+            <ul class="icon-list text-left pl-4">
+              <li>
+                <b>Unlimited</b> users
+              </li>
+              <li>
+                <b>Unlimited</b> services
+              </li>
+              <li>
+                <b>Unlimited</b> hosts
+              </li>
+              <li>
+                <b>Visualize</b> end-to-end traces
+              </li>
+              <li>
+                <b>Analyze</b> high-fidelity metrics
+              </li>
+            </ul>
+            
+            <a class="btn btn-primary w-100 onboarding-start-button px-5 py-3 mt-4" href="#" data-url="signup">
+              Try Kamon APM
             </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-12 my-2">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</div>
+  <div class="bg-dark-background w-100">
+    <div class="container">
+      <div class="row no-gutters justify-content-between pt-4">
+        <div class="col-12 col-lg-4 my-3 py-lg-5">
+          <a href="/">
+            <img height="48" src="/assets/img/kamon/kamon-logo-dark.svg" alt="Kamon Logo"/>
+          </a>
+          <p class="text-explainer text-white pr-5 mt-4">
+            Performance Monitoring Tools for Backend Services and APIs
+          </p>
+          <div class="mt-5">
+            <a href="https://github.com/kamon-io/Kamon" target="_blank" class="d-inline-block ml-2">
+              <img src="/assets/img/icons/external-brand-and-logo/github-white.svg" alt="Github Logo">
+            </a>
+            <a href="https://twitter.com/kamonteam" target="_blank" class="d-inline-block ml-2">
+              <img src="/assets/img/icons/external-brand-and-logo/twitter-white.svg" alt="Twitter Logo">
+            </a>
+          </div>
+        </div>
+  
+        <div class="col-12 col-lg-8 my-3 py-lg-5">
+          <div class="row pl-lg-5">
+            <div class="col-4 col-lg-3 pr-5 mb-5">
+              <h6 class="text-white mb-3">PRODUCT</h6>
+              <div>
+                <a class="d-block my-2 text-lightest" href="/apm/">APM</a>
+                <a class="d-block my-2 text-lightest" href="/telemetry/">Telemetry</a>
+                <a class="d-block my-2 text-lightest" href="/apm/pricing/">Pricing</a>
+              </div>
+            </div>
+  
+            <div class="col-8 col-lg-5 pr-5 mb-5">
+              <h6 class="text-white mb-3">SOLUTIONS</h6>
+              <div>
+                <a class="d-block my-2 text-lightest" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
+                <a class="d-block my-2 text-lightest" href="/solutions/monitoring-for-play-framework/">Monitoring for Play</a>
+                <a class="d-block my-2 text-lightest" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
+              </div>
+            </div>
+  
+            <div class="col-4 col-lg-4 pr-5 mb-5">
+              <h6 class="text-white mb-3">RESOURCES</h6>
+              <div>
+                <a class="d-block my-2 text-lightest" href="/docs/latest/guides/">Documentation</a>
+                <a class="d-block my-2 text-lightest" href="/blog/">Blog</a>
+                <a class="d-block my-2 text-lightest" href="https://github.com/kamon-io/Kamon/discussions" target="_blank">Support</a>
+              </div>
+            </div>
+  
+            <div class="col-7 col-lg-3 pr-5 mb-5">
+              <h6 class="text-white mb-3">COMPANY</h6>
+              <div>
+                <a class="d-block my-2 text-lightest" href="/about/">About Us</a>
+                <a class="d-block my-2 text-lightest" href="/legal/privacy/">Privacy Policy</a>
+                <a class="d-block my-2 text-lightest" href="/legal/subscription-agreement/">Terms of Service</a>
+              </div>
+            </div>
+  
+            <div class="col-12 col-lg-8 pr-5 mb-5">
+              <h6 class="text-white mb-3">SUPPORTED BY</h6>
+              <a href="https://filrougecapital.com/" target="_blank">
+                <img class="d-inline my-4 mr-5 align-top" height="48" src="/assets/img/icons/external-brand-and-logo/frc.png" alt="Fil Rouge Capital Logo">
+              </a>
+              <a href="https://strukturnifondovi.hr/" target="_blank">
+                <img class="d-inline my-4 align-top" height="64" src="/assets/img/icons/external-brand-and-logo/esif.png" alt="European Structural and Investment Fund Logo">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-12 my-2 text-white">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</div>
+      </div>
     </div>
   </div>
 </footer>

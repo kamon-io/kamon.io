@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1290"
+   height="613"
+   viewBox="0 0 1290 613"
+   fill="none"
+   version="1.1"
+   id="svg21"
+   sodipodi:docname="dark-heading-simple-elements.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs25" />
+  <sodipodi:namedview
+     id="namedview23"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.55585646"
+     inkscape:cx="1107.3003"
+     inkscape:cy="732.20342"
+     inkscape:window-width="1920"
+     inkscape:window-height="1053"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg21" />
+  <circle
+     opacity="0.4"
+     cx="99.915"
+     cy="422.088"
+     r="55.5"
+     transform="rotate(-16.3125 99.915 422.088)"
+     fill="#4DD792"
+     fill-opacity="0.31"
+     id="circle11" />
+  <circle
+     opacity="0.4"
+     cx="146.35878"
+     cy="223.04697"
+     r="11"
+     transform="rotate(-16.3125)"
+     fill="#ffffff"
+     id="circle13" />
+  <circle
+     opacity="0.4"
+     cx="1216.13"
+     cy="214.857"
+     r="11"
+     fill="#85D9AF"
+     id="circle17" />
+  <circle
+     opacity="0.4"
+     cx="1154.2234"
+     cy="591.95917"
+     r="11"
+     fill="#85d9af"
+     id="circle17-3" />
+</svg>

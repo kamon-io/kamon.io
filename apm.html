@@ -5,161 +5,298 @@ description: >-
   Point and click to find the requests, database queries, and external api calls that affect your
   user's experience. All in a managed platform without complex setups or additional infrastructure.
   Start monitoring your backend services and APIs for free with Kamon.
-load_optimize: true
+load_optimize: false
+transparent_heading: true
+footer_background: bg-lightest
 custom_css:
 - pages/apm
 ---
 
-<div class="background-top-gray-blue"></div>
-<div class="apm-background-bottom"></div>
+<main>
+  <div class="container-fluid dark-heading-background navbar-offset">
+    <div class="container">
+      <section class="row dark-heading-simple-elements-background pb-0">
+        <div class="col-12 text-center">
+          <img height="64" src="/assets/img/kamon/kamon-apm-logo-dark.svg" alt="Kamon APM Logo" loading="eager"/>
+          <h1 class="display-4 text-white mt-4">
+            Discover why slow requests
+            <br class="d-none d-lg-inline">
+            and errors happen
+          </h1>
+          <p class="lead text-lightest my-5">
+            Point and click to find the endpoints, database queries,
+            <br class="d-none d-md-inline">
+            and API calls that affect your user’s experience
+          </p>
+          <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mt-4" href="#" data-url="signup">
+            Start Monitoring with Kamon APM
+          </a>
+          <div class="text-explainer text-lightest text-center mt-4">
+            It's a 3-minute setup - Without complex configurations or additional infrastructure
+          </div>
 
-<main class="container">
-
-  <section class="row flex-row-reverse">
-    <div class="col-12 col-lg-5">
-      <img class="w-100-md-down" style="max-height: 600px; overflow-x: visible;" src="/assets/img/apm/service-map.png" alt="Kamon APM Showcase"  loading="eager"/>
-    </div>
-    <div class="col-12 col-lg-7 pt-5">
-      <div class="d-flex align-items-center mb-3">
-        <img height="40" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager"/>
-      </div>
-
-      <h1>
-        Eliminate slow requests from your backend services and APIs
-      </h1>
-      <p class="lead mt-4">
-        Point and click to find the <b>requests, database queries</b>, and <b>external API calls</b> that affect your 
-        user's experience. All in a managed platform <b>without complicated configurations</b> or additional infrastructure
-      </p>
-      <a class="onboarding-start-button btn btn-lg btn-primary px-4 w-100-sm-down mt-3" href="#" data-url="signup">
-        Try Kamon APM
-      </a>
-      <div class="text-explainer text-light text-center text-sm-left mt-2">
-        It's a 3-minute setup - Starting free, no card required
-      </div>
-    </div>
-  </section>
-
-  <section class="row pt-0">
-    <div class="col-12 col-lg-4">
-      <img src="/assets/img/pages/apm/icon-analyze-blue.svg" alt="Analyze Outliers Icon"/>
-      <h2 class="my-3">
-        Find the root cause of 
-        <br class="d-none d-lg-inline">
-        outliers and errors
-      </h2>
-      <p class="text-explainer">
-        Measure response time for every operation and <b>drill down</b> to the specific 
-        <b>requests and database queries</b> that hurt your systems' performance
-      </p>
-      <ul class="text-explainer">
-        <li>
-          Get out-of-the-box dashboards with <b>latency, throughput, and errors</b>
-          for <b>Spring Boot, Play Framework, Akka</b>, and more
-        </li>
-        <li>
-          Trace requests across services and calls to 
-          <b>Postgres, Elasticsearch, MongoDB, Kafka, and Cassandra</b>
-        </li>
-      </ul>      
-    </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
-      <div class="blue-halo-right">
-        <div class="video-container">
-          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/548801390?muted=1&autoplay=0&loop=1&autopause=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <img class="img-cover mt-5" style="max-height: 600px;" src="/assets/img/pages/apm/apm-showcase.png" alt="Monitoring backend services and APIs with Kamon APM"  loading="eager"/>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
+  </div>
 
-  <section class="row flex-lg-row-reverse">
-    <div class="col-12 col-lg-4 pl-lg-4">
-      <img src="/assets/img/pages/apm/icon-alerts-green.svg" alt="Magnifying glass icon"/>
-      <h2 class="my-3">
-        Get notifications when things go wrong
-      </h2>
-      <p class="text-explainer">
-        Send alert notifications to <b>Slack or PagerDuty</b> 
-        when latency increases or errors start to show up. <b>Discord</b> support is on the way!
-      </p>
-      <ul class="text-explainer">
-        <li>
-          Get the full picture of <b>service status and dependencies</b> between them
-        </li>
-        <li>
-          Create alerts with <b>accurate percentiles</b>, calculated from all your raw data
-        </li>
-        <li>
-          Track <b>Service Level Objectives (SLOs)</b> for all your services
-        </li>
-      </ul>      
-    </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
-      <div class="green-halo-left">
-        <div class="video-container">
-          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/549256946?muted=1&autoplay=0&loop=1&autopause=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-8 text-center">
+          <div class="text-section-title py-4">Performance Monitoring</div>
+          <h2>
+            Be the first to know when things go wrong
+          </h2>
+          <p class="text-explainer px-3 px-xl-0 mb-5">
+            It doesn’t matter how well-crafted your code is, slow requests and errors are going to happen. 
+            You better get ready to notice and fix them before your customers do
+          </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="row">
-    <div class="col-12 col-lg-4">
-      <img src="/assets/img/pages/apm/icon-dashboards-blue.svg" alt="Alert icon"/>
-      <h2 class="my-3">
-        Monitor the metrics <br>that matter to you
-      </h2>
-      <p class="text-explainer">
-        Create custom dashboards and drill down into <b>any metric</b> you send to Kamon APM
-      </p>
-      <ul class="text-explainer">
-        <li>
-          Use high-definition histograms to get <b>accurate percentiles and heatmaps</b>
-        </li>
-        <li>
-          Click on any chart to <b>slice and dice</b> across <b>any metric dimension</b>
-        </li>
-      </ul>
-    </div>
-    <div class="col-12 col-lg-8 mt-5 mt-lg-0 section-icon-padding">
-      <div class="blue-halo-right">
-        <div class="video-container">
-          <iframe class="vimeo-embed" src="https://player.vimeo.com/video/549332886?muted=1&autoplay=0&loop=1&autopause=1&quality=1080p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="col-12 py-lg-4"></div>
+
+        <div class="col-12 col-lg-6 accordion monitoring-features-accordion-1" id="monitoringFeaturesFirst">
+          <!-- Alerts -->
+          <div class="accordion-card elevated-container my-2" id="alertsCard" type="button" data-toggle="collapse" aria-expanded="true" data-target="#alertsContent" aria-controls="alertsContent">
+            <span class="text-tag text-tag-green">
+              Alerts
+            </span>
+            <h4 class="mt-4">
+              Get notifications when your backend slows down
+            </h4>
+          </div>
+          <div id="alertsContent" class="collapse show" aria-labelledby="alertsCard" data-parent="#monitoringFeaturesFirst">
+            <div class="accordion-content text-feature-explainer">
+              <p>Whether it is latency going up or a new deployment throwing errors like crazy, you want to be the first to know</p>
+              <p>Get notified on Slack, PagerDuty, or email and start fixing problems before your customers notice</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-alert-drawer.png" loading="eager" alt="Get notified when latency and errors happen with Kamon APM's alerts">
+            </div>
+          </div>
+
+          <!-- Dashboards -->
+          <div class="accordion-card elevated-container my-2" id="dashboardsCard" type="button" data-toggle="collapse" aria-expanded="false" data-target="#dashboardsContent" aria-controls="dashboardsContent">
+            <span class="text-tag text-tag-green">
+              Dashboards
+            </span>
+            <h4 class="mt-4">
+              See all the metrics you care about in one place
+            </h4>
+          </div>
+          <div id="dashboardsContent" class="collapse" aria-labelledby="dashboardsCard" data-parent="#monitoringFeaturesFirst">
+            <div class="accordion-content text-feature-explainer">
+              <p>As time goes by, you will learn what metrics and thresholds are important to monitor in your platform</p>
+              <p>Bring all those metrics together with dashboards that tell you exactly what is going on (and look cool on a TV, too)</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-dashboard.png" loading="eager" alt="Visualize any metric in Kamon APM">
+            </div>
+          </div>
+
+          <!-- Service Overview -->
+          <div class="accordion-card elevated-container my-2" id="serviceOverviewCard" type="button" data-toggle="collapse" aria-expanded="false" data-target="#serviceOverviewContent" aria-controls="serviceOverviewContent">
+            <span class="text-tag text-tag-green">
+              Service Overview
+            </span>
+            <h4 class="mt-4">
+              Monitor public endpoints and internal operations
+            </h4>
+          </div>
+          <div id="serviceOverviewContent" class="collapse" aria-labelledby="serviceOverviewCard" data-parent="#monitoringFeaturesFirst">
+            <div class="accordion-content text-feature-explainer">
+              <p>Understanding how each of your service's operations behave is crucial to monitor and troubleshoot issues effectively</p>
+              <p>Get a complete view of your service endpoints and internal operations, along with alerts and linked services. All right out of the box</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-service-overview.png" loading="eager" alt="Focus on a single service in Kamon APM">
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="col-12 col-lg-6 d-none d-lg-block">
+          <div class="p-2 text-center">
+            <img id="firstAccordionImage" class="accordion-img" src="/assets/img/pages/apm/apm-alert-drawer.png"  loading="eager" alt="Get notified when latency and errors happen with Kamon APM's alerts">
+          </div>
+        </div>
 
-  <section class="row justify-content-center pb-0">
-    <div class="col-12 col-lg-10">
-      <h2 class="text-center">
-        Get an easy start with <br class="d-md-none ">built-in integrations
-      </h2>
-      <p class="text-explainer my-3 text-center">
-        Start debugging from the get-go with automatic dashboards for<br>
-        applications using the <b>JVM, JDBC, Akka, and more</b>
-      </p>
-    </div>
-  </section>
+        <div class="col-12 py-lg-5"></div>
 
-  <section class="row">
-    <div class="col-12 col-lg-6">
-      <div class="p-4 h-100 d-flex flex-column justify-content-end">
-        <img class="img-cover" src="/assets/img/pages/apm/apm-host-monitoring.png" alt="Kamon APM Free Hosts Monitoring"/>
-        <h2 class="my-3 text-center">Free hosts monitoring</h2>
-        <p class="text-explainer text-center" style="height: 7rem;">
-          Monitor <b>CPU, memory, disk and network usage</b> for all your hosts
-        </p>
-      </div>
+        <div class="col-12 col-lg-6 mt-5 d-none d-lg-block">
+          <div class="p-2 text-right">
+            <img id="secondAccordionImage" class="accordion-img float-right" src="/assets/img/pages/apm/apm-service-map.png" loading="eager" alt="Follow connections across services with Kamon APM's Service Map">
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 accordion mt-5 monitoring-features-accordion-2" id="monitoringFeaturesSecond">
+
+          <!-- Service Map -->
+          <div class="accordion-card elevated-container my-2" id="serviceMapCard" type="button" data-toggle="collapse" aria-expanded="true" data-target="#serviceMapContent" aria-controls="serviceMapContent">
+            <span class="text-tag text-tag-green">
+              Service Map
+            </span>
+            <h4 class="mt-4">
+              Get a bird's-eye view of your entire platform
+            </h4>
+          </div>
+          <div id="serviceMapContent" class="collapse show" aria-labelledby="serviceMapCard" data-parent="#monitoringFeaturesSecond">
+            <div class="accordion-content text-feature-explainer">
+              <p>When your backend starts getting complex, a failure in one service can bring down everything that touches it</p>
+              <p>Figure out inter-service dependencies and jump straight to the root cause of problems</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-service-map.png" loading="eager" alt="Follow connections across services with Kamon APM's Service Map">
+            </div>
+          </div>          
+
+          <!-- High-Fidelity Metrics -->
+          <div class="accordion-card elevated-container my-2" id="highFidelityMetricsCard" type="button" data-toggle="collapse" aria-expanded="false" data-target="#highFidelityMetricsContent" aria-controls="highFidelityMetricsContent">
+            <span class="text-tag text-tag-green">
+              High-Fidelity Metrics
+            </span>
+            <h4 class="mt-4">
+              Work with the real data, not an approximation of it
+            </h4>
+          </div>
+          <div id="highFidelityMetricsContent" class="collapse" aria-labelledby="highFidelityMetricsCard" data-parent="#monitoringFeaturesSecond">
+            <div class="accordion-content text-feature-explainer">
+              <p>If you are averaging or interpolating percentiles, you are doing it wrong</p>
+              <p>Go for high-fidelity metrics with a fixed 1% error margin and forget about chasing false signals</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-high-fidelity-metrics.png" loading="eager" alt="Work with the real data, not approximations of it with Kamon APM">
+            </div>
+          </div>  
+          
+          <!-- Built-in Dashboards -->
+          <div class="accordion-card elevated-container my-2" id="builtInDashboardsCard" type="button" data-toggle="collapse" aria-expanded="false" data-target="#builtInDashboardsContent" aria-controls="builtInDashboardsContent">
+            <span class="text-tag text-tag-green">
+              Built-in Dashboards
+            </span>
+            <h4 class="mt-4">
+              Don’t waste time figuring out where to start
+            </h4>
+          </div>
+          <div id="builtInDashboardsContent" class="collapse" aria-labelledby="builtInDashboardsCard" data-parent="#monitoringFeaturesSecond">
+            <div class="accordion-content text-feature-explainer">
+              <p>We put tons of effort in figuring out what’s the best way to visualize metrics from Services, Hosts, and things like the JVM, JDBC, and Akka. So you don’t have to</p>
+              <p>Integrate your services with Kamon APM and let it organize the data for you</p>
+              <img class="accordion-img d-lg-none mt-3" src="/assets/img/pages/apm/apm-built-in-dashboards.png" loading="eager" alt="Start monitoring right away with built-in dashboards in Kamon APM">
+            </div>
+          </div>  
+        </div>
+      </section>
     </div>
-    <div class="col-12 col-lg-6">
-      <div class="p-4 h-100 d-flex flex-column justify-content-end">
-        <img class="img-cover" src="/assets/img/pages/apm/apm-test-environments.png" alt="Kamon APM Free Test Environments"/>
-        <h2 class="my-3 text-center">Free test environments</h2>
-        <p class="text-explainer text-center" style="height: 7rem;">
-          Test all you want without <b>messing with production data</b>
-        </p>
-      </div>
+  </div>  
+
+
+
+  <div class="container-fluid bg-white">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">Debugging Production Issues</div>
+          <h2>
+            Drill down to the specific actions that affect response times
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            You noticed that something caught fire, now what? Your dashboards and alerts will tell you 
+            that something is wrong, and your traces will help you figure out exactly what it is
+          </p>
+        </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <!-- Analyze -->
+        <div class="col-12 col-lg-4 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Analyze
+            </span>
+            <h4 class="mt-4">
+              Find the traces connected to high response times and errors
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>When there is a weird pattern in a chart or alert notification, you need to slice & dice metrics and traces to figure out what happened there</p>
+            <p>Select latency spikes and errors in a chart, and get all the traces connected with it. Then follow the trail to narrow it down with filters and groupings</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/apm/apm-analyze-filter.png" alt="Filter metrics and traces with Analyze in Kamon APM">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Distributed Tracing -->
+        <div class="col-12 col-lg-4 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Distributed Tracing
+            </span>
+            <h4 class="mt-4">
+              See the full picture, from your HTTP endpoint to the database
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>More often than not, latency and errors are caused by a slow database query or API call</p>
+            <p>See the full picture for every request, from the HTTP request hitting your endpoint, to upstream services, databases, and external APIs.</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/apm/apm-trace-details.png" alt="Visualize end-to-end traces in Kamon APM">
+        </div>
+      </section>
     </div>
-  </section>
+  </div>  
+
+
+
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">Following-up after Deployments</div>
+          <h2>
+            Deploy new features and fixes with confidence
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            Deploying a fix or new feature is not the end of the story. How do you know the issue was really fixed, 
+            or that you didn’t mess something up with the new deployment?
+          </p>
+        </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <!-- Analyze -->
+        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">         
+          <div>
+            <div class="accordion-card my-2">
+              <span class="text-tag text-tag-green">
+                Analyze
+              </span>
+              <h4 class="mt-4">
+                Compare behavior across deployments
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-5">
+              <p>Ensure that response times stay healthy and errors are gone after deploying your fixes</p>
+              <p>Break down any metric by deployment version and compare behaviors to discover anomalies </p>
+            </div>
+          </div>
+          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-analyze-compare.png" alt="Compare behavior across dimensions and deployments with Kamon APM">
+        </div>
+
+
+        <!-- Distributed Tracing -->
+        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">
+          <div>
+            <div class="accordion-card my-2">
+              <span class="text-tag text-tag-green">
+                Test Environments
+              </span>
+              <h4 class="mt-4">
+                Test before deploying. Who would have thought?
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-5">
+              <p>Production and staging are never the same, but you can catch a bunch of dumb mistakes before going to prod</p>
+              <p>Monitor your development and staging environments with the same tools you in production, but free of charge</p>
+            </div>
+          </div>
+          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-test-environments.png" alt="Test your services with complete monitoring for free">
+        </div>
+      </section>
+    </div>
+  </div> 
 </main>

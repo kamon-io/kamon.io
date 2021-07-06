@@ -4,10 +4,6 @@
 
   .pricing-header {
     height: 24rem;
-
-    // @media (min-width: 768px) {
-    //   height: 24rem;
-    // }
   }
 
   .pricing-price {
@@ -18,7 +14,7 @@
     }
 
     .pricing-frequency {
-      color: $color-light-0;
+      color: $color-dark-4;
       padding-left: 0.3rem;
       font-size: 2rem;
     }

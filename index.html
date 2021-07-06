@@ -5,127 +5,136 @@ description: >-
   Discover what endpoints, database calls, and external dependencies affect latency and cause errors in production.
   Start monitoring your backend services and APIs for free with Kamon.
 permalink: /
-load_optimize: true
+load_optimize: false
+transparent_heading: true
 custom_css:
 - pages/home
 ---
 {% assign featured_post = site.tags.featured[0] %}
 
-<div class="background-top-gray-gray"></div>
-
-<main class="container">
-
-  <a href="/legal/eu-project/">
+<main>
+  <a href="/legal/eu-project/" class="d-none d-md-inline">
     <img class="eu-icon" src="/assets/img/pages/homepage/EU-link.svg" alt="EU icon"/>
   </a>
 
-  <section class="row">
-    <div class="col-12 pt-5 text-center">
-      <h1 class="display-4">
-        Performance Monitoring Tools for 
-        <br class="d-none d-lg-inline">
-        Backend Services and APIs
-      </h1>
-      <p class="lead mb-4">
-        Kamon helps you discover what <b>endpoints, database calls</b>, 
-        <br class="d-none d-md-inline">
-        and <b>external dependencies</b>
-        
-        affect <b>latency</b> and <b>cause errors</b> in production
-      </p>
-      <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 py3 mr-3" href="#" data-url="signup">
-        Try Kamon APM
-      </a>
-      <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2 my-2" href="#">
-        Install Telemetry
-      </a>
-      <div class="text-explainer text-light text-center mt-3">
-        It's a 3-minute setup - Without complicated configurations or additional infrastructure
-      </div>
-    </div>
-  </section>
-
-  <!-- {% include user-logos.html %} -->
-
-  <section class="row">
-    <div class="col-12 col-lg-7 d-flex flex-column justify-content-center">
-      <h1 class="display-4">The Kamon <span class="text-primary">Stack</span></h1>
-      <p class="text-explainer">
-        From automatic instrumentation that gets you started in minutes, to <b>correlated metrics and traces</b>, alerts, and dashboards, 
-        Kamon has <b>everything you need</b> to monitor backend services and APIs in production
-      </p>
-    </div>
-    <div class="col-12 col-lg-5 mt-5 mt-lg-0">
-      <img class="w-100" style="max-height: 300px;" src="/assets/img/kamon/kamon-stack.svg" alt="The Kamon Stack"/>
-    </div>
-
-    <div class="col-12 col-lg-6 py-5 pr-lg-5 pl-lg-2">
-      <a class="no-decoration" href="/apm/">
-        <div class="position-relative mb-5">
-          <div class="blue-halo-right"></div>
-          <img class="w-100"  style="max-height: 350px;"src="/assets/img/pages/homepage/apm-service-map-example.png" alt="Kamon APM Service Map"  loading="eager"/>
-        </div>
-
-        <img height="40" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager"/>
-        <p class="text-explainer mt-4">
-          Fully managed <b>APM without complicated configurations</b>, additional infrastructure, or steep learning curves
-        </p>
-        <p class="text-explainer mt-4">
-          Drill down to the <b>specific requests</b> that hurt performance,
-          <b>create custom dashboards</b>, and get <b>alert notifications</b> 
-          when things go wrong
-        </p>
-        
-        <h5>
-          <a class="arrow-link" href="/apm/">
-            Learn about Kamon APM
+  <div class="container-fluid dark-heading-background navbar-offset">
+    <div class="container">
+      <section class="row dark-heading-simple-elements-background pb-0">
+        <div class="col-12 pt-5 text-center">
+          <h1 class="display-4 text-white">
+            Effortless Monitoring for 
+            <br class="d-none d-lg-inline">
+            Backend Services and APIs
+          </h1>
+          <p class="lead text-lightest my-5">
+            Discover why latency and errors happen. From your public APIs and all 
+            <br class="d-none d-md-inline">
+            the way down to database queries and calls across services
+          </p>
+          <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 py3 mr-3" href="#" data-url="signup">
+            Try a Complete Monitoring Solution
           </a>
-        </h5>
-      </a>
-    </div>
-
-    <div class="col-12 col-lg-6 pl-lg-5 5 py-5 pr-lg-2">
-      <a class="no-decoration" href="/telemetry">
-        <div class="position-relative mb-5">
-          <div class="green-halo-right"></div>
-          <img class="w-100" style="max-height: 350px;" src="/assets/img/pages/homepage/telemetry-example.png" alt="Kamon Telemetry Example"  loading="eager"/>
-        </div>
-
-        <img height="40" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon APM Logo" loading="eager"/>
-        <p class="text-explainer mt-4">
-          Open source telemetry tools with <b>tons of automatic instrumentation</b> out of the box
-        </p>
-        <p class="text-explainer mt-4">
-          Collect <b>metrics, correlate requests</b>, and get <b>distributed traces</b> 
-          automatically from JVM applications, then visualize them <b>anywhere</b> you want
-        </p>    
-        <h5>
-          <a class="arrow-link" href="/telemetry/">
-            Learn about Kamon Telemetry
+          <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2 my-2" href="#">
+            Install Telemetry
           </a>
-        </h5>
-      </a>
-    </div>
-  </section>
+          <div class="text-explainer text-lightest text-center mt-3">
+            It's a 3-minute setup - No complex configurations or additional infrastructure
+          </div>
 
-  {% if featured_post %}
-  <section class="position-relative pt-0" role="button">
-    <div class="row px-4 py-5 elevated-container">
-      <div class="col-12 col-lg-7">
-        <h6 class="text-light mb-5">FROM OUR BLOG</h6>
-        <h2>{{ featured_post.title }}</h2>
-        <p class="text-explainer mt-3">{{ featured_post.excerpt }}</p>
-        <a class="btn btn-lg btn-primary" href="{{ featured_post.url }}">Read More</a>
-      </div>
-      <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
-        {% if featured_post.summary_image %}
-        <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
-        {% endif %}
-      </div>
-      <a href="{{ featured_post.url }}" class="grow-to-container">
-        <span></span>
-      </a>
+          <img class="img-cover mt-5" style="max-height: 420px;" src="/assets/img/pages/homepage/kamon-products.png" alt="Monitoring Tools for Backend Services and APIs"  loading="eager"/>
+        </div>
+      </section>
     </div>
-  </section>
-  {% endif %}
+  </div>
+  
+  <div class="container">
+    <section class="row pb-3">
+      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center pt-5 mb-5">
+        <h1 class="display-4 mb-3">The Kamon <span class="text-primary">Stack</span></h1>
+        <p class="text-explainer">
+          From easy to install instrumentation, to a fully managed APM with dashboards, 
+          alerts, end-to-end traces, and more, Kamon has everything you need to monitor 
+          your Backend Services and APIs
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 mt-5 mt-lg-0 d-none d-lg-block pt-5">
+        <img class="w-100" style="max-height: 300px;" src="/assets/img/kamon/kamon-stack.svg" alt="The Kamon Stack"/>
+      </div>
+
+      <div class="col-12 col-lg-6 py-3 px-lg-2">
+        <div class="elevated-container p-4 p-lg-5">
+          <a class="no-decoration" href="/apm/">
+            <div class="position-relative mb-5">
+              <div class="blue-halo-right"></div>
+              <img class="w-100"  style="max-height: 350px;"src="/assets/img/pages/homepage/apm-service-map-example.png" alt="Kamon APM Service Map"  loading="eager"/>
+            </div>
+
+            <img height="32" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager"/>
+            <h3 class="mt-4">
+              Visualize and analyze end-to-end request traces and metrics
+            </h3>
+            <p class="text-explainer mt-4 mb-5">
+              Drill down to the specific requests that hurt performance,
+              create custom dashboards, and get alert notifications
+              when things go wrong
+            </p>
+            
+            <h5>
+              <a class="arrow-link" href="/apm/">
+                More about Kamon APM
+              </a>
+            </h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 px-lg-2 5 py-3">
+        <div class="elevated-container p-4 p-lg-5">
+          <a class="no-decoration" href="/telemetry/">
+            <div class="position-relative mb-5">
+              <div class="green-halo-right"></div>
+              <img class="w-100" style="max-height: 350px;" src="/assets/img/pages/homepage/telemetry-example.png" alt="Kamon Telemetry"  loading="eager"/>
+            </div>
+
+            <img height="32" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager"/>
+            <h3 class="mt-4">
+              Generate metrics and traces with a few lines of code
+            </h3>
+            <p class="text-explainer mt-4">
+              Generate metrics, correlate requests, and get distributed traces automatically from 
+              JVM applications, then visualize them anywhere you want
+            </p>    
+            <h5>
+              <a class="arrow-link" href="/telemetry/">
+                More about Kamon Telemetry
+              </a>
+            </h5>
+          </a>
+        </div>
+      </div>
+
+      {% if featured_post %}
+      <div class="col-12  px-lg-2 5 py-3 mt-5" role="button">
+        <h6 class="text-light mb-4">FROM OUR BLOG</h6>
+        <div class="elevated-container p-5">
+          <div class="row">
+            <div class="col-12 col-lg-7">
+              <h2>{{ featured_post.title }}</h2>
+              <p class="text-explainer mt-4 mb-5">{{ featured_post.excerpt }}</p>
+              <a class="btn btn-lg btn-primary" href="{{ featured_post.url }}">Read More</a>
+            </div>
+            <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
+              {% if featured_post.summary_image %}
+              <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
+              {% endif %}
+            </div>
+            <a href="{{ featured_post.url }}" class="grow-to-container">
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}      
+    </section>
+  </div>
 </main>

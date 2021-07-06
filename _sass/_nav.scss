@@ -27,8 +27,8 @@ a.nav-link {
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-top: 3px solid $color-dark-2;
-    border-left: 3px solid $color-dark-2;
+    border-top: 3px solid $color-light-2;
+    border-left: 3px solid $color-light-2;
     border-right: none;
     transition: 0.2s;
     transform: translate(8px, 1px) rotate(-135deg);
@@ -39,7 +39,7 @@ a.nav-link {
   .navbar-item.dropdown.show {
     @include media-breakpoint-up(lg) {
       a.nav-link {
-        color: $color-dark-1;
+        color: $color-light-2;
       }
 
       a.nav-link::after {
@@ -95,13 +95,8 @@ a.nav-link {
   }
 }
 
-.navbar.bg-white {
-  border-bottom: 1px solid $color-light-1;
-}
-
 .navbar.mobile-expanded {
-  background-color: white;
-  border-bottom: 1px solid $color-light-1;
+  background-color: $color-dark-background !important;
 }
 
 .notification-bar {
@@ -115,4 +110,3 @@ a.nav-link {
   border: none;
   @include rounded-elevation;
 }
-

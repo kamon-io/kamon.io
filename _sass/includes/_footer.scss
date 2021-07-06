@@ -1,0 +1,37 @@
+footer {
+  $conversion-box-height: 500px;
+
+  .footer-conversion-box {
+    min-height: $conversion-box-height - 100px;
+  }
+
+  .offer-box {
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0px -2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16);
+
+    .btn {
+      font-size: 1.2rem;
+    }
+
+    li {  
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 2.5rem;
+      background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+      background-size: 1.4rem;
+    }
+  }
+
+  .footer-box-background {
+    background-image: url("/assets/img/footer-box.svg");
+    background-position-x: center;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    min-height: $conversion-box-height;
+
+    @media (max-width: $sm-max) {
+      background-color: $color-dark-background !important;
+    }
+  }
+}
