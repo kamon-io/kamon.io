@@ -32,6 +32,17 @@ documentation:
             path: /guides/migration/from-0.6-to-1.0/
           - name: Migrating from 1.x to 2.0
             path: /guides/migration/from-1.x-to-2.0/
+      - name: Using OpenTelemetry
+        path: /guides/open-telemetry/
+        pages:
+          - name: Overview
+            path: /guides/open-telemetry/overview/
+          - name: NodeJS
+            path: /guides/open-telemetry/node-js/
+          - name: Python
+            path: /guides/open-telemetry/python/
+          - name: Go
+            path: /guides/open-telemetry/go/
 
   - name: Core Concepts
     path: /core/
