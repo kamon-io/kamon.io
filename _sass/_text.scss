@@ -31,13 +31,25 @@ html, body {
   }
 }
 
+.text-caption {
+  font-size: 1.2rem;
+}
+
+.text-underline-green {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-decoration-color: $color-shamrock-main;
+}
+
 
 .text-explainer {
   font-size: remSize(22);
   font-weight: 400;
 
   @media (max-width: $md-max) {
-    font-size: calc(0.9rem + 0.8vw);
+    font-size: calc(0.9rem + 0.9vw);
   }
 }
 
@@ -46,7 +58,7 @@ html, body {
   font-weight: 400;
 
   @media (max-width: $md-max) {
-    font-size: calc(0.85rem + 0.7vw);
+    font-size: calc(0.85rem + 0.8vw);
   }
 }
 

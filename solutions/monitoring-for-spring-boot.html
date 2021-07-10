@@ -1,220 +1,297 @@
 ---
 layout: default
-title: Monitoring Tools for Spring Boot Backends and APIs
+title: Monitoring Tools for Spring Boot Applications
 description: >-
-  Find out what controllers and database calls affect Spring Boot performance in production |  Get correlated metrics 
-  and traces from Spring Boot microservices in a fully managed solution, starting Free with Kamon APM
+  Discover why latency and errors happen in your Spring Boot applications. Add a few lines of code and get the full 
+  story for every request, from your controllers and all the way down to database and external API calls.
+transparent_heading: true
+footer_background: bg-lightest
 redirect_from:
   - /monitoring/spring-boot/
 ---
 
-<div class="background-top-gray-play-green"></div>
-
 <main>
-  <div class="container">
-    <section class="row flex-row-reverse">
-      <div class="col-12 text-center">
-        <img class="img-cover" style="max-height: 350px;" src="/assets/img/pages/solutions/spring/monitoring-spring-boot-with-kamon.png" alt="Monitoring Play Framework apps with Kamon"  loading="eager"/>
-      </div>
-      <div class="col-12 pt-5 text-center">
-        <h1 class="display-4">
-          Monitoring for Spring Boot
-          <br class="d-none d-lg-inline">
-          Backends and APIs
-        </h1>
-        <p class="lead mt-4">
-          Find out what <b>controllers and database calls</b> affect performance
-          <br class="d-none d-md-inline">
-           in production. Get correlated metrics and traces from Spring Boot apps
-          <br class="d-none d-md-inline">
-          in a <b>fully managed solution</b>, starting <b>Free</b> with Kamon APM
-        </p>
-
-        <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 my-2 mr-3" href="#" data-url="signup">
-          Try Kamon APM
-        </a>
-        <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2" href="#" data-small="false">
-          Install Telemetry
-        </a>
-        <div class="text-light text-center mt-2">
-          It's a 3-minute setup -  Better now than after your next production incident
-        </div>
-      </div>
-    </section>
-
-    <section class="row">
-      <div class="col-12 col-lg-4">
-        <h2 class="my-3">
-          Monitoring Spring MVC
-          <br class="d-none d-lg-inline">
-          and WebClient requests
-        </h2>
-        <p class="text-explainer">
-          Measure response time automatically for <b>every request</b> and
-          drill down to the slow and failed ones
-        </p>
-        <ul class="text-explainer">
-          <li>
-            Get out-of-the-box dashboards with <b>latency, throughput, and errors</b>
-            for all Spring Boot controllers
-          </li>
-          <li>
-            Trace requests sent across services with
-            <b>WebClient, OkHttp</b>, and other supported HTTP clients
-          </li>
-          <li>
-            Propagate <b>requestId, clientId</b>, and other trace context 
-            information <b>automatically across services</b>
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-8 mt-5 mt-lg-0">
-        <div class="blue-halo-right">
-          <img class="img-cover img-elevated" src="/assets/img/pages/solutions/monitor-server-latency-with-kamon.png" alt="Monitoring Server Latency with Kamon APM"/>
-        </div>
-      </div>
-    </section>
-
-    <section class="row flex-lg-row-reverse">
-      <div class="col-12 col-lg-4 pl-lg-4">
-        <h2 class="my-3">
-          Investigate slow database queries
-        </h2>
-        <p class="text-explainer">
-          Find the database queries that <b>slow down performance</b> and <b>cause timeouts</b>
-        </p>
-        <ul class="text-explainer">
-          <li>
-            Trace database calls with any JDBC driver including <b>Postgres, MySQL, MariaDB</b>, and more
-          </li>
-          <li>
-            Monitor the <b>Hikari Connection Pool</b> health metrics for timeouts, connection issues, and errors
-          </li>
-          <li>
-            Connect server request traces with <b>Spring Data</b> requests automatically, including calls to
-            <b>MongoDB, Kafka, Cassandra, ElasticSearch</b>, and more
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-8 mt-5 mt-lg-0">
-        <div class="green-halo-left">
-          <img class="img-cover img-elevated" src="/assets/img/pages/solutions/monitor-jdbc-queries-with-kamon.png" alt="Monitoring SQL queries with Kamon APM"/>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="bg-lightest">
+  <div class="container-fluid dark-heading-background navbar-offset">
     <div class="container">
-      <section class="row fw-background-gray">
-        <div class="col-12 col-lg-4">
-          <h2 class="my-3">
-            Troubleshoot JVM components
+      <section class="row dark-heading-simple-elements-background2 pb-0">
+        <div class="col-12 col-lg-7 text-left">
+          <h2 class="h5 text-lightest">
+            <img height="48" width="48" src="/assets/img/pages/solutions/spring/spring-logo-box.png" alt="Monitoring Tools for Spring Boot"  loading="eager"/>
+            Monitoring Tools for Spring Boot
           </h2>
-          <p class="text-explainer">
-            Keep an eye on the <b>JVM components</b> that can cause performance issues
+          <h1 class="text-white mt-4">
+            Discover why latency and errors happen in your <span class="text-underline-green">Spring Boot</span> applications
+          </h1>
+          <p class="text-explainer text-lightest mt-5 mb-3 pr-lg-5">
+            Add a few lines of code and get the full story for every request, from your 
+            controllers and all the way down to database and external API calls
           </p>
-          <ul class="text-explainer">
-            <li>
-              Track how much time is spent on <b>garbage collection</b>
-            </li>
-            <li>
-              See how much <b>heap memory</b> is used and detect out of memory errors before they happen
-            </li>
-            <li>
-              See how <b>thread pools</b> are keeping up with the work
-            </li>
-          </ul>
-        </div>
-        <div class="col-12 col-lg-8 mt-5 mt-lg-0">
-          <div class="blue-halo-right">
-            <img class="img-cover img-elevated" src="/assets/img/pages/solutions/monitoring-garbage-collection-with-kamon.png" alt="Monitoring Garbage Collection with Kamon APM"/>
+          <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mt-4 mr-3" href="#">
+            Start Monitoring <br class="d-inline d-sm-none">Spring Boot Apps
+          </a>
+          <div class="text-caption text-lightest mt-4 pr-lg-5 mb-5">
+            It's a 3-minute setup - Works awesome with Kamon APM, Prometheus, Zipkin, and more
           </div>
         </div>
-      </section>
-
-      <section class="row flex-lg-row-reverse">
-        <div class="col-12 col-lg-4 pl-lg-4">
-          <h2 class="my-3">
-            Get notifications when things go wrong
-          </h2>
-          <p class="text-explainer">
-            Send alert notifications to <b>Slack or PagerDuty (and more)</b> when latency increases or
-            errors start to show up
-          </p>
-          <ul class="text-explainer">
-            <li>
-              Create alerts based on <b>accurate percentiles</b> calculated from all your raw data
-            </li>
-            <li>
-              Track <b>Service Level Objectives (SLOs)</b> for all your services
-            </li>
-            <li>
-              Get the full picture of service status and dependencies between them in the <b>Service Map</b>
-            </li>
-          </ul>
-        </div>
-        <div class="col-12 col-lg-8 mt-5 mt-lg-0">
-          <div class="green-halo-left">
-            <img class="w-100 rounded elevated-container" src="/assets/img/pages/apm/apm-alerts.png" alt="Kamon APM Alerts"/>
-          </div>
-        </div>
-      </section>
-
-      <section class="row">
-        <div class="col-12 col-lg-4">
-          <h2 class="my-3">
-            Monitor the metrics <br>that matter to you
-          </h2>
-          <p class="text-explainer">
-            Create custom dashboards, get alert notifications, and drill down into <b>any metric</b> you send to Kamon APM
-          </p>
-          <ul class="text-explainer">
-            <li>
-              Use high-definition histograms to get <b>accurate percentiles and heatmaps</b>
-            </li>
-            <li>
-              Click on any chart to <b>slice and dice</b> across <b>any metric dimension</b>
-            </li>
-            <li>
-              Point and click to <b>create alerts</b> from any chart
-            </li>
-          </ul>
-        </div>
-        <div class="col-12 col-lg-8 mt-5 mt-lg-0">
-          <div class="blue-halo-right">
-            <img class="w-100 rounded elevated-container" src="/assets/img/pages/apm/apm-dashboard.png" alt="Kamon APM Dashboards"/>
-          </div>
+        <div class="col-12 col-lg-5">
+          <img class="mb-5 w-100-md-down" style="max-height: 600px;" src="/assets/img/pages/solutions/apm-service-overview.png" alt="Generating Metrics and Traces with Kamon Telemetry"  loading="eager"/>
         </div>
       </section>
     </div>
   </div>
 
-  <div class="container">
-    <section class="row justify-content-center">
-      <div class="col-12 col-lg-9">
-        <h2 class="text-center mt-5">
-          Send metrics and traces <br class="d-inline d-lg-none">wherever you want
-        </h2>
-        <p class="text-explainer my-3 text-center">
-          <b>Kamon Telemetry</b> works awesome with <b>Kamon APM</b>, but it doesn't end there. You can send the same metrics and traces to
-          <b>Prometheus, Zipkin, Jaeger</b>, and many other tools
-        </p>
-      </div>
-      <div class="col-12 text-center">
-        <a class="btn btn-lg btn-primary w-100-sm-down onboarding-start-button px-5 mr-3 my-3" href="#" data-url="signup">
-          Try Kamon APM
-        </a>
-        <a class="btn btn-outline-secondary btn-lg w-100-sm-down onboarding-start-button px-5 py-2" href="#" data-small="false">
-          Install Telemetry
-        </a>
-        <div class="text-light text-center mt-2">
-          It's a 3-minute setup -  Better now than after your next production incident
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">End-to-End Tracing</div>
+          <h2>
+            Get the full picture, from controllers to the database
+          </h2>
+          <p class="text-explainer px-2 px-xl-0 mb-5">
+            High latency and errors are often related to slow database queries or external API 
+            calls. Instrument, visualize, and monitor all of those interactions <b>automatically</b> with Kamon
+          </p>
         </div>
-      </div>
-      <div class="col-12 col-lg-9 text-center">
-        <img class="w-100 pt-5" src="/assets/img/pages/solutions/kamon-telemetry-sends-data-anywhere.png" alt="Kamon APM Dashboards"/>
-      </div>
-    </section>
-  </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <div class="col-12 col-lg-10">
+          <img class="accordion-img no-shadow" src="/assets/img/pages/solutions/apm-service-map-and-traces.png" alt="Propagate requestId, traceId and other request data across services and integrated with logs">
+        </div>
+        
+        <!-- HTTP Client and Server -->
+        <div class="col-12 col-lg-6 mt-5">
+          <div class="accordion-card my-2 px-lg-5">
+            <span class="text-tag text-tag-blue">
+              HTTP Client & Server
+            </span>
+            <h4 class="mt-4">
+              Follow requests across services and external calls
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4 px-lg-5">
+            <p>Monitor <b>response time, throughput</b>, and <b>errors</b> for every Spring Boot controller and external HTTP call</p>
+            <p>Get traces and dashboards for <b>OkHttp</b>, <b>Spring WebClient</b>, and other HTTP client calls automatically, right out of the box</p>
+          </div>
+        </div>       
+
+        <!-- Logging Integration -->
+        <div class="col-12 col-lg-6 mt-5">
+          <div class="accordion-card my-2 px-lg-5">
+            <span class="text-tag text-tag-blue">
+              Databases and Message Brokers
+            </span>
+            <h4 class="mt-4">
+              Trace all interactions with your database
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4 px-lg-5">
+            <p>See how each database query contributes to a request's latency, along with <b>HikariCP</b> health metrics</p>
+            <p>And it is not just about JDBC: trace calls to <b>Redis</b>, <b>Elasticsearch</b>, <b>Cassandra</b>, and messages flowing from <b>Kafka</b> producers to consumers</p>
+          </div>
+        </div>      
+      </section>
+    </div>
+  </div>  
+
+
+
+  <div class="container-fluid bg-white">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-8 text-center">
+          <div class="text-section-title py-4">Monitoring and Debugging</div>
+          <h2>
+            Everything you need to monitor effectively
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            Solve your operational challenges with a single tool: <b>monitor</b> for latency spikes and errors, 
+            explore metrics and traces to <b>find root causes</b>, 
+            and <b>follow up</b> after deploying fixes and new features
+          </p>
+        </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <!-- Monitoring -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Performance Monitoring
+            </span>
+            <h4 class="mt-4">
+              Be the first to know when something goes wrong
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Get notified on <b>Slack, PagerDuty</b>, or <b>email</b> when your Spring Boot controllers slow down or start throwing errors</p>
+            <p>Forget about using percentile approximations or configuring buckets. Kamon comes with high-fidelity metrics and <b>up to 1% error margin</b> to guarantee you will not be chasing false signals</p>
+          </div>
+          <a class="text-feature-explainer arrow-link" href="/apm/#performance-monitoring">
+            Learn about Performance Monitoring
+          </a>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/solutions/apm-alert-drawer.png" alt="Kamon has built-in support for Spring, Akka, Play Framework, and a lot more">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Debugging -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Root Cause Analysis
+            </span>
+            <h4 class="mt-4">
+              Find the traces connected to high response times and errors
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Select any latency spike on your Spring Boot applications and get all the <b>related traces</b></p>
+            <p>Use the full picture on every trace to find root causes. <b>Every HTTP call</b> across services, 
+              <b>exceptions</b> thrown in your code, and interactions with <b>external systems</b> will be there for you to investigate</p>
+          </div>
+          <a class="text-feature-explainer arrow-link" href="/apm/#debugging-production-issues">
+            Learn about Debugging Issues
+          </a>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/solutions/apm-analyze-filter.png" alt="Add tags like requestId and userId to your Spans using Kamon Telemetry">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Following Up -->
+        <div class="col-12 col-lg-5 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Deployment Monitoring
+            </span>
+            <h4 class="mt-4">
+              Deploy new features and fixes with confidence
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>Ensure that response times stay healthy and errors are gone after deploying your fixes</p>
+            <p>Catch issues before deploying, with <b>Free</b> monitoring for your <b>development</b> and <b>staging</b> environments</p>
+          </div>
+          <a class="text-feature-explainer arrow-link" href="/apm/#post-deployment-monitoring">
+            Learn about Deployment Monitoring
+          </a>
+        </div>
+        <div class="col-12 col-lg-7 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/solutions/apm-analyze-compare.png" alt="Create Spans programmatically using the Kamon Telemetry tracing APIs">
+        </div>        
+      </section>
+    </div>
+  </div>  
+
+
+
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 mb-5">
+            <img class="img-cover" style="max-height: 600px;" src="/assets/img/pages/telemetry/telemetry-connected-with-apm-and-others.png" alt="Monitor services with Kamon Telemetry and visualize the data in Kamon APM and other tools"  loading="eager"/>
+          </div>
+          <div class="col-12 col-xl-9 text-center">
+            <div class="text-section-title py-4">Easy Setup</div>
+            <h2>
+              Start monitoring Spring Boot apps in minutes
+            </h2>
+            <p class="text-explainer px-3 px-xl-0">
+              When your applications start getting serious traffic and latency gets out of control, you need to <b>act fast</b>.
+              Forget about complicated configurations and infrastructure to start monitoring
+            </p>
+          </div>
+          <div class="col-12 py-lg-4"></div>
+        </div>
+        
+
+        <!-- 2-line setup -->
+        <div class="row flex-lg-row-reverse">
+          <div class="col-12 col-lg-5 mt-5 px-4">         
+            <div class="accordion-card my-2 pr-lg-5">
+              <span class="text-tag text-tag-green">
+                Simple Setup
+              </span>
+              <h4 class="mt-4">
+                Start with a single line of code
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-lg-5">
+              <p>Besides the library dependencies and configuring your API key, you only need <b>one line</b> of code to get started</p>
+              <p>Kamon Telemetry recognizes the libraries in your classpath and activates the required instrumentation <b>automatically</b>, so you can get metrics and traces without changing your code</p>
+            </div>
+            <a class="text-feature-explainer arrow-link" href="/docs/latest/guides/installation/spring-boot/">
+              See the Installation Guide
+            </a>
+          </div>
+          <div class="col-12 col-lg-7 mt-5">
+            <img class="accordion-img mb-5" src="/assets/img/pages/solutions/spring/spring-boot-kamon-init.png" alt="Kamon Telemetry works perfectly with Kamon APM">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 py-lg-4"></div>
+        </div>
+
+
+        <!-- Works awesome with APM -->
+        <div class="row flex-lg-row-reverse">
+          <div class="col-12 col-lg-5 mt-5 px-4">         
+            <div class="accordion-card my-2 pr-lg-5">
+              <span class="text-tag text-tag-green">
+                Awesome with Kamon APM
+              </span>
+              <h4 class="mt-4">
+                Get all your metrics and traces organized and ready to explore
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-lg-5">
+              <p>Don’t waste time setting up your own infrastructure from scratch or getting complicated configurations and agents running</p>
+              <p>Get all your services, hosts, and relationships between them <b>organized automatically</b> and ready for you to start discovering from your first minute in Kamon APM</p>
+            </div>
+            <a class="text-feature-explainer arrow-link" href="/apm/">
+              Learn about Kamon APM
+            </a>
+          </div>
+          <div class="col-12 col-lg-7 mt-5">
+            <img class="accordion-img mb-5" src="/assets/img/pages/telemetry/telemetry-works-with-apm.png" alt="Kamon Telemetry works perfectly with Kamon APM">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 py-lg-4"></div>
+        </div>
+
+        <!-- Compatible with any vendor -->
+        <div class="row flex-lg-row-reverse">
+          <div class="col-12 col-lg-5 mt-5 px-4">
+            <div class="accordion-card my-2 pr-lg-5">
+              <span class="text-tag text-tag-green">
+                Vendor Agnostic
+              </span>
+              <h4 class="mt-4">
+                Use any vendor without changing instrumentation
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-lg-5">
+              <p>All Kamon instrumentation is independent from the components that send data to external systems</p>
+              <p>It will be a lot easier to monitor your Spring Boot apps with Kamon APM, but you can send your data to <b>Prometheus</b>, <b>Zipkin</b>, <b>OpenTelemetry-compatible</b> endpoints, and more without changing the instrumentation</p>
+            </div>
+            <a class="text-feature-explainer arrow-link" href="/telemetry/">
+              Learn about Kamon Telemetry
+            </a>
+          </div>
+          <div class="col-12 col-lg-7 mt-5">
+            <img class="accordion-img mb-5" src="/assets/img/pages/telemetry/telemetry-multiple-reporters.png" alt="Kamon Telemetry can send data to Prometheus, Zipkin, and OpenTelemetry-compatible endpoints">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div> 
 </main>
