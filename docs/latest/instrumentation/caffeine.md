@@ -1,6 +1,6 @@
 ---
 title: 'Caffeine Documentation'
-description: 'Extract traces and metrics from Caffeine based caches'
+description: 'Extract traces and metrics from Caffeine-backed caches'
 layout: docs
 ---
 {% include toc.html %}
@@ -20,7 +20,7 @@ When building a cache, add it by calling the `recordStats` method:
 Caffeine.newBuilder()
         .recordStats(() -> new KamonStatsCounter("cache_name"))
         .build();
-{% endcode_block bash %}
+{% endcode_block java %}
 
 
 Manual Installation
