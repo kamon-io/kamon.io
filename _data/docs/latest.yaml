@@ -79,6 +79,8 @@ documentation:
             path: /instrumentation/akka-http/
           - name: Cassandra Driver
             path: /instrumentation/cassandra/
+          - name: Caffeine
+            path: /instrumentation/caffeine/
           - name: Elasticsearch
             path: /instrumentation/elasticsearch/
           - name: Executors
