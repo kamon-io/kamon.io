@@ -29,7 +29,7 @@ processed with Spring MVC, as well as lower level HTTP server metrics. The gist 
 
 
 Here's an example trace from [spring-petclinic]:
-{% lightbox /assets/img/spring-petclinic-example-trace.png %}
+{% lightbox /assets/img/spring-webmvc-example-trace-2.png %}
 Spring Petclinic Example Trace
 {% endlightbox %}
 
@@ -59,10 +59,6 @@ This feature is enabled by default and will collect the following metrics:
 
 {%  include metric-detail.md name="http.server.requests" %}
 {%  include metric-detail.md name="http.server.request.active" %}
-{%  include metric-detail.md name="http.server.request.size" %}
-{%  include metric-detail.md name="http.server.response.size" %}
-{%  include metric-detail.md name="http.server.connection.lifetime" %}
-{%  include metric-detail.md name="http.server.connection.usage" %}
 {%  include metric-detail.md name="http.server.connection.open" %}
 
 Manual Installation
