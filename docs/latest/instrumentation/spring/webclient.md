@@ -24,7 +24,7 @@ to the request.
 
 Example span and tags: 
 
-{% lightbox /assets/img/webclient-example.png %}
+{% lightbox /assets/img/spring-webclient-example-trace.png %}
 WebClient Example Span
 {% endlightbox %}
 
@@ -35,4 +35,3 @@ In case you are not using the Kamon Bundle, add the dependency below to your bui
 
 {% include dependency-info.html module="kamon-spring" version=site.data.versions.latest.core %}
 {% include instrumentation-agent-notice.html %}
-
