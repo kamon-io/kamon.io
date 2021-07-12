@@ -12,11 +12,11 @@ Since __2.2.2__
 Overview
 --------
 
-The Caffeine instrumentation adds tracing for Caffeine and Caffeine backed [synchronous clients][caffeine-project]. 
+The Caffeine instrumentation adds tracing for Caffeine and Caffeine-backed [synchronous clients][caffeine-project]. 
 Metrics are gathered using the `KamonStatsCounter`, which needs to be added manually.
 When building a cache, add it by calling the `recordStats` method:
 
-{% code_block scala %}
+{% code_block java %}
 Caffeine.newBuilder()
         .recordStats(() -> new KamonStatsCounter("cache_name"))
         .build();
