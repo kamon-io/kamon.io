@@ -100,7 +100,7 @@ maximum, 75th percentile and 90th percentile will always be shown. Durations les
 90th percentile will be considered _slow_ and shown in red. If they fall in between the points, they will be considered _average_ and colored grey.
 
 The tags will be grouped into sections, if appropriate. Error, database and HTTP tags will, if present, always get their dedicated sections. Certain tags, which are considered
-well-known tags, will get special formatting and be formatted as blocks of code that can be copied. These include the error message, error stacktrace, database query, and more. The tags will always be shown as title-value pairs. All other tags will be lumped together in a common section.
+well-known tags, will get special formatting and be formatted as blocks of code that can be copied or expanded in-app into a separate pop-out box. These include the error message, error stacktrace, database query, and more. The tags will always be shown as title-value pairs. All other tags will be placed together in a common section.
 
 #### Joint Spans
 
