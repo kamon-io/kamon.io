@@ -54,11 +54,11 @@ Span Breakdown
 
 By defaults, spans are colored by the service they originate from. Each unique service will be assigned a color. The legend that explains it can be toggled by clicking the Show/Hide Legend button. Alternatively, spans can be broken down (and coloured) by their relative performance, compared to other spans for that _same_ operation. This mode can be toggled from the **Breakdown by** dropdown. In that mode, spans will be broken down into five categories:
 
-* Much faster (up to the 50th percentile) - Deeper red
-* Faster (50th to 75th percentile) - Pale red
-* Typical (75th to 90th percentile) - Grey
-* Slower (90th to 98th percentile) - Pale green
-* Much slower (over 98th percentile) - Deeper green
+* Much faster (up to p50) - Deeper red
+* Faster (p50 to p75) - Pale red
+* Typical (p75 to p90) - Grey
+* Slower (p90 to p98) - Pale green
+* Much slower (over p98) - Deeper green
 
 Note that these names and colors are not necessarily indicative of problems, merely an estimation of the situation. When this mode is toggled, the legend will be updated to explain
 the colors and breakdown.
@@ -96,8 +96,8 @@ For a deeper dive into a span, you may use the Span Details sidebar, which will 
 The span id and other tags will be shown as icons and the value. You can hover them for additional details.
 
 The latency profile will show the distribution of duration for that particular operations, as well as the position of the current span's duration in that distribution. The minimum,
-maximum, 75th percentile and 90th percentile will always be shown. Durations less than the 75th percentile will be considered _fast_, and will be displayed in green. Those over the
-90th percentile will be considered _slow_ and shown in red. If they fall in between the points, they will be considered _average_ and colored grey.
+maximum, p75 and p90 will always be shown. Durations less than p75 will be considered _fast_, and will be displayed in green. Those over p90  will be considered _slow_ and shown in red.
+If they fall in between the points, they will be considered _average_ and colored grey.
 
 The tags will be grouped into sections, if appropriate. Error, database and HTTP tags will, if present, always get their dedicated sections. Certain tags, which are considered
 well-known tags, will get special formatting and be formatted as blocks of code that can be copied or expanded in-app into a separate pop-out box. These include the error message, error stacktrace, database query, and more. The tags will always be shown as title-value pairs. All other tags will be placed together in a common section.

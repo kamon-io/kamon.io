@@ -107,7 +107,7 @@ Clicking on any of the entries will bring up the Dispatcher Details page, with a
 Akka Routers Integration
 {% endlightbox %}
 
-If making use of Akka Routers to distribute the workload, Kamon will automatically detect them and integrate with them. An overview page will show an [aggregation summary chart], with throughput, number of processed messages, number of errors, and 99th percentile of time in mailbox, grouped per router and actor system. Both the router and the actor system will be used to label the entry.
+If making use of Akka Routers to distribute the workload, Kamon will automatically detect them and integrate with them. An overview page will show an [aggregation summary chart], with throughput, number of processed messages, number of errors, and p99 of time in mailbox, grouped per router and actor system. Both the router and the actor system will be used to label the entry.
 
 {% lightbox /assets/img/apm/akka-router-details.png %}
 Akka Router Details Integration

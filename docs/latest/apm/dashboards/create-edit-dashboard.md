@@ -26,7 +26,7 @@ New charts can be added to a dashboard by clicking the Add Chart button on any d
 | Filter By             | &#x274C;       | *None*        | Only include records which have a metric tag matching all of the values  |
 | Group By              | &#x274C;       | Everything    | Group by, and draw separately, according to value for selected metric tags |
 | Chart Type            | &#x2714;      | Line          | Which [chart type] to use to visualize the metric                        |
-| Aggregation           | Line/Bar only | 99th %        | For line or bar charts, how to aggregate the data                   |
+| Aggregation           | Line/Bar only | p99        | For line or bar charts, how to aggregate the data                   |
 | Percentile            | Percentile only | 99     | For percentile aggregation, which percentile to plot                     |
 | Unit                  | &#x2714;      | Latency       | Which unit to use to label the y axis                                    |
 

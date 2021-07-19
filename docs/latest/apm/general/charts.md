@@ -88,7 +88,7 @@ Heatmaps support selection and zooming along both axes, though zooming in on the
 Percentiles Chart
 {% endlightbox %}
 
-The percentiles chart shows at what percentile of recordings assume a certain value. On the x axis, the percentile at which a value first appears is shown, while on the y axis the values themselves are displayed. It is split into 45 buckets, with gradually reduced granularity and eventual precision of up to 3 decimals (up to the 99.999th percentile). They are available for gauge, histogram, range sampler and timer metric instrument types. Values in the chart will match the time selected in the [time picker], but will do not display the time axis.
+The percentiles chart shows at what percentile of recordings assume a certain value. On the x axis, the percentile at which a value first appears is shown, while on the y axis the values themselves are displayed. It is split into 45 buckets, with gradually reduced granularity and eventual precision of up to 3 decimals (up to the p99.999). They are available for gauge, histogram, range sampler and timer metric instrument types. Values in the chart will match the time selected in the [time picker], but will do not display the time axis.
 
 Like for line charts, if values are grouped, multiple lines will be shown, one for each of the groups and with its own color. In addition to that, a *dashed* line will be shown, with the overall distribution for *all groups*. For more details on how to group values, read about [dashboards], [alerts], or how to use the [analyze] view.
 
@@ -96,7 +96,7 @@ Percentiles charts do not support selection or zooming at all, as their purpose 
 
 The [summary](#chart-summaries) of the percentiles chart will always show two things:
 
-1. The value at the 99th percentile
+1. The value at p99
 2. The number of recorded values at higher percentiles
 
 Information for other percentiles can be acquired via the [tooltip](#chart-tooltip), by hovering the chart.

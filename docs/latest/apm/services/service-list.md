@@ -19,7 +19,7 @@ Each service entry will show the following information:
 * [Service status](#service-status) 
 * The name of the service
 * A sparkline showing the service latency, service throughput, and service errors
-* 99th percentile of service latency
+* p99 of service latency
 * Service operation throughput
 * Service errors
 * Detected [integrations]

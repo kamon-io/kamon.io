@@ -54,7 +54,7 @@ The configuration form is split into several steps, split across topics, in whic
 | Metric                | &#x2714;      | *None*        | Which metric to keep track of (e.g., `jvm.gc` or `span.processing-time`) |
 | Filter By             | &#x274C;       | *None*        | Only include records which have a metric tag matching all of the values  |
 | Group By              | &#x274C;       | Everything    | Group by, and draw separately, according to value for selected metric tags |
-| Aggregation           | &#x2714;      | 99th %        | Which aspect of the data is compared to trigger the alert                |
+| Aggregation           | &#x2714;      | p99        | Which aspect of the data is compared to trigger the alert                |
 | Percentile            | Percentile only | 99     | For percentile aggregation, which percentile to plot                     |
 | Comparison            | &#x2714;      | Above         | Condition to compare alert threshold and value. If true, alert will trigger |
 | Threshold             | &#x2714;      | *None*        | The alert threshold, determined when to trigger the alert                |

@@ -18,7 +18,7 @@ The Alert Drawer is your one stop shop for information about a particular alert.
 The alert heading lists a quick overview of the alert - its name, the [severity] of the alert, information and the comparison between the current status and the [availability target]. If the alert is active (on fire), it will state since when is the alert in this state. If there is no active incident, it will state the number of time passed since the service became healthy. The availability target status will be shown only if an availability target is specified. It will show three things: the configured target percentage as number and arrow indicator, the current status as fullness of the bar, and the color (green if met, red if not met).
 
 {% alert info %}
-The position of the availability target indicators are not linear. The precision increases with the closeness to 100%. This is to allow for precision for >90th and >99th percentile.
+The position of the availability target indicators are not linear. The precision increases with the closeness to 100%. This is to allow for precision for >p90 and >p99.
 {% endalert %}
 
 The right-hand-side of the header will always have three action: an edit toggle, to enter [edit mode]; an expand/collapse toggle, which allows you to expand the drawer to full screen width; the close toggle, to close the drawer. The drawer can also be closed using the browser back button, or by pressing the `Esc` key.
