@@ -36,14 +36,14 @@ starting point, you can do a lot more. Through the filter bar in the top of the 
 or constrain the value range the metric takes (the y axis, for all charts but the [histogram]). Additionally, you can switch between any available chart type that is [available][chart types] for the metric you are analyzing. When picking a [line chart] or a [bar chart], you can also pick between a variety of aggregations to use for visualization by
 toggling the [chart title menu]. The default operations will be _count_ for the bar chart, and _throughput_ for the line chart.
 
-Trace List
-----------
+Trace List and Legend
+----------------------
 
 {% lightbox /assets/img/apm/analyze-trace-list.png %}
 Analyze Trace List
 {% endlightbox %}
 
-Below the chart, a [trace list] will be be present, showing all root spans that match the parameters. These parameters are:
+Below the chart, a [trace list] and a [legend] will be be present. The trace list will show all root spans that match the parameters. These parameters are:
 
 * Time selected in the time picker
 * Selection made on the chart
@@ -59,6 +59,12 @@ duration or start time, or diving in by clicking on the entry and entering the [
 {% alert info %}
 If you are viewing the `span.process-time` metric, the error toggle will be applied both to the chart and the trace list. Otherwise, it will apply only to the trace list.
 {% endalert %}
+
+{% lightbox /assets/img/apm/analyze-legend.png %}
+Analyze Legend
+{% endlightbox %}
+
+The analyze legend behaves much like the regular [chart legend][legend], with a slightly more detailed breakdown. It will show the groups in your chart, values aggregated for only those groups, and will allow you to click on any on the rows to toggle whether it is visualized on the chart. Unlike the regular [legend], it is external to the chart iself, and can be found in a separate tab underneath the chart. The summary values will chnage if a selection is made on the chart, to reflect only the selected area.
 
 Selection and Zooming
 ----------------------
@@ -98,6 +104,7 @@ out in some way, be it a certain host, an operation, or maybe a particular datab
 [incident]: ../../alerts/incidents/
 [time picker]: ../../general/time-picker/
 [analyze time picker]: ../../general/time-picker/#analyze-time-picker
+[legend]: ../../general/charts/#chart-legend
 [metric tag]: ../../../core/metrics/
 [histogram]: ../../general/charts/#histogram-charts
 [line chart]: ../../general/charts/#line-charts

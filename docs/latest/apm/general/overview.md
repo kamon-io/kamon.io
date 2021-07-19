@@ -45,7 +45,7 @@ You can continue the process by opening the onboarding sidebar by clicking on th
 Walkthrough Step
 {% endlightbox %}
 
-THe walkthrough will guide you through the described activity by showing you what to do via a red, pulsating dot. Underneath it, a tooltip will explain the step in more detail. Every step can be completed by clicking on the indicating element. Alternatively, if the tooltip features an `x` button, the step is merely explanatory and can be completed by closing the tooltip. At any point, you can abort the process, instead of going through with it, by clicking on the "Abort" button in the tooltip.
+The walkthrough will guide you through the described activity by showing you what to do via a red, pulsating dot. Underneath it, a tooltip will explain the step in more detail. Every step can be completed by clicking on the indicating element. Alternatively, if the tooltip features an `x` button, the step is merely explanatory and can be completed by closing the tooltip. At any point, you can stop the process, instead of going through with it, by clicking on the "Exit Walkthrough" button in the tooltip.
 
 By the end of each walkthrough, you will have completed the step in question, and the step counter should increase to track your progress as you learn more about Kamon APM.
 
