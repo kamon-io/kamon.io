@@ -6,6 +6,8 @@ permalink: /blog/
 pagination:
   enabled: true
   permalink: /:num/
+transparent_heading: true
+footer_background: bg-lightest
 redirect_from:
 - /teamblog/
 custom_css:
@@ -13,67 +15,64 @@ custom_css:
 ---
 {% assign featured_post = site.tags.featured[0] %}
 
-<div class="background-top-gray-blue"></div>
-
-<main class="container pt-5">
-  {% if featured_post and paginator.page == 1 %}
-  <section class="row position-relative elevated-container px-4 py-5 mt-5 mx-1" role="button">
-    <div class="col-12 col-lg-7">
-      <h1>{{ featured_post.title }}</h1>
-      <p class="lead mt-3">{{ featured_post.excerpt }}</p>
-      <a class="btn btn-lg btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
-    </div>
-    <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
-      {% if featured_post.summary_image %}
-      <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
-      {% endif %}
-    </div>
-    <a href="{{ featured_post.url }}" class="grow-to-container">
-      <span></span>
-    </a>
-  </section>
-  {% endif %}
-
-  <section class="row">
-    {% for post in paginator.posts %}
-      {% if post.title != featured_post.title %}
-        <div class="col-12 col-md-6 col-xl-4 py-3 blog-card">
-          <div class="elevated-container blog-card-content position-relative h-100">
-            {% if post.summary_image %}
-            <div class="blog-card-summary-image" style="background-image: url('{{ post.summary_image }}')"></div>
-            {% else %}
-            <div class="blog-card-summary-image {{ post.categories }}"></div>
-            {% endif %}
-            <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
-              <h4 class="text-dark-1">{{ post.title }}</h4>
-              <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
-              <a class="arrow-link align-self-end" href="{{ post.url }}">Read More</a>
-            </div>
-            <a class="grow-to-container" href="{{ post.url }}">
-              <span></span>
-            </a>
+<main>
+  <div class="container-fluid dark-heading-background navbar-offset">
+    {% if featured_post %}
+    <div class="py-5">
+      <div class="container">
+        <section class="row">
+          <div class="col-lg-6">
+            <h1 class="text-white featured-post-title">{{ featured_post.title }}</h1>
+            <p class="text-white featured-post-description mt-3">{{ featured_post.excerpt }}</p>
+            <a class="btn btn-semi-large btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </section>
-
-  <div class="row no-gutters justify-content-between w-100 my-5 px-4">
-    <div class="col-auto align-self-end">
-      {% if paginator.previous_page %}
-        <a class="btn btn-primary" href="{{ paginator.previous_page_path | remove: 'index.html' }}">
-          <i class="fas fa-angle-double-left fa-fw mr-2"> </i>Newer Posts</i>
-        </a>
-      {% endif %}
-    </div>
-
-      <div class="col-auto align-self-end">
-          {% if paginator.next_page %}
-        <a class="btn btn-primary" href="{{ paginator.next_page_path | remove: 'index.html' }}">
-          Older Posts<i class="fas fa-angle-double-right fa-fw ml-2"></i>
-        </a>
-        {% endif %}
+          <div class="col-lg-1">
+  
+          </div>
+          <div class="col-lg-5">
+            {% if featured_post.summary_image %}
+              <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
+            {% endif %}
+          </div>
+        </section>
       </div>
+    </div>
+    {% endif %}
   </div>
 
+  <div class="container-fluid bg-lightest">
+    <div class="container blog-posts-container">
+      <div class="row">
+        {% for post in site.posts %}
+          {% if post.title != featured_post.title %}
+            <div class="col-12 col-md-6 col-xl-4 py-3 blog-card js-blog-card invisible">
+              <div class="elevated-container blog-card-content position-relative h-100">
+                {% if post.summary_image %}
+                <div class="blog-card-summary-image" style="background-image: url('{{ post.summary_image }}')"></div>
+                {% else %}
+                <div class="blog-card-summary-image {{ post.categories }}"></div>
+                {% endif %}
+                <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
+                  <h4 class="text-dark-1">{{ post.title }}</h4>
+                  <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
+                  <a class="arrow-link align-self-end mt-4 d-inline-block" href="{{ post.url }}">Read More</a>
+                </div>
+                <a class="grow-to-container" href="{{ post.url }}">
+                  <span></span>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+          </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center w-100 px-4 pb-5 bg-lightest">
+    <div class="btn btn-semi-large btn-outline-primary js-load-more load-more-button">
+      Load More
+    </div>
+  </div>
 </main>
+
+<script src="/assets/js/blogs.js" defer></script>

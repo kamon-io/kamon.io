@@ -36,7 +36,25 @@
 
 }
 
+.featured-post-title {
+  font-size: remSize(40);
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.featured-post-description {
+  font-size: remSize(16);
+  line-height: 1.5;
+}
+
+.blog-posts-container {
+  transform: translateY(-48px);
+}
+
 .blog-card {
+  &.invisible {
+    display: none;
+  }
 
   .blog-card-content {
     border-radius: 8px;
@@ -72,5 +90,11 @@
     @media (max-width: $xs-max) {
       height: calc(100% - 100px);
     }
+  }
+}
+
+.load-more-button {
+  &.invisible {
+    display: none;
   }
 }
