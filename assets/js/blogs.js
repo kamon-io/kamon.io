@@ -25,6 +25,7 @@ function loadMore() {
 }
 
 $(document).ready(() => {
+  $('.js-blog-card').each((i, el) => $(el).addClass('invisible'))
   adjustVisibility()
   $('.js-load-more').on('click', loadMore)
 })

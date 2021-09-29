@@ -127,3 +127,34 @@
     }
   }
 }
+
+.blog-related-container {
+  width: 100%;
+  min-height: 400px;
+  padding: 0 72px;
+}
+
+.previous-blog-btn,
+.next-blog-btn {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.previous-blog-btn {
+  left: 8px;
+}
+
+.next-blog-btn {
+  right: 8px;
+}

@@ -14,9 +14,18 @@ function generateTableOfContents() {
   })
 }
 
+function initCarouselItems() {
+  const $items = $('.carousel-item')
+  const first = $items.get(0)
+  if (first) {
+    $(first).addClass('active')
+  }
+}
+
 $(document).ready(() => {
   generateTableOfContents()
-
+  initCarouselItems()
+  
   // I have no idea why, but Jekyll variables don't work here with blog posts, so hack it
   $('#main-header').attr('data-transparent', 'true')
   $('.footer-box-background').addClass('bg-lightest')

@@ -41,7 +41,7 @@ footer_background: bg-lightest
     </div>
   </div>
 
-  <div class="container-fluid-fluid bg-lightest">
+  <div class="container-fluid bg-lightest">
     <div class="post-content-wrapper{% if page.cover_image %} spaced-out{% endif %}">
       <div class="container">
         <div class="row no-gutters">
@@ -74,6 +74,37 @@ footer_background: bg-lightest
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  {% assign related = site.posts | where_exp:"item","item.categories == page.categories and item.title != page.title" %}
+
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <div class="blog-related-container position-relative">
+        <div id="blogPostsCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% for post in related %}
+              {% assign mod_idx = forloop.index | modulo: 3 %}
+              {% if mod_idx == 1 %}
+                <div class="carousel-item row no-gutters d-flex justify-content-center">
+              {% endif %}
+              {% include post-card.html post=post small=1 %}
+              {% if mod_idx == 1 %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <a data-target="#blogPostsCarousel" data-slide="prev" role="button" class="previous-blog-btn">
+          <img src="/assets/img/icons/directional/carousel-navigation-previous.svg" alt="Next post slide icon">
+        </a>
+        <a data-target="#blogPostsCarousel" data-slide="next" role="button" class="next-blog-btn">
+          <img src="/assets/img/icons/directional/carousel-navigation-next.svg" alt="Previous post slide icon">
+        </a>
+      </div>
+    </div>
     </div>
   </div>
 </main>

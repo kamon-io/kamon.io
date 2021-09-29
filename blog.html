@@ -42,23 +42,7 @@ custom_css:
       <div class="row">
         {% for post in site.posts %}
           {% if post.title != featured_post.title %}
-            <div class="col-12 col-md-6 col-xl-4 py-3 blog-card js-blog-card invisible">
-              <div class="elevated-container blog-card-content position-relative h-100">
-                {% if post.summary_image %}
-                <div class="blog-card-summary-image" style="background-image: url('{{ post.summary_image }}')"></div>
-                {% else %}
-                <div class="blog-card-summary-image {{ post.categories }}"></div>
-                {% endif %}
-                <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
-                  <h4 class="text-dark-1">{{ post.title }}</h4>
-                  <div class="text-body-smaller text-dark-2">{{ post.excerpt }}</div>
-                  <a class="arrow-link align-self-end mt-4 d-inline-block" href="{{ post.url }}">Read More</a>
-                </div>
-                <a class="grow-to-container" href="{{ post.url }}">
-                  <span></span>
-                </a>
-              </div>
-            </div>
+            {% include post-card.html post=post %}
           {% endif %}
         {% endfor %}
           </div>
