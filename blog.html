@@ -3,9 +3,6 @@ title: 'Welcome to the Kamon Blog'
 description: 'Here we share updates about Kamon, stories from users and opinions about observability and monitoring'
 layout: default
 permalink: /blog/
-pagination:
-  enabled: true
-  permalink: /:num/
 transparent_heading: true
 footer_background: bg-lightest
 redirect_from:
@@ -21,7 +18,7 @@ custom_css:
     <div class="py-5">
       <div class="container">
         <section class="row">
-          <div class="col-lg-6">
+          <div class="col-12 col-lg-6">
             <h1 class="text-white featured-post-title">{{ featured_post.title }}</h1>
             <p class="text-white featured-post-description mt-3">{{ featured_post.excerpt }}</p>
             <a class="btn btn-semi-large btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
@@ -29,7 +26,7 @@ custom_css:
           <div class="col-lg-1">
   
           </div>
-          <div class="col-lg-5">
+          <div class="col-12 col-lg-5 mt-5 mt-lg-0">
             {% if featured_post.summary_image %}
               <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
             {% endif %}

@@ -1,68 +1,86 @@
 ---
 layout: default
+transparent_heading: true
+footer_background: bg-lightest
 ---
 
-<div class="background-top-gray-green"></div>
+<main>
+  <div class="container-fluid dark-heading-background navbar-offset">
+    <div class="blog-post-heading-container">
+      <div class="container">
+        <div class="row no-gutters{% unless page.cover_image %} pb-5{% endunless %}">
+          <div class="col-12 col-lg-6">
+            <h1 class="pr-lg-4 text-white post-title">{{ page.title }}</h1>
+          </div>
 
-<main class="container post-container">
-  <section>
-    <div class="row no-gutters">
-      <div class="col-12 col-lg-8">
-        <h1 class="pr-lg-4">{{ page.title }}</h1>
-        {% if page.last_update %}
-        <span class="text-light">Last Updated on {{ page.last_update | date: "%B %e, %Y" }} </span>
-        {% else %}
-        <span class="text-light">Published on {{ page.date | date: "%B %e, %Y" }} </span>
+          <div class="col-lg-2"></div>
+
+          <div class="col-12 col-lg-4 d-flex mt-5 mt-lg-0">
+            {% if page.twitter %}
+              <a href="{{ page.twitter }}" class="contact-button twitter-link" target="_blank"></a>
+            {% else %}
+              <a href="https://twitter.com/kamonteam" class="contact-button twitter-link" target="_blank"></a>
+            {% endif %}
+            <div class="ml-2 text-white text-body-smaller">
+              <div class="font-weight-bold mb-1">by {{ page.author }}</div>
+                {% if page.last_update %}
+                  <div>{{ page.last_update | date: "%e %B, %Y" }} </div>
+                {% else %}
+                  <div>{{ page.date | date: "%e %B, %Y" }} </div>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+    
+        {% if page.cover_image %}
+        <div class="post-cover-image-container">
+          <img class="w-100 post-cover-image" src="{{ page.cover_image }}" alt="post cover image"/>
+        </div>
         {% endif %}
       </div>
     </div>
+  </div>
 
-    {% if page.cover_image %}
-    <div class="mt-5">
-      <img class="w-100" src="{{ page.cover_image }}" alt="post cover image"/>
-    </div>
-    {% endif %}
-
-    <div class="row no-gutters mt-5">
-      <div class="col-12 col-lg-8">
-        <div class="markdown-content post-content">
-          {{ content }}
-        </div>
-      </div>
-      <div class="col-12 col-lg-4 pl-lg-5">
-        <div class="sticky-posts-actions">
-          <div class="d-none d-lg-block text-center p-5 start-monitoring-card-small">
-            <h5 class="text-dark-1">Searching for an APM Tool?</h5>
-            <p class="mt-3">
-              Kamon APM is <b>easy to setup</b>, <br>
-              integrates awesomely with Kamon Telemetry,
-              and correlates <b>metrics & traces</b> for you. Give it a try!
-            </p>
-
-            <a class="btn btn-primary mt-3 text-white onboarding-start-button px-5 py-2 w-100" href="#">
-              Try Kamon APM
-            </a>
-            <div class="d-block text-center pt-3 text-light">
-              It's a 3-minute setup, and you <br> can monitor 5 services for <b>Free</b>
+  <div class="container-fluid-fluid bg-lightest">
+    <div class="post-content-wrapper{% if page.cover_image %} spaced-out{% endif %}">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-12 col-lg-8">
+            <div class="js-markdown-content markdown-content post-content">
+              <a id="article-start"></a>
+              {{ content }}
             </div>
           </div>
-          <div class="mt-5">
-            <h6>Share this post</h6>
-            <div class="flex">
-              <a href="/" class="share-button twitter-share" target="_blank"></a>
-              <a href="/" class="share-button reddit-share" target="_blank"></a>
-              <a href="/" class="share-button linkedin-share" target="_blank"></a>
+  
+          <div class="col-12 col-lg-4 pl-lg-5">
+            <div class="sticky-posts-actions">
+              <div class="d-none d-lg-block">
+                <ul class="js-toc table-of-contents">
+                  <li class="toc-item">
+                    <a href="#article-start">Introduction</a>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-5 mb-5">
+                <h6>Share this post</h6>
+                <div class="flex">
+                  <a href="/" class="share-button twitter-share" target="_blank"></a>
+                  <a href="/" class="share-button reddit-share" target="_blank"></a>
+                  <a href="/" class="share-button linkedin-share" target="_blank"></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
+  </div>
 </main>
 
 <script src="/assets/js/prism.js" defer></script>
 <script src="/assets/js/docs.js" defer></script>
+<script src="/assets/js/post.js" defer></script>
 <script>
   document.addEventListener("readystatechange", function() {
     $(".twitter-share").prop("href", "https://twitter.com/intent/tweet?url=" + encodeURIComponent(location.href))
