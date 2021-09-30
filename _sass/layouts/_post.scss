@@ -141,12 +141,15 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-  min-height: 502px;
+  min-height: 536px;
   padding: 0;
+
+  .blog-card {
+    min-height: 492px;
+  }
 
   @media (min-width: $lg-start) {
     display: block;
-    min-height: 606px;
     padding: 0 72px;
   }
 

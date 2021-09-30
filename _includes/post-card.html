@@ -7,7 +7,11 @@
     {% endif %}
     <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
       <h4 class="text-dark-1">{{ include.post.title }}</h4>
-      <div class="text-body-smaller text-dark-2">{{ include.post.excerpt }}</div>
+      {% if include.small %}
+        <div class="text-body-smaller text-dark-2">{{ include.post.excerpt | truncate: 120 }}</div>
+      {% else %}
+        <div class="text-body-smaller text-dark-2">{{ include.post.excerpt }}</div>
+      {% endif %}
       <a class="arrow-link align-self-end mt-4 d-inline-block" href="{{ include.post.url }}">Read More</a>
     </div>
     <a class="grow-to-container" href="{{ include.post.url }}">

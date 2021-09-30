@@ -1,9 +1,19 @@
+function findTopLevelHeadings($container) {
+  for (let i = 1; i <= 5; i++) {
+    const $headings = $container.find(`h${i}`)
+
+    if ($headings.length > 0) {
+      return $headings
+    }
+  }
+
+  return $container.find('h1') // fallback so we have a jQuery value
+}
+
 function generateTableOfContents() {
   const $container = $('.js-markdown-content')
   const $toc = $('.js-toc')
-  const $headingsLevel1 = $container.find('h1')
-  const $headingsLevel2 = $container.find('h2')
-  const $headings = $headingsLevel1.length ? $headingsLevel1 : $headingsLevel2
+  const $headings = findTopLevelHeadings($container)
 
   $headings.each((_index, h) => {
     const $h = $(h)
