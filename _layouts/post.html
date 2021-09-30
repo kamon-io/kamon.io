@@ -79,33 +79,34 @@ footer_background: bg-lightest
 
   {% assign related = site.posts | where_exp:"item","item.categories == page.categories and item.title != page.title" %}
 
-  <div class="container-fluid bg-lightest">
+  <div class="container-fluid bg-lightest js-related-items-carousel-container pt-lg-5">
     <div class="container">
+      <div class="w-100 text-center mb-5 carousel-heading">
+        <h2>Related Posts</h2>
+      </div>
       <div class="blog-related-container position-relative">
         <div id="blogPostsCarousel" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            {% for post in related %}
-              {% assign mod_idx = forloop.index | modulo: 3 %}
-              {% if mod_idx == 1 %}
-                <div class="carousel-item row no-gutters d-flex justify-content-center">
-              {% endif %}
-              {% include post-card.html post=post small=1 %}
-              {% if mod_idx == 1 %}
-                </div>
-              {% endif %}
-            {% endfor %}
+          <ol class="carousel-indicators d-lg-none js-carousel-indicators">
+          </ol>
+
+          <div class="carousel-inner js-carousel-items">
           </div>
         </div>
 
-        <a data-target="#blogPostsCarousel" data-slide="prev" role="button" class="previous-blog-btn">
-          <img src="/assets/img/icons/directional/carousel-navigation-previous.svg" alt="Next post slide icon">
+        <a data-target="#blogPostsCarousel" data-slide="prev" role="button" class="d-none d-lg-block previous-blog-btn js-carousel-btn">
+          <img src="/assets/img/icons/directional/angle-left.svg" alt="Next post slide icon">
         </a>
-        <a data-target="#blogPostsCarousel" data-slide="next" role="button" class="next-blog-btn">
-          <img src="/assets/img/icons/directional/carousel-navigation-next.svg" alt="Previous post slide icon">
+        <a data-target="#blogPostsCarousel" data-slide="next" role="button" class="d-none d-lg-block next-blog-btn js-carousel-btn">
+          <img src="/assets/img/icons/directional/angle-right.svg" alt="Previous post slide icon">
         </a>
       </div>
     </div>
-    </div>
+  </div>
+
+  <div class="js-related-posts-templates">
+    {% for post in related %}
+      {% include post-card.html post=post small=1 %}
+    {% endfor %}
   </div>
 </main>
 

@@ -97,6 +97,12 @@ a.nav-link {
 
 .navbar.mobile-expanded {
   background-color: $color-dark-background !important;
+  max-height: 100%;
+  overflow: auto;
+
+  .notification-bar + & {
+    max-height: calc(100% - 36px);
+  }
 }
 
 .notification-bar {

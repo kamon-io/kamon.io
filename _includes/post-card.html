@@ -1,9 +1,9 @@
 <div class="col-12 {%if include.small %}col-md-4{% else %}col-md-6 col-xl-4{% endif %} py-3 blog-card js-blog-card">
   <div class="elevated-container blog-card-content position-relative h-100">
     {% if include.post.summary_image %}
-    <div class="blog-card-summary-image" style="background-image: url('{{ include.post.summary_image }}')"></div>
+      <div class="blog-card-summary-image" style="background-image: url('{{ include.post.summary_image }}')"></div>
     {% else %}
-    <div class="blog-card-summary-image {{ include.post.categories }}"></div>
+      <div class="blog-card-summary-image {{ include.post.categories }}"></div>
     {% endif %}
     <div class="p-4 d-flex flex-column justify-content-between blog-card-text">
       <h4 class="text-dark-1">{{ include.post.title }}</h4>

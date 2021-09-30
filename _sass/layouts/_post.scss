@@ -129,9 +129,34 @@
 }
 
 .blog-related-container {
+  display: flex;
+  align-items: stretch;
   width: 100%;
-  min-height: 400px;
-  padding: 0 72px;
+  min-height: 502px;
+  padding: 0;
+
+  @media (min-width: $lg-start) {
+    display: block;
+    min-height: 606px;
+    padding: 0 72px;
+  }
+
+  .carousel {
+    padding-bottom: 36px;
+  }
+
+  .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    background-color: $color-dark-2;
+    border-radius: 100%;
+    opacity: 0.2;
+    transition: opacity 200ms linear;
+
+    &.active {
+      opacity: 1;
+    }
+  }
 }
 
 .previous-blog-btn,
@@ -140,10 +165,13 @@
   display: inline-block;
   top: 50%;
   transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
+  width: 30px;
   text-decoration: none;
   cursor: pointer;
+
+  img {
+    width: 26px;
+  }
 
   &:hover,
   &:active {
@@ -157,4 +185,8 @@
 
 .next-blog-btn {
   right: 8px;
+}
+
+.carousel-heading {
+  font-weight: 700;
 }
