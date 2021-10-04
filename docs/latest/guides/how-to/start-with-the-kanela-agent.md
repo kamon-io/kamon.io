@@ -63,7 +63,11 @@ on Development mode, to include it you must add the right plugin depending on yo
 ### Play 2.8
 
 {% code_block scala %}
+// For Play Framework 2.8.8
 addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.8" % "{{ site.data.versions.latest.kanela_runner }}")
+
+// OR for Play Framework <= 2.8.7
+addSbtPlugin("io.kamon" % "sbt-kanela-runner-play-2.8" % "2.0.10")
 {% endcode_block scala %}
 
 ### Play 2.7
