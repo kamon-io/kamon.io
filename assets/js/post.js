@@ -19,7 +19,7 @@ function generateTableOfContents() {
     const $h = $(h)
     const text = $h.text()
     const link = $h.attr('id')
-    const $linkEl = $(`<li class="toc-item"><a href="#${link}">${text}</a></li>`)
+    const $linkEl = $(`<li class="toc-item"><a href="#${link}"><div class="toc-item__text">${text}</div></a></li>`)
     $toc.append($linkEl)
   })
 }
@@ -101,7 +101,7 @@ function initCarouselItems() {
 $(document).ready(() => {
   generateTableOfContents()
   initCarouselItems()
-  
+
   // I have no idea why, but Jekyll variables don't work here with blog posts, so hack it
   $('#main-header').attr('data-transparent', 'true')
   $('.footer-box-background').addClass('bg-lightest')
