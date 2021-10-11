@@ -105,7 +105,7 @@ class MyApplicationLoader extends ApplicationLoader {
     // 2. Starts reporters and system metrics collection
     Kamon.loadModules()
 
-    // 3. Ensures that Kamon stops after every run. Specially importart
+    // 3. Ensures that Kamon stops after every run. Specially important
     //    when running on Development mode.
     context.lifecycle.addStopHook { () =>
       Kamon.stop()
