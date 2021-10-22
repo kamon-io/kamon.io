@@ -29,8 +29,8 @@ Options
 When instrumenting an Executor Service you have the possibility to tweak two different options:
 - Tracking time in queue (default: yes) will track setup a timer that measures the time between submitting a task to the
   executor and when it starts executing.
-- Propagate Context on submit (default: no) will capture the current Context at the moment a task is submitted the
-  executor and restore that Context when the tasks executors. In most cases you will not need to enable this option
+- Propagate Context on submit (default: no) will capture the current Context at the moment a task is submitted to the
+  executor and restore that Context when the task gets executed. In most cases you will not need to enable this option
   because the bytecode instrumentation shipping on this module will take care of performing Context propagation, but if
   you are doing manual instrumentation, this will definitely be useful for you.
 
