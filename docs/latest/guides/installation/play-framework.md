@@ -89,7 +89,7 @@ Special Cases
 =============
 
 ## Custom Application Loaders
-If your Play Framework application has a custom `ApplicationLoader`, you will need to add a few lines of code  to ensure 
+If your Play Framework application has a custom `ApplicationLoader`, you will need to add a few lines of code to ensure 
 that Kamon is initialized and stopped properly. Add these lines to the `load` method in your `ApplicationLoader` 
 implementation:
 
@@ -99,14 +99,19 @@ import kamon.Kamon
 class MyApplicationLoader extends ApplicationLoader {
   def load(context: ApplicationLoader.Context): Application = {
 
-    // 1. Ensures that Kamon is configured with Play's conf/application.conf file
-    Kamon.reconfigure(context.initialConfiguration.underlying)
+    // For Kamon 2.3.1
+    Kamon.initWithoutAttaching(context.initialConfiguration.underlying)
 
-    // 2. Starts reporters and system metrics collection
+    // For Kamon 2.3.0 and earlier versions
+    //   - The reconfigure call ensures that Kamon is configured with 
+    //     Play's configuration file from `conf/application.conf`
+    //   - The second line starts reporters and system metrics collection
+    Kamon.reconfigure(context.initialConfiguration.underlying)
     Kamon.loadModules()
 
-    // 3. Ensures that Kamon stops after every run. Specially important
-    //    when running on Development mode.
+
+    // Ensures that Kamon stops after every run. Specially important
+    // when running on Development mode.
     context.lifecycle.addStopHook { () =>
       Kamon.stop()
     }
