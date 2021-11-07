@@ -15,7 +15,7 @@
     background-size: cover;
 
     @media (max-width: $xs-max) {
-      height: 100px;
+      height: 140px;
     }
 
     &.releases {
@@ -37,5 +37,27 @@
     @media (max-width: $xs-max) {
       height: calc(100% - 100px);
     }
+  }
+}
+
+
+.featured-blog-card {
+  margin-bottom: -10rem;
+  
+  .blog-card-content {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-card-summary-image {
+    width: 100%;
+    min-height: 220px;
+    background-position: top; 
+    background-size: cover;
+  }
+
+  .featured-post-description {
+    font-size: remSize(18);
   }
 }

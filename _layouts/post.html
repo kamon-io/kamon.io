@@ -9,27 +9,35 @@ footer_background: bg-lightest
     <div class="blog-post-heading-container">
       <div class="container">
         <div class="row no-gutters{% unless page.cover_image %} pb-5{% endunless %}">
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-8">
             <h1 class="pr-lg-4 text-white post-title">{{ page.title }}</h1>
-          </div>
-
-          <div class="col-lg-2"></div>
-
-          <div class="col-12 col-lg-4 d-flex justify-content-lg-end mt-5 mt-lg-0">
-            {% if page.twitter %}
-              <a href="{{ page.twitter }}" class="contact-button twitter-link" target="_blank"></a>
-            {% else %}
-              <a href="https://twitter.com/kamonteam" class="contact-button twitter-link" target="_blank"></a>
-            {% endif %}
-            <div class="ml-2 text-white text-body-smaller">
-              <div class="font-weight-bold mb-1">by {{ page.author }}</div>
-                {% if page.last_update %}
-                  <div>{{ page.last_update | date: "%e %B, %Y" }} </div>
+            
+            <div class="d-flex mt-3">
+              {% if page.twitter %}
+                <a href="https://twitter.com/{{ page.twitter }}" class="contact-button twitter-link" target="_blank"></a>
+              {% else %}
+                <a href="https://twitter.com/kamonteam" class="contact-button twitter-link" target="_blank"></a>
+              {% endif %}
+              <div class="ml-2 text-white text-body-smaller">
+                {% if page.twitter %}
+                  <a href="https://twitter.com/{{ page.twitter }}" class="no-decoration" target="_blank">
+                    <div class="font-weight-bold">by {{ page.author }}</div>
+                  </a>
                 {% else %}
-                  <div>{{ page.date | date: "%e %B, %Y" }} </div>
+                  <div class="font-weight-bold">by {{ page.author }}</div>
                 {% endif %}
+               
+
+                  {% if page.last_update %}
+                    <div>{{ page.last_update | date: "%B %e, %Y" }} </div>
+                  {% else %}
+                    <div>{{ page.date | date: "%B %e, %Y" }} </div>
+                  {% endif %}
+              </div>
             </div>
+
           </div>
+
         </div>
     
         {% if page.cover_image %}
@@ -55,7 +63,7 @@ footer_background: bg-lightest
           <div class="col-12 col-lg-4 pl-lg-5">
             <div class="sticky-posts-actions">
               <div class="d-none d-lg-block">
-                <h3 class="toc-title">Table of Contents</h3>
+                <h3 class="blog-sidebar-title">Contents</h3>
                 <ul class="js-toc table-of-contents">
                   <li class="toc-item">
                     <a href="#article-start">Introduction</a>
@@ -64,7 +72,7 @@ footer_background: bg-lightest
               </div>
               
               <div class="mt-5 mb-5">
-                <h6>Share this post</h6>
+                <h3 class="blog-sidebar-title">Share this Post</h3>
                 <div class="flex mt-3">
                   <a href="/" class="share-button twitter-share" target="_blank"></a>
                   <a href="/" class="share-button reddit-share" target="_blank"></a>
@@ -81,9 +89,9 @@ footer_background: bg-lightest
   {% assign related = site.posts | where_exp:"item","item.categories == page.categories and item.title != page.title" %}
 
   <div class="container-fluid bg-lightest js-related-items-carousel-container pt-lg-5">
-    <div class="container">
+    <section class="container">
       <div class="w-100 text-center mb-5 carousel-heading">
-        <h2>Related Posts</h2>
+        <h2>Related Content</h2>
       </div>
       <div class="blog-related-container position-relative">
         <div id="blogPostsCarousel" class="carousel slide" data-ride="carousel">
@@ -101,7 +109,7 @@ footer_background: bg-lightest
           <img src="/assets/img/icons/directional/angle-right.svg" alt="Previous post slide icon">
         </a>
       </div>
-    </div>
+    </section>
   </div>
 
   <div class="js-related-posts-templates">

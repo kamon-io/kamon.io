@@ -14,34 +14,45 @@ custom_css:
 
 <main>
   <div class="container-fluid dark-heading-background navbar-offset">
+    <div class="container">
+      <section class="row">
+        <div class="col-12">
+          <h1 class="text-white">Welcome to our Blog!</h1>
+          <p class="text-explainer text-lightest mt-3">
+            Get our latest product updates, learn about observability and
+            <br class="d-none d-md-inline">
+            how to instrument, monitor, and debug systems with Kamon
+          </p>
+        </div>
+      </section>
+    </div>
+
     {% if featured_post %}
-    <div class="py-5">
-      <div class="container">
-        <section class="row">
-          <div class="col-12 col-lg-6">
-            <h1 class="text-white featured-post-title">{{ featured_post.title }}</h1>
-            <p class="text-white featured-post-description mt-3">{{ featured_post.excerpt }}</p>
-            <a class="btn btn-semi-large btn-primary mt-3" href="{{ featured_post.url }}">Read More</a>
+      <div class="container featured-blog-card">
+        <section class="row elevated-container blog-card-content position-relative no-gutters p-0 ">
+          <div class="col-12 col-lg-5 order-lg-last blog-card-summary-image"  style="background-image: url('{{ featured_post.summary_image }}')">
+
           </div>
-          <div class="col-lg-1">
-  
+
+          <div class="col-12 col-lg-7 p-5 my-lg-5">
+            <h1>{{ featured_post.title }}</h1>
+            <p class="featured-post-description mt-3">{{ featured_post.excerpt }}</p>
+            <a class="arrow-link align-self-end mt-4 d-inline-block" href="{{ featured_post.url }}">Read More</a>
           </div>
-          <div class="col-12 col-lg-5 mt-5 mt-lg-0">
-            {% if featured_post.summary_image %}
-              <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
-            {% endif %}
-          </div>
+
+          <a class="grow-to-container" href="{{ featured_post.url }}">
+            <span></span>
+          </a>
         </section>
       </div>
-    </div>
     {% endif %}
   </div>
 
-  <div class="container-fluid bg-lightest">
-    <div class="container blog-posts-container">
+  <div class="container-fluid bg-lightest blogpost-list">
+    <div class="container pt-4 mt-5">
       <div class="row">
         {% for post in site.posts %}
-          {% if post.title != featured_post.title %}
+          {% if post.title != featured_post.title and post.archived != true %}
             {% include post-card.html post=post %}
           {% endif %}
         {% endfor %}
@@ -49,7 +60,7 @@ custom_css:
     </div>
   </div>
 
-  <div class="d-flex justify-content-center align-items-center w-100 px-4 pb-5 bg-lightest">
+  <div class="d-flex justify-content-center align-items-center w-100 px-4 py-5 bg-lightest">
     <div class="btn btn-semi-large btn-outline-primary js-load-more load-more-button">
       Load More
     </div>

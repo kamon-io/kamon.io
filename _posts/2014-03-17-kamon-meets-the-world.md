@@ -1,9 +1,10 @@
 ---
 layout: post
+archived: true
 title: Kamon meets the World!
 date: 2014-03-17
 author: the Kamon Team
-categories: teamblog
+categories: archive
 tags: announcement
 redirect_from:
   - /teamblog/2014/03/17/kamon-meets-the-world/

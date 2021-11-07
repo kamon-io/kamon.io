@@ -31,10 +31,10 @@
 }
 
 .blog-post-heading-container {
-  margin-top: 80px;
+  margin-top: 3rem;
 
   @media (min-width: $lg-start) {
-    margin-top: 120px;
+    margin-top: 5rem;
   }
 }
 
@@ -105,8 +105,8 @@
   }
 }
 
-.toc-title {
-  font-size: 16px;
+.blog-sidebar-title {
+  font-size: 0.9rem;
   line-height: 1.5;
   font-weight: 400;
   color: $color-dark-1;
@@ -124,16 +124,17 @@
     a {
       display: inline-block;
       width: 100%;
-      padding: 12px 16px;
+      padding: 8px 16px;
       color: $color-dark-1;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.8rem;
     }
 
     &:hover {
       background-color: $color-green-4;
 
       a {
-        color: $color-green-1;
+        color: $color-green-0;
       }
     }
   }
