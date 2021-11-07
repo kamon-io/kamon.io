@@ -1,0 +1,63 @@
+.blog-card {
+  &.invisible {
+    display: none;
+  }
+
+  .blog-card-content {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-card-summary-image {
+    width: 100%;
+    height: 200px;
+    background-position: top; 
+    background-size: cover;
+
+    @media (max-width: $xs-max) {
+      height: 140px;
+    }
+
+    &.releases {
+      background: $color-green-1 url("/assets/img/background/cubes-background-pattern-lighter.svg") no-repeat center;
+    }
+
+    &.posts {
+      background: $color-blue-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat bottom right;
+    }
+
+    &.teamblog {
+      background: $color-green-1 url("/assets/img/background/squares-background-pattern.svg") no-repeat center;
+    }
+  }
+
+  .blog-card-text {
+    height: calc(100% - 200px);
+
+    @media (max-width: $xs-max) {
+      height: calc(100% - 100px);
+    }
+  }
+}
+
+
+.featured-blog-card {
+  margin-bottom: -10rem;
+  
+  .blog-card-content {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-card-summary-image {
+    width: 100%;
+    min-height: 220px;
+    background-position: top; 
+    background-size: cover;
+  }
+
+  .featured-post-description {
+    font-size: remSize(18);
+  }
+}

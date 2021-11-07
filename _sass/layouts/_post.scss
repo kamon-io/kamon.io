@@ -7,15 +7,42 @@
   }
 }
 
-.start-monitoring-card-small {
-  background-color: $color-light-3;
-  @include rounded-elevation;
-}
-
 .sticky-posts-actions {
   @media (min-width: $lg-start) {
     position: sticky;
-    top: calc(57px + 3rem);
+    top: calc(57px + 24px + 3rem);
+  }
+}
+
+.post-cover-image-container {
+  margin-top: -32px;
+}
+
+.post-cover-image {
+  transform: translateY(80px);
+  border-radius: .5rem;
+  max-height: 440px;
+}
+
+.post-title {
+  font-size: remSize(40);
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.blog-post-heading-container {
+  margin-top: 3rem;
+
+  @media (min-width: $lg-start) {
+    margin-top: 5rem;
+  }
+}
+
+.post-content-wrapper {
+  padding-top: 40px;
+
+  &.spaced-out {
+    padding-top: 120px;
   }
 }
 
@@ -36,7 +63,8 @@
   }
 }
 
-.share-button {
+.share-button,
+.contact-button {
   border-radius: 20px;
   display: inline-block;
   width: 40px;
@@ -48,7 +76,8 @@
     background-color: $color-shamrock-darker;
   }
 
-  &.twitter-share {
+  &.twitter-share,
+  &.twitter-link {
     background-image: url("/assets/img/icons/external-brand-and-logo/twitter-white.svg");
   }
 
@@ -74,4 +103,105 @@
   @media (min-width: $md-start) {
     padding: 3rem;
   }
+}
+
+.blog-sidebar-title {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $color-dark-1;
+  text-transform: uppercase;
+}
+
+.table-of-contents {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .toc-item {
+    border-radius: 8px;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      padding: 8px 16px;
+      color: $color-dark-1;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background-color: $color-green-4;
+
+      a {
+        color: $color-green-0;
+      }
+    }
+  }
+}
+
+.blog-related-container {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 536px;
+  padding: 0;
+
+  .blog-card {
+    min-height: 492px;
+  }
+
+  @media (min-width: $lg-start) {
+    display: block;
+    padding: 0 72px;
+  }
+
+  .carousel {
+    padding-bottom: 36px;
+  }
+
+  .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    background-color: $color-dark-2;
+    border-radius: 100%;
+    opacity: 0.2;
+    transition: opacity 200ms linear;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.previous-blog-btn,
+.next-blog-btn {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  text-decoration: none;
+  cursor: pointer;
+
+  img {
+    width: 26px;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.previous-blog-btn {
+  left: 8px;
+}
+
+.next-blog-btn {
+  right: 8px;
+}
+
+.carousel-heading {
+  font-weight: 700;
 }

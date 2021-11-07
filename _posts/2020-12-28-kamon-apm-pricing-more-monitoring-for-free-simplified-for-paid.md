@@ -1,9 +1,10 @@
 ---
 layout: post
+archived: true
 title: 'Announcing New Pricing for Kamon APM'
 date: 2020-12-28
 author: the Kamon Team
-categories: announcement
+categories: archive
 permalink: /blog/new-pricing-for-kamon-apm/
 summary_image: '/assets/img/posts/new-pricing-plans.svg'
 excerpt: >-

@@ -1,9 +1,10 @@
 ---
 layout: post
+archived: true
 title: Kamon for Akka 2.3 is now available!
 date: 2014-04-24
 author: the Kamon Team
-categories: teamblog
+categories: archive
 tags: announcement
 redirect_from:
   - /teamblog/2014/04/24/kamon-for-akka-2-3-is-now-available/

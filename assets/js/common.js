@@ -257,4 +257,6 @@ $(document).ready(function() {
   bootOnboarding()
   initHeaderDropdownOnHover()
   initApmAccordions()
+
+  $(document).on('reloadHeader', initScrollMainHeader)
 })
