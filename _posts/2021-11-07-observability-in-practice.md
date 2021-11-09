@@ -83,8 +83,8 @@ Debugging on the other hand, is about *asking new questions* that help you figur
 than a second, so you can go and fix them.
 
 Sometimes the answers to your monitoring questions point right at the source of problems, and you kind of kill two birds
-with one shot. Some other times you need to get *very* creative and come up hypotheses of what is wrong, and craft the
-specific questions that can prove those hypotheses right or wrong.
+with one shot. Some other times you need to get *very* creative to come up with hypotheses of what is wrong, and craft
+the specific questions that can prove those hypotheses right or wrong.
 
 Finally, there is instrumentation. Instrumentation is about generating the data you will use for asking monitoring and
 debugging questions. Interestingly enough, the type of data you generate, and level of detail you include on it depends
