@@ -19,7 +19,6 @@
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ page.description }}">
     <meta property="og:url" content="https://kamon.io{{ page.url }}">
-    <meta property="og:image" content="https://kamon.io/assets/img/og/og-kamon.png">
 
     {% if page.layout == 'post' %}
     <meta property="og:type" content="article">
@@ -39,8 +38,10 @@
 
     {% if page.cover_image %}
     <meta name="robots" content="max-image-preview:large">
+    <meta property="og:image" content="https://kamon.io{{ page.cover_image }}">
     <meta property="twitter:image" content="https://kamon.io{{ page.cover_image }}">
     {% else %}
+    <meta property="og:image" content="https://kamon.io/assets/img/og/og-kamon.png">
     <meta property="twitter:image" content="https://kamon.io/assets/img/og/og-kamon.png">
     {% endif %}
 
