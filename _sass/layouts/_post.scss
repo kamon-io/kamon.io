@@ -20,7 +20,7 @@
 
 .post-cover-image {
   transform: translateY(80px);
-  border-radius: .5rem;
+  border-radius: 1rem;
   max-height: 440px;
 }
 
@@ -47,6 +47,9 @@
 }
 
 .post-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
  
   h2, h3, h4, h5  {
     margin-top: 2rem;
