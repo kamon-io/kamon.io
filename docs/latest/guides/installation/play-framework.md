@@ -99,7 +99,7 @@ import kamon.Kamon
 class MyApplicationLoader extends ApplicationLoader {
   def load(context: ApplicationLoader.Context): Application = {
 
-    // For Kamon 2.3.1
+    // For Kamon 2.3.1+
     Kamon.initWithoutAttaching(context.initialConfiguration.underlying)
 
     // For Kamon 2.3.0 and earlier versions
