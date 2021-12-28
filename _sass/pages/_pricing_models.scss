@@ -1,91 +1,63 @@
 .pricing-plan {
   padding-left: 2rem !important;
   padding-right: 2rem !important;
+  padding-bottom: 2rem;
 
   .pricing-header {
     height: 24rem;
   }
 
   .pricing-price {
-    height: 7rem;
+    height: 6rem;
 
     @media (min-width: 768px) {
-      height: 9rem;
+      height: 6rem;
     }
 
+
     .pricing-frequency {
-      color: $color-dark-4;
+      color: $color-dark-3;
       padding-left: 0.3rem;
-      font-size: 2rem;
+      font-size: 3rem;
     }
   }
 
   .pricing-explainer {
-    background-color: $color-light-3;
-    border: 1px solid #E4E4EB;
-    border-radius: .75rem;
-
+    
     .pricing-plan-details {
       li {
         background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
-        background-size: 1rem;
+        background-size: 1.5rem;
+        padding-left: 2.5rem;
       }
     }
   }
-
-  .pricing-breakdown {
-    padding-left: 1rem;
-
-    li {
-      background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
-      background-size: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      height: 37rem;
-      padding-left: 2rem;
-    }
-
-    @media (min-width: 992px) {
-      height: 28rem;
-    }
-
-
-    @media (min-width: 1200px) {
-      height: 24rem;
-    }
-  }
-
-  .pricing-cta {
-    height: 8rem;
-  }
 }
 
-.featured-plan {
-  position: relative;
-  border-radius: 0.8rem;
+.sign-up-cta {
+  border-radius: 16px;
   border: 2px solid $color-shamrock-main;
 
-  .pricing-header {
-    margin-top: -1.6rem;
-  }
-
-  .plan-qualifier {
-    display: inline-block;
-    margin-top: -2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    height: 2rem;
-    line-height: 2rem;
-    vertical-align: middle;
-    border-radius: 1rem;
-    background-color: $color-shamrock-main;
+  .cta-explainer {
+    font-size: 1.5rem;
   }
 }
 
-.faq-question-container {
-  font-size: 1.1rem;
+.plan-comparison-table {
+  table-layout: fixed;
+
+  thead tr th {
+    padding: 12px 0px;
+
+    &:not(:first-child) {
+      width: 150px;
+    }
+  }
+
+  tbody tr td {
+    padding: 12px 0px;
+    border-top: 1px solid $color-light-1;
+  }
 }
 
 #teams-plan-service-number {

@@ -2,54 +2,49 @@
   <div class="footer-box-background {% if layout.footer_background %}{{ layout.footer_background }}{% endif %} {% if page.footer_background %}{{ page.footer_background }}{% endif %}">
     <div class="container">
       <div class="row align-items-end footer-conversion-box">
-        <div class="col-12 col-md-6 col-xl-7 mt-5 align-self-center">
+        <div class="col-12 col-md-7 col-xl-7 mt-5 align-self-center">
           <h1 class="text-white pr-5">
             {% if page.footer_box_heading %}
             {{ page.footer_box_heading}}
             {% else %}
-            Get ready for your next incident!
+            Start with a Developer Account
             {% endif %}
           </h1>
-          <p class="text-white text-explainer mt-3">
+          <p class="text-lightest lead mt-3">
             {% if page.footer_box_description %}
             {{ page.footer_box_description}}
             {% else %}
-            There is no way around it: slow requests and errors will happen. Get ready to notice and fix them with Kamon APM
+            Take the first step in your observability journey with a Free Developer account
             {% endif %}
           </p>
 
         </div>
 
-        <div class="col-12 col-md-6 offset-xl-1 col-xl-4 mt-5 p-2">
+        <div class="col-12 col-md-5 offset-xl-1 col-xl-4 mt-5 p-2">
           <div class="offer-box bg-white p-4 text-center">
-            <h3 class="mt-3">
-              Start Monitoring <span class="text-primary">Now</span>
+            <h3 class="mt-3 mb-5">
+              End-to-end Observability<br>for your entire stack
             </h3>
-            <div class="text-light mt-2 mb-4">
-              No complex configurations
-              <br>
-              No card required
-            </div>
-            <ul class="icon-list text-left pl-4">
+            <ul class="icon-list text-left pl-4 mb-3">
               <li>
-                <b>Unlimited</b> users
+                <b>High-fidelity</b> metrics
               </li>
               <li>
-                <b>Unlimited</b> services
+                <b>Distributed</b> tracing
               </li>
               <li>
-                <b>Unlimited</b> hosts
+                <b>Alert</b> notifications
               </li>
               <li>
-                <b>Visualize</b> end-to-end traces
+                <b>Free</b> for small teams
               </li>
               <li>
-                <b>Analyze</b> high-fidelity metrics
+                <b>Unlimited</b> hosts & services
               </li>
             </ul>
             
-            <a class="btn btn-primary w-100 onboarding-start-button px-5 py-3 mt-4" href="#" data-url="signup">
-              Try Kamon APM
+            <a class="btn btn-primary w-100 onboarding-start-button px-5 py-3" href="#" data-url="signup">
+              Sign Up for Kamon APM
             </a>
           </div>
         </div>
