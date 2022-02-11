@@ -34,6 +34,16 @@ Additionally, if a supported connection pool is used the following tags will be 
   - **jdbc.pool.name**: name of the connection pool.
 
 
+### Controlling the db.statement tag <small>Since 2.4.7</small>
+
+You can use the `kamon.instrumentation.jdbc.add-db-statement-as-span-tag` setting to control the `db.statement` tag in JDBC calls. This is 
+especially important when your JDBC calls might contain sensitive information that you don't want to share with third parties, like your tracing 
+vendor. The possible setting values are:
+  - **always**: (default) will always add the `db.statement` tag to spans
+  - **prepared**: will only add the the `db.statement` tag when the traced execution was made with a PreparedStatement, which should ensure no placeholder values are leaked to the tracing backend
+  - **never**: completely disables adding the `db.statement` tag to spans
+
+  
 
 Slow Statements Processor
 -------------------------
