@@ -33,61 +33,81 @@ all tags will be transmitted unchanged and depending on the metric type, the fol
     `pXX` fields represent a percentile for the given distribution of values. These percentiles can be configured using
     the `kamon.influxdb.percentiles` setting.
 
-The following settings are available:
+## Authentication
 
-```hcl
+This reporter doesn't use any authentication mechanism out of the box, but you can add Basic or Token authentication with these
+settings:
+
+{% code_block typesafeconfig %}
+kamon.influxdb {
+  authentication {
+    token = "your_api_token"
+
+#     // OR
+
+    user = "user"
+    password = "password"
+  }
+}
+{% endcode_block %}
+
+
+## Configuration
+These are all the configuration setting available for the InfluxDB reporter:
+
+```config
 kamon.influxdb {
 
-    # Hostname and port in which your InfluxDB is running
-    hostname = "127.0.0.1"
-    port = 8086
+  # Hostname and port in which your InfluxDB is running
+  hostname = "127.0.0.1"
+  port = 8086
 
-    # The database where to write in InfluxDB.
-    database = "mydb"
+  # The database where to write in InfluxDB.
+  database = "mydb"
 
-    # For histograms, which percentiles to count
-    percentiles = [50.0, 70.0, 90.0, 95.0, 99.0, 99.9]
+  # For histograms, which percentiles to count
+  percentiles = [50.0, 70.0, 90.0, 95.0, 99.0, 99.9]
 
-    # The protocol to use when used to connect to your InfluxDB: HTTP/HTTPS
-    protocol = "http"
+  # The protocol to use when used to connect to your InfluxDB: HTTP/HTTPS
+  protocol = "http"
+  # Whether or not to submit distributions with count = 0 to influxdb (with 0 values)
+  post-empty-distributions = false
 
-    # Whether or not to submit distributions with count = 0 to influxdb
-    # (with 0 values)
-    post-empty-distributions = false
+  # The precision to report the period timestamp in. Corresponds with what influx will accept, minus hours and minutes
+  # [ns,u,µ,ms,s]
+  precision = "s"
 
-    # The precision to report the period timestamp in. Corresponds with
-    # what influx will accept, minus hours and minutes [ns,u,µ,ms,s]
-    precision = "s"
+  # Client authentication credentials for connection to the InfluxDB server. There is no authentication by default.
+  # You can enable authentication by adding an authentication section to your configuration file with either token or
+  # user/password settings in it. If you specify both, token authentication will be used.
+  #
+  #   authentication {
+  #     token = "your_api_token"
+  #
+  #     // OR
+  #
+  #     user = "user"
+  #     password = "password"
+  #
+  #   }
 
-    # Client authentication credentials for connection to the InfluxDB
-    # server. There is no authentication by default,
-    # if you wish to enable it, add an authentication section to your
-    # configuration file. E.g.:
-    #
-    #   authentication {
-    #     user = "user"
-    #     password = "password"
-    #   }
+  # Allow including environment information as tags on all reported metrics.
+  environment-tags {
 
-    # Allow including environment information as tags on all reported metrics.
-    environment-tags {
+    # Define whether specific environment settings will be included as tags in all exposed metrics. When enabled,
+    # the service, host and instance tags will be added using the values from Kamon.environment().
+    include-service = yes
+    include-host = yes
+    include-instance = yes
 
-      # Define whether specific environment settings will be included as tags
-      # in all exposed metrics. When enabled, the service, host and instance
-      # tags will be added using the values from Kamon.environment().
-      include-service = yes
-      include-host = yes
-      include-instance = yes
+    # Specifies which Kamon environment tags should be ignored. All unmatched tags will be always added to al metrics.
+    exclude = []
+  }
 
-      # Specifies which Kamon environment tags should be ignored. All unmatched
-      # tags will be always added to al metrics.
-      exclude = []
-    }
-
-    tag-filter {
-      includes = ["**"]
-      excludes = []
-    }
+  tag-filter {
+    includes = ["**"]
+    excludes = []
+  }
 }
 
 ```
@@ -101,6 +121,3 @@ Here is a simple example showing some Actor and Span metrics using InfluxDB and 
 {% lightbox /assets/img/influxdb-dashboard.png %}
 InfluxDB + Grafana Dashboard
 {% endlightbox %}
-
-[Datadog]: http://www.datadoghq.com/
-[get started]: /docs/latest/guides/getting-started/
