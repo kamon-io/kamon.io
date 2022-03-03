@@ -20,6 +20,21 @@ function sendGoogleAnalyticsEvent(eventName, eventLabel) {
       "eventLabel": eventLabel
     })
   }
+
+  if(eventName == GAEvents.onboarding_start_signup) {
+    plausibleEvent('Launch Sign Up')
+  }
+
+  if(eventName == GAEvents.onboarding_signup) {
+    plausibleEvent('Sign Up')
+  }
+}
+
+function plausibleEvent(eventName) {
+  const plausible = window.plausible
+  if (plausible != null) {
+    plausible(eventName)
+  }
 }
 
 function initScrollMainHeader() {
