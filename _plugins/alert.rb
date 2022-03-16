@@ -10,11 +10,11 @@ module Jekyll
     def render(context)
       content = super
       <<-HTML.gsub /^\s+/, '' # remove whitespaces from here
-      <div class="outline-alert outline-alert-#{@type} row no-gutters">
-        <div class="alert-image col-2 col-sm-1">
-          <img src="/assets/img/icons/alert/#{@type}.svg"/>
+      <div class="outline-alert-#{@type} row no-gutters mt-3">
+        <div class="alert-image col-auto pl-0 pr-3">
+          <img height="32" width="32" src="/assets/img/icons/alert/#{@type}.svg"/>
         </div>
-        <div class="alert-content col-10 col-sm-11">#{content}</div>
+        <div class="alert-content col">#{content}</div>
       </div>
       HTML
     end

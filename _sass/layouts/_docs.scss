@@ -1,48 +1,51 @@
 @import url(/assets/css/prism.css);
 @import "code";
 
-.docs-search-container {
-  input {
-    padding: 8px 16px;
-    background-color: white;
-    border-radius: 8px;
-    border: 1px solid $color-dark-4;
-  }
+// .docs-search-container {
+//   .algolia-autocomplete {
 
-  .docs-results-absolute {
-    right: 0px;
-    position: absolute;
-    background-color: white;
-    z-index: 1003;
-    display: block;
-    max-height: 450px;
-    overflow: auto;
-    text-align: left;
-    padding: 0.5rem;
-    width: 50vw;
+//   }
+//   #docSearch {
+//     padding: 8px 16px;
+//     background-color: red !important;
+//     border-radius: 8px;
+//     border: 1px solid $color-dark-4;
+//   }
 
-    @include custom-scrollbar;
+//   .docs-results-absolute {
+//     right: 0px;
+//     position: absolute;
+//     background-color: white;
+//     z-index: 1003;
+//     display: block;
+//     max-height: 450px;
+//     overflow: auto;
+//     text-align: left;
+//     padding: 0.5rem;
+//     width: 50vw;
 
-    .search-result-link {
-      color: $color-dark-2;
-      display: inline-block;
-      padding: 8px 16px;
-      width: 100%;
+//     @include custom-scrollbar;
 
-      &:hover {
-        text-decoration: none;
-        background-color: $color-light-3;
-        border-radius: 8px;
-      }
+//     .search-result-link {
+//       color: $color-dark-2;
+//       display: inline-block;
+//       padding: 8px 16px;
+//       width: 100%;
 
-      .highlighted {
-        color: $color-shamrock-main;
-        background-color: $color-green-4;
-        border-radius: 5px;
-      }
-    }
-  }
-}
+//       &:hover {
+//         text-decoration: none;
+//         background-color: $color-light-3;
+//         border-radius: 8px;
+//       }
+
+//       .highlighted {
+//         color: $color-shamrock-main;
+//         background-color: $color-green-4;
+//         border-radius: 5px;
+//       }
+//     }
+//   }
+// }
 
 body.has-notification {
 
@@ -72,7 +75,6 @@ body.has-notification {
 .docs-sidebar-nav, .docs-mobile-navigation-container {
   $sidebar-vertical-margin: 170px;
 
-  background-color: $color-light-3;
   z-index: 1010;
   
   > ul {
@@ -90,10 +92,11 @@ body.has-notification {
 
     .doc-search-icon {
       position: absolute;
-      width: 18px;
-      height: 18px;
-      top: calc(20px - 9px);
-      right: 8px;
+      width: 12px;
+      height: 12px;
+      top: 14px;
+      left: 12px;
+      fill: $color-dark-3;
     }
 
     #docSearch {
@@ -101,15 +104,16 @@ body.has-notification {
       border: none;
       height: 40px;
       border-radius: 8px;
-      padding: 8px 24px 8px 16px;
+      padding: 8px 12px 8px 32px;
       outline: none;
-      background: #FFFFFF;
-      color: #8F90A6;
-      font-size: 14px;
+      background: $color-light-2;
+      color: $color-dark-3;
+      font-size: 1rem;
       line-height: 24px;
 
       &:focus {
-        box-shadow: 0 0 0 1px #0E95F6;
+        color: $color-dark-2;
+        // box-shadow: 0 0 0 1px $color-dark-3;
       }
 
       &::placeholder {
@@ -122,19 +126,19 @@ body.has-notification {
   .docs-section {
     cursor: pointer;
     border-radius: 8px;
-    color: $color-dark-3;
-    font-weight: 500;
-    font-size: 1rem;
-    -webkit-appearance: none;
-
-    &.active {
-      color: $color-shamrock-main;
-      font-weight: 600;
-    }
+    color: $color-dark-2;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
 
     &:hover {
-      background-color: $color-light-2;
+      color: $color-dark-1;
     }
+  }
+
+  .docs-section-contents {
+    margin-left: 32px;
+    border-left: 1px solid $color-light-1;
   }
 
   // Topics are the tiny groups inside sections. They don't have any
@@ -143,22 +147,20 @@ body.has-notification {
     padding-left: 1rem;
     color: $color-dark-3;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
+    font-size: 0.75rem;
   }
 
   // The actual pages users can click on
   .docs-page {
     cursor: pointer;
-    border-radius: 8px;
-    padding-left: 2rem;
+    padding-left: 1rem;
     color: $color-dark-2;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 1rem;
 
     &.active {
       font-weight: 600;
-      background-color: $color-light-1;
+      border-left: 3px solid $color-shamrock-main;
     }
 
     &:hover {
@@ -170,25 +172,23 @@ body.has-notification {
   // JDBC and Kafka have nested pages that are styled by this class.
   .docs-sub-page {
     cursor: pointer;
-    border-radius: 8px;
-    padding-left: 1rem;
-    color: $color-dark-3;
+    padding-left: 2rem;
+    color: $color-dark-2;
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     &:hover {
       background-color: $color-light-2;
     }
 
     &.active {
-      color: $color-dark-2;
       font-weight: 600;
     }
   }
 
   .docs-sub-page-group {
-    margin-left: 2rem;
-    padding-left: 1rem;
+    // margin-left: 2rem;
+    // padding-left: 1rem;
     border-left: 1px solid $color-light-1;
   }
 
@@ -200,23 +200,24 @@ body.has-notification {
 
 
 .collapse-caret {
-  float: right;
-  width: 8px;
-  height: 8px;
-  border-top: 3px solid $color-dark-3;
-  border-left: 3px solid $color-dark-3;
-  transform: translate(0px, 10px) rotate(45deg);
+  float: left;
+  width: 9px;
+  height: 9px;
+  border-top: 2.5px solid $color-dark-2;
+  border-left: 2.5px solid $color-dark-2;
+  transform: translate(4px, 6px) rotate(225deg);
   transition: 0.2s;
 }
 
 .collapse-caret-small {
+  float: right;
   border-top: 2px solid $color-dark-4;
   border-left: 2px solid $color-dark-4;
 }
 
 .collapsed {
   .collapse-caret {
-    transform: translate(0px, 7px) rotate(225deg);
+    transform: translate(4px, 8px) rotate(135deg);
   }
 }
 
@@ -239,20 +240,12 @@ body.has-notification {
 
 .docs-container {
   z-index: 1000;
-  background-color: white;
-  border-radius: 16px;
-  font-size: 1.1rem;
-  line-height: 1.8rem;
+  line-height: 2rem;
   min-height: 80vh;
 
 
-  a {
-    font-weight: bold;
-  }
-
   h1, h2, h3, h4, h5, h6 {
-    color: $color-dark-2;
-    margin-bottom: 1.5rem;
+    color: $color-dark-1;
     scroll-margin-top: -4rem;
 
     .heading-anchor {
@@ -270,25 +263,24 @@ body.has-notification {
 
 
   h1 {
-    color: $color-dark-1;
-    margin-top: 2rem;
-    font-size: remSize(34);
-    line-height: remSize(38);
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
 
     @media (max-width: $xs-max) {
-      font-size: remSize(20);
-      line-height: remSize(24);
+      // font-size: remSize(20);
+      // line-height: remSize(24);
     }
   }
 
   h2 {
     margin-top: 2rem;
-    font-size: remSize(26);
-    line-height: remSize(30);
+    font-size: 1.75rem;
+    line-height: 2rem;
 
     @media (max-width: $xs-max) {
-      font-size: remSize(16);
-      line-height: remSize(20);
+      // font-size: remSize(16);
+      // line-height: remSize(20);
     }
   }
 
@@ -298,8 +290,8 @@ body.has-notification {
     line-height: remSize(30);
 
     @media (max-width: $xs-max) {
-      font-size: remSize(15);
-      line-height: remSize(20);
+      // font-size: remSize(15);
+      // line-height: remSize(20);
     }
   }
 
@@ -308,8 +300,8 @@ body.has-notification {
     line-height: remSize(22);
 
     @media (max-width: $xs-max) {
-      font-size: remSize(15);
-      line-height: remSize(20);
+      // font-size: remSize(15);
+      // line-height: remSize(20);
     }
   }
 
@@ -318,8 +310,8 @@ body.has-notification {
     line-height: remSize(20);
 
     @media (max-width: $xs-max) {
-      font-size: remSize(15);
-      line-height: remSize(20);
+      // font-size: remSize(15);
+      // line-height: remSize(20);
     }
   }
 
@@ -328,9 +320,30 @@ body.has-notification {
     line-height: remSize(18);
 
     @media (max-width: $xs-max) {
-      font-size: remSize(14);
-      line-height: remSize(18);
+      // font-size: remSize(14);
+      // line-height: remSize(18);
     }
+  }
+
+  p, ol, ul {
+    font-size: 1.125rem;
+  }
+
+  a:not([class*="language-"]):not([class="no-decoration"]) {
+    color: $color-dark-2;
+    text-decoration-line: underline;
+    text-decoration-color: $color-shamrock-main;
+    text-decoration-thickness: 3px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 0.375rem;
+  
+    &:hover {
+      color: $color-dark-0;
+      text-decoration-line: underline;
+      text-decoration-color: $color-shamrock-main;
+      text-decoration-thickness: 3px;
+    }
+  
   }
 
   blockquote {
@@ -362,6 +375,75 @@ body.has-notification {
       background-color: $color-light-2;
       text-transform: uppercase;
     }
+  }
+
+  .docs-breadcrumbs {
+    font-size: 1rem;
+    color: $color-dark-3;
+
+    .docs-breadcrumbs-section {
+      font-weight: 600;
+      color: $color-dark-2;
+    }
+  }
+
+  .metric-detail {
+    .metric-description {
+      line-height: 1.5rem;
+      color: $color-dark-3; 
+    }
+
+    .metric-tags {
+      color: $color-dark-2;
+      line-height: 1.5rem; 
+      
+      p, ul {
+        font-size: 1rem !important;
+      }
+
+      .metric-tag-name {
+        font-weight: 500;
+        color: $color-dark-2;
+      }
+    }
+  }
+}
+
+.docs-toc {
+  position: sticky;
+  top: 8rem;
+  align-self: flex-start;
+  border-left: solid 1px $color-light-1;
+
+  .toc-heading {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0rem;
+
+    li {
+      padding: 0.5rem 0rem;
+      line-height: 1rem;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: $color-dark-3;
+
+    &:hover {
+      color: $color-dark-1;
+    }
+  }
+
+  .docs-toc-container {
+    border-left: 1px sold $color-light-2;
   }
 }
 

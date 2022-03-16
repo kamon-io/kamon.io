@@ -3,6 +3,7 @@ title: 'Spring MVC Documentation'
 description: 'Automatically extract metrics, traces and perform context propagation on Spring applications'
 layout: docs
 ---
+
 {% include toc.html %}
 
 Spring MVC Instrumentation

@@ -3,6 +3,7 @@ title: 'Caffeine Documentation'
 description: 'Extract traces and metrics from Caffeine-backed caches'
 layout: docs
 ---
+
 {% include toc.html %}
 
 Caffeine Instrumentation

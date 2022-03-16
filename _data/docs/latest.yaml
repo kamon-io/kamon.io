@@ -1,9 +1,9 @@
 documentation:
-  - name: Guides
+  - name: Installation
     path: /guides/
     icon: /assets/img/icons/docs-guides.svg
     topics:
-      - name: Installation
+      - name: With Kamon Telemetry
         path: /guides/installation/
         pages:
           - name: Akka HTTP
@@ -60,7 +60,7 @@ documentation:
     path: /instrumentation/
     icon: /assets/img/icons/docs-instrumentation.svg
     topics:
-      - name: Automatic
+      - name: Supported Frameworks
         path: /instrumentation/
         pages:
           - name: Akka

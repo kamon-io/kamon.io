@@ -4,6 +4,8 @@ description: 'Learn how to collect metrics and traces from Lagom Framework apps 
 layout: docs
 ---
 
+{% include toc.html %}
+
 Setting up Kamon with Lagom Framework
 =====================================
 

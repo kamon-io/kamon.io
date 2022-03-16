@@ -2,108 +2,53 @@
 @import "functions";
 
 body {
-  .code-example, :not(pre) > code[class*="language-"], pre[class*="language-"] {
-    border-radius: 0.5rem;
-  }
-
-  code {
-    font-weight: 600;
-    color: $color-shamrock-main;
-  }
+  // .code-example, :not(pre) > code[class*="language-"], pre[class*="language-"] {
+  //   border-radius: 0.75rem;
+  // }
 
   code:not([class*="language-"]) {
-    font-size: 15px;;
-    border-radius: 0.3rem;
-    padding: 0.1rem 0.3rem;
-    background-color: $color-light-2;
+    font-family: "Roboto Mono", monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-shamrock-darker;
   }
 
   code[class*="language-"], pre[class*="language-"] {
-    font-family: "Source Code Pro", monospace;
-    font-weight: 600;
-    font-size: remSize(14);
-    line-height: remSize(17.6);
-    color: $color-light-4;
-  }
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $color-dark-2;
+    padding-bottom: 2rem;
 
-  pre code {
-    font-size: 0.9rem;
-  }
-
-  .code-window-container {
-    width: 100%;
-    border-radius: remSize(8);
-    overflow: hidden;
-    box-shadow: -1.5rem 1.5rem 0 0 $color-green-4;
-
-    @media (max-width: 320px) {
-      max-width: 280px;
-    }
-
-    .learn-more-button {
-      position: absolute;
-      bottom: 1.4rem;
-      right: 2rem;
-    }
-  }
-
-  .code-window {
-    $window-circle-size: 0.5rem;
-
-    .code-window-heading {
-      height: 1.5rem;
-      background-color: $color-dark-1;
-    }
-
-    .code-window-circle {
-      background-color: #808080;
-      height: $window-circle-size;
-      width: $window-circle-size;
-      border-radius: $window-circle-size / 2;
-
-      &.circle-red {
-        background-color: $color-red-2;
-      }
-      &.circle-yellow {
-        background-color: $color-yellow-2;
-      }
-      &.circle-green {
-        background-color: $color-green-2;
-      }
-    }
-
-    pre[class*="language-"] {
-      min-height: 25rem;
-      padding-top: 1rem;
-      margin: 0rem;
-      border-radius: 0rem;
-    }
+    
   }
 }
 
 .code-example-container {
-  border-radius: 8px;
+  border-radius: 0.75rem;
   overflow: hidden;
-  margin: 1rem 0rem;
+  margin-bottom: 1rem;
+  background-color: $color-light-2;
 
   .tab-header {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    background-color: $color-dark-1;
-    border-bottom: 1px solid $color-dark-2;
-
+    min-height: 64px;
+    
     .language-btn {
       height: 32px;
-      line-height: 15px;
-      color: $color-light-4;
-      margin-left: 8px;
+      line-height: 24px;
+      color: $color-dark-3;
+      margin-left: 1rem;
+      margin-top: 1rem;
       border-radius: 8px;
-      background-color: transparent;
-      border-color: transparent;
+      padding: 4px 16px;
+      background-color: $color-light-3;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
 
       &:hover {
-        color: $color-light-0;
+        color: $color-dark-1 !important;
       }
 
       &.active {
@@ -120,73 +65,60 @@ body {
     @include custom-scrollbar;
   }
 
-  .tab-footer {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    color: $color-light-1;
-    border-top: 1px solid $color-dark-2;
-    background-color: $color-dark-0;
-
-    > div {
-      margin-right: 2rem;
-      cursor: pointer;
-      &:after {
-        content: "Copy";
-        font-family: "Inter", monospace;
-        margin-left: 1rem;
-        font-size: 16px;
-        font-weight: $typography-weight-regular;
-      }
-    }
+  .tab-content {
+    padding-left: 1rem;
   }
+
 }
 
 // prism overrides
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: $color-dark-1;
+  background: $color-light-2;
 }
 
-.token.comment,
-.token.block-comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: $color-dark-3;
-}
+// .token.comment,
+// .token.block-comment,
+// .token.prolog,
+// .token.doctype,
+// .token.operator, 
+// .token.cdata {
+//   color: $color-dark-3;
+// }
 
-.token.selector,
-.token.important,
-.token.atrule,
-.token.keyword,
-.token.builtin {
-  color: $color-blue-2;
-}
+// .token.selector,
+// .token.important,
+// .token.atrule,
+// .token.keyword,
+// .token.entity, 
+// .token.url,
+// .token.builtin {
+//   color: $color-blue-1;
+// }
 
-.token.punctuation {
-  color: $color-light-4;
-}
+// .token.property,
+// .token.punctuation {
+//   color: $color-dark-2;
+// }
 
-.line-numbers .line-numbers-rows {
-  border-right: none;
-}
+// .line-numbers .line-numbers-rows {
+//   border-right: none;
+// }
 
-.line-numbers-rows > span:before {
-  color: $color-dark-4;
-}
+// .line-numbers-rows > span:before {
+//   color: $color-dark-4;
+// }
 
-.token.string,
-.token.char,
-.token.attr-value,
-.token.regex,
-.token.variable {
-  color: $color-shamrock-lighter;
-}
+// .token.string,
+// .token.char,
+// .token.attr-value,
+// .token.regex,
+// .token.variable {
+//   color: $color-shamrock-darker;
+// }
 
-.token.boolean,
-.token.number,
-.token.function {
-  color: $color-orange-2;
-}
+// .token.boolean,
+// .token.number,
+// .token.function {
+//   color: $color-orange-2;
+// }

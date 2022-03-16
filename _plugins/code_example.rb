@@ -39,14 +39,14 @@ module Jekyll
 
         tab_header = tab_header +
           '<li class="nav-item">' +
-            '<a class="nav-link btn btn-secondary btn-sm language-btn' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
+            '<a class="nav-link btn btn-secondary btn-sm language-btn no-decoration' + active + '" data-toggle="tab" data-target="#' + snippet_id + '" role="tab">' +
               snippet[:label] +
             '</a>' +
           '</li>'
 
         tab_contents = tab_contents +
           '<div class="tab-pane' + active + '" id="' + snippet_id + '" role="tabpanel">' +
-            '<pre class="line-numbers language-'+ snippet[:language] +'">' +
+            '<pre class="language-'+ snippet[:language] +'">' +
               '<code class="language-'+ snippet[:language] +'">' +
                 code +
               '</code>' +
@@ -57,7 +57,7 @@ module Jekyll
       tab_header = tab_header + '</ul></div>'
       tab_contents = tab_contents + '</div>'
 
-      tab_footer = '<div class="tab-footer"><div class="fa fa-copy"/></div>'
+      tab_footer = '<div class="tab-footer"><div class=""/></div>'
 
       '<div class="code-example code-example-container">' + tab_header + tab_contents + tab_footer + '</div>'
     end

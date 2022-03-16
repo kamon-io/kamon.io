@@ -9,6 +9,8 @@ redirect_from:
 - /documentation/1.x/recipes/monitoring-akka-quickstart/
 ---
 
+{% include toc.html %}
+
 Monitoring Spring Boot Applications with Kamon
 ==============================================
 

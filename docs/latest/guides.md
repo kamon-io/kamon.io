@@ -11,8 +11,10 @@ redirect_from:
   - /introduction/get-started/
 ---
 
+{% include toc.html %}
+
 Installation
-============
+------------
 
 These guides walk you through setting up Kamon on your application and getting your first metrics and traces out of it.
 Long story short is that you need to add the Kamon dependencies and ensure that Kamon is initialized, but there are
@@ -24,7 +26,7 @@ little details that change for each framework:
 - You can also get started with [Akka HTTP][akka-http-guide]. Kamon has support for Akka HTTP **10.1 and 10.2**.
 
 How to Guides
-=============
+-------------
 
 These are typical tasks that you will want to get done after your initial Kamon installation is done:
 
@@ -35,7 +37,7 @@ These are typical tasks that you will want to get done after your initial Kamon 
 
 
 Migrations
-==========
+----------
 
 Follow these guides if you are upgrading from early Kamon versions:
   - [Upgrading from Kamon 0.6 to 1.0](./migration/from-0.6-to-1.0/).

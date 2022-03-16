@@ -9,6 +9,8 @@ redirect_from:
   - /documentation/1.x/recipes/adding-the-aspectj-weaver/
 ---
 
+{% include toc.html %}
+
 Instrumentation Agent Setup
 ===========================
 

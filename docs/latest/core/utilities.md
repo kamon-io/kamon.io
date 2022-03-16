@@ -11,7 +11,7 @@ Filters are used by several Kamon modules to determine whether to include or exc
 metrics collection and tracing. All filters are configured under the `kamon.util.filters` configuration key:
 
 {% code_example %}
-{%   language typesafeconfig reference/core/src/main/resources/application.conf tag:filters label:"application.conf" %}
+{%   language hcl reference/core/src/main/resources/application.conf tag:filters label:"application.conf" %}
 {% endcode_example %}
 
 The rules for filter execution are simple: any string is accepted by the filter if it matches at least one of the

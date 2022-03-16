@@ -6,6 +6,8 @@ description: >-
 layout: docs
 ---
 
+{% include toc.html %}
+
 Monitoring Play Framework Applications with Kamon
 =================================================
 

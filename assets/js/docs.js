@@ -62,7 +62,12 @@ function initVideoLightbox() {
   })
 }
 
+function initToc() {
+  $("#markdown-toc").detach().appendTo("#docs-toc-container")
+}
+
 $(document).ready(function() {
   initCodeExampleCopy()
   initVideoLightbox()
+  initToc()
 })

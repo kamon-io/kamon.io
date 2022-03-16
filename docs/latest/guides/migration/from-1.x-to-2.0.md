@@ -3,6 +3,8 @@ title: 'Migrating from 1.x to 2.0 | Kamon Documentation'
 layout: docs
 ---
 
+{% include toc.html %}
+
 Migrating from Kamon 1.x to 2.0
 ===============================
 

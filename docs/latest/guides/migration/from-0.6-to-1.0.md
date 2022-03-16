@@ -5,6 +5,8 @@ redirect_from:
   - /documentation/1.x/recipes/migrating-from-kamon-0.6/
 ---
 
+{% include toc.html %}
+
 Migrating from Kamon 0.6
 ========================
 

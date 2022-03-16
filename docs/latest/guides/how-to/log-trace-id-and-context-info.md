@@ -6,6 +6,8 @@ redirect_from:
 - /docs/latest/guides/common-tweaks/logging-with-context/
 ---
 
+{% include toc.html %}
+
 Logging Trace ID and Context Information
 ========================================
 
