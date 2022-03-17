@@ -1,52 +1,6 @@
 @import url(/assets/css/prism.css);
 @import "code";
 
-// .docs-search-container {
-//   .algolia-autocomplete {
-
-//   }
-//   #docSearch {
-//     padding: 8px 16px;
-//     background-color: red !important;
-//     border-radius: 8px;
-//     border: 1px solid $color-dark-4;
-//   }
-
-//   .docs-results-absolute {
-//     right: 0px;
-//     position: absolute;
-//     background-color: white;
-//     z-index: 1003;
-//     display: block;
-//     max-height: 450px;
-//     overflow: auto;
-//     text-align: left;
-//     padding: 0.5rem;
-//     width: 50vw;
-
-//     @include custom-scrollbar;
-
-//     .search-result-link {
-//       color: $color-dark-2;
-//       display: inline-block;
-//       padding: 8px 16px;
-//       width: 100%;
-
-//       &:hover {
-//         text-decoration: none;
-//         background-color: $color-light-3;
-//         border-radius: 8px;
-//       }
-
-//       .highlighted {
-//         color: $color-shamrock-main;
-//         background-color: $color-green-4;
-//         border-radius: 5px;
-//       }
-//     }
-//   }
-// }
-
 body.has-notification {
 
   .sticky-docs-navbar {
@@ -78,7 +32,7 @@ body.has-notification {
   z-index: 1010;
   
   > ul {
-    max-height: calc(100vh - #{$sidebar-vertical-margin} - 40px - 24px);
+    max-height: calc(100vh - #{$sidebar-vertical-margin} - 40px);
     @include custom-scrollbar;
   }
 
@@ -172,7 +126,7 @@ body.has-notification {
   // JDBC and Kafka have nested pages that are styled by this class.
   .docs-sub-page {
     cursor: pointer;
-    padding-left: 2rem;
+    padding-left: 1rem;
     color: $color-dark-2;
     font-weight: 400;
     font-size: 1rem;
@@ -239,7 +193,6 @@ body.has-notification {
 }
 
 .docs-container {
-  z-index: 1000;
   line-height: 2rem;
   min-height: 80vh;
 
@@ -451,11 +404,9 @@ body.has-notification {
 
   ul {
     list-style: none;
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
 
     li {
-      margin-top: 1rem;
-
       a {
         color: $color-dark-1;
       }

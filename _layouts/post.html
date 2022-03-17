@@ -1,45 +1,13 @@
 ---
 layout: default
 transparent_heading: true
-footer_background: bg-lightest
+footer_background: bg-white
 ---
 
 <main>
   <div class="container-fluid dark-heading-background navbar-offset">
     <div class="blog-post-heading-container">
-      <div class="container">
-        <div class="row no-gutters{% unless page.cover_image %} pb-5{% endunless %}">
-          <div class="col-12 col-lg-8">
-            <h1 class="pr-lg-4 text-white post-title">{{ page.title }}</h1>
-            
-            <div class="d-flex mt-3">
-              {% if page.twitter %}
-                <a href="https://twitter.com/{{ page.twitter }}" class="contact-button twitter-link" target="_blank"></a>
-              {% else %}
-                <a href="https://twitter.com/kamonteam" class="contact-button twitter-link" target="_blank"></a>
-              {% endif %}
-              <div class="ml-2 text-white text-body-smaller">
-                {% if page.twitter %}
-                  <a href="https://twitter.com/{{ page.twitter }}" class="no-decoration" target="_blank">
-                    <div class="font-weight-bold">by {{ page.author }}</div>
-                  </a>
-                {% else %}
-                  <div class="font-weight-bold">by {{ page.author }}</div>
-                {% endif %}
-               
-
-                  {% if page.last_update %}
-                    <div>{{ page.last_update | date: "%B %e, %Y" }} </div>
-                  {% else %}
-                    <div>{{ page.date | date: "%B %e, %Y" }} </div>
-                  {% endif %}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-    
+      <div class="container">    
         {% if page.cover_image %}
         <div class="post-cover-image-container">
           <img class="w-100 post-cover-image" src="{{ page.cover_image }}" alt="post cover image"/>
@@ -49,21 +17,50 @@ footer_background: bg-lightest
     </div>
   </div>
 
-  <div class="container-fluid bg-lightest">
+  <div class="container-fluid bg-white">
     <div class="post-content-wrapper{% if page.cover_image %} spaced-out{% endif %}">
       <div class="container">
         <div class="row no-gutters">
-          <div class="col-12 col-lg-9">
-            <div class="js-markdown-content markdown-content post-content">
+          <div class="col-12 col-lg-9 col-xxl-8 offset-xxl-1">
+
+            <div class="mb-5">
+              <h1>{{ page.title }}</h1>
+              
+              <div class="d-flex mt-3">
+                {% if page.twitter %}
+                  <a href="https://twitter.com/{{ page.twitter }}" class="contact-button twitter-link" target="_blank"></a>
+                {% else %}
+                  <a href="https://twitter.com/kamonteam" class="contact-button twitter-link" target="_blank"></a>
+                {% endif %}
+                <div class="ml-2 text-body-smaller">
+                  {% if page.twitter %}
+                    <a href="https://twitter.com/{{ page.twitter }}" class="no-decoration" target="_blank">
+                      <div class="font-weight-bold">by {{ page.author }}</div>
+                    </a>
+                  {% else %}
+                    <div class="font-weight-bold">by {{ page.author }}</div>
+                  {% endif %}
+                 
+  
+                    {% if page.last_update %}
+                      <div>{{ page.last_update | date: "%B %e, %Y" }} </div>
+                    {% else %}
+                      <div>{{ page.date | date: "%B %e, %Y" }} </div>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="js-markdown-content markdown-content post-content pb-5">
               <a id="article-start"></a>
               {{ content }}
             </div>
           </div>
   
           <div class="col-12 col-lg-3 pl-lg-5">
-            <div class="sticky-posts-actions">
+            <div class="sticky-posts-actions blog-toc pl-3 py-1">
               <div class="d-none d-lg-block">
-                <h3 class="blog-sidebar-title">On this Post</h3>
+                <span class="blog-sidebar-title">On this article</span>
                 <ul class="js-toc table-of-contents">
                   <li class="toc-item">
                     <a href="#article-start">Introduction</a>
@@ -71,8 +68,8 @@ footer_background: bg-lightest
                 </ul>
               </div>
               
-              <div class="mt-5 mb-5">
-                <h3 class="blog-sidebar-title">Share this Post</h3>
+              <div class="mt-3">
+                <span class="blog-sidebar-title">Share this article</span>
                 <div class="flex mt-3">
                   <a href="/" class="share-button twitter-share" target="_blank"></a>
                   <a href="/" class="share-button reddit-share" target="_blank"></a>
@@ -88,7 +85,7 @@ footer_background: bg-lightest
 
   {% assign related = site.posts | where_exp:"item","item.categories == page.categories and item.title != page.title" %}
 
-  <div class="container-fluid bg-lightest js-related-items-carousel-container pt-lg-5">
+  <div class="container-fluid bg-white js-related-items-carousel-container">
     <section class="container">
       <div class="w-100 text-center mb-5 carousel-heading">
         <h2>Related Content</h2>

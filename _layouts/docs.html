@@ -18,33 +18,33 @@ footer_background: bg-white
 
 <nav class="d-lg-none mobile-docs-navbar" role="button">
   <div class="d-flex align-items-center h-100" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
-    <button id="mobile-docs-navigation-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="mobile-docs-navigation-toggle" class="navbar-toggler p-2 ml-2" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="false" aria-label="Toggle navigation">
       <img src="/assets/img/icons/docs-mobile-menu-icon.svg" class="d-inline-block align-top" alt="Menu expander icon">
     </button>
-    <h4 class="d-inline mb-0" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="true" aria-label="Toggle navigation">Documentation</h4>
+    <div class="d-inline mb-0 h4" type="button" data-toggle="collapse" data-target="#mobile-docs-navigation" aria-controls="mobile-docs-navigation" aria-expanded="true" aria-label="Toggle navigation">Documentation</div>
   </div>
 
 
   {% if documentation %}
-  <div id="mobile-docs-navigation" style="z-index: 200;" class="d-lg-none w-100 p-0 pr-3 docs-sidebar-scroll docs-mobile-navigation-container collapse navbar-collapse">
+  <div id="mobile-docs-navigation" style="z-index: 200;" class="d-lg-none mb-2 w-100 docs-sidebar-scroll docs-mobile-navigation-container collapse navbar-collapse py-2">
     <ul>
       {% for section in documentation %}
       {% assign section_id = section.name | slugify %}
       {% assign is_section_expanded = path_without_version | start_with: section.path %}
 
       <li>
-        <div class="docs-section py-2 px-3 {% if is_section_expanded %}active{% else %}collapsed{% endif %}"
+        <div class="docs-section py-2 pr-2 {% if is_section_expanded %}active{% else %}collapsed{% endif %}"
           type="button"
           data-toggle="collapse"
           data-target="#{{ section_id }}"
           aria-expanded="{{ is_section_expanded }}"
           aria-controls="{{ section_id }}">
 
-          <span style="padding-left: 2rem; background-image: url({{section.icon}}); background-repeat: no-repeat; background-size: contain;">{{ section.name }}</span>
+          <span class="ml-4">{{ section.name }}</span>
           <span class="collapse-caret"></span>
         </div>
 
-        <ul id="{{ section_id }}" class="collapse {% if is_section_expanded %}show{% endif %}" aria-labelledby="{{ section_id }}">
+        <ul id="{{ section_id }}" class="collapse pl-3 {% if is_section_expanded %}show{% endif %}" aria-labelledby="{{ section_id }}">
           {% for topic in section.topics %}
           <li class="mb-3">
             <div class="docs-topic py-2 ">{{ topic.name }}</div>
@@ -61,7 +61,6 @@ footer_background: bg-white
                     data-target="#{{ page_id }}"
                     aria-expanded="{{ is_page_expanded }}">
                     {{page.name}}
-                    <span class="collapse-caret collapse-caret-small"></span>
                   </div>
 
                   <ul id="{{ page_id }}" class="docs-sub-page-group collapse {% if is_page_expanded %}show{% endif %}">
@@ -96,7 +95,7 @@ footer_background: bg-white
 </nav>
 
 <div class="w-100">
-  <div class="container-lg pb-5 pt-5">
+  <div class="container-lg py-5 mt-3">
     <div class="row">
 
       {% if documentation %}

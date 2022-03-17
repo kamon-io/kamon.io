@@ -3,8 +3,10 @@
 @import "bootstrap/mixins/breakpoints";
 
 a.nav-link {
-  font-size: remSize(18);
-  font-weight: $typography-weight-semi-bold;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding: 0.5rem 1rem !important;
 
   &:focus-visible {
     outline: none;
@@ -27,8 +29,8 @@ a.nav-link {
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-top: 3px solid $color-light-2;
-    border-left: 3px solid $color-light-2;
+    border-top: 2.5px solid $color-light-2;
+    border-left: 2.5px solid $color-light-2;
     border-right: none;
     transition: 0.2s;
     transform: translate(8px, 1px) rotate(-135deg);
@@ -49,49 +51,36 @@ a.nav-link {
   }
 }
 
-.dropdown-menu-center {
-  right: auto;
-  left: 40%;
-  -webkit-transform: translate(-23%, 0);
-  -o-transform: translate(-23%, 0);
-  transform: translate(-23%, 0);
-}
-
 .nav-submenu-container {
-  max-width: 700px;
-  min-width: 700px;
+  max-width: 550px;
+  min-width: 550px;
+  color: $color-dark-3;
+
+  .section-title {
+    font-weight: 600;
+    color: $color-dark-2;
+  }
 
   .nav-submenu-item {
-    border-radius: 8px;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
     text-decoration: none;
+    color: $color-dark-3;
 
     &:hover {
-      background-color: $color-light-3;
-
-      .item-icon {
-        background-color: white;
-      }
-    }
-
-    .item-icon {
-      max-width: 48px;
-      margin-right: 12px;
-      border-radius: 8px;
-      background-color: $color-light-3;
+      color: $color-dark-1;
+      background-color: $color-light-2;
     }
 
     .item-title {
       font-weight: 600;
-      color: $color-dark-1;
-      font-size: remSize(16);
+      color: $color-dark-2;
+      font-size: 1rem;
     }
 
     .item-explainer {
-      max-width: 220px;
-      white-space: normal;
-    }
-
-    
+      color: $color-dark-3;
+    }   
   }
 }
 
