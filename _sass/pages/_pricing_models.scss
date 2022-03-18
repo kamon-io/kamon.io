@@ -1,35 +1,53 @@
 .pricing-plan {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
   padding-bottom: 2rem;
+  border-radius: 1rem;
 
   .pricing-header {
-    height: 24rem;
+    @media (min-width: 768px) {
+      height: 20rem;
+    }
   }
 
   .pricing-price {
-    height: 6rem;
+    font-size: 2.5rem;
+    font-weight: 600;
 
     @media (min-width: 768px) {
       height: 6rem;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 1.75rem;
     }
 
 
     .pricing-frequency {
       color: $color-dark-3;
       padding-left: 0.3rem;
-      font-size: 3rem;
     }
   }
 
   .pricing-explainer {
-    
+    font-size: 1.125rem;
+
+    @media (max-width: 1200px) {
+      font-size: 1rem;
+    }
+
     .pricing-plan-details {
       li {
         background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
-        background-size: 1.5rem;
-        padding-left: 2.5rem;
+        background-size: 1.125rem;
+        padding-left: 2rem;
       }
+    }
+  }
+}
+
+.pricing-page {
+  .text-explainer {
+    @media (max-width: 1200px) {
+      font-size: 1rem;
     }
   }
 }
@@ -37,20 +55,28 @@
 .sign-up-cta {
   border-radius: 16px;
   border: 2px solid $color-shamrock-main;
-
-  .cta-explainer {
-    font-size: 1.5rem;
-  }
 }
 
 .plan-comparison-table {
   table-layout: fixed;
+
+  @media (max-width: 768px) {
+    .h3 {
+      font-size: 1rem;
+    }
+  }
 
   thead tr th {
     padding: 12px 0px;
 
     &:not(:first-child) {
       width: 150px;
+    }
+
+    @media (max-width: 768px) {
+      &:not(:first-child) {
+        width: 82px;
+      }
     }
   }
 
