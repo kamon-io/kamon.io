@@ -46,36 +46,4 @@
      id="path182"
      style="stroke-width:0.881807"
      sodipodi:nodetypes="ccccc" />
-  <path
-     d="m 1764.4184,387.90711 15.9524,4.35294 4.4802,-16.39603 L 1800,380 l 4.3645,-15.98545 14.7472,4.0266 4.0349,-14.7561 13.9528,3.80893"
-     stroke="#99debb"
-     stroke-width="2.69203"
-     id="path184" />
-  <circle
-     opacity="0.4"
-     cx="1444.4928"
-     cy="217.80342"
-     r="49.802589"
-     fill="#ffffff"
-     id="circle186"
-     style="stroke-width:0.897344"
-     transform="rotate(1.1344445)" />
-  <circle
-     opacity="0.4"
-     cx="1766.1931"
-     cy="476.76166"
-     r="9.8707838"
-     fill="#ffffff"
-     id="circle188"
-     style="stroke-width:0.897344"
-     transform="rotate(1.1344445)" />
-  <rect
-     x="1257.983"
-     y="-760.44629"
-     width="18.90246"
-     height="18.90246"
-     transform="rotate(46.134445)"
-     stroke="#86d9b0"
-     stroke-width="3.58938"
-     id="rect190" />
 </svg>

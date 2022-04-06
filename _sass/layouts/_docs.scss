@@ -398,6 +398,12 @@ body.has-notification {
   .docs-toc-container {
     border-left: 1px sold $color-light-2;
   }
+
+  .toc-apm-section {
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: $color-dark-3;
+  }
 }
 
 .docs-mobile-navigation-container {

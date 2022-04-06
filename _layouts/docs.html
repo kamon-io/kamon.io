@@ -181,7 +181,7 @@ footer_background: bg-white
       </div>
       {% endif %}
 
-      <div id="docs-content" class="docs-container px-4 {% if documentation %}col-12 col-lg-9 col-xl-7 {% else %}col-12{% endif %}">
+      <div id="docs-content" class="docs-container pl-3 pr-5 {% if documentation %}col-12 col-lg-9 col-xl-7 {% else %}col-12{% endif %}">
         {% if current_version == 'v1' %}
           {% include outdated-docs-notice.html link=latest_version_link %}
         {% endif %}
@@ -199,6 +199,15 @@ footer_background: bg-white
         <span class="toc-heading">On this article</span>
         <div id="docs-toc-container">
 
+        </div>
+        <div class="toc-heading mt-5">Not sure where to analyze your Telemetry data?</div>
+        <div class="toc-apm-section">
+          <div class="my-3">Create alerts, analyze metrics, and find slow & failed traces in <a href="/apm/" class="text-dark-1">Kamon APM</a></div>
+          <img class="w-100" src="/assets/img/apm/docs-sidebar/tiny-heatmap.png" alt="Kamon APM Heatmap">
+          <a class="btn btn-primary onboarding-start-button text-white w-100 mt-2" href="#" data-url="signup">
+            Try Kamon APM
+          </a>
+          <div class="mt-2 text-center">Start with a Free account - <a href="/apm/" class="text-dark-1">Learn more</a></div>
         </div>
       </div>
     </div>
