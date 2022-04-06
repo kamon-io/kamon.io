@@ -37,12 +37,12 @@ custom_css:
           </p>
         </div>
         
-        <div class="pricing-price d-flex flex-column justify-content-end">
+        <div class="pricing-price d-flex flex-column justify-content-start">
           Free
         </div>
     
         <div class="pricing-explainer text-left text-explainer py-3 px-2 px-xl-4">
-          <ul class="pricing-plan-details icon-list mb-0 mt-3 mt-md-5">
+          <ul class="pricing-plan-details icon-list mb-0 mt-3 mt-md-5 pl-md-3 pl-xxl-5">
             <li>
               High-fidelity metrics
             </li>
@@ -74,9 +74,17 @@ custom_css:
           </p>
         </div>
 
-        <div class="pricing-price text-center d-flex flex-column justify-content-end">
+        <div class="pricing-price text-center d-flex flex-column justify-content-start">
           <div>
-            <span>€90</span><span class="pricing-frequency">/mo</span>
+            <span id="teams-plan-price">$100</span><span class="pricing-frequency">/mo</span>
+          </div>
+          <div class="currency-toggle text-center">
+            <span id="show-price-in-usd" class="currency-option px-2 py-1 active">
+              USD
+            </span>
+            <span id="show-price-in-eur" class="currency-option px-2 py-1">
+              EUR
+            </span>
           </div>
         </div>  
 
@@ -99,7 +107,7 @@ custom_css:
               <b>Slack and PagerDuty</b> integrations
             </li>
             <li>
-              Sanboxes for <b>Staging</b> and <b>Development</b>
+              Sandboxes for <b>Staging</b> and <b>Development</b>
             </li>
           </ul>
         </div>
@@ -117,7 +125,7 @@ custom_css:
           </p>
         </div>      
 
-        <div class="pricing-price d-flex flex-column justify-content-end">
+        <div class="pricing-price d-flex flex-column justify-content-start">
           <span>Contact us</span>
         </div>  
 
@@ -303,26 +311,26 @@ custom_css:
           </tr>
           <tr class="text-center">
             <td class="text-left">Average time series per month</td>
-            <td>3K</td>
+            <td>5K</td>
             <td>10K</td>
             <td>Custom</td>
           </tr>
           <tr class="text-center">
             <td class="text-left">Spans ingested per month</td>
-            <td>900K</td>
+            <td>10M</td>
             <td>50M</td>
             <td>Custom</td>
           </tr>
           <tr class="text-center">
-            <td class="text-left">Additional 5K time series per month</td>
+            <td class="text-left">Additional 10K time series per month</td>
             <td>-</td>
-            <td>€40</td>
+            <td id="additional-10k-time-series-price">$90</td>
             <td>Custom</td>
           </tr>
           <tr class="text-center">
-            <td class="text-left">Additional 10M spans ingestion capacity</td>
+            <td class="text-left">Additional 100M spans ingestion capacity</td>
             <td>-</td>
-            <td>€10</td>
+            <td id="additional-100m-spans-price">$100</td>
             <td>Custom</td>
           </tr>
           

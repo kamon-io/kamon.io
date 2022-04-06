@@ -25,6 +25,23 @@
       color: $color-dark-3;
       padding-left: 0.3rem;
     }
+
+    .currency-toggle {
+      font-size: 1rem;
+
+      .currency-option {
+        display: inline-block;
+        min-width: 64px;
+        cursor: pointer;
+        border-radius: 4px;
+        color: $color-dark-2;
+
+        &.active {
+          color: white;
+          background-color: $color-green-2;
+        }
+      }
+    }
   }
 
   .pricing-explainer {
