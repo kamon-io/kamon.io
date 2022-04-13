@@ -45,8 +45,10 @@ lazy val `hello-stream-api` = (project in file("hello-stream-api"))
     )
   )
 
+// tag:enable-sbt-kanela-runner:start
 lazy val `hello-stream-impl` = (project in file("hello-stream-impl"))
-  .enablePlugins(LagomScala)
+  .enablePlugins(LagomScala, JavaAgent, SbtKanelaRunnerLagom)
+  // tag:enable-sbt-kanela-runner:end
   .settings(
     libraryDependencies ++= Seq(
       lagomScaladslTestKit,

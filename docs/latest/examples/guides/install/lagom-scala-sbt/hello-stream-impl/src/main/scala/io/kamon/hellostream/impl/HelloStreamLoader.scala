@@ -6,17 +6,29 @@ import com.lightbend.lagom.scaladsl.devmode.LagomDevModeComponents
 import play.api.libs.ws.ahc.AhcWSComponents
 import io.kamon.hellostream.api.HelloStreamService
 import io.kamon.hello.api.HelloService
+import kamon.Kamon
 import com.softwaremill.macwire._
 
 class HelloStreamLoader extends LagomApplicationLoader {
 
-  override def load(context: LagomApplicationContext): LagomApplication =
+  // tag:initialize-kamon:start
+  override def load(context: LagomApplicationContext): LagomApplication = {
+    Kamon.initWithoutAttaching(context.playContext.initialConfiguration.underlying)
+
+    context.playContext.lifecycle.addStopHook(() => {
+      Kamon.stop()
+    })
+    
     new HelloStreamApplication(context) {
       override def serviceLocator: NoServiceLocator.type = NoServiceLocator
     }
+  }
+  // tag:initialize-kamon:end
+    
 
-  override def loadDevMode(context: LagomApplicationContext): LagomApplication =
+  override def loadDevMode(context: LagomApplicationContext): LagomApplication = {
     new HelloStreamApplication(context) with LagomDevModeComponents
+  }
 
   override def describeService = Some(readDescriptor[HelloStreamService])
 }

@@ -11,6 +11,7 @@ import io.kamon.hello.api.HelloService
 import com.lightbend.lagom.scaladsl.broker.kafka.LagomKafkaComponents
 import com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry
 import com.softwaremill.macwire._
+import kamon.Kamon
 
 class HelloLoader extends LagomApplicationLoader {
 
@@ -19,8 +20,17 @@ class HelloLoader extends LagomApplicationLoader {
       override def serviceLocator: ServiceLocator = NoServiceLocator
     }
 
-  override def loadDevMode(context: LagomApplicationContext): LagomApplication =
+  // tag:initialize-kamon-dev:start  
+  override def loadDevMode(context: LagomApplicationContext): LagomApplication = {
+    Kamon.initWithoutAttaching(context.playContext.initialConfiguration.underlying)
+
+    context.playContext.lifecycle.addStopHook(() => {
+      Kamon.stop()
+    })
+
     new HelloApplication(context) with LagomDevModeComponents
+  }
+  // tag:initialize-kamon-dev:end  
 
   override def describeService = Some(readDescriptor[HelloService])
 }

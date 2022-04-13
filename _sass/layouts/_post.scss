@@ -51,7 +51,8 @@
     scroll-margin-top: -4rem;
 
     .heading-anchor {
-      position: relative;
+      position: absolute;
+      margin-left: 0.5rem;
       color: $color-shamrock-main;
       display: none;
     }

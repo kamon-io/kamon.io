@@ -16,7 +16,8 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
+  xxxl: 1650px
 );
 
 $container-max-widths: (
@@ -24,7 +25,8 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1368px
+  xxl: 1368px,
+  xxxl: 1600px
 );
 
 $btn-font-weight: $typography-weight-semi-bold;

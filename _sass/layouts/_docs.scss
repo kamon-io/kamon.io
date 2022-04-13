@@ -202,7 +202,8 @@ body.has-notification {
     scroll-margin-top: -4rem;
 
     .heading-anchor {
-      position: relative;
+      position: absolute;
+      margin-left: 0.5rem;
       color: $color-shamrock-main;
       display: none;
     }
@@ -227,7 +228,7 @@ body.has-notification {
   }
 
   h2 {
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 1.75rem;
     line-height: 2rem;
 
@@ -238,7 +239,7 @@ body.has-notification {
   }
 
   h3 {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     font-size: remSize(24);
     line-height: remSize(30);
 
@@ -280,6 +281,10 @@ body.has-notification {
 
   p, ol, ul {
     font-size: 1.125rem;
+  }
+
+  p {
+    margin-top: 1rem;
   }
 
   a:not([class*="language-"]):not([class="no-decoration"]) {
