@@ -1,25 +1,24 @@
 // Moment when the special offer becomes null and void
-var SPECIAL_OFFER_END = moment('2021-07-01').startOf("day")
+function setupPriceCurrencyToggling() {
+  $("#show-price-in-usd").on('click', () => {
+    $("#show-price-in-usd").addClass("active")
+    $("#show-price-in-eur").removeClass("active")
+    $("#teams-plan-price").text("$100")
+    $("#additional-10k-time-series-price").text("$90")
+    $("#additional-100m-spans-price").text("$100")
 
-function getTimeUntil(when) {
-  var now = moment()
-  if (now.isAfter(when)) {
-    return
-  }
+  })
 
-  if (when.diff(now.startOf("day"), "days") >= 1) {
-    return when.diff(now, "days") + " days"
-  }
-
-  return now.to(when)
-}
-
-function setDiscountExpirationTime() {
-  var $discountEl = $('.js-discount-expires-in')
-  var untilString = getTimeUntil(SPECIAL_OFFER_END)
-  $discountEl.text(untilString)
+  $("#show-price-in-eur").on('click', () => {
+    console.log("Clicked in EUR")
+    $("#show-price-in-eur").addClass("active")
+    $("#show-price-in-usd").removeClass("active")
+    $("#teams-plan-price").text("€90")
+    $("#additional-10k-time-series-price").text("€80")
+    $("#additional-100m-spans-price").text("€90")
+  })
 }
 
 $(document).ready(function() {
-  setDiscountExpirationTime()
+  setupPriceCurrencyToggling()
 })
