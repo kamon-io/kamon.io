@@ -96,6 +96,10 @@ html, body {
   line-height: remSize(28);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 b, strong {
   font-weight: 600;
 }

@@ -286,4 +286,4 @@ comments and questions, we will be glad to hear from you!
 Range Samplers are a part of [Kamon Telemetry](/telemetry/), and you can use them regardless of where you send data to.
 The heatmaps and percentile charts in this post were taken from [Kamon APM](/apm/).
 
-If you want to use the same tools to monitor your queues, actor mailboxes, and a lot more, [Sign Up for Kamon APM](#){: .onboarding-start-button} and start monitoring for Free!
+If you want to use the same tools to monitor your queues, actor mailboxes, and a lot more, [Give a Try to Kamon APM](){: data-toggle="modal" data-target="#apmOnboardingModal"}

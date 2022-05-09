@@ -1,6 +1,7 @@
 const GAEvents = {
   onboarding_start: "onboarding_start",
   onboarding_start_signup: "onboarding_start_signup",
+  onboarding_start_booking: "onboarding_start_booking",
   onboarding_choose_integration: "onboarding_choose_integration",
   onboarding_choose_project_type: "onboarding_choose_project_type",
   onboarding_signup: "onboarding_signup",
@@ -12,7 +13,7 @@ function getBaseAPMUrl() {
     : "https://apm.kamon.io"
 }
 
-function sendGoogleAnalyticsEvent(eventName, eventLabel) {
+function sendAnalyticsEvent(eventName, eventLabel) {
   const dataLayer = window.dataLayer
   if (dataLayer != null) {
     dataLayer.push({
@@ -23,6 +24,10 @@ function sendGoogleAnalyticsEvent(eventName, eventLabel) {
 
   if(eventName == GAEvents.onboarding_start_signup) {
     plausibleEvent('Launch Sign Up')
+  }
+
+  if(eventName == GAEvents.onboarding_start_booking) {
+    plausibleEvent('Launch Booking')
   }
 
   if(eventName == GAEvents.onboarding_signup) {
@@ -67,95 +72,18 @@ function initScrollMainHeader() {
   }
 }
 
-/**
- * 
- * @param {string} externalUrl External path instead of /onboarding (no leading slash)
- * @param {boolean} isSmall Should a smaller version of the modal with no extra graphics be shown
- * @param {string} solution The name of the solution/APM for which instructions should be given
- * @param {string} plan Which plan name to use (starter, teams, or developer), defaults to starter
- */
-function showOnboardingModal(externalUrl, isSmall, solution, plan) {
-  const width = Math.min(window.innerWidth, isSmall ? 600 : 1200)
-  const height = Math.max(window.innerHeight, 800)
-  const baseAPMUrl = getBaseAPMUrl()
-  const extension = externalUrl != null ? externalUrl : "onboarding"
-  const queryParams = new URLSearchParams()
-  queryParams.set("external", "yes")
-  
-  if (solution != null) {
-    queryParams.set("solution", solution)
-  }
-
-  if (plan != null) {
-    const planID = (() => {
-      switch (plan) {
-        case "developer": return "v2-free"
-        case "teams": return "v3-teams"
-        case "starter":
-        default: return "v3-starter"
-      } 
-    })()
-    queryParams.set("plan", planID)
-  }
-
-  if (isSmall) {
-    queryParams.set("small", "true")
-  }
-
-  const url = `${baseAPMUrl}/${extension}?${queryParams.toString()}`
-  $("#onboarding-iframe").attr("width", width).attr("height", height)
-  $("#onboarding-iframe").attr("src", url)
-  
-  if (isSmall) {
-    $(".onboarding-modal-dialog").addClass("small-dialog")
-  } else {
-    $(".onboarding-modal-dialog").removeClass("small-dialog")
-  }
-
-  $("#onboarding-modal").modal("show")
-}
-
-function bootOnboarding() {
-  $(".onboarding-start-button").on("click", function() {
-    const isSignup = $(this).data("url") == "signup"
-    if(isSignup)
-      sendGoogleAnalyticsEvent(GAEvents.onboarding_start_signup, "Via CTA")
-    else
-      sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
-
-    const url = $(this).data("url")
-    const isSmall = $(this).data("small") == null || $(this).data("small")
-    const solution = $(this).data("solution")
-    const plan = $(this).data("plan")
-    showOnboardingModal(url, isSmall, solution, plan)
+function initOnboardingEvents() {
+  $('[data-target="#apmOnboardingModal"]').on("click", function() {
+    sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via CTA")
   })
 
-  window.addEventListener("message", function (tag) {
-    const baseAPMUrl = getBaseAPMUrl()
-    if (tag.origin.includes(baseAPMUrl)) {
-      if (tag.data.type === "ga-event") {
-        if (GAEvents[tag.data.eventCategory] == null) {
-          console.error(`Cannot submit GA event with category [${tag.data.eventCategory}]. Allowed categories: [${Object.keys(GAEvents).join(", ")}]`)
-        } else {
-          sendGoogleAnalyticsEvent(GAEvents[tag.data.eventCategory], tag.data.eventAction)
-        }
-      }
-      if (tag.data === "complete") {
-        window.open(baseAPMUrl, "_blank")
-        $("#onboarding-modal").modal("hide")
-        $("#onboarding-iframe").attr("src", undefined)
-      }
-      if (tag.data === "close") {
-        $("#onboarding-modal").modal("hide")
-        $("#onboarding-iframe").attr("src", undefined)
-      }
-    }
+  $('#launchBookingModal').on("click", function() {
+    sendAnalyticsEvent(GAEvents.onboarding_start_booking, "Via Modal")
   })
 
-  if (window.location.hash === "#get-started") {
-    sendGoogleAnalyticsEvent(GAEvents.onboarding_start, "Via URL")
-    showOnboardingModal()
-  }
+  $('#launchBookingPricing').on("click", function() {
+    sendAnalyticsEvent(GAEvents.onboarding_start_booking, "Via Pricing")
+  })
 }
 
 function initNotificationBar() {
@@ -263,15 +191,25 @@ function initApmAccordions() {
   
 }
 
+function initOnboardingVideoControls() {
+  var $iframe = $('iframe#apmOnboardingVideoFrame');
+  var contentWindow = $iframe[0].contentWindow;
+  var targetOriginUrl = $iframe.attr('src').split('?')[0];
+
+  $('.modal').on('hidden.bs.modal', function () {
+    contentWindow.postMessage({ 'method': 'pause' }, targetOriginUrl);
+  });
+}
 
 
 $(document).ready(function() {
   initNotificationBar()
   initScrollMainHeader()
   initMobileNavBackground()
-  bootOnboarding()
   initHeaderDropdownOnHover()
   initApmAccordions()
+  initOnboardingEvents()
+  initOnboardingVideoControls()
 
   $(document).on('reloadHeader', initScrollMainHeader)
 })

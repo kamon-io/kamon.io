@@ -66,4 +66,4 @@ details card and start slicig and dicing:
 
 ## Ready to Give it a Try?
 
-The all-new Kamon APM Service Map is available in all plans and you can start right away for free: [Start Monitoring Now](#){: .onboarding-start-button}.
+The all-new Kamon APM Service Map is available in all plans, [Give it a try!](){: data-toggle="modal" data-target="#apmOnboardingModal"}.
