@@ -79,10 +79,10 @@ custom_css:
             <span id="teams-plan-price">$100</span><span class="pricing-frequency">/mo</span>
           </div>
           <div class="currency-toggle text-center">
-            <span id="show-price-in-usd" class="currency-option px-2 py-1 active">
+            <span class="currency-option px-2 py-1 show-price-in-usd active">
               USD
             </span>
-            <span id="show-price-in-eur" class="currency-option px-2 py-1">
+            <span class="currency-option px-2 py-1 show-price-in-eur">
               EUR
             </span>
           </div>
@@ -107,7 +107,7 @@ custom_css:
               <b>Slack and PagerDuty</b> integrations
             </li>
             <li>
-              Sandboxes for <b>Staging</b> and <b>Development</b>
+              Dedicated environments for <b>Staging</b> and <b>Development</b> data
             </li>
           </ul>
         </div>
@@ -125,8 +125,18 @@ custom_css:
           </p>
         </div>      
 
-        <div class="pricing-price d-flex flex-column justify-content-start">
-          <span>Contact us</span>
+        <div class="pricing-price text-center d-flex flex-column justify-content-start">
+          <div>
+            <span id="pro-plan-price">$700</span><span class="pricing-frequency">/mo</span>
+          </div>
+          <div class="currency-toggle text-center">
+            <span class="currency-option px-2 py-1 show-price-in-usd active">
+              USD
+            </span>
+            <span class="currency-option px-2 py-1 show-price-in-eur">
+              EUR
+            </span>
+          </div>
         </div>  
 
         
@@ -139,16 +149,19 @@ custom_css:
               <b>Unlimited</b> team members
             </li>
             <li>
-              <b>Custom</b> data retention
+              <b>1 Billion</b> spans included, with a B
             </li>
             <li>
-              <b>Volume and annual</b> subscription discounts
+              <b>Save 20%</b> with annual commitments
             </li>
             <li>
               <b>Onboarding workshops</b> available
             </li>
             <li>
               <b>Custom instrumentation</b> for unsupported libraries
+            </li>
+            <li>
+              <b>Additional data retention</b> available
             </li>
           </ul>
         </div>
@@ -166,7 +179,7 @@ custom_css:
         </div>
       </div>
       <div class="col-12 col-lg-auto text-center">
-        <a id="launchBookingPricing" class="btn btn-primary px-5 py-3 mt-3 text-explainer font-weight-bold" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3rwG2cbWIXFOOvnVrafqhFTkWC_hA8-jYT-vBUZ6GcQjH3WRf3JqaUbqv6uFhov-Ub0jyhg-2O" target="_blank">
+        <a id="launchBookingPricing" class="btn btn-primary px-5 py-3 mt-3 text-explainer font-weight-bold" data-toggle="modal" data-target="#apmOnboardingModal">
           Book your 1-on-1 Onboarding
         </a>
       </div>
@@ -302,25 +315,25 @@ custom_css:
             <td class="text-left">Metrics data retention</td>
             <td>1 day</td>
             <td>60 days</td>
-            <td>Custom</td>
+            <td>60 days</td>
           </tr>
           <tr class="text-center">
             <td class="text-left">Spans data retention</td>
             <td>1 day</td>
             <td>14 days</td>
-            <td>Custom</td>
+            <td>14 days</td>
           </tr>
           <tr class="text-center">
             <td class="text-left">Average time series per month</td>
             <td>5K</td>
             <td>10K</td>
-            <td>Custom</td>
+            <td>50K</td>
           </tr>
           <tr class="text-center">
             <td class="text-left">Spans ingested per month</td>
             <td>10M</td>
             <td>50M</td>
-            <td>Custom</td>
+            <td>1 Billion</td>
           </tr>
           <tr class="text-center">
             <td class="text-left">Additional 10K time series per month</td>
@@ -329,7 +342,7 @@ custom_css:
             <td>Custom</td>
           </tr>
           <tr class="text-center">
-            <td class="text-left">Additional 100M spans ingestion capacity</td>
+            <td class="text-left">Additional 100M spans per month</td>
             <td>-</td>
             <td id="additional-100m-spans-price">$100</td>
             <td>Custom</td>

@@ -22,6 +22,10 @@ function sendAnalyticsEvent(eventName, eventLabel) {
     })
   }
 
+  if(eventName == GAEvents.onboarding_start) {
+    plausibleEvent('Launch Onboarding')
+  }
+
   if(eventName == GAEvents.onboarding_start_signup) {
     plausibleEvent('Launch Sign Up')
   }
@@ -38,6 +42,7 @@ function sendAnalyticsEvent(eventName, eventLabel) {
 function plausibleEvent(eventName) {
   const plausible = window.plausible
   if (plausible != null) {
+    
     plausible(eventName)
   }
 }
@@ -74,7 +79,7 @@ function initScrollMainHeader() {
 
 function initOnboardingEvents() {
   $('[data-target="#apmOnboardingModal"]').on("click", function() {
-    sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via CTA")
+    sendAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
   })
 
   $('#launchBookingModal').on("click", function() {
@@ -82,9 +87,44 @@ function initOnboardingEvents() {
   })
 
   $('#launchBookingPricing').on("click", function() {
-    sendAnalyticsEvent(GAEvents.onboarding_start_booking, "Via Pricing")
+    sendAnalyticsEvent(GAEvents.onboarding_start, "Via Pricing")
+  })
+
+  $('#launchSignUp').on("click", function() {
+    var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
+    onboardingFrame.attr('src', getBaseAPMUrl() + '/signup?small=true&external=true')
+
+    $('#apmOnboardingModal .modal-header').hide()
+    $('#apmOnboardingModal .modal-body').hide()
+    $('#videoFrameWrapper').addClass('show-onboarding')
+
+    sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
+  })
+
+  window.addEventListener("message", function (tag) {
+    const baseAPMUrl = getBaseAPMUrl()
+    if (tag.origin.includes(baseAPMUrl)) {
+      if (tag.data.type === "ga-event") {
+        if (GAEvents[tag.data.eventCategory] == null) {
+          console.error(`Cannot submit GA event with category [${tag.data.eventCategory}]. Allowed categories: [${Object.keys(GAEvents).join(", ")}]`)
+        } else {
+          sendAnalyticsEvent(GAEvents[tag.data.eventCategory], tag.data.eventAction)
+        }
+      }
+
+      if (tag.data === "complete") {
+        window.open(baseAPMUrl, "_blank")
+        $("#apmOnboardingModal").modal("hide")
+        $("#apmOnboardingVideoFrame").attr("src", undefined)
+      }
+      if (tag.data === "close") {
+        $("#apmOnboardingModal").modal("hide")
+        $("#apmOnboardingVideoFrame").attr("src", undefined)
+      }
+    }
   })
 }
+
 
 function initNotificationBar() {
   const CLOSED_NOTIFICATION_KEY = "ClosedNotification"
@@ -192,13 +232,22 @@ function initApmAccordions() {
 }
 
 function initOnboardingVideoControls() {
-  var $iframe = $('iframe#apmOnboardingVideoFrame');
-  var contentWindow = $iframe[0].contentWindow;
-  var targetOriginUrl = $iframe.attr('src').split('?')[0];
+  var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
+  var contentWindow = onboardingFrame[0].contentWindow;
 
   $('.modal').on('hidden.bs.modal', function () {
+    var targetOriginUrl = onboardingFrame.attr('src').split('?')[0];
     contentWindow.postMessage({ 'method': 'pause' }, targetOriginUrl);
+    onboardingFrame.attr('src', 'about:blank')
   });
+
+  $('.modal').on('show.bs.modal', function () {
+    $('#apmOnboardingModal .modal-header').show()
+    $('#apmOnboardingModal .modal-body').show()
+    $('#videoFrameWrapper').removeClass('show-onboarding')
+    onboardingFrame.attr('src', 'https://player.vimeo.com/video/707689708?h=48d0065ab0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')
+  });
+
 }
 
 

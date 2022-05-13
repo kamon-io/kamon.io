@@ -26,12 +26,26 @@
   }
 }
 
-.modal-content {
-  border-radius: 8px;
-  border: none;
+#apmOnboardingModal {
+  .modal-content {
+    min-height: 700px;
+    border-radius: 8px;
+    border: none;
+  }
 
-  @media (min-width: $md-start) {
-    max-height: 90vh;
+  #videoFrameWrapper {
+    position: relative;
+    padding: 56.25% 0 0 0;
+    
+    &.show-onboarding {
+      padding: 165% 0 0 0;
+    }
+
+    &.show-onboarding {
+      @media (min-width: $lg-start) {
+        padding: 95% 0 0 0;
+      }
+    }
   }
 }
 
