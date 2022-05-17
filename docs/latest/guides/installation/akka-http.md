@@ -12,7 +12,10 @@ redirect_from:
 {% include toc.html %}
 
 Monitoring Akka HTTP Applications with Kamon 
-===================================================
+============================================
+<div class="video-container">
+  <iframe src="https://player.vimeo.com/video/710981793?h=5ffb329b90" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 This guide walks you through setting up Kamon with an Akka HTTP application and sending your first metrics and traces to
 Kamon APM. The same steps will work if you choose any other [reporter][reporter].
@@ -66,11 +69,11 @@ any other reporters you might have). It is very important that the call to `Kamo
 
 ## 3. Configure the APM Reporter
 
-Add your service name and API key to the `conf/application.conf` file:
+Add your service name and API key to the `application.conf` file:
 
 {% code_block hcl %}
 kamon {
-  environment.service = "Play Application"
+  environment.service = "Akka HTTP App"
   apm.api-key = "Your API Key"
 }
 {% endcode_block %}
