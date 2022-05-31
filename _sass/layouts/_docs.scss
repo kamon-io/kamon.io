@@ -375,7 +375,7 @@ body.has-notification {
 
   .toc-heading {
     font-size: 0.875rem;
-    line-height: 1rem;
+    line-height: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
   }
@@ -386,7 +386,7 @@ body.has-notification {
 
     li {
       padding: 0.5rem 0rem;
-      line-height: 1rem;
+      line-height: 1.2rem;
     }
   }
 
@@ -408,6 +408,12 @@ body.has-notification {
     text-decoration: none;
     font-size: 0.875rem;
     color: $color-dark-3;
+
+    li {
+      background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+      background-size: 1rem;
+      padding-left: 2rem;
+    }
   }
 }
 

@@ -96,6 +96,7 @@ function initOnboardingEvents() {
 
     $('#apmOnboardingModal .modal-header').hide()
     $('#apmOnboardingModal .modal-body').hide()
+    $('#apmOnboardingModal .modal-footer').hide()
     $('#videoFrameWrapper').addClass('show-onboarding')
 
     sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
@@ -244,6 +245,7 @@ function initOnboardingVideoControls() {
   $('.modal').on('show.bs.modal', function () {
     $('#apmOnboardingModal .modal-header').show()
     $('#apmOnboardingModal .modal-body').show()
+    $('#apmOnboardingModal .modal-footer').show()
     $('#videoFrameWrapper').removeClass('show-onboarding')
     onboardingFrame.attr('src', 'https://player.vimeo.com/video/707689708?h=48d0065ab0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')
   });
