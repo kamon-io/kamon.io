@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Fully Managed APM for Backend Services and APIs
+title: The Simple Observability Tool that Modern Developers Need
 description: >-
   Point and click to find the requests, database queries, and external api calls that affect your
   user's experience. All in a managed platform without complex setups or additional infrastructure.
@@ -17,29 +17,149 @@ custom_css:
     <div class="container">
       <section class="row dark-heading-simple-elements-background pb-0">
         <div class="col-12 text-center">
-          <img height="64" src="/assets/img/kamon/kamon-apm-logo-dark.svg" alt="Kamon APM Logo" loading="eager"/>
+          <img height="80" src="/assets/img/kamon/kamon-apm-logo-dark.svg" alt="Kamon APM Logo" loading="eager"/>
           <h1 class="display-4 text-white mt-4">
-            Discover why slow requests
+            The Simple Observability Tool
             <br class="d-none d-lg-inline">
-            and errors happen
+            that Modern Developers Need
           </h1>
-          <p class="lead text-lightest my-5">
+          <p class="lead text-lightest my-3">
             Point and click to find the endpoints, database queries,
             <br class="d-none d-md-inline">
-            and API calls that affect your user’s experience
+            and API calls that affect your user's experience
           </p>
           <a class="btn btn-lg btn-primary w-100-sm-down px-5 mt-4" data-toggle="modal" data-target="#apmOnboardingModal">
-            Start Monitoring with Kamon APM
+            Try Kamon APM
           </a>
-          <div class="text-explainer text-lightest text-center mt-4">
-            It's a 3-minute setup - Without complex configurations or additional infrastructure
-          </div>
 
           <img class="img-cover mt-5" style="max-height: 600px;" src="/assets/img/pages/apm/apm-showcase.png" alt="Monitoring backend services and APIs with Kamon APM"  loading="eager"/>
         </div>
       </section>
     </div>
   </div>
+
+
+
+  <div class="container-fluid bg-white">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">Debugging Production Issues</div>
+          <h2 id="debugging-production-issues">
+            Drill down to the specific actions that affect response times
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            You noticed that something caught fire, now what? Your dashboards and alerts will tell you 
+            that something is wrong, and your traces will help you figure out exactly what it is
+          </p>
+        </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <!-- Analyze -->
+        <div class="col-12 col-lg-4 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Analyze
+            </span>
+            <h4 class="mt-4">
+              Find the traces connected to high response times and errors
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>When there is a weird pattern in a chart or alert notification, you need to slice & dice metrics and traces to figure out what happened there</p>
+            <p>Select latency spikes and errors in a chart, and get all the traces connected with it. Then follow the trail to narrow it down with filters and groupings</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/apm/apm-analyze-filter.png" alt="Filter metrics and traces with Analyze in Kamon APM">
+        </div>
+
+        <div class="col-12 py-3"></div>
+
+        <!-- Distributed Tracing -->
+        <div class="col-12 col-lg-4 mt-5">
+          <div class="accordion-card my-2">
+            <span class="text-tag text-tag-green">
+              Distributed Tracing
+            </span>
+            <h4 class="mt-4">
+              See the full picture, from your HTTP endpoint to the database
+            </h4>
+          </div>
+          <div class="accordion-content text-feature-explainer mt-4">
+            <p>More often than not, latency and errors are caused by a slow database query or API call</p>
+            <p>See the full picture for every request, from the HTTP request hitting your endpoint, to upstream services, databases, and external APIs.</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-8 mt-5">
+          <img class="accordion-img" src="/assets/img/pages/apm/apm-trace-details.png" alt="Visualize end-to-end traces in Kamon APM">
+        </div>
+      </section>
+    </div>
+  </div>  
+
+
+
+  <div class="container-fluid bg-lightest">
+    <div class="container">
+      <section class="row justify-content-center align-items-start">
+        <div class="col-12 col-xl-9 text-center">
+          <div class="text-section-title py-4">Following-up after Deployments</div>
+          <h2 id="post-deployment-monitoring">
+            Deploy new features and fixes with confidence
+          </h2>
+          <p class="text-explainer px-3 px-xl-0">
+            Deploying a fix or new feature is not the end of the story. How do you know the issue was really fixed, 
+            or that you didn’t mess something up with the new deployment?
+          </p>
+        </div>
+
+        <div class="col-12 py-lg-4"></div>
+
+        <!-- Analyze -->
+        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">         
+          <div>
+            <div class="accordion-card my-2">
+              <span class="text-tag text-tag-green">
+                Analyze
+              </span>
+              <h4 class="mt-4">
+                Compare behavior across deployments
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-5">
+              <p>Ensure that response times stay healthy and errors are gone after deploying your fixes</p>
+              <p>Break down any metric by deployment version and compare behaviors to discover anomalies </p>
+            </div>
+          </div>
+          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-analyze-compare.png" alt="Compare behavior across dimensions and deployments with Kamon APM">
+        </div>
+
+
+        <!-- Distributed Tracing -->
+        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">
+          <div>
+            <div class="accordion-card my-2">
+              <span class="text-tag text-tag-green">
+                Test Environments
+              </span>
+              <h4 class="mt-4">
+                Test before deploying. Who would have thought?
+              </h4>
+            </div>
+            <div class="accordion-content text-feature-explainer mt-4 pr-5">
+              <p>Production and staging are never the same, but you can catch a bunch of dumb mistakes before going to prod</p>
+              <p>Monitor your development and staging environments with the same tools you in production, but free of charge</p>
+            </div>
+          </div>
+          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-test-environments.png" alt="Test your services with complete monitoring for free">
+        </div>
+      </section>
+    </div>
+  </div> 
+
+
 
   <div class="container-fluid bg-lightest">
     <div class="container">
@@ -180,123 +300,4 @@ custom_css:
   </div>  
 
 
-
-  <div class="container-fluid bg-white">
-    <div class="container">
-      <section class="row justify-content-center">
-        <div class="col-12 col-xl-9 text-center">
-          <div class="text-section-title py-4">Debugging Production Issues</div>
-          <h2 id="debugging-production-issues">
-            Drill down to the specific actions that affect response times
-          </h2>
-          <p class="text-explainer px-3 px-xl-0">
-            You noticed that something caught fire, now what? Your dashboards and alerts will tell you 
-            that something is wrong, and your traces will help you figure out exactly what it is
-          </p>
-        </div>
-
-        <div class="col-12 py-lg-4"></div>
-
-        <!-- Analyze -->
-        <div class="col-12 col-lg-4 mt-5">
-          <div class="accordion-card my-2">
-            <span class="text-tag text-tag-green">
-              Analyze
-            </span>
-            <h4 class="mt-4">
-              Find the traces connected to high response times and errors
-            </h4>
-          </div>
-          <div class="accordion-content text-feature-explainer mt-4">
-            <p>When there is a weird pattern in a chart or alert notification, you need to slice & dice metrics and traces to figure out what happened there</p>
-            <p>Select latency spikes and errors in a chart, and get all the traces connected with it. Then follow the trail to narrow it down with filters and groupings</p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-8 mt-5">
-          <img class="accordion-img" src="/assets/img/pages/apm/apm-analyze-filter.png" alt="Filter metrics and traces with Analyze in Kamon APM">
-        </div>
-
-        <div class="col-12 py-3"></div>
-
-        <!-- Distributed Tracing -->
-        <div class="col-12 col-lg-4 mt-5">
-          <div class="accordion-card my-2">
-            <span class="text-tag text-tag-green">
-              Distributed Tracing
-            </span>
-            <h4 class="mt-4">
-              See the full picture, from your HTTP endpoint to the database
-            </h4>
-          </div>
-          <div class="accordion-content text-feature-explainer mt-4">
-            <p>More often than not, latency and errors are caused by a slow database query or API call</p>
-            <p>See the full picture for every request, from the HTTP request hitting your endpoint, to upstream services, databases, and external APIs.</p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-8 mt-5">
-          <img class="accordion-img" src="/assets/img/pages/apm/apm-trace-details.png" alt="Visualize end-to-end traces in Kamon APM">
-        </div>
-      </section>
-    </div>
-  </div>  
-
-
-
-  <div class="container-fluid bg-lightest">
-    <div class="container">
-      <section class="row justify-content-center align-items-start">
-        <div class="col-12 col-xl-9 text-center">
-          <div class="text-section-title py-4">Following-up after Deployments</div>
-          <h2 id="post-deployment-monitoring">
-            Deploy new features and fixes with confidence
-          </h2>
-          <p class="text-explainer px-3 px-xl-0">
-            Deploying a fix or new feature is not the end of the story. How do you know the issue was really fixed, 
-            or that you didn’t mess something up with the new deployment?
-          </p>
-        </div>
-
-        <div class="col-12 py-lg-4"></div>
-
-        <!-- Analyze -->
-        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">         
-          <div>
-            <div class="accordion-card my-2">
-              <span class="text-tag text-tag-green">
-                Analyze
-              </span>
-              <h4 class="mt-4">
-                Compare behavior across deployments
-              </h4>
-            </div>
-            <div class="accordion-content text-feature-explainer mt-4 pr-5">
-              <p>Ensure that response times stay healthy and errors are gone after deploying your fixes</p>
-              <p>Break down any metric by deployment version and compare behaviors to discover anomalies </p>
-            </div>
-          </div>
-          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-analyze-compare.png" alt="Compare behavior across dimensions and deployments with Kamon APM">
-        </div>
-
-
-        <!-- Distributed Tracing -->
-        <div class="col-12 col-lg-6 mt-5 px-4 d-flex flex-column flex-lg-column-reverse">
-          <div>
-            <div class="accordion-card my-2">
-              <span class="text-tag text-tag-green">
-                Test Environments
-              </span>
-              <h4 class="mt-4">
-                Test before deploying. Who would have thought?
-              </h4>
-            </div>
-            <div class="accordion-content text-feature-explainer mt-4 pr-5">
-              <p>Production and staging are never the same, but you can catch a bunch of dumb mistakes before going to prod</p>
-              <p>Monitor your development and staging environments with the same tools you in production, but free of charge</p>
-            </div>
-          </div>
-          <img class="accordion-img my-5" src="/assets/img/pages/apm/apm-test-environments.png" alt="Test your services with complete monitoring for free">
-        </div>
-      </section>
-    </div>
-  </div> 
 </main>

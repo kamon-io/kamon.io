@@ -1,7 +1,8 @@
 footer {
-  $conversion-box-height: 500px;
+  $conversion-box-height: 400px;
 
   .footer-conversion-box {
+    margin-top: -10rem;
     min-height: $conversion-box-height - 100px;
   }
 
