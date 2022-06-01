@@ -79,18 +79,7 @@ function initScrollMainHeader() {
 
 function initOnboardingEvents() {
   $('[data-target="#apmOnboardingModal"]').on("click", function() {
-    sendAnalyticsEvent(GAEvents.onboarding_start, "Via CTA")
-  })
-
-  $('#launchBookingModal').on("click", function() {
-    sendAnalyticsEvent(GAEvents.onboarding_start_booking, "Via Modal")
-  })
-
-  $('#launchBookingPricing').on("click", function() {
-    sendAnalyticsEvent(GAEvents.onboarding_start, "Via Pricing")
-  })
-
-  $('#launchSignUp').on("click", function() {
+    console.log("Clicked on Signup")
     var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
     onboardingFrame.attr('src', getBaseAPMUrl() + '/signup?small=true&external=true')
 
@@ -101,6 +90,26 @@ function initOnboardingEvents() {
 
     sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
   })
+
+  $('#launchBookingModal').on("click", function() {
+    sendAnalyticsEvent(GAEvents.onboarding_start_booking, "Via Modal")
+  })
+
+  $('#launchBookingPricing').on("click", function() {
+    sendAnalyticsEvent(GAEvents.onboarding_start, "Via Pricing")
+  })
+
+  // $('#launchSignUp').on("click", function() {
+  //   var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
+  //   onboardingFrame.attr('src', getBaseAPMUrl() + '/signup?small=true&external=true')
+
+  //   $('#apmOnboardingModal .modal-header').hide()
+  //   $('#apmOnboardingModal .modal-body').hide()
+  //   $('#apmOnboardingModal .modal-footer').hide()
+  //   $('#videoFrameWrapper').addClass('show-onboarding')
+
+  //   sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
+  // })
 
   window.addEventListener("message", function (tag) {
     const baseAPMUrl = getBaseAPMUrl()
@@ -232,27 +241,6 @@ function initApmAccordions() {
   
 }
 
-function initOnboardingVideoControls() {
-  var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
-  var contentWindow = onboardingFrame[0].contentWindow;
-
-  $('.modal').on('hidden.bs.modal', function () {
-    var targetOriginUrl = onboardingFrame.attr('src').split('?')[0];
-    contentWindow.postMessage({ 'method': 'pause' }, targetOriginUrl);
-    onboardingFrame.attr('src', 'about:blank')
-  });
-
-  $('.modal').on('show.bs.modal', function () {
-    $('#apmOnboardingModal .modal-header').show()
-    $('#apmOnboardingModal .modal-body').show()
-    $('#apmOnboardingModal .modal-footer').show()
-    $('#videoFrameWrapper').removeClass('show-onboarding')
-    onboardingFrame.attr('src', 'https://player.vimeo.com/video/707689708?h=48d0065ab0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')
-  });
-
-}
-
-
 $(document).ready(function() {
   initNotificationBar()
   initScrollMainHeader()
@@ -260,7 +248,6 @@ $(document).ready(function() {
   initHeaderDropdownOnHover()
   initApmAccordions()
   initOnboardingEvents()
-  initOnboardingVideoControls()
 
   $(document).on('reloadHeader', initScrollMainHeader)
 })
