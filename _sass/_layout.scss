@@ -4,14 +4,17 @@ body {
   overflow-x: hidden;
   padding-top: $navbar-height;
 
-  &.has-notification {
-    .notification-bar {
-      top: 0;
-      height: $notification-bar-height;
-    }
+  .notification-bar {
+    background-color: $color-light-1;
+    height: $notification-bar-height;
+  }
 
-    #main-header {
-      top: $notification-bar-height;
+  #main-header {
+    top: $notification-bar-height;
+
+    &.page-scrolled {
+      top: 0px;
+      transition: top 100ms;
     }
   }
 

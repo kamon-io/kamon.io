@@ -48,13 +48,19 @@ function plausibleEvent(eventName) {
 }
 
 function initScrollMainHeader() {
-  const HEADER_BACKGROUND_TRIGGER_SCROLL = 40;
+  const HEADER_BACKGROUND_TRIGGER_SCROLL = 36;
   var mainHeader = document.getElementById("main-header")
   var shouldBeTransparentHeader = $(mainHeader).data("transparent") === true
-  var isMainHeaderTransparent = !shouldBeTransparentHeader
+  var isMainHeaderTransparent = false
   
   
   var mainHeaderScrollListener = function() {
+    if(window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
+      mainHeader.classList.add('page-scrolled')
+    } else {
+      mainHeader.classList.remove('page-scrolled')
+    }
+
     if(shouldBeTransparentHeader) {
       if (isMainHeaderTransparent && window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
         mainHeader.classList.remove("bg-transparent")
@@ -66,15 +72,10 @@ function initScrollMainHeader() {
     }
   }
 
-  if(window.location.pathname.startsWith("/docs/")) {
-    // mainHeader.classList.add("bg-dark-nav")
-  } else {
+  document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
 
-    document.addEventListener("scroll", mainHeaderScrollListener, { passive: true })
-
-    // Must be called during setup in case the current scroll location requires the background
-    mainHeaderScrollListener()
-  }
+  // Must be called during setup in case the current scroll location requires the background
+  mainHeaderScrollListener()
 }
 
 function initOnboardingEvents() {
@@ -99,18 +100,6 @@ function initOnboardingEvents() {
     sendAnalyticsEvent(GAEvents.onboarding_start, "Via Pricing")
   })
 
-  // $('#launchSignUp').on("click", function() {
-  //   var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
-  //   onboardingFrame.attr('src', getBaseAPMUrl() + '/signup?small=true&external=true')
-
-  //   $('#apmOnboardingModal .modal-header').hide()
-  //   $('#apmOnboardingModal .modal-body').hide()
-  //   $('#apmOnboardingModal .modal-footer').hide()
-  //   $('#videoFrameWrapper').addClass('show-onboarding')
-
-  //   sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
-  // })
-
   window.addEventListener("message", function (tag) {
     const baseAPMUrl = getBaseAPMUrl()
     if (tag.origin.includes(baseAPMUrl)) {
@@ -133,23 +122,6 @@ function initOnboardingEvents() {
       }
     }
   })
-}
-
-
-function initNotificationBar() {
-  const CLOSED_NOTIFICATION_KEY = "ClosedNotification"
-  const currentNotificationID = $(".notification-bar").first().attr('id')
-  const closedNotification = localStorage.getItem(CLOSED_NOTIFICATION_KEY)
-
-  if(currentNotificationID != closedNotification) {
-    $("body").addClass("has-notification")
-
-    $('.notification-bar .close').click(function(e) {
-      e.preventDefault();
-      localStorage.setItem(CLOSED_NOTIFICATION_KEY, currentNotificationID)
-      $("body").removeClass("has-notification")
-    });
-  }
 }
 
 function initHeaderDropdownOnHover() {
@@ -242,7 +214,6 @@ function initApmAccordions() {
 }
 
 $(document).ready(function() {
-  initNotificationBar()
   initScrollMainHeader()
   initMobileNavBackground()
   initHeaderDropdownOnHover()
