@@ -4,7 +4,7 @@ title: Two Quick Ways to Create Spans with Kamon Telemetry
 date: 2021-06-06
 author: the Kamon Team
 categories: blog
-tags: featured
+tags: 
 permalink: /blog/two-quick-ways-to-create-spans-with-kamon-telemetry/
 summary_image: '/assets/img/posts/creating-spans-summary.png'
 cover_image: '/assets/img/posts/creating-spans-cover.png'

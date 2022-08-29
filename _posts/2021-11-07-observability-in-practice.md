@@ -5,7 +5,7 @@ date: 2021-11-07
 author: Ivan Topolnjak
 twitter: ivantopo
 categories: blog
-tags: featured
+tags: 
 permalink: /blog/observability-in-practice/
 summary_image: '/assets/img/posts/observability-in-practice-jobs-to-be-done-summary.png'
 cover_image: '/assets/img/posts/observability-in-practice-jobs-to-be-done-wide.png'

@@ -4,7 +4,7 @@ title: 'Announcing the All-new Kamon APM Service Map'
 date: 2021-03-17
 author: the Kamon Team
 categories: releases
-tags: featured
+tags: 
 permalink: /blog/announcing-the-all-new-kamon-apm-service-map/
 summary_image: '/assets/img/posts/kamon-apm-service-map-cover-image.png'
 excerpt: >-

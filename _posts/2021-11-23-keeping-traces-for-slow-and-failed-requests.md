@@ -5,7 +5,6 @@ date: 2021-11-23
 author: Ivan Topolnjak
 twitter: ivantopo
 categories: blog
-tags: featured
 permalink: /blog/how-to-keep-traces-for-slow-and-failed-requests/
 summary_image: '/assets/img/posts/local-tail-sampler-summary.png'
 cover_image: '/assets/img/posts/local-tail-sampler-summary-wide.png'

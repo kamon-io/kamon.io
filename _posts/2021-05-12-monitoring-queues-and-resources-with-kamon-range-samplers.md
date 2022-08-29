@@ -4,7 +4,7 @@ title: Monitoring Queues and Resources with Kamon Range Samplers
 date: 2021-05-12
 author: the Kamon Team
 categories: blog
-tags: featured
+tags: 
 permalink: /blog/monitoring-queues-and-resources-with-kamon-range-samplers/
 summary_image: '/assets/img/posts/range-sampler-cover.png'
 excerpt: >-
