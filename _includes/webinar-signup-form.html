@@ -1,0 +1,48 @@
+<form class="demio-registration-form" target="_top" method="post" action="https://my.demio.com/reg/{{ include.event_id }}" enctype="application/x-www-form-urlencoded">
+  <div class="h2 mb-5 text-center">Sign up for this Webinar</div>
+  <div class="demio-form-field-container">
+    <div class="Demio-Input-field">
+      <label for="name">
+        <div class="Demio-Input-container">
+          <input id="name" type="text" name="name" placeholder="" required="" maxlength="120" autocomplete="off" value="" />
+        </div>
+        <span class="Demio-Input-label">Name</span>
+      </label>
+    </div>
+  </div>
+  <div class="demio-form-field-container">
+    <div class="Demio-Input-field">
+      <label for="email">
+        <div class="Demio-Input-container">
+          <input id="email" type="email" name="email" placeholder="" required="" maxlength="254" autocomplete="off" value="" />
+        </div>
+        <span class="Demio-Input-label">Work Email</span>
+      </label>
+    </div>
+  </div>
+  <div class="demio-form-field-container">
+    <label for="gdpr">
+      <div class="">
+        <input type="hidden" name="gdpr" value="False" />
+        <input name="gdpr" type="checkbox" id="gdpr" value="True" />
+        <span class="demio-checkbox-text">
+          Yes, please allow
+          <span class="demio-checkbox-company">Kamon</span>
+          to keep in touch with additional marketing communication.
+          <span class="demio-checkbox-optional">(Optional)</span>
+        </span>
+      </div>
+    </label>
+  </div>
+  <input type="hidden" name="demio-country" value="HR" />
+  <input type="hidden" name="referral_url" value="https://my.demio.com/manage/event/?type=all&amp;sort=recently-created&amp;page=1" />
+  <button type="submit" class="btn btn-primary btn-lg w-100 text-white my-3">
+    <span>Sign Up</span>
+  </button>
+  <div class="demio-embed-noti">
+    By registering, you agree to the
+    <a target="_blank" rel="noreferrer" href="https://demio.com/registration-terms-and-conditions">terms</a>
+    and
+    <a target="_blank" rel="noreferrer" href="https://www.banzai.io/legal/privacy-policy">privacy policy</a>.
+  </div>
+</form>

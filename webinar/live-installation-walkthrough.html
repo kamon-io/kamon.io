@@ -5,19 +5,17 @@ description: >-
   Learn how to install and use Kamon to generate the metrics and traces that every microservice should expose
 load_optimize: false
 footer_background: bg-white
-custom_css:
-- pages/pricing
 ---
 
 <main>
   <div class="container-fluid dark-heading-background navbar-offset">
     <div class="container">
-      <section class="row no-gutters text-center text-lightest w-100 justify-content-center pt-5 mt-5">
+      <section class="row no-gutters text-lightest w-100 justify-content-center pt-5 mt-5">
         <div class="col-12">
           <h1 class="display-4 text-lightest mt-3 mb-2">
             Live Kamon Installation Walkthrough
           </h1>
-          <p class="lead col-12">
+          <p class="lead col-12 px-0">
             Learn how to install and use Kamon to generate the metrics and traces that every microservice should expose
           </p>
         </div>
@@ -25,9 +23,10 @@ custom_css:
     </div>
   </div>
 
-  <div class="container">
-    <section class="row no-gutters">
-      <div class="col-12 col-lg-6 lead mt-5 mt-lg-0">
+  <div class="container navbar-offset">
+
+    <section class="row no-gutters pt-5">
+      <div class="col-12 col-lg-6 lead mt-lg-0">
         <h2>On this Webinar</h2>
         <p class="px-0">
           You'll learn how to use Kamon to instrument an Akka HTTP application and generate the basic 
@@ -44,10 +43,25 @@ custom_css:
           Lagom Framework applications so feel free to join and learn!
         </p>
 
+        <h2 class="mt-5">Date and Time</h2>
+        <p class="px-0">
+          Our next session is on <strong>September 15th, at 13:00 UTC</strong>
+        </p>
+      </div>
+
+      <div class="col-12 col-lg-4 offset-lg-1 mt-5 mt-lg-0">
+        {% include webinar-signup-form.html event_id='1rIfGZQbE00lBuJW' %}
+      </div>
+
+      <div class="col-12">
         <h2 class="mt-5">About the Speaker</h2>
-        <img class="my-5" style="align-self: center;" width="300" src="/assets/img/webinar/topo-speaker-profile-pic.png" alt="Ivan Topolnjak speaker profile">
-        <p>
-          Ivan Topolnjak will be doing the live walkthough and answering any questions you might have. Ivan is the 
+      </div>
+      <div class="col-12 col-lg-auto">
+        <img class="mt-5" style="align-self: center;" width="300" src="/assets/img/webinar/topo-speaker-profile-pic.png" alt="Ivan Topolnjak speaker profile">
+      </div>
+      <div class="col-12 col-lg-8 lead pt-5 pl-lg-5">
+        <p class="pt-lg-4">
+          Ivan will be doing the live walkthough and answering any questions you might have. Ivan is the 
           founder @ Kamon, where he has poured almost a decade of efforts into instrumenting and monitoring applications 
           built with Akka, Play Framework, and the JVM in general.
         </p>
@@ -56,13 +70,7 @@ custom_css:
           developers to go from zero to production-ready observability with Kamon
         </p>
       </div>
-
-      <div class="col-12 col-lg-4 offset-lg-1 mt-5 mt-lg-0">
-        <h2 class="pb-3 text-center">Come and Learn on September 15th @ 13:00 UTC</h2>
-        <span class="demio-embed-registration" data-hash="1rIfGZQbE00lBuJW" data-api="api/v1" data-base-uri="https://my.demio.com/" data-form-width="100%" data-color="#23a966" data-text="Sign Up" ></span>
-      </div>
+      
     </section>
   </div> 
 </main>
-
-<script async id="demio-js" type="text/javascript" src="https://cdn.demio.com/production/dashboard/embed.bundle.js"></script>  
