@@ -1,5 +1,17 @@
 <form class="demio-registration-form" target="_top" method="post" action="https://my.demio.com/reg/{{ include.event_id }}" enctype="application/x-www-form-urlencoded">
-  <div class="h2 mb-5 text-center">Sign up for this Webinar</div>
+  <div class="h2 text-center">Sign up for this Webinar</div>
+  <div class="my-4 px-2">
+    <div>
+      <strong>When: </strong>{{ include.when }}
+    </div>
+    <div>
+      <strong>Where: </strong>Online - Join from any device
+    </div>
+    <div>
+      <strong>How Long: </strong>45 minutes + Q&A
+    </div>
+  </div>
+
   <div class="demio-form-field-container">
     <div class="Demio-Input-field">
       <label for="name">
