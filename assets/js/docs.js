@@ -62,6 +62,19 @@ function initVideoLightbox() {
   })
 }
 
+function initKamonApmSidebar() {
+  const TOGGLE_STORAGE_KEY = 'showKamonApmSidebar'
+  const hasShowApmSidebar = localStorage.getItem(TOGGLE_STORAGE_KEY)
+  if(hasShowApmSidebar === null) {
+    $('#apm-sidebar').addClass('d-lg-block')
+  }
+
+  $('#hide-apm-sidebar').click(function() {
+    $('#apm-sidebar').removeClass('d-lg-block')
+    localStorage.setItem(TOGGLE_STORAGE_KEY, "1")
+  })
+}
+
 function initToc() {
   $("#markdown-toc").detach().appendTo("#docs-toc-container")
 }
@@ -70,4 +83,5 @@ $(document).ready(function() {
   initCodeExampleCopy()
   initVideoLightbox()
   initToc()
+  initKamonApmSidebar()
 })

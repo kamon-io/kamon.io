@@ -1,0 +1,79 @@
+---
+layout: default
+title: Monitoring Office Hours
+description: >-
+  Schedule a developer-to-developer conversation and figure out what's the best way to improve monitoring
+  in your company.
+permalink: /office-hours/
+load_optimize: false
+transparent_heading: true
+custom_css:
+- pages/home
+---
+
+<main>
+
+  <div class="container-fluid bg-white navbar-offset">
+    <div class="container">
+      <section class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-lg-8 pt-lg-6 mt-6 mt-lg-0 text-center">
+          <h1 class="text-dark mt-4">
+            Pick a time to talk about Production 
+            <br class="d-none d-xxl-inline">
+            Monitoring with our Founder
+          </h1>
+
+          <p class="lead text-dark-2 mt-4 mb-5">
+            Schedule a developer-to-developer conversation and 
+            figure out what's the best way to improve monitoring in your company. No sales. No bullshit.
+          </p>
+        </div>
+
+        <div id="booking-page" class="col-12 col-lg-11">
+          <!-- this is where we will inject the interface -->
+        </div>
+      </section>
+
+      <section class="row justify-content-center pt-0">
+        <div class="col-12 col-lg-5 pr-lg-4 text-center">
+          <h2 class="text-dark mb-4">
+            How to prepare for this call?
+          </h1>
+
+          <p class="lead text-dark-2">
+            Bring notes with the libraries and frameworks your team uses, what's the burning
+            problem you want to solve today, and what are your rough expectations around monitoring.
+          </p>
+          <p class="lead text-dark-2">
+            You don't need prior knowledge about monitoring. Just come open-minded and ready to share.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-5 pl-lg-4 text-center">
+          <h2 class="text-dark mb-4">
+            Is it really free?
+          </h1>
+
+          <p class="lead text-dark-2 mt-4">
+            Yes. We are a young company shaping observability tools for developers, and we can't do that in a vaccum.
+          </p>
+          <p class="lead text-dark-2">
+            So here is the deal: you help us by bringing up your use cases and we help you with guidance and support, 
+            even if Kamon is not the right tool for you.
+          </p>
+
+          <p class="lead text-dark-2">
+            Everybody wins.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>window.SavvyCal=window.SavvyCal||function(){(SavvyCal.q=SavvyCal.q||[]).push(arguments)};</script>
+<script async src="https://embed.savvycal.com/v1/embed.js"></script>
+<script>
+  SavvyCal('init');
+  SavvyCal('inline', { link: 'ivantopo/df76fecf', selector: '#booking-page', theme: 'light' });
+</script>

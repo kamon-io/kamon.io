@@ -14,6 +14,17 @@ a.arrow-link {
   }
 }
 
+a.plain-link {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-dark-2;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-dark-3;
+  }
+}
+
 a.no-decoration {
   color: inherit;
   text-decoration: none;

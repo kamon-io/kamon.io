@@ -1,14 +1,18 @@
 <div class="notification-bar fixed-top container-fluid d-flex align-items-center justify-content-center">
-  <a class="no-decoration py-1 text-center text-dark-1 flex-grow-1 h-100 d-flex align-items-center justify-content-center" href="/webinar/the-three-jobs-of-every-observability-platform/">
-    <span class="d-md-none">Join us live to discuss <strong><ins>The Three Jobs of Every Observability Platform</ins></strong> on <strong>September 21st</strong></span>
-    <span class="d-none d-md-inline">Is a metrics dashboard "enough" observability? Join us next week to discuss <strong><ins>The Three Jobs of Every Observability Platform</ins></strong></span>
+  <a class="no-decoration py-1 text-center text-dark-1 flex-grow-1 h-100 d-flex align-items-center justify-content-center" href="/office-hours/">
+    <span class="d-md-none">
+      Need guidance with <strong>production monitoring</strong>? 
+      <br class="d-md-none">
+      Book <strong><ins>FREE office hours</ins></strong> and we'll help you out
+    </span>
+    <span class="d-none d-md-inline">Not sure how to approach <strong>production monitoring</strong>? Book <strong><ins>FREE office hours</ins></strong> and we'll help you out</span>
   </a>
 </div>
 
-<nav id="main-header" class="navbar navbar-expand-lg fixed-top bg-dark-background" {% if page.transparent_heading %}data-transparent="true"{% endif %}>
+<nav id="main-header" class="navbar navbar-expand-lg fixed-top bg-white">
   <div class="container-lg">
     <a class="navbar-brand" href="/">
-      <img src="/assets/img/kamon/kamon-logo-dark.svg" width="170" height="64" loading="eager" alt="Kamon">
+      <img src="/assets/img/kamon/kamon-logo-light.svg" width="170" height="64" loading="eager" alt="Kamon">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle Navigation">
@@ -18,27 +22,27 @@
     <div class="collapse navbar-collapse" id="siteNavigation">
       <ul class="navbar-nav ml-lg-3 flex-grow-1 justify-content-center">
         <li class="navbar-item dropdown d-lg-none">
-          <a class="nav-link text-white" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+          <a class="nav-link text-dark-1" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
           <ul class="navbar-nav pl-3 d-lg-none">
             <li class="navbar-item">
-              <a class="nav-link text-white" href="/telemetry/">Kamon Telemetry</a>
+              <a class="nav-link text-dark-1" href="/apm/">Kamon APM</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link text-white" href="/apm/">Kamon APM</a>
+              <a class="nav-link text-dark-1" href="/telemetry/">Kamon Telemetry</a>
             </li>
           </ul>
         </li>
         <li class="navbar-item dropdown d-lg-none">
-          <a class="nav-link text-white" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
+          <a class="nav-link text-dark-1" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a>
           <ul class="navbar-nav pl-3 d-lg-none">
             <li class="navbar-item">
-              <a class="nav-link text-white" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
+              <a class="nav-link text-dark-1" href="/solutions/monitoring-for-akka/">Monitoring for Akka</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link text-white" href="/solutions/monitoring-for-play-framework/">Monitoring for Play Framework</a>
+              <a class="nav-link text-dark-1" href="/solutions/monitoring-for-play-framework/">Monitoring for Play Framework</a>
             </li>
             <li class="navbar-item">
-              <a class="nav-link text-white" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
+              <a class="nav-link text-dark-1" href="/solutions/monitoring-for-spring-boot/">Monitoring for Spring Boot</a>
             </li>
           </ul>
         </li>        
@@ -46,24 +50,24 @@
 
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <a class="nav-link text-white" href="/telemetry/" data-small="false">
-            Telemetry
-          </a>
-        </li>
-        <li class="navbar-item">
-          <a class="nav-link text-white" href="/apm/" data-small="false">
+          <a class="nav-link text-dark-1" href="/apm/" data-small="false">
             APM
           </a>
         </li>
         <li class="navbar-item">
-          <a class="nav-link text-white" href="/apm/pricing/" data-small="false">
+          <a class="nav-link text-dark-1" href="/telemetry/" data-small="false">
+            Telemetry
+          </a>
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link text-dark-1" href="/apm/pricing/" data-small="false">
             Pricing
           </a>
         </li>
 
         <li class="navbar-item dropdown d-none d-lg-block">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="solutionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
-          <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="solutionsDropdown">
+          <a class="nav-link dropdown-toggle text-dark-1" href="#" id="solutionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+          <div class="dropdown-menu dropdown-menu-right p-0 text-dark-1" aria-labelledby="solutionsDropdown">
             <div class="nav-submenu-container p-3">
               <a href="/docs/latest/guides/">
                 <div class="nav-submenu-item d-flex flex-row">
@@ -140,18 +144,18 @@
         </li>
 
         <li class="navbar-item d-none d-xl-inline">
-          <a class="nav-link text-white text-center" href="/docs/latest/guides/" data-small="false">
+          <a class="nav-link text-dark-1 text-center" href="/docs/latest/guides/" data-small="false">
             Installation
           </a>
         </li>
-        <li class="navbar-item d-none d-xl-inline ml-5">
-          <a class="nav-link text-white text-center" href="https://apm.kamon.io/signin" data-small="false">
+        <li class="navbar-item d-none d-xl-inline ml-4">
+          <a class="nav-link text-dark-1 text-center" href="https://apm.kamon.io/signin" data-small="false">
             Sign In
           </a>
         </li>
-        <li class="navbar-item ml-3">
-          <a class="nav-link btn btn-primary text-white" data-toggle="modal" data-target="#apmOnboardingModal">
-            Try Kamon APM
+        <li class="navbar-item ml-3 d-none d-lg-inline">
+          <a class="btn btn-cta btn-primary text-white shadow" data-toggle="modal" data-target="#apmOnboardingModal">
+            Start Monitoring<span class="d-none d-xxl-inline"> Now</span>
           </a>
         </li>
       </ul>

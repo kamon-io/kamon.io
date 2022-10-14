@@ -1,7 +1,8 @@
 // BOOTSTRAP THEME COLOR OVERRIDES
 $theme-colors: (
-  "primary": $color-shamrock-darker,
+  "primary": $color-shamrock-main,
   "secondary": $color-dark-2,
+  "dark": $color-dark-0,
   "light": $color-dark-3,
   "lightest": $color-light-3,
   "danger": $color-red-0,
@@ -29,6 +30,18 @@ $container-max-widths: (
   xxxl: 1600px
 );
 
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4.5),
+  7: ($spacer * 6)
+);
+
 $btn-font-weight: $typography-weight-semi-bold;
 $btn-border-radius: remSize(8);
 $btn-border-radius-lg: remSize(12);
@@ -44,7 +57,7 @@ $navbar-nav-link-padding-y: remSize(8);
 $nav-link-height: remSize(40);
 $nav-link-padding-x: remSize(20);
 $nav-link-padding-y: remSize(8);
-$lead-font-size: 1.4rem;
+$lead-font-weight: 400;
 
 $body-color: $color-dark-2;
 $headings-color: $color-dark-1;
@@ -53,10 +66,10 @@ $headings-font-family: "Inter", sans-serif;
 $font-family-sans-serif: "Inter", sans-serif;
 $font-family-monospace: "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 $enable-responsive-font-sizes: true;
-$display1-weight: 700;
-$display2-weight: 700;
-$display3-weight: 700;
-$display4-weight: 700;
+$display1-weight: 600;
+$display2-weight: 600;
+$display3-weight: 600;
+$display4-weight: 600;
 
 
 
@@ -64,6 +77,13 @@ $h1-font-size: 2rem;
 $h2-font-size: 1.75rem;
 $h3-font-size: 1.5rem;
 $headings-font-weight: 600;
+$font-weight-bold: 500;
+$font-weight-bolder: 600;
+
+$display1-size: 5rem !default;
+$display2-size: 4.5rem !default;
+$display3-size: 3.7rem !default;
+$display4-size: 2.75rem !default;
 
 $lead-font-weight: 400;
 $close-color: white;

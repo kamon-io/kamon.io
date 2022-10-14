@@ -403,17 +403,21 @@ body.has-notification {
   .docs-toc-container {
     border-left: 1px sold $color-light-2;
   }
+}
 
-  .toc-apm-section {
-    text-decoration: none;
-    font-size: 0.875rem;
-    color: $color-dark-3;
+.apm-sidebar {
+  width: 350px;
+  position: fixed;
+  bottom: -48px;
+  right: 1rem;
+  z-index: 103;
+  background-size: 100% 100%;
+  background-image: url("/assets/img/pages/docs/apm-sidebar-background.png");
 
-    li {
-      background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
-      background-size: 1rem;
-      padding-left: 2rem;
-    }
+  ul li {
+    background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+    background-size: 1rem !important;
+    padding-left: 2rem;
   }
 }
 

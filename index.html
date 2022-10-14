@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Application-level Observability for Microservices and APIs
+title: Observability Tools for Developers, not DevOps/SRE
 description: >-
-  Discover what endpoints, database calls, and external dependencies affect latency and cause errors in production.
-  Start monitoring your backend services and APIs for free with Kamon.
+  Monitor your backend applications, fix performance issues, and get alerted when problems happen. 
+  All without being a monitoring expert.
 permalink: /
 load_optimize: false
 transparent_heading: true
@@ -17,124 +17,166 @@ custom_css:
     <img class="eu-icon" src="/assets/img/pages/homepage/EU-link.svg" alt="EU icon"/>
   </a>
 
-  <div class="container-fluid dark-heading-background navbar-offset">
+  <div class="container-fluid bg-white navbar-offset">
     <div class="container">
-      <section class="row dark-heading-simple-elements-background pb-0">
-        <div class="col-12 pt-5 text-center">
-          <h1 class="display-4 text-white">
-            Application-level Observability for
-            <br class="d-none d-lg-inline">
-            Microservices and APIs
-          </h1>
-          <p class="lead text-lightest my-3">
-            Discover why latency and errors happen. From your public APIs and all 
-            <br class="d-none d-md-inline">
-            the way down to database queries and calls across services
-          </p>
-          <a class="btn btn-lg btn-primary w-100-sm-down px-5 py3 mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
-            Try Kamon APM
-          </a>
-          <a class="btn btn-outline-secondary btn-lg w-100-sm-down px-5 py-2 my-2" href="/docs/latest/guides/">
-            Install Telemetry
-          </a>
-          <div class="text-explainer text-lightest text-center mt-3">
-            It's a 3-minute setup - No complex configurations or additional infrastructure
-          </div>
+      <section class="row" style="background-image: url('/assets/img/background/background-pattern-right.svg')">
+        <div class="col-12 col-lg-5 col-xl-6 order-lg-2 py-lg-6 mt-6 text-left">
+          <img class="img-cover" style="max-height: 420px;" src="/assets/img/pages/homepage/hero-side-image.png" alt="Monitoring Tools for Backend Services and APIs"  loading="eager"/>
+        </div>
 
-          <img class="img-cover mt-5" style="max-height: 420px;" src="/assets/img/pages/homepage/kamon-products.png" alt="Monitoring Tools for Backend Services and APIs"  loading="eager"/>
+        <div class="col-12 col-lg-7 col-xl-6 py-lg-6 mt-lg-5 text-left">
+          <h1 class="display-4 text-dark mt-4">
+            Observability Tools for
+            <br class="d-none d-xxl-inline">
+            <span class="text-underline-green">Developers</span>, not DevOps/SRE
+          </h1>
+          <p class="lead text-dark-2 my-4">
+            Monitor your backend applications, fix performance 
+            issues, and get alerted when problems happen. 
+            All without being a monitoring expert.
+          </p>
+          <a class="btn btn-cta btn-primary shadow w-100-sm-down mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
+            Start with a FREE account
+          </a>
+          <div class="py-3 text-center text-sm-left d-sm-inline">
+            <a class="plain-link" href="/apm/">
+              Learn more about APM
+            </a>
+          </div>
         </div>
       </section>
     </div>
   </div>
-  
-  <div class="container">
-    <section class="row pb-3">
-      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center pt-5 mb-5">
-        <h1 class="display-4 mb-3">The Kamon <span class="text-primary">Stack</span></h1>
-        <p class="text-explainer">
-          From easy to install instrumentation, to a fully managed APM with dashboards, 
-          alerts, end-to-end traces, and more, Kamon has everything you need to monitor 
-          your Backend Services and APIs
-        </p>
-      </div>
-      <div class="col-12 col-lg-4 mt-5 mt-lg-0 d-none d-lg-block pt-5">
-        <img class="w-100" style="max-height: 300px;" src="/assets/img/kamon/kamon-stack.svg" alt="The Kamon Stack"/>
-      </div>
 
-      <div class="col-12 col-lg-6 py-3 px-lg-2">
-        <div class="elevated-container p-4 p-lg-5">
-          <a class="no-decoration" href="/apm/">
-            <div class="position-relative mb-5">
-              <div class="blue-halo-right"></div>
-              <img class="w-100"  style="max-height: 350px;"src="/assets/img/pages/homepage/apm-service-map-example.png" alt="Kamon APM Service Map"  loading="eager"/>
-            </div>
 
-            <img height="32" src="/assets/img/kamon-apm-logo.svg" alt="Kamon APM Logo" loading="eager"/>
-            <h3 class="mt-4">
-              Visualize and analyze end-to-end request traces and metrics
-            </h3>
-            <p class="text-explainer mt-4 mb-5">
-              Drill down to the specific requests that hurt performance,
-              create custom dashboards, and get alert notifications
-              when things go wrong
-            </p>
-            
-            <h5>
-              <a class="arrow-link" href="/apm/">
-                More about Kamon APM
-              </a>
-            </h5>
-          </a>
+  <div class="container-fluid bg-lightest">
+    <div class="container py-5 text-center">
+      <div class="row">
+        <div class="col-12 h5 text-light">
+          Kamon works with the tools and libraries
+          <br class="d-none d-sm-inline d-lg-none">
+          you already use
+        </div>
+        <div class="col-12 pt-3">
+          <img class="m-3" style="max-height: 70px;" src="/assets/img/zipkin.svg" alt="Zipkin"  loading="eager"/>
+          <img class="m-3" style="max-height: 50px;" src="/assets/img/jaeger.svg" alt="Jaeger"  loading="eager"/>
+          <img class="m-3" style="max-height: 50px;" src="/assets/img/prometheus.svg" alt="Prometheus"  loading="eager"/>
+          <img class="m-3" style="max-height: 60px;" src="/assets/img/opentelemetry.svg" alt="OpenTelemetry"  loading="eager"/>
+          <img class="m-3" style="max-height: 50px;" src="/assets/img/akka.svg" alt="Akka"  loading="eager"/>
+          <img class="m-3" style="max-height: 50px;" src="/assets/img/play-framework.svg" alt="Play Framework"  loading="eager"/>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="col-12 col-lg-6 px-lg-2 5 py-3">
-        <div class="elevated-container p-4 p-lg-5">
-          <a class="no-decoration" href="/telemetry/">
-            <div class="position-relative mb-5">
-              <div class="green-halo-right"></div>
-              <img class="w-100" style="max-height: 350px;" src="/assets/img/pages/homepage/telemetry-example.png" alt="Kamon Telemetry"  loading="eager"/>
-            </div>
-
-            <img height="32" src="/assets/img/kamon-telemetry-logo.svg" alt="Kamon Telemetry Logo" loading="eager"/>
-            <h3 class="mt-4">
-              Generate metrics and traces with a few lines of code
-            </h3>
-            <p class="text-explainer mt-4">
-              Generate metrics, correlate requests, and get distributed traces automatically from 
-              JVM applications, then visualize them anywhere you want
-            </p>    
-            <h5>
-              <a class="arrow-link" href="/telemetry/">
-                More about Kamon Telemetry
-              </a>
-            </h5>
-          </a>
+  <div class="container-fluid">
+    <div class="container">
+      <section class="row pb-3">
+        <div class="col-12 col-lg-6 order-lg-2 pl-lg-6 my-3">
+          <img class="img-cover" src="/assets/img/pages/homepage/the-problem-with-logs.png" alt="The problem with monitoring with logs"/>
         </div>
-      </div>
-
-      {% if featured_post %}
-      <div class="col-12  px-lg-2 5 py-3 mt-5" role="button">
-        <h6 class="text-light mb-4">FROM OUR BLOG</h6>
-        <div class="elevated-container p-5">
-          <div class="row">
-            <div class="col-12 col-lg-7">
-              <h2>{{ featured_post.title }}</h2>
-              <p class="text-explainer mt-4 mb-5">{{ featured_post.excerpt }}</p>
-              <a class="btn btn-lg btn-primary" href="{{ featured_post.url }}">Read More</a>
-            </div>
-            <div class="col-12 col-lg-5 order-first order-lg-last mb-3 mb-lg-0">
-              {% if featured_post.summary_image %}
-              <img class="w-100 rounded-lg" src="{{ featured_post.summary_image }}" alt="Post summary image"/>
-              {% endif %}
-            </div>
-            <a href="{{ featured_post.url }}" class="grow-to-container">
-              <span></span>
+        <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+          <h2 class="display-5 mb-4">Tailing the logs is not enough</h2>
+          <p class="lead mb-4">
+            Everybody starts monitoring with logs because they are there by default. Just connect to 
+            your server and start tailing.
+          </p>
+          <p class="lead mb-4">
+            But logs have a hard time showing you the overall response times for your application, or 
+            whether certain calls to the database are happening in sequence or parallel (among a million 
+            other things).
+          </p>
+          <p class="lead mb-4">
+            The solution is not to ditch logging, though. You get the best troubleshooting powers by 
+            complementing your logs with application-level metrics and traces, and that's what we help 
+            you achieve.
+          </p>
+          <p class="mt-4">
+            <a class="btn btn-cta btn-outline-secondary w-100-sm-down mb-5" href="/office-hours/">
+              Book FREE office hours to get guidance
             </a>
-          </div>
+          </p>
+        </div>        
+      </section>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-lightest">
+    <div class="container py-5 text-center">
+      <div class="row">
+        <div class="col-12 h5 text-light">
+          Meet the monitoring stack that  
+          <br class="d-lg-none">
+          companies of all sizes love, including:
+        </div>
+        <div class="col-12 pt-3">
+          <img class="m-4" style="max-width: 150px;" src="/assets/img/customers/codacy.svg" alt="Codacy"  loading="eager"/>
+          <img class="m-4" style="max-width: 150px;" src="/assets/img/customers/despegar.svg" alt="Despegar"  loading="eager"/>
+          <img class="m-4" style="max-width: 150px;" src="/assets/img/customers/emnify.svg" alt="EMnify"  loading="eager"/>
+          <img class="m-4" style="max-width: 150px;" src="/assets/img/customers/liveintent.svg" alt="Liveintent"  loading="eager"/>
+          <img class="m-4" style="max-width: 130px;" src="/assets/img/customers/oradian.svg" alt="Oradian"  loading="eager"/>
         </div>
       </div>
-      {% endif %}      
-    </section>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container">
+      <section class="row pb-7">
+        <div class="col-12 col-lg-6 pr-lg-5 pt-5 pt-lg-0">
+          <img class="d-lg-none mb-4" height="32" src="/assets/img/kamon/kamon-apm-logo-light.svg" alt="Kamon APM Logo" loading="eager"/>
+          <img class="img-cover" src="/assets/img/pages/homepage/apm-intro.png" alt="Intro to Kamon APM"/>
+        </div>
+        <div class="col-12 col-lg-6">
+          <img class="d-none d-lg-block" height="32" src="/assets/img/kamon/kamon-apm-logo-light.svg" alt="Kamon APM Logo" loading="eager"/>
+          <p class="lead mt-4">
+            Monitor your backend applications, fix performance issues, and get alerted when problems happen. 
+            All without being a monitoring expert.
+
+            <ul class="icon-list check-list lead">
+              <li>Integrates with all major platforms</li>
+              <li>Curated and ready-to-use automatic dashboards</li>
+              <li>Correlated high-fidelity metrics and traces</li>
+              <li>No complicated setups or infrastructure to maintain. Get started in 10 minutes or less</li>
+            </ul>
+            <a class="btn btn-cta btn-primary shadow w-100-sm-down mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
+              Start with a FREE account
+            </a>
+            <div class="py-3 text-center text-sm-left d-sm-inline">
+              <a class="plain-link" href="/apm/">
+                Learn more about APM
+              </a>
+            </div>
+          </p>
+        </div>
+        <div class="col-12 my-3"></div>
+
+        <div class="col-12 col-lg-6 pr-lg-5 pt-5 pt-lg-0 mt-lg-6">
+          <img class="d-lg-none"  height="32" src="/assets/img/kamon/kamon-telemetry-logo-light.svg" alt="Kamon Telemetry Logo" loading="eager"/>
+          <img class="img-cover" src="/assets/img/pages/homepage/telemetry-intro.png" alt="Intro to Kamon Telemetry"/>
+        </div>
+        <div class="col-12 col-lg-6 mt-lg-6">
+          <img class="d-none d-lg-block" height="32" src="/assets/img/kamon/kamon-telemetry-logo-light.svg" alt="Kamon Telemetry Logo" loading="eager"/>
+          <p class="lead mt-4">
+            Instrument Scala applications to generate metrics, traces, and correlated logs
+
+            <ul class="icon-list check-list lead">
+              <li>Works with Akka, Play Framework, Cats Effect, and many more libraries</li>
+              <li>Manual and Automatic instrumentation for code-free observability</li>
+              <li>Integrates with Kamon APM, Prometheus, Jaeger, Datadog, and many more</li>
+              <li>Free and Open Source</li>
+            </ul>
+            <a class="btn btn-cta btn-primary shadow w-100-sm-down mr-3" href="/docs/latest/guides/">
+              Install Kamon Telemetry
+            </a>
+            <div class="py-3 text-center text-sm-left d-sm-inline">
+              <a class="plain-link" href="/telemetry/">
+                More about Telemetry
+              </a>
+            </div>
+          </p>
+        </div>      
+      </section>
+    </div>
   </div>
 </main>

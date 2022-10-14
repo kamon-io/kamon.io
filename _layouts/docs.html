@@ -200,32 +200,31 @@ footer_background: bg-white
         <div id="docs-toc-container">
 
         </div>
-        <div class="toc-heading mt-5">
-          <img height="32" src="/assets/img/kamon/kamon-apm-logo-light.svg" alt="Kamon APM Logo" loading="eager"/>
-          <div class="mt-2">Get Application-level Observability with Kamon APM</div>
-        </div>
-        <div class="toc-apm-section">
-          <ul class="icon-list">
-            <li>
-              Correlated metrics and traces
-            </li>
-            <li>
-              Metric dashboards
-            </li>
-            <li>
-              Alerting rules and notifications
-            </li>
-            <li>
-              OpenTelemetry and Micrometer compatible
-            </li>
-          </ul>
-          <a class="btn btn-primary text-white w-100" data-toggle="modal" data-target="#apmOnboardingModal">
-            Try Kamon APM
-          </a>
-          <div class="mt-2 text-center">Start with a FREE developer account</div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="apm-sidebar" class="apm-sidebar d-none p-5 pb-6">
+  <img height="24" src="/assets/img/kamon/kamon-apm-logo-light.svg" alt="Kamon APM Logo" loading="eager"/>
+  <div class="h6 mt-2">Monitor and fix issues in production without being an expert</div>
+  <ul class="icon-list text-explainer">
+    <li class="py-1">Ready-to-use dashboards</li>
+    <li class="py-1">Alerts, metrics, and traces in a single platform</li>
+    <li class="py-1">No infrastructure to install or maintain</li>
+  </ul>
+  <div class="text-center">
+    <div>
+      <a class="mt-4 no-decoration h6" href="/apm/">
+        Learn about APM
+      </a>
+    </div>
+    <a class="btn btn-primary shadow text-white mb-4 mt-2" data-toggle="modal" data-target="#apmOnboardingModal">
+      Try Kamon APM
+    </a>
+    <a id="hide-apm-sidebar" class="d-block no-decoration text-caption cursor-pointer">
+      I know how Kamon APM can help with monitoring. Don't show this again.
+    </a>
   </div>
 </div>
 

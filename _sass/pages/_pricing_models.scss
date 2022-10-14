@@ -1,84 +1,64 @@
-.pricing-plan {
-  padding-bottom: 2rem;
-  border-radius: 1rem;
+.currency-toggle {
+  font-weight: 600;
 
-  .pricing-header {
-    @media (min-width: 768px) {
-      height: 20rem;
+  .currency-option {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    color: $color-dark-2;
+
+    &.active {
+      color: white;
+      background-color: $color-green-2;
+    }
+  }
+}
+
+.pricing-plan {
+  border-radius: 1rem;
+  position: relative;
+
+  .plan-color {
+    border-radius: 1rem 1rem 0 0;
+    height: 1rem;
+    top: 0;
+
+    &.plan-color-developer {
+      background-color: $color-azure-radiance-main;
+    }
+
+    &.plan-color-teams {
+      background-color: $color-shamrock-main;
+    }
+
+    &.plan-color-enterprise {
+      background-color: $color-everglade-lighter;
     }
   }
 
-  .pricing-price {
-    font-size: 2.5rem;
-    font-weight: 600;
+  .plan-intro {
+    min-height: 4rem;
+  }
 
-    @media (min-width: 768px) {
-      height: 6rem;
-    }
-
-    @media (max-width: 992px) {
-      font-size: 1.75rem;
-    }
-
+  .plan-price {
+    min-height: 3rem;
 
     .pricing-frequency {
       color: $color-dark-3;
       padding-left: 0.3rem;
     }
-
-    .currency-toggle {
-      font-size: 1rem;
-
-      .currency-option {
-        display: inline-block;
-        min-width: 64px;
-        cursor: pointer;
-        border-radius: 4px;
-        color: $color-dark-2;
-
-        &.active {
-          color: white;
-          background-color: $color-green-2;
-        }
-      }
-    }
   }
 
-  .pricing-explainer {
-    font-size: 1.125rem;
-
-    @media (max-width: 1200px) {
-      font-size: 1rem;
-    }
-
-    .pricing-plan-details {
-      li {
-        background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
-        background-size: 1.125rem;
-        padding-left: 2rem;
-      }
-    }
+  .plan-description {
+    min-height: 6rem;
   }
-}
-
-.pricing-page {
-  .text-explainer {
-    @media (max-width: 1200px) {
-      font-size: 1rem;
-    }
-  }
-}
-
-.sign-up-cta {
-  border-radius: 16px;
-  border: 2px solid $color-shamrock-main;
 }
 
 .plan-comparison-table {
   table-layout: fixed;
 
   @media (max-width: 768px) {
-    .h3 {
+    .h4 {
       font-size: 1rem;
     }
   }
@@ -100,47 +80,5 @@
   tbody tr td {
     padding: 12px 0px;
     border-top: 1px solid $color-light-1;
-  }
-}
-
-#teams-plan-service-number {
-  border: none;
-  border-bottom: 1px solid $color-dark-4;
-  padding: unset;
-  height: 25px;
-  width: 35px;
-  color: $color-shamrock-main;
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid $color-shamrock-main;
-  }
-}
-
-.teams-plan-service-buttons-container {
-
-  button {
-    border: none;
-    background-color: transparent;
-    width: 15px;
-    height: 10px;
-    padding: 0;
-    opacity: 0.4;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &:focus {
-      outline: 1px solid $color-dark-3;
-    }
-  }
-
-  #teams-plan-service-up-button {
-    background: center no-repeat url(/assets/img/icons/directional/angle-up.svg);
-  }
-
-  #teams-plan-service-down-button {
-    background: center no-repeat url(/assets/img/icons/directional/angle-down.svg);
   }
 }

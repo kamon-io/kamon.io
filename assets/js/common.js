@@ -50,25 +50,12 @@ function plausibleEvent(eventName) {
 function initScrollMainHeader() {
   const HEADER_BACKGROUND_TRIGGER_SCROLL = 36;
   var mainHeader = document.getElementById("main-header")
-  var shouldBeTransparentHeader = $(mainHeader).data("transparent") === true
-  var isMainHeaderTransparent = false
-  
   
   var mainHeaderScrollListener = function() {
     if(window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
       mainHeader.classList.add('page-scrolled')
     } else {
       mainHeader.classList.remove('page-scrolled')
-    }
-
-    if(shouldBeTransparentHeader) {
-      if (isMainHeaderTransparent && window.pageYOffset >= HEADER_BACKGROUND_TRIGGER_SCROLL) {
-        mainHeader.classList.remove("bg-transparent")
-        isMainHeaderTransparent = false
-      } else if (!isMainHeaderTransparent && window.pageYOffset <= HEADER_BACKGROUND_TRIGGER_SCROLL) {
-        mainHeader.classList.add("bg-transparent")
-        isMainHeaderTransparent = true
-      }
     }
   }
 

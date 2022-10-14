@@ -9,3 +9,11 @@ ul.icon-list {
     background-repeat: no-repeat;
   }
 }
+
+ul.check-list {
+  li {
+    background-image: url("/assets/img/pages/pricing/green-check-mark.svg");
+    background-size: 1.5rem;
+    padding-left: 3rem;
+  }
+}

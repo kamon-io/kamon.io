@@ -15,31 +15,32 @@ custom_css:
 - code
 ---
 <main>
-  <div class="container-fluid dark-heading-background navbar-offset">
+  <div class="container-fluid navbar-offset">
     <div class="container">
-      <section class="row dark-heading-simple-elements-background pb-0">
-        <div class="col-12 text-center">
-          <img height="64" src="/assets/img/kamon/kamon-telemetry-logo-dark.svg" alt="Kamon Telemetry Logo" loading="eager"/>
-          <h1 class="display-4 text-white mt-4">
+      <section class="row bg-white pt-6 pb-0">
+        <div class="col-12 text-center mt-lg-6">
+          <img height="32" src="/assets/img/kamon/kamon-telemetry-logo-light.svg" alt="Kamon Telemetry Logo" loading="eager"/>
+          <h1 class="display-4 mt-4">
             Generate metrics and traces
             <br class="d-none d-lg-inline">
             with minimal code changes
           </h1>
-          <p class="lead text-lightest my-5">
+          <p class="lead my-4">
             Add a few lines of code and generate the metrics & traces you  
             <br class="d-none d-md-inline">
             need to troubleshoot production issues in Java, Scala, and Kotlin applications
           </p>
-          <a class="btn btn-lg btn-primary w-100-sm-down px-5 mt-4 mr-3" href="/docs/latest/guides/">
-            Install Kamon Telemetry
-          </a>
-          <a class="btn btn-outline-secondary btn-lg w-100-sm-down px-5 py-2 mt-4" data-toggle="modal" data-target="#apmOnboardingModal">
+
+          <a class="btn btn-cta btn-primary shadow w-100-sm-down mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
             Try Kamon Telemetry + APM
           </a>
-          <div class="text-explainer text-lightest text-center mt-4">
-            It's a 3-minute setup - Works awesome with Kamon APM, Prometheus, Zipkin, and more
+          <div class="py-3 text-center text-md-left d-md-inline">
+            <a class="plain-link" href="/docs/latest/guides/">
+              Install Kamon Telemetry
+            </a>
           </div>
-          <img class="img-cover mt-5" style="max-height: 600px;" src="/assets/img/pages/telemetry/kamon-telemetry-showcase.png" alt="Generating Metrics and Traces with Kamon Telemetry"  loading="eager"/>
+
+          <img class="img-cover mt-6" style="max-height: 395px;" src="/assets/img/pages/telemetry/kamon-telemetry-showcase.png" alt="Generating Metrics and Traces with Kamon Telemetry"  loading="eager"/>
         </div>
       </section>
     </div>

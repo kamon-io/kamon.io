@@ -25,32 +25,22 @@ html, body {
   }
 }
 
-.lead {
-  @media (max-width: $md-max) {
-    font-size: calc(1rem + 0.9vw);
-  }
-}
-
 .text-caption {
-  font-size: 1.2rem;
+  @include font-size(0.75rem);
 }
 
 .text-underline-green {
   text-decoration: underline;
   text-decoration-style: solid;
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: 6px;
   text-underline-offset: 6px;
   text-decoration-color: $color-shamrock-main;
 }
 
 
 .text-explainer {
-  font-size: remSize(20);
+  @include font-size(1rem);
   font-weight: 400;
-
-  @media (max-width: $md-max) {
-    font-size: calc(0.9rem + 0.9vw);
-  }
 }
 
 .text-feature-explainer {

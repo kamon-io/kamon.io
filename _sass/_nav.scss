@@ -3,7 +3,7 @@
 @import "bootstrap/mixins/breakpoints";
 
 a.nav-link {
-  font-size: 1.125rem;
+  @include font-size(1.125rem);
   font-weight: 500;
   letter-spacing: 0.3px;
   padding: 0.5rem 1rem !important;
@@ -29,8 +29,8 @@ a.nav-link {
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-top: 2.5px solid $color-light-2;
-    border-left: 2.5px solid $color-light-2;
+    border-top: 2.5px solid $color-dark-1;
+    border-left: 2.5px solid $color-dark-1;
     border-right: none;
     transition: 0.2s;
     transform: translate(8px, 1px) rotate(-135deg);
@@ -41,7 +41,7 @@ a.nav-link {
   .navbar-item.dropdown.show {
     @include media-breakpoint-up(lg) {
       a.nav-link {
-        color: $color-light-2;
+        color: $color-dark-1;
       }
 
       a.nav-link::after {
@@ -85,7 +85,7 @@ a.nav-link {
 }
 
 .navbar.mobile-expanded {
-  background-color: $color-dark-background !important;
+   background-color: $color-light-3 !important;
   max-height: 100%;
   overflow: auto;
 
