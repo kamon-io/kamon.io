@@ -1,69 +1,13 @@
-.onboarding-modal-dialog {
-  position: absolute;
-  top: 4px;
-  right: 0;
-  bottom: 4px;
-  left: 0;
-
-  @media (min-width: $md-start) {
-    position: relative;
-    top: unset;
-    right: unset;
-    bottom: unset;
-    left: unset;
-    max-width: 1200px;
-    max-height: 90vh;
-  }
-
-  &.small-dialog {
-    @media (min-width: $md-start) {
-      max-width: 640px;
-      height: 100%;
-      max-height: unset;
-      display: flex;
-      align-items: center;
-    }
-  }
-}
-
 #apmOnboardingModal {
+  iframe {
+    padding-bottom: 2rem;
+  }
+
   .modal-content {
-    min-height: 700px;
-    border-radius: 8px;
+    min-height: 890px;
+    max-width: 660px;
+    border-radius: 1rem;
     border: none;
-  }
-
-  #videoFrameWrapper {
-    position: relative;
-    padding: 56.25% 0 0 0;
-    
-    &.show-onboarding {
-      padding: 165% 0 0 0;
-    }
-
-    &.show-onboarding {
-      @media (min-width: $lg-start) {
-        padding: 95% 0 0 0;
-      }
-    }
+    overflow: hidden;
   }
 }
-
-.onboarding-iframe {
-  width: 100%;
-  border: none;
-  border-radius: 8px;
-
-  @media (min-width: $md-start) {
-    max-height: 90vh;
-  }
-}
-
-.small-dialog {
-  .modal-content, .onboarding-iframe {
-    @media (min-width: $md-start) {
-      max-height: 764px;
-    }
-  }
-}
- 

@@ -28,6 +28,7 @@ function sendAnalyticsEvent(eventName, eventLabel) {
 
   if(eventName == GAEvents.onboarding_start_signup) {
     plausibleEvent('Launch Sign Up')
+    posthogEvent('Launch Sign Up')
   }
 
   if(eventName == GAEvents.onboarding_start_booking) {
@@ -44,6 +45,13 @@ function plausibleEvent(eventName) {
   if (plausible != null) {
     
     plausible(eventName)
+  }
+}
+
+function posthogEvent(eventName) {
+  const posthog = window.posthog
+  if (posthog != null) {
+    posthog.capture(eventName)
   }
 }
 
@@ -67,14 +75,8 @@ function initScrollMainHeader() {
 
 function initOnboardingEvents() {
   $('[data-target="#apmOnboardingModal"]').on("click", function() {
-    console.log("Clicked on Signup")
-    var onboardingFrame = $('iframe#apmOnboardingVideoFrame');
+    var onboardingFrame = $('iframe#apmOnboardingFrame');
     onboardingFrame.attr('src', getBaseAPMUrl() + '/signup?small=true&external=true')
-
-    $('#apmOnboardingModal .modal-header').hide()
-    $('#apmOnboardingModal .modal-body').hide()
-    $('#apmOnboardingModal .modal-footer').hide()
-    $('#videoFrameWrapper').addClass('show-onboarding')
 
     sendAnalyticsEvent(GAEvents.onboarding_start_signup, "Via Modal")
   })
