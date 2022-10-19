@@ -23,7 +23,7 @@
     height: 1rem;
     top: 0;
 
-    &.plan-color-developer {
+    &.plan-color-starter {
       background-color: $color-azure-radiance-main;
     }
 
@@ -31,9 +31,19 @@
       background-color: $color-shamrock-main;
     }
 
-    &.plan-color-enterprise {
+    &.plan-color-business {
       background-color: $color-everglade-lighter;
     }
+  }
+
+  .plan-color-enterprise {
+    width: 2rem;
+    border-radius: 1rem 0 0 1rem;
+    background-color: $color-everglade-darker;
+  }
+
+  .contact-sales-cta {
+    min-width: 12rem;
   }
 
   .plan-intro {
@@ -50,7 +60,13 @@
   }
 
   .plan-description {
-    min-height: 6rem;
+    min-height: 11rem;
+
+    .check-list li {
+      background-size: 1rem;
+      padding: 0.15rem 0rem 0.15rem 1.75rem;
+      background-position-y: top 0.55rem;
+    }
   }
 }
 

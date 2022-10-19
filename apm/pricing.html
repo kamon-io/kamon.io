@@ -38,72 +38,125 @@ custom_css:
           </span>
         </div>
         
-        <div class="col-10 col-sm-8 col-md-4 col-xl-3 text-center my-3">
+        <div class="col-12 col-sm-10 col-md-4 col-xl-3 text-left my-3">
           <div class="pricing-plan shadow-sm h-100">
-            <div class="plan-color plan-color-developer"></div>
+            <div class="plan-color plan-color-starter"></div>
             <div class="p-4">
-              <div class="plan-name h2 pt-3">Developer</div>
-              <div class="plan-intro text-light">
-                For tiny teams monitoring small aps and experiments
+              <div class="plan-name h2">Starter</div>
+              <div class="plan-intro text-dark-2">
+                Great for getting started with observability in small projects
               </div>
       
-              <div class="plan-price h1 mt-2">
+              <div class="plan-price h1 mt-2 mb-0">
                 Free
               </div>
               <div class="plan-description">
-                Start monitoring in production for Free with 1 day of data 
-                retetion and up to 3 team members  
+                <ul class="icon-list check-list text-light">
+                  <li>5K unique metrics</li>
+                  <li>10M trace spans</li>
+                  <li>Up to 3 team members</li>
+                  <li>1-day data retention</li>
+                </ul>
+              </div>
+              <div class="plan-cta">
+                <a class="btn btn-cta btn-primary shadow-sm w-100 mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
+                  Sign Up
+                </a>
+                <div class="text-light text-center text-caption mt-2">
+                  Start with a FREE account.
+                  <br>
+                  No card required.
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-10 col-sm-8 col-md-4 col-xl-3 text-center my-3">
+        <div class="col-12 col-sm-10 col-md-4 col-xl-3 text-left my-3">
           <div class="pricing-plan shadow-sm h-100">
             <div class="plan-color plan-color-teams"></div>
             <div class="p-4">
-              <div class="plan-name h2 pt-3">Teams</div>
-              <div class="plan-intro text-light">
-                For teams getting real about observability in production
+              <div class="plan-name h2">Teams</div>
+              <div class="plan-intro text-dark-2">
+                For teams getting serious about observability in production
               </div>
       
-              <div class="plan-price h1 mt-2">
-                <span id="teams-plan-price">$100</span><span class="pricing-frequency">/mo</span>
+              <div class="plan-price h1 mt-2 mb-0">
+                <span id="teams-plan-price">$89</span><span class="pricing-frequency">/mo</span>
               </div>
               <div class="plan-description">
-                Up to 20 team members, priority support, 60 days of metrics retention, and 14 days of traces retention
+                <ul class="icon-list check-list text-light">
+                  <li>10K unique metrics</li>
+                  <li>100M trace spans</li>
+                  <li>Up 20 team members</li>
+                  <li>Extended data retention</li>
+                  <li>Extra capacity addons</li>
+                </ul>
+              </div>
+              <div class="plan-cta">
+                <a class="btn btn-cta btn-primary shadow-sm w-100 mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
+                  Sign Up
+                </a>
+                <div class="text-light text-center text-caption mt-2">
+                  Start with a FREE account.
+                  <br>
+                  No card required.
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-10 col-sm-8 col-md-4 col-xl-3 text-center my-3">
+        <div class="col-12 col-sm-10 col-md-4 col-xl-3 text-left my-3">
           <div class="pricing-plan shadow-sm h-100">
-            <div class="plan-color plan-color-enterprise"></div>
+            <div class="plan-color plan-color-business"></div>
             <div class="p-4">
-              <div class="plan-name h2 pt-3">Enterprise</div>
-              <div class="plan-intro text-light">
-                For teams with large production deployments and data volume
+              <div class="plan-name h2">Business</div>
+              <div class="plan-intro text-dark-2">
+                For scaling organizations with increased data volume
               </div>
       
-              <div class="plan-price h1 mt-2">
-                <span id="pro-plan-price">$700</span><span class="pricing-frequency">/mo</span>
+              <div class="plan-price h1 mt-2 mb-0">
+                <span id="business-plan-price">$299</span><span class="pricing-frequency">/mo</span>
               </div>
               <div class="plan-description">
-                Best capacity-price ratio, onboarding workshops, and up to 20% savings with annual billing
+                <ul class="icon-list check-list text-light">
+                  <li>30K unique metrics</li>
+                  <li>500M trace spans</li>
+                  <li>Up 50 team members</li>
+                  <li>Extended data retention</li>
+                  <li>Extra capacity addons</li>
+                </ul>
+              </div>
+              <div class="plan-cta">
+                <a class="btn btn-cta btn-primary shadow-sm w-100 mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
+                  Sign Up
+                </a>
+                <div class="text-light text-center text-caption mt-2">
+                  Start with a FREE account.
+                  <br>
+                  No card required.
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-12 col-sm-10 col-md-12 col-xl-9 text-left my-3">
+          <div class="pricing-plan shadow-sm">
+            <div class="p-4">
+              <div class="plan-name h2">Looking for an Enterprise plan?</div>
 
-        <div class="col-12 mt-5">
-          <a class="btn btn-cta btn-primary shadow w-100-sm-down mr-3" data-toggle="modal" data-target="#apmOnboardingModal">
-            Start with a FREE account
-          </a>
-          <div class="py-3 text-center text-md-left d-md-inline">
-            <a class="plain-link" href="/apm/">
-              Or, book FREE office hours to get guidance
-            </a>
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <div class="plan-intro text-light pr-md-5">
+                  Get in touch and we will make a perfect plan for you! Pick your own capacity and data retention, 
+                  along with dedicated support, volume discounts, and annual billing. 
+                  Starting at <strong id="enterprise-starting-at">$1499</strong>/mo.
+                </div>
+                <a class="btn btn-cta btn-dark-everglade contact-sales-cta shadow-sm w-100-md-down mt-3 mt-md-0" href="mailto:sales@kamon.io">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -137,13 +190,13 @@ custom_css:
                 Features
               </th>
               <th class="h4 text-center">
-                Developer
+                Starter
               </th>
               <th class="h4 text-center">
                 Teams
               </th>
               <th class="h4 text-center">
-                Enterprise
+                Business
               </th>
             </tr>
           </thead>
@@ -231,13 +284,13 @@ custom_css:
                 Data Retention & Limits
               </th>
               <th class="h4 text-center">
-                Developer
+                Starter
               </th>
               <th class="h4 text-center">
                 Teams
               </th>
               <th class="h4 text-center">
-                Enterprise
+                Business
               </th>
             </tr>
           </thead>
@@ -249,10 +302,16 @@ custom_css:
               <td><img height="20" width="20" src="/assets/img/pages/pricing/green-check-mark.svg"></td>
             </tr>
             <tr class="text-center">
-              <td class="text-left">Unlimited team members</td>
+              <td class="text-left">Base Price</td>
+              <td>Free</td>
+              <td><span id="teams-plan-price-in-details">$89</span></td>
+              <td><span id="business-plan-price-in-details">$299</span></td>
+            </tr>
+            <tr class="text-center">
+              <td class="text-left">Team members</td>
               <td>3 included</td>
               <td>20 included</td>
-              <td><img height="20" width="20" src="/assets/img/pages/pricing/green-check-mark.svg"></td>
+              <td>50 included</td>
             </tr>
             <tr class="text-center">
               <td class="text-left">Metrics data retention</td>
@@ -267,28 +326,28 @@ custom_css:
               <td>14 days</td>
             </tr>
             <tr class="text-center">
-              <td class="text-left">Average time series per month</td>
+              <td class="text-left">Average daily unique metrics</td>
               <td>5K</td>
               <td>10K</td>
-              <td>50K</td>
+              <td>30K</td>
             </tr>
             <tr class="text-center">
               <td class="text-left">Spans ingested per month</td>
               <td>10M</td>
-              <td>50M</td>
-              <td>1 Billion</td>
+              <td>100M</td>
+              <td>500M</td>
             </tr>
             <tr class="text-center">
-              <td class="text-left">Additional 10K time series per month</td>
+              <td class="text-left">Additional 10K metrics</td>
               <td>-</td>
-              <td id="additional-10k-time-series-price">$90</td>
-              <td>Custom</td>
+              <td id="additional-10k-metrics-price-teams">$90</td>
+              <td id="additional-10k-metrics-price-business">$90</td>
             </tr>
             <tr class="text-center">
               <td class="text-left">Additional 100M spans per month</td>
               <td>-</td>
-              <td id="additional-100m-spans-price">$100</td>
-              <td>Custom</td>
+              <td id="additional-100m-spans-price-teams">$60</td>
+              <td id="additional-100m-spans-price-business">$60</td>
             </tr>
             
           </tbody>
